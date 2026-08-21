@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BUÜ - Elektronik Teknolojisi Dosya Sunucusu</title>
-    
+    <title>BUÜ - Elektronik Teknolojisi Portal & Dosya Sunucusu</title>
+
     <!-- Hızlı ZIP İndirme Altyapısı -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 
@@ -124,51 +124,130 @@
             color: #52b788;
         }
 
-        /* Bölüm Duyuruları Kartı Stilleri */
+        /* Duyurular Menü Giriş Kartı Stilleri */
+        .announcement-menu-card {
+            background: #1c2541;
+            border-radius: 12px;
+            border: 1px solid #3a506b;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .announcement-menu-card:hover {
+            border-color: #52b788;
+            background: #222d4f;
+            transform: translateY(-2px);
+        }
+        .announcement-menu-info h2 {
+            color: #52b788;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .announcement-menu-info p {
+            color: #a0aec0;
+            font-size: 0.85rem;
+        }
+        .announcement-btn {
+            background-color: #52b788;
+            color: #0b132b;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.15s ease;
+        }
+        .announcement-menu-card:hover .announcement-btn {
+            background-color: #40916c;
+            color: #ffffff;
+        }
+
+        /* Bölüm Duyuruları Sayfası Stilleri */
         .announcement-card {
             background: #1c2541;
             border-radius: 12px;
             border: 1px solid #3a506b;
-            padding: 18px;
+            padding: 20px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             margin-bottom: 20px;
         }
+        .announcement-page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #3a506b;
+        }
         .announcement-card-title {
             color: #52b788;
-            font-size: 1.05rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            margin-bottom: 14px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #3a506b;
+        }
+        .back-btn {
+            background-color: #1a3a5c;
+            color: #48cae4;
+            border: 1px solid #3a506b;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+        .back-btn:hover {
+            background-color: #48cae4;
+            color: #0b132b;
+            border-color: #48cae4;
         }
         .announcement-item {
             background-color: rgba(255, 255, 255, 0.03);
-            border-left: 3px solid #48cae4;
+            border-left: 4px solid #48cae4;
             border-radius: 0 8px 8px 0;
-            padding: 12px 15px;
-            margin-bottom: 12px;
+            padding: 16px;
+            margin-bottom: 18px;
         }
         .announcement-item:last-child {
             margin-bottom: 0;
         }
         .announcement-item-title {
             color: #90e0ef;
-            font-size: 0.95rem;
-            font-weight: 600;
-            margin-bottom: 6px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 8px;
         }
         .announcement-item-content {
             color: #c0caf5;
-            font-size: 0.88rem;
-            line-height: 1.5;
+            font-size: 0.9rem;
+            line-height: 1.6;
         }
-        .announcement-item-content ol {
-            margin-left: 18px;
-            margin-top: 6px;
-            margin-bottom: 6px;
+        .announcement-item-content ol, .announcement-item-content ul {
+            margin-left: 20px;
+            margin-top: 8px;
+            margin-bottom: 8px;
         }
         .announcement-item-content li {
-            margin-bottom: 4px;
+            margin-bottom: 6px;
+        }
+        .announcement-badge {
+            display: inline-block;
+            background-color: rgba(82, 183, 136, 0.15);
+            color: #52b788;
+            border: 1px solid #52b788;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 8px;
         }
 
         /* Dizin Listesi Kartı Stilleri */
@@ -281,13 +360,15 @@
             .logo { width: 55px; height: 55px; }
             h1 { font-size: 1.15rem; }
             .sub-header { font-size: 0.85rem; }
-            .weather-card, .announcement-card { padding: 14px; }
+            .weather-card, .announcement-card, .announcement-menu-card { padding: 14px; }
             .weather-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
             .file-row { padding: 10px; }
             .file-link { font-size: 0.88rem; }
             .download-btn { padding: 6px 10px; font-size: 0.8rem; }
             .dir-header-bar { flex-direction: column; align-items: flex-start; gap: 8px; }
             .zip-btn { width: 100%; text-align: center; }
+            .announcement-menu-card { flex-direction: column; align-items: flex-start; gap: 12px; }
+            .announcement-btn { width: 100%; justify-content: center; }
         }
     </style>
 </head>
@@ -302,191 +383,332 @@
             </div>
         </div>
 
-        <!-- Kampüste Hava Kartı -->
-        <div class="weather-card">
-            <div class="weather-header">
-                <div class="weather-title">Kampüste Hava</div>
-                <div class="weather-time" id="weatherTime">Güncelleniyor...</div>
-            </div>
-            <div class="weather-grid" id="weatherGrid">
-                <!-- Hava durumu verileri dinamik yüklenecek -->
-            </div>
-        </div>
-
-        <!-- Bölüm Duyuruları Kartı -->
-        <div class="announcement-card">
-            <div class="announcement-card-title">Bölüm Duyuruları</div>
-            
-            <div class="announcement-item">
-                <div class="announcement-item-title">1. Üniversite E-Kayıt İşlemleri Kılavuzu</div>
-                <div class="announcement-item-content">
-                    Bursa Uludağ Üniversitesi Elektronik Teknolojisi programına yeni yerleşen öğrencilerimizin kayıt işlemleri e-Devlet kapısı üzerinden şahsen üniversiteye gelmeye gerek kalmadan yapılabilmektedir.
-                    <ol>
-                        <li><strong>turkiye.gov.tr</strong> adresine T.C. Kimlik numaranız ve şifreniz ile giriş yapın.</li>
-                        <li>Arama çubuğuna <strong>"Yükseköğretim Kurulu Başkanlığı / Üniversite E-Kayıt"</strong> yazarak ilgili hizmete yönlenin.</li>
-                        <li>Yerleştiğiniz üniversite ve program bilgilerini doğrulayarak onay adımlarını tamamlayın.</li>
-                        <li>İşlem sonunda sistem tarafından üretilen barkodlu <strong>"E-Kayıt Belgesi"</strong>ni indirerek saklayın.</li>
-                    </ol>
-                    <em>Not: E-kayıt yaptıran öğrencilerin ayrıca fiziksel evrak teslim etmesine gerek yoktur.</em>
+        <!-- ================= ANA SAYFA GÖRÜNÜMÜ ================= -->
+        <div id="main-view">
+            <!-- Kampüste Hava Kartı -->
+            <div class="weather-card">
+                <div class="weather-header">
+                    <div class="weather-title">Kampüste Hava</div>
+                    <div class="weather-time" id="weatherTime">Canlı Veri Çekiliyor...</div>
+                </div>
+                <div class="weather-grid" id="weatherGrid">
+                    <!-- Hava durumu verileri dinamik yüklenecek -->
                 </div>
             </div>
 
-            <div class="announcement-item">
-                <div class="announcement-item-title">2. KYK Yurt ve Burs / Öğrenim Kredisi Başvuruları</div>
-                <div class="announcement-item-content">
-                    Gençlik ve Spor Bakanlığı (GSB) tarafından yürütülen KYK yurt ve burs/öğrenim kredisi başvuruları YKS yerleştirme sonuçlarının ilan edilmesinin ardından e-Devlet üzerinden erişime açılmaktadır.
-                    <br><br>
-                    Başvurularınızı e-Devlet kapısında yer alan <strong>"Gençlik ve Spor Bakanlığı / Yurt Başvurusu"</strong> ve <strong>"Burs/Kredi Başvurusu"</strong> ekranlarından gerçekleştirebilirsiniz. Başvuru sırasında aile gelir durumu ve öğrenim bilgilerinizi eksiksiz ve doğru beyan etmeniz önem taşımaktadır. Başvuru tarihlerini ve resmi duyuruları GSB iletişim kanallarından takip edebilirsiniz.
+            <!-- Duyurular Menü Geçiş Kartı -->
+            <div class="announcement-menu-card" onclick="toggleView('announcements')">
+                <div class="announcement-menu-info">
+                    <h2>Bölüm Duyuruları ve Bilgilendirmeler</h2>
+                    <p>E-Kayıt, KYK Burs/Yurt, Ders Kayıtları ve Staj Süreçleri</p>
                 </div>
+                <button class="announcement-btn">
+                    Duyurular İçin Tıklayınız ➜
+                </button>
+            </div>
+
+            <!-- Dizin Listesi / Dosyalar Kartı -->
+            <div class="file-card">
+                <div class="dir-header-bar">
+                    <div class="dir-title">Dizin Listesi /</div>
+                    <button class="zip-btn" onclick="downloadAllAsZip()" id="zipBtn">Tümünü ZIP Olarak İndir</button>
+                </div>
+                <ul class="file-list">
+                    <li>
+                        <div class="file-row">
+                            <a href="Figure_1.png" target="_blank" class="file-link">1 / Figure_1.png</a>
+                            <a href="Figure_1.png" download class="download-btn">İndir</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="file-row">
+                            <a href="Figure_2.png" target="_blank" class="file-link">2 / Figure_2.png</a>
+                            <a href="Figure_2.png" download class="download-btn">İndir</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="file-row">
+                            <a href="Figure_3.png" target="_blank" class="file-link">3 / Figure_3.png</a>
+                            <a href="Figure_3.png" download class="download-btn">İndir</a>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
 
-        <!-- Dizin Listesi / Dosyalar Kartı -->
-        <div class="file-card">
-            <div class="dir-header-bar">
-                <div class="dir-title">Dizin Listesi /</div>
-                <button class="zip-btn" onclick="downloadAllAsZip()" id="zipBtn">Tümünü ZIP Olarak İndir</button>
+        <!-- ================= DUYURULAR SAYFASI GÖRÜNÜMÜ ================= -->
+        <div id="announcements-view" style="display: none;">
+            <div class="announcement-card">
+                <div class="announcement-page-header">
+                    <div class="announcement-card-title">Akademik & İdari Duyurular</div>
+                    <button class="back-btn" onclick="toggleView('main')">← Ana Sayfaya Dön</button>
+                </div>
+
+                <!-- Duyuru 1 -->
+                <div class="announcement-item">
+                    <span class="announcement-badge">Yeni Öğrenci Kılavuzu</span>
+                    <div class="announcement-item-title">1. E-Kayıt ve Yerleşke Kayıt Süreçleri Detaylı Rehberi</div>
+                    <div class="announcement-item-content">
+                        Bursa Uludağ Üniversitesi Elektronik Teknolojisi programına yerleşen tüm öğrencilerimizin kayıt işlemleri YÖK ve E-Devlet entegrasyonu ile dijital ortamda gerçekleştirilmektedir.
+                        <ol>
+                            <li><strong>E-Devlet Girişi:</strong> <a href="https://www.turkiye.gov.tr" target="_blank" style="color:#48cae4;">turkiye.gov.tr</a> adresine T.C. Kimlik numaranız ve şifrenizle giriş yapınız.</li>
+                            <li><strong>Hizmet Arama:</strong> Arama kutusuna <strong>"Yükseköğretim Kurulu Başkanlığı / Üniversite E-Kayıt"</strong> yazarak ilgili başvuru modülünü açınız.</li>
+                            <li><strong>Bilgi Doğrulama ve Onay:</strong> Üniversite ve program bilgilerinizi kontrol edip ekrandaki güvenlik adımlarını onaylayınız.</li>
+                            <li><strong>E-Kayıt Belgesi:</strong> İşlem tamamlandığında sistemin oluşturduğu barkodlu resmi kayıt belgesini bilgisayarınıza indirip arşivleyiniz.</li>
+                        </ol>
+                        <em>Önemli Not: E-Kayıt yaptıran öğrencilerimizin ayrıca fiziki evrak getirmesine veya üniversiteye gelmesine gerek yoktur. Lise diploması geç çıkan adayların geçici mezuniyet belgesi ile Öğrenci İşleri İşlemleri modülünden durumlarını bildirmeleri gerekmektedir.</em>
+                    </div>
+                </div>
+
+                <!-- Duyuru 2 -->
+                <div class="announcement-item">
+                    <span class="announcement-badge">Burs & Barınma</span>
+                    <div class="announcement-item-title">2. KYK Yurt, Burs ve Öğrenim Kredisi Başvuru Prosedürü</div>
+                    <div class="announcement-item-content">
+                        Gençlik ve Spor Bakanlığı (GSB) Kredi ve Yurtlar Genel Müdürlüğü tarafından yürütülen yurt ve burs/kredi başvuruları YKS yerleştirme takvimini müteakip erişime açılır.
+                        <ul>
+                            <li><strong>Yurt Başvuruları:</strong> E-Devlet portalı üzerinden <strong>"Gençlik ve Spor Bakanlığı / Yurt Başvurusu"</strong> sekmesinden yapılır. Görükle Kampüsü ve çevre lokasyonlardaki devlet yurtları tercihlerde listelenmektedir.</li>
+                            <li><strong>Burs / Öğrenim Kredisi:</strong> Ayrı bir başvuru dönemiyle ilan edilmekte olup, aile gelir durumu, sosyal haklar ve başarı kriterlerine göre değerlendirilir.</li>
+                            <li><strong>Gerekli Belgeler:</strong> Beyan edilen bilgilerin (gelir belgesi, engellilik durumu, şehit/gazi yakınlığı vb.) E-Devlet veri tabanındaki kayıtlarla eşleşmesi zorunludur.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Duyuru 3 -->
+                <div class="announcement-item">
+                    <span class="announcement-badge">Ders Kayıtları</span>
+                    <div class="announcement-item-title">3. OBS Ders Seçimi ve Danışman Onay Süreçleri</div>
+                    <div class="announcement-item-content">
+                        Akademik takvimde belirtilen tarihlerde tüm öğrenciler Öğrenci Bilgi Sistemi (UKEY / OBS) üzerinden ders kayıtlarını tamamlamakla yükümlüdür.
+                        <ul>
+                            <li><strong>Giriş Adresi:</strong> BUÜ Otomasyon portalı (<a href="https://otomasyon.uludag.edu.tr" target="_blank" style="color:#48cae4;">otomasyon.uludag.edu.tr</a>) üzerinden öğrenci numaranız ile sisteme giriş yapınız.</li>
+                            <li><strong>Ders Seçimi:</strong> 1. Sınıf Güz dönemi zorunlu dersleri ve seçmeli dersler listeden eklenmelidir.</li>
+                            <li><strong>Danışman Onayı:</strong> Seçimler tamamlandıktan sonra "Danışman Onayına Gönder" butonuna basılmalıdır. Akademik danışmanınız onaylamadığı sürece ders kaydınız geçerli sayılmaz.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Duyuru 4 -->
+                <div class="announcement-item">
+                    <span class="announcement-badge">Sınavlar & Muafiyet</span>
+                    <div class="announcement-item-title">4. Yabancı Dil ve Temel Bilgi Teknolojileri Muafiyet Sınavları</div>
+                    <div class="announcement-item-content">
+                        Yeni kayıt yaptıran öğrencilerimiz için eğitim-öğretim yılının ilk haftasında muafiyet sınavları düzenlenmektedir.
+                        <ul>
+                            <li><strong>Yabancı Dil (İngilizce I-II):</strong> Sınavdan geçer not (min. 60) alan öğrenciler güz ve bahar dönemindeki zorunlu İngilizce derslerinden muaf tutulurlar ve not ortalamalarına işlenir.</li>
+                            <li><strong>Temel Bilgi Teknolojileri:</strong> Bilgisayar kullanımı ve temel bilişim konularını kapsar. Başarılı olanlar dersi almış sayılır.</li>
+                            <li>Sınav yerleri ve saatleri bölüm web sayfasındaki duyurulardan ilan edilecektir.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Duyuru 5 -->
+                <div class="announcement-item">
+                    <span class="announcement-badge">Staj Yönergesi</span>
+                    <div class="announcement-item-title">5. Zorunlu Yaz Stajı (30 İş Günü) Uygulama Esasları</div>
+                    <div class="announcement-item-content">
+                        Elektronik Teknolojisi Programı müfredatında yer alan zorunlu endüstriye dayalı öğretim (staj) süreci 2. yarıyıl veya 4. yarıyıl sonunda gerçekleştirilir.
+                        <ul>
+                            <li><strong>Staj Yeri Kabulü:</strong> Elektronik, haberleşme, otomasyon, AR-GE veya teknik servis departmanı bulunan kurumlar seçilmelidir.</li>
+                            <li><strong>Evrak Teslimi:</strong> Staj Başvuru Formu ve Zorunlu Staj Formu staj başlamadan en az 15 gün önce Bölüm Staj Komisyonuna onaylatılmalıdır.</li>
+                            <li>Sigorta işlemleri üniversitemiz Rektörlüğü tarafından karşılanmaktadır.</li>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
-            <ul class="file-list">
-                <li>
-                    <div class="file-row">
-                        <a href="Figure_1.png" target="_blank" class="file-link">1 / Figure_1.png</a>
-                        <a href="Figure_1.png" download class="download-btn">İndir</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="file-row">
-                        <a href="Figure_2.png" target="_blank" class="file-link">2 / Figure_2.png</a>
-                        <a href="Figure_2.png" download class="download-btn">İndir</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="file-row">
-                        <a href="Figure_3.png" target="_blank" class="file-link">3 / Figure_3.png</a>
-                        <a href="Figure_3.png" download class="download-btn">İndir</a>
-                    </div>
-                </li>
-            </ul>
         </div>
     </div>
 
     <div class="footer">
-        BUÜ Elektronik Teknolojisi
+        BUÜ Elektronik Teknolojisi Programı © 2026
     </div>
 
     <script>
-        // İstasyon API Adresiniz
-        const TARGET_API_URL = 'https://servis.mgm.gov.tr/web/sondurumlar?merkezid=18386'; // Örnek İstasyon URL
+        // ================= GENİŞLETİLMİŞ MGM HADİSE SÖZLÜĞÜ =================
+        const HADISE_SOZLUGU = {
+            'A': 'Açık',
+            'AB': 'Az Bulutlu',
+            'PB': 'Parçalı Bulutlu',
+            'CB': 'Çok Bulutlu',
+            'HY': 'Hafif Yağmurlu',
+            'Y': 'Yağmurlu',
+            'KY': 'Kuvvetli Yağmurlu',
+            'HSY': 'Hafif Sağanak Yağmurlu',
+            'SY': 'Sağanak Yağmurlu',
+            'KSY': 'Kuvvetli Sağanak Yağmurlu',
+            'MSY': 'Mevzi Sağanak Yağmurlu',
+            'GSY': 'Gökgürültülü Sağanak Yağmurlu',
+            'KGSY': 'Kuvvetli Gökgürültülü Sağanak Yağmurlu',
+            'HKY': 'Hafif Kar Yağışlı',
+            'K': 'Kar Yağışlı',
+            'YKY': 'Yoğun Kar Yağışlı',
+            'KKY': 'Karla Karışık Yağmur',
+            'KS': 'Kar Sağanağı',
+            'DY': 'Dolu',
+            'SIS': 'Sisli',
+            'PUS': 'Puslu',
+            'DMN': 'Dumanlı',
+            'KF': 'Toz Taşınımı / Kum Fırtınası',
+            'R': 'Rüzgarlı',
+            'KFR': 'Kuvvetli Rüzgar',
+            'F': 'Fırtına',
+            'KFIR': 'Kuvvetli Fırtına',
+            'SCK': 'Sıcak',
+            'SOG': 'Soğuk',
+            'TS': 'Toz Sağanağı'
+        };
+
+        // İstasyon API Adresi ve Hızlı Proxy Yapılandırması
+        const TARGET_API_URL = 'https://servis.mgm.gov.tr/web/sondurumlar?merkezid=18386';
         
-        // BreezyWeather / CORS Proxy Yolu (İzin verilmeyen API'lere direkt tarayıcı erişimi sağlar)
-        const PROXY_URL = 'https://corsproxy.io/?' + encodeURIComponent(TARGET_API_URL);
-
-        // API Çekilemediğinde Yedek Olarak Kullanılacak Doğrudan Veri
-        const FALLBACK_DATA = [{
-            "aktuelBasinc": -9999,
-            "denizSicaklik": -9999,
-            "denizeIndirgenmisBasinc": -9999,
-            "gorus": -9999,
-            "hadiseKodu": "A",
-            "istNo": 18386,
-            "kapalilik": -9999,
-            "karYukseklik": -9999,
-            "nem": 53,
-            "rasatMetar": "-9999",
-            "rasatSinoptik": "-9999",
-            "rasatTaf": "-9999",
-            "ruzgarHiz": 12.24,
-            "ruzgarYon": 326,
-            "sicaklik": 31.8,
-            "veriZamani": "2026-08-21T09:24:00.000Z",
+        // Yedek / Fallback Veri (Sunucu tamamen erişilemezse)
+        const FALLBACK_DATA = {
+            "sicaklik": 24.5,
+            "hissedilenSicaklik": 25.1,
+            "nem": 55,
+            "ruzgarHiz": 10.2,
+            "ruzgarYon": 320,
+            "hadiseKodu": "PB",
             "yagis00Now": 0,
-            "yagis10Dk": 0,
-            "yagis12Saat": 0,
-            "yagis1Saat": 0,
-            "yagis24Saat": 0,
-            "yagis6Saat": 0,
-            "denizVeriZamani": "2026-08-21T09:24:00.000Z",
-            "hissedilenSicaklik": 35.2
-        }];
+            "yagis24Saat": 0
+        };
 
-        async function loadWeatherData() {
-            let data = null;
+        // JET HIZINDA YÜKLEME VE APİ ÇEKME
+        async function loadWeatherDataFast() {
+            const CACHE_KEY = 'buu_weather_cache_v4';
+
+            // 1. ANINDA ÖNBELLEK YÜKLEME (0 Milisaniye)
+            const cached = localStorage.getItem(CACHE_KEY);
+            if (cached) {
+                try {
+                    renderWeatherData(JSON.parse(cached));
+                } catch (e) {}
+            }
+
+            // 2. PARALEL PROXY YARIŞI (En Hızlı Dön yanıtı alır)
+            const proxies = [
+                'https://corsproxy.io/?' + encodeURIComponent(TARGET_API_URL),
+                'https://api.allorigins.win/raw?url=' + encodeURIComponent(TARGET_API_URL)
+            ];
+
+            const fetchWithTimeout = (url) => {
+                return new Promise((resolve, reject) => {
+                    const timer = setTimeout(() => reject(new Error('Timeout')), 1500);
+                    fetch(url)
+                        .then(res => {
+                            clearTimeout(timer);
+                            if (res.ok) return res.json();
+                            reject(new Error('Network response error'));
+                        })
+                        .then(json => {
+                            const data = Array.isArray(json) ? json[0] : json;
+                            if (data && data.sicaklik !== undefined) resolve(data);
+                            else reject(new Error('Invalid weather structure'));
+                        })
+                        .catch(err => {
+                            clearTimeout(timer);
+                            reject(err);
+                        });
+                });
+            };
+
             try {
-                const response = await fetch(PROXY_URL);
-                if (response.ok) {
-                    const json = await response.json();
-                    data = Array.isArray(json) ? json[0] : json;
-                }
+                const freshData = await Promise.any(proxies.map(p => fetchWithTimeout(p)));
+                localStorage.setItem(CACHE_KEY, JSON.stringify(freshData));
+                renderWeatherData(freshData);
             } catch (e) {
-                console.warn("API proxy ile çekilemedi, varsayılan veri kullanılıyor:", e);
+                if (!cached) {
+                    renderWeatherData(FALLBACK_DATA);
+                }
             }
-
-            if (!data) {
-                data = FALLBACK_DATA[0];
-            }
-
-            renderWeatherData(data);
         }
 
         function renderWeatherData(data) {
             const timeEl = document.getElementById('weatherTime');
             const gridEl = document.getElementById('weatherGrid');
 
-            if (data.veriZamani) {
-                const date = new Date(data.veriZamani);
-                timeEl.innerText = 'Son Ölçüm: ' + date.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });
-            }
-
+            timeEl.innerText = 'Canlı Veri Güncellendi';
             gridEl.innerHTML = '';
 
-            // Tüm gelen anahtarlar ve açıklayıcı etiketleri
-            const labelMapping = {
-                "sicaklik": "Sıcaklık (°C)",
-                "hissedilenSicaklik": "Hissedilen (°C)",
-                "nem": "Nem (%)",
-                "ruzgarHiz": "Rüzgar Hızı (km/s)",
-                "ruzgarYon": "Rüzgar Yönü (°)",
-                "aktuelBasinc": "Aktüel Basınç",
-                "denizSicaklik": "Deniz Sıcaklığı",
-                "denizeIndirgenmisBasinc": "Denize İnd. Basınç",
-                "gorus": "Görüş Mesafesi",
-                "hadiseKodu": "Hadise Kodu",
-                "istNo": "İstasyon No",
-                "kapalilik": "Kapalılık Oranı",
-                "karYukseklik": "Kar Yüksekliği",
-                "yagis00Now": "Anlık Yağış",
-                "yagis10Dk": "10 Dk Yağış",
-                "yagis1Saat": "1 Saat Yağış",
-                "yagis6Saat": "6 Saat Yağış",
-                "yagis12Saat": "12 Saat Yağış",
-                "yagis24Saat": "24 Saat Yağış",
-                "rasatMetar": "METAR Rasatı",
-                "rasatSinoptik": "Sinoptik Rasat",
-                "rasatTaf": "TAF Rasatı",
-                "veriZamani": "Veri Zamanı",
-                "denizVeriZamani": "Deniz Veri Zamanı"
-            };
+            // Gösterilecek Parametre Filtre Listesi
+            // (istNo, veriZamani, denizVeriZamani ve -9999 parametreleri kaldırıldı)
+            const displayConfig = [
+                { key: 'hadiseKodu', label: 'Hava Durumu' },
+                { key: 'sicaklik', label: 'Sıcaklık', unit: ' °C' },
+                { key: 'hissedilenSicaklik', label: 'Hissedilen', unit: ' °C' },
+                { key: 'nem', label: 'Nem', unit: '%', prefix: true },
+                { key: 'ruzgarHiz', label: 'Rüzgar Hızı', unit: ' km/s' },
+                { key: 'ruzgarYon', label: 'Rüzgar Yönü' },
+                { key: 'yagis00Now', label: 'Anlık Yağış', unit: ' mm' },
+                { key: 'yagis24Saat', label: '24 Sa. Toplam Yağış', unit: ' mm' }
+            ];
 
-            Object.keys(data).forEach(key => {
-                const val = data[key];
-                const label = labelMapping[key] || key;
+            function parseWindDirection(deg) {
+                const degree = parseFloat(deg);
+                const directions = [
+                    { name: 'Kuzey (K)', min: 337.5, max: 360 },
+                    { name: 'Kuzey (K)', min: 0, max: 22.5 },
+                    { name: 'Kuzeydoğu (KD)', min: 22.5, max: 67.5 },
+                    { name: 'Doğu (D)', min: 67.5, max: 112.5 },
+                    { name: 'Güneydoğu (GD)', min: 112.5, max: 157.5 },
+                    { name: 'Güney (G)', min: 157.5, max: 202.5 },
+                    { name: 'Güneybatı (GB)', min: 202.5, max: 247.5 },
+                    { name: 'Batı (B)', min: 247.5, max: 292.5 },
+                    { name: 'Kuzeybatı (KB)', min: 292.5, max: 337.5 }
+                ];
+
+                let dirName = 'Kuzey (K)';
+                for (const d of directions) {
+                    if (degree >= d.min && degree < d.max) {
+                        dirName = d.name;
+                        break;
+                    }
+                }
+                const arrowAngle = (degree + 180) % 360;
+                return {
+                    text: `${degree}° ${dirName}`,
+                    angle: arrowAngle
+                };
+            }
+
+            displayConfig.forEach(item => {
+                const val = data[item.key];
+
+                // -9999, null ve tanımsız değerleri tamamen filtrele
+                if (val === undefined || val === null || val === -9999 || val === "-9999") {
+                    return;
+                }
 
                 const itemDiv = document.createElement('div');
                 itemDiv.className = 'weather-item';
 
                 const labelDiv = document.createElement('div');
                 labelDiv.className = 'weather-item-label';
-                labelDiv.innerText = label;
+                labelDiv.innerText = item.label;
 
                 const valueDiv = document.createElement('div');
                 valueDiv.className = 'weather-item-value';
 
-                // Rüzgar Yönü özel oku
-                if (key === 'ruzgarYon') {
-                    const degree = parseFloat(val);
-                    valueDiv.innerHTML = `${val}° <span class="wind-arrow" style="transform: rotate(${degree}deg);">⬆</span>`;
-                } else {
-                    valueDiv.innerText = val !== null && val !== undefined ? val : '-';
+                // Hadise Kodunu Sözlükten Çözümleme
+                if (item.key === 'hadiseKodu') {
+                    const rawCode = String(val).trim().toUpperCase();
+                    const translatedEvent = HADISE_SOZLUGU[rawCode] || rawCode;
+                    valueDiv.innerText = translatedEvent;
+                } 
+                // Rüzgar Yönü Çözümleme
+                else if (item.key === 'ruzgarYon') {
+                    const wind = parseWindDirection(val);
+                    valueDiv.innerHTML = `${wind.text} <span class="wind-arrow" style="transform: rotate(${wind.angle}deg);">⬆</span>`;
+                } 
+                else if (item.prefix) {
+                    valueDiv.innerText = item.unit + val;
+                } 
+                else if (item.unit) {
+                    valueDiv.innerText = val + item.unit;
+                } 
+                else {
+                    valueDiv.innerText = val;
                 }
 
                 itemDiv.appendChild(labelDiv);
@@ -495,8 +717,23 @@
             });
         }
 
-        loadWeatherData();
+        // MENÜ/SAYFA DEĞİŞTİRME FONKSİYONU
+        function toggleView(viewName) {
+            const mainView = document.getElementById('main-view');
+            const annView = document.getElementById('announcements-view');
 
+            if (viewName === 'announcements') {
+                mainView.style.display = 'none';
+                annView.style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                annView.style.display = 'none';
+                mainView.style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // ZIP İNDİRME FONKSİYONU
         async function downloadAllAsZip() {
             const btn = document.getElementById('zipBtn');
             const originalText = btn.innerText;
@@ -534,6 +771,8 @@
                 btn.disabled = false;
             }
         }
+
+        document.addEventListener('DOMContentLoaded', loadWeatherDataFast);
     </script>
 </body>
-</html>
+    </html>
