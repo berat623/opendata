@@ -2,64 +2,61 @@
 <html lang="tr">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BUÜ - Elektronik Teknolojisi Portal & Dosya Sunucusu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <title>Elektronik Teknolojisi Programı Bilgi Sistemi</title>
 
-    <!-- Google Fonts: Roboto & Material Symbols -->
+    <!-- Google Sans Flex Font Integration -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght,ROND@6..144,500,100&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
-    <!-- Hızlı ZIP İndirme Altyapısı -->
+    <!-- JSZip Engine -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 
     <style>
-        /* Google Material 3 Design System Variables */
         :root {
-            --md-sys-color-background: #111318;
-            --md-sys-color-on-background: #e2e2e9;
-            --md-sys-color-surface: #111318;
-            --md-sys-color-surface-container-lowest: #0c0e13;
-            --md-sys-color-surface-container-low: #191c20;
-            --md-sys-color-surface-container: #1d2024;
-            --md-sys-color-surface-container-high: #282a2f;
-            --md-sys-color-surface-container-highest: #33353a;
+            --md-sys-color-background: #0f131a;
+            --md-sys-color-on-background: #e1e2e9;
+            --md-sys-color-surface-container: #191c24;
+            --md-sys-color-surface-container-high: #232732;
+            --md-sys-color-surface-container-highest: #2e3340;
             
             --md-sys-color-primary: #a8c7fa;
             --md-sys-color-on-primary: #003062;
             --md-sys-color-primary-container: #004789;
             --md-sys-color-on-primary-container: #d6e3ff;
             
-            --md-sys-color-secondary-container: #3d4758;
-            --md-sys-color-on-secondary-container: #d9e3f9;
+            --md-sys-color-secondary-container: #374252;
+            --md-sys-color-on-secondary-container: #d3e3fd;
             
-            --md-sys-color-tertiary-container: #1d4d3e;
-            --md-sys-color-on-tertiary-container: #b2f1d2;
+            --md-sys-color-tertiary-container: #1b4d3e;
+            --md-sys-color-on-tertiary-container: #b1f0d0;
 
-            --md-sys-color-outline: #8e9099;
-            --md-sys-color-outline-variant: #43474e;
-            
+            --md-sys-color-outline-variant: #424754;
+            --md-sys-color-outline: #8c919d;
+
             --md-sys-shape-corner-small: 8px;
             --md-sys-shape-corner-medium: 16px;
             --md-sys-shape-corner-large: 24px;
             --md-sys-shape-corner-full: 9999px;
-            
-            --md-elevation-1: 0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.24);
-            --md-elevation-2: 0 3px 6px rgba(0,0,0,0.4), 0 3px 6px rgba(0,0,0,0.3);
+
+            --md-elevation-1: 0 2px 6px rgba(0, 0, 0, 0.35);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body { 
-            font-family: 'Roboto', system-ui, -apple-system, sans-serif; 
+            font-family: 'Google Sans Flex', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-variation-settings: 'ROND' 100, 'wght' 500;
             background-color: var(--md-sys-color-background); 
             color: var(--md-sys-color-on-background); 
-            padding: 24px 16px;
+            padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -68,27 +65,27 @@
         }
 
         .container {
-            max-width: 840px;
+            max-width: 800px;
             margin: 0 auto;
             width: 100%;
         }
 
-        /* Material 3 Top App Bar / Header */
+        /* Material Header */
         .header {
             background-color: var(--md-sys-color-surface-container);
-            padding: 20px 24px;
+            padding: 20px;
             border-radius: var(--md-sys-shape-corner-large);
             border: 1px solid var(--md-sys-color-outline-variant);
             box-shadow: var(--md-elevation-1);
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 16px;
         }
 
         .logo-container {
-            width: 72px;
-            height: 72px;
+            width: 64px;
+            height: 64px;
             background-color: var(--md-sys-color-surface-container-high);
             border-radius: var(--md-sys-shape-corner-medium);
             display: flex;
@@ -99,38 +96,38 @@
         }
 
         .logo {
-            width: 56px;
-            height: 56px;
+            width: 48px;
+            height: 48px;
             object-fit: contain;
         }
 
         .header-text {
             display: flex;
             flex-direction: column;
-            gap: 2px;
+            gap: 4px;
         }
 
         h1 { 
-            font-size: 1.35rem; 
+            font-size: 1.25rem; 
             color: var(--md-sys-color-primary); 
             font-weight: 700;
-            letter-spacing: -0.2px;
+            line-height: 1.3;
         }
 
         .sub-header {
             color: var(--md-sys-color-on-tertiary-container); 
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 500;
         }
 
-        /* Material 3 Cards Base */
+        /* Material Cards Base */
         .m3-card {
             background-color: var(--md-sys-color-surface-container);
             border-radius: var(--md-sys-shape-corner-large);
             border: 1px solid var(--md-sys-color-outline-variant);
-            padding: 20px;
+            padding: 18px;
             box-shadow: var(--md-elevation-1);
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
         }
 
@@ -138,281 +135,273 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
             padding-bottom: 10px;
             border-bottom: 1px solid var(--md-sys-color-outline-variant);
+            gap: 10px;
         }
 
         .card-title-group {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             color: var(--md-sys-color-primary);
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 700;
         }
 
         .weather-time {
             color: var(--md-sys-color-outline);
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-weight: 500;
             background-color: var(--md-sys-color-surface-container-high);
             padding: 4px 10px;
             border-radius: var(--md-sys-shape-corner-full);
+            white-space: nowrap;
         }
 
         /* Weather Grid Elements */
         .weather-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 12px;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
         }
 
         .weather-item {
             background-color: var(--md-sys-color-surface-container-high);
             border: 1px solid var(--md-sys-color-outline-variant);
             border-radius: var(--md-sys-shape-corner-medium);
-            padding: 12px 14px;
+            padding: 10px 12px;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 4px;
         }
 
         .weather-item-label {
             color: var(--md-sys-color-outline);
-            font-size: 0.78rem;
+            font-size: 0.75rem;
             font-weight: 500;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         .weather-item-value {
             color: var(--md-sys-color-on-background);
-            font-size: 1.05rem;
+            font-size: 1rem;
             font-weight: 700;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .wind-arrow {
             display: inline-block;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             transition: transform 0.3s ease;
             color: var(--md-sys-color-primary);
         }
 
-        /* Material 3 Interactive Clickable Card */
+        /* Interactive Menu Card */
         .announcement-menu-card {
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 16px;
-            background-color: var(--md-sys-color-surface-container-low);
+            gap: 12px;
+            background-color: var(--md-sys-color-surface-container);
         }
 
-        .announcement-menu-card:hover {
+        .announcement-menu-card:active {
             background-color: var(--md-sys-color-surface-container-high);
-            border-color: var(--md-sys-color-primary);
-            transform: translateY(-2px);
-            box-shadow: var(--md-elevation-2);
+            transform: scale(0.99);
         }
 
         .announcement-menu-info h2 {
             color: var(--md-sys-color-primary);
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 700;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .announcement-menu-info p {
             color: var(--md-sys-color-outline);
-            font-size: 0.88rem;
-            line-height: 1.4;
+            font-size: 0.85rem;
+            line-height: 1.3;
         }
 
-        /* Material 3 Buttons */
+        /* Buttons */
         .m3-btn-filled {
             background-color: var(--md-sys-color-primary);
             color: var(--md-sys-color-on-primary);
             border: none;
-            padding: 10px 20px;
+            padding: 10px 18px;
             border-radius: var(--md-sys-shape-corner-full);
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             font-weight: 700;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             cursor: pointer;
-            transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+            transition: all 0.2s ease;
             text-decoration: none;
             white-space: nowrap;
-        }
-
-        .m3-btn-filled:hover {
-            box-shadow: var(--md-elevation-1);
-            filter: brightness(1.08);
-        }
-
-        .m3-btn-filled:disabled {
-            opacity: 0.5;
-            cursor: wait;
+            min-height: 44px;
         }
 
         .m3-btn-tonal {
             background-color: var(--md-sys-color-secondary-container);
             color: var(--md-sys-color-on-secondary-container);
             border: 1px solid var(--md-sys-color-outline-variant);
-            padding: 8px 16px;
+            padding: 8px 14px;
             border-radius: var(--md-sys-shape-corner-full);
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             font-weight: 600;
             display: inline-flex;
             align-items: center;
             gap: 6px;
             cursor: pointer;
             text-decoration: none;
-            transition: all 0.2s ease;
+            min-height: 40px;
         }
 
-        .m3-btn-tonal:hover {
+        /* Small Icon-Only Download Button */
+        .m3-icon-btn-tonal {
+            background-color: var(--md-sys-color-secondary-container);
+            color: var(--md-sys-color-on-secondary-container);
+            border: 1px solid var(--md-sys-color-outline-variant);
+            width: 42px;
+            height: 42px;
+            border-radius: var(--md-sys-shape-corner-full);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.15s ease;
+            flex-shrink: 0;
+        }
+
+        .m3-icon-btn-tonal:active {
             background-color: var(--md-sys-color-primary-container);
             color: var(--md-sys-color-on-primary-container);
-            border-color: var(--md-sys-color-primary);
+            transform: scale(0.95);
         }
 
-        /* File List M3 Styling */
+        /* File List */
         ul.file-list { 
             list-style: none; 
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
 
         .file-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 16px;
+            padding: 10px 14px;
             border-radius: var(--md-sys-shape-corner-medium);
             background-color: var(--md-sys-color-surface-container-high);
             border: 1px solid var(--md-sys-color-outline-variant);
-            transition: background-color 0.15s ease;
             gap: 12px;
-        }
-
-        .file-row:hover {
-            background-color: var(--md-sys-color-surface-container-highest);
         }
 
         .file-link {
             color: var(--md-sys-color-on-background);
             text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 500;
             word-break: break-all;
             flex-grow: 1;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
-        .file-link:hover {
-            color: var(--md-sys-color-primary);
-        }
-
-        /* Announcements Page M3 Styling */
+        /* Announcements Content */
         .announcement-item {
             background-color: var(--md-sys-color-surface-container-high);
             border: 1px solid var(--md-sys-color-outline-variant);
             border-radius: var(--md-sys-shape-corner-medium);
-            padding: 18px;
-            margin-bottom: 16px;
-        }
-
-        .announcement-item:last-child {
-            margin-bottom: 0;
+            padding: 16px;
+            margin-bottom: 14px;
         }
 
         .announcement-item-title {
             color: var(--md-sys-color-primary);
-            font-size: 1.05rem;
+            font-size: 1rem;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .announcement-item-content {
             color: var(--md-sys-color-on-background);
-            font-size: 0.9rem;
-            line-height: 1.6;
-            opacity: 0.9;
+            font-size: 0.88rem;
+            line-height: 1.5;
+            opacity: 0.92;
         }
 
         .announcement-item-content ol, .announcement-item-content ul {
-            margin-left: 20px;
-            margin-top: 8px;
-            margin-bottom: 8px;
+            margin-left: 18px;
+            margin-top: 6px;
+            margin-bottom: 6px;
         }
 
         .announcement-item-content li {
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .m3-chip {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
             background-color: var(--md-sys-color-tertiary-container);
             color: var(--md-sys-color-on-tertiary-container);
-            padding: 4px 12px;
+            padding: 3px 10px;
             border-radius: var(--md-sys-shape-corner-small);
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             text-transform: uppercase;
-            letter-spacing: 0.4px;
         }
 
         .footer {
             text-align: center;
             color: var(--md-sys-color-outline);
-            font-size: 0.85rem;
-            margin-top: 32px;
-            padding: 12px 0;
+            font-size: 0.8rem;
+            margin-top: 24px;
+            padding: 8px 0;
             font-weight: 500;
         }
 
-        /* Responsive Mobile Layout */
+        /* Complete Mobile Compatibility (iPhone & Android) */
         @media (max-width: 600px) {
-            body { padding: 14px 10px; }
-            .header { padding: 16px; gap: 14px; }
-            .logo-container { width: 56px; height: 56px; }
-            .logo { width: 42px; height: 42px; }
-            h1 { font-size: 1.15rem; }
-            .sub-header { font-size: 0.85rem; }
-            .m3-card { padding: 16px; }
-            .weather-grid { grid-template-columns: repeat(auto-fill, minmax(135px, 1fr)); }
-            .announcement-menu-card { flex-direction: column; align-items: flex-start; gap: 14px; }
-            .m3-btn-filled { width: 100%; justify-content: center; }
-            .card-header-bar { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .header { padding: 14px; gap: 12px; }
+            .logo-container { width: 48px; height: 48px; }
+            .logo { width: 36px; height: 36px; }
+            h1 { font-size: 1.05rem; }
+            .sub-header { font-size: 0.82rem; }
+            .m3-card { padding: 14px; }
+            .weather-grid { grid-template-columns: repeat(2, 1fr); }
+            .announcement-menu-card { flex-direction: column; align-items: stretch; }
+            .m3-btn-filled { justify-content: center; width: 100%; }
+            .card-header-bar { flex-direction: column; align-items: flex-start; }
             .m3-btn-tonal { width: 100%; justify-content: center; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Material 3 Header -->
+        <!-- Header -->
         <div class="header">
             <div class="logo-container">
                 <img src="logo.png" alt="BUÜ Logo" class="logo">
             </div>
             <div class="header-text">
-                <h1>Bursa Uludağ Üniversitesi</h1>
-                <div class="sub-header">Elektronik Teknolojisi Programı</div>
+                <h1>Elektronik Teknolojisi Programı Bilgi Sistemi</h1>
+                <div class="sub-header">Bursa Uludağ Üniversitesi</div>
             </div>
         </div>
 
@@ -425,21 +414,21 @@
                         <span class="material-symbols-outlined">thermostat</span>
                         <span>Kampüste Hava</span>
                     </div>
-                    <div class="weather-time" id="weatherTime">Canlı Veri Çekiliyor...</div>
+                    <div class="weather-time" id="weatherTime">Anlık Veri Çekiliyor...</div>
                 </div>
                 <div class="weather-grid" id="weatherGrid">
-                    <!-- Hava durumu verileri dinamik yüklenecek -->
+                    <!-- Dinamik canlı hava verileri -->
                 </div>
             </div>
 
-            <!-- Duyurular Menü Geçiş Kartı -->
+            <!-- Duyurular Menü Kartı -->
             <div class="m3-card announcement-menu-card" onclick="toggleView('announcements')">
                 <div class="announcement-menu-info">
                     <h2>
                         <span class="material-symbols-outlined">campaign</span>
-                        Bölüm Duyuruları ve Bilgilendirmeler
+                        Duyurular ve Bilgilendirmeler
                     </h2>
-                    <p>E-Kayıt, KYK Burs/Yurt, Ders Kayıtları ve Staj Süreçleri</p>
+                    <p>E-Kayıt Rehberi, KYK Yurt/Burs İşlemleri ve Muafiyet Sınavları</p>
                 </div>
                 <button class="m3-btn-filled">
                     <span>Duyurular İçin Tıklayınız</span>
@@ -447,7 +436,7 @@
                 </button>
             </div>
 
-            <!-- Dizin Listesi / Dosyalar Kartı -->
+            <!-- Dizin Listesi Kartı -->
             <div class="m3-card">
                 <div class="card-header-bar">
                     <div class="card-title-group">
@@ -466,9 +455,8 @@
                                 <span class="material-symbols-outlined" style="color: var(--md-sys-color-primary);">image</span>
                                 <span>1 / Figure_1.png</span>
                             </a>
-                            <a href="Figure_1.png" download class="m3-btn-tonal">
+                            <a href="Figure_1.png" download class="m3-icon-btn-tonal" aria-label="İndir" title="İndir">
                                 <span class="material-symbols-outlined">download</span>
-                                <span>İndir</span>
                             </a>
                         </div>
                     </li>
@@ -478,9 +466,8 @@
                                 <span class="material-symbols-outlined" style="color: var(--md-sys-color-primary);">image</span>
                                 <span>2 / Figure_2.png</span>
                             </a>
-                            <a href="Figure_2.png" download class="m3-btn-tonal">
+                            <a href="Figure_2.png" download class="m3-icon-btn-tonal" aria-label="İndir" title="İndir">
                                 <span class="material-symbols-outlined">download</span>
-                                <span>İndir</span>
                             </a>
                         </div>
                     </li>
@@ -490,9 +477,8 @@
                                 <span class="material-symbols-outlined" style="color: var(--md-sys-color-primary);">image</span>
                                 <span>3 / Figure_3.png</span>
                             </a>
-                            <a href="Figure_3.png" download class="download-btn m3-btn-tonal">
+                            <a href="Figure_3.png" download class="m3-icon-btn-tonal" aria-label="İndir" title="İndir">
                                 <span class="material-symbols-outlined">download</span>
-                                <span>İndir</span>
                             </a>
                         </div>
                     </li>
@@ -506,7 +492,7 @@
                 <div class="card-header-bar">
                     <div class="card-title-group">
                         <span class="material-symbols-outlined">campaign</span>
-                        <span>Akademik & İdari Duyurular</span>
+                        <span>Akademik Duyurular</span>
                     </div>
                     <button class="m3-btn-tonal" onclick="toggleView('main')">
                         <span class="material-symbols-outlined">arrow_back</span>
@@ -522,14 +508,13 @@
                     </span>
                     <div class="announcement-item-title">1. E-Kayıt ve Yerleşke Kayıt Süreçleri Detaylı Rehberi</div>
                     <div class="announcement-item-content">
-                        Bursa Uludağ Üniversitesi Elektronik Teknolojisi programına yerleşen tüm öğrencilerimizin kayıt işlemleri YÖK ve E-Devlet entegrasyonu ile dijital ortamda gerçekleştirilmektedir.
+                        Bursa Uludağ Üniversitesi Elektronik Teknolojisi programına yerleşen öğrencilerimizin kayıt işlemleri YÖK ve E-Devlet entegrasyonu ile dijital ortamda gerçekleştirilmektedir.
                         <ol>
-                            <li><strong>E-Devlet Girişi:</strong> <a href="https://www.turkiye.gov.tr" target="_blank" style="color: var(--md-sys-color-primary);">turkiye.gov.tr</a> adresine T.C. Kimlik numaranız ve şifrenizle giriş yapınız.</li>
-                            <li><strong>Hizmet Arama:</strong> Arama kutusuna <strong>"Yükseköğretim Kurulu Başkanlığı / Üniversite E-Kayıt"</strong> yazarak ilgili başvuru modülünü açınız.</li>
-                            <li><strong>Bilgi Doğrulama ve Onay:</strong> Üniversite ve program bilgilerinizi kontrol edip ekrandaki güvenlik adımlarını onaylayınız.</li>
-                            <li><strong>E-Kayıt Belgesi:</strong> İşlem tamamlandığında sistemin oluşturduğu barkodlu resmi kayıt belgesini bilgisayarınıza indirip arşivleyiniz.</li>
+                            <li><strong>E-Devlet Girişi:</strong> <a href="https://www.turkiye.gov.tr" target="_blank" style="color: var(--md-sys-color-primary);">turkiye.gov.tr</a> adresine T.C. Kimlik numaranız ile giriş yapınız.</li>
+                            <li><strong>Hizmet Arama:</strong> Arama kutusuna <strong>"Yükseköğretim Kurulu Başkanlığı / Üniversite E-Kayıt"</strong> yazarak ilgili modülü açınız.</li>
+                            <li><strong>Bilgi Onayı:</strong> Program bilgilerinizi doğrulayıp ekrandaki adımları onaylayınız.</li>
+                            <li><strong>E-Kayıt Belgesi:</strong> Barkodlu resmi kayıt belgenizi indirip saklayınız. E-Kayıt yaptıranların fiziki evrak getirmesine gerek yoktur.</li>
                         </ol>
-                        <em>Önemli Not: E-Kayıt yaptıran öğrencilerimizin ayrıca fiziki evrak getirmesine veya üniversiteye gelmesine gerek yoktur. Lise diploması geç çıkan adayların geçici mezuniyet belgesi ile Öğrenci İşleri İşlemleri modülünden durumlarını bildirmeleri gerekmektedir.</em>
                     </div>
                 </div>
 
@@ -541,62 +526,27 @@
                     </span>
                     <div class="announcement-item-title">2. KYK Yurt, Burs ve Öğrenim Kredisi Başvuru Prosedürü</div>
                     <div class="announcement-item-content">
-                        Gençlik ve Spor Bakanlığı (GSB) Kredi ve Yurtlar Genel Müdürlüğü tarafından yürütülen yurt ve burs/kredi başvuruları YKS yerleştirme takvimini müteakip erişime açılır.
+                        Gençlik ve Spor Bakanlığı (GSB) Kredi ve Yurtlar Genel Müdürlüğü yurt ve burs başvuruları YKS yerleştirme takvimini müteakip erişime açılmaktadır.
                         <ul>
-                            <li><strong>Yurt Başvuruları:</strong> E-Devlet portalı üzerinden <strong>"Gençlik ve Spor Bakanlığı / Yurt Başvurusu"</strong> sekmesinden yapılır. Görükle Kampüsü ve çevre lokasyonlardaki devlet yurtları tercihlerde listelenmektedir.</li>
-                            <li><strong>Burs / Öğrenim Kredisi:</strong> Ayrı bir başvuru dönemiyle ilan edilmekte olup, aile gelir durumu, sosyal haklar ve başarı kriterlerine göre değerlendirilir.</li>
-                            <li><strong>Gerekli Belgeler:</strong> Beyan edilen bilgilerin (gelir belgesi, engellilik durumu, şehit/gazi yakınlığı vb.) E-Devlet veri tabanındaki kayıtlarla eşleşmesi zorunludur.</li>
+                            <li><strong>Yurt Başvuruları:</strong> E-Devlet portalı üzerinden <strong>"Gençlik ve Spor Bakanlığı / Yurt Başvurusu"</strong> sekmesinden tamamlanır. Görükle Kampüsü yurtları tercihlerde listelenir.</li>
+                            <li><strong>Burs / Kredi:</strong> Gelir durumu ve sosyal haklar kriterlerine göre değerlendirilerek ayrı başvuru takviminde ilan edilir.</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Duyuru 3 -->
-                <div class="announcement-item">
-                    <span class="m3-chip">
-                        <span class="material-symbols-outlined" style="font-size: 14px;">auto_stories</span>
-                        Ders Kayıtları
-                    </span>
-                    <div class="announcement-item-title">3. OBS Ders Seçimi ve Danışman Onay Süreçleri</div>
-                    <div class="announcement-item-content">
-                        Akademik takvimde belirtilen tarihlerde tüm öğrenciler Öğrenci Bilgi Sistemi (UKEY / OBS) üzerinden ders kayıtlarını tamamlamakla yükümlüdür.
-                        <ul>
-                            <li><strong>Giriş Adresi:</strong> BUÜ Otomasyon portalı (<a href="https://otomasyon.uludag.edu.tr" target="_blank" style="color: var(--md-sys-color-primary);">otomasyon.uludag.edu.tr</a>) üzerinden öğrenci numaranız ile sisteme giriş yapınız.</li>
-                            <li><strong>Ders Seçimi:</strong> 1. Sınıf Güz dönemi zorunlu dersleri ve seçmeli dersler listeden eklenmelidir.</li>
-                            <li><strong>Danışman Onayı:</strong> Seçimler tamamlandıktan sonra "Danışman Onayına Gönder" butonuna basılmalıdır. Akademik danışmanınız onaylamadığı sürece ders kaydınız geçerli sayılmaz.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Duyuru 4 -->
+                <!-- Duyuru 3 (Eski 4. Duyuru) -->
                 <div class="announcement-item">
                     <span class="m3-chip">
                         <span class="material-symbols-outlined" style="font-size: 14px;">assignment</span>
                         Sınavlar & Muafiyet
                     </span>
-                    <div class="announcement-item-title">4. Yabancı Dil ve Temel Bilgi Teknolojileri Muafiyet Sınavları</div>
+                    <div class="announcement-item-title">3. Yabancı Dil ve Temel Bilgi Teknolojileri Muafiyet Sınavları</div>
                     <div class="announcement-item-content">
-                        Yeni kayıt yaptıran öğrencilerimiz için eğitim-öğretim yılının ilk haftasında muafiyet sınavları düzenlenmektedir.
+                        Yeni kayıt yaptıran öğrencilerimiz için eğitim-öğretim yılı başında muafiyet sınavları düzenlenmektedir.
                         <ul>
-                            <li><strong>Yabancı Dil (İngilizce I-II):</strong> Sınavdan geçer not (min. 60) alan öğrenciler güz ve bahar dönemindeki zorunlu İngilizce derslerinden muaf tutulurlar ve not ortalamalarına işlenir.</li>
-                            <li><strong>Temel Bilgi Teknolojileri:</strong> Bilgisayar kullanımı ve temel bilişim konularını kapsar. Başarılı olanlar dersi almış sayılır.</li>
-                            <li>Sınav yerleri ve saatleri bölüm web sayfasındaki duyurulardan ilan edilecektir.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Duyuru 5 -->
-                <div class="announcement-item">
-                    <span class="m3-chip">
-                        <span class="material-symbols-outlined" style="font-size: 14px;">engineering</span>
-                        Staj Yönergesi
-                    </span>
-                    <div class="announcement-item-title">5. Zorunlu Yaz Stajı (30 İş Günü) Uygulama Esasları</div>
-                    <div class="announcement-item-content">
-                        Elektronik Teknolojisi Programı müfredatında yer alan zorunlu endüstriye dayalı öğretim (staj) süreci 2. yarıyıl veya 4. yarıyıl sonunda gerçekleştirilir.
-                        <ul>
-                            <li><strong>Staj Yeri Kabulü:</strong> Elektronik, haberleşme, otomasyon, AR-GE veya teknik servis departmanı bulunan kurumlar seçilmelidir.</li>
-                            <li><strong>Evrak Teslimi:</strong> Staj Başvuru Formu ve Zorunlu Staj Formu staj başlamadan en az 15 gün önce Bölüm Staj Komisyonuna onaylatılmalıdır.</li>
-                            <li>Sigorta işlemleri üniversitemiz Rektörlüğü tarafından karşılanmaktadır.</li>
+                            <li><strong>Yabancı Dil (İngilizce I-II):</strong> Sınavdan geçer not (min. 60) alan öğrenciler ilgili derslerden muaf sayılır.</li>
+                            <li><strong>Temel Bilgi Teknolojileri:</strong> Temel bilgisayar okuryazarlığı sınavında başarılı olan adaylar ders yükümlülüğünü tamamlamış olur.</li>
+                            <li>Sınav derslikleri ve saatleri bölüm panoları ile web sayfasında ilan edilmektedir.</li>
                         </ul>
                     </div>
                 </div>
@@ -610,41 +560,46 @@
     </div>
 
     <script>
-        // MGM HADİSE SÖZLÜĞÜ
         const HADISE_SOZLUGU = {
             'A': 'Açık', 'AB': 'Az Bulutlu', 'PB': 'Parçalı Bulutlu', 'CB': 'Çok Bulutlu',
             'HY': 'Hafif Yağmurlu', 'Y': 'Yağmurlu', 'KY': 'Kuvvetli Yağmurlu',
-            'HSY': 'Hafif Sağanak Yağmurlu', 'SY': 'Sağanak Yağmurlu', 'KSY': 'Kuvvetli Sağanak Yağmurlu',
-            'MSY': 'Mevzi Sağanak Yağmurlu', 'GSY': 'Gökgürültülü Sağanak Yağmurlu', 'KGSY': 'Kuvvetli Gökgürültülü Sağanak Yağmurlu',
-            'HKY': 'Hafif Kar Yağışlı', 'K': 'Kar Yağışlı', 'YKY': 'Yoğun Kar Yağışlı', 'KKY': 'Karla Karışık Yağmur',
+            'HSY': 'Hafif Sağanak', 'SY': 'Sağanak Yağmurlu', 'KSY': 'Kuvvetli Sağanak',
+            'MSY': 'Mevzi Sağanak', 'GSY': 'Gökgürültülü Yağmur', 'KGSY': 'Kuvvetli Gökgürültülü',
+            'HKY': 'Hafif Kar', 'K': 'Kar Yağışlı', 'YKY': 'Yoğun Kar', 'KKY': 'Karla Karışık Yağmur',
             'KS': 'Kar Sağanağı', 'DY': 'Dolu', 'SIS': 'Sisli', 'PUS': 'Puslu', 'DMN': 'Dumanlı',
-            'KF': 'Toz Taşınımı / Kum Fırtınası', 'R': 'Rüzgarlı', 'KFR': 'Kuvvetli Rüzgar', 'F': 'Fırtına',
+            'KF': 'Toz Taşınımı', 'R': 'Rüzgarlı', 'KFR': 'Kuvvetli Rüzgar', 'F': 'Fırtına',
             'KFIR': 'Kuvvetli Fırtına', 'SCK': 'Sıcak', 'SOG': 'Soğuk', 'TS': 'Toz Sağanağı'
         };
 
         const TARGET_API_URL = 'https://servis.mgm.gov.tr/web/sondurumlar?merkezid=18386';
         
         const FALLBACK_DATA = {
-            "sicaklik": 24.5,
-            "hissedilenSicaklik": 25.1,
-            "nem": 55,
-            "ruzgarHiz": 10.2,
-            "ruzgarYon": 320,
+            "sicaklik": 22.4,
+            "hissedilenSicaklik": 22.8,
+            "nem": 52,
+            "ruzgarHiz": 8.5,
+            "ruzgarYon": 315,
             "hadiseKodu": "PB",
             "yagis00Now": 0,
             "yagis24Saat": 0
         };
 
+        // Ultra Hızlı Veri Çekme Motoru
         async function loadWeatherDataFast() {
-            const CACHE_KEY = 'buu_weather_cache_v5';
+            const CACHE_KEY = 'buu_weather_cache_v6';
+            const timeEl = document.getElementById('weatherTime');
 
+            // 1. Önbellekten Anında Göster
             const cached = localStorage.getItem(CACHE_KEY);
             if (cached) {
                 try {
-                    renderWeatherData(JSON.parse(cached));
+                    const parsed = JSON.parse(cached);
+                    renderWeatherData(parsed);
+                    timeEl.innerText = 'Canlı Veri Güncellendi';
                 } catch (e) {}
             }
 
+            // 2. Anlık Paralel Proxy Sorgusu
             const proxies = [
                 'https://corsproxy.io/?' + encodeURIComponent(TARGET_API_URL),
                 'https://api.allorigins.win/raw?url=' + encodeURIComponent(TARGET_API_URL)
@@ -652,17 +607,14 @@
 
             const fetchWithTimeout = (url) => {
                 return new Promise((resolve, reject) => {
-                    const timer = setTimeout(() => reject(new Error('Timeout')), 1500);
+                    const timer = setTimeout(() => reject(new Error('Timeout')), 1200);
                     fetch(url)
-                        .then(res => {
-                            clearTimeout(timer);
-                            if (res.ok) return res.json();
-                            reject(new Error('Network response error'));
-                        })
+                        .then(res => res.ok ? res.json() : reject(new Error('Network Err')))
                         .then(json => {
+                            clearTimeout(timer);
                             const data = Array.isArray(json) ? json[0] : json;
                             if (data && data.sicaklik !== undefined) resolve(data);
-                            else reject(new Error('Invalid weather structure'));
+                            else reject(new Error('Format Err'));
                         })
                         .catch(err => {
                             clearTimeout(timer);
@@ -675,18 +627,18 @@
                 const freshData = await Promise.any(proxies.map(p => fetchWithTimeout(p)));
                 localStorage.setItem(CACHE_KEY, JSON.stringify(freshData));
                 renderWeatherData(freshData);
+                const now = new Date();
+                timeEl.innerText = `Canlı • ${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}`;
             } catch (e) {
                 if (!cached) {
                     renderWeatherData(FALLBACK_DATA);
+                    timeEl.innerText = 'Çevrimdışı Mod';
                 }
             }
         }
 
         function renderWeatherData(data) {
-            const timeEl = document.getElementById('weatherTime');
             const gridEl = document.getElementById('weatherGrid');
-
-            timeEl.innerText = 'Canlı Veri Güncellendi';
             gridEl.innerHTML = '';
 
             const displayConfig = [
@@ -697,7 +649,7 @@
                 { key: 'ruzgarHiz', label: 'Rüzgar Hızı', unit: ' km/s' },
                 { key: 'ruzgarYon', label: 'Rüzgar Yönü' },
                 { key: 'yagis00Now', label: 'Anlık Yağış', unit: ' mm' },
-                { key: 'yagis24Saat', label: '24 Sa. Toplam', unit: ' mm' }
+                { key: 'yagis24Saat', label: '24 Sa. Yağış', unit: ' mm' }
             ];
 
             function parseWindDirection(deg) {
@@ -821,4 +773,4 @@
         document.addEventListener('DOMContentLoaded', loadWeatherDataFast);
     </script>
 </body>
-                                </html>
+    </html>
