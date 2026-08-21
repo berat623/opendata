@@ -1,60 +1,133 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-    <title>BUÜ - Elektronik Teknolojisi Dosya Sunucusu</title>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BUÜ - Elektronik Teknolojisi Dosya Sunucusu</title>
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
         body { 
-            font-family: monospace; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
             background-color: #0b132b; /* BUÜ Koyu Lacivert */
             color: #e0e6ed; 
-            padding: 25px; 
+            padding: 20px 15px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
-        h2 { 
-            font-weight: bold; 
-            color: #48cae4; /* Açık Mavi Başlık */
-            margin-bottom: 5px;
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .header {
+            background: #1c2541;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #3a506b;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+        }
+        h1 { 
+            font-size: 1.4rem; 
+            color: #48cae4; 
+            margin-bottom: 6px;
         }
         .sub-header {
             color: #52b788; /* BUÜ Yeşil Tonu */
-            font-size: 0.95em;
-            margin-bottom: 15px;
+            font-size: 0.95rem;
+            font-family: monospace;
         }
-        a { 
-            color: #90e0ef; 
-            text-decoration: none; 
+        .file-card {
+            background: #1c2541;
+            border-radius: 12px;
+            border: 1px solid #3a506b;
+            padding: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
-        a:hover { 
-            color: #52b788; /* Fareyle üzerine gelince BUÜ Yeşil */
-            text-decoration: underline; 
-        }
-        hr { 
-            border: 0;
-            height: 1px;
-            background-color: #1c2541; 
-            margin: 15px 0;
+        .dir-title {
+            font-family: monospace;
+            color: #a0aec0;
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #3a506b;
         }
         ul { 
-            list-style-type: square; 
-            line-height: 2.0; 
+            list-style: none; 
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        li:last-child {
+            margin-bottom: 0;
+        }
+        a { 
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #90e0ef; 
+            text-decoration: none; 
+            padding: 12px 14px;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.03);
+            transition: all 0.2s ease;
+            font-family: monospace;
+            font-size: 0.95rem;
+            word-break: break-all;
+        }
+        a:hover, a:active { 
+            background-color: #3a506b;
+            color: #52b788; 
+            transform: translateX(3px);
+        }
+        .icon {
+            font-size: 1.1rem;
+            flex-shrink: 0;
         }
         .footer {
+            text-align: center;
             color: #5c677d;
-            font-size: 0.8em;
-            margin-top: 15px;
+            font-size: 0.8rem;
+            margin-top: 30px;
+            padding: 10px 0;
+            font-family: monospace;
+        }
+
+        /* Mobil Telefon Uyumluluğu */
+        @media (max-width: 600px) {
+            body { padding: 12px 10px; }
+            .header { padding: 15px; }
+            h1 { font-size: 1.2rem; }
+            .sub-header { font-size: 0.85rem; }
+            a { padding: 14px 10px; font-size: 0.9rem; } /* Mobilde daha kolay dokunma alanı */
         }
     </style>
 </head>
 <body>
-    <h2>Bursa Uludağ Üniversitesi</h2>
-    <div class="sub-header">Elektronik Teknolojisi Programı • Directory listing for /</div>
-    <hr>
-    <ul>
-        <li><a href="Figure_1.png">Figure_1.png</a></li>
-        <li><a href="Figure_2.png">Figure_2.png</a></li>
-        <li><a href="Figure_3.png">Figure_3.png</a></li>
-    </ul>
-    <hr>
-    <div class="footer">BUÜ Elektronik Teknolojisi • 7/24 Aktif Dosya Sunucusu</div>
+    <div class="container">
+        <div class="header">
+            <h1>Bursa Uludağ Üniversitesi</h1>
+            <div class="sub-header">Elektronik Teknolojisi Programı</div>
+        </div>
+
+        <div class="file-card">
+            <div class="dir-title">Directory listing for /</div>
+            <ul>
+                <li><a href="Figure_1.png"><span class="icon">🖼️</span> Figure_1.png</a></li>
+                <li><a href="Figure_2.png"><span class="icon">🖼️</span> Figure_2.png</a></li>
+                <li><a href="Figure_3.png"><span class="icon">🖼️</span> Figure_3.png</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer">
+        BUÜ Elektronik Teknolojisi • 7/24 Aktif Dosya Sunucusu
+    </div>
 </body>
 </html>
