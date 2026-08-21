@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
     <title>Elektronik Teknolojisi Programı Bilgi Sistemi</title>
 
-    <!-- Google Sans Flex Font Integration -->
+    <!-- Google Sans Flex & Material Symbols Integration -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght,ROND@6..144,100..1000,0..100&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
     <!-- JSZip Engine -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
@@ -44,20 +44,37 @@
             --md-elevation-1: 0 2px 6px rgba(0, 0, 0, 0.35);
         }
 
-        /* Tüm elemanlarda Google Sans Flex Font zorlaması */
+        /* Tipografi & Temel Kodlar */
         *, *::before, *::after, button, input, select, textarea {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             -webkit-tap-highlight-color: transparent;
-            font-family: 'Google Sans Flex', -apple-system, BlinkMacSystemFont, Roboto, sans-serif !important;
+            font-family: 'Google Sans Flex', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
             font-variation-settings: 'ROND' 100, 'wght' 500;
+        }
+
+        /* Material Symbols Fontunun Ezilmesini Engelleyen Özel Kural */
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined' !important;
+            font-weight: normal !important;
+            font-style: normal !important;
+            font-size: 22px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-smoothing: antialiased;
+            flex-shrink: 0;
         }
 
         body { 
             background-color: var(--md-sys-color-background); 
             color: var(--md-sys-color-on-background); 
-            padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+            padding: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(16px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -71,22 +88,22 @@
             width: 100%;
         }
 
-        /* Material Header */
+        /* Header */
         .header {
             background-color: var(--md-sys-color-surface-container);
-            padding: 20px;
+            padding: 16px;
             border-radius: var(--md-sys-shape-corner-large);
             border: 1px solid var(--md-sys-color-outline-variant);
             box-shadow: var(--md-elevation-1);
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 14px;
         }
 
         .logo-container {
-            width: 64px;
-            height: 64px;
+            width: 52px;
+            height: 52px;
             background-color: var(--md-sys-color-surface-container-high);
             border-radius: var(--md-sys-shape-corner-medium);
             display: flex;
@@ -97,49 +114,51 @@
         }
 
         .logo {
-            width: 48px;
-            height: 48px;
+            width: 40px;
+            height: 40px;
             object-fit: contain;
         }
 
         .header-text {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 2px;
+            min-width: 0;
         }
 
         h1 { 
-            font-size: 1.25rem; 
+            font-size: clamp(1rem, 4vw, 1.25rem); 
             color: var(--md-sys-color-primary); 
-            font-weight: 700 !important;
-            line-height: 1.3;
+            font-weight: 700;
+            line-height: 1.25;
+            white-space: normal;
+            word-break: break-word;
         }
 
         .sub-header {
             color: var(--md-sys-color-on-tertiary-container); 
-            font-size: 0.9rem;
-            font-weight: 500 !important;
+            font-size: clamp(0.78rem, 3vw, 0.9rem);
+            font-weight: 500;
         }
 
-        /* Material Cards Base */
+        /* Material Card Base */
         .m3-card {
             background-color: var(--md-sys-color-surface-container);
             border-radius: var(--md-sys-shape-corner-large);
             border: 1px solid var(--md-sys-color-outline-variant);
-            padding: 18px;
+            padding: 14px;
             box-shadow: var(--md-elevation-1);
-            margin-bottom: 16px;
-            transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+            margin-bottom: 12px;
         }
 
         .card-header-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 14px;
-            padding-bottom: 10px;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
             border-bottom: 1px solid var(--md-sys-color-outline-variant);
-            gap: 10px;
+            gap: 8px;
         }
 
         .card-title-group {
@@ -147,74 +166,91 @@
             align-items: center;
             gap: 8px;
             color: var(--md-sys-color-primary);
-            font-size: 1.05rem;
-            font-weight: 700 !important;
+            font-size: clamp(0.95rem, 3.5vw, 1.05rem);
+            font-weight: 700;
+            min-width: 0;
         }
 
         .weather-time {
             color: var(--md-sys-color-outline);
-            font-size: 0.78rem;
-            font-weight: 500 !important;
+            font-size: 0.72rem;
+            font-weight: 500;
             background-color: var(--md-sys-color-surface-container-high);
-            padding: 4px 10px;
+            padding: 4px 8px;
             border-radius: var(--md-sys-shape-corner-full);
             white-space: nowrap;
+            flex-shrink: 0;
         }
 
-        /* Weather Grid Elements */
+        /* Kampüste Hava Kartları Grid (Mobil Uyumlu) */
         .weather-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 10px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
         }
 
         .weather-item {
             background-color: var(--md-sys-color-surface-container-high);
             border: 1px solid var(--md-sys-color-outline-variant);
             border-radius: var(--md-sys-shape-corner-medium);
-            padding: 10px 12px;
+            padding: 8px 10px;
             display: flex;
             flex-direction: column;
-            gap: 4px;
             justify-content: center;
+            min-width: 0; /* İçeriğin kartı dışa taşırmasını önler */
+            overflow: hidden;
         }
 
         .weather-item-label {
             color: var(--md-sys-color-outline);
-            font-size: 0.75rem;
-            font-weight: 600 !important;
+            font-size: clamp(0.62rem, 2.2vw, 0.72rem);
+            font-weight: 700;
             text-transform: uppercase;
+            letter-spacing: 0.2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 2px;
         }
 
         .weather-item-value {
             color: var(--md-sys-color-on-background);
-            font-size: 1rem;
-            font-weight: 700 !important;
+            font-size: clamp(0.85rem, 3vw, 1rem);
+            font-weight: 700;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
         }
 
-        /* Rüzgar Yönü Özel Düzeni */
+        /* Rüzgar Yönü Özel Görünümü */
         .wind-direction-box {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            gap: 2px;
+            gap: 0px;
+            min-width: 0;
+            width: 100%;
         }
 
         .wind-arrow {
             display: inline-block;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             line-height: 1;
             transition: transform 0.4s ease;
             color: var(--md-sys-color-primary);
         }
 
         .wind-text {
-            font-size: 0.95rem;
-            font-weight: 700 !important;
+            font-size: clamp(0.82rem, 2.8vw, 0.95rem);
+            font-weight: 700;
             color: var(--md-sys-color-on-background);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
         }
 
         /* Interactive Menu Card */
@@ -224,7 +260,6 @@
             justify-content: space-between;
             align-items: center;
             gap: 12px;
-            background-color: var(--md-sys-color-surface-container);
         }
 
         .announcement-menu-card:active {
@@ -232,11 +267,15 @@
             transform: scale(0.99);
         }
 
+        .announcement-menu-info {
+            min-width: 0;
+        }
+
         .announcement-menu-info h2 {
             color: var(--md-sys-color-primary);
-            font-size: 1.05rem;
-            font-weight: 700 !important;
-            margin-bottom: 4px;
+            font-size: clamp(0.92rem, 3.2vw, 1.05rem);
+            font-weight: 700;
+            margin-bottom: 2px;
             display: flex;
             align-items: center;
             gap: 6px;
@@ -244,7 +283,7 @@
 
         .announcement-menu-info p {
             color: var(--md-sys-color-outline);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             line-height: 1.3;
         }
 
@@ -253,57 +292,52 @@
             background-color: var(--md-sys-color-primary);
             color: var(--md-sys-color-on-primary);
             border: none;
-            padding: 10px 18px;
+            padding: 8px 16px;
             border-radius: var(--md-sys-shape-corner-full);
-            font-size: 0.85rem;
-            font-weight: 700 !important;
+            font-size: 0.82rem;
+            font-weight: 700;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 6px;
             cursor: pointer;
-            transition: all 0.2s ease;
             text-decoration: none;
             white-space: nowrap;
-            min-height: 44px;
+            min-height: 40px;
+            flex-shrink: 0;
         }
 
         .m3-btn-tonal {
             background-color: var(--md-sys-color-secondary-container);
             color: var(--md-sys-color-on-secondary-container);
             border: 1px solid var(--md-sys-color-outline-variant);
-            padding: 8px 14px;
+            padding: 6px 12px;
             border-radius: var(--md-sys-shape-corner-full);
-            font-size: 0.82rem;
-            font-weight: 600 !important;
+            font-size: 0.8rem;
+            font-weight: 600;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 6px;
             cursor: pointer;
             text-decoration: none;
-            min-height: 40px;
+            min-height: 38px;
+            flex-shrink: 0;
         }
 
-        /* Small Icon-Only Download Button */
         .m3-icon-btn-tonal {
             background-color: var(--md-sys-color-secondary-container);
             color: var(--md-sys-color-on-secondary-container);
             border: 1px solid var(--md-sys-color-outline-variant);
-            width: 42px;
-            height: 42px;
+            width: 38px;
+            height: 38px;
             border-radius: var(--md-sys-shape-corner-full);
             display: inline-flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             text-decoration: none;
-            transition: all 0.15s ease;
             flex-shrink: 0;
-        }
-
-        .m3-icon-btn-tonal:active {
-            background-color: var(--md-sys-color-primary-container);
-            color: var(--md-sys-color-on-primary-container);
-            transform: scale(0.95);
         }
 
         /* File List */
@@ -318,55 +352,78 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 14px;
+            padding: 8px 12px;
             border-radius: var(--md-sys-shape-corner-medium);
             background-color: var(--md-sys-color-surface-container-high);
             border: 1px solid var(--md-sys-color-outline-variant);
-            gap: 12px;
+            gap: 10px;
         }
 
         .file-link {
             color: var(--md-sys-color-on-background);
             text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500 !important;
+            font-size: 0.85rem;
+            font-weight: 500;
             word-break: break-all;
             flex-grow: 1;
             display: flex;
             align-items: center;
             gap: 8px;
+            min-width: 0;
         }
 
-        /* Announcements Content */
+        .file-link span:last-child {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Dynamic Responsive Breakpoints */
+        @media (max-width: 640px) {
+            .weather-grid { 
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 6px;
+            }
+            .announcement-menu-card { 
+                flex-direction: column; 
+                align-items: stretch; 
+            }
+            .m3-btn-filled { 
+                width: 100%; 
+            }
+            .card-header-bar { 
+                flex-direction: column; 
+                align-items: flex-start; 
+            }
+            .m3-btn-tonal { 
+                width: 100%; 
+            }
+        }
+
         .announcement-item {
             background-color: var(--md-sys-color-surface-container-high);
             border: 1px solid var(--md-sys-color-outline-variant);
             border-radius: var(--md-sys-shape-corner-medium);
-            padding: 16px;
-            margin-bottom: 14px;
+            padding: 12px;
+            margin-bottom: 10px;
         }
 
         .announcement-item-title {
             color: var(--md-sys-color-primary);
-            font-size: 1rem;
-            font-weight: 700 !important;
-            margin-bottom: 8px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 6px;
         }
 
         .announcement-item-content {
             color: var(--md-sys-color-on-background);
-            font-size: 0.88rem;
-            line-height: 1.5;
-            opacity: 0.92;
+            font-size: 0.85rem;
+            line-height: 1.4;
         }
 
         .announcement-item-content ol, .announcement-item-content ul {
-            margin-left: 18px;
-            margin-top: 6px;
-            margin-bottom: 6px;
-        }
-
-        .announcement-item-content li {
+            margin-left: 16px;
+            margin-top: 4px;
             margin-bottom: 4px;
         }
 
@@ -376,35 +433,21 @@
             gap: 4px;
             background-color: var(--md-sys-color-tertiary-container);
             color: var(--md-sys-color-on-tertiary-container);
-            padding: 3px 10px;
+            padding: 2px 8px;
             border-radius: var(--md-sys-shape-corner-small);
-            font-size: 0.72rem;
-            font-weight: 700 !important;
-            margin-bottom: 8px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-bottom: 6px;
             text-transform: uppercase;
         }
 
         .footer {
             text-align: center;
             color: var(--md-sys-color-outline);
-            font-size: 0.8rem;
-            margin-top: 24px;
-            padding: 8px 0;
-            font-weight: 500 !important;
-        }
-
-        @media (max-width: 600px) {
-            .header { padding: 14px; gap: 12px; }
-            .logo-container { width: 48px; height: 48px; }
-            .logo { width: 36px; height: 36px; }
-            h1 { font-size: 1.05rem; }
-            .sub-header { font-size: 0.82rem; }
-            .m3-card { padding: 14px; }
-            .weather-grid { grid-template-columns: repeat(2, 1fr); }
-            .announcement-menu-card { flex-direction: column; align-items: stretch; }
-            .m3-btn-filled { justify-content: center; width: 100%; }
-            .card-header-bar { flex-direction: column; align-items: flex-start; }
-            .m3-btn-tonal { width: 100%; justify-content: center; }
+            font-size: 0.75rem;
+            margin-top: 16px;
+            padding: 4px 0;
+            font-weight: 500;
         }
     </style>
 </head>
@@ -430,10 +473,10 @@
                         <span class="material-symbols-outlined">thermostat</span>
                         <span>Kampüste Hava</span>
                     </div>
-                    <div class="weather-time" id="weatherTime">Canlı Veri Bağlanıyor...</div>
+                    <div class="weather-time" id="weatherTime">Yükleniyor...</div>
                 </div>
                 <div class="weather-grid" id="weatherGrid">
-                    <!-- Canlı Hava Durumu Verileri -->
+                    <!-- Canlı Veriler Buraya Enjekte Edilir -->
                 </div>
             </div>
 
@@ -516,7 +559,6 @@
                     </button>
                 </div>
 
-                <!-- Duyuru 1 -->
                 <div class="announcement-item">
                     <span class="m3-chip">
                         <span class="material-symbols-outlined" style="font-size: 14px;">school</span>
@@ -524,49 +566,36 @@
                     </span>
                     <div class="announcement-item-title">1. E-Kayıt ve Yerleşke Kayıt Süreçleri Detaylı Rehberi</div>
                     <div class="announcement-item-content">
-                        Bursa Uludağ Üniversitesi Elektronik Teknolojisi programına yerleşen öğrencilerimizin kayıt işlemleri YÖK ve E-Devlet entegrasyonu ile dijital ortamda gerçekleştirilmektedir.
+                        Bursa Uludağ Üniversitesi Elektronik Teknolojisi programına yerleşen öğrencilerimizin kayıt işlemleri E-Devlet üzerinden dijital ortamda gerçekleştirilmektedir.
                         <ol>
-                            <li><strong>E-Devlet Girişi:</strong> <a href="https://www.turkiye.gov.tr" target="_blank" style="color: var(--md-sys-color-primary);">turkiye.gov.tr</a> adresine T.C. Kimlik numaranız ile giriş yapınız.</li>
-                            <li><strong>Hizmet Arama:</strong> Arama kutusuna <strong>"Yükseköğretim Kurulu Başkanlığı / Üniversite E-Kayıt"</strong> yazarak ilgili modülü açınız.</li>
-                            <li><strong>Bilgi Onayı:</strong> Program bilgilerinizi doğrulayıp ekrandaki adımları onaylayınız.</li>
-                            <li><strong>E-Kayıt Belgesi:</strong> Barkodlu resmi kayıt belgenizi indirip saklayınız. E-Kayıt yaptıranların fiziki evrak getirmesine gerek yoktur.</li>
+                            <li><strong>E-Devlet Girişi:</strong> <a href="https://www.turkiye.gov.tr" target="_blank" style="color: var(--md-sys-color-primary);">turkiye.gov.tr</a> adresinden giriş yapınız.</li>
+                            <li><strong>Hizmet Arama:</strong> "Yükseköğretim Kurulu Başkanlığı / Üniversite E-Kayıt" modülünü açınız.</li>
+                            <li><strong>E-Kayıt Belgesi:</strong> Barkodlu resmi belgenizi indirip saklayınız.</li>
                         </ol>
                     </div>
                 </div>
 
-                <!-- Duyuru 2 -->
                 <div class="announcement-item">
                     <span class="m3-chip">
                         <span class="material-symbols-outlined" style="font-size: 14px;">real_estate_agent</span>
                         Burs & Barınma
                     </span>
-                    <div class="announcement-item-title">2. KYK Yurt, Burs ve Öğrenim Kredisi Başvuru Prosedürü</div>
+                    <div class="announcement-item-title">2. KYK Yurt ve Burs Başvuruları</div>
                     <div class="announcement-item-content">
-                        Gençlik ve Spor Bakanlığı (GSB) Kredi ve Yurtlar Genel Müdürlüğü yurt ve burs başvuruları YKS yerleştirme takvimini müteakip erişime açılmaktadır.
-                        <ul>
-                            <li><strong>Yurt Başvuruları:</strong> E-Devlet portalı üzerinden <strong>"Gençlik ve Spor Bakanlığı / Yurt Başvurusu"</strong> sekmesinden tamamlanır. Görükle Kampüsü yurtları tercihlerde listelenir.</li>
-                            <li><strong>Burs / Kredi:</strong> Gelir durumu ve sosyal haklar kriterlerine göre değerlendirilerek ayrı başvuru takviminde ilan edilir.</li>
-                        </ul>
+                        Gençlik ve Spor Bakanlığı (GSB) yurt ve burs başvuruları YKS takvimini takiben açılmaktadır. E-Devlet üzerinden "Yurt Başvurusu" sekmesinden Görükle Kampüsü yurtlarını tercih edebilirsiniz.
                     </div>
                 </div>
 
-                <!-- Duyuru 3 -->
                 <div class="announcement-item">
                     <span class="m3-chip">
                         <span class="material-symbols-outlined" style="font-size: 14px;">assignment</span>
-                        Sınavlar & Muafiyet
+                        Sınavlar
                     </span>
-                    <div class="announcement-item-title">3. Yabancı Dil ve Temel Bilgi Teknolojileri Muafiyet Sınavları</div>
+                    <div class="announcement-item-title">3. Yabancı Dil ve Bilgi Teknolojileri Muafiyet Sınavları</div>
                     <div class="announcement-item-content">
-                        Yeni kayıt yaptıran öğrencilerimiz için eğitim-öğretim yılı başında muafiyet sınavları düzenlenmektedir.
-                        <ul>
-                            <li><strong>Yabancı Dil (İngilizce I-II):</strong> Sınavdan geçer not (min. 60) alan öğrenciler ilgili derslerden muaf sayılır.</li>
-                            <li><strong>Temel Bilgi Teknolojileri:</strong> Temel bilgisayar okuryazarlığı sınavında başarılı olan adaylar ders yükümlülüğünü tamamlamış olur.</li>
-                            <li>Sınav derslikleri ve saatleri bölüm panoları ile web sayfasında ilan edilmektedir.</li>
-                        </ul>
+                        Dönem başında yapılan muafiyet sınavlarında başarılı olan adaylar ilgili temel ders yükümlülüklerinden muaf sayılırlar.
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -576,7 +605,6 @@
     </div>
 
     <script>
-        // Breezy Weather / Open-Meteo WMO Kod Sözlüğü
         function parseWmoCode(code) {
             const wmoMap = {
                 0: 'Açık',
@@ -597,14 +625,13 @@
                 80: 'Hafif Sağanak',
                 81: 'Sağanak Yağmurlu',
                 82: 'Kuvvetli Sağanak',
-                95: 'Gökgürültülü Fırtına',
-                96: 'Dolu Yağışlı',
+                95: 'Fırtına',
+                96: 'Dolu',
                 99: 'Şiddetli Fırtına'
             };
             return wmoMap[code] || 'Parçalı Bulutlu';
         }
 
-        // Rüzgar Yönü Metin Dönüştürücü (Derecesiz)
         function getWindDirectionText(deg) {
             const directions = [
                 'Kuzey', 'Kuzeydoğu', 'Doğu', 'Güneydoğu', 
@@ -614,8 +641,6 @@
             return directions[index];
         }
 
-        // Breezy Weather Yöntemi (Open-Meteo Kesintisiz Canlı Veri Motoru)
-        // Bursa Görükle Kampüsü Koordinatları: Latitude 40.2227, Longitude 28.8715
         const BREEZY_API_ENDPOINT = 'https://api.open-meteo.com/v1/forecast?latitude=40.2227&longitude=28.8715&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,rain,weather_code,wind_speed_10m,wind_direction_10m&timezone=auto';
 
         async function fetchBreezyWeatherData() {
@@ -623,7 +648,7 @@
             
             try {
                 const response = await fetch(BREEZY_API_ENDPOINT);
-                if (!response.ok) throw new Error("Ağ hatası");
+                if (!response.ok) throw new Error("Network Error");
                 
                 const data = await response.json();
                 const current = data.current;
@@ -644,7 +669,7 @@
                 timeEl.innerText = `Canlı Sync • ${timeStr}`;
 
             } catch (error) {
-                console.warn("Breezy Weather API Yenileme Hatası:", error);
+                console.warn("API Error:", error);
                 timeEl.innerText = "Yenileniyor...";
             }
         }
@@ -666,7 +691,7 @@
                     label: 'RÜZGAR YÖNÜ', 
                     customHtml: `
                         <div class="wind-direction-box">
-                            <span class="wind-arrow" style="transform: rotate(${arrowAngle}deg);">⬆</span>
+                            <span class="wind-arrow" style="transform: rotate(${arrowAngle}deg);">⬇</span>
                             <span class="wind-text">${windText}</span>
                         </div>
                     ` 
@@ -745,14 +770,13 @@
                 a.click();
                 document.body.removeChild(a);
             } catch (error) {
-                alert("ZIP dosyası oluşturulurken bir hata oluştu: " + error.message);
+                alert("ZIP hatası: " + error.message);
             } finally {
                 btn.innerHTML = originalText;
                 btn.disabled = false;
             }
         }
 
-        // Başlangıçta çalıştır ve her 30 saniyede bir kesintisiz canlı güncelle
         document.addEventListener('DOMContentLoaded', () => {
             fetchBreezyWeatherData();
             setInterval(fetchBreezyWeatherData, 30000);
