@@ -226,7 +226,6 @@
             gap: 4px;
         }
 
-        /* Wind Direction Box (Derece Metni Olmadan Sadece Ok + Yön İsmi) */
         .wind-direction-box {
             display: flex;
             align-items: center;
@@ -571,7 +570,7 @@
                             <div class="weather-time" id="weatherTime">Yükleniyor...</div>
                         </div>
                         <div class="weather-grid" id="weatherGrid">
-                            <!-- MGM Verileri Dinamik Yüklenecek -->
+                            <!-- MGM Doğrudan Veriler -->
                         </div>
                     </div>
 
@@ -694,7 +693,7 @@
                     </span>
                     <div class="announcement-item-title">3. Yabancı Dil ve Bilgi Teknolojileri Muafiyet Sınavları</div>
                     <div class="announcement-item-content">
-                        Dönem başında yapılan muafiyet sınavlarında başarılı olan adaylar ilgili temel ders yükümlülüklerinden muaf sayırlar.
+                        Dönem başında yapılan muafiyet sınavlarında başarılı olan adaylar ilgili temel ders yükümlülüklerinden muaf sayılırlar.
                     </div>
                 </div>
             </div>
@@ -706,7 +705,6 @@
     </div>
 
     <script>
-        // MGM Hadise Kodları Haritası
         const MGM_HADISE_MAP = {
             'A': 'Açık',
             'AB': 'Az Bulutlu',
@@ -735,19 +733,15 @@
             return directions[index];
         }
 
-        // MGM API'ye güvenli proxy köprüsü üzerinden erişim
-        const MGM_TARGET_URL = 'https://servis.mgm.gov.tr/web/sondurumlar?merkezid=91617';
-        const PROXY_URL = `https://corsproxy.io/?${encodeURIComponent(MGM_TARGET_URL)}`;
+        // Doğrudan MGM API Endpoint
+        const MGM_DIRECT_URL = 'https://servis.mgm.gov.tr/web/sondurumlar?merkezid=91617';
 
         async function fetchMGMWeatherData() {
             const timeEl = document.getElementById('weatherTime');
             
             try {
-                let response = await fetch(PROXY_URL);
-                if (!response.ok) {
-                    // Alternatif Proxy Denemesi
-                    response = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(MGM_TARGET_URL)}`);
-                }
+                const response = await fetch(MGM_DIRECT_URL);
+                if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
 
                 const rawData = await response.json();
                 const mgmData = Array.isArray(rawData) ? rawData[0] : rawData;
@@ -763,12 +757,11 @@
                 }
 
             } catch (error) {
-                console.warn("MGM API Yüklenemedi, yedek veri işleniyor:", error);
+                console.warn("MGM API Doğrudan İsteğinde Hata:", error);
                 timeEl.innerText = "Yenileniyor...";
             }
         }
 
-        // Geçersiz (-9999) değer kontrolü
         function isValidValue(val) {
             return val !== undefined && val !== null && val !== -9999 && val !== "-9999";
         }
@@ -779,7 +772,6 @@
 
             const items = [];
 
-            // 1. Hadise / Hava Durumu
             if (isValidValue(data.hadiseKodu)) {
                 items.push({
                     label: 'HAVA DURUMU',
@@ -787,28 +779,24 @@
                 });
             }
 
-            // 2. Sıcaklık
             if (isValidValue(data.sicaklik)) {
                 items.push({ label: 'SICAKLIK', value: `${data.sicaklik} °C` });
             }
 
-            // 3. Hissedilen Sıcaklık
             if (isValidValue(data.hissedilenSicaklik)) {
                 items.push({ label: 'HİSSEDİLEN', value: `${data.hissedilenSicaklik} °C` });
             }
 
-            // 4. Nem
             if (isValidValue(data.nem)) {
                 items.push({ label: 'NEM', value: `%${data.nem}` });
             }
 
-            // 5. Rüzgar Hızı
             if (isValidValue(data.ruzgarHiz)) {
                 const speedFormatted = Math.round(data.ruzgarHiz * 10) / 10;
                 items.push({ label: 'RÜZGAR HIZI', value: `${speedFormatted} km/s` });
             }
 
-            // 6. Rüzgar Yönü (Sadece Ok + Yön İsmi, Derece Metni GİZLİ)
+            // Rüzgar Yönü: Derece gizli, ikon rotated, metin var
             if (isValidValue(data.ruzgarYon)) {
                 const windDegree = data.ruzgarYon;
                 const windDirName = getWindDirectionText(windDegree);
@@ -824,7 +812,6 @@
                 });
             }
 
-            // 7. Yağış Parametreleri (-9999 Olmayanlar)
             if (isValidValue(data.yagis1Saat)) {
                 items.push({ label: '1 SAAT YAĞIŞ', value: `${data.yagis1Saat} mm` });
             } else if (isValidValue(data.yagis00Now)) {
@@ -847,7 +834,6 @@
                 items.push({ label: 'BASINÇ', value: `${data.aktuelBasinc} hPa` });
             }
 
-            // Arayüze Dinamik Basma
             items.forEach(item => {
                 const itemDiv = document.createElement('div');
                 itemDiv.className = 'weather-item';
@@ -927,7 +913,7 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             fetchMGMWeatherData();
-            setInterval(fetchMGMWeatherData, 60000); // 1 dakikada bir otomatik yenileme
+            setInterval(fetchMGMWeatherData, 60000);
         });
     </script>
 </body>
