@@ -290,31 +290,50 @@
             text-overflow: ellipsis;
         }
 
+        /* Announcement Detailed Styling */
         .announcement-item {
             background-color: var(--md-sys-color-surface-container-high);
             border: 1px solid var(--md-sys-color-outline-variant);
             border-radius: var(--md-sys-shape-corner-medium);
-            padding: 12px;
-            margin-bottom: 10px;
+            padding: 16px;
+            margin-bottom: 14px;
         }
 
         .announcement-item-title {
             color: var(--md-sys-color-primary);
-            font-size: 0.95rem;
+            font-size: 1.05rem;
             font-weight: 700;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
 
         .announcement-item-content {
             color: var(--md-sys-color-on-background);
-            font-size: 0.85rem;
-            line-height: 1.4;
+            font-size: 0.88rem;
+            line-height: 1.5;
         }
 
-        .announcement-item-content ol, .announcement-item-content ul {
-            margin-left: 16px;
-            margin-top: 4px;
+        .announcement-item-content p {
+            margin-bottom: 8px;
+        }
+
+        .announcement-item-content ul, .announcement-item-content ol {
+            margin-left: 20px;
+            margin-top: 6px;
+            margin-bottom: 10px;
+        }
+
+        .announcement-item-content li {
             margin-bottom: 4px;
+        }
+
+        .announcement-item-content a {
+            color: var(--md-sys-color-primary);
+            text-decoration: underline;
+            font-weight: 600;
+        }
+
+        .announcement-item-content a:hover {
+            color: var(--md-sys-color-on-primary-container);
         }
 
         .m3-chip {
@@ -323,11 +342,11 @@
             gap: 4px;
             background-color: var(--md-sys-color-tertiary-container);
             color: var(--md-sys-color-on-tertiary-container);
-            padding: 2px 8px;
+            padding: 4px 10px;
             border-radius: var(--md-sys-shape-corner-small);
-            font-size: 0.7rem;
+            font-size: 0.72rem;
             font-weight: 700;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             text-transform: uppercase;
         }
 
@@ -449,7 +468,7 @@
                                 <span class="material-symbols-outlined">campaign</span>
                                 Duyurular ve Bilgilendirmeler
                             </h2>
-                            <p>E-Kayıt Rehberi, KYK Yurt/Burs İşlemleri ve Muafiyet Sınavları</p>
+                            <p>E-Kayıt Rehberi, ÖBS/UKEY Girişleri, KYK İşlemleri ve Muafiyet Sınavları</p>
                         </div>
                         <button class="m3-btn-filled">
                             <span>Duyurular İçin Tıklayınız</span>
@@ -519,7 +538,7 @@
                 <div class="card-header-bar">
                     <div class="card-title-group">
                         <span class="material-symbols-outlined">campaign</span>
-                        <span>Akademik Duyurular</span>
+                        <span>Akademik Duyurular ve Rehberler</span>
                     </div>
                     <button class="m3-btn-tonal" onclick="toggleView('main')">
                         <span class="material-symbols-outlined">arrow_back</span>
@@ -527,43 +546,75 @@
                     </button>
                 </div>
 
+                <!-- DUYURU 1 -->
                 <div class="announcement-item">
                     <span class="m3-chip">
                         <span class="material-symbols-outlined" style="font-size: 14px;">school</span>
                         Yeni Öğrenci Kılavuzu
                     </span>
-                    <div class="announcement-item-title">1. E-Kayıt ve Yerleşke Kayıt Süreçleri Detaylı Rehberi</div>
+                    <div class="announcement-item-title">1. E-Kayıt, ÖBS ve UKEY Hesap Aktifleştirme Süreçleri</div>
                     <div class="announcement-item-content">
-                        Bursa Uludağ Üniversitesi Elektronik Teknolojisi programına yerleşen öğrencilerimizin kayıt işlemleri E-Devlet üzerinden dijital ortamda gerçekleştirilmektedir.
+                        <p>Bursa Uludağ Üniversitesi Elektronik Teknolojisi Programı’na yerleşen öğrencilerimizin kayıt ve dijital öğrenim sistemlerine erişim adımları aşağıda özetlenmiştir:</p>
                         <ol>
-                            <li><strong>E-Devlet Girişi:</strong> <a href="https://www.turkiye.gov.tr" target="_blank" style="color: var(--md-sys-color-primary);">turkiye.gov.tr</a> adresinden giriş yapınız.</li>
-                            <li><strong>Hizmet Arama:</strong> "Yükseköğretim Kurulu Başkanlığı / Üniversite E-Kayıt" modülünü açınız.</li>
-                            <li><strong>E-Kayıt Belgesi:</strong> Barkodlu resmi belgenizi indirip saklayınız.</li>
+                            <li>
+                                <strong>E-Devlet Üzerinden Kayıt (E-Kayıt):</strong> YKS yerleştirme sonuçlarının ardından <a href="https://www.turkiye.gov.tr" target="_blank">turkiye.gov.tr</a> adresine T.C. kimlik numaranız ile giriş yapıp <em>"Yükseköğretim Kurulu Başkanlığı / Üniversite E-Kayıt"</em> modülünü kullanarak kaydınızı tamamlayınız. İşlem sonunda verilen barkodlu belgeyi bilgisayarınıza indiriniz.
+                            </li>
+                            <li>
+                                <strong>Öğrenci Otomasyonu (ÖBS) Şifre Oluşturma:</strong> E-kayıt tamamlandıktan sonra <a href="https://ogr.uludag.edu.tr" target="_blank">ogr.uludag.edu.tr</a> portalına girerek "Şifremi Unuttum / İlk Şifre Edinme" adımlarını izleyip Öğrenci Bilgi Sistemi şifrenizi tanımlayınız.
+                            </li>
+                            <li>
+                                <strong>UKEY (Ders Materyali ve Ödevler):</strong> Ders içerikleri, canlı ders linkleri ve duyurular için üniversitenin öğrenme yönetim sistemi olan <a href="https://ukey.uludag.edu.tr" target="_blank">ukey.uludag.edu.tr</a> adresine ÖBS kullanıcı bilgilerinizi kullanarak giriş yapabilirsiniz.
+                            </li>
                         </ol>
                     </div>
                 </div>
 
+                <!-- DUYURU 2 -->
                 <div class="announcement-item">
                     <span class="m3-chip">
                         <span class="material-symbols-outlined" style="font-size: 14px;">real_estate_agent</span>
                         Burs & Barınma
                     </span>
-                    <div class="announcement-item-title">2. KYK Yurt ve Burs Başvuruları</div>
+                    <div class="announcement-item-title">2. GSB KYK Yurt, Burs ve Öğrenim Kredisi Başvuruları</div>
                     <div class="announcement-item-content">
-                        Gençlik ve Spor Bakanlığı (GSB) yurt ve burs başvuruları YKS takvimini takiben açılmaktadır. E-Devlet üzerinden "Yurt Başvurusu" sekmesinden Görükle Kampüsü yurtlarını tercih edebilirsiniz.
+                        <p>Gençlik ve Spor Bakanlığı (GSB) Kredi ve Yurtlar Genel Müdürlüğü tarafından yürütülen barınma ve finansal destek başvurularına dair bilmeniz gerekenler:</p>
+                        <ul>
+                            <li>
+                                <strong>Yurt Başvuruları:</strong> YKS yerleştirme sonuçlarının ilanından hemen sonra e-Devlet kapısı üzerindeki <a href="https://www.turkiye.gov.tr" target="_blank">turkiye.gov.tr</a> <em>"GSB Yurt Başvurusu"</em> ekranından alınır. Görükle Kampüsü içerisinde yer alan KYK yurt seçenekleri tercih edilebilir.
+                            </li>
+                            <li>
+                                <strong>Burs ve Öğrenim Kredisi:</strong> Yurt başvurularını takiben GSB tarafından ayrı bir takvimle açılan <em>"Burs/Kredi Başvurusu"</em> ekranından işlem yapılır. Sonuçlar açıklandıktan sonra e-Devlet üzerinden taahhütname onayı verilmesi zorunludur.
+                            </li>
+                            <li>
+                                Detaylı duyuruları ve güncel başvuru takvimlerini doğrudan <a href="https://www.gsb.gov.tr" target="_blank">gsb.gov.tr</a> adresinden takip edebilirsiniz.
+                            </li>
+                        </ul>
                     </div>
                 </div>
 
+                <!-- DUYURU 3 -->
                 <div class="announcement-item">
                     <span class="m3-chip">
                         <span class="material-symbols-outlined" style="font-size: 14px;">assignment</span>
                         Sınavlar
                     </span>
-                    <div class="announcement-item-title">3. Yabancı Dil ve Bilgi Teknolojileri Muafiyet Sınavları</div>
+                    <div class="announcement-item-title">3. Yabancı Dil ve Temel Bilgi Teknolojileri Muafiyet Sınavları</div>
                     <div class="announcement-item-content">
-                        Dönem başında yapılan muafiyet sınavlarında başarılı olan adaylar ilgili temel ders yükümlülüklerinden muaf sayılırlar.
+                        <p>Güz yarıyılı başında birinci sınıf öğrencilerine yönelik düzenlenen muafiyet sınavları hakkında detaylar:</p>
+                        <ul>
+                            <li>
+                                <strong>Zorunlu Yabancı Dil (İngilizce I-II) Muafiyet Sınavı:</strong> BUÜ Yabancı Diller Yüksekokulu (<a href="https://uludag.edu.tr/ydyo" target="_blank">uludag.edu.tr/ydyo</a>) tarafından akademik takvimde belirtilen tarihte yapılır. Sınavdan baraj puanı (60 ve üzeri) alan öğrenciler <code>YDL101</code> ve <code>YDL102</code> derslerinden muaf tutulur.
+                            </li>
+                            <li>
+                                <strong>Temel Bilgi Teknolojileri Kullanımı Muafiyet Sınavı:</strong> BUÜ Enformatik Bölüm Başkanlığı (<a href="https://uludag.edu.tr/enformatik" target="_blank">uludag.edu.tr/enformatik</a>) koordinatörlüğünde çevrim içi veya yüz yüze düzenlenir. Başarılı olan öğrenciler müfredattaki temel bilgisayar dersini doğrudan başarmış sayılır.
+                            </li>
+                            <li>
+                                Sınav yerleri, saatleri ve öğrenci listeleri ders kayıt haftasında Meslek Yüksekokulu ve ilgili bölüm web sayfalarında ilan edilmektedir.
+                            </li>
+                        </ul>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
