@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght,ROND@6..144,100..1000,0..100&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
     <!-- JSZip Engine -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
@@ -54,7 +54,7 @@
             font-variation-settings: 'ROND' 100, 'wght' 500;
         }
 
-        /* Material Symbols Fontunun Ezilmesini Engelleyen Özel Kural */
+        /* Material Symbols İkon Fix */
         .material-symbols-outlined {
             font-family: 'Material Symbols Outlined' !important;
             font-weight: normal !important;
@@ -182,7 +182,7 @@
             flex-shrink: 0;
         }
 
-        /* Kampüste Hava Kartları Grid (Mobil Uyumlu) */
+        /* Weather Grid */
         .weather-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -197,7 +197,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            min-width: 0; /* İçeriğin kartı dışa taşırmasını önler */
+            min-width: 0;
             overflow: hidden;
         }
 
@@ -210,7 +210,7 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            margin-bottom: 2px;
+            margin-bottom: 4px;
         }
 
         .weather-item-value {
@@ -225,32 +225,30 @@
             gap: 4px;
         }
 
-        /* Rüzgar Yönü Özel Görünümü */
+        /* Modernize Edilmiş Rüzgar Yönü Görünümü */
         .wind-direction-box {
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0px;
+            align-items: center;
+            gap: 6px;
             min-width: 0;
-            width: 100%;
+            margin-top: 1px;
         }
 
         .wind-arrow {
-            display: inline-block;
-            font-size: 1.1rem;
-            line-height: 1;
-            transition: transform 0.4s ease;
+            font-size: 20px !important;
             color: var(--md-sys-color-primary);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-block;
+            flex-shrink: 0;
         }
 
         .wind-text {
-            font-size: clamp(0.82rem, 2.8vw, 0.95rem);
+            font-size: clamp(0.85rem, 3vw, 0.98rem);
             font-weight: 700;
             color: var(--md-sys-color-on-background);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            width: 100%;
         }
 
         /* Interactive Menu Card */
@@ -340,7 +338,7 @@
             flex-shrink: 0;
         }
 
-        /* File List */
+        /* File List (Klasörsüz Düz Yapı) */
         ul.file-list { 
             list-style: none; 
             display: flex;
@@ -362,13 +360,13 @@
         .file-link {
             color: var(--md-sys-color-on-background);
             text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
+            font-size: 0.88rem;
+            font-weight: 600;
             word-break: break-all;
             flex-grow: 1;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             min-width: 0;
         }
 
@@ -378,7 +376,6 @@
             text-overflow: ellipsis;
         }
 
-        /* Dynamic Responsive Breakpoints */
         @media (max-width: 640px) {
             .weather-grid { 
                 grid-template-columns: repeat(2, 1fr); 
@@ -476,7 +473,7 @@
                     <div class="weather-time" id="weatherTime">Yükleniyor...</div>
                 </div>
                 <div class="weather-grid" id="weatherGrid">
-                    <!-- Canlı Veriler Buraya Enjekte Edilir -->
+                    <!-- Canlı Veriler -->
                 </div>
             </div>
 
@@ -495,12 +492,12 @@
                 </button>
             </div>
 
-            <!-- Dizin Listesi Kartı -->
+            <!-- Dosyalar Kartı (Yenilendi) -->
             <div class="m3-card">
                 <div class="card-header-bar">
                     <div class="card-title-group">
-                        <span class="material-symbols-outlined">folder_open</span>
-                        <span>Dizin Listesi /</span>
+                        <span class="material-symbols-outlined">description</span>
+                        <span>Dosyalar</span>
                     </div>
                     <button class="m3-btn-filled" onclick="downloadAllAsZip()" id="zipBtn">
                         <span class="material-symbols-outlined">folder_zip</span>
@@ -512,7 +509,7 @@
                         <div class="file-row">
                             <a href="Figure_1.png" target="_blank" class="file-link">
                                 <span class="material-symbols-outlined" style="color: var(--md-sys-color-primary);">image</span>
-                                <span>1 / Figure_1.png</span>
+                                <span>Figure_1.png</span>
                             </a>
                             <a href="Figure_1.png" download class="m3-icon-btn-tonal" aria-label="İndir" title="İndir">
                                 <span class="material-symbols-outlined">download</span>
@@ -523,7 +520,7 @@
                         <div class="file-row">
                             <a href="Figure_2.png" target="_blank" class="file-link">
                                 <span class="material-symbols-outlined" style="color: var(--md-sys-color-primary);">image</span>
-                                <span>2 / Figure_2.png</span>
+                                <span>Figure_2.png</span>
                             </a>
                             <a href="Figure_2.png" download class="m3-icon-btn-tonal" aria-label="İndir" title="İndir">
                                 <span class="material-symbols-outlined">download</span>
@@ -534,7 +531,7 @@
                         <div class="file-row">
                             <a href="Figure_3.png" target="_blank" class="file-link">
                                 <span class="material-symbols-outlined" style="color: var(--md-sys-color-primary);">image</span>
-                                <span>3 / Figure_3.png</span>
+                                <span>Figure_3.png</span>
                             </a>
                             <a href="Figure_3.png" download class="m3-icon-btn-tonal" aria-label="İndir" title="İndir">
                                 <span class="material-symbols-outlined">download</span>
@@ -679,7 +676,6 @@
             gridEl.innerHTML = '';
 
             const windText = getWindDirectionText(data.windDeg);
-            const arrowAngle = (data.windDeg + 180) % 360;
 
             const items = [
                 { label: 'HAVA DURUMU', value: data.weatherText },
@@ -691,7 +687,7 @@
                     label: 'RÜZGAR YÖNÜ', 
                     customHtml: `
                         <div class="wind-direction-box">
-                            <span class="wind-arrow" style="transform: rotate(${arrowAngle}deg);">⬇</span>
+                            <span class="material-symbols-outlined wind-arrow" style="transform: rotate(${data.windDeg}deg);">navigation</span>
                             <span class="wind-text">${windText}</span>
                         </div>
                     ` 
@@ -746,9 +742,9 @@
             btn.disabled = true;
 
             const filesToZip = [
-                { url: 'Figure_1.png', zipPath: '1/Figure_1.png' },
-                { url: 'Figure_2.png', zipPath: '2/Figure_2.png' },
-                { url: 'Figure_3.png', zipPath: '3/Figure_3.png' }
+                { url: 'Figure_1.png', filename: 'Figure_1.png' },
+                { url: 'Figure_2.png', filename: 'Figure_2.png' },
+                { url: 'Figure_3.png', filename: 'Figure_3.png' }
             ];
 
             try {
@@ -757,7 +753,7 @@
                 const downloadPromises = filesToZip.map(async (item) => {
                     const response = await fetch(item.url);
                     const blob = await response.blob();
-                    zip.file(item.zipPath, blob);
+                    zip.file(item.filename, blob);
                 });
 
                 await Promise.all(downloadPromises);
