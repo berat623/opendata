@@ -4,6 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BUÜ - Elektronik Teknolojisi Dosya Sunucusu</title>
+
+    <!-- Google Fonts: Parkinsans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&display=swap" rel="stylesheet">
+
     <style>
         * {
             box-sizing: border-box;
@@ -11,7 +17,7 @@
             padding: 0;
         }
         body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
+            font-family: 'Parkinsans', sans-serif; 
             background-color: #0b132b; /* BUÜ Koyu Lacivert */
             color: #e0e6ed; 
             padding: 20px 15px;
@@ -37,11 +43,12 @@
             font-size: 1.4rem; 
             color: #48cae4; 
             margin-bottom: 6px;
+            font-weight: 700;
         }
         .sub-header {
             color: #52b788; /* BUÜ Yeşil Tonu */
             font-size: 0.95rem;
-            font-family: monospace;
+            font-weight: 500;
         }
         .file-card {
             background: #1c2541;
@@ -51,12 +58,12 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
         .dir-title {
-            font-family: monospace;
             color: #a0aec0;
             font-size: 0.85rem;
             margin-bottom: 12px;
             padding-bottom: 8px;
             border-bottom: 1px solid #3a506b;
+            font-weight: 400;
         }
         ul { 
             list-style: none; 
@@ -77,8 +84,8 @@
             border-radius: 8px;
             background-color: rgba(255, 255, 255, 0.03);
             transition: all 0.2s ease;
-            font-family: monospace;
             font-size: 0.95rem;
+            font-weight: 400;
             word-break: break-all;
         }
         a:hover, a:active { 
@@ -96,7 +103,7 @@
             font-size: 0.8rem;
             margin-top: 30px;
             padding: 10px 0;
-            font-family: monospace;
+            font-weight: 300;
         }
 
         /* Mobil Telefon Uyumluluğu */
@@ -105,7 +112,7 @@
             .header { padding: 15px; }
             h1 { font-size: 1.2rem; }
             .sub-header { font-size: 0.85rem; }
-            a { padding: 14px 10px; font-size: 0.9rem; } /* Mobilde daha kolay dokunma alanı */
+            a { padding: 14px 10px; font-size: 0.9rem; }
         }
     </style>
 </head>
