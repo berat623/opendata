@@ -36,11 +36,25 @@
             border: 1px solid #3a506b;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .logo {
+            width: 75px;
+            height: 75px;
+            object-fit: contain;
+            flex-shrink: 0;
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+        }
+        .header-text {
+            display: flex;
+            flex-direction: column;
         }
         h1 { 
             font-size: 1.4rem; 
             color: #48cae4; 
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             font-weight: 700;
         }
         .sub-header {
@@ -153,8 +167,9 @@
         /* Mobil Telefon Uyumluluğu */
         @media (max-width: 600px) {
             body { padding: 12px 10px; }
-            .header { padding: 15px; }
-            h1 { font-size: 1.2rem; }
+            .header { padding: 15px; gap: 12px; }
+            .logo { width: 55px; height: 55px; }
+            h1 { font-size: 1.15rem; }
             .sub-header { font-size: 0.85rem; }
             .file-row { padding: 10px; }
             .file-link { font-size: 0.88rem; }
@@ -167,8 +182,11 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Bursa Uludağ Üniversitesi</h1>
-            <div class="sub-header">Elektronik Teknolojisi Programı</div>
+            <img src="logo.png" alt="BUÜ Logo" class="logo">
+            <div class="header-text">
+                <h1>Bursa Uludağ Üniversitesi</h1>
+                <div class="sub-header">Elektronik Teknolojisi Programı</div>
+            </div>
         </div>
 
         <div class="file-card">
