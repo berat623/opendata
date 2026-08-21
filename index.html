@@ -279,20 +279,20 @@
             <ul class="file-list">
                 <li>
                     <div class="file-row">
-                        <a href="1/Figure_1.png" target="_blank" class="file-link">1 / Figure_1.png</a>
-                        <a href="1/Figure_1.png" download class="download-btn">İndir</a>
+                        <a href="Figure_1.png" target="_blank" class="file-link">1 / Figure_1.png</a>
+                        <a href="Figure_1.png" download class="download-btn">İndir</a>
                     </div>
                 </li>
                 <li>
                     <div class="file-row">
-                        <a href="2/Figure_2.png" target="_blank" class="file-link">2 / Figure_2.png</a>
-                        <a href="2/Figure_2.png" download class="download-btn">İndir</a>
+                        <a href="Figure_2.png" target="_blank" class="file-link">2 / Figure_2.png</a>
+                        <a href="Figure_2.png" download class="download-btn">İndir</a>
                     </div>
                 </li>
                 <li>
                     <div class="file-row">
-                        <a href="3/Figure_3.png" target="_blank" class="file-link">3 / Figure_3.png</a>
-                        <a href="3/Figure_3.png" download class="download-btn">İndir</a>
+                        <a href="Figure_3.png" target="_blank" class="file-link">3 / Figure_3.png</a>
+                        <a href="Figure_3.png" download class="download-btn">İndir</a>
                     </div>
                 </li>
             </ul>
@@ -310,15 +310,20 @@
             btn.innerText = "Hazırlanıyor...";
             btn.disabled = true;
 
+            // ZIP içinde klasörlü görünecek yollar
+            const filesToZip = [
+                { url: 'Figure_1.png', zipPath: '1/Figure_1.png' },
+                { url: 'Figure_2.png', zipPath: '2/Figure_2.png' },
+                { url: 'Figure_3.png', zipPath: '3/Figure_3.png' }
+            ];
+
             try {
                 const zip = new JSZip();
-                const links = document.querySelectorAll('.file-link');
 
-                const downloadPromises = Array.from(links).map(async (link) => {
-                    const url = link.getAttribute('href');
-                    const response = await fetch(url);
+                const downloadPromises = filesToZip.map(async (item) => {
+                    const response = await fetch(item.url);
                     const blob = await response.blob();
-                    zip.file(url, blob);
+                    zip.file(item.zipPath, blob);
                 });
 
                 await Promise.all(downloadPromises);
