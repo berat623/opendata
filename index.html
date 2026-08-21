@@ -62,6 +62,55 @@
             font-size: 0.95rem;
             font-weight: 500;
         }
+
+        /* Bölüm Duyuruları Kartı Stilleri */
+        .announcement-card {
+            background: #1c2541;
+            border-radius: 12px;
+            border: 1px solid #3a506b;
+            padding: 18px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+        }
+        .announcement-card-title {
+            color: #52b788;
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #3a506b;
+        }
+        .announcement-item {
+            background-color: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid #48cae4;
+            border-radius: 0 8px 8px 0;
+            padding: 12px 15px;
+            margin-bottom: 12px;
+        }
+        .announcement-item:last-child {
+            margin-bottom: 0;
+        }
+        .announcement-item-title {
+            color: #90e0ef;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .announcement-item-content {
+            color: #c0caf5;
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+        .announcement-item-content ol {
+            margin-left: 18px;
+            margin-top: 6px;
+            margin-bottom: 6px;
+        }
+        .announcement-item-content li {
+            margin-bottom: 4px;
+        }
+
+        /* Dizin Listesi Kartı Stilleri */
         .file-card {
             background: #1c2541;
             border-radius: 12px;
@@ -102,13 +151,13 @@
             opacity: 0.6;
             cursor: wait;
         }
-        ul { 
+        ul.file-list { 
             list-style: none; 
         }
-        li {
+        ul.file-list li {
             margin-bottom: 8px;
         }
-        li:last-child {
+        ul.file-list li:last-child {
             margin-bottom: 0;
         }
         .file-row {
@@ -171,6 +220,9 @@
             .logo { width: 55px; height: 55px; }
             h1 { font-size: 1.15rem; }
             .sub-header { font-size: 0.85rem; }
+            .announcement-card { padding: 14px; }
+            .announcement-card-title { font-size: 0.98rem; }
+            .announcement-item { padding: 10px 12px; }
             .file-row { padding: 10px; }
             .file-link { font-size: 0.88rem; }
             .download-btn { padding: 6px 10px; font-size: 0.8rem; }
@@ -181,6 +233,7 @@
 </head>
 <body>
     <div class="container">
+        <!-- Header -->
         <div class="header">
             <img src="logo.png" alt="BUÜ Logo" class="logo">
             <div class="header-text">
@@ -189,28 +242,57 @@
             </div>
         </div>
 
+        <!-- Bölüm Duyuruları Kartı -->
+        <div class="announcement-card">
+            <div class="announcement-card-title">Bölüm Duyuruları</div>
+            
+            <div class="announcement-item">
+                <div class="announcement-item-title">1. Üniversite E-Kayıt İşlemleri Kılavuzu</div>
+                <div class="announcement-item-content">
+                    Bursa Uludağ Üniversitesi Elektronik Teknolojisi programına yeni yerleşen öğrencilerimizin kayıt işlemleri e-Devlet kapısı üzerinden şahsen üniversiteye gelmeye gerek kalmadan yapılabilmektedir.
+                    <ol>
+                        <li><strong>turkiye.gov.tr</strong> adresine T.C. Kimlik numaranız ve şifreniz ile giriş yapın.</li>
+                        <li>Arama çubuğuna <strong>"Yükseköğretim Kurulu Başkanlığı / Üniversite E-Kayıt"</strong> yazarak ilgili hizmete yönlenin.</li>
+                        <li>Yerleştiğiniz üniversite ve program bilgilerini doğrulayarak onay adımlarını tamamlayın.</li>
+                        <li>İşlem sonunda sistem tarafından üretilen barkodlu <strong>"E-Kayıt Belgesi"</strong>ni indirerek saklayın.</li>
+                    </ol>
+                    <em>Not: E-kayıt yaptıran öğrencilerin ayrıca fiziksel evrak teslim etmesine gerek yoktur.</em>
+                </div>
+            </div>
+
+            <div class="announcement-item">
+                <div class="announcement-item-title">2. KYK Yurt ve Burs / Öğrenim Kredisi Başvuruları</div>
+                <div class="announcement-item-content">
+                    Gençlik ve Spor Bakanlığı (GSB) tarafından yürütülen KYK yurt ve burs/öğrenim kredisi başvuruları YKS yerleştirme sonuçlarının ilan edilmesinin ardından e-Devlet üzerinden erişime açılmaktadır.
+                    <br><br>
+                    Başvurularınızı e-Devlet kapısında yer alan <strong>"Gençlik ve Spor Bakanlığı / Yurt Başvurusu"</strong> ve <strong>"Burs/Kredi Başvurusu"</strong> ekranlarından gerçekleştirebilirsiniz. Başvuru sırasında aile gelir durumu ve öğrenim bilgilerinizi eksiksiz ve doğru beyan etmeniz önem taşımaktadır. Başvuru tarihlerini ve resmi duyuruları GSB iletişim kanallarından takip edebilirsiniz.
+                </div>
+            </div>
+        </div>
+
+        <!-- Dizin Listesi / Dosyalar Kartı -->
         <div class="file-card">
             <div class="dir-header-bar">
                 <div class="dir-title">Dizin Listesi /</div>
                 <button class="zip-btn" onclick="downloadAllAsZip()" id="zipBtn">Tümünü ZIP Olarak İndir</button>
             </div>
-            <ul>
+            <ul class="file-list">
                 <li>
                     <div class="file-row">
-                        <a href="Figure_1.png" target="_blank" class="file-link">Figure_1.png</a>
-                        <a href="Figure_1.png" download class="download-btn">İndir</a>
+                        <a href="1/Figure_1.png" target="_blank" class="file-link">1 / Figure_1.png</a>
+                        <a href="1/Figure_1.png" download class="download-btn">İndir</a>
                     </div>
                 </li>
                 <li>
                     <div class="file-row">
-                        <a href="Figure_2.png" target="_blank" class="file-link">Figure_2.png</a>
-                        <a href="Figure_2.png" download class="download-btn">İndir</a>
+                        <a href="2/Figure_2.png" target="_blank" class="file-link">2 / Figure_2.png</a>
+                        <a href="2/Figure_2.png" download class="download-btn">İndir</a>
                     </div>
                 </li>
                 <li>
                     <div class="file-row">
-                        <a href="Figure_3.png" target="_blank" class="file-link">Figure_3.png</a>
-                        <a href="Figure_3.png" download class="download-btn">İndir</a>
+                        <a href="3/Figure_3.png" target="_blank" class="file-link">3 / Figure_3.png</a>
+                        <a href="3/Figure_3.png" download class="download-btn">İndir</a>
                     </div>
                 </li>
             </ul>
@@ -234,10 +316,9 @@
 
                 const downloadPromises = Array.from(links).map(async (link) => {
                     const url = link.getAttribute('href');
-                    const filename = link.innerText.trim();
                     const response = await fetch(url);
                     const blob = await response.blob();
-                    zip.file(filename, blob);
+                    zip.file(url, blob);
                 });
 
                 await Promise.all(downloadPromises);
