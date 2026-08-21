@@ -42,9 +42,9 @@
             --md-sys-shape-corner-full: 9999px;
 
             --md-elevation-1: 0 2px 6px rgba(0, 0, 0, 0.35);
+            --md-elevation-2: 0 4px 12px rgba(0, 0, 0, 0.45);
         }
 
-        /* Tipografi & Temel Kodlar */
         *, *::before, *::after, button, input, select, textarea {
             box-sizing: border-box;
             margin: 0;
@@ -54,7 +54,6 @@
             font-variation-settings: 'ROND' 100, 'wght' 500;
         }
 
-        /* Material Symbols İkon Fix */
         .material-symbols-outlined {
             font-family: 'Material Symbols Outlined' !important;
             font-weight: normal !important;
@@ -86,6 +85,7 @@
             max-width: 800px;
             margin: 0 auto;
             width: 100%;
+            transition: max-width 0.3s ease;
         }
 
         /* Header */
@@ -149,6 +149,7 @@
             padding: 14px;
             box-shadow: var(--md-elevation-1);
             margin-bottom: 12px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .card-header-bar {
@@ -225,7 +226,7 @@
             gap: 4px;
         }
 
-        /* Modernize Edilmiş Rüzgar Yönü Görünümü */
+        /* Wind Direction Box (Derece Metni Olmadan Sadece Ok + Yön İsmi) */
         .wind-direction-box {
             display: flex;
             align-items: center;
@@ -303,6 +304,7 @@
             white-space: nowrap;
             min-height: 40px;
             flex-shrink: 0;
+            transition: opacity 0.2s ease, background-color 0.2s ease;
         }
 
         .m3-btn-tonal {
@@ -321,6 +323,7 @@
             text-decoration: none;
             min-height: 38px;
             flex-shrink: 0;
+            transition: background-color 0.2s ease;
         }
 
         .m3-icon-btn-tonal {
@@ -336,9 +339,10 @@
             cursor: pointer;
             text-decoration: none;
             flex-shrink: 0;
+            transition: background-color 0.2s ease;
         }
 
-        /* File List (Klasörsüz Düz Yapı) */
+        /* File List */
         ul.file-list { 
             list-style: none; 
             display: flex;
@@ -355,6 +359,7 @@
             background-color: var(--md-sys-color-surface-container-high);
             border: 1px solid var(--md-sys-color-outline-variant);
             gap: 10px;
+            transition: border-color 0.2s ease, background-color 0.2s ease;
         }
 
         .file-link {
@@ -374,27 +379,6 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-        }
-
-        @media (max-width: 640px) {
-            .weather-grid { 
-                grid-template-columns: repeat(2, 1fr); 
-                gap: 6px;
-            }
-            .announcement-menu-card { 
-                flex-direction: column; 
-                align-items: stretch; 
-            }
-            .m3-btn-filled { 
-                width: 100%; 
-            }
-            .card-header-bar { 
-                flex-direction: column; 
-                align-items: flex-start; 
-            }
-            .m3-btn-tonal { 
-                width: 100%; 
-            }
         }
 
         .announcement-item {
@@ -442,9 +426,119 @@
             text-align: center;
             color: var(--md-sys-color-outline);
             font-size: 0.75rem;
-            margin-top: 16px;
-            padding: 4px 0;
+            margin-top: 20px;
+            padding: 8px 0;
             font-weight: 500;
+        }
+
+        @media (max-width: 640px) {
+            .weather-grid { 
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 6px;
+            }
+            .announcement-menu-card { 
+                flex-direction: column; 
+                align-items: stretch; 
+            }
+            .m3-btn-filled { 
+                width: 100%; 
+            }
+            .card-header-bar { 
+                flex-direction: column; 
+                align-items: flex-start; 
+            }
+            .m3-btn-tonal { 
+                width: 100%; 
+            }
+        }
+
+        @media (min-width: 992px) {
+            .container {
+                max-width: 1200px;
+                padding: 10px 0;
+            }
+
+            .header {
+                padding: 20px 24px;
+                margin-bottom: 20px;
+            }
+
+            .logo-container {
+                width: 60px;
+                height: 60px;
+            }
+
+            .logo {
+                width: 46px;
+                height: 46px;
+            }
+
+            h1 {
+                font-size: 1.45rem;
+            }
+
+            .sub-header {
+                font-size: 0.95rem;
+            }
+
+            .desktop-dashboard-grid {
+                display: grid;
+                grid-template-columns: 1fr 380px;
+                gap: 20px;
+                align-items: start;
+            }
+
+            .m3-card {
+                padding: 20px;
+                margin-bottom: 0;
+            }
+
+            .m3-card:hover {
+                box-shadow: var(--md-elevation-2);
+                border-color: var(--md-sys-color-outline);
+            }
+
+            .weather-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 12px;
+            }
+
+            .weather-item {
+                padding: 12px 14px;
+            }
+
+            .weather-item-label {
+                font-size: 0.7rem;
+            }
+
+            .weather-item-value {
+                font-size: 1.05rem;
+            }
+
+            .m3-btn-filled:hover {
+                opacity: 0.9;
+                box-shadow: 0 2px 8px rgba(168, 199, 250, 0.25);
+            }
+
+            .m3-btn-tonal:hover, .m3-icon-btn-tonal:hover {
+                background-color: var(--md-sys-color-surface-container-highest);
+                border-color: var(--md-sys-color-primary);
+            }
+
+            .file-row:hover {
+                background-color: var(--md-sys-color-surface-container-highest);
+                border-color: var(--md-sys-color-primary);
+            }
+
+            .left-column-stack {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .announcement-menu-card {
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -463,82 +557,92 @@
 
         <!-- ================= ANA SAYFA GÖRÜNÜMÜ ================= -->
         <div id="main-view">
-            <!-- Kampüste Hava Kartı -->
-            <div class="m3-card">
-                <div class="card-header-bar">
-                    <div class="card-title-group">
-                        <span class="material-symbols-outlined">thermostat</span>
-                        <span>Kampüste Hava</span>
+            <div class="desktop-dashboard-grid">
+                
+                <!-- Sol Kolon -->
+                <div class="left-column-stack">
+                    <!-- MGM Hava Durumu Kartı -->
+                    <div class="m3-card">
+                        <div class="card-header-bar">
+                            <div class="card-title-group">
+                                <span class="material-symbols-outlined">thermostat</span>
+                                <span>Kampüste Hava (MGM)</span>
+                            </div>
+                            <div class="weather-time" id="weatherTime">Yükleniyor...</div>
+                        </div>
+                        <div class="weather-grid" id="weatherGrid">
+                            <!-- MGM Verileri Dinamik Yüklenecek -->
+                        </div>
                     </div>
-                    <div class="weather-time" id="weatherTime">Yükleniyor...</div>
-                </div>
-                <div class="weather-grid" id="weatherGrid">
-                    <!-- Canlı Veriler -->
-                </div>
-            </div>
 
-            <!-- Duyurular Menü Kartı -->
-            <div class="m3-card announcement-menu-card" onclick="toggleView('announcements')">
-                <div class="announcement-menu-info">
-                    <h2>
-                        <span class="material-symbols-outlined">campaign</span>
-                        Duyurular ve Bilgilendirmeler
-                    </h2>
-                    <p>E-Kayıt Rehberi, KYK Yurt/Burs İşlemleri ve Muafiyet Sınavları</p>
-                </div>
-                <button class="m3-btn-filled">
-                    <span>Duyurular İçin Tıklayınız</span>
-                    <span class="material-symbols-outlined">arrow_forward</span>
-                </button>
-            </div>
-
-            <!-- Dosyalar Kartı (Yenilendi) -->
-            <div class="m3-card">
-                <div class="card-header-bar">
-                    <div class="card-title-group">
-                        <span class="material-symbols-outlined">description</span>
-                        <span>Dosyalar</span>
+                    <!-- Duyurular Menü Kartı -->
+                    <div class="m3-card announcement-menu-card" onclick="toggleView('announcements')">
+                        <div class="announcement-menu-info">
+                            <h2>
+                                <span class="material-symbols-outlined">campaign</span>
+                                Duyurular ve Bilgilendirmeler
+                            </h2>
+                            <p>E-Kayıt Rehberi, KYK Yurt/Burs İşlemleri ve Muafiyet Sınavları</p>
+                        </div>
+                        <button class="m3-btn-filled">
+                            <span>Duyurular İçin Tıklayınız</span>
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </button>
                     </div>
-                    <button class="m3-btn-filled" onclick="downloadAllAsZip()" id="zipBtn">
-                        <span class="material-symbols-outlined">folder_zip</span>
-                        <span>Tümünü ZIP Olarak İndir</span>
-                    </button>
                 </div>
-                <ul class="file-list">
-                    <li>
-                        <div class="file-row">
-                            <a href="Figure_1.png" target="_blank" class="file-link">
-                                <span class="material-symbols-outlined" style="color: var(--md-sys-color-primary);">image</span>
-                                <span>Figure_1.png</span>
-                            </a>
-                            <a href="Figure_1.png" download class="m3-icon-btn-tonal" aria-label="İndir" title="İndir">
-                                <span class="material-symbols-outlined">download</span>
-                            </a>
+
+                <!-- Sağ Kolon -->
+                <div class="right-column-stack">
+                    <!-- Dosyalar Kartı -->
+                    <div class="m3-card">
+                        <div class="card-header-bar">
+                            <div class="card-title-group">
+                                <span class="material-symbols-outlined">description</span>
+                                <span>Dosyalar</span>
+                            </div>
+                            <button class="m3-btn-filled" onclick="downloadAllAsZip()" id="zipBtn">
+                                <span class="material-symbols-outlined">folder_zip</span>
+                                <span>Tümünü ZIP İndir</span>
+                            </button>
                         </div>
-                    </li>
-                    <li>
-                        <div class="file-row">
-                            <a href="Figure_2.png" target="_blank" class="file-link">
-                                <span class="material-symbols-outlined" style="color: var(--md-sys-color-primary);">image</span>
-                                <span>Figure_2.png</span>
-                            </a>
-                            <a href="Figure_2.png" download class="m3-icon-btn-tonal" aria-label="İndir" title="İndir">
-                                <span class="material-symbols-outlined">download</span>
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="file-row">
-                            <a href="Figure_3.png" target="_blank" class="file-link">
-                                <span class="material-symbols-outlined" style="color: var(--md-sys-color-primary);">image</span>
-                                <span>Figure_3.png</span>
-                            </a>
-                            <a href="Figure_3.png" download class="m3-icon-btn-tonal" aria-label="İndir" title="İndir">
-                                <span class="material-symbols-outlined">download</span>
-                            </a>
-                        </div>
-                    </li>
-                </ul>
+                        <ul class="file-list">
+                            <li>
+                                <div class="file-row">
+                                    <a href="Figure_1.png" target="_blank" class="file-link">
+                                        <span class="material-symbols-outlined" style="color: var(--md-sys-color-primary);">image</span>
+                                        <span>Figure_1.png</span>
+                                    </a>
+                                    <a href="Figure_1.png" download class="m3-icon-btn-tonal" aria-label="İndir" title="İndir">
+                                        <span class="material-symbols-outlined">download</span>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="file-row">
+                                    <a href="Figure_2.png" target="_blank" class="file-link">
+                                        <span class="material-symbols-outlined" style="color: var(--md-sys-color-primary);">image</span>
+                                        <span>Figure_2.png</span>
+                                    </a>
+                                    <a href="Figure_2.png" download class="m3-icon-btn-tonal" aria-label="İndir" title="İndir">
+                                        <span class="material-symbols-outlined">download</span>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="file-row">
+                                    <a href="Figure_3.png" target="_blank" class="file-link">
+                                        <span class="material-symbols-outlined" style="color: var(--md-sys-color-primary);">image</span>
+                                        <span>Figure_3.png</span>
+                                    </a>
+                                    <a href="Figure_3.png" download class="m3-icon-btn-tonal" aria-label="İndir" title="İndir">
+                                        <span class="material-symbols-outlined">download</span>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -590,7 +694,7 @@
                     </span>
                     <div class="announcement-item-title">3. Yabancı Dil ve Bilgi Teknolojileri Muafiyet Sınavları</div>
                     <div class="announcement-item-content">
-                        Dönem başında yapılan muafiyet sınavlarında başarılı olan adaylar ilgili temel ders yükümlülüklerinden muaf sayılırlar.
+                        Dönem başında yapılan muafiyet sınavlarında başarılı olan adaylar ilgili temel ders yükümlülüklerinden muaf sayırlar.
                     </div>
                 </div>
             </div>
@@ -602,100 +706,148 @@
     </div>
 
     <script>
-        function parseWmoCode(code) {
-            const wmoMap = {
-                0: 'Açık',
-                1: 'Az Bulutlu',
-                2: 'Parçalı Bulutlu',
-                3: 'Çok Bulutlu',
-                45: 'Sisli',
-                48: 'Yoğun Sis',
-                51: 'Hafif Çiseleme',
-                53: 'Çiseleme',
-                55: 'Yoğun Çiseleme',
-                61: 'Hafif Yağmurlu',
-                63: 'Yağmurlu',
-                65: 'Kuvvetli Yağmurlu',
-                71: 'Hafif Kar',
-                73: 'Kar Yağışlı',
-                75: 'Yoğun Kar',
-                80: 'Hafif Sağanak',
-                81: 'Sağanak Yağmurlu',
-                82: 'Kuvvetli Sağanak',
-                95: 'Fırtına',
-                96: 'Dolu',
-                99: 'Şiddetli Fırtına'
-            };
-            return wmoMap[code] || 'Parçalı Bulutlu';
-        }
+        // MGM Hadise Kodları Haritası
+        const MGM_HADISE_MAP = {
+            'A': 'Açık',
+            'AB': 'Az Bulutlu',
+            'PB': 'Parçalı Bulutlu',
+            'CB': 'Çok Bulutlu',
+            'HY': 'Hafif Yağmurlu',
+            'Y': 'Yağmurlu',
+            'KY': 'Kuvvetli Yağmurlu',
+            'MSY': 'Mevzi Sağanak Yağmurlu',
+            'SY': 'Sağanak Yağmurlu',
+            'KSY': 'Kuvvetli Sağanak',
+            'GSY': 'Gökgürültülü Sağanak',
+            'KKY': 'Karla Karışık Yağmur',
+            'HK': 'Hafif Kar',
+            'K': 'Kar Yağışlı',
+            'SK': 'Yoğun Kar',
+            'R': 'Rüzgarlı',
+            'S': 'Sisli',
+            'P': 'Puslu',
+            'D': 'Dolu'
+        };
 
         function getWindDirectionText(deg) {
-            const directions = [
-                'Kuzey', 'Kuzeydoğu', 'Doğu', 'Güneydoğu', 
-                'Güney', 'Güneybatı', 'Batı', 'Kuzeybatı'
-            ];
+            const directions = ['Kuzey', 'Kuzeydoğu', 'Doğu', 'Güneydoğu', 'Güney', 'Güneybatı', 'Batı', 'Kuzeybatı'];
             const index = Math.round(deg / 45) % 8;
             return directions[index];
         }
 
-        const BREEZY_API_ENDPOINT = 'https://api.open-meteo.com/v1/forecast?latitude=40.2227&longitude=28.8715&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,rain,weather_code,wind_speed_10m,wind_direction_10m&timezone=auto';
+        // MGM API'ye güvenli proxy köprüsü üzerinden erişim
+        const MGM_TARGET_URL = 'https://servis.mgm.gov.tr/web/sondurumlar?merkezid=91617';
+        const PROXY_URL = `https://corsproxy.io/?${encodeURIComponent(MGM_TARGET_URL)}`;
 
-        async function fetchBreezyWeatherData() {
+        async function fetchMGMWeatherData() {
             const timeEl = document.getElementById('weatherTime');
             
             try {
-                const response = await fetch(BREEZY_API_ENDPOINT);
-                if (!response.ok) throw new Error("Network Error");
-                
-                const data = await response.json();
-                const current = data.current;
+                let response = await fetch(PROXY_URL);
+                if (!response.ok) {
+                    // Alternatif Proxy Denemesi
+                    response = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(MGM_TARGET_URL)}`);
+                }
 
-                renderWeatherGrid({
-                    weatherText: parseWmoCode(current.weather_code),
-                    temp: Math.round(current.temperature_2m * 10) / 10,
-                    feelsLike: Math.round(current.apparent_temperature * 10) / 10,
-                    humidity: current.relative_humidity_2m,
-                    windSpeed: Math.round(current.wind_speed_10m * 10) / 10,
-                    windDeg: current.wind_direction_10m,
-                    precipNow: current.precipitation,
-                    rain24h: current.rain
-                });
+                const rawData = await response.json();
+                const mgmData = Array.isArray(rawData) ? rawData[0] : rawData;
 
-                const now = new Date();
-                const timeStr = `${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}:${now.getSeconds().toString().padStart(2,'0')}`;
-                timeEl.innerText = `Canlı Sync • ${timeStr}`;
+                renderMGMGrid(mgmData);
+
+                if (mgmData.veriZamani) {
+                    const dt = new Date(mgmData.veriZamani);
+                    const timeStr = `${dt.getHours().toString().padStart(2, '0')}:${dt.getMinutes().toString().padStart(2, '0')}`;
+                    timeEl.innerText = `MGM Canlı • ${timeStr}`;
+                } else {
+                    timeEl.innerText = 'MGM Canlı Sync';
+                }
 
             } catch (error) {
-                console.warn("API Error:", error);
+                console.warn("MGM API Yüklenemedi, yedek veri işleniyor:", error);
                 timeEl.innerText = "Yenileniyor...";
             }
         }
 
-        function renderWeatherGrid(data) {
+        // Geçersiz (-9999) değer kontrolü
+        function isValidValue(val) {
+            return val !== undefined && val !== null && val !== -9999 && val !== "-9999";
+        }
+
+        function renderMGMGrid(data) {
             const gridEl = document.getElementById('weatherGrid');
             gridEl.innerHTML = '';
 
-            const windText = getWindDirectionText(data.windDeg);
+            const items = [];
 
-            const items = [
-                { label: 'HAVA DURUMU', value: data.weatherText },
-                { label: 'SICAKLIK', value: `${data.temp} °C` },
-                { label: 'HİSSEDİLEN', value: `${data.feelsLike} °C` },
-                { label: 'NEM', value: `%${data.humidity}` },
-                { label: 'RÜZGAR HIZI', value: `${data.windSpeed} km/s` },
-                { 
-                    label: 'RÜZGAR YÖNÜ', 
+            // 1. Hadise / Hava Durumu
+            if (isValidValue(data.hadiseKodu)) {
+                items.push({
+                    label: 'HAVA DURUMU',
+                    value: MGM_HADISE_MAP[data.hadiseKodu] || data.hadiseKodu
+                });
+            }
+
+            // 2. Sıcaklık
+            if (isValidValue(data.sicaklik)) {
+                items.push({ label: 'SICAKLIK', value: `${data.sicaklik} °C` });
+            }
+
+            // 3. Hissedilen Sıcaklık
+            if (isValidValue(data.hissedilenSicaklik)) {
+                items.push({ label: 'HİSSEDİLEN', value: `${data.hissedilenSicaklik} °C` });
+            }
+
+            // 4. Nem
+            if (isValidValue(data.nem)) {
+                items.push({ label: 'NEM', value: `%${data.nem}` });
+            }
+
+            // 5. Rüzgar Hızı
+            if (isValidValue(data.ruzgarHiz)) {
+                const speedFormatted = Math.round(data.ruzgarHiz * 10) / 10;
+                items.push({ label: 'RÜZGAR HIZI', value: `${speedFormatted} km/s` });
+            }
+
+            // 6. Rüzgar Yönü (Sadece Ok + Yön İsmi, Derece Metni GİZLİ)
+            if (isValidValue(data.ruzgarYon)) {
+                const windDegree = data.ruzgarYon;
+                const windDirName = getWindDirectionText(windDegree);
+                
+                items.push({
+                    label: 'RÜZGAR YÖNÜ',
                     customHtml: `
                         <div class="wind-direction-box">
-                            <span class="material-symbols-outlined wind-arrow" style="transform: rotate(${data.windDeg}deg);">navigation</span>
-                            <span class="wind-text">${windText}</span>
+                            <span class="material-symbols-outlined wind-arrow" style="transform: rotate(${windDegree}deg);">navigation</span>
+                            <span class="wind-text">${windDirName}</span>
                         </div>
-                    ` 
-                },
-                { label: 'ANLIK YAĞIŞ', value: `${data.precipNow} mm` },
-                { label: '24 SA. YAĞIŞ', value: `${data.rain24h} mm` }
-            ];
+                    `
+                });
+            }
 
+            // 7. Yağış Parametreleri (-9999 Olmayanlar)
+            if (isValidValue(data.yagis1Saat)) {
+                items.push({ label: '1 SAAT YAĞIŞ', value: `${data.yagis1Saat} mm` });
+            } else if (isValidValue(data.yagis00Now)) {
+                items.push({ label: 'ANLIK YAĞIŞ', value: `${data.yagis00Now} mm` });
+            }
+
+            if (isValidValue(data.yagis24Saat)) {
+                items.push({ label: '24 SA. YAĞIŞ', value: `${data.yagis24Saat} mm` });
+            }
+
+            if (isValidValue(data.denizSicaklik)) {
+                items.push({ label: 'DENİZ SICAKLIĞI', value: `${data.denizSicaklik} °C` });
+            }
+
+            if (isValidValue(data.karYukseklik)) {
+                items.push({ label: 'KAR YÜKSEKLİĞİ', value: `${data.karYukseklik} cm` });
+            }
+
+            if (isValidValue(data.aktuelBasinc)) {
+                items.push({ label: 'BASINÇ', value: `${data.aktuelBasinc} hPa` });
+            }
+
+            // Arayüze Dinamik Basma
             items.forEach(item => {
                 const itemDiv = document.createElement('div');
                 itemDiv.className = 'weather-item';
@@ -774,8 +926,8 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            fetchBreezyWeatherData();
-            setInterval(fetchBreezyWeatherData, 30000);
+            fetchMGMWeatherData();
+            setInterval(fetchMGMWeatherData, 60000); // 1 dakikada bir otomatik yenileme
         });
     </script>
 </body>
