@@ -4,12 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BUÜ - Elektronik Teknolojisi Dosya Sunucusu</title>
-
-    <!-- Google Fonts: Parkinsans -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&display=swap" rel="stylesheet">
-
     <style>
         * {
             box-sizing: border-box;
@@ -17,7 +11,8 @@
             padding: 0;
         }
         body { 
-            font-family: 'Parkinsans', sans-serif; 
+            /* Cihazın yerel yüksek hızlı sistem fontları */
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
             background-color: #0b132b; 
             color: #e0e6ed; 
             padding: 20px 15px;
@@ -63,7 +58,7 @@
             margin-bottom: 12px;
             padding-bottom: 8px;
             border-bottom: 1px solid #3a506b;
-            font-weight: 400;
+            font-weight: 500;
         }
         ul { 
             list-style: none; 
@@ -81,7 +76,7 @@
             padding: 12px 14px;
             border-radius: 8px;
             background-color: rgba(255, 255, 255, 0.03);
-            transition: all 0.2s ease;
+            transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
             font-size: 0.95rem;
             font-weight: 400;
             word-break: break-all;
