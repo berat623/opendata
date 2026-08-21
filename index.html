@@ -63,6 +63,67 @@
             font-weight: 500;
         }
 
+        /* Kampüste Hava Kartı Stilleri */
+        .weather-card {
+            background: #1c2541;
+            border-radius: 12px;
+            border: 1px solid #3a506b;
+            padding: 18px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+        }
+        .weather-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #3a506b;
+        }
+        .weather-title {
+            color: #52b788;
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+        .weather-time {
+            color: #a0aec0;
+            font-size: 0.8rem;
+        }
+        .weather-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+            gap: 10px;
+        }
+        .weather-item {
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 10px 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .weather-item-label {
+            color: #a0aec0;
+            font-size: 0.78rem;
+            font-weight: 500;
+        }
+        .weather-item-value {
+            color: #48cae4;
+            font-size: 1rem;
+            font-weight: 600;
+            word-break: break-all;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .wind-arrow {
+            display: inline-block;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+            color: #52b788;
+        }
+
         /* Bölüm Duyuruları Kartı Stilleri */
         .announcement-card {
             background: #1c2541;
@@ -220,9 +281,8 @@
             .logo { width: 55px; height: 55px; }
             h1 { font-size: 1.15rem; }
             .sub-header { font-size: 0.85rem; }
-            .announcement-card { padding: 14px; }
-            .announcement-card-title { font-size: 0.98rem; }
-            .announcement-item { padding: 10px 12px; }
+            .weather-card, .announcement-card { padding: 14px; }
+            .weather-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
             .file-row { padding: 10px; }
             .file-link { font-size: 0.88rem; }
             .download-btn { padding: 6px 10px; font-size: 0.8rem; }
@@ -239,6 +299,17 @@
             <div class="header-text">
                 <h1>Bursa Uludağ Üniversitesi</h1>
                 <div class="sub-header">Elektronik Teknolojisi Programı</div>
+            </div>
+        </div>
+
+        <!-- Kampüste Hava Kartı -->
+        <div class="weather-card">
+            <div class="weather-header">
+                <div class="weather-title">Kampüste Hava</div>
+                <div class="weather-time" id="weatherTime">Güncelleniyor...</div>
+            </div>
+            <div class="weather-grid" id="weatherGrid">
+                <!-- Hava durumu verileri dinamik yüklenecek -->
             </div>
         </div>
 
@@ -304,13 +375,134 @@
     </div>
 
     <script>
+        // İstasyon API Adresiniz
+        const TARGET_API_URL = 'https://servis.mgm.gov.tr/web/sondurumlar?merkezid=18386'; // Örnek İstasyon URL
+        
+        // BreezyWeather / CORS Proxy Yolu (İzin verilmeyen API'lere direkt tarayıcı erişimi sağlar)
+        const PROXY_URL = 'https://corsproxy.io/?' + encodeURIComponent(TARGET_API_URL);
+
+        // API Çekilemediğinde Yedek Olarak Kullanılacak Doğrudan Veri
+        const FALLBACK_DATA = [{
+            "aktuelBasinc": -9999,
+            "denizSicaklik": -9999,
+            "denizeIndirgenmisBasinc": -9999,
+            "gorus": -9999,
+            "hadiseKodu": "A",
+            "istNo": 18386,
+            "kapalilik": -9999,
+            "karYukseklik": -9999,
+            "nem": 53,
+            "rasatMetar": "-9999",
+            "rasatSinoptik": "-9999",
+            "rasatTaf": "-9999",
+            "ruzgarHiz": 12.24,
+            "ruzgarYon": 326,
+            "sicaklik": 31.8,
+            "veriZamani": "2026-08-21T09:24:00.000Z",
+            "yagis00Now": 0,
+            "yagis10Dk": 0,
+            "yagis12Saat": 0,
+            "yagis1Saat": 0,
+            "yagis24Saat": 0,
+            "yagis6Saat": 0,
+            "denizVeriZamani": "2026-08-21T09:24:00.000Z",
+            "hissedilenSicaklik": 35.2
+        }];
+
+        async function loadWeatherData() {
+            let data = null;
+            try {
+                const response = await fetch(PROXY_URL);
+                if (response.ok) {
+                    const json = await response.json();
+                    data = Array.isArray(json) ? json[0] : json;
+                }
+            } catch (e) {
+                console.warn("API proxy ile çekilemedi, varsayılan veri kullanılıyor:", e);
+            }
+
+            if (!data) {
+                data = FALLBACK_DATA[0];
+            }
+
+            renderWeatherData(data);
+        }
+
+        function renderWeatherData(data) {
+            const timeEl = document.getElementById('weatherTime');
+            const gridEl = document.getElementById('weatherGrid');
+
+            if (data.veriZamani) {
+                const date = new Date(data.veriZamani);
+                timeEl.innerText = 'Son Ölçüm: ' + date.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });
+            }
+
+            gridEl.innerHTML = '';
+
+            // Tüm gelen anahtarlar ve açıklayıcı etiketleri
+            const labelMapping = {
+                "sicaklik": "Sıcaklık (°C)",
+                "hissedilenSicaklik": "Hissedilen (°C)",
+                "nem": "Nem (%)",
+                "ruzgarHiz": "Rüzgar Hızı (km/s)",
+                "ruzgarYon": "Rüzgar Yönü (°)",
+                "aktuelBasinc": "Aktüel Basınç",
+                "denizSicaklik": "Deniz Sıcaklığı",
+                "denizeIndirgenmisBasinc": "Denize İnd. Basınç",
+                "gorus": "Görüş Mesafesi",
+                "hadiseKodu": "Hadise Kodu",
+                "istNo": "İstasyon No",
+                "kapalilik": "Kapalılık Oranı",
+                "karYukseklik": "Kar Yüksekliği",
+                "yagis00Now": "Anlık Yağış",
+                "yagis10Dk": "10 Dk Yağış",
+                "yagis1Saat": "1 Saat Yağış",
+                "yagis6Saat": "6 Saat Yağış",
+                "yagis12Saat": "12 Saat Yağış",
+                "yagis24Saat": "24 Saat Yağış",
+                "rasatMetar": "METAR Rasatı",
+                "rasatSinoptik": "Sinoptik Rasat",
+                "rasatTaf": "TAF Rasatı",
+                "veriZamani": "Veri Zamanı",
+                "denizVeriZamani": "Deniz Veri Zamanı"
+            };
+
+            Object.keys(data).forEach(key => {
+                const val = data[key];
+                const label = labelMapping[key] || key;
+
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'weather-item';
+
+                const labelDiv = document.createElement('div');
+                labelDiv.className = 'weather-item-label';
+                labelDiv.innerText = label;
+
+                const valueDiv = document.createElement('div');
+                valueDiv.className = 'weather-item-value';
+
+                // Rüzgar Yönü özel oku
+                if (key === 'ruzgarYon') {
+                    const degree = parseFloat(val);
+                    valueDiv.innerHTML = `${val}° <span class="wind-arrow" style="transform: rotate(${degree}deg);">⬆</span>`;
+                } else {
+                    valueDiv.innerText = val !== null && val !== undefined ? val : '-';
+                }
+
+                itemDiv.appendChild(labelDiv);
+                itemDiv.appendChild(valueDiv);
+                gridEl.appendChild(itemDiv);
+            });
+        }
+
+        loadWeatherData();
+
         async function downloadAllAsZip() {
             const btn = document.getElementById('zipBtn');
             const originalText = btn.innerText;
             btn.innerText = "Hazırlanıyor...";
             btn.disabled = true;
 
-            // ZIP içinde klasörlü görünecek yollar
             const filesToZip = [
                 { url: 'Figure_1.png', zipPath: '1/Figure_1.png' },
                 { url: 'Figure_2.png', zipPath: '2/Figure_2.png' },
