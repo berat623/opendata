@@ -101,22 +101,11 @@
             gap: 14px;
         }
 
-        .logo-container {
+        .logo {
             width: 52px;
             height: 52px;
-            background-color: var(--md-sys-color-surface-container-high);
-            border-radius: var(--md-sys-shape-corner-medium);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            border: 1px solid var(--md-sys-color-outline-variant);
-        }
-
-        .logo {
-            width: 40px;
-            height: 40px;
             object-fit: contain;
+            flex-shrink: 0;
         }
 
         .header-text {
@@ -170,85 +159,6 @@
             font-size: clamp(0.95rem, 3.5vw, 1.05rem);
             font-weight: 700;
             min-width: 0;
-        }
-
-        .weather-time {
-            color: var(--md-sys-color-outline);
-            font-size: 0.72rem;
-            font-weight: 500;
-            background-color: var(--md-sys-color-surface-container-high);
-            padding: 4px 8px;
-            border-radius: var(--md-sys-shape-corner-full);
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
-
-        /* Weather Grid */
-        .weather-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
-        }
-
-        .weather-item {
-            background-color: var(--md-sys-color-surface-container-high);
-            border: 1px solid var(--md-sys-color-outline-variant);
-            border-radius: var(--md-sys-shape-corner-medium);
-            padding: 8px 10px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            min-width: 0;
-            overflow: hidden;
-        }
-
-        .weather-item-label {
-            color: var(--md-sys-color-outline);
-            font-size: clamp(0.62rem, 2.2vw, 0.72rem);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.2px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            margin-bottom: 4px;
-        }
-
-        .weather-item-value {
-            color: var(--md-sys-color-on-background);
-            font-size: clamp(0.85rem, 3vw, 1rem);
-            font-weight: 700;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .wind-direction-box {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            min-width: 0;
-            margin-top: 1px;
-        }
-
-        .wind-arrow {
-            font-size: 20px !important;
-            color: var(--md-sys-color-primary);
-            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            display: inline-block;
-            flex-shrink: 0;
-        }
-
-        .wind-text {
-            font-size: clamp(0.85rem, 3vw, 0.98rem);
-            font-weight: 700;
-            color: var(--md-sys-color-on-background);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
         }
 
         /* Interactive Menu Card */
@@ -431,10 +341,6 @@
         }
 
         @media (max-width: 640px) {
-            .weather-grid { 
-                grid-template-columns: repeat(2, 1fr); 
-                gap: 6px;
-            }
             .announcement-menu-card { 
                 flex-direction: column; 
                 align-items: stretch; 
@@ -462,14 +368,9 @@
                 margin-bottom: 20px;
             }
 
-            .logo-container {
+            .logo {
                 width: 60px;
                 height: 60px;
-            }
-
-            .logo {
-                width: 46px;
-                height: 46px;
             }
 
             h1 {
@@ -495,23 +396,6 @@
             .m3-card:hover {
                 box-shadow: var(--md-elevation-2);
                 border-color: var(--md-sys-color-outline);
-            }
-
-            .weather-grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 12px;
-            }
-
-            .weather-item {
-                padding: 12px 14px;
-            }
-
-            .weather-item-label {
-                font-size: 0.7rem;
-            }
-
-            .weather-item-value {
-                font-size: 1.05rem;
             }
 
             .m3-btn-filled:hover {
@@ -545,9 +429,7 @@
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <div class="logo-container">
-                <img src="logo.png" alt="BUÜ Logo" class="logo">
-            </div>
+            <img src="logo.png" alt="BUÜ Logo" class="logo">
             <div class="header-text">
                 <h1>Elektronik Teknolojisi Programı Bilgi Sistemi</h1>
                 <div class="sub-header">Bursa Uludağ Üniversitesi</div>
@@ -560,20 +442,6 @@
                 
                 <!-- Sol Kolon -->
                 <div class="left-column-stack">
-                    <!-- MGM Hava Durumu Kartı -->
-                    <div class="m3-card">
-                        <div class="card-header-bar">
-                            <div class="card-title-group">
-                                <span class="material-symbols-outlined">thermostat</span>
-                                <span>Kampüste Hava (MGM)</span>
-                            </div>
-                            <div class="weather-time" id="weatherTime">Yükleniyor...</div>
-                        </div>
-                        <div class="weather-grid" id="weatherGrid">
-                            <!-- MGM Doğrudan Veriler -->
-                        </div>
-                    </div>
-
                     <!-- Duyurular Menü Kartı -->
                     <div class="m3-card announcement-menu-card" onclick="toggleView('announcements')">
                         <div class="announcement-menu-info">
@@ -705,160 +573,6 @@
     </div>
 
     <script>
-        const MGM_HADISE_MAP = {
-            'A': 'Açık',
-            'AB': 'Az Bulutlu',
-            'PB': 'Parçalı Bulutlu',
-            'CB': 'Çok Bulutlu',
-            'HY': 'Hafif Yağmurlu',
-            'Y': 'Yağmurlu',
-            'KY': 'Kuvvetli Yağmurlu',
-            'MSY': 'Mevzi Sağanak Yağmurlu',
-            'SY': 'Sağanak Yağmurlu',
-            'KSY': 'Kuvvetli Sağanak',
-            'GSY': 'Gökgürültülü Sağanak',
-            'KKY': 'Karla Karışık Yağmur',
-            'HK': 'Hafif Kar',
-            'K': 'Kar Yağışlı',
-            'SK': 'Yoğun Kar',
-            'R': 'Rüzgarlı',
-            'S': 'Sisli',
-            'P': 'Puslu',
-            'D': 'Dolu'
-        };
-
-        function getWindDirectionText(deg) {
-            const directions = ['Kuzey', 'Kuzeydoğu', 'Doğu', 'Güneydoğu', 'Güney', 'Güneybatı', 'Batı', 'Kuzeybatı'];
-            const index = Math.round(deg / 45) % 8;
-            return directions[index];
-        }
-
-        // Doğrudan MGM API Endpoint
-        const MGM_DIRECT_URL = 'https://servis.mgm.gov.tr/web/sondurumlar?merkezid=91617';
-
-        async function fetchMGMWeatherData() {
-            const timeEl = document.getElementById('weatherTime');
-            
-            try {
-                const response = await fetch(MGM_DIRECT_URL);
-                if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
-
-                const rawData = await response.json();
-                const mgmData = Array.isArray(rawData) ? rawData[0] : rawData;
-
-                renderMGMGrid(mgmData);
-
-                if (mgmData.veriZamani) {
-                    const dt = new Date(mgmData.veriZamani);
-                    const timeStr = `${dt.getHours().toString().padStart(2, '0')}:${dt.getMinutes().toString().padStart(2, '0')}`;
-                    timeEl.innerText = `MGM Canlı • ${timeStr}`;
-                } else {
-                    timeEl.innerText = 'MGM Canlı Sync';
-                }
-
-            } catch (error) {
-                console.warn("MGM API Doğrudan İsteğinde Hata:", error);
-                timeEl.innerText = "Yenileniyor...";
-            }
-        }
-
-        function isValidValue(val) {
-            return val !== undefined && val !== null && val !== -9999 && val !== "-9999";
-        }
-
-        function renderMGMGrid(data) {
-            const gridEl = document.getElementById('weatherGrid');
-            gridEl.innerHTML = '';
-
-            const items = [];
-
-            if (isValidValue(data.hadiseKodu)) {
-                items.push({
-                    label: 'HAVA DURUMU',
-                    value: MGM_HADISE_MAP[data.hadiseKodu] || data.hadiseKodu
-                });
-            }
-
-            if (isValidValue(data.sicaklik)) {
-                items.push({ label: 'SICAKLIK', value: `${data.sicaklik} °C` });
-            }
-
-            if (isValidValue(data.hissedilenSicaklik)) {
-                items.push({ label: 'HİSSEDİLEN', value: `${data.hissedilenSicaklik} °C` });
-            }
-
-            if (isValidValue(data.nem)) {
-                items.push({ label: 'NEM', value: `%${data.nem}` });
-            }
-
-            if (isValidValue(data.ruzgarHiz)) {
-                const speedFormatted = Math.round(data.ruzgarHiz * 10) / 10;
-                items.push({ label: 'RÜZGAR HIZI', value: `${speedFormatted} km/s` });
-            }
-
-            // Rüzgar Yönü: Derece gizli, ikon rotated, metin var
-            if (isValidValue(data.ruzgarYon)) {
-                const windDegree = data.ruzgarYon;
-                const windDirName = getWindDirectionText(windDegree);
-                
-                items.push({
-                    label: 'RÜZGAR YÖNÜ',
-                    customHtml: `
-                        <div class="wind-direction-box">
-                            <span class="material-symbols-outlined wind-arrow" style="transform: rotate(${windDegree}deg);">navigation</span>
-                            <span class="wind-text">${windDirName}</span>
-                        </div>
-                    `
-                });
-            }
-
-            if (isValidValue(data.yagis1Saat)) {
-                items.push({ label: '1 SAAT YAĞIŞ', value: `${data.yagis1Saat} mm` });
-            } else if (isValidValue(data.yagis00Now)) {
-                items.push({ label: 'ANLIK YAĞIŞ', value: `${data.yagis00Now} mm` });
-            }
-
-            if (isValidValue(data.yagis24Saat)) {
-                items.push({ label: '24 SA. YAĞIŞ', value: `${data.yagis24Saat} mm` });
-            }
-
-            if (isValidValue(data.denizSicaklik)) {
-                items.push({ label: 'DENİZ SICAKLIĞI', value: `${data.denizSicaklik} °C` });
-            }
-
-            if (isValidValue(data.karYukseklik)) {
-                items.push({ label: 'KAR YÜKSEKLİĞİ', value: `${data.karYukseklik} cm` });
-            }
-
-            if (isValidValue(data.aktuelBasinc)) {
-                items.push({ label: 'BASINÇ', value: `${data.aktuelBasinc} hPa` });
-            }
-
-            items.forEach(item => {
-                const itemDiv = document.createElement('div');
-                itemDiv.className = 'weather-item';
-
-                const labelDiv = document.createElement('div');
-                labelDiv.className = 'weather-item-label';
-                labelDiv.innerText = item.label;
-
-                itemDiv.appendChild(labelDiv);
-
-                if (item.customHtml) {
-                    const customWrapper = document.createElement('div');
-                    customWrapper.innerHTML = item.customHtml;
-                    itemDiv.appendChild(customWrapper);
-                } else {
-                    const valueDiv = document.createElement('div');
-                    valueDiv.className = 'weather-item-value';
-                    valueDiv.innerText = item.value;
-                    itemDiv.appendChild(valueDiv);
-                }
-
-                gridEl.appendChild(itemDiv);
-            });
-        }
-
         function toggleView(viewName) {
             const mainView = document.getElementById('main-view');
             const annView = document.getElementById('announcements-view');
@@ -910,11 +624,6 @@
                 btn.disabled = false;
             }
         }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            fetchMGMWeatherData();
-            setInterval(fetchMGMWeatherData, 60000);
-        });
     </script>
 </body>
 </html>
