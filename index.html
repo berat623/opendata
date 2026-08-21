@@ -4,6 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BUÜ - Elektronik Teknolojisi Dosya Sunucusu</title>
+    
+    <!-- Hızlı ZIP İndirme Altyapısı -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
     <style>
         * {
             box-sizing: border-box;
@@ -11,7 +15,6 @@
             padding: 0;
         }
         body { 
-            /* Cihazın yerel yüksek hızlı sistem fontları */
             font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
             background-color: #0b132b; 
             color: #e0e6ed; 
@@ -52,13 +55,38 @@
             padding: 15px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
-        .dir-title {
-            color: #a0aec0;
-            font-size: 0.85rem;
+        .dir-header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 12px;
             padding-bottom: 8px;
             border-bottom: 1px solid #3a506b;
+            gap: 10px;
+        }
+        .dir-title {
+            color: #a0aec0;
+            font-size: 0.85rem;
             font-weight: 500;
+        }
+        .zip-btn {
+            background-color: #52b788;
+            color: #0b132b;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.15s ease, transform 0.15s ease;
+        }
+        .zip-btn:hover {
+            background-color: #40916c;
+            color: #ffffff;
+        }
+        .zip-btn:disabled {
+            opacity: 0.6;
+            cursor: wait;
         }
         ul { 
             list-style: none; 
@@ -69,22 +97,49 @@
         li:last-child {
             margin-bottom: 0;
         }
-        a { 
-            display: block;
-            color: #90e0ef; 
-            text-decoration: none; 
-            padding: 12px 14px;
+        .file-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 14px;
             border-radius: 8px;
             background-color: rgba(255, 255, 255, 0.03);
-            transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+            transition: background-color 0.15s ease;
+            gap: 12px;
+        }
+        .file-row:hover {
+            background-color: rgba(255, 255, 255, 0.07);
+        }
+        .file-link {
+            color: #90e0ef;
+            text-decoration: none;
             font-size: 0.95rem;
             font-weight: 400;
             word-break: break-all;
+            flex-grow: 1;
+            transition: color 0.15s ease;
         }
-        a:hover, a:active { 
-            background-color: #3a506b;
-            color: #52b788; 
-            transform: translateX(3px);
+        .file-link:hover {
+            color: #52b788;
+            text-decoration: underline;
+        }
+        .download-btn {
+            background-color: #1a3a5c;
+            color: #48cae4;
+            border: 1px solid #3a506b;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            white-space: nowrap;
+            flex-shrink: 0;
+            transition: all 0.15s ease;
+        }
+        .download-btn:hover {
+            background-color: #52b788;
+            color: #0b132b;
+            border-color: #52b788;
         }
         .footer {
             text-align: center;
@@ -101,7 +156,11 @@
             .header { padding: 15px; }
             h1 { font-size: 1.2rem; }
             .sub-header { font-size: 0.85rem; }
-            a { padding: 14px 10px; font-size: 0.9rem; }
+            .file-row { padding: 10px; }
+            .file-link { font-size: 0.88rem; }
+            .download-btn { padding: 6px 10px; font-size: 0.8rem; }
+            .dir-header-bar { flex-direction: column; align-items: flex-start; gap: 8px; }
+            .zip-btn { width: 100%; text-align: center; }
         }
     </style>
 </head>
@@ -113,11 +172,29 @@
         </div>
 
         <div class="file-card">
-            <div class="dir-title">Dizin Listesi /</div>
+            <div class="dir-header-bar">
+                <div class="dir-title">Dizin Listesi /</div>
+                <button class="zip-btn" onclick="downloadAllAsZip()" id="zipBtn">Tümünü ZIP Olarak İndir</button>
+            </div>
             <ul>
-                <li><a href="Figure_1.png">Figure_1.png</a></li>
-                <li><a href="Figure_2.png">Figure_2.png</a></li>
-                <li><a href="Figure_3.png">Figure_3.png</a></li>
+                <li>
+                    <div class="file-row">
+                        <a href="Figure_1.png" target="_blank" class="file-link">Figure_1.png</a>
+                        <a href="Figure_1.png" download class="download-btn">İndir</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="file-row">
+                        <a href="Figure_2.png" target="_blank" class="file-link">Figure_2.png</a>
+                        <a href="Figure_2.png" download class="download-btn">İndir</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="file-row">
+                        <a href="Figure_3.png" target="_blank" class="file-link">Figure_3.png</a>
+                        <a href="Figure_3.png" download class="download-btn">İndir</a>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>
@@ -125,5 +202,42 @@
     <div class="footer">
         BUÜ Elektronik Teknolojisi
     </div>
+
+    <script>
+        async function downloadAllAsZip() {
+            const btn = document.getElementById('zipBtn');
+            const originalText = btn.innerText;
+            btn.innerText = "Hazırlanıyor...";
+            btn.disabled = true;
+
+            try {
+                const zip = new JSZip();
+                const links = document.querySelectorAll('.file-link');
+
+                const downloadPromises = Array.from(links).map(async (link) => {
+                    const url = link.getAttribute('href');
+                    const filename = link.innerText.trim();
+                    const response = await fetch(url);
+                    const blob = await response.blob();
+                    zip.file(filename, blob);
+                });
+
+                await Promise.all(downloadPromises);
+
+                const content = await zip.generateAsync({ type: "blob" });
+                const a = document.createElement("a");
+                a.href = URL.createObjectURL(content);
+                a.download = "BUU_Elektronik_Dosyalar.zip";
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            } catch (error) {
+                alert("ZIP dosyası oluşturulurken bir hata oluştu: " + error.message);
+            } finally {
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }
+        }
+    </script>
 </body>
 </html>
