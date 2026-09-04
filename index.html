@@ -70,7 +70,6 @@
         .card-title-group { display: flex; align-items: center; gap: 8px; color: var(--md-sys-color-primary); font-size: 1.05rem; font-weight: 700; }
 
         .m3-btn-filled { background-color: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary); border: none; padding: 8px 16px; border-radius: var(--md-sys-shape-corner-full); font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
-        .m3-btn-filled:disabled { opacity: 0.5; cursor: not-allowed; }
         .m3-btn-tonal { background-color: var(--md-sys-color-secondary-container); color: var(--md-sys-color-on-secondary-container); border: 1px solid var(--md-sys-color-outline-variant); padding: 6px 12px; border-radius: var(--md-sys-shape-corner-full); font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
         .m3-btn-danger { background-color: var(--md-sys-color-error); color: #600004; border: none; padding: 6px 12px; border-radius: var(--md-sys-shape-corner-small); font-weight: 600; cursor: pointer; }
 
@@ -89,6 +88,24 @@
         .item-date { font-size: 0.8rem; color: var(--md-sys-color-outline); margin-bottom: 8px; }
         .item-content { line-height: 1.5; color: var(--md-sys-color-on-background); white-space: pre-wrap; }
 
+        /* Bakım Ekranı Tasarımı */
+        .maintenance-card {
+            text-align: center;
+            padding: 60px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+        .maintenance-icon {
+            font-size: 72px !important;
+            color: var(--md-sys-color-primary);
+            background: var(--md-sys-color-surface-container-high);
+            padding: 20px;
+            border-radius: 50%;
+            border: 1px solid var(--md-sys-color-outline-variant);
+        }
+
         .admin-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: none; justify-content: center; align-items: center; z-index: 1000; padding: 20px; }
         .admin-modal { background: var(--md-sys-color-surface-container); width: 100%; max-width: 600px; border-radius: var(--md-sys-shape-corner-large); padding: 24px; border: 1px solid var(--md-sys-color-outline-variant); max-height: 90vh; overflow-y: auto; }
         .admin-tabs { display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 1px solid var(--md-sys-color-outline-variant); padding-bottom: 10px; }
@@ -105,6 +122,7 @@
             .header { flex-direction: column; align-items: flex-start; gap: 15px; }
             #admin-btn { width: 100%; justify-content: center; }
             .announcement-menu-card { flex-direction: column; align-items: stretch; }
+            .maintenance-card { padding: 40px 16px; }
         }
     </style>
 </head>
@@ -125,8 +143,17 @@
             </button>
         </div>
 
-        <!-- ANA SAYFA -->
-        <div id="main-view">
+        <!-- BAKIM MODU EKRANI (TÜM ZİYARETÇİLER İÇİN) -->
+        <div id="maintenance-view" class="m3-card maintenance-card">
+            <span class="material-symbols-outlined maintenance-icon">engineering</span>
+            <h2 style="font-size: 1.6rem; color: var(--md-sys-color-primary);">Bakım Çalışması Yapılmaktadır</h2>
+            <p style="color: var(--md-sys-color-outline); max-width: 520px; line-height: 1.6; font-size: 0.95rem;">
+                Sistemimiz şu anda bakım ve güncelleme çalışması nedeniyle geçici olarak hizmet dışıdır. En kısa sürede tekrar hizmetinizde olacağız.
+            </p>
+        </div>
+
+        <!-- ANA SAYFA (YÖNETİCİ AÇTIĞINDA VEYA BAKIM BİTTİĞİNDE) -->
+        <div id="main-view" style="display: none;">
             <div class="desktop-dashboard-grid">
                 <div>
                     <div class="m3-card announcement-menu-card" onclick="toggleView('announcements')">
@@ -197,26 +224,18 @@
                 <button class="m3-btn-filled" style="width: 100%; justify-content: center;" onclick="saveItem('announcement')">Duyuruyu Yayınla</button>
             </div>
 
-            <!-- Dosya Sekmesi (İKİ SEÇENEKLİ) -->
+            <!-- Dosya Sekmesi -->
             <div id="file-tab" class="admin-form" style="display: none;">
-                
                 <h3 style="color:#b1f0d0; font-size:1rem; margin-bottom:10px;">Seçenek 1: Doğrudan Dosya Yükle</h3>
-                <p style="font-size:0.8rem; color:var(--md-sys-color-outline); margin-bottom:10px;">
-                    Küçük boyutlu (Maks 20MB) Word, PDF vb. dosyalar için uygundur.
-                </p>
                 <input type="file" id="direct-file-input">
                 <button id="upload-btn" class="m3-btn-filled" style="width: 100%; justify-content: center; margin-bottom:20px;" onclick="uploadDirectFile()">Sisteme Yükle</button>
 
                 <hr style="border: 1px solid var(--md-sys-color-outline-variant); margin: 20px 0;">
 
-                <h3 style="color:#b1f0d0; font-size:1rem; margin-bottom:10px;">Seçenek 2: Dış Link (Sınırsız Boyut)</h3>
-                <p style="font-size:0.8rem; color:var(--md-sys-color-outline); margin-bottom:10px;">
-                    Drive, Yandex Disk vb. yerlere yüklediğiniz dev dosyaların paylaşım linkini buraya girebilirsiniz.
-                </p>
-                <input type="text" id="file-title" placeholder="Dosya Görünüm Adı (Örn: Dev Ders Arşivi)">
+                <h3 style="color:#b1f0d0; font-size:1rem; margin-bottom:10px;">Seçenek 2: Dış Link</h3>
+                <input type="text" id="file-title" placeholder="Dosya Görünüm Adı">
                 <input type="url" id="file-url" placeholder="Dosya İndirme Linki (https://...)">
                 <button class="m3-btn-tonal" style="width: 100%; justify-content: center;" onclick="saveItem('file')">Link Olarak Ekle</button>
-                
             </div>
         </div>
     </div>
@@ -235,16 +254,15 @@
         };
 
         function toggleView(viewName) {
+            document.getElementById('maintenance-view').style.display = 'none';
             document.getElementById('main-view').style.display = viewName === 'main' ? 'block' : 'none';
             document.getElementById('announcements-view').style.display = viewName === 'announcements' ? 'block' : 'none';
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // VERİ ÇEKME - KESİN ÖNBELLEK (CACHE) TEMİZLİĞİ İLE
         async function fetchData() {
             try {
-                // cache: 'no-store' ve rastgele sayı ile GitHub CDN önbelleği baypas edilir
-                const annRes = await fetch(`https://raw.githubusercontent.com/${GITHUB_USERNAME}/${REPO_NAME}/main/duyurular.json?t=${Date.now()}`, { cache: "no-store" });
+                const annRes = await fetch(`https://raw.githubusercontent.com/${GITHUB_USERNAME}/${REPO_NAME}/main/duyurular.json?t=${Date.now()}`);
                 if(annRes.ok) {
                     const data = await annRes.json();
                     announcementsData = Array.isArray(data) ? data : [];
@@ -252,7 +270,7 @@
             } catch (err) { console.error("Duyuru çekme hatası", err); }
 
             try {
-                const fileRes = await fetch(`https://raw.githubusercontent.com/${GITHUB_USERNAME}/${REPO_NAME}/main/dosyalar.json?t=${Date.now()}`, { cache: "no-store" });
+                const fileRes = await fetch(`https://raw.githubusercontent.com/${GITHUB_USERNAME}/${REPO_NAME}/main/dosyalar.json?t=${Date.now()}`);
                 if(fileRes.ok) {
                     const data = await fileRes.json();
                     filesData = Array.isArray(data) ? data : [];
@@ -294,9 +312,10 @@
             }
         }
 
-        // ADMİN FONKSİYONLARI
         function handleAdminAuth() {
             if (userToken) {
+                // Admin giriş yaptıysa bakım ekranını gizleyip paneli aç
+                toggleView('main');
                 document.getElementById('admin-modal-overlay').style.display = 'flex';
             } else {
                 const token = prompt("GitHub Personal Access Token Giriniz:");
@@ -305,6 +324,7 @@
                     localStorage.setItem("gh_admin_token", userToken);
                     updateAdminButtonState();
                     renderUI();
+                    toggleView('main');
                     document.getElementById('admin-modal-overlay').style.display = 'flex';
                 }
             }
@@ -330,17 +350,18 @@
             document.getElementById('btn-' + tabId).classList.add('active');
         }
 
+        /* GITHUB SILME VE GÜNCELLEME SİSTEMİ (CORS HATASI DÜZELTİLDİ) */
         async function commitToGitHub(filename, newData, successMessage) {
             try {
-                const getRes = await fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/${filename}`, {
-                    headers: { 'Authorization': `token ${userToken}`, 'Cache-Control': 'no-cache' }
+                // 'Cache-Control' başlığı kaldırıldı (CORS NetworkError engeli çözüldü)
+                const getRes = await fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/${filename}?t=${Date.now()}`, {
+                    headers: { 'Authorization': `token ${userToken}` }
                 });
 
                 if (!getRes.ok) return alert("Hata! Token yetkisi yetersiz veya süresi geçmiş.");
 
                 const fileData = await getRes.json();
                 
-                // Türkçe karakter bozulmasını engellemek için Base64 encode
                 const contentStr = JSON.stringify(newData, null, 2);
                 const contentEncoded = btoa(new TextEncoder().encode(contentStr).reduce((data, byte) => data + String.fromCharCode(byte), ''));
 
@@ -351,8 +372,9 @@
                 });
 
                 if (updateRes.ok) {
-                    alert(`${successMessage} tamamlandı!\nSite önbelleğini yenilemek için sayfa yenileniyor.`);
-                    location.reload(); // Değişikliklerin anında görünmesi için sayfayı zorunlu yeniler
+                    alert(`${successMessage} tamamlandı!`);
+                    fetchData();
+                    closeAdminModal();
                 } else {
                     alert("Kayıt sırasında hata oluştu.");
                 }
@@ -361,7 +383,6 @@
             }
         }
 
-        // DOĞRUDAN DOSYA YÜKLEME SİSTEMİ (GITHUB REPO'YA YÜKLER)
         async function uploadDirectFile() {
             const fileInput = document.getElementById('direct-file-input');
             const file = fileInput.files[0];
@@ -378,7 +399,6 @@
             const reader = new FileReader();
             reader.onload = async function(e) {
                 const base64Data = e.target.result.split(',')[1];
-                // Dosya adındaki boşlukları ve Türkçe karakterleri güvenli hale getir
                 const safeName = file.name.replace(/\s+/g, '_').replace(/[^a-zA-Z0-9.\-_]/g, '');
                 const filePath = `dosyalar/${Date.now()}_${safeName}`;
                 
@@ -390,14 +410,13 @@
                     });
 
                     if (res.ok) {
-                        // Yüklenen dosyanın raw linkini oluştur
                         const downloadUrl = `https://raw.githubusercontent.com/${GITHUB_USERNAME}/${REPO_NAME}/main/${filePath}`;
                         const newItem = { id: Date.now(), title: file.name, url: downloadUrl };
                         const updatedList = [newItem, ...filesData];
                         
                         await commitToGitHub('dosyalar.json', updatedList, `Yeni Dosya Eklendi: ${file.name}`);
                     } else {
-                        alert("Yükleme başarısız. GitHub depolama sınırına ulaşmış olabilirsiniz.");
+                        alert("Yükleme başarısız oldu.");
                     }
                 } catch (error) {
                     alert("Yükleme sırasında ağ hatası oluştu.");
