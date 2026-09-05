@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval';">
     <meta name="theme-color" content="#0b0f19">
+    <meta name="mobile-web-app-capable" content="yes">
     <title>ETP Bilgi Sistemi | BUÜ</title>
     <link rel="icon" type="image/png" href="logo.png">
 
-    <!-- Fontlar (swap = akıcı yükleme) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet" />
 
     <style>
-        /* ============ TEMA DEĞİŞKENLERİ ============ */
+        /* ================= TEMA ================= */
         :root {
             --bg-body: #0b0f19;
             --bg-surface: #141b2d;
@@ -24,12 +24,13 @@
             --text-muted: #94a3b8;
             --primary: #3b82f6;
             --primary-hover: #2563eb;
+            --primary-soft: rgba(59,130,246,0.18);
             --accent: #10b981;
             --danger: #ef4444;
-            --border: rgba(255, 255, 255, 0.08);
+            --border: rgba(255,255,255,0.08);
 
             --nav-width: 260px;
-            --banner-h: 46px;
+            --banner-h: 44px;
             --radius-lg: 20px;
             --radius-md: 14px;
             --radius-sm: 8px;
@@ -55,9 +56,10 @@
             --text-muted: #64748b;
             --primary: #2563eb;
             --primary-hover: #1d4ed8;
+            --primary-soft: rgba(37,98,235,0.12);
             --accent: #059669;
             --danger: #dc2626;
-            --border: rgba(15, 23, 42, 0.08);
+            --border: rgba(15,23,42,0.08);
             --shadow: 0 10px 30px -12px rgba(2,6,23,0.08);
 
             --weather-gradient: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
@@ -71,41 +73,41 @@
             --banner-text: #92400e;
         }
 
-        @media (max-width: 768px) {
-            :root { --banner-h: 62px; }
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Parkinsans', sans-serif; -webkit-tap-highlight-color: transparent; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Parkinsans', sans-serif; -webkit-tap-highlight-color: transparent; -webkit-text-size-adjust: 100%; }
         html { scroll-behavior: smooth; }
-        body { background-color: var(--bg-body); color: var(--text-main); transition: background-color 0.3s, color 0.3s; overflow-x: hidden; }
+        body { background: var(--bg-body); color: var(--text-main); transition: background-color 0.3s, color 0.3s; overflow-x: hidden; }
+        body.modal-open { overflow: hidden; }
+
+        button, .nav-item, .b-nav-item, a { touch-action: manipulation; }
+        :focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 6px; }
 
         .material-symbols-rounded { font-variation-settings: 'FILL' 1; user-select: none; }
+        .spin { animation: spinSlow 1.6s linear infinite; }
+        @keyframes spinSlow { to { transform: rotate(360deg); } }
 
-        /* ============ BAKIM BANNER'I ============ */
+        /* ================= BAKIM BANNER'I ================= */
         .maintenance-banner {
             position: sticky; top: 0; z-index: 1000;
             height: var(--banner-h);
             display: flex; align-items: center; justify-content: center; gap: 8px;
             padding: 4px 12px; text-align: center;
             background: var(--banner-bg); color: var(--banner-text);
-            font-size: 0.8rem; font-weight: 700; line-height: 1.2;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            font-size: 0.78rem; font-weight: 700; line-height: 1.25;
         }
-        .banner-icon { font-size: 18px; animation: spinSlow 6s linear infinite; }
-        @keyframes spinSlow { to { transform: rotate(360deg); } }
+        .banner-icon { font-size: 18px; flex-shrink: 0; animation: spinSlow 6s linear infinite; }
 
-        /* ============ YERLEŞİM ============ */
+        /* ================= YERLEŞİM ================= */
         .app-container { display: flex; align-items: stretch; }
 
-        /* SIDEBAR */
+        /* --- SIDEBAR (Masaüstü) / RAIL (Tablet) --- */
         .sidebar {
             width: var(--nav-width); flex-shrink: 0;
-            background-color: var(--bg-surface); border-right: 1px solid var(--border);
+            background: var(--bg-surface); border-right: 1px solid var(--border);
             padding: 24px 16px; display: flex; flex-direction: column;
             position: sticky; top: var(--banner-h); height: calc(100vh - var(--banner-h));
             overflow-y: auto; z-index: 50;
         }
-        .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 36px; padding: 0 8px; }
+        .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; padding: 0 8px; }
         .brand-logo {
             width: 42px; height: 42px; border-radius: 12px; object-fit: contain;
             background: var(--logo-bg); border: 1px solid var(--border); padding: 4px; flex-shrink: 0;
@@ -115,34 +117,39 @@
             width: 42px; height: 42px; background: var(--primary); border-radius: 12px;
             color: #fff; font-weight: 800; font-size: 1.2rem; flex-shrink: 0;
         }
-        .brand-text h1 { font-size: 1.05rem; font-weight: 700; line-height: 1.2; }
-        .brand-text p { font-size: 0.72rem; color: var(--text-muted); }
+        .brand-text h1 { font-size: 1.02rem; font-weight: 700; line-height: 1.2; }
+        .brand-text p { font-size: 0.7rem; color: var(--text-muted); }
 
         .nav-links { display: flex; flex-direction: column; gap: 8px; flex: 1; }
         .nav-item {
-            display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: var(--radius-md);
+            display: flex; align-items: center; gap: 12px; padding: 14px 16px;
+            min-height: 48px; border-radius: var(--radius-md);
             color: var(--text-muted); font-weight: 600; cursor: pointer;
-            transition: background-color 0.2s, color 0.2s;
+            transition: background-color 0.2s, color 0.2s, transform 0.12s;
         }
+        .nav-item:active { transform: scale(0.97); }
         .nav-item:hover { background: var(--bg-surface-hover); color: var(--text-main); }
         .nav-item.active { background: var(--primary); color: #fff; }
-        .sidebar-footer { padding-top: 16px; border-top: 1px solid var(--border); }
+        .sidebar-footer { padding-top: 14px; border-top: 1px solid var(--border); }
 
-        /* ANA İÇERİK */
-        .main-content { flex: 1; max-width: 1100px; padding: 28px 40px; min-width: 0; }
+        /* --- ANA İÇERİK --- */
+        .main-content { flex: 1; min-width: 0; max-width: 1100px; padding: 28px 40px; }
 
-        .mobile-brand { display: none; }
+        .top-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 26px; }
+        .header-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
+        .header-logo { display: none; }
+        .page-title { font-size: clamp(1.35rem, 1rem + 1.6vw, 1.85rem); font-weight: 800; line-height: 1.15; }
+        .header-date { color: var(--text-muted); font-size: 0.86rem; margin-top: 2px; }
+        .header-actions { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
 
-        .top-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; gap: 16px; }
-        .page-title { font-size: 1.8rem; font-weight: 800; }
-        .header-actions { display: flex; gap: 10px; align-items: center; }
-
-        /* BUTONLAR */
+        /* --- BUTONLAR (min 44px dokunma hedefi) --- */
         .btn {
-            display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px;
-            border-radius: 50px; font-weight: 600; font-size: 0.9rem; cursor: pointer;
-            border: none; transition: background-color 0.2s, color 0.2s;
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            min-height: 44px; padding: 10px 18px; border-radius: 50px;
+            font-weight: 600; font-size: 0.9rem; cursor: pointer; border: none;
+            transition: background-color 0.2s, color 0.2s, transform 0.12s;
         }
+        .btn:active { transform: scale(0.96); }
         .btn-icon { padding: 10px; border-radius: 50%; }
         .btn-tonal { background: var(--bg-surface); color: var(--text-main); border: 1px solid var(--border); }
         .btn-tonal:hover { background: var(--bg-surface-hover); }
@@ -151,89 +158,127 @@
         .btn-danger { background: rgba(239,68,68,0.1); color: var(--danger); border: 1px solid rgba(239,68,68,0.25); }
         .btn-danger:hover { background: var(--danger); color: #fff; }
 
-        /* GÖRÜNÜM GEÇİŞİ */
-        .view-section { display: none; animation: fadeIn 0.35s ease-out; }
+        /* --- GÖRÜNÜM GEÇİŞİ --- */
+        .view-section { display: none; animation: fadeIn 0.3s ease-out; }
         .view-section.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* WIDGET IZGARASI */
-        .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 26px; }
+        /* --- WIDGET'LAR --- */
+        .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 22px; margin-bottom: 24px; }
 
-        .card { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow); }
-        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; gap: 10px; }
-        .card-title { font-size: 1.05rem; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+        .card { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 22px; box-shadow: var(--shadow); }
+        .card-header { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 16px; }
+        .card-title { font-size: 1.02rem; font-weight: 700; display: flex; align-items: center; gap: 8px; }
 
-        /* HAVA DURUMU */
         .weather-card { background: var(--weather-gradient); border-color: transparent; color: var(--widget-text); }
         .weather-card .card-title { color: var(--widget-text); opacity: 0.95; }
-        .widget-time { font-size: 0.72rem; color: var(--widget-muted); font-weight: 600; }
-        .weather-main { display: flex; align-items: center; gap: 18px; margin-top: 6px; }
-        .weather-temp { font-size: 3.2rem; font-weight: 800; line-height: 1; }
-        .weather-desc { font-size: 1.05rem; font-weight: 600; opacity: 0.9; margin-top: 4px; }
-        .weather-details { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
-        .w-detail { background: var(--widget-chip); padding: 8px 12px; border-radius: var(--radius-sm); font-size: 0.82rem; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+        .widget-time { font-size: 0.7rem; color: var(--widget-muted); font-weight: 600; }
+        .weather-main { display: flex; align-items: center; gap: 16px; margin-top: 4px; }
+        .weather-temp { font-size: clamp(2.4rem, 2rem + 2vw, 3.3rem); font-weight: 800; line-height: 1; }
+        .weather-desc { font-size: 1rem; font-weight: 600; opacity: 0.9; margin-top: 4px; }
+        .weather-details { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+        .w-detail { background: var(--widget-chip); padding: 8px 12px; border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 600; display: flex; align-items: center; gap: 6px; }
 
-        /* SAYAÇ */
-        .timer-card { background: var(--timer-gradient); border-color: transparent; color: var(--widget-text); text-align: center; display: flex; flex-direction: column; justify-content: center; }
-        .timer-title { font-size: 1rem; font-weight: 700; opacity: 0.92; margin-bottom: 18px; }
-        .timer-display { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
-        .t-box { background: var(--widget-chip); padding: 12px; border-radius: var(--radius-md); min-width: 70px; }
-        .t-val { font-size: 1.8rem; font-weight: 800; }
-        .t-lbl { font-size: 0.72rem; text-transform: uppercase; opacity: 0.8; margin-top: 4px; font-weight: 700; }
+        .timer-card { background: var(--timer-gradient); border-color: transparent; color: var(--widget-text); display: flex; flex-direction: column; justify-content: center; }
+        .timer-title { font-size: 0.98rem; font-weight: 700; opacity: 0.92; margin-bottom: 16px; text-align: center; }
+        .timer-display { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+        .t-box { background: var(--widget-chip); padding: 12px 4px; border-radius: var(--radius-md); text-align: center; min-width: 0; }
+        .t-val { font-size: clamp(1.25rem, 1rem + 1.4vw, 1.8rem); font-weight: 800; }
+        .t-lbl { font-size: 0.68rem; text-transform: uppercase; opacity: 0.8; margin-top: 4px; font-weight: 700; }
 
-        /* LİSTELER */
-        .data-list { display: flex; flex-direction: column; gap: 14px; }
-        .data-item { padding: 16px; border: 1px solid var(--border); border-radius: var(--radius-md); display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; transition: border-color 0.2s, background-color 0.2s; }
+        /* --- LİSTELER --- */
+        .data-list { display: flex; flex-direction: column; gap: 12px; }
+        .data-item { padding: 16px; border: 1px solid var(--border); border-radius: var(--radius-md); display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; transition: border-color 0.2s, background-color 0.2s; }
         .data-item:hover { border-color: var(--primary); background: var(--bg-surface-hover); }
-        .item-title { font-size: 1.05rem; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
-        .item-meta { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 8px; display: flex; align-items: center; gap: 4px; }
-        .item-content { font-size: 0.93rem; line-height: 1.6; white-space: pre-wrap; word-break: break-word; }
+        .item-title { font-size: 1.02rem; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
+        .item-meta { font-size: 0.76rem; color: var(--text-muted); margin-bottom: 8px; display: flex; align-items: center; gap: 4px; }
+        .item-content { font-size: 0.92rem; line-height: 1.6; white-space: pre-wrap; word-break: break-word; }
 
-        .empty-state { text-align: center; padding: 40px 20px; color: var(--text-muted); }
+        .empty-state { text-align: center; padding: 38px 20px; color: var(--text-muted); }
         .empty-state span { font-size: 3rem; margin-bottom: 10px; opacity: 0.5; }
 
-        /* TABLO */
-        .table-wrapper { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius-md); }
-        table { width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left; min-width: 640px; }
+        /* --- TABLO --- */
+        .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; border: 1px solid var(--border); border-radius: var(--radius-md); }
+        table { width: 100%; border-collapse: collapse; font-size: 0.87rem; text-align: left; min-width: 620px; }
         th { background: var(--bg-surface-hover); padding: 14px 16px; font-weight: 700; color: var(--primary); border-bottom: 1px solid var(--border); }
         td { padding: 14px 16px; border-bottom: 1px solid var(--border); }
         tr:last-child td { border-bottom: none; }
         tr:hover td { background: var(--bg-surface-hover); }
 
-        .footer { margin-top: 30px; text-align: center; color: var(--text-muted); font-size: 0.75rem; font-weight: 600; }
+        .footer { margin-top: 28px; text-align: center; color: var(--text-muted); font-size: 0.73rem; font-weight: 600; }
 
-        /* MOBİL BOTTOM NAV */
+        /* ================= MOBİL BOTTOM NAV ================= */
         .bottom-nav {
             display: none; position: fixed; bottom: 0; left: 0; width: 100%;
             background: var(--bg-surface); border-top: 1px solid var(--border);
-            padding: 10px 12px; padding-bottom: calc(10px + env(safe-area-inset-bottom));
-            z-index: 900; justify-content: space-between; align-items: center;
+            padding: 8px 6px; padding-bottom: calc(8px + env(safe-area-inset-bottom));
+            z-index: 900; justify-content: space-around; align-items: center;
         }
-        .b-nav-item { display: flex; flex-direction: column; align-items: center; gap: 3px; color: var(--text-muted); font-size: 0.66rem; font-weight: 700; cursor: pointer; padding: 4px 6px; border-radius: 10px; transition: color 0.2s; }
+        .b-nav-item {
+            display: flex; flex-direction: column; align-items: center; gap: 3px;
+            color: var(--text-muted); font-size: 0.64rem; font-weight: 700; cursor: pointer;
+            padding: 4px 8px; border-radius: 12px; min-width: 56px;
+            transition: color 0.2s, transform 0.12s;
+        }
+        .b-nav-item:active { transform: scale(0.92); }
         .b-nav-item.active { color: var(--primary); }
-        .b-nav-item span { font-size: 24px; }
+        .b-icon { padding: 3px 14px; border-radius: 16px; transition: background-color 0.2s; }
+        .b-nav-item.active .b-icon { background: var(--primary-soft); }
+        .b-icon span { font-size: 23px; }
 
-        /* ADMİN MODAL */
+        /* ================= ADMİN MODAL ================= */
         .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 1200; display: none; justify-content: center; align-items: center; padding: 20px; }
-        .modal-content { background: var(--bg-surface); width: 100%; max-width: 620px; border-radius: var(--radius-lg); padding: 28px; border: 1px solid var(--border); max-height: 90vh; overflow-y: auto; }
-        .admin-status-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; background: rgba(16,185,129,0.12); color: var(--accent); border: 1px solid var(--accent); margin-bottom: 16px; }
+        .modal-content { background: var(--bg-surface); width: 100%; max-width: 620px; border-radius: var(--radius-lg); padding: 26px; border: 1px solid var(--border); max-height: 90vh; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
+        .admin-status-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 20px; font-size: 0.73rem; font-weight: 700; background: rgba(16,185,129,0.12); color: var(--accent); border: 1px solid var(--accent); margin-bottom: 16px; }
         .admin-tabs { display: flex; gap: 8px; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 12px; flex-wrap: wrap; }
         .tab-btn-active { border-color: var(--primary) !important; color: var(--primary); }
-        .input-group { margin-bottom: 18px; }
-        .input-group label { display: block; font-size: 0.83rem; font-weight: 700; margin-bottom: 8px; color: var(--text-muted); }
+        .input-group { margin-bottom: 16px; }
+        .input-group label { display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 8px; color: var(--text-muted); }
         .form-control { width: 100%; padding: 13px; background: var(--bg-body); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text-main); font-size: 0.93rem; transition: border-color 0.2s; }
         .form-control:focus { outline: none; border-color: var(--primary); }
 
-        /* ============ RESPONSIVE ============ */
-        @media (max-width: 768px) {
+        /* ================= TABLET (RAIL) 768–1023 ================= */
+        @media (max-width: 1023px) and (min-width: 768px) {
+            .sidebar { width: 84px; padding: 20px 10px; }
+            .brand { justify-content: center; padding: 0; margin-bottom: 26px; }
+            .brand-text, .nav-label { display: none; }
+            .nav-item { justify-content: center; gap: 0; padding: 14px 0; }
+            .main-content { padding: 24px; }
+        }
+
+        /* ================= MOBİL ≤767 ================= */
+        @media (max-width: 767px) {
+            :root { --banner-h: 58px; }
+            .maintenance-banner { font-size: 0.7rem; }
             .sidebar { display: none; }
             .bottom-nav { display: flex; }
-            .main-content { padding: 20px 16px; padding-bottom: 100px; }
-            .mobile-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
-            .mobile-brand .brand-logo, .mobile-brand .brand-fallback { width: 40px; height: 40px; }
-            .top-header { flex-direction: column; align-items: flex-start; }
-            .header-actions { width: 100%; justify-content: space-between; }
-            .weather-main { gap: 12px; }
+            .main-content { padding: 18px 14px; padding-bottom: calc(92px + env(safe-area-inset-bottom)); }
+            .header-logo { display: block; width: 40px; height: 40px; border-radius: 12px; object-fit: contain; background: var(--logo-bg); border: 1px solid var(--border); padding: 4px; flex-shrink: 0; }
+            .header-logo-fallback { width: 40px; height: 40px; font-size: 1.05rem; }
+            .btn-text { display: none; }
+            .dashboard-grid { grid-template-columns: 1fr; gap: 16px; }
+            .card { padding: 18px; }
+            .timer-display { gap: 6px; }
+            .t-box { padding: 10px 2px; }
+            .data-item { padding: 14px; }
+            table { min-width: 560px; }
+
+            /* Admin paneli mobilde ALT SAYFA (bottom-sheet) olur */
+            .modal-overlay { align-items: flex-end; padding: 0; }
+            .modal-content {
+                max-width: 100%; border-radius: 24px 24px 0 0; border-bottom: none;
+                max-height: 92vh; padding: 18px 20px;
+                padding-bottom: calc(24px + env(safe-area-inset-bottom));
+                animation: sheetUp 0.3s ease-out;
+            }
+            .modal-content::before { content: ''; display: block; width: 44px; height: 4px; border-radius: 2px; background: var(--border); margin: 0 auto 14px; }
+        }
+        @keyframes sheetUp { from { transform: translateY(60px); opacity: 0.4; } to { transform: none; opacity: 1; } }
+
+        @media (max-height: 480px) and (orientation: landscape) {
+            .bottom-nav { padding: 4px 6px; padding-bottom: calc(4px + env(safe-area-inset-bottom)); }
+            .b-label { display: none; }
+            .main-content { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -243,7 +288,7 @@
 </head>
 <body>
 
-    <!-- BAKIM BANNER'I (Masaüstü + Mobil) -->
+    <!-- BAKIM BANNER'I -->
     <div class="maintenance-banner" role="status">
         <span class="material-symbols-rounded banner-icon">build_circle</span>
         <span>Sistemde planlı bakım ve yenileme çalışmaları devam etmektedir. Anlayışınız için teşekkürler.</span>
@@ -251,7 +296,7 @@
 
     <div class="app-container">
 
-        <!-- MASAÜSTÜ SIDEBAR -->
+        <!-- SIDEBAR -->
         <nav class="sidebar">
             <div class="brand">
                 <img src="logo.png" alt="BUÜ Logo" class="brand-logo" decoding="async"
@@ -264,44 +309,37 @@
             </div>
 
             <div class="nav-links">
-                <div class="nav-item active" data-view="dashboard" onclick="switchView('dashboard')"><span class="material-symbols-rounded">dashboard</span> Ana Sayfa</div>
-                <div class="nav-item" data-view="announcements" onclick="switchView('announcements')"><span class="material-symbols-rounded">campaign</span> Duyurular</div>
-                <div class="nav-item" data-view="calendar" onclick="switchView('calendar')"><span class="material-symbols-rounded">calendar_month</span> Takvim</div>
-                <div class="nav-item" data-view="files" onclick="switchView('files')"><span class="material-symbols-rounded">folder_open</span> Dosyalar</div>
+                <div class="nav-item active" data-view="dashboard" title="Ana Sayfa" onclick="switchView('dashboard')"><span class="material-symbols-rounded">dashboard</span><span class="nav-label">Ana Sayfa</span></div>
+                <div class="nav-item" data-view="announcements" title="Duyurular" onclick="switchView('announcements')"><span class="material-symbols-rounded">campaign</span><span class="nav-label">Duyurular</span></div>
+                <div class="nav-item" data-view="calendar" title="Takvim" onclick="switchView('calendar')"><span class="material-symbols-rounded">calendar_month</span><span class="nav-label">Takvim</span></div>
+                <div class="nav-item" data-view="files" title="Dosyalar" onclick="switchView('files')"><span class="material-symbols-rounded">folder_open</span><span class="nav-label">Dosyalar</span></div>
             </div>
 
             <div class="sidebar-footer">
-                <div class="nav-item" id="sidebar-admin-btn" onclick="handleAdminAuth()">
-                    <span class="material-symbols-rounded">shield_person</span> Yönetim
+                <div class="nav-item" id="sidebar-admin-btn" title="Yönetim" onclick="handleAdminAuth()">
+                    <span class="material-symbols-rounded">shield_person</span><span class="nav-label">Yönetim</span>
                 </div>
             </div>
         </nav>
 
         <!-- ANA İÇERİK -->
         <main class="main-content">
-
-            <!-- Mobil Logo Alanı -->
-            <div class="mobile-brand">
-                <img src="logo.png" alt="BUÜ Logo" class="brand-logo" decoding="async"
-                     onerror='this.onerror=null;this.style.display="none";this.nextElementSibling.style.display="flex";'>
-                <div class="brand-fallback">E</div>
-                <div class="brand-text">
-                    <h1 style="font-size:1rem;">Elektronik Teknolojisi</h1>
-                    <p>Bursa Uludağ Üniversitesi</p>
-                </div>
-            </div>
-
             <header class="top-header">
-                <div>
-                    <h2 class="page-title" id="page-title-text">Ana Sayfa</h2>
-                    <p style="color: var(--text-muted); font-size: 0.88rem;" id="current-date"></p>
+                <div class="header-left">
+                    <img src="logo.png" alt="BUÜ Logo" class="header-logo" decoding="async"
+                         onerror='this.onerror=null;this.style.display="none";this.nextElementSibling.style.display="flex";'>
+                    <div class="brand-fallback header-logo-fallback" style="display:none;">E</div>
+                    <div style="min-width:0;">
+                        <h2 class="page-title" id="page-title-text">Ana Sayfa</h2>
+                        <p class="header-date" id="current-date"></p>
+                    </div>
                 </div>
                 <div class="header-actions">
-                    <button class="btn btn-tonal btn-icon" onclick="toggleTheme()" title="Tema Değiştir">
+                    <button class="btn btn-tonal btn-icon" onclick="toggleTheme()" aria-label="Tema Değiştir">
                         <span class="material-symbols-rounded" id="theme-icon">light_mode</span>
                     </button>
-                    <button class="btn btn-danger" id="logout-btn" style="display: none;" onclick="logoutAdmin()">
-                        <span class="material-symbols-rounded">logout</span> Çıkış Yap
+                    <button class="btn btn-danger" id="logout-btn" style="display:none;" onclick="logoutAdmin()">
+                        <span class="material-symbols-rounded">logout</span><span class="btn-text">Çıkış Yap</span>
                     </button>
                 </div>
             </header>
@@ -309,15 +347,14 @@
             <!-- 1) ANA SAYFA -->
             <div id="view-dashboard" class="view-section active">
                 <div class="dashboard-grid">
-
                     <div class="card weather-card">
-                        <div class="card-header" style="margin-bottom: 8px;">
+                        <div class="card-header" style="margin-bottom:6px;">
                             <div class="card-title"><span class="material-symbols-rounded">partly_cloudy_day</span> Görükle Kampüsü</div>
                             <span class="widget-time" id="weather-time"></span>
                         </div>
                         <div id="weather-content">
-                            <div style="display:flex; align-items:center; gap:10px; opacity:0.8; margin-top:12px; font-size:0.9rem;">
-                                <span class="material-symbols-rounded">sync</span> MGM istasyon verileri çekiliyor...
+                            <div style="display:flex; align-items:center; gap:10px; opacity:0.8; margin-top:10px; font-size:0.88rem;">
+                                <span class="material-symbols-rounded spin">sync</span> MGM istasyon verileri çekiliyor...
                             </div>
                         </div>
                     </div>
@@ -360,9 +397,7 @@
                     </div>
                     <div class="table-wrapper">
                         <table>
-                            <thead>
-                                <tr><th>Faaliyet / İdari İşlem</th><th>Güz Yarıyılı</th><th>Bahar Yarıyılı</th></tr>
-                            </thead>
+                            <thead><tr><th>Faaliyet / İdari İşlem</th><th>Güz Yarıyılı</th><th>Bahar Yarıyılı</th></tr></thead>
                             <tbody>
                                 <tr><td><strong>Katkı Payı / Öğrenim Ücreti Yatırma Süresi</strong></td><td>31 Ağustos 2026 - 25 Eylül 2026</td><td>1 Şubat 2027 - 19 Şubat 2027</td></tr>
                                 <tr><td><strong>Ders Kaydı Yenileme Süresi</strong></td><td>14 Eylül 2026 - 17 Eylül 2026 (4 İş Günü)</td><td>8 Şubat 2027 - 11 Şubat 2027 (4 İş Günü)</td></tr>
@@ -397,22 +432,22 @@
 
         <!-- MOBİL BOTTOM NAV -->
         <nav class="bottom-nav">
-            <div class="b-nav-item active" data-view="dashboard" onclick="switchView('dashboard')"><span class="material-symbols-rounded">dashboard</span> Ana Sayfa</div>
-            <div class="b-nav-item" data-view="announcements" onclick="switchView('announcements')"><span class="material-symbols-rounded">campaign</span> Duyurular</div>
-            <div class="b-nav-item" data-view="calendar" onclick="switchView('calendar')"><span class="material-symbols-rounded">calendar_month</span> Takvim</div>
-            <div class="b-nav-item" data-view="files" onclick="switchView('files')"><span class="material-symbols-rounded">folder_open</span> Dosyalar</div>
-            <div class="b-nav-item" id="mobile-admin-btn" onclick="handleAdminAuth()"><span class="material-symbols-rounded">shield_person</span> Yönetim</div>
+            <div class="b-nav-item active" data-view="dashboard" onclick="switchView('dashboard')"><span class="b-icon"><span class="material-symbols-rounded">dashboard</span></span><span class="b-label">Ana Sayfa</span></div>
+            <div class="b-nav-item" data-view="announcements" onclick="switchView('announcements')"><span class="b-icon"><span class="material-symbols-rounded">campaign</span></span><span class="b-label">Duyurular</span></div>
+            <div class="b-nav-item" data-view="calendar" onclick="switchView('calendar')"><span class="b-icon"><span class="material-symbols-rounded">calendar_month</span></span><span class="b-label">Takvim</span></div>
+            <div class="b-nav-item" data-view="files" onclick="switchView('files')"><span class="b-icon"><span class="material-symbols-rounded">folder_open</span></span><span class="b-label">Dosyalar</span></div>
+            <div class="b-nav-item" id="mobile-admin-btn" onclick="handleAdminAuth()"><span class="b-icon"><span class="material-symbols-rounded">shield_person</span></span><span class="b-label">Yönetim</span></div>
         </nav>
     </div>
 
     <!-- ADMİN MODAL -->
     <div id="admin-modal" class="modal-overlay">
         <div class="modal-content">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-                <h2 style="display:flex; align-items:center; gap:8px; color:var(--primary); font-size:1.2rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+                <h2 style="display:flex; align-items:center; gap:8px; color:var(--primary); font-size:1.15rem;">
                     <span class="material-symbols-rounded">admin_panel_settings</span> Yönetici Paneli
                 </h2>
-                <button class="btn btn-tonal btn-icon" onclick="closeAdminModal()"><span class="material-symbols-rounded">close</span></button>
+                <button class="btn btn-tonal btn-icon" onclick="closeAdminModal()" aria-label="Kapat"><span class="material-symbols-rounded">close</span></button>
             </div>
 
             <div class="admin-status-badge">
@@ -435,16 +470,16 @@
                     <label>Duyuru İçeriği</label>
                     <textarea id="ann-content" class="form-control" rows="5" placeholder="Detayları buraya yazın..." maxlength="3000"></textarea>
                 </div>
-                <button class="btn btn-primary" style="width:100%; justify-content:center;" onclick="saveItem('announcement')">Duyuruyu Yayınla</button>
+                <button class="btn btn-primary" style="width:100%;" onclick="saveItem('announcement')">Duyuruyu Yayınla</button>
             </div>
 
             <div id="admin-file" style="display:none;">
                 <div class="input-group">
                     <label>Seçenek 1: Doğrudan Dosya Yükle (Maks 20MB)</label>
                     <input type="file" id="direct-file-input" class="form-control" style="padding:10px;">
-                    <button class="btn btn-primary" id="upload-btn" style="width:100%; justify-content:center; margin-top:10px;" onclick="uploadDirectFile()">Sisteme Yükle</button>
+                    <button class="btn btn-primary" id="upload-btn" style="width:100%; margin-top:10px;" onclick="uploadDirectFile()">Sisteme Yükle</button>
                 </div>
-                <div style="text-align:center; margin:18px 0; color:var(--text-muted); font-size:0.78rem; font-weight:700;">--- VEYA DIŞ BAĞLANTI (URL) EKLE ---</div>
+                <div style="text-align:center; margin:16px 0; color:var(--text-muted); font-size:0.76rem; font-weight:700;">--- VEYA DIŞ BAĞLANTI (URL) EKLE ---</div>
                 <div class="input-group">
                     <label>Dosya Görünüm Adı</label>
                     <input type="text" id="file-title" class="form-control" placeholder="Örn: Staj Başvuru Formu" maxlength="100">
@@ -453,14 +488,14 @@
                     <label>Dosya Linki (URL)</label>
                     <input type="url" id="file-url" class="form-control" placeholder="https://...">
                 </div>
-                <button class="btn btn-tonal" style="width:100%; justify-content:center;" onclick="saveItem('file')">Link Olarak Ekle</button>
+                <button class="btn btn-tonal" style="width:100%;" onclick="saveItem('file')">Link Olarak Ekle</button>
             </div>
 
             <div id="admin-sec" style="display:none;">
-                <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:16px; line-height:1.5;">
+                <p style="font-size:0.84rem; color:var(--text-muted); margin-bottom:16px; line-height:1.5;">
                     Yönetici oturumunuz GitHub API yetkilendirmesi ile korunmaktadır.
                 </p>
-                <button class="btn btn-danger" style="width:100%; justify-content:center; padding:12px;" onclick="logoutAdmin()">
+                <button class="btn btn-danger" style="width:100%; padding:12px;" onclick="logoutAdmin()">
                     <span class="material-symbols-rounded">logout</span> Oturumu Güvenli Şekilde Kapat
                 </button>
             </div>
@@ -468,7 +503,6 @@
     </div>
 
     <script>
-        // --- GITHUB AYARLARI ---
         const GITHUB_USERNAME = "berat623";
         const REPO_NAME = "opendata";
 
@@ -483,7 +517,6 @@
             { name: "Güz Dönemi Bütünleme Sınavları", date: new Date("2027-02-01T09:00:00") }
         ];
 
-        // Sayaç DOM referansları (tek kez sorgulanır = akıcılık)
         const cdEls = {
             d: document.getElementById('cd-days'), h: document.getElementById('cd-hours'),
             m: document.getElementById('cd-minutes'), s: document.getElementById('cd-seconds'),
@@ -497,9 +530,14 @@
             fetchCampusWeather();
             startCountdown();
             fetchData();
+
+            // Modal dışına tıkla / ESC ile kapat
+            const overlay = document.getElementById('admin-modal');
+            overlay.addEventListener('click', e => { if (e.target === overlay) closeAdminModal(); });
+            document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAdminModal(); });
         };
 
-        // --- TEMA ---
+        /* ---------- TEMA ---------- */
         function setMetaTheme() {
             const meta = document.querySelector('meta[name="theme-color"]');
             if (meta) meta.setAttribute('content', document.body.classList.contains('light-mode') ? '#f1f5f9' : '#0b0f19');
@@ -523,7 +561,7 @@
             document.getElementById('current-date').innerText = new Date().toLocaleDateString('tr-TR', options);
         }
 
-        // --- GÖRÜNÜM GEÇİŞİ ---
+        /* ---------- GÖRÜNÜM ---------- */
         function switchView(viewName) {
             document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
             document.getElementById('view-' + viewName).classList.add('active');
@@ -537,7 +575,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // --- MGM HAVA DURUMU (PROXY ZİNCİRİ) ---
+        /* ---------- MGM HAVA DURUMU ---------- */
         async function fetchCampusWeather() {
             const mgmUrl = "https://servis.mgm.gov.tr/web/sondurumlar?merkezid=91617";
             const enc = encodeURIComponent(mgmUrl);
@@ -564,13 +602,13 @@
             const timeEl = document.getElementById('weather-time');
 
             if (!data) {
-                contentEl.innerHTML = `<div style="color:var(--widget-error); margin-top:12px; font-size:0.88rem; font-weight:600; display:flex; align-items:center; gap:6px;">
+                contentEl.innerHTML = `<div style="color:var(--widget-error); margin-top:10px; font-size:0.86rem; font-weight:600; display:flex; align-items:center; gap:6px;">
                     <span class="material-symbols-rounded" style="font-size:18px;">error</span>
                     Tarayıcı güvenlik kısıtlaması nedeniyle MGM verisi alınamadı.</div>`;
                 return;
             }
 
-            const valid = (v) => (v !== undefined && v !== null && v !== -9999 && v !== "-9999");
+            const valid = v => (v !== undefined && v !== null && v !== -9999 && v !== "-9999");
             const temp = valid(data.sicaklik) ? `${data.sicaklik}°C` : '--';
             const feels = valid(data.hissedilenSicaklik) ? `${data.hissedilenSicaklik}°C` : null;
             const humidity = valid(data.nem) ? `%${data.nem}` : null;
@@ -592,7 +630,7 @@
 
             contentEl.innerHTML = `
                 <div class="weather-main">
-                    <span class="material-symbols-rounded" style="font-size:3.6rem;">${status.i}</span>
+                    <span class="material-symbols-rounded" style="font-size:clamp(2.6rem, 2rem + 3vw, 3.6rem);">${status.i}</span>
                     <div>
                         <div class="weather-temp">${temp}</div>
                         <div class="weather-desc">${status.t}</div>
@@ -605,7 +643,7 @@
                 </div>`;
         }
 
-        // --- GERİ SAYIM ---
+        /* ---------- GERİ SAYIM ---------- */
         function startCountdown() {
             function tick() {
                 const now = new Date();
@@ -622,7 +660,7 @@
             setInterval(tick, 1000);
         }
 
-        // --- YARDIMCILAR ---
+        /* ---------- YARDIMCILAR ---------- */
         function sanitizeHTML(str) {
             if (typeof str !== 'string') return '';
             return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
@@ -637,7 +675,7 @@
             } catch (e) { return atob(str); }
         }
 
-        // --- GITHUB VERİ ÇEKME ---
+        /* ---------- GITHUB VERİ ---------- */
         async function fetchFileDirect(filename) {
             const ts = Date.now();
             try {
@@ -668,14 +706,14 @@
             const dashAnn = document.getElementById('dashboard-recent-ann');
             const fileList = document.getElementById('file-list');
 
-            const delBtn = (type, id) => userToken ? `<button class="btn btn-danger btn-icon" onclick="deleteItem('${type}', ${id})" title="Sil"><span class="material-symbols-rounded">delete</span></button>` : '';
+            const delBtn = (type, id) => userToken ? `<button class="btn btn-danger btn-icon" onclick="deleteItem('${type}', ${id})" aria-label="Sil"><span class="material-symbols-rounded">delete</span></button>` : '';
 
             if (!announcementsData || announcementsData.length === 0) {
                 annList.innerHTML = dashAnn.innerHTML = `<div class="empty-state"><span class="material-symbols-rounded">notifications_off</span><p>Kayıtlı duyuru bulunmuyor.</p></div>`;
             } else {
                 annList.innerHTML = announcementsData.map(item => `
                     <div class="data-item">
-                        <div style="flex:1;">
+                        <div style="flex:1; min-width:0;">
                             <div class="item-title">${sanitizeHTML(item.title)}</div>
                             <div class="item-meta"><span class="material-symbols-rounded" style="font-size:16px;">schedule</span> ${sanitizeHTML(new Date(item.date).toLocaleString('tr-TR'))}</div>
                             <div class="item-content">${sanitizeHTML(item.content)}</div>
@@ -685,8 +723,8 @@
 
                 dashAnn.innerHTML = announcementsData.slice(0, 3).map(item => `
                     <div class="data-item">
-                        <div style="flex:1;">
-                            <div class="item-title" style="font-size:1rem;">${sanitizeHTML(item.title)}</div>
+                        <div style="flex:1; min-width:0;">
+                            <div class="item-title" style="font-size:0.98rem;">${sanitizeHTML(item.title)}</div>
                             <div class="item-meta" style="margin:0;">${sanitizeHTML(new Date(item.date).toLocaleDateString('tr-TR'))}</div>
                         </div>
                     </div>`).join('');
@@ -697,9 +735,9 @@
             } else {
                 fileList.innerHTML = filesData.map(item => `
                     <div class="data-item" style="align-items:center;">
-                        <div style="flex:1;">
+                        <div style="flex:1; min-width:0;">
                             <div class="item-title" style="margin-bottom:4px;">${sanitizeHTML(item.title)}</div>
-                            <a href="${sanitizeHTML(item.url)}" target="_blank" rel="noopener noreferrer" style="color:var(--primary); font-size:0.84rem; text-decoration:none; display:inline-flex; align-items:center; gap:4px; font-weight:600;">
+                            <a href="${sanitizeHTML(item.url)}" target="_blank" rel="noopener noreferrer" style="color:var(--primary); font-size:0.83rem; text-decoration:none; display:inline-flex; align-items:center; gap:4px; font-weight:600;">
                                 <span class="material-symbols-rounded" style="font-size:16px;">download</span> İndir / Görüntüle
                             </a>
                         </div>
@@ -708,7 +746,7 @@
             }
         }
 
-        // --- GÜVENLİK / YÖNETİM ---
+        /* ---------- GÜVENLİK / YÖNETİM ---------- */
         async function validateGitHubToken(token) {
             if (!token || token.trim() === '') return false;
             try {
@@ -720,7 +758,7 @@
         async function handleAdminAuth() {
             if (userToken) {
                 if (await validateGitHubToken(userToken)) {
-                    document.getElementById('admin-modal').style.display = 'flex';
+                    openAdminModal();
                 } else {
                     alert("Kayıtlı token geçersiz veya yetkisiz! Oturum kapatılıyor.");
                     logoutAdmin();
@@ -733,12 +771,21 @@
                         localStorage.setItem("gh_admin_token", userToken);
                         updateAdminUI();
                         fetchData();
-                        document.getElementById('admin-modal').style.display = 'flex';
+                        openAdminModal();
                     } else {
                         alert("HATA: Girdiğiniz GitHub Token GEÇERSİZ! Erişim reddedildi.");
                     }
                 }
             }
+        }
+
+        function openAdminModal() {
+            document.getElementById('admin-modal').style.display = 'flex';
+            document.body.classList.add('modal-open');
+        }
+        function closeAdminModal() {
+            document.getElementById('admin-modal').style.display = 'none';
+            document.body.classList.remove('modal-open');
         }
 
         function updateAdminUI() {
@@ -747,12 +794,12 @@
             const mob = document.getElementById('mobile-admin-btn');
             if (userToken) {
                 lgBtn.style.display = 'inline-flex';
-                desk.innerHTML = `<span class="material-symbols-rounded" style="color:var(--accent);">verified_user</span> Yönetici Paneli`;
-                mob.innerHTML = `<span class="material-symbols-rounded" style="color:var(--accent);">verified_user</span> Yönetici`;
+                desk.innerHTML = `<span class="material-symbols-rounded" style="color:var(--accent);">verified_user</span><span class="nav-label">Yönetici Paneli</span>`;
+                mob.innerHTML = `<span class="b-icon"><span class="material-symbols-rounded" style="color:var(--accent);">verified_user</span></span><span class="b-label">Yönetici</span>`;
             } else {
                 lgBtn.style.display = 'none';
-                desk.innerHTML = `<span class="material-symbols-rounded">shield_person</span> Yönetim`;
-                mob.innerHTML = `<span class="material-symbols-rounded">shield_person</span> Yönetim`;
+                desk.innerHTML = `<span class="material-symbols-rounded">shield_person</span><span class="nav-label">Yönetim</span>`;
+                mob.innerHTML = `<span class="b-icon"><span class="material-symbols-rounded">shield_person</span></span><span class="b-label">Yönetim</span>`;
             }
         }
 
@@ -765,8 +812,6 @@
             alert("Oturum kapatıldı.");
         }
 
-        function closeAdminModal() { document.getElementById('admin-modal').style.display = 'none'; }
-
         function switchAdminTab(tabId) {
             ['admin-ann', 'admin-file', 'admin-sec'].forEach(id => {
                 document.getElementById(id).style.display = (id === tabId) ? 'block' : 'none';
@@ -776,7 +821,7 @@
             document.getElementById('tab-sec-btn').classList.toggle('tab-btn-active', tabId === 'admin-sec');
         }
 
-        // --- GITHUB COMMIT ---
+        /* ---------- GITHUB COMMIT ---------- */
         async function commitToGitHub(filename, newData, successMessage) {
             try {
                 const getRes = await fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/${filename}?t=${Date.now()}`, {
@@ -785,8 +830,7 @@
 
                 let sha;
                 if (getRes.ok) {
-                    const fileData = await getRes.json();
-                    sha = fileData.sha;
+                    sha = (await getRes.json()).sha;
                 } else if (getRes.status !== 404) {
                     return alert("Hata! Token yetkisi yetersiz.");
                 }
