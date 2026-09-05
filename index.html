@@ -26,6 +26,7 @@
             --primary-hover: #2563eb;
             --primary-soft: rgba(59,130,246,0.18);
             --accent: #10b981;
+            --accent-soft: rgba(16,185,129,0.12);
             --danger: #ef4444;
             --border: rgba(255,255,255,0.08);
 
@@ -58,6 +59,7 @@
             --primary-hover: #1d4ed8;
             --primary-soft: rgba(37,98,235,0.12);
             --accent: #059669;
+            --accent-soft: rgba(5,150,105,0.08);
             --danger: #dc2626;
             --border: rgba(15,23,42,0.08);
             --shadow: 0 10px 30px -12px rgba(2,6,23,0.08);
@@ -99,7 +101,6 @@
         /* ================= YERLEŞİM ================= */
         .app-container { display: flex; align-items: stretch; }
 
-        /* --- SIDEBAR (Masaüstü) / RAIL (Tablet) --- */
         .sidebar {
             width: var(--nav-width); flex-shrink: 0;
             background: var(--bg-surface); border-right: 1px solid var(--border);
@@ -132,7 +133,6 @@
         .nav-item.active { background: var(--primary); color: #fff; }
         .sidebar-footer { padding-top: 14px; border-top: 1px solid var(--border); }
 
-        /* --- ANA İÇERİK --- */
         .main-content { flex: 1; min-width: 0; max-width: 1100px; padding: 28px 40px; }
 
         .top-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 26px; }
@@ -142,7 +142,6 @@
         .header-date { color: var(--text-muted); font-size: 0.86rem; margin-top: 2px; }
         .header-actions { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
 
-        /* --- BUTONLAR (min 44px dokunma hedefi) --- */
         .btn {
             display: inline-flex; align-items: center; justify-content: center; gap: 8px;
             min-height: 44px; padding: 10px 18px; border-radius: 50px;
@@ -158,12 +157,10 @@
         .btn-danger { background: rgba(239,68,68,0.1); color: var(--danger); border: 1px solid rgba(239,68,68,0.25); }
         .btn-danger:hover { background: var(--danger); color: #fff; }
 
-        /* --- GÖRÜNÜM GEÇİŞİ --- */
         .view-section { display: none; animation: fadeIn 0.3s ease-out; }
         .view-section.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* --- WIDGET'LAR --- */
         .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 22px; margin-bottom: 24px; }
 
         .card { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 22px; box-shadow: var(--shadow); }
@@ -186,7 +183,6 @@
         .t-val { font-size: clamp(1.25rem, 1rem + 1.4vw, 1.8rem); font-weight: 800; }
         .t-lbl { font-size: 0.68rem; text-transform: uppercase; opacity: 0.8; margin-top: 4px; font-weight: 700; }
 
-        /* --- LİSTELER --- */
         .data-list { display: flex; flex-direction: column; gap: 12px; }
         .data-item { padding: 16px; border: 1px solid var(--border); border-radius: var(--radius-md); display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; transition: border-color 0.2s, background-color 0.2s; }
         .data-item:hover { border-color: var(--primary); background: var(--bg-surface-hover); }
@@ -197,13 +193,23 @@
         .empty-state { text-align: center; padding: 38px 20px; color: var(--text-muted); }
         .empty-state span { font-size: 3rem; margin-bottom: 10px; opacity: 0.5; }
 
-        /* --- TABLO --- */
+        /* ================= AKADEMİK TAKVİM ================= */
+        .cal-note { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 14px; font-weight: 600; display: flex; gap: 6px; align-items: center; }
         .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; border: 1px solid var(--border); border-radius: var(--radius-md); }
-        table { width: 100%; border-collapse: collapse; font-size: 0.87rem; text-align: left; min-width: 620px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.87rem; text-align: left; }
         th { background: var(--bg-surface-hover); padding: 14px 16px; font-weight: 700; color: var(--primary); border-bottom: 1px solid var(--border); }
-        td { padding: 14px 16px; border-bottom: 1px solid var(--border); }
+        td { padding: 14px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
         tr:last-child td { border-bottom: none; }
         tr:hover td { background: var(--bg-surface-hover); }
+        .cal-date { font-weight: 600; white-space: nowrap; }
+
+        .status-chip { display: inline-block; margin-left: 8px; padding: 2px 10px; border-radius: 20px; font-size: 0.66rem; font-weight: 800; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.3px; }
+        .chip-ongoing { background: var(--accent-soft); color: var(--accent); border: 1px solid var(--accent); }
+        .chip-next { background: var(--primary-soft); color: var(--primary); border: 1px solid var(--primary); }
+        .chip-done { background: var(--bg-surface-hover); color: var(--text-muted); border: 1px solid var(--border); }
+        tr.row-past td { opacity: 0.55; }
+        tr.row-ongoing td { background: var(--accent-soft); }
+        tr.row-next td { background: var(--primary-soft); }
 
         .footer { margin-top: 28px; text-align: center; color: var(--text-muted); font-size: 0.73rem; font-weight: 600; }
 
@@ -237,7 +243,7 @@
         .form-control { width: 100%; padding: 13px; background: var(--bg-body); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text-main); font-size: 0.93rem; transition: border-color 0.2s; }
         .form-control:focus { outline: none; border-color: var(--primary); }
 
-        /* ================= TABLET (RAIL) 768–1023 ================= */
+        /* ================= TABLET (RAIL) ================= */
         @media (max-width: 1023px) and (min-width: 768px) {
             .sidebar { width: 84px; padding: 20px 10px; }
             .brand { justify-content: center; padding: 0; margin-bottom: 26px; }
@@ -246,7 +252,7 @@
             .main-content { padding: 24px; }
         }
 
-        /* ================= MOBİL ≤767 ================= */
+        /* ================= MOBİL ================= */
         @media (max-width: 767px) {
             :root { --banner-h: 58px; }
             .maintenance-banner { font-size: 0.7rem; }
@@ -261,9 +267,9 @@
             .timer-display { gap: 6px; }
             .t-box { padding: 10px 2px; }
             .data-item { padding: 14px; }
-            table { min-width: 560px; }
+            .cal-date { white-space: normal; }
+            td, th { padding: 12px; }
 
-            /* Admin paneli mobilde ALT SAYFA (bottom-sheet) olur */
             .modal-overlay { align-items: flex-end; padding: 0; }
             .modal-content {
                 max-width: 100%; border-radius: 24px 24px 0 0; border-bottom: none;
@@ -288,7 +294,6 @@
 </head>
 <body>
 
-    <!-- BAKIM BANNER'I -->
     <div class="maintenance-banner" role="status">
         <span class="material-symbols-rounded banner-icon">build_circle</span>
         <span>Sistemde planlı bakım ve yenileme çalışmaları devam etmektedir. Anlayışınız için teşekkürler.</span>
@@ -296,7 +301,6 @@
 
     <div class="app-container">
 
-        <!-- SIDEBAR -->
         <nav class="sidebar">
             <div class="brand">
                 <img src="logo.png" alt="BUÜ Logo" class="brand-logo" decoding="async"
@@ -322,7 +326,6 @@
             </div>
         </nav>
 
-        <!-- ANA İÇERİK -->
         <main class="main-content">
             <header class="top-header">
                 <div class="header-left">
@@ -389,29 +392,30 @@
                 </div>
             </div>
 
-            <!-- 3) TAKVİM -->
+            <!-- 3) AKADEMİK TAKVİM (Güz / Bahar ayrı, yakın → uzak) -->
             <div id="view-calendar" class="view-section">
-                <div class="card">
+                <div class="card" style="margin-bottom:22px;">
                     <div class="card-header">
-                        <div class="card-title"><span class="material-symbols-rounded">calendar_month</span> 2026-2027 Akademik Takvimi</div>
+                        <div class="card-title"><span class="material-symbols-rounded">back_to_school</span> Güz Yarıyılı (2026-2027)</div>
                     </div>
+                    <p class="cal-note"><span class="material-symbols-rounded" style="font-size:16px;">sort</span> Faaliyetler en yakın tarihten en uzağa doğru sıralanmıştır.</p>
                     <div class="table-wrapper">
                         <table>
-                            <thead><tr><th>Faaliyet / İdari İşlem</th><th>Güz Yarıyılı</th><th>Bahar Yarıyılı</th></tr></thead>
-                            <tbody>
-                                <tr><td><strong>Katkı Payı / Öğrenim Ücreti Yatırma Süresi</strong></td><td>31 Ağustos 2026 - 25 Eylül 2026</td><td>1 Şubat 2027 - 19 Şubat 2027</td></tr>
-                                <tr><td><strong>Ders Kaydı Yenileme Süresi</strong></td><td>14 Eylül 2026 - 17 Eylül 2026 (4 İş Günü)</td><td>8 Şubat 2027 - 11 Şubat 2027 (4 İş Günü)</td></tr>
-                                <tr><td><strong>Kapanan Seçmeli Derslerin İlanı</strong></td><td>22 Eylül 2026</td><td>16 Şubat 2027</td></tr>
-                                <tr><td><strong>Kapanan Ders Bırakma / Yerine Ders Ekleme</strong></td><td>23 Eylül 2026 - 25 Eylül 2026</td><td>17 Şubat 2027 - 19 Şubat 2027</td></tr>
-                                <tr><td><strong>Mazeret Ders Kaydı Süresi</strong></td><td>23 Eylül 2026 - 25 Eylül 2026</td><td>17 Şubat 2027 - 19 Şubat 2027</td></tr>
-                                <tr><td><strong>Eğitim-Öğretimin (Derslerin) Başlaması</strong></td><td>28 Eylül 2026</td><td>22 Şubat 2027</td></tr>
-                                <tr><td><strong>Eğitim-Öğretimin (Derslerin) Sona Ermesi</strong></td><td>8 Ocak 2027 (72 İş Günü)</td><td>11 Haziran 2027 (71 İş Günü)</td></tr>
-                                <tr><td><strong>Yarıyıl Sonu Sınavları (Final)</strong></td><td>11 Ocak 2027 - 22 Ocak 2027 (12 Gün)</td><td>14 Haziran 2027 - 25 Haziran 2027 (12 Gün)</td></tr>
-                                <tr><td><strong>Final Not Girişlerinin Son Günü</strong></td><td>25 Ocak 2027</td><td>28 Haziran 2027</td></tr>
-                                <tr><td><strong>Yarıyıl Arası Tatil</strong></td><td>25 Ocak 2027 - 31 Ocak 2027</td><td>28 Haziran 2027 - 4 Temmuz 2027</td></tr>
-                                <tr><td><strong>Bütünleme Sınavları</strong></td><td>1 Şubat 2027 - 6 Şubat 2027 (6 Gün)</td><td>5 Temmuz 2027 - 10 Temmuz 2027 (6 Gün)</td></tr>
-                                <tr><td><strong>Bütünleme Not Girişlerinin Son Günü</strong></td><td>8 Şubat 2027</td><td>12 Temmuz 2027</td></tr>
-                            </tbody>
+                            <thead><tr><th>Faaliyet / İdari İşlem</th><th>Tarih</th></tr></thead>
+                            <tbody id="fall-tbody"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title"><span class="material-symbols-rounded">park</span> Bahar Yarıyılı (2026-2027)</div>
+                    </div>
+                    <p class="cal-note"><span class="material-symbols-rounded" style="font-size:16px;">sort</span> Faaliyetler en yakın tarihten en uzağa doğru sıralanmıştır.</p>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead><tr><th>Faaliyet / İdari İşlem</th><th>Tarih</th></tr></thead>
+                            <tbody id="spring-tbody"></tbody>
                         </table>
                     </div>
                 </div>
@@ -430,7 +434,6 @@
             <div class="footer">BUÜ Elektronik Teknolojisi Programı © 2026</div>
         </main>
 
-        <!-- MOBİL BOTTOM NAV -->
         <nav class="bottom-nav">
             <div class="b-nav-item active" data-view="dashboard" onclick="switchView('dashboard')"><span class="b-icon"><span class="material-symbols-rounded">dashboard</span></span><span class="b-label">Ana Sayfa</span></div>
             <div class="b-nav-item" data-view="announcements" onclick="switchView('announcements')"><span class="b-icon"><span class="material-symbols-rounded">campaign</span></span><span class="b-label">Duyurular</span></div>
@@ -517,6 +520,36 @@
             { name: "Güz Dönemi Bütünleme Sınavları", date: new Date("2027-02-01T09:00:00") }
         ];
 
+        /* ===== AKADEMİK TAKVİM VERİSİ [Ad, Başlangıç, Bitiş, Not] ===== */
+        const FALL_RAW = [
+            ["Katkı Payı / Öğrenim Ücreti Yatırma Süresi", "2026-08-31", "2026-09-25"],
+            ["Ders Kaydı Yenileme Süresi", "2026-09-14", "2026-09-17", "4 İş Günü"],
+            ["Kapanan Seçmeli Derslerin İlanı", "2026-09-22", "2026-09-22"],
+            ["Kapanan Ders Bırakma / Yerine Ders Ekleme", "2026-09-23", "2026-09-25"],
+            ["Mazeret Ders Kaydı Süresi", "2026-09-23", "2026-09-25"],
+            ["Eğitim-Öğretimin (Derslerin) Başlaması", "2026-09-28", "2026-09-28"],
+            ["Eğitim-Öğretimin (Derslerin) Sona Ermesi", "2027-01-08", "2027-01-08", "72 İş Günü"],
+            ["Yarıyıl Sonu Sınavları (Final)", "2027-01-11", "2027-01-22", "12 Gün"],
+            ["Yarıyıl Sonu Sınav Not Girişlerinin Son Günü", "2027-01-25", "2027-01-25"],
+            ["Yarıyıl Arası Tatil", "2027-01-25", "2027-01-31"],
+            ["Bütünleme Sınavları", "2027-02-01", "2027-02-06", "6 Gün"],
+            ["Bütünleme Sınav Not Girişlerinin Son Günü", "2027-02-08", "2027-02-08"]
+        ];
+        const SPRING_RAW = [
+            ["Katkı Payı / Öğrenim Ücreti Yatırma Süresi", "2027-02-01", "2027-02-19"],
+            ["Ders Kaydı Yenileme Süresi", "2027-02-08", "2027-02-11", "4 İş Günü"],
+            ["Kapanan Seçmeli Derslerin İlanı", "2027-02-16", "2027-02-16"],
+            ["Kapanan Ders Bırakma / Yerine Ders Ekleme", "2027-02-17", "2027-02-19"],
+            ["Mazeret Ders Kaydı Süresi", "2027-02-17", "2027-02-19"],
+            ["Eğitim-Öğretimin (Derslerin) Başlaması", "2027-02-22", "2027-02-22"],
+            ["Eğitim-Öğretimin (Derslerin) Sona Ermesi", "2027-06-11", "2027-06-11", "71 İş Günü"],
+            ["Yarıyıl Sonu Sınavları (Final)", "2027-06-14", "2027-06-25", "12 Gün"],
+            ["Yarıyıl Sonu Sınav Not Girişlerinin Son Günü", "2027-06-28", "2027-06-28"],
+            ["Yarıyıl Arası Tatil", "2027-06-28", "2027-07-04"],
+            ["Bütünleme Sınavları", "2027-07-05", "2027-07-10", "6 Gün"],
+            ["Bütünleme Sınav Not Girişlerinin Son Günü", "2027-07-12", "2027-07-12"]
+        ];
+
         const cdEls = {
             d: document.getElementById('cd-days'), h: document.getElementById('cd-hours'),
             m: document.getElementById('cd-minutes'), s: document.getElementById('cd-seconds'),
@@ -527,15 +560,60 @@
             initTheme();
             updateDateInfo();
             updateAdminUI();
+            renderCalendar();
             fetchCampusWeather();
             startCountdown();
             fetchData();
 
-            // Modal dışına tıkla / ESC ile kapat
             const overlay = document.getElementById('admin-modal');
             overlay.addEventListener('click', e => { if (e.target === overlay) closeAdminModal(); });
             document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAdminModal(); });
         };
+
+        /* ---------- AKADEMİK TAKVİM RENDER (Yakın → Uzak) ---------- */
+        function pd(str) { const [y, m, d] = str.split('-').map(Number); return new Date(y, m - 1, d); }
+        function fmtDate(d) { return d.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' }); }
+
+        function renderCalendar() {
+            const today = new Date(); today.setHours(0, 0, 0, 0);
+            buildSemester('fall-tbody', FALL_RAW, today);
+            buildSemester('spring-tbody', SPRING_RAW, today);
+        }
+
+        function buildSemester(tbodyId, rawList, today) {
+            // En yakın tarihten en uzağa sırala
+            const sorted = rawList
+                .map(r => ({ name: r[0], s: pd(r[1]), e: pd(r[2]), note: r[3] || null, same: r[1] === r[2] }))
+                .sort((a, b) => a.s - b.s);
+
+            let nextMarked = false;
+
+            const rows = sorted.map(item => {
+                const endOfDay = new Date(item.e); endOfDay.setHours(23, 59, 59, 999);
+                let chip = '', rowClass = '';
+
+                if (today > endOfDay) {
+                    rowClass = 'row-past';
+                    chip = '<span class="status-chip chip-done">Tamamlandı</span>';
+                } else if (today >= item.s && today <= endOfDay) {
+                    rowClass = 'row-ongoing';
+                    chip = '<span class="status-chip chip-ongoing">Devam Ediyor</span>';
+                } else if (!nextMarked) {
+                    rowClass = 'row-next';
+                    chip = '<span class="status-chip chip-next">Yaklaşan</span>';
+                    nextMarked = true;
+                }
+
+                const label = (item.same ? fmtDate(item.s) : `${fmtDate(item.s)} - ${fmtDate(item.e)}`) + (item.note ? ` (${item.note})` : '');
+
+                return `<tr class="${rowClass}">
+                    <td><strong>${item.name}</strong>${chip}</td>
+                    <td class="cal-date">${label}</td>
+                </tr>`;
+            }).join('');
+
+            document.getElementById(tbodyId).innerHTML = rows;
+        }
 
         /* ---------- TEMA ---------- */
         function setMetaTheme() {
@@ -561,7 +639,6 @@
             document.getElementById('current-date').innerText = new Date().toLocaleDateString('tr-TR', options);
         }
 
-        /* ---------- GÖRÜNÜM ---------- */
         function switchView(viewName) {
             document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
             document.getElementById('view-' + viewName).classList.add('active');
@@ -821,7 +898,6 @@
             document.getElementById('tab-sec-btn').classList.toggle('tab-btn-active', tabId === 'admin-sec');
         }
 
-        /* ---------- GITHUB COMMIT ---------- */
         async function commitToGitHub(filename, newData, successMessage) {
             try {
                 const getRes = await fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/${filename}?t=${Date.now()}`, {
