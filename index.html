@@ -56,7 +56,8 @@
             --logo-bg: #ffffff;
         }
 
-        body.light-mode {
+        /* Açık tema artık <html> üzerinde → ilk boyamada doğru renk (flaş yok) */
+        html.light-mode {
             --bg-body: #f1f5f9;
             --bg-surface: #ffffff;
             --bg-surface-hover: #f8fafc;
@@ -94,7 +95,6 @@
         body { background: var(--bg-body); color: var(--text-main); transition: background-color 0.4s, color 0.4s; overflow-x: hidden; }
         body.modal-open { overflow: hidden; }
 
-        /* Ambient ışık (sabit, GPU dostu) */
         body::before {
             content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none;
             background:
@@ -104,7 +104,6 @@
         }
         @keyframes glowFloat { 0%,100% { transform: translate3d(0,0,0); } 50% { transform: translate3d(0,-18px,0); } }
 
-        /* Premium scrollbar & seçim rengi */
         ::-webkit-scrollbar { width: 10px; height: 10px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: var(--scroll-thumb); border-radius: 8px; border: 3px solid transparent; background-clip: padding-box; }
@@ -121,17 +120,14 @@
         .weather-float { animation: floatY 5s ease-in-out infinite; }
         @keyframes floatY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
 
-        /* RIPPLE */
         .btn, .nav-item, .b-nav-item, .file-link { position: relative; overflow: hidden; }
         .ripple { position: absolute; border-radius: 50%; background: currentColor; opacity: 0.22; transform: scale(0); animation: rippleAnim 0.6s var(--ease-soft) forwards; pointer-events: none; }
         @keyframes rippleAnim { to { transform: scale(2.8); opacity: 0; } }
 
-        /* SKELETON */
         .skeleton { position: relative; overflow: hidden; background: var(--bg-surface-hover); border-radius: 10px; }
         .skeleton::after { content: ''; position: absolute; inset: 0; transform: translateX(-100%); background: linear-gradient(90deg, transparent, var(--shimmer), transparent); animation: shimmer 1.2s infinite; }
         @keyframes shimmer { 100% { transform: translateX(100%); } }
 
-        /* BANNER */
         .maintenance-banner {
             position: sticky; top: 0; z-index: 1000; height: var(--banner-h);
             display: flex; align-items: center; justify-content: center; gap: 8px;
@@ -141,7 +137,6 @@
         }
         .banner-icon { font-size: 18px; flex-shrink: 0; animation: spinSlow 6s linear infinite; }
 
-        /* YERLEŞİM */
         .app-container { display: flex; align-items: stretch; }
 
         .sidebar {
@@ -207,17 +202,14 @@
         .view-section.active .card + .card { animation-delay: 0.1s; }
         .view-section.active .card + .card + .card { animation-delay: 0.18s; }
 
-        /* Tablo satır kademeli giriş */
         @keyframes rowIn { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: none; } }
         .view-section.active tbody tr { animation: rowIn 0.4s var(--ease-soft) both; animation-delay: calc(var(--i, 0) * 22ms); }
 
-        /* İSTATİSTİK */
         .stats-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px; margin-bottom: 20px; }
         .stat { display: flex; gap: 12px; align-items: center; background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 14px 16px; box-shadow: var(--shadow); }
         .stat-val { font-weight: 800; font-size: 1.1rem; line-height: 1.1; }
         .stat-lbl { font-size: 0.66rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; margin-top: 2px; }
 
-        /* KARTLAR */
         .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 20px; margin-bottom: 20px; }
         .card { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 22px; box-shadow: var(--shadow); }
         @media (hover: hover) {
@@ -247,7 +239,6 @@
         @keyframes tickPulse { 0% { transform: scale(1.18); } 100% { transform: scale(1); } }
         .t-lbl { font-size: 0.68rem; text-transform: uppercase; opacity: 0.8; margin-top: 4px; font-weight: 700; }
 
-        /* LİSTELER */
         .data-list { display: flex; flex-direction: column; gap: 12px; }
         .data-item { padding: 16px; border: 1px solid var(--border); border-radius: var(--radius-md); display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; transition: border-color 0.25s, background-color 0.25s, transform 0.25s var(--ease-soft); }
         .data-item:hover { border-color: var(--primary); background: var(--bg-surface-hover); transform: translateX(4px); }
@@ -261,13 +252,11 @@
         .empty-state { text-align: center; padding: 38px 20px; color: var(--text-muted); }
         .empty-state span { font-size: 3rem; margin-bottom: 10px; opacity: 0.5; }
 
-        /* ARAMA */
         .search-wrap { display: flex; align-items: center; gap: 8px; background: var(--bg-body); border: 1px solid var(--border); border-radius: 50px; padding: 9px 16px; flex: 1; max-width: 320px; transition: border-color 0.25s, box-shadow 0.25s; }
         .search-wrap:focus-within { border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-soft); }
         .search-wrap span { color: var(--text-muted); font-size: 20px; }
         .search-wrap input { border: none; background: transparent; color: var(--text-main); outline: none; width: 100%; font-size: 0.9rem; }
 
-        /* TAKVİM */
         .cal-note { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 14px; font-weight: 600; display: flex; gap: 6px; align-items: center; }
         .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; border: 1px solid var(--border); border-radius: var(--radius-md); }
         table { width: 100%; border-collapse: collapse; font-size: 0.87rem; text-align: left; }
@@ -290,23 +279,20 @@
         .info-note { display: flex; gap: 10px; align-items: flex-start; background: var(--warning-soft); border: 1px dashed var(--warning); padding: 14px 16px; border-radius: var(--radius-md); font-size: 0.82rem; font-weight: 600; margin-top: 14px; line-height: 1.5; }
         .info-note .material-symbols-rounded { color: var(--warning); font-size: 20px; flex-shrink: 0; }
 
-        /* FOOTER (Premium) */
         .footer { margin-top: 36px; padding: 20px 0 8px; border-top: 1px solid var(--border); }
         .footer-inner { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; text-align: center; color: var(--text-muted); font-size: 0.82rem; font-weight: 600; }
         .footer-inner .material-symbols-rounded { color: var(--primary); font-size: 19px; }
         .footer-inner strong { color: var(--text-main); font-weight: 800; letter-spacing: 0.2px; }
         .footer-dot { opacity: 0.5; }
 
-        /* BOTTOM NAV */
         .bottom-nav { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: var(--bg-surface); border-top: 1px solid var(--border); padding: 8px 6px; padding-bottom: calc(8px + env(safe-area-inset-bottom)); z-index: 900; justify-content: space-around; align-items: center; }
-        .b-nav-item { display: flex; flex-direction: column; align-items: center; gap: 3px; color: var(--text-muted); font-size: 0.64rem; font-weight: 700; cursor: pointer; padding: 4px 8px; border-radius: 12px; min-width: 56px; transition: color 0.2s, transform 0.15s var(--ease-soft); }
+        .b-nav-item { display: flex; flex-direction: column; align-items: center; gap: 3px; color: var(--text-muted); font-size: 0.66rem; font-weight: 700; cursor: pointer; padding: 5px 8px; border-radius: 12px; min-width: 58px; transition: color 0.2s, transform 0.15s var(--ease-soft); }
         .b-nav-item:active { transform: scale(0.92); }
         .b-nav-item.active { color: var(--primary); }
-        .b-icon { padding: 3px 14px; border-radius: 16px; transition: background-color 0.25s; }
+        .b-icon { padding: 4px 14px; border-radius: 16px; transition: background-color 0.25s; }
         .b-nav-item.active .b-icon { background: var(--primary-soft); }
-        .b-icon span { font-size: 23px; }
+        .b-icon span { font-size: 24px; }
 
-        /* MODAL */
         .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 1200; display: none; justify-content: center; align-items: center; padding: 20px; }
         .modal-content { background: var(--bg-surface); width: 100%; max-width: 620px; border-radius: var(--radius-lg); padding: 26px; border: 1px solid var(--border); max-height: 90vh; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; animation: modalIn 0.35s var(--ease-soft); }
         @keyframes modalIn { from { opacity: 0; transform: scale(0.95) translateY(12px); } to { opacity: 1; transform: none; } }
@@ -319,7 +305,6 @@
         .form-control:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-soft); }
         .form-hint { font-size: 0.72rem; color: var(--text-muted); margin-top: 6px; display: flex; align-items: center; gap: 4px; }
 
-        /* TABLET */
         @media (max-width: 1023px) and (min-width: 768px) {
             .sidebar { width: 84px; padding: 20px 10px; }
             .brand { justify-content: center; padding: 0; margin-bottom: 26px; }
@@ -328,30 +313,66 @@
             .main-content { padding: 24px; }
         }
 
-        /* MOBİL */
+        /* ================= MOBİL (Tüm telefonlar) ================= */
         @media (max-width: 767px) {
             :root { --banner-h: 58px; }
             .maintenance-banner { font-size: 0.7rem; }
             .sidebar { display: none; }
             .bottom-nav { display: flex; }
-            .main-content { padding: 18px 14px; padding-bottom: calc(92px + env(safe-area-inset-bottom)); }
+            .main-content { padding: 16px 12px; padding-bottom: calc(94px + env(safe-area-inset-bottom)); }
             .header-logo { display: block; width: 40px; height: 40px; border-radius: 12px; object-fit: contain; background: var(--logo-bg); border: 1px solid var(--border); padding: 4px; flex-shrink: 0; }
             .header-logo-fallback { width: 40px; height: 40px; font-size: 1.05rem; }
             .btn-text { display: none; }
-            .dashboard-grid { grid-template-columns: 1fr; gap: 16px; }
-            .card { padding: 18px; }
+            .btn { min-height: 46px; }
+            /* iOS otomatik zoom'unu önle (input >= 16px) */
+            .form-control, .search-wrap input { font-size: 1rem; }
+            .search-wrap { max-width: 100%; }
+            .dashboard-grid { grid-template-columns: 1fr; gap: 14px; }
+            .stats-strip { grid-template-columns: repeat(auto-fit, minmax(105px, 1fr)); gap: 10px; }
+            .stat { padding: 12px; gap: 9px; }
+            .card { padding: 16px; border-radius: 20px; }
             .timer-display { gap: 6px; }
             .t-box { padding: 10px 2px; }
             .data-item { padding: 14px; }
-            .cal-date { white-space: normal; }
-            td, th { padding: 11px 12px; }
-            .search-wrap { max-width: 100%; }
+            .item-content { font-size: 0.9rem; }
+
+            /* ===== TAKVİM: Telefonlarda yatay tablo yerine DİKEY KART listesi ===== */
+            .table-wrapper { border: none; overflow: visible; border-radius: 0; }
+            table, .holiday-table { min-width: 0 !important; font-size: 0.88rem; }
+            thead { display: none; }
+            tbody tr {
+                display: block; background: var(--bg-surface);
+                border: 1px solid var(--border); border-radius: 16px;
+                margin-bottom: 10px; padding: 14px 15px;
+                box-shadow: var(--shadow);
+            }
+            tbody td { display: block; border: none !important; padding: 0; background: transparent !important; }
+            tbody td strong { font-size: 0.92rem; line-height: 1.45; display: block; }
+            td.cal-date {
+                display: inline-flex; align-items: center; margin-top: 10px;
+                background: var(--primary-soft); color: var(--primary);
+                border-radius: 50px; padding: 7px 13px;
+                font-size: 0.78rem; font-weight: 700; white-space: normal; line-height: 1.35;
+            }
+            td[data-h] { margin-top: 8px; font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; }
+            td[data-h]::before { content: attr(data-h) ": "; color: var(--primary); font-weight: 800; }
+            td.dash { display: none; }
+            tr.row-ongoing { background: var(--accent-soft); border-color: var(--accent); }
+            tr.row-next { background: var(--primary-soft); border-color: var(--primary); }
+            tr.row-past { opacity: 0.62; }
+            .status-chip { display: inline-block; margin: 8px 0 0; }
 
             .modal-overlay { align-items: flex-end; padding: 0; }
             .modal-content { max-width: 100%; border-radius: 24px 24px 0 0; border-bottom: none; max-height: 92vh; padding: 18px 20px; padding-bottom: calc(24px + env(safe-area-inset-bottom)); animation: sheetUp 0.35s var(--ease-soft); }
             .modal-content::before { content: ''; display: block; width: 44px; height: 4px; border-radius: 2px; background: var(--border); margin: 0 auto 14px; }
         }
         @keyframes sheetUp { from { transform: translateY(70px); opacity: 0.4; } to { transform: none; opacity: 1; } }
+
+        @media (max-width: 360px) {
+            .b-nav-item { min-width: 52px; font-size: 0.6rem; }
+            .b-icon { padding: 4px 10px; }
+            .t-val { font-size: 1.15rem; }
+        }
 
         @media (max-height: 480px) and (orientation: landscape) {
             .bottom-nav { padding: 4px 6px; padding-bottom: calc(4px + env(safe-area-inset-bottom)); }
@@ -363,6 +384,19 @@
             * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
         }
     </style>
+
+    <!-- TEMA FLAŞI ÖNLEYİCİ: İlk boyamadan ÖNCE temayı uygular -->
+    <script>
+        (function () {
+            try {
+                if (localStorage.getItem('theme') === 'light') {
+                    document.documentElement.classList.add('light-mode');
+                    var m = document.querySelector('meta[name="theme-color"]');
+                    if (m) m.setAttribute('content', '#f1f5f9');
+                }
+            } catch (e) {}
+        })();
+    </script>
 </head>
 <body>
 
@@ -478,7 +512,7 @@
                 </div>
             </div>
 
-            <!-- 3) AKADEMİK TAKVİM (PDF'den eksiksiz) -->
+            <!-- 3) AKADEMİK TAKVİM -->
             <div id="view-calendar" class="view-section">
                 <div class="card" style="margin-bottom:20px;">
                     <div class="card-header">
@@ -508,22 +542,22 @@
                         <table class="holiday-table">
                             <thead><tr><th>Resmi Tatil / Dini Bayram</th><th>Telafi Durumu (Güz)</th><th>Telafi Durumu (Bahar)</th></tr></thead>
                             <tbody>
-                                <tr style="--i:0"><td>28 Ekim 2026 Çarşamba — Cumhuriyet Bayramı (Yarım Gün)</td><td>72 iş gününe dahil edilmemiştir</td><td class="h-muted">—</td></tr>
-                                <tr style="--i:1"><td>29 Ekim 2026 Perşembe — Cumhuriyet Bayramı</td><td>72 iş gününe dahil edilmemiştir</td><td class="h-muted">—</td></tr>
-                                <tr style="--i:2"><td>1 Ocak 2027 Cuma — Yılbaşı</td><td>72 iş gününe dahil edilmemiştir</td><td class="h-muted">—</td></tr>
-                                <tr style="--i:3"><td>8 Mart 2027 Pazartesi — Ramazan Bayramı Arefe</td><td class="h-muted">—</td><td class="h-muted">—</td></tr>
-                                <tr style="--i:4"><td>9 Mart 2027 Salı — Ramazan Bayramı 1. Gün</td><td class="h-muted">—</td><td class="h-muted">—</td></tr>
-                                <tr style="--i:5"><td>10 Mart 2027 Çarşamba — Ramazan Bayramı 2. Gün</td><td class="h-muted">—</td><td class="h-muted">—</td></tr>
-                                <tr style="--i:6"><td>11 Mart 2027 Perşembe — Ramazan Bayramı 3. Gün</td><td class="h-muted">—</td><td class="h-muted">—</td></tr>
-                                <tr style="--i:7"><td>12 Mart 2027 Cuma</td><td class="h-muted">—</td><td>Ramazan Bayramı haftası nedeniyle 71 iş gününe dahil edilmemiştir</td></tr>
-                                <tr style="--i:8"><td>23 Nisan 2027 Cuma — Ulusal Egemenlik ve Çocuk Bayramı</td><td class="h-muted">—</td><td>71 iş gününe dahil edilmemiştir</td></tr>
-                                <tr style="--i:9"><td>1 Mayıs 2027 Cumartesi — İşçi ve Emekçiler Bayramı</td><td class="h-muted">—</td><td>71 iş gününe dahil edilmemiştir</td></tr>
-                                <tr style="--i:10"><td>15 Mayıs 2027 Cumartesi — Arefe</td><td class="h-muted">—</td><td class="h-muted">—</td></tr>
-                                <tr style="--i:11"><td>16 Mayıs 2027 Pazar — Kurban Bayramı 1. Gün</td><td class="h-muted">—</td><td class="h-muted">—</td></tr>
-                                <tr style="--i:12"><td>17 Mayıs 2027 Pazartesi — Kurban Bayramı 2. Gün</td><td class="h-muted">—</td><td>71 iş gününe dahil edilmemiştir</td></tr>
-                                <tr style="--i:13"><td>18 Mayıs 2027 Salı — Kurban Bayramı 3. Gün</td><td class="h-muted">—</td><td>71 iş gününe dahil edilmemiştir</td></tr>
-                                <tr style="--i:14"><td>19 Mayıs 2027 Çarşamba — Kurban Bayramı 4. Gün / Atatürk'ü Anma, Gençlik ve Spor Bayramı</td><td class="h-muted">—</td><td>71 iş gününe dahil edilmemiştir</td></tr>
-                                <tr style="--i:15"><td>15 Temmuz 2027 Perşembe — Demokrasi ve Milli Birlik Günü</td><td class="h-muted">—</td><td class="h-muted">—</td></tr>
+                                <tr style="--i:0"><td>28 Ekim 2026 Çarşamba — Cumhuriyet Bayramı (Yarım Gün)</td><td data-h="Güz">72 iş gününe dahil edilmemiştir</td><td data-h="Bahar" class="dash">—</td></tr>
+                                <tr style="--i:1"><td>29 Ekim 2026 Perşembe — Cumhuriyet Bayramı</td><td data-h="Güz">72 iş gününe dahil edilmemiştir</td><td data-h="Bahar" class="dash">—</td></tr>
+                                <tr style="--i:2"><td>1 Ocak 2027 Cuma — Yılbaşı</td><td data-h="Güz">72 iş gününe dahil edilmemiştir</td><td data-h="Bahar" class="dash">—</td></tr>
+                                <tr style="--i:3"><td>8 Mart 2027 Pazartesi — Ramazan Bayramı Arefe</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar" class="dash">—</td></tr>
+                                <tr style="--i:4"><td>9 Mart 2027 Salı — Ramazan Bayramı 1. Gün</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar" class="dash">—</td></tr>
+                                <tr style="--i:5"><td>10 Mart 2027 Çarşamba — Ramazan Bayramı 2. Gün</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar" class="dash">—</td></tr>
+                                <tr style="--i:6"><td>11 Mart 2027 Perşembe — Ramazan Bayramı 3. Gün</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar" class="dash">—</td></tr>
+                                <tr style="--i:7"><td>12 Mart 2027 Cuma</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar">Ramazan Bayramı haftası nedeniyle 71 iş gününe dahil edilmemiştir</td></tr>
+                                <tr style="--i:8"><td>23 Nisan 2027 Cuma — Ulusal Egemenlik ve Çocuk Bayramı</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar">71 iş gününe dahil edilmemiştir</td></tr>
+                                <tr style="--i:9"><td>1 Mayıs 2027 Cumartesi — İşçi ve Emekçiler Bayramı</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar">71 iş gününe dahil edilmemiştir</td></tr>
+                                <tr style="--i:10"><td>15 Mayıs 2027 Cumartesi — Arefe</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar" class="dash">—</td></tr>
+                                <tr style="--i:11"><td>16 Mayıs 2027 Pazar — Kurban Bayramı 1. Gün</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar" class="dash">—</td></tr>
+                                <tr style="--i:12"><td>17 Mayıs 2027 Pazartesi — Kurban Bayramı 2. Gün</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar">71 iş gününe dahil edilmemiştir</td></tr>
+                                <tr style="--i:13"><td>18 Mayıs 2027 Salı — Kurban Bayramı 3. Gün</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar">71 iş gününe dahil edilmemiştir</td></tr>
+                                <tr style="--i:14"><td>19 Mayıs 2027 Çarşamba — Kurban Bayramı 4. Gün / Atatürk'ü Anma, Gençlik ve Spor Bayramı</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar">71 iş gününe dahil edilmemiştir</td></tr>
+                                <tr style="--i:15"><td>15 Temmuz 2027 Perşembe — Demokrasi ve Milli Birlik Günü</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar" class="dash">—</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -627,7 +661,6 @@
             { name: "Güz Dönemi Bütünleme Sınavları", date: new Date("2027-02-01T09:00:00") }
         ];
 
-        /* ===== PDF'den eksiksiz aktarılan takvim verisi [Ad, Başlangıç, Bitiş, Not] ===== */
         const FALL_RAW = [
             ["Katkı Payı / Öğrenim Ücreti Yatırma Süresi", "2026-08-31", "2026-09-25"],
             ["Ders Kaydı Yenileme Süresi", "2026-09-14", "2026-09-17", "4 iş günü"],
@@ -675,7 +708,7 @@
             t: document.getElementById('target-event-name')
         };
 
-        window.onload = function () {
+        document.addEventListener('DOMContentLoaded', function () {
             initTheme();
             updateDateInfo();
             updateAdminUI();
@@ -701,7 +734,7 @@
             const overlay = document.getElementById('admin-modal');
             overlay.addEventListener('click', e => { if (e.target === overlay) closeAdminModal(); });
             document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAdminModal(); });
-        };
+        });
 
         /* ---------- TAKVİM ---------- */
         function pd(str) { const [y, m, d] = str.split('-').map(Number); return new Date(y, m - 1, d); }
@@ -736,20 +769,18 @@
             document.getElementById(tbodyId).innerHTML = rows;
         }
 
-        /* ---------- TEMA ---------- */
+        /* ---------- TEMA (html üzerinde, flaşsız) ---------- */
+        function isLightTheme() { return document.documentElement.classList.contains('light-mode'); }
         function setMetaTheme() {
             const meta = document.querySelector('meta[name="theme-color"]');
-            if (meta) meta.setAttribute('content', document.body.classList.contains('light-mode') ? '#f1f5f9' : '#0b0f19');
+            if (meta) meta.setAttribute('content', isLightTheme() ? '#f1f5f9' : '#0b0f19');
         }
         function initTheme() {
-            if (localStorage.getItem("theme") === "light") {
-                document.body.classList.add("light-mode");
-                document.getElementById("theme-icon").innerText = "dark_mode";
-            }
+            if (isLightTheme()) document.getElementById("theme-icon").innerText = "dark_mode";
             setMetaTheme();
         }
         function toggleTheme() {
-            const isLight = document.body.classList.toggle("light-mode");
+            const isLight = document.documentElement.classList.toggle("light-mode");
             localStorage.setItem("theme", isLight ? "light" : "dark");
             const ic = document.getElementById("theme-icon");
             ic.innerText = isLight ? "dark_mode" : "light_mode";
@@ -981,15 +1012,15 @@
         async function handleAdminAuth() {
             if (userToken) {
                 if (await validateGitHubToken(userToken)) openAdminModal();
-                else { alert("Kayıtlı token geçersiz veya yetkisiz! Oturum kapatılıyor."); logoutAdmin(); }
+                else { alert("Kayıtlı şifre geçersiz veya yetkisiz! Oturum kapatılıyor."); logoutAdmin(); }
             } else {
-                const token = prompt("GitHub Personal Access Token Giriniz:");
+                const token = prompt("Şifre girmeniz gereklidir.");
                 if (token && token.trim() !== "") {
                     if (await validateGitHubToken(token.trim())) {
                         userToken = token.trim();
                         localStorage.setItem("gh_admin_token", userToken);
                         updateAdminUI(); fetchData(); openAdminModal();
-                    } else alert("HATA: Girdiğiniz GitHub Token GEÇERSİZ! Erişim reddedildi.");
+                    } else alert("HATA: Girdiğiniz şifre GEÇERSİZ! Erişim reddedildi.");
                 }
             }
         }
@@ -1106,4 +1137,4 @@
         }
     </script>
 </body>
-</html>
+    </html>
