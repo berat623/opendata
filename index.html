@@ -39,6 +39,7 @@
             --shadow: 0 12px 32px -14px rgba(0,0,0,0.5);
             --shadow-lift: 0 22px 48px -16px rgba(0,0,0,0.55);
             --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 
             --weather-gradient: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
             --timer-gradient: linear-gradient(135deg, #064e3b 0%, #0f172a 100%);
@@ -51,7 +52,7 @@
             --glow-2: rgba(16,185,129,0.09);
             --scroll-thumb: rgba(255,255,255,0.18);
 
-            --banner-bg: linear-gradient(90deg, #78350f, #92400e);
+            --banner-bg: linear-gradient(90deg, #78350f, #92400e, #78350f);
             --banner-text: #fde68a;
             --logo-bg: #ffffff;
         }
@@ -85,7 +86,7 @@
             --glow-2: rgba(5,150,105,0.07);
             --scroll-thumb: rgba(15,23,42,0.22);
 
-            --banner-bg: linear-gradient(90deg, #fef3c7, #fde68a);
+            --banner-bg: linear-gradient(90deg, #fef3c7, #fde68a, #fef3c7);
             --banner-text: #92400e;
         }
 
@@ -111,6 +112,17 @@
         button, .nav-item, .b-nav-item, a { touch-action: manipulation; }
         :focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 6px; }
 
+        /* ============ AÇILIŞ SPLASH ============ */
+        .intro-overlay {
+            position: fixed; inset: 0; z-index: 2000; background: var(--bg-body);
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+            animation: introOut 0.55s var(--ease-soft) 0.9s forwards;
+        }
+        .intro-logo { width: 76px; height: 76px; border-radius: 22px; object-fit: contain; background: var(--logo-bg); padding: 7px; box-shadow: var(--shadow-lift); animation: introPop 0.6s var(--ease-spring); }
+        .intro-title { font-weight: 800; letter-spacing: 0.6px; color: var(--text-muted); font-size: 0.9rem; animation: introPop 0.6s var(--ease-spring) 0.12s both; }
+        @keyframes introOut { to { opacity: 0; visibility: hidden; } }
+        @keyframes introPop { from { opacity: 0; transform: scale(0.7) translateY(12px); } to { opacity: 1; transform: none; } }
+
         .material-symbols-rounded { font-variation-settings: 'FILL' 1; user-select: none; }
         .spin { animation: spinSlow 1.6s linear infinite; }
         @keyframes spinSlow { to { transform: rotate(360deg); } }
@@ -127,7 +139,6 @@
             100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
         }
 
-        /* İKON CHİP (Premium kart başlıkları) */
         .icon-chip { width: 38px; height: 38px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; background: var(--primary-soft); color: var(--primary); flex-shrink: 0; }
         .icon-chip .material-symbols-rounded { font-size: 22px; }
         .icon-chip.accent { background: var(--accent-soft); color: var(--accent); }
@@ -138,6 +149,14 @@
         .ripple { position: absolute; border-radius: 50%; background: currentColor; opacity: 0.22; transform: scale(0); animation: rippleAnim 0.6s var(--ease-soft) forwards; pointer-events: none; }
         @keyframes rippleAnim { to { transform: scale(2.8); opacity: 0; } }
 
+        /* Ana butonda parlama süpürmesi */
+        .btn-primary::after {
+            content: ''; position: absolute; top: 0; left: -70%; width: 45%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+            transform: skewX(-20deg); transition: left 0.6s var(--ease-soft);
+        }
+        .btn-primary:hover::after { left: 130%; }
+
         .skeleton { position: relative; overflow: hidden; background: var(--bg-surface-hover); border-radius: 10px; }
         .skeleton::after { content: ''; position: absolute; inset: 0; transform: translateX(-100%); background: linear-gradient(90deg, transparent, var(--shimmer), transparent); animation: shimmer 1.2s infinite; }
         @keyframes shimmer { 100% { transform: translateX(100%); } }
@@ -146,9 +165,11 @@
             position: sticky; top: 0; z-index: 1000; height: var(--banner-h);
             display: flex; align-items: center; justify-content: center; gap: 8px;
             padding: 4px 12px; text-align: center;
-            background: var(--banner-bg); color: var(--banner-text);
+            background: var(--banner-bg); background-size: 200% 100%; color: var(--banner-text);
             font-size: 0.78rem; font-weight: 700; line-height: 1.25;
+            animation: bannerFlow 9s linear infinite;
         }
+        @keyframes bannerFlow { 0% { background-position: 0% 0; } 100% { background-position: 200% 0; } }
         .banner-icon { font-size: 18px; flex-shrink: 0; animation: spinSlow 6s linear infinite; }
 
         .app-container { display: flex; align-items: stretch; }
@@ -161,7 +182,8 @@
             overflow-y: auto; z-index: 50;
         }
         .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; padding: 0 8px; }
-        .brand-logo { width: 44px; height: 44px; border-radius: 14px; object-fit: contain; background: var(--logo-bg); border: 1px solid var(--border); padding: 4px; flex-shrink: 0; }
+        .brand-logo { width: 44px; height: 44px; border-radius: 14px; object-fit: contain; background: var(--logo-bg); border: 1px solid var(--border); padding: 4px; flex-shrink: 0; transition: transform 0.3s var(--ease-spring); }
+        .brand-logo:hover { transform: scale(1.06) rotate(-2deg); }
         .brand-fallback { display: none; align-items: center; justify-content: center; width: 44px; height: 44px; background: var(--primary); border-radius: 14px; color: #fff; font-weight: 800; font-size: 1.2rem; flex-shrink: 0; }
         .brand-text h1 { font-size: 1.05rem; font-weight: 800; line-height: 1.2; letter-spacing: -0.2px; }
         .brand-text p { font-size: 0.72rem; color: var(--text-muted); }
@@ -182,7 +204,11 @@
         .top-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 26px; }
         .header-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
         .header-logo { display: none; }
-        .page-title { font-size: clamp(1.4rem, 1rem + 1.8vw, 1.95rem); font-weight: 800; line-height: 1.12; letter-spacing: -0.5px; }
+        .page-title {
+            font-size: clamp(1.4rem, 1rem + 1.8vw, 1.95rem); font-weight: 800; line-height: 1.12; letter-spacing: -0.5px;
+            background: linear-gradient(92deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+        }
         .header-date { color: var(--text-muted); font-size: 0.88rem; margin-top: 3px; font-weight: 600; }
         .header-actions { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
 
@@ -216,21 +242,31 @@
         .view-section.active .card + .card { animation-delay: 0.1s; }
         .view-section.active .card + .card + .card { animation-delay: 0.18s; }
 
+        /* Liste öğeleri kademeli giriş */
+        .view-section.active .data-item { animation: cardIn 0.45s var(--ease-soft) both; }
+        .view-section.active .data-item:nth-child(1) { animation-delay: 0.05s; }
+        .view-section.active .data-item:nth-child(2) { animation-delay: 0.1s; }
+        .view-section.active .data-item:nth-child(3) { animation-delay: 0.15s; }
+        .view-section.active .data-item:nth-child(4) { animation-delay: 0.2s; }
+        .view-section.active .data-item:nth-child(5) { animation-delay: 0.25s; }
+        .view-section.active .data-item:nth-child(6) { animation-delay: 0.3s; }
+
         @keyframes rowIn { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: none; } }
         .view-section.active tbody tr { animation: rowIn 0.4s var(--ease-soft) both; animation-delay: calc(var(--i, 0) * 22ms); }
 
         .stats-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; margin-bottom: 22px; }
         .stat { display: flex; gap: 12px; align-items: center; background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 15px 17px; box-shadow: var(--shadow); transition: transform 0.25s var(--ease-soft), box-shadow 0.25s; }
         @media (hover: hover) { .stat:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); } }
-        .stat-val { font-weight: 800; font-size: 1.2rem; line-height: 1.1; letter-spacing: -0.3px; }
+        .stat-val { font-weight: 800; font-size: 1.2rem; line-height: 1.1; letter-spacing: -0.3px; font-variant-numeric: tabular-nums; }
         .stat-lbl { font-size: 0.68rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
 
-        .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 22px; margin-bottom: 22px; }
+        .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 22px; margin-bottom: 22px; perspective: 1100px; }
         .card { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow); }
         @media (hover: hover) {
             .card { transition: transform 0.3s var(--ease-soft), box-shadow 0.3s var(--ease-soft), background-color 0.3s, border-color 0.3s; }
             .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
         }
+        .tilt { transform-style: preserve-3d; will-change: transform; }
         .card-header { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; }
         .card-title { font-size: 1.08rem; font-weight: 800; display: flex; align-items: center; gap: 11px; letter-spacing: -0.2px; }
 
@@ -305,7 +341,8 @@
         .b-nav-item:active { transform: scale(0.92); }
         .b-nav-item.active { color: var(--primary); }
         .b-icon { padding: 4px 14px; border-radius: 16px; transition: background-color 0.25s, transform 0.25s var(--ease-soft); }
-        .b-nav-item.active .b-icon { background: var(--primary-soft); transform: translateY(-2px); }
+        .b-nav-item.active .b-icon { background: var(--primary-soft); transform: translateY(-2px); animation: navBounce 0.45s var(--ease-spring); }
+        @keyframes navBounce { 0% { transform: scale(0.7); } 60% { transform: scale(1.1) translateY(-3px); } 100% { transform: scale(1) translateY(-2px); } }
         .b-icon span { font-size: 24px; }
 
         .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 1200; display: none; justify-content: center; align-items: center; padding: 20px; }
@@ -340,7 +377,7 @@
             .btn { min-height: 46px; }
             .form-control, .search-wrap input { font-size: 1rem; }
             .search-wrap { max-width: 100%; }
-            .dashboard-grid { grid-template-columns: 1fr; gap: 14px; }
+            .dashboard-grid { grid-template-columns: 1fr; gap: 14px; perspective: none; }
             .stats-strip { grid-template-columns: repeat(auto-fit, minmax(105px, 1fr)); gap: 10px; }
             .stat { padding: 12px; gap: 10px; }
             .icon-chip { width: 34px; height: 34px; border-radius: 10px; }
@@ -387,6 +424,7 @@
 
         @media (prefers-reduced-motion: reduce) {
             * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+            .intro-overlay { display: none; }
         }
     </style>
 
@@ -404,6 +442,12 @@
     </script>
 </head>
 <body>
+
+    <!-- AÇILIŞ SPLASH -->
+    <div class="intro-overlay" aria-hidden="true">
+        <img src="logo.png" alt="" class="intro-logo" onerror="this.style.display='none'">
+        <div class="intro-title">ETP BİLGİ SİSTEMİ</div>
+    </div>
 
     <div class="maintenance-banner" role="status">
         <span class="material-symbols-rounded banner-icon">build_circle</span>
@@ -467,7 +511,7 @@
                 </div>
 
                 <div class="dashboard-grid">
-                    <div class="card weather-card">
+                    <div class="card weather-card tilt">
                         <div class="card-header" style="margin-bottom:8px;">
                             <div class="card-title"><span class="icon-chip on-gradient"><span class="material-symbols-rounded">partly_cloudy_day</span></span> Görükle Kampüsü</div>
                             <div class="weather-head-right">
@@ -483,7 +527,7 @@
                         </div>
                     </div>
 
-                    <div class="card timer-card">
+                    <div class="card timer-card tilt">
                         <div class="timer-title" id="target-event-name">Yaklaşan Etkinlik Yükleniyor...</div>
                         <div class="timer-display">
                             <div class="t-box"><div class="t-val" id="cd-days">00</div><div class="t-lbl">Gün</div></div>
@@ -726,6 +770,10 @@
             fetchCampusWeather();
             startCountdown();
             fetchData();
+            initTilt();
+
+            // Splash'i garanti kaldır
+            setTimeout(() => { const io = document.querySelector('.intro-overlay'); if (io) io.remove(); }, 1800);
 
             document.addEventListener('pointerdown', function (e) {
                 const t = e.target.closest('.btn, .nav-item, .b-nav-item, .file-link');
@@ -746,10 +794,43 @@
             document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAdminModal(); });
         });
 
-        /* ================= KESİN ÇÖZÜMLÜ MGM HAVA DURUMU =================
-           Katman 1: localStorage önbellek (anında gösterir, asla boş ekran yok)
-           Katman 2: Kendi reponuzdaki hava.json (GitHub Actions MGM'den besler)
-           Katman 3: Zaman aşımı kontrollü CORS proxy zinciri (canlı veri)      */
+        /* ============ 3D TİLT EFEKTİ (yalnız masaüstü, GPU dostu) ============ */
+        function initTilt() {
+            if (window.matchMedia('(hover: none)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            document.querySelectorAll('.tilt').forEach(card => {
+                let raf = null;
+                card.addEventListener('pointermove', e => {
+                    if (raf) return;
+                    raf = requestAnimationFrame(() => {
+                        const r = card.getBoundingClientRect();
+                        const x = (e.clientX - r.left) / r.width - 0.5;
+                        const y = (e.clientY - r.top) / r.height - 0.5;
+                        card.style.transform = `translateY(-4px) rotateX(${(-y * 5).toFixed(2)}deg) rotateY(${(x * 5).toFixed(2)}deg)`;
+                        raf = null;
+                    });
+                }, { passive: true });
+                card.addEventListener('pointerleave', () => { card.style.transform = ''; }, { passive: true });
+            });
+        }
+
+        /* ============ COUNT-UP (istatistik sayaçları) ============ */
+        function animateValue(el, to) {
+            const from = parseInt(el.innerText, 10) || 0;
+            if (from === to) { el.innerText = to; return; }
+            const t0 = performance.now(), dur = 600;
+            function step(t) {
+                const p = Math.min(1, (t - t0) / dur);
+                const e = 1 - Math.pow(1 - p, 3);
+                el.innerText = Math.round(from + (to - from) * e);
+                if (p < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+        }
+
+        /* ================= MGM HAVA DURUMU v3 (ÇOK YOLLU + OTOMATİK YENİDEN DENEME) ================= */
+        const MGM_FULL_URL = "https://servis.mgm.gov.tr/web/sondurumlar";
+        let weatherRetryTimer = null;
+
         function weatherCacheRead() {
             try {
                 const raw = localStorage.getItem(WEATHER_CACHE_KEY);
@@ -765,18 +846,28 @@
         async function fetchWithTimeout(url, ms) {
             const ctrl = new AbortController();
             const id = setTimeout(() => ctrl.abort(), ms);
-            try {
-                return await fetch(url, { signal: ctrl.signal, cache: "no-store" });
-            } finally { clearTimeout(id); }
+            try { return await fetch(url, { signal: ctrl.signal, cache: "no-store" }); }
+            finally { clearTimeout(id); }
+        }
+
+        function extractJson(text) {
+            if (!text || typeof text !== 'string') return null;
+            const starts = [text.indexOf('['), text.indexOf('{')].filter(i => i !== -1);
+            if (!starts.length) return null;
+            try { return JSON.parse(text.slice(Math.min(...starts))); } catch (e) { return null; }
         }
 
         function normalizeWeather(parsed) {
+            if (!parsed) return null;
+            if (typeof parsed === 'string') return normalizeWeather(extractJson(parsed));
             let item = null;
-            if (Array.isArray(parsed)) item = parsed[0];
-            else if (parsed && typeof parsed === 'object') {
-                if (typeof parsed.contents === 'string') {
-                    try { const inner = JSON.parse(parsed.contents); item = Array.isArray(inner) ? inner[0] : inner; } catch (e) {}
-                } else item = parsed;
+            if (Array.isArray(parsed)) {
+                if (!parsed.length) return null;
+                const found = parsed.find(x => x && String(x.merkezId) === "91617");
+                item = found || (parsed.length <= 5 ? parsed[0] : null);
+            } else if (typeof parsed === 'object') {
+                if (typeof parsed.contents === 'string') return normalizeWeather(extractJson(parsed.contents));
+                item = parsed;
             }
             if (item && item.sicaklik !== undefined && item.sicaklik !== -9999 && item.sicaklik !== "-9999") return item;
             return null;
@@ -821,49 +912,77 @@
                 </div>`;
         }
 
-        async function fetchCampusWeather() {
-            const contentEl = document.getElementById('weather-content');
-
-            // KATMAN 1: Önbellek (varsa anında çiz)
-            const cached = weatherCacheRead();
-            if (cached) renderWeather(cached);
-
-            // KATMAN 2: Kendi reponuzdaki hava.json (Actions ile beslenir, CORS garantili)
-            try {
-                const r = await fetchWithTimeout(`https://raw.githubusercontent.com/${GITHUB_USERNAME}/${REPO_NAME}/main/hava.json?t=${Date.now()}`, 8000);
-                if (r.ok) {
-                    const item = normalizeWeather(await r.json());
-                    if (item) { renderWeather(item); weatherCacheWrite(item); return; }
-                }
-            } catch (e) {}
-
-            // KATMAN 3: Canlı veri için proxy zinciri (her deneme 6 sn ile sınırlı)
+        async function tryWeatherProxies() {
             const enc = encodeURIComponent(MGM_URL);
+            const encFull = encodeURIComponent(MGM_FULL_URL);
             const proxies = [
                 `https://api.allorigins.win/raw?url=${enc}`,
                 `https://api.codetabs.com/v1/proxy?quest=${MGM_URL}`,
+                `https://cors.bridged.cc/${MGM_URL}`,
+                `https://r.jina.ai/${MGM_URL}`,
+                `https://api.allorigins.win/get?url=${enc}`,
                 `https://corsproxy.io/?url=${enc}`,
-                `https://corsproxy.io/?${enc}`,
-                `https://api.allorigins.win/get?url=${enc}`
+                `https://thingproxy.freeboard.io/fetch/${MGM_URL}`,
+                `https://api.allorigins.win/raw?url=${encFull}`,
+                `https://api.codetabs.com/v1/proxy?quest=${MGM_FULL_URL}`
             ];
             for (const p of proxies) {
                 try {
-                    const res = await fetchWithTimeout(p, 6000);
+                    const res = await fetchWithTimeout(p, 7000);
                     if (!res.ok) continue;
-                    const item = normalizeWeather(await res.json());
-                    if (item) { renderWeather(item); weatherCacheWrite(item); return; }
+                    const item = normalizeWeather(await res.text());
+                    if (item) { renderWeather(item); weatherCacheWrite(item); weatherOk(); return true; }
                 } catch (e) {}
             }
-
-            // Hiçbir kaynak çalışmadıysa: önbellek varsa onu göstermeye devam et
-            if (!cached) {
-                contentEl.innerHTML = `<div style="color:var(--widget-error); margin-top:10px; font-size:0.88rem; font-weight:700; display:flex; align-items:center; gap:6px;">
-                    <span class="material-symbols-rounded" style="font-size:18px;">error</span>
-                    MGM istasyonuna şu an ulaşılamıyor. Veriler birazdan otomatik yenilenecek.</div>`;
-            }
+            return false;
         }
 
-        // Sayfa açıkken 10 dakikada bir sessizce tazele
+        function weatherOk() { if (weatherRetryTimer) { clearTimeout(weatherRetryTimer); weatherRetryTimer = null; } }
+
+        function scheduleWeatherRetry() {
+            if (weatherRetryTimer) return;
+            weatherRetryTimer = setTimeout(() => { weatherRetryTimer = null; fetchCampusWeather(); }, 60000);
+        }
+
+        function retryWeather() {
+            document.getElementById('weather-content').innerHTML = `<div class="skeleton" style="height:56px;"></div>`;
+            fetchCampusWeather();
+        }
+
+        async function fetchCampusWeather() {
+            const contentEl = document.getElementById('weather-content');
+
+            // KATMAN 1: Önbellek (varsa anında göster)
+            const cached = weatherCacheRead();
+            if (cached) renderWeather(cached);
+
+            // KATMAN 2: Kendi reponuzdaki hava.json (GitHub Actions besler)
+            try {
+                const r = await fetchWithTimeout(`https://raw.githubusercontent.com/${GITHUB_USERNAME}/${REPO_NAME}/main/hava.json?t=${Date.now()}`, 8000);
+                if (r.ok) {
+                    const item = normalizeWeather(await r.text());
+                    if (item) { renderWeather(item); weatherCacheWrite(item); weatherOk(); return; }
+                }
+            } catch (e) {}
+
+            // KATMAN 3: 9 farklı CORS proxy'si
+            if (await tryWeatherProxies()) return;
+
+            // Hiçbiri olmadı
+            if (!cached) {
+                contentEl.innerHTML = `<div style="color:var(--widget-error); margin-top:10px; font-size:0.88rem; font-weight:700;">
+                    <div style="display:flex; align-items:center; gap:6px;">
+                        <span class="material-symbols-rounded" style="font-size:18px;">error</span>
+                        MGM istasyonuna şu an ulaşılamıyor.
+                    </div>
+                    <button class="btn btn-tonal" style="margin-top:12px; min-height:40px; padding:8px 16px;" onclick="retryWeather()">
+                        <span class="material-symbols-rounded" style="font-size:16px;">refresh</span> Tekrar Dene
+                    </button>
+                </div>`;
+            }
+            scheduleWeatherRetry();
+        }
+
         setInterval(fetchCampusWeather, 10 * 60 * 1000);
 
         /* ---------- TAKVİM ---------- */
@@ -1011,8 +1130,8 @@
             const dashAnn = document.getElementById('dashboard-recent-ann');
             const fileList = document.getElementById('file-list');
 
-            document.getElementById('stat-ann').innerText = announcementsData.length;
-            document.getElementById('stat-file').innerText = filesData.length;
+            animateValue(document.getElementById('stat-ann'), announcementsData.length);
+            animateValue(document.getElementById('stat-file'), filesData.length);
 
             const q = (document.getElementById('ann-search')?.value || '').trim().toLowerCase();
             const filtered = q ? announcementsData.filter(i => (i.title || '').toLowerCase().includes(q) || (i.content || '').toLowerCase().includes(q)) : announcementsData;
@@ -1199,4 +1318,4 @@
         }
     </script>
 </body>
-                        </html>
+</html>
