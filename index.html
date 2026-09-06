@@ -16,72 +16,42 @@
 
     <style>
         :root {
-            --bg-body: #0b0f19;
-            --bg-surface: #141b2d;
-            --bg-surface-hover: #1e293b;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --primary: #3b82f6;
-            --primary-hover: #2563eb;
-            --primary-soft: rgba(59,130,246,0.16);
-            --accent: #10b981;
-            --accent-soft: rgba(16,185,129,0.12);
-            --warning: #f59e0b;
-            --warning-soft: rgba(245,158,11,0.12);
-            --danger: #ef4444;
+            --bg-body: #0b0f19; --bg-surface: #141b2d; --bg-surface-hover: #1e293b;
+            --text-main: #f8fafc; --text-muted: #94a3b8;
+            --primary: #3b82f6; --primary-hover: #2563eb; --primary-soft: rgba(59,130,246,0.16);
+            --accent: #10b981; --accent-soft: rgba(16,185,129,0.12);
+            --warning: #f59e0b; --warning-soft: rgba(245,158,11,0.12);
+            --danger: #ef4444; --danger-soft: rgba(239,68,68,0.12);
             --border: rgba(255,255,255,0.08);
-
-            --nav-width: 260px;
-            --banner-h: 44px;
-            --radius-lg: 26px;
-            --radius-md: 16px;
-            --radius-sm: 10px;
+            --nav-width: 260px; --banner-h: 44px;
+            --radius-lg: 26px; --radius-md: 16px; --radius-sm: 10px;
             --shadow: 0 12px 32px -14px rgba(0,0,0,0.5);
             --shadow-lift: 0 22px 48px -16px rgba(0,0,0,0.55);
             --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
             --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-
             --timer-gradient: linear-gradient(135deg, #064e3b 0%, #0f172a 100%);
-            --widget-text: #ffffff;
-            --widget-muted: rgba(255,255,255,0.72);
-            --widget-chip: rgba(255,255,255,0.12);
+            --widget-text: #ffffff; --widget-muted: rgba(255,255,255,0.72); --widget-chip: rgba(255,255,255,0.12);
             --shimmer: rgba(255,255,255,0.08);
-            --glow-1: rgba(59,130,246,0.12);
-            --glow-2: rgba(16,185,129,0.09);
+            --glow-1: rgba(59,130,246,0.12); --glow-2: rgba(16,185,129,0.09);
             --scroll-thumb: rgba(255,255,255,0.18);
-
             --banner-bg: linear-gradient(90deg, #78350f, #92400e, #78350f);
-            --banner-text: #fde68a;
-            --logo-bg: #ffffff;
+            --banner-text: #fde68a; --logo-bg: #ffffff;
         }
-
         html.light-mode {
-            --bg-body: #f1f5f9;
-            --bg-surface: #ffffff;
-            --bg-surface-hover: #f8fafc;
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --primary: #2563eb;
-            --primary-hover: #1d4ed8;
-            --primary-soft: rgba(37,98,235,0.10);
-            --accent: #059669;
-            --accent-soft: rgba(5,150,105,0.08);
-            --warning: #d97706;
-            --warning-soft: rgba(217,119,6,0.10);
-            --danger: #dc2626;
+            --bg-body: #f1f5f9; --bg-surface: #ffffff; --bg-surface-hover: #f8fafc;
+            --text-main: #0f172a; --text-muted: #64748b;
+            --primary: #2563eb; --primary-hover: #1d4ed8; --primary-soft: rgba(37,98,235,0.10);
+            --accent: #059669; --accent-soft: rgba(5,150,105,0.08);
+            --warning: #d97706; --warning-soft: rgba(217,119,6,0.10);
+            --danger: #dc2626; --danger-soft: rgba(220,38,38,0.10);
             --border: rgba(15,23,42,0.08);
             --shadow: 0 12px 32px -14px rgba(2,6,23,0.10);
             --shadow-lift: 0 22px 48px -16px rgba(2,6,23,0.16);
-
             --timer-gradient: linear-gradient(135deg, #d1fae5 0%, #f0fdf4 100%);
-            --widget-text: #0f172a;
-            --widget-muted: rgba(15,23,42,0.65);
-            --widget-chip: rgba(15,23,42,0.06);
+            --widget-text: #0f172a; --widget-muted: rgba(15,23,42,0.65); --widget-chip: rgba(15,23,42,0.06);
             --shimmer: rgba(0,0,0,0.05);
-            --glow-1: rgba(37,98,235,0.08);
-            --glow-2: rgba(5,150,105,0.07);
+            --glow-1: rgba(37,98,235,0.08); --glow-2: rgba(5,150,105,0.07);
             --scroll-thumb: rgba(15,23,42,0.22);
-
             --banner-bg: linear-gradient(90deg, #fef3c7, #fde68a, #fef3c7);
             --banner-text: #92400e;
         }
@@ -93,9 +63,8 @@
 
         body::before {
             content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none;
-            background:
-                radial-gradient(640px 420px at 88% -10%, var(--glow-1), transparent 62%),
-                radial-gradient(720px 520px at -12% 112%, var(--glow-2), transparent 62%);
+            background: radial-gradient(640px 420px at 88% -10%, var(--glow-1), transparent 62%),
+                        radial-gradient(720px 520px at -12% 112%, var(--glow-2), transparent 62%);
             animation: glowFloat 18s ease-in-out infinite;
         }
         @keyframes glowFloat { 0%,100% { transform: translate3d(0,0,0); } 50% { transform: translate3d(0,-18px,0); } }
@@ -108,11 +77,7 @@
         button, .nav-item, .b-nav-item, a { touch-action: manipulation; }
         :focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 6px; }
 
-        .intro-overlay {
-            position: fixed; inset: 0; z-index: 2000; background: var(--bg-body);
-            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
-            animation: introOut 0.55s var(--ease-soft) 0.9s forwards;
-        }
+        .intro-overlay { position: fixed; inset: 0; z-index: 2000; background: var(--bg-body); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; animation: introOut 0.55s var(--ease-soft) 0.9s forwards; }
         .intro-logo { width: 76px; height: 76px; border-radius: 22px; object-fit: contain; background: var(--logo-bg); padding: 7px; box-shadow: var(--shadow-lift); animation: introPop 0.6s var(--ease-spring); }
         .intro-title { font-weight: 800; letter-spacing: 0.6px; color: var(--text-muted); font-size: 0.9rem; animation: introPop 0.6s var(--ease-spring) 0.12s both; }
         @keyframes introOut { to { opacity: 0; visibility: hidden; } }
@@ -128,56 +93,36 @@
         .icon-chip .material-symbols-rounded { font-size: 22px; }
         .icon-chip.accent { background: var(--accent-soft); color: var(--accent); }
         .icon-chip.warn { background: var(--warning-soft); color: var(--warning); }
+        .icon-chip.danger { background: var(--danger-soft); color: var(--danger); }
         .icon-chip.on-gradient { background: var(--widget-chip); color: var(--widget-text); }
 
-        .btn, .nav-item, .b-nav-item, .file-link, .up-item { position: relative; overflow: hidden; }
+        .btn, .nav-item, .b-nav-item, .file-link, .up-item, .stat { position: relative; overflow: hidden; }
         .ripple { position: absolute; border-radius: 50%; background: currentColor; opacity: 0.22; transform: scale(0); animation: rippleAnim 0.6s var(--ease-soft) forwards; pointer-events: none; }
         @keyframes rippleAnim { to { transform: scale(2.8); opacity: 0; } }
 
-        .btn-primary::after {
-            content: ''; position: absolute; top: 0; left: -70%; width: 45%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
-            transform: skewX(-20deg); transition: left 0.6s var(--ease-soft);
-        }
+        .btn-primary::after { content: ''; position: absolute; top: 0; left: -70%; width: 45%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent); transform: skewX(-20deg); transition: left 0.6s var(--ease-soft); }
         .btn-primary:hover::after { left: 130%; }
 
         .skeleton { position: relative; overflow: hidden; background: var(--bg-surface-hover); border-radius: 10px; }
         .skeleton::after { content: ''; position: absolute; inset: 0; transform: translateX(-100%); background: linear-gradient(90deg, transparent, var(--shimmer), transparent); animation: shimmer 1.2s infinite; }
         @keyframes shimmer { 100% { transform: translateX(100%); } }
 
-        .maintenance-banner {
-            position: sticky; top: 0; z-index: 1000; height: var(--banner-h);
-            display: flex; align-items: center; justify-content: center; gap: 8px;
-            padding: 4px 12px; text-align: center;
-            background: var(--banner-bg); background-size: 200% 100%; color: var(--banner-text);
-            font-size: 0.78rem; font-weight: 700; line-height: 1.25;
-            animation: bannerFlow 9s linear infinite;
-        }
+        .maintenance-banner { position: sticky; top: 0; z-index: 1000; height: var(--banner-h); display: flex; align-items: center; justify-content: center; gap: 8px; padding: 4px 12px; text-align: center; background: var(--banner-bg); background-size: 200% 100%; color: var(--banner-text); font-size: 0.78rem; font-weight: 700; line-height: 1.25; animation: bannerFlow 9s linear infinite; }
         @keyframes bannerFlow { 0% { background-position: 0% 0; } 100% { background-position: 200% 0; } }
         .banner-icon { font-size: 18px; flex-shrink: 0; animation: spinSlow 6s linear infinite; }
 
         .app-container { display: flex; align-items: stretch; }
 
-        .sidebar {
-            width: var(--nav-width); flex-shrink: 0;
-            background: var(--bg-surface); border-right: 1px solid var(--border);
-            padding: 24px 16px; display: flex; flex-direction: column;
-            position: sticky; top: var(--banner-h); height: calc(100vh - var(--banner-h));
-            overflow-y: auto; z-index: 50;
-        }
-        .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; padding: 0 8px; }
+        .sidebar { width: var(--nav-width); flex-shrink: 0; background: var(--bg-surface); border-right: 1px solid var(--border); padding: 24px 16px; display: flex; flex-direction: column; position: sticky; top: var(--banner-h); height: calc(100vh - var(--banner-h)); overflow-y: auto; z-index: 50; }
+        .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 30px; padding: 0 8px; }
         .brand-logo { width: 44px; height: 44px; border-radius: 14px; object-fit: contain; background: var(--logo-bg); border: 1px solid var(--border); padding: 4px; flex-shrink: 0; transition: transform 0.3s var(--ease-spring); }
         .brand-logo:hover { transform: scale(1.06) rotate(-2deg); }
         .brand-fallback { display: none; align-items: center; justify-content: center; width: 44px; height: 44px; background: var(--primary); border-radius: 14px; color: #fff; font-weight: 800; font-size: 1.2rem; flex-shrink: 0; }
         .brand-text h1 { font-size: 1.05rem; font-weight: 800; line-height: 1.2; letter-spacing: -0.2px; }
         .brand-text p { font-size: 0.72rem; color: var(--text-muted); }
 
-        .nav-links { display: flex; flex-direction: column; gap: 8px; flex: 1; }
-        .nav-item {
-            display: flex; align-items: center; gap: 12px; padding: 14px 16px; min-height: 48px;
-            border-radius: var(--radius-md); color: var(--text-muted); font-weight: 600; cursor: pointer; font-size: 0.95rem;
-            transition: background-color 0.25s var(--ease-soft), color 0.25s, transform 0.15s var(--ease-soft), box-shadow 0.25s;
-        }
+        .nav-links { display: flex; flex-direction: column; gap: 6px; flex: 1; }
+        .nav-item { display: flex; align-items: center; gap: 12px; padding: 13px 16px; min-height: 46px; border-radius: var(--radius-md); color: var(--text-muted); font-weight: 600; cursor: pointer; font-size: 0.94rem; transition: background-color 0.25s var(--ease-soft), color 0.25s, transform 0.15s var(--ease-soft), box-shadow 0.25s; }
         .nav-item:active { transform: scale(0.97); }
         .nav-item:hover { background: var(--bg-surface-hover); color: var(--text-main); }
         .nav-item.active { background: var(--primary); color: #fff; box-shadow: 0 8px 20px -8px var(--primary); }
@@ -188,28 +133,19 @@
         .top-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 26px; }
         .header-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
         .header-logo { display: none; }
-        .page-title {
-            font-size: clamp(1.4rem, 1rem + 1.8vw, 1.95rem); font-weight: 800;
-            line-height: 1.3; padding-bottom: 3px; letter-spacing: -0.4px;
-            background: linear-gradient(92deg, var(--primary) 0%, var(--accent) 100%);
-            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-        }
+        .page-title { font-size: clamp(1.4rem, 1rem + 1.8vw, 1.95rem); font-weight: 800; line-height: 1.3; padding-bottom: 3px; letter-spacing: -0.4px; background: linear-gradient(92deg, var(--primary) 0%, var(--accent) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
         .header-date { color: var(--text-muted); font-size: 0.88rem; margin-top: 2px; font-weight: 600; }
         .header-actions { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
 
-        .btn {
-            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-            min-height: 44px; padding: 10px 18px; border-radius: 50px;
-            font-weight: 700; font-size: 0.9rem; cursor: pointer; border: none;
-            transition: background-color 0.25s, color 0.25s, transform 0.15s var(--ease-soft), box-shadow 0.25s;
-        }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 10px 18px; border-radius: 50px; font-weight: 700; font-size: 0.9rem; cursor: pointer; border: none; transition: background-color 0.25s, color 0.25s, transform 0.15s var(--ease-soft), box-shadow 0.25s; }
         .btn:active { transform: scale(0.96); }
         .btn-icon { padding: 10px; border-radius: 50%; }
+        .btn-mini { min-height: 38px; padding: 6px 12px; font-size: 0.8rem; }
         .btn-tonal { background: var(--bg-surface); color: var(--text-main); border: 1px solid var(--border); }
         .btn-tonal:hover { background: var(--bg-surface-hover); box-shadow: var(--shadow); }
         .btn-primary { background: linear-gradient(135deg, var(--primary), var(--primary-hover)); color: #fff; box-shadow: 0 8px 20px -8px var(--primary); }
         .btn-primary:hover { box-shadow: 0 12px 28px -8px var(--primary); filter: brightness(1.06); }
-        .btn-danger { background: rgba(239,68,68,0.1); color: var(--danger); border: 1px solid rgba(239,68,68,0.25); }
+        .btn-danger { background: var(--danger-soft); color: var(--danger); border: 1px solid rgba(239,68,68,0.25); }
         .btn-danger:hover { background: var(--danger); color: #fff; }
 
         .view-section { display: none; }
@@ -226,6 +162,7 @@
         .view-section.active .lower-grid .card:nth-child(2) { animation-delay: 0.24s; }
         .view-section.active .card + .card { animation-delay: 0.1s; }
         .view-section.active .card + .card + .card { animation-delay: 0.18s; }
+        .view-section.active .card + .card + .card + .card { animation-delay: 0.26s; }
 
         .view-section.active .data-item { animation: cardIn 0.45s var(--ease-soft) both; }
         .view-section.active .data-item:nth-child(1) { animation-delay: 0.05s; }
@@ -239,7 +176,7 @@
         .view-section.active tbody tr { animation: rowIn 0.4s var(--ease-soft) both; animation-delay: calc(var(--i, 0) * 22ms); }
 
         .stats-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; margin-bottom: 20px; }
-        .stat { display: flex; gap: 12px; align-items: center; background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 15px 17px; box-shadow: var(--shadow); transition: transform 0.25s var(--ease-soft), box-shadow 0.25s; }
+        .stat { display: flex; gap: 12px; align-items: center; background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 15px 17px; box-shadow: var(--shadow); transition: transform 0.25s var(--ease-soft), box-shadow 0.25s; cursor: pointer; }
         @media (hover: hover) { .stat:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); } }
         .stat-val { font-weight: 800; font-size: 1.2rem; line-height: 1.1; letter-spacing: -0.3px; font-variant-numeric: tabular-nums; }
         .stat-lbl { font-size: 0.68rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
@@ -253,18 +190,9 @@
         .card-header { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; }
         .card-title { font-size: 1.08rem; font-weight: 800; display: flex; align-items: center; gap: 11px; letter-spacing: -0.2px; }
 
-        /* HERO SAYAÇ + DÖNEM İLERLEME */
         #view-dashboard { perspective: 1100px; }
-        .timer-card {
-            background: var(--timer-gradient); border-color: transparent; color: var(--widget-text);
-            display: flex; align-items: center; justify-content: space-between; gap: 22px; flex-wrap: wrap;
-            margin-bottom: 20px; position: relative; overflow: hidden;
-        }
-        .timer-card::before {
-            content: ''; position: absolute; inset: -40%;
-            background: radial-gradient(circle at 30% 30%, var(--widget-chip), transparent 60%);
-            animation: glowPulse 6s ease-in-out infinite; pointer-events: none;
-        }
+        .timer-card { background: var(--timer-gradient); border-color: transparent; color: var(--widget-text); display: flex; align-items: center; justify-content: space-between; gap: 22px; flex-wrap: wrap; margin-bottom: 20px; position: relative; overflow: hidden; }
+        .timer-card::before { content: ''; position: absolute; inset: -40%; background: radial-gradient(circle at 30% 30%, var(--widget-chip), transparent 60%); animation: glowPulse 6s ease-in-out infinite; pointer-events: none; }
         @keyframes glowPulse { 0%,100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.15); opacity: 0.9; } }
         .timer-card > * { position: relative; z-index: 1; }
         .timer-left { display: flex; align-items: center; gap: 14px; min-width: 0; }
@@ -277,7 +205,6 @@
         .t-val.tick { animation: tickPulse 0.3s var(--ease-soft); }
         @keyframes tickPulse { 0% { transform: scale(1.18); } 100% { transform: scale(1); } }
         .t-lbl { font-size: 0.68rem; text-transform: uppercase; opacity: 0.8; margin-top: 4px; font-weight: 800; letter-spacing: 0.6px; }
-
         .timer-progress { flex-basis: 100%; }
         .tp-head { display: flex; justify-content: space-between; gap: 10px; font-size: 0.75rem; font-weight: 800; color: var(--widget-muted); margin-bottom: 8px; letter-spacing: 0.3px; }
         .tp-head #tp-pct { color: var(--widget-text); font-variant-numeric: tabular-nums; }
@@ -289,11 +216,47 @@
         .data-list { display: flex; flex-direction: column; gap: 12px; }
         .data-item { padding: 17px; border: 1px solid var(--border); border-radius: var(--radius-md); display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; transition: border-color 0.25s, background-color 0.25s, transform 0.25s var(--ease-soft); }
         .data-item:hover { border-color: var(--primary); background: var(--bg-surface-hover); transform: translateX(4px); }
-        .item-title { font-size: 1.05rem; font-weight: 800; color: var(--primary); margin-bottom: 6px; letter-spacing: -0.2px; }
-        .item-meta { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 8px; display: flex; align-items: center; gap: 4px; font-weight: 600; }
+        .data-item.pinned-item { border-color: var(--warning); }
+        .item-title { font-size: 1.05rem; font-weight: 800; color: var(--primary); margin-bottom: 6px; letter-spacing: -0.2px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .item-meta { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-weight: 600; }
         .item-content { font-size: 0.95rem; line-height: 1.7; white-space: pre-wrap; word-break: break-word; }
 
-        /* YAKLAŞAN TARİHLER */
+        /* KATEGORİ & SABİT ETİKETLERİ */
+        .cat-tag { display: inline-flex; align-items: center; gap: 4px; padding: 2px 10px; border-radius: 20px; font-size: 0.66rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.3px; }
+        .cat-tag .material-symbols-rounded { font-size: 13px; }
+        .cat-duyuru { background: var(--primary-soft); color: var(--primary); }
+        .cat-sinav { background: var(--danger-soft); color: var(--danger); }
+        .cat-staj { background: var(--warning-soft); color: var(--warning); }
+        .cat-etkinlik { background: var(--accent-soft); color: var(--accent); }
+
+        /* FİLTRE ÇİPLERİ */
+        .filter-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+        .filter-chip { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; min-height: 38px; border-radius: 50px; border: 1px solid var(--border); background: var(--bg-surface); color: var(--text-muted); font-weight: 700; font-size: 0.78rem; cursor: pointer; transition: all 0.2s var(--ease-soft); }
+        .filter-chip .material-symbols-rounded { font-size: 15px; }
+        .filter-chip .cnt { background: var(--bg-surface-hover); border-radius: 20px; padding: 1px 8px; font-size: 0.68rem; }
+        .filter-chip.active { color: #fff; }
+        .filter-chip.active .cnt { background: rgba(255,255,255,0.2); }
+        .filter-chip[data-cat="all"].active, .filter-chip[data-cat="duyuru"].active { background: var(--primary); border-color: var(--primary); }
+        .filter-chip[data-cat="sinav"].active { background: var(--danger); border-color: var(--danger); }
+        .filter-chip[data-cat="staj"].active { background: var(--warning); border-color: var(--warning); }
+        .filter-chip[data-cat="etkinlik"].active { background: var(--accent); border-color: var(--accent); }
+
+        /* DERS PROGRAMI */
+        .schedule-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+        .day-card { padding: 18px; }
+        .day-title { font-weight: 800; font-size: 0.95rem; margin-bottom: 14px; display: flex; align-items: center; gap: 9px; }
+        .lesson-item { display: flex; gap: 12px; padding: 12px; border: 1px solid var(--border); border-radius: 12px; margin-bottom: 10px; align-items: flex-start; transition: border-color 0.25s, background-color 0.25s; }
+        .lesson-item:last-child { margin-bottom: 0; }
+        .lesson-time { flex-shrink: 0; background: var(--primary-soft); color: var(--primary); border-radius: 10px; padding: 6px 10px; font-weight: 800; font-size: 0.74rem; text-align: center; line-height: 1.4; font-variant-numeric: tabular-nums; }
+        .l-course { font-weight: 800; font-size: 0.9rem; line-height: 1.35; }
+        .l-meta { font-size: 0.74rem; color: var(--text-muted); margin-top: 4px; display: flex; flex-wrap: wrap; gap: 8px; font-weight: 600; }
+        .live-chip { display: none; margin-left: auto; align-items: center; gap: 5px; background: var(--accent); color: #fff; border-radius: 20px; padding: 3px 10px; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.5px; flex-shrink: 0; }
+        .live-dot2 { width: 6px; height: 6px; border-radius: 50%; background: #fff; animation: pulseDot 1.6s infinite; }
+        @keyframes pulseDot { 0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.6); } 70% { box-shadow: 0 0 0 6px rgba(255,255,255,0); } 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); } }
+        .lesson-item.live { border-color: var(--accent); background: var(--accent-soft); }
+        .lesson-item.live .lesson-time { background: var(--accent); color: #fff; }
+        .lesson-item.live .live-chip { display: inline-flex; }
+
         .up-item { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 14px; border: 1px solid var(--border); border-radius: 12px; cursor: pointer; transition: border-color 0.2s, background-color 0.2s, transform 0.2s var(--ease-soft); animation: rowIn 0.4s var(--ease-soft) both; animation-delay: calc(var(--i, 0) * 45ms); }
         .up-item:hover { border-color: var(--primary); background: var(--bg-surface-hover); transform: translateX(4px); }
         .up-name { font-weight: 700; font-size: 0.9rem; line-height: 1.45; }
@@ -340,30 +303,22 @@
         .footer-inner strong { color: var(--text-main); font-weight: 800; letter-spacing: 0.2px; font-size: 0.9rem; }
         .footer-dot { opacity: 0.5; }
 
-        /* YUKARI DÖN FAB */
-        .to-top {
-            position: fixed; right: 18px; bottom: 24px; z-index: 950;
-            width: 48px; height: 48px; border-radius: 50%; border: none;
-            background: var(--primary); color: #fff;
-            display: flex; align-items: center; justify-content: center; cursor: pointer;
-            box-shadow: 0 10px 24px -8px var(--primary);
-            opacity: 0; transform: translateY(16px) scale(0.9); pointer-events: none;
-            transition: opacity 0.3s var(--ease-soft), transform 0.3s var(--ease-soft);
-        }
+        .to-top { position: fixed; right: 18px; bottom: 24px; z-index: 950; width: 48px; height: 48px; border-radius: 50%; border: none; background: var(--primary); color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 10px 24px -8px var(--primary); opacity: 0; transform: translateY(16px) scale(0.9); pointer-events: none; transition: opacity 0.3s var(--ease-soft), transform 0.3s var(--ease-soft); }
         .to-top.show { opacity: 1; transform: none; pointer-events: auto; }
         .to-top:active { transform: scale(0.92); }
 
-        .bottom-nav { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: var(--bg-surface); border-top: 1px solid var(--border); padding: 8px 6px; padding-bottom: calc(8px + env(safe-area-inset-bottom)); z-index: 900; justify-content: space-around; align-items: center; }
-        .b-nav-item { display: flex; flex-direction: column; align-items: center; gap: 3px; color: var(--text-muted); font-size: 0.68rem; font-weight: 700; cursor: pointer; padding: 5px 8px; border-radius: 12px; min-width: 58px; transition: color 0.2s, transform 0.15s var(--ease-soft); }
+        .bottom-nav { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: var(--bg-surface); border-top: 1px solid var(--border); padding: 7px 4px; padding-bottom: calc(7px + env(safe-area-inset-bottom)); z-index: 900; justify-content: space-around; align-items: center; }
+        .b-nav-item { display: flex; flex-direction: column; align-items: center; gap: 3px; color: var(--text-muted); font-size: 0.62rem; font-weight: 700; cursor: pointer; padding: 4px 6px; border-radius: 12px; min-width: 50px; transition: color 0.2s, transform 0.15s var(--ease-soft); }
         .b-nav-item:active { transform: scale(0.92); }
         .b-nav-item.active { color: var(--primary); }
-        .b-icon { padding: 4px 14px; border-radius: 16px; transition: background-color 0.25s, transform 0.25s var(--ease-soft); }
+        .b-icon { padding: 4px 12px; border-radius: 16px; transition: background-color 0.25s, transform 0.25s var(--ease-soft); }
         .b-nav-item.active .b-icon { background: var(--primary-soft); transform: translateY(-2px); animation: navBounce 0.45s var(--ease-spring); }
         @keyframes navBounce { 0% { transform: scale(0.7); } 60% { transform: scale(1.1) translateY(-3px); } 100% { transform: scale(1) translateY(-2px); } }
-        .b-icon span { font-size: 24px; }
+        .b-icon span { font-size: 23px; }
 
+        /* ADMİN */
         .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 1200; display: none; justify-content: center; align-items: center; padding: 20px; }
-        .modal-content { background: var(--bg-surface); width: 100%; max-width: 620px; border-radius: var(--radius-lg); padding: 26px; border: 1px solid var(--border); max-height: 90vh; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; animation: modalIn 0.35s var(--ease-soft); }
+        .modal-content { background: var(--bg-surface); width: 100%; max-width: 640px; border-radius: var(--radius-lg); padding: 26px; border: 1px solid var(--border); max-height: 90vh; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; animation: modalIn 0.35s var(--ease-soft); }
         @keyframes modalIn { from { opacity: 0; transform: scale(0.95) translateY(12px); } to { opacity: 1; transform: none; } }
         .admin-status-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 20px; font-size: 0.73rem; font-weight: 700; background: var(--accent-soft); color: var(--accent); border: 1px solid var(--accent); margin-bottom: 16px; }
         .admin-tabs { display: flex; gap: 8px; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 12px; flex-wrap: wrap; }
@@ -373,12 +328,21 @@
         .form-control { width: 100%; padding: 13px; background: var(--bg-body); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text-main); font-size: 0.93rem; transition: border-color 0.2s, box-shadow 0.2s; }
         .form-control:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-soft); }
         .form-hint { font-size: 0.74rem; color: var(--text-muted); margin-top: 6px; display: flex; align-items: center; gap: 4px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .admin-divider { text-align: center; margin: 18px 0; color: var(--text-muted); font-size: 0.76rem; font-weight: 800; }
+        .admin-item { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border: 1px solid var(--border); border-radius: 12px; margin-bottom: 8px; }
+        .ai-title { flex: 1; min-width: 0; font-weight: 700; font-size: 0.85rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .switch-row { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+        .switch { position: relative; width: 46px; height: 26px; background: var(--bg-surface-hover); border: 1px solid var(--border); border-radius: 999px; cursor: pointer; transition: 0.2s; flex-shrink: 0; }
+        .switch::after { content: ''; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; border-radius: 50%; background: var(--text-muted); transition: 0.25s var(--ease-spring); }
+        .switch.on { background: var(--accent-soft); border-color: var(--accent); }
+        .switch.on::after { left: 22px; background: var(--accent); }
 
         @media (max-width: 1023px) and (min-width: 768px) {
             .sidebar { width: 84px; padding: 20px 10px; }
             .brand { justify-content: center; padding: 0; margin-bottom: 26px; }
             .brand-text, .nav-label { display: none; }
-            .nav-item { justify-content: center; gap: 0; padding: 14px 0; }
+            .nav-item { justify-content: center; gap: 0; padding: 13px 0; }
             .main-content { padding: 24px; }
             .lower-grid { grid-template-columns: 1fr; }
             .timer-card { flex-direction: column; align-items: stretch; }
@@ -406,11 +370,12 @@
             .timer-card { flex-direction: column; align-items: stretch; gap: 16px; }
             .timer-display { min-width: 0; max-width: none; gap: 6px; }
             .t-box { padding: 11px 2px; }
-            .lower-grid { grid-template-columns: 1fr; gap: 14px; }
+            .lower-grid, .schedule-grid { grid-template-columns: 1fr; gap: 14px; }
             .data-item { padding: 15px; }
             .item-content { font-size: 0.93rem; }
             .up-name { font-size: 0.86rem; }
             .to-top { right: 14px; bottom: calc(84px + env(safe-area-inset-bottom)); }
+            .form-row { grid-template-columns: 1fr; }
 
             .table-wrapper { border: none; overflow: visible; border-radius: 0; }
             table, .holiday-table { min-width: 0 !important; font-size: 0.9rem; }
@@ -434,8 +399,8 @@
         @keyframes sheetUp { from { transform: translateY(70px); opacity: 0.4; } to { transform: none; opacity: 1; } }
 
         @media (max-width: 360px) {
-            .b-nav-item { min-width: 52px; font-size: 0.62rem; }
-            .b-icon { padding: 4px 10px; }
+            .b-nav-item { min-width: 46px; font-size: 0.56rem; }
+            .b-icon { padding: 4px 8px; }
             .t-val { font-size: 1.2rem; }
             .up-date { font-size: 0.7rem; padding: 5px 10px; }
         }
@@ -453,10 +418,14 @@
         }
     </style>
 
+    <!-- TEMA FLAŞI ÖNLEYİCİ (otomatik mod dahil) -->
     <script>
         (function () {
             try {
-                if (localStorage.getItem('theme') === 'light') {
+                var t = localStorage.getItem('theme') || 'dark';
+                var h = new Date().getHours();
+                var light = t === 'light' || (t === 'auto' && h >= 7 && h < 19);
+                if (light) {
                     document.documentElement.classList.add('light-mode');
                     var m = document.querySelector('meta[name="theme-color"]');
                     if (m) m.setAttribute('content', '#f1f5f9');
@@ -481,22 +450,20 @@
 
         <nav class="sidebar">
             <div class="brand">
-                <img src="logo.png" alt="BUÜ Logo" class="brand-logo" decoding="async"
-                     onerror='this.onerror=null;this.style.display="none";this.nextElementSibling.style.display="flex";'>
+                <img src="logo.png" alt="BUÜ Logo" class="brand-logo" decoding="async" onerror='this.onerror=null;this.style.display="none";this.nextElementSibling.style.display="flex";'>
                 <div class="brand-fallback">E</div>
                 <div class="brand-text">
                     <h1>Elektronik Teknolojisi</h1>
                     <p>Bursa Uludağ Üniversitesi</p>
                 </div>
             </div>
-
             <div class="nav-links">
                 <div class="nav-item active" data-view="dashboard" title="Ana Sayfa" onclick="switchView('dashboard')"><span class="material-symbols-rounded">dashboard</span><span class="nav-label">Ana Sayfa</span></div>
                 <div class="nav-item" data-view="announcements" title="Duyurular" onclick="switchView('announcements')"><span class="material-symbols-rounded">campaign</span><span class="nav-label">Duyurular</span></div>
+                <div class="nav-item" data-view="schedule" title="Ders Programı" onclick="switchView('schedule')"><span class="material-symbols-rounded">schedule</span><span class="nav-label">Program</span></div>
                 <div class="nav-item" data-view="calendar" title="Takvim" onclick="switchView('calendar')"><span class="material-symbols-rounded">calendar_month</span><span class="nav-label">Takvim</span></div>
                 <div class="nav-item" data-view="files" title="Dosyalar" onclick="switchView('files')"><span class="material-symbols-rounded">folder_open</span><span class="nav-label">Dosyalar</span></div>
             </div>
-
             <div class="sidebar-footer">
                 <div class="nav-item" id="sidebar-admin-btn" title="Yönetim" onclick="handleAdminAuth()">
                     <span class="material-symbols-rounded">shield_person</span><span class="nav-label">Yönetim</span>
@@ -507,8 +474,7 @@
         <main class="main-content">
             <header class="top-header">
                 <div class="header-left">
-                    <img src="logo.png" alt="BUÜ Logo" class="header-logo" decoding="async"
-                         onerror='this.onerror=null;this.style.display="none";this.nextElementSibling.style.display="flex";'>
+                    <img src="logo.png" alt="BUÜ Logo" class="header-logo" decoding="async" onerror='this.onerror=null;this.style.display="none";this.nextElementSibling.style.display="flex";'>
                     <div class="brand-fallback header-logo-fallback" style="display:none;">E</div>
                     <div style="min-width:0;">
                         <h2 class="page-title" id="page-title-text">Ana Sayfa</h2>
@@ -516,7 +482,7 @@
                     </div>
                 </div>
                 <div class="header-actions">
-                    <button class="btn btn-tonal btn-icon" onclick="toggleTheme()" aria-label="Tema Değiştir">
+                    <button class="btn btn-tonal btn-icon" id="theme-btn" onclick="cycleTheme()" title="Temayı değiştir (Açık → Koyu → Otomatik)">
                         <span class="material-symbols-rounded" id="theme-icon">light_mode</span>
                     </button>
                     <button class="btn btn-danger" id="logout-btn" style="display:none;" onclick="logoutAdmin()">
@@ -528,9 +494,18 @@
             <!-- 1) ANA SAYFA -->
             <div id="view-dashboard" class="view-section active">
                 <div class="stats-strip">
-                    <div class="stat"><span class="icon-chip"><span class="material-symbols-rounded">campaign</span></span><div><div class="stat-val" id="stat-ann">0</div><div class="stat-lbl">Duyuru</div></div></div>
-                    <div class="stat"><span class="icon-chip accent"><span class="material-symbols-rounded">folder_open</span></span><div><div class="stat-val" id="stat-file">0</div><div class="stat-lbl">Dosya</div></div></div>
-                    <div class="stat"><span class="icon-chip warn"><span class="material-symbols-rounded">event</span></span><div><div class="stat-val" id="stat-next" style="font-size:0.95rem;">—</div><div class="stat-lbl">Sıradaki Etkinlik</div></div></div>
+                    <div class="stat" onclick="switchView('announcements')" title="Duyurulara git" role="button" tabindex="0">
+                        <span class="icon-chip"><span class="material-symbols-rounded">campaign</span></span>
+                        <div><div class="stat-val" id="stat-ann">0</div><div class="stat-lbl">Duyuru</div></div>
+                    </div>
+                    <div class="stat" onclick="switchView('files')" title="Dosyalara git" role="button" tabindex="0">
+                        <span class="icon-chip accent"><span class="material-symbols-rounded">folder_open</span></span>
+                        <div><div class="stat-val" id="stat-file">0</div><div class="stat-lbl">Dosya</div></div>
+                    </div>
+                    <div class="stat" onclick="switchView('calendar')" title="Akademik takvime git" role="button" tabindex="0">
+                        <span class="icon-chip warn"><span class="material-symbols-rounded">event</span></span>
+                        <div><div class="stat-val" id="stat-next" style="font-size:0.95rem;">—</div><div class="stat-lbl">Sıradaki Etkinlik</div></div>
+                    </div>
                 </div>
 
                 <div class="card timer-card tilt">
@@ -564,7 +539,6 @@
                             <div class="skeleton" style="height:64px;"></div>
                         </div>
                     </div>
-
                     <div class="card">
                         <div class="card-header">
                             <div class="card-title"><span class="icon-chip warn"><span class="material-symbols-rounded">event</span></span> Yaklaşan Tarihler</div>
@@ -585,12 +559,34 @@
                             <input type="search" id="ann-search" placeholder="Duyurularda ara..." oninput="renderData()">
                         </div>
                     </div>
+                    <div class="filter-row">
+                        <button class="filter-chip active" data-cat="all" onclick="setFilter('all')">Tümü <span class="cnt" id="cnt-all">0</span></button>
+                        <button class="filter-chip" data-cat="duyuru" onclick="setFilter('duyuru')"><span class="material-symbols-rounded">campaign</span> Duyuru <span class="cnt" id="cnt-duyuru">0</span></button>
+                        <button class="filter-chip" data-cat="sinav" onclick="setFilter('sinav')"><span class="material-symbols-rounded">edit_note</span> Sınav <span class="cnt" id="cnt-sinav">0</span></button>
+                        <button class="filter-chip" data-cat="staj" onclick="setFilter('staj')"><span class="material-symbols-rounded">work</span> Staj <span class="cnt" id="cnt-staj">0</span></button>
+                        <button class="filter-chip" data-cat="etkinlik" onclick="setFilter('etkinlik')"><span class="material-symbols-rounded">celebration</span> Etkinlik <span class="cnt" id="cnt-etkinlik">0</span></button>
+                    </div>
                     <div id="announcement-list" class="data-list"></div>
                 </div>
             </div>
 
-            <!-- 3) AKADEMİK TAKVİM -->
+            <!-- 3) DERS PROGRAMI -->
+            <div id="view-schedule" class="view-section">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title"><span class="icon-chip"><span class="material-symbols-rounded">schedule</span></span> Haftalık Ders Programı</div>
+                    </div>
+                    <div id="schedule-grid" class="schedule-grid"></div>
+                </div>
+            </div>
+
+            <!-- 4) AKADEMİK TAKVİM -->
             <div id="view-calendar" class="view-section">
+                <div class="card" style="margin-bottom:20px; display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap;">
+                    <div class="card-title" style="margin:0;"><span class="icon-chip accent"><span class="material-symbols-rounded">calendar_add_on</span></span> Takvimini tek dokunuşla doldur</div>
+                    <button class="btn btn-primary" onclick="downloadICS()"><span class="material-symbols-rounded">download</span> Takvime Ekle (.ics)</button>
+                </div>
+
                 <div class="card" style="margin-bottom:20px;">
                     <div class="card-header">
                         <div class="card-title"><span class="icon-chip"><span class="material-symbols-rounded">school</span></span> Güz Yarıyılı (2026-2027)</div>
@@ -645,7 +641,7 @@
                 </div>
             </div>
 
-            <!-- 4) DOSYALAR -->
+            <!-- 5) DOSYALAR -->
             <div id="view-files" class="view-section">
                 <div class="card">
                     <div class="card-header">
@@ -676,6 +672,7 @@
         <nav class="bottom-nav">
             <div class="b-nav-item active" data-view="dashboard" onclick="switchView('dashboard')"><span class="b-icon"><span class="material-symbols-rounded">dashboard</span></span><span class="b-label">Ana Sayfa</span></div>
             <div class="b-nav-item" data-view="announcements" onclick="switchView('announcements')"><span class="b-icon"><span class="material-symbols-rounded">campaign</span></span><span class="b-label">Duyurular</span></div>
+            <div class="b-nav-item" data-view="schedule" onclick="switchView('schedule')"><span class="b-icon"><span class="material-symbols-rounded">schedule</span></span><span class="b-label">Program</span></div>
             <div class="b-nav-item" data-view="calendar" onclick="switchView('calendar')"><span class="b-icon"><span class="material-symbols-rounded">calendar_month</span></span><span class="b-label">Takvim</span></div>
             <div class="b-nav-item" data-view="files" onclick="switchView('files')"><span class="b-icon"><span class="material-symbols-rounded">folder_open</span></span><span class="b-label">Dosyalar</span></div>
             <div class="b-nav-item" id="mobile-admin-btn" onclick="handleAdminAuth()"><span class="b-icon"><span class="material-symbols-rounded">shield_person</span></span><span class="b-label">Yönetim</span></div>
@@ -698,17 +695,37 @@
             </div>
 
             <div class="admin-tabs">
-                <button class="btn btn-tonal tab-btn-active" id="tab-ann-btn" onclick="switchAdminTab('admin-ann')">Duyuru Yönetimi</button>
-                <button class="btn btn-tonal" id="tab-file-btn" onclick="switchAdminTab('admin-file')">Dosya Yönetimi</button>
-                <button class="btn btn-tonal" id="tab-sec-btn" onclick="switchAdminTab('admin-sec')">Oturum</button>
+                <button class="btn btn-tonal btn-mini tab-btn-active" id="tab-ann-btn" onclick="switchAdminTab('admin-ann')">Duyuru</button>
+                <button class="btn btn-tonal btn-mini" id="tab-file-btn" onclick="switchAdminTab('admin-file')">Dosya</button>
+                <button class="btn btn-tonal btn-mini" id="tab-sched-btn" onclick="switchAdminTab('admin-schedule')">Ders Programı</button>
+                <button class="btn btn-tonal btn-mini" id="tab-sec-btn" onclick="switchAdminTab('admin-sec')">Oturum</button>
             </div>
 
+            <!-- DUYURU YÖNETİMİ -->
             <div id="admin-ann">
                 <div class="input-group"><label>Duyuru Başlığı</label><input type="text" id="ann-title" class="form-control" placeholder="Örn: Vize Tarihleri Hakkında" maxlength="150"></div>
+                <div class="input-group"><label>Kategori</label>
+                    <select id="ann-category" class="form-control">
+                        <option value="duyuru">📢 Duyuru</option>
+                        <option value="sinav">📝 Sınav</option>
+                        <option value="staj">💼 Staj</option>
+                        <option value="etkinlik">🎉 Etkinlik</option>
+                    </select>
+                </div>
+                <div class="switch-row">
+                    <div id="pin-switch" class="switch" onclick="toggleFormPin()"></div>
+                    <span style="font-size:0.84rem; font-weight:700; color:var(--text-muted);">⭐ Önemli duyuru (üste sabitle)</span>
+                </div>
                 <div class="input-group"><label>Duyuru İçeriği</label><textarea id="ann-content" class="form-control" rows="5" placeholder="Detayları buraya yazın..." maxlength="3000"></textarea></div>
-                <button class="btn btn-primary" style="width:100%;" onclick="saveItem('announcement')">Duyuruyu Yayınla</button>
+                <div style="display:flex; gap:10px;">
+                    <button class="btn btn-primary" style="flex:1;" id="ann-save-btn" onclick="saveItem('announcement')">Duyuruyu Yayınla</button>
+                    <button class="btn btn-tonal" id="ann-cancel" style="display:none;" onclick="cancelEdit()">Vazgeç</button>
+                </div>
+                <div class="admin-divider">--- YAYINDAKİ DUYURULAR ---</div>
+                <div id="admin-ann-list"></div>
             </div>
 
+            <!-- DOSYA YÖNETİMİ -->
             <div id="admin-file" style="display:none;">
                 <div class="input-group">
                     <label>Seçenek 1: Doğrudan Dosya Yükle</label>
@@ -716,12 +733,38 @@
                     <p class="form-hint"><span class="material-symbols-rounded" style="font-size:14px;">cloud_upload</span> Tüm dosya türleri • Boyut/tür sınırı yok • İndirme limitsiz</p>
                     <button class="btn btn-primary" id="upload-btn" style="width:100%; margin-top:10px;" onclick="uploadDirectFile()">Sisteme Yükle</button>
                 </div>
-                <div style="text-align:center; margin:16px 0; color:var(--text-muted); font-size:0.76rem; font-weight:700;">--- VEYA DIŞ BAĞLANTI (URL) EKLE ---</div>
+                <div class="admin-divider">--- VEYA DIŞ BAĞLANTI (URL) EKLE ---</div>
                 <div class="input-group"><label>Dosya Görünüm Adı</label><input type="text" id="file-title" class="form-control" placeholder="Örn: Staj Başvuru Formu" maxlength="100"></div>
                 <div class="input-group"><label>Dosya Linki (URL)</label><input type="url" id="file-url" class="form-control" placeholder="https://..."></div>
                 <button class="btn btn-tonal" style="width:100%;" onclick="saveItem('file')">Link Olarak Ekle</button>
+                <div class="admin-divider">--- YAYINDAKİ DOSYALAR ---</div>
+                <div id="admin-file-list"></div>
             </div>
 
+            <!-- DERS PROGRAMI YÖNETİMİ -->
+            <div id="admin-schedule" style="display:none;">
+                <div class="form-row">
+                    <div class="input-group"><label>Gün</label>
+                        <select id="ls-day" class="form-control">
+                            <option value="1">Pazartesi</option><option value="2">Salı</option><option value="3">Çarşamba</option><option value="4">Perşembe</option><option value="5">Cuma</option>
+                        </select>
+                    </div>
+                    <div class="input-group"><label>Ders Adı</label><input type="text" id="ls-course" class="form-control" placeholder="Örn: Mikrodenetleyiciler"></div>
+                </div>
+                <div class="form-row">
+                    <div class="input-group"><label>Başlangıç</label><input type="time" id="ls-start" class="form-control" value="09:00"></div>
+                    <div class="input-group"><label>Bitiş</label><input type="time" id="ls-end" class="form-control" value="10:50"></div>
+                </div>
+                <div class="form-row">
+                    <div class="input-group"><label>Derslik</label><input type="text" id="ls-room" class="form-control" placeholder="Örn: E-Blok 201"></div>
+                    <div class="input-group"><label>Öğretim Elemanı</label><input type="text" id="ls-instructor" class="form-control" placeholder="Örn: Dr. Öğr. Üyesi ..."></div>
+                </div>
+                <button class="btn btn-primary" style="width:100%;" onclick="saveLesson()">Dersi Programa Ekle</button>
+                <div class="admin-divider">--- MEVCUT PROGRAM ---</div>
+                <div id="admin-schedule-list"></div>
+            </div>
+
+            <!-- OTURUM -->
             <div id="admin-sec" style="display:none;">
                 <p style="font-size:0.84rem; color:var(--text-muted); margin-bottom:16px; line-height:1.5;">Yönetici oturumunuz GitHub API yetkilendirmesi ile korunmaktadır.</p>
                 <button class="btn btn-danger" style="width:100%; padding:12px;" onclick="logoutAdmin()">
@@ -738,6 +781,19 @@
         let userToken = localStorage.getItem("gh_admin_token") || "";
         let announcementsData = [];
         let filesData = [];
+        let scheduleData = [];
+        let editingAnnId = null;
+        let formPinned = false;
+        let currentCat = 'all';
+        let themeMode = localStorage.getItem('theme') || 'dark';
+
+        const CATS = {
+            duyuru: { label: 'Duyuru', icon: 'campaign', cls: 'cat-duyuru' },
+            sinav: { label: 'Sınav', icon: 'edit_note', cls: 'cat-sinav' },
+            staj: { label: 'Staj', icon: 'work', cls: 'cat-staj' },
+            etkinlik: { label: 'Etkinlik', icon: 'celebration', cls: 'cat-etkinlik' }
+        };
+        const DAYS = ['Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma'];
 
         const academicEvents = [
             { name: "Ders Kaydı Yenileme Süreci", date: new Date("2026-09-14T08:30:00") },
@@ -794,7 +850,7 @@
         };
 
         document.addEventListener('DOMContentLoaded', function () {
-            initTheme();
+            applyTheme();
             updateDateInfo();
             updateAdminUI();
             renderCalendar();
@@ -807,8 +863,14 @@
 
             setTimeout(() => { const io = document.querySelector('.intro-overlay'); if (io) io.remove(); }, 1800);
 
+            // Her dakika: otomatik tema + canlı ders vurgusu
+            setInterval(() => {
+                if (themeMode === 'auto') applyTheme();
+                updateScheduleLive();
+            }, 60000);
+
             document.addEventListener('pointerdown', function (e) {
-                const t = e.target.closest('.btn, .nav-item, .b-nav-item, .file-link, .up-item');
+                const t = e.target.closest('.btn, .nav-item, .b-nav-item, .file-link, .up-item, .stat, .filter-chip');
                 if (!t) return;
                 const rect = t.getBoundingClientRect();
                 const size = Math.max(rect.width, rect.height);
@@ -825,6 +887,44 @@
             overlay.addEventListener('click', e => { if (e.target === overlay) closeAdminModal(); });
             document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAdminModal(); });
         });
+
+        /* ---------- TEMA (Açık → Koyu → Otomatik) ---------- */
+        function autoLight() { const h = new Date().getHours(); return h >= 7 && h < 19; }
+        function applyTheme() {
+            const light = themeMode === 'light' || (themeMode === 'auto' && autoLight());
+            document.documentElement.classList.toggle('light-mode', light);
+            const meta = document.querySelector('meta[name="theme-color"]');
+            if (meta) meta.setAttribute('content', light ? '#f1f5f9' : '#0b0f19');
+            const ic = document.getElementById('theme-icon');
+            ic.innerText = themeMode === 'auto' ? 'brightness_auto' : (light ? 'dark_mode' : 'light_mode');
+            document.getElementById('theme-btn').title = 'Tema: ' + (themeMode === 'auto' ? 'Otomatik (saate göre)' : themeMode === 'light' ? 'Açık' : 'Koyu');
+        }
+        function cycleTheme() {
+            themeMode = themeMode === 'dark' ? 'light' : themeMode === 'light' ? 'auto' : 'dark';
+            localStorage.setItem('theme', themeMode);
+            applyTheme();
+            const ic = document.getElementById('theme-icon');
+            ic.classList.remove('spin-once'); void ic.offsetWidth; ic.classList.add('spin-once');
+        }
+
+        function updateDateInfo() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const h = now.getHours();
+            const g = h < 6 ? 'İyi geceler' : h < 12 ? 'Günaydın' : h < 18 ? 'İyi günler' : 'İyi akşamlar';
+            document.getElementById('current-date').innerText = `${now.toLocaleDateString('tr-TR', options)} • ${g}`;
+        }
+
+        function switchView(viewName) {
+            document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
+            const target = document.getElementById('view-' + viewName);
+            void target.offsetWidth;
+            target.classList.add('active');
+            const titles = { 'dashboard': 'Ana Sayfa', 'announcements': 'Duyurular', 'schedule': 'Ders Programı', 'calendar': 'Akademik Takvim', 'files': 'Dosyalar' };
+            document.getElementById('page-title-text').innerText = titles[viewName];
+            document.querySelectorAll('.nav-item, .b-nav-item').forEach(el => el.classList.toggle('active', el.dataset.view === viewName));
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
         function initTilt() {
             if (window.matchMedia('(hover: none)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -849,10 +949,7 @@
             let raf = null;
             window.addEventListener('scroll', () => {
                 if (raf) return;
-                raf = requestAnimationFrame(() => {
-                    btn.classList.toggle('show', window.scrollY > 400);
-                    raf = null;
-                });
+                raf = requestAnimationFrame(() => { btn.classList.toggle('show', window.scrollY > 400); raf = null; });
             }, { passive: true });
         }
 
@@ -882,168 +979,153 @@
         }
 
         function buildSemester(tbodyId, rawList, today) {
-            const sorted = rawList
-                .map(r => ({ name: r[0], s: pd(r[1]), e: pd(r[2]), note: r[3] || null, same: r[1] === r[2] }))
-                .sort((a, b) => a.s - b.s);
-
+            const sorted = rawList.map(r => ({ name: r[0], s: pd(r[1]), e: pd(r[2]), note: r[3] || null, same: r[1] === r[2] })).sort((a, b) => a.s - b.s);
             let nextMarked = false;
-
             const rows = sorted.map((item, idx) => {
                 const endOfDay = new Date(item.e); endOfDay.setHours(23, 59, 59, 999);
                 let chip = '', rowClass = '';
-
                 if (today > endOfDay) { rowClass = 'row-past'; chip = '<span class="status-chip chip-done">Tamamlandı</span>'; }
                 else if (today >= item.s && today <= endOfDay) { rowClass = 'row-ongoing'; chip = '<span class="status-chip chip-ongoing">Devam Ediyor</span>'; }
                 else if (!nextMarked) { rowClass = 'row-next'; chip = '<span class="status-chip chip-next">Yaklaşan</span>'; nextMarked = true; }
-
                 const label = (item.same ? fmtDate(item.s) : `${fmtDate(item.s)} - ${fmtDate(item.e)}`) + (item.note ? ` (${item.note})` : '');
-
                 return `<tr class="${rowClass}" style="--i:${idx}"><td><strong>${item.name}</strong>${chip}</td><td class="cal-date">${label}</td></tr>`;
             }).join('');
-
             document.getElementById(tbodyId).innerHTML = rows;
         }
 
-        /* ---------- YAKLAŞAN TARİHLER (DÜZELTİLMİŞ MANTIK) ----------
-           • Devam eden etkinlikler üstte: "Devam Ediyor" + son gün bilgisi
-           • Gelecek etkinlikler: "X gün sonra" + başlangıç tarihi
-           • Geçmişte kalmış başlangıçlar asla "yaklaşan" gibi gösterilmez */
+        /* ---------- .ics İNDİRME ---------- */
+        function icsDate(d) { return d.getFullYear() + String(d.getMonth() + 1).padStart(2, '0') + String(d.getDate()).padStart(2, '0'); }
+        function downloadICS() {
+            const events = [];
+            const stamp = icsDate(new Date()) + 'T000000Z';
+            [...FALL_RAW.map(r => ['Güz', r]), ...SPRING_RAW.map(r => ['Bahar', r])].forEach(([sem, r], i) => {
+                const s = pd(r[1]); const e = pd(r[2]); const end = new Date(e); end.setDate(end.getDate() + 1);
+                const summary = (r[0] + (r[3] ? ` (${r[3]})` : '') + ` - ${sem} Yarıyılı`).replace(/[,;\\]/g, m => '\\' + m);
+                events.push(`BEGIN:VEVENT\r\nUID:etp-${i}-${sem}@buüetp\r\nDTSTAMP:${stamp}\r\nDTSTART;VALUE=DATE:${icsDate(s)}\r\nDTEND;VALUE=DATE:${icsDate(end)}\r\nSUMMARY:${summary}\r\nEND:VEVENT`);
+            });
+            const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//BUÜ ETP Bilgi Sistemi//TR', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH', ...events, 'END:VCALENDAR'].join('\r\n');
+            const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'BUU-Akademik-Takvim-2026-2027.ics';
+            document.body.appendChild(a); a.click(); a.remove();
+            URL.revokeObjectURL(a.href);
+        }
+
+        /* ---------- YAKLAŞAN TARİHLER ---------- */
         function renderUpcoming() {
             const today = new Date(); today.setHours(0, 0, 0, 0);
-            const all = [...FALL_RAW, ...SPRING_RAW].map(r => ({ name: r[0], s: pd(r[1]), e: pd(r[2]) }));
-            const relevant = all.filter(i => i.e >= today);
-
+            const relevant = [...FALL_RAW, ...SPRING_RAW].map(r => ({ name: r[0], s: pd(r[1]), e: pd(r[2]) })).filter(i => i.e >= today);
             relevant.sort((a, b) => {
-                const ao = a.s <= today ? 0 : 1;
-                const bo = b.s <= today ? 0 : 1;
-                if (ao !== bo) return ao - bo;              // devam edenler önce
-                return ao === 0 ? (a.e - b.e) : (a.s - b.s); // bitişe/başlangıca göre
+                const ao = a.s <= today ? 0 : 1, bo = b.s <= today ? 0 : 1;
+                if (ao !== bo) return ao - bo;
+                return ao === 0 ? (a.e - b.e) : (a.s - b.s);
             });
-
             const list = relevant.slice(0, 5);
             const el = document.getElementById('upcoming-list');
-
-            if (!list.length) {
-                el.innerHTML = `<div class="empty-state"><span class="material-symbols-rounded">event_busy</span><p>Yaklaşan tarih bulunmuyor.</p></div>`;
-                return;
-            }
-
+            if (!list.length) { el.innerHTML = `<div class="empty-state"><span class="material-symbols-rounded">event_busy</span><p>Yaklaşan tarih bulunmuyor.</p></div>`; return; }
             el.innerHTML = list.map((i, idx) => {
                 const ongoing = i.s <= today;
                 const days = dayDiff(i.s, today);
-                const chip = ongoing
-                    ? `<span class="up-date ongoing">Devam Ediyor</span>`
-                    : `<span class="up-date">${fmtShort(i.s)}</span>`;
-                const sub = ongoing
-                    ? `Son gün: ${fmtShort(i.e)}`
-                    : (days === 0 ? 'Bugün başlıyor' : `${days} gün sonra başlıyor`);
-                return `
-                <div class="up-item" style="--i:${idx}" onclick="switchView('calendar')" title="Takvimde gör">
-                    <div style="min-width:0;">
-                        <div class="up-name">${i.name}</div>
-                        <div class="up-sub"><span class="material-symbols-rounded" style="font-size:14px;">${ongoing ? 'hourglass_bottom' : 'hourglass_top'}</span> ${sub}</div>
-                    </div>
-                    ${chip}
-                </div>`;
+                const chip = ongoing ? `<span class="up-date ongoing">Devam Ediyor</span>` : `<span class="up-date">${fmtShort(i.s)}</span>`;
+                const sub = ongoing ? `Son gün: ${fmtShort(i.e)}` : (days === 0 ? 'Bugün başlıyor' : `${days} gün sonra başlıyor`);
+                return `<div class="up-item" style="--i:${idx}" onclick="switchView('calendar')" title="Takvimde gör">
+                    <div style="min-width:0;"><div class="up-name">${i.name}</div>
+                    <div class="up-sub"><span class="material-symbols-rounded" style="font-size:14px;">${ongoing ? 'hourglass_bottom' : 'hourglass_top'}</span> ${sub}</div></div>
+                    ${chip}</div>`;
             }).join('');
         }
 
-        /* ---------- DÖNEM İLERLEME ÇUBUĞU ---------- */
+        /* ---------- DÖNEM ÇUBUĞU ---------- */
         function renderPhase() {
             const today = new Date(); today.setHours(0, 0, 0, 0);
             const fallStart = pd('2026-09-28'), fallEnd = pd('2027-01-08');
             const springStart = pd('2027-02-22'), springEnd = pd('2027-06-11');
-
             let label = '', pct = 0;
-
-            if (today < fallStart) {
-                label = `Güz yarıyılına ${dayDiff(fallStart, today)} gün var`;
-                pct = 0;
-            } else if (today <= fallEnd) {
-                pct = Math.min(100, Math.max(0, Math.round(dayDiff(today, fallStart) / dayDiff(fallEnd, fallStart) * 100)));
-                label = 'Güz Yarıyılı devam ediyor';
-            } else if (today < springStart) {
-                label = 'Ara tatil • Bahar yarıyılı bekleniyor';
-                pct = 100;
-            } else if (today <= springEnd) {
-                pct = Math.min(100, Math.max(0, Math.round(dayDiff(today, springStart) / dayDiff(springEnd, springStart) * 100)));
-                label = 'Bahar Yarıyılı devam ediyor';
-            } else {
-                label = '2026-2027 Akademik Yılı tamamlandı';
-                pct = 100;
-            }
-
+            if (today < fallStart) { label = `Güz yarıyılına ${dayDiff(fallStart, today)} gün var`; pct = 0; }
+            else if (today <= fallEnd) { pct = Math.min(100, Math.max(0, Math.round(dayDiff(today, fallStart) / dayDiff(fallEnd, fallStart) * 100))); label = 'Güz Yarıyılı devam ediyor'; }
+            else if (today < springStart) { label = 'Ara tatil • Bahar yarıyılı bekleniyor'; pct = 100; }
+            else if (today <= springEnd) { pct = Math.min(100, Math.max(0, Math.round(dayDiff(today, springStart) / dayDiff(springEnd, springStart) * 100))); label = 'Bahar Yarıyılı devam ediyor'; }
+            else { label = '2026-2027 Akademik Yılı tamamlandı'; pct = 100; }
             document.getElementById('tp-label').innerText = label;
             document.getElementById('tp-pct').innerText = `%${pct}`;
-            requestAnimationFrame(() => {
-                requestAnimationFrame(() => { document.getElementById('tp-fill').style.width = pct + '%'; });
-            });
+            requestAnimationFrame(() => requestAnimationFrame(() => { document.getElementById('tp-fill').style.width = pct + '%'; }));
         }
 
-        /* ---------- TEMA ---------- */
-        function isLightTheme() { return document.documentElement.classList.contains('light-mode'); }
-        function setMetaTheme() {
-            const meta = document.querySelector('meta[name="theme-color"]');
-            if (meta) meta.setAttribute('content', isLightTheme() ? '#f1f5f9' : '#0b0f19');
-        }
-        function initTheme() {
-            if (isLightTheme()) document.getElementById("theme-icon").innerText = "dark_mode";
-            setMetaTheme();
-        }
-        function toggleTheme() {
-            const isLight = document.documentElement.classList.toggle("light-mode");
-            localStorage.setItem("theme", isLight ? "light" : "dark");
-            const ic = document.getElementById("theme-icon");
-            ic.innerText = isLight ? "dark_mode" : "light_mode";
-            ic.classList.remove('spin-once'); void ic.offsetWidth; ic.classList.add('spin-once');
-            setMetaTheme();
+        /* ---------- DERS PROGRAMI ---------- */
+        function renderSchedule() {
+            const wrap = document.getElementById('schedule-grid');
+            if (!scheduleData || !scheduleData.length) {
+                wrap.innerHTML = `<div class="empty-state" style="grid-column:1/-1;"><span class="material-symbols-rounded">school</span><p>Ders programı henüz açıklanmadı.<br>Açıklandığında burada otomatik olarak görünecek.</p></div>`;
+                return;
+            }
+            const todayIdx = (new Date().getDay() + 6) % 7;
+            const html = DAYS.map((d, di) => {
+                const lessons = scheduleData.filter(l => +l.day === di + 1).sort((a, b) => String(a.start).localeCompare(String(b.start)));
+                if (!lessons.length) return '';
+                return `<div class="card day-card">
+                    <div class="day-title"><span class="icon-chip" style="width:32px;height:32px;"><span class="material-symbols-rounded" style="font-size:18px;">today</span></span>${d}${di === todayIdx ? '<span class="cat-tag cat-etkinlik">Bugün</span>' : ''}</div>
+                    ${lessons.map(l => `
+                        <div class="lesson-item" data-day="${l.day}" data-start="${l.start}" data-end="${l.end}">
+                            <div class="lesson-time">${l.start}<br>${l.end}</div>
+                            <div style="min-width:0; flex:1;">
+                                <div class="l-course">${sanitizeHTML(l.course)}</div>
+                                <div class="l-meta"><span>📍 ${sanitizeHTML(l.room || '-')}</span><span>👤 ${sanitizeHTML(l.instructor || '-')}</span></div>
+                            </div>
+                            <span class="live-chip"><span class="live-dot2"></span>ŞU AN</span>
+                        </div>`).join('')}
+                </div>`;
+            }).join('');
+            wrap.innerHTML = html || `<div class="empty-state" style="grid-column:1/-1;"><span class="material-symbols-rounded">school</span><p>Ders programı henüz açıklanmadı.</p></div>`;
+            updateScheduleLive();
         }
 
-        function updateDateInfo() {
+        function updateScheduleLive() {
             const now = new Date();
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            const h = now.getHours();
-            const g = h < 6 ? 'İyi geceler' : h < 12 ? 'Günaydın' : h < 18 ? 'İyi günler' : 'İyi akşamlar';
-            document.getElementById('current-date').innerText = `${now.toLocaleDateString('tr-TR', options)} • ${g}`;
+            const day = now.getDay();
+            const hm = String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0');
+            document.querySelectorAll('.lesson-item').forEach(el => {
+                const live = +el.dataset.day === day && hm >= el.dataset.start && hm < el.dataset.end;
+                el.classList.toggle('live', live);
+            });
         }
 
-        function switchView(viewName) {
-            document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
-            const target = document.getElementById('view-' + viewName);
-            void target.offsetWidth;
-            target.classList.add('active');
+        function saveLesson() {
+            const course = document.getElementById('ls-course').value.trim();
+            const start = document.getElementById('ls-start').value;
+            const end = document.getElementById('ls-end').value;
+            if (!course || !start || !end) return alert("Ders adı ve saatleri doldurulmalıdır!");
+            if (end <= start) return alert("Bitiş saati başlangıçtan sonra olmalıdır!");
+            scheduleData = [...(scheduleData || []), {
+                id: Date.now(),
+                day: +document.getElementById('ls-day').value,
+                start, end, course,
+                room: document.getElementById('ls-room').value.trim(),
+                instructor: document.getElementById('ls-instructor').value.trim()
+            }];
+            renderSchedule(); renderAdminLists();
+            commitToGitHub('dersprogrami.json', scheduleData, `Ders Eklendi: ${course}`);
+            ['ls-course', 'ls-room', 'ls-instructor'].forEach(id => document.getElementById(id).value = '');
+        }
 
-            const titles = { 'dashboard': 'Ana Sayfa', 'announcements': 'Duyurular', 'calendar': 'Akademik Takvim', 'files': 'Dosyalar' };
-            document.getElementById('page-title-text').innerText = titles[viewName];
-
-            document.querySelectorAll('.nav-item, .b-nav-item').forEach(el => {
-                el.classList.toggle('active', el.dataset.view === viewName);
-            });
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        function deleteLesson(id) {
+            if (!confirm("Bu dersi programdan silmek istediğinize emin misiniz?")) return;
+            scheduleData = scheduleData.filter(i => i.id !== id);
+            renderSchedule(); renderAdminLists();
+            commitToGitHub('dersprogrami.json', scheduleData, `Ders Silindi (ID: ${id})`);
         }
 
         /* ---------- GERİ SAYIM ---------- */
         function setVal(el, v) {
-            if (el.innerText !== v) {
-                el.innerText = v;
-                el.classList.remove('tick');
-                void el.offsetWidth;
-                el.classList.add('tick');
-            }
+            if (el.innerText !== v) { el.innerText = v; el.classList.remove('tick'); void el.offsetWidth; el.classList.add('tick'); }
         }
-
         function startCountdown() {
             const statNext = document.getElementById('stat-next');
             const subEl = document.getElementById('target-event-date');
             function tick() {
                 const now = new Date();
                 const next = academicEvents.find(e => e.date > now);
-                if (!next) {
-                    cdEls.t.innerText = "2026-2027 Akademik Yılı Tamamlandı";
-                    statNext.innerText = "—";
-                    subEl.innerText = "2026-2027 Akademik Yılı";
-                    return;
-                }
+                if (!next) { cdEls.t.innerText = "2026-2027 Akademik Yılı Tamamlandı"; statNext.innerText = "—"; subEl.innerText = "2026-2027 Akademik Yılı"; return; }
                 cdEls.t.innerText = `${next.name} için kalan süre`;
                 statNext.innerText = fmtShort(next.date);
                 subEl.innerText = `${fmtDate(next.date)} • 2026-2027 Akademik Yılı`;
@@ -1053,8 +1135,7 @@
                 setVal(cdEls.m, String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0'));
                 setVal(cdEls.s, String(Math.floor((diff % 60000) / 1000)).padStart(2, '0'));
             }
-            tick();
-            setInterval(tick, 1000);
+            tick(); setInterval(tick, 1000);
         }
 
         /* ---------- YARDIMCILAR ---------- */
@@ -1064,15 +1145,27 @@
         }
         function utf8_to_b64(str) { return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (m, p1) => String.fromCharCode('0x' + p1))); }
         function b64_to_utf8(str) {
-            try {
-                return decodeURIComponent(Array.prototype.map.call(atob(str.replace(/\s/g, '')), c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
-            } catch (e) { return atob(str); }
+            try { return decodeURIComponent(Array.prototype.map.call(atob(str.replace(/\s/g, '')), c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join('')); }
+            catch (e) { return atob(str); }
         }
-
         function fileIcon(name) {
             const ext = (name.split('.').pop() || '').toLowerCase();
-            const map = { pdf:'picture_as_pdf', doc:'description', docx:'description', txt:'description', xls:'table_chart', xlsx:'table_chart', csv:'table_chart', ppt:'slideshow', pptx:'slideshow', zip:'folder_zip', rar:'folder_zip', '7z':'folder_zip', png:'image', jpg:'image', jpeg:'image', gif:'image', webp:'image', svg:'image', mp4:'movie', mkv:'movie', avi:'movie', mp3:'audio_file', wav:'audio_file' };
+            const map = { pdf: 'picture_as_pdf', doc: 'description', docx: 'description', txt: 'description', xls: 'table_chart', xlsx: 'table_chart', csv: 'table_chart', ppt: 'slideshow', pptx: 'slideshow', zip: 'folder_zip', rar: 'folder_zip', '7z': 'folder_zip', png: 'image', jpg: 'image', jpeg: 'image', gif: 'image', webp: 'image', svg: 'image', mp4: 'movie', mkv: 'movie', avi: 'movie', mp3: 'audio_file', wav: 'audio_file' };
             return map[ext] || 'insert_drive_file';
+        }
+        function sortAnns(list) {
+            return [...list].sort((a, b) => ((b.pinned ? 1 : 0) - (a.pinned ? 1 : 0)) || (new Date(b.date) - new Date(a.date)));
+        }
+        function catTag(item) {
+            const c = CATS[item.category] || CATS.duyuru;
+            return `<span class="cat-tag ${c.cls}"><span class="material-symbols-rounded">${c.icon}</span>${c.label}</span>`;
+        }
+
+        /* ---------- FİLTRE ---------- */
+        function setFilter(cat) {
+            currentCat = cat;
+            document.querySelectorAll('.filter-chip').forEach(ch => ch.classList.toggle('active', ch.dataset.cat === cat));
+            renderData();
         }
 
         /* ---------- GITHUB ---------- */
@@ -1094,7 +1187,10 @@
         async function fetchData() {
             announcementsData = await fetchFileDirect('duyurular.json');
             filesData = await fetchFileDirect('dosyalar.json');
+            scheduleData = await fetchFileDirect('dersprogrami.json');
             renderData();
+            renderSchedule();
+            renderAdminLists();
         }
 
         function renderData() {
@@ -1105,57 +1201,123 @@
             animateValue(document.getElementById('stat-ann'), announcementsData.length);
             animateValue(document.getElementById('stat-file'), filesData.length);
 
-            const q = (document.getElementById('ann-search')?.value || '').trim().toLowerCase();
-            const filtered = q ? announcementsData.filter(i => (i.title || '').toLowerCase().includes(q) || (i.content || '').toLowerCase().includes(q)) : announcementsData;
+            // Kategori sayaçları
+            const counts = { all: announcementsData.length, duyuru: 0, sinav: 0, staj: 0, etkinlik: 0 };
+            announcementsData.forEach(i => { const c = i.category || 'duyuru'; if (counts[c] !== undefined) counts[c]++; });
+            Object.keys(counts).forEach(k => { const el = document.getElementById('cnt-' + k); if (el) el.innerText = counts[k]; });
 
-            const qf = (document.getElementById('file-search')?.value || '').trim().toLowerCase();
-            const filesFiltered = qf ? filesData.filter(i => (i.title || '').toLowerCase().includes(qf)) : filesData;
+            const q = (document.getElementById('ann-search')?.value || '').trim().toLowerCase();
+            let filtered = sortAnns(announcementsData);
+            if (currentCat !== 'all') filtered = filtered.filter(i => (i.category || 'duyuru') === currentCat);
+            if (q) filtered = filtered.filter(i => (i.title || '').toLowerCase().includes(q) || (i.content || '').toLowerCase().includes(q));
 
             const delBtn = (type, id) => userToken ? `<button class="btn btn-danger btn-icon" onclick="deleteItem('${type}', ${id})" aria-label="Sil"><span class="material-symbols-rounded">delete</span></button>` : '';
 
-            if (!announcementsData || announcementsData.length === 0) {
+            if (!announcementsData.length) {
                 annList.innerHTML = dashAnn.innerHTML = `<div class="empty-state"><span class="material-symbols-rounded">notifications_off</span><p>Kayıtlı duyuru bulunmuyor.</p></div>`;
             } else {
                 annList.innerHTML = filtered.length === 0
-                    ? `<div class="empty-state"><span class="material-symbols-rounded">search_off</span><p>Aramanızla eşleşen duyuru bulunamadı.</p></div>`
+                    ? `<div class="empty-state"><span class="material-symbols-rounded">search_off</span><p>Filtre/arama ile eşleşen duyuru bulunamadı.</p></div>`
                     : filtered.map(item => `
-                        <div class="data-item">
+                        <div class="data-item ${item.pinned ? 'pinned-item' : ''}">
                             <div style="flex:1; min-width:0;">
-                                <div class="item-title">${sanitizeHTML(item.title)}</div>
-                                <div class="item-meta"><span class="material-symbols-rounded" style="font-size:16px;">schedule</span> ${sanitizeHTML(new Date(item.date).toLocaleString('tr-TR'))}</div>
+                                <div class="item-title">${item.pinned ? '<span class="material-symbols-rounded" style="color:var(--warning); font-size:18px;">star</span>' : ''}${sanitizeHTML(item.title)}</div>
+                                <div class="item-meta">${catTag(item)}<span style="display:inline-flex;align-items:center;gap:4px;"><span class="material-symbols-rounded" style="font-size:15px;">schedule</span>${sanitizeHTML(new Date(item.date).toLocaleString('tr-TR'))}</span></div>
                                 <div class="item-content">${sanitizeHTML(item.content)}</div>
                             </div>
                             ${delBtn('announcement', item.id)}
                         </div>`).join('');
 
-                dashAnn.innerHTML = announcementsData.slice(0, 3).map(item => `
-                    <div class="data-item">
+                dashAnn.innerHTML = sortAnns(announcementsData).slice(0, 3).map(item => `
+                    <div class="data-item ${item.pinned ? 'pinned-item' : ''}">
                         <div style="flex:1; min-width:0;">
-                            <div class="item-title" style="font-size:1rem;">${sanitizeHTML(item.title)}</div>
-                            <div class="item-meta" style="margin:0;">${sanitizeHTML(new Date(item.date).toLocaleDateString('tr-TR'))}</div>
+                            <div class="item-title" style="font-size:1rem;">${item.pinned ? '<span class="material-symbols-rounded" style="color:var(--warning); font-size:16px;">star</span>' : ''}${sanitizeHTML(item.title)}</div>
+                            <div class="item-meta" style="margin:0;">${catTag(item)}<span>${sanitizeHTML(new Date(item.date).toLocaleDateString('tr-TR'))}</span></div>
                         </div>
                     </div>`).join('');
             }
 
-            if (!filesData || filesData.length === 0) {
-                fileList.innerHTML = `<div class="empty-state"><span class="material-symbols-rounded">folder_off</span><p>Dosya bulunmuyor.</p></div>`;
-            } else if (filesFiltered.length === 0) {
-                fileList.innerHTML = `<div class="empty-state"><span class="material-symbols-rounded">search_off</span><p>Aramanızla eşleşen dosya bulunamadı.</p></div>`;
-            } else {
-                fileList.innerHTML = filesFiltered.map(item => `
-                    <div class="data-item" style="align-items:center;">
-                        <div style="flex:1; min-width:0; display:flex; gap:12px; align-items:center;">
-                            <span class="icon-chip" style="width:42px; height:42px;"><span class="material-symbols-rounded" style="font-size:22px;">${fileIcon(item.title || item.url)}</span></span>
-                            <div style="min-width:0;">
-                                <div class="item-title" style="margin-bottom:4px;">${sanitizeHTML(item.title)}</div>
-                                <a href="${sanitizeHTML(item.url)}" target="_blank" rel="noopener noreferrer" class="file-link">
-                                    <span class="material-symbols-rounded" style="font-size:16px;">download</span> İndir / Görüntüle
-                                </a>
-                            </div>
+            const qf = (document.getElementById('file-search')?.value || '').trim().toLowerCase();
+            const filesFiltered = qf ? filesData.filter(i => (i.title || '').toLowerCase().includes(qf)) : filesData;
+
+            if (!filesData.length) fileList.innerHTML = `<div class="empty-state"><span class="material-symbols-rounded">folder_off</span><p>Dosya bulunmuyor.</p></div>`;
+            else if (!filesFiltered.length) fileList.innerHTML = `<div class="empty-state"><span class="material-symbols-rounded">search_off</span><p>Aramanızla eşleşen dosya bulunamadı.</p></div>`;
+            else fileList.innerHTML = filesFiltered.map(item => `
+                <div class="data-item" style="align-items:center;">
+                    <div style="flex:1; min-width:0; display:flex; gap:12px; align-items:center;">
+                        <span class="icon-chip" style="width:42px; height:42px;"><span class="material-symbols-rounded" style="font-size:22px;">${fileIcon(item.title || item.url)}</span></span>
+                        <div style="min-width:0;">
+                            <div class="item-title" style="margin-bottom:4px;">${sanitizeHTML(item.title)}</div>
+                            <a href="${sanitizeHTML(item.url)}" target="_blank" rel="noopener noreferrer" class="file-link"><span class="material-symbols-rounded" style="font-size:16px;">download</span> İndir / Görüntüle</a>
                         </div>
-                        ${delBtn('file', item.id)}
-                    </div>`).join('');
-            }
+                    </div>
+                    ${delBtn('file', item.id)}
+                </div>`).join('');
+        }
+
+        /* ---------- ADMİN LİSTELERİ ---------- */
+        function renderAdminLists() {
+            if (!userToken) return;
+            const annL = document.getElementById('admin-ann-list');
+            annL.innerHTML = sortAnns(announcementsData).map(i => {
+                const c = CATS[i.category] || CATS.duyuru;
+                return `<div class="admin-item">
+                    <span class="material-symbols-rounded" style="color:var(--primary); font-size:18px;">${c.icon}</span>
+                    <div class="ai-title">${i.pinned ? '⭐ ' : ''}${sanitizeHTML(i.title)}</div>
+                    <button class="btn btn-tonal btn-mini" onclick="togglePin(${i.id})" title="${i.pinned ? 'Sabitlemeyi kaldır' : 'Üste sabitle'}"><span class="material-symbols-rounded" style="font-size:16px;">${i.pinned ? 'star' : 'star_outline'}</span></button>
+                    <button class="btn btn-tonal btn-mini" onclick="editAnn(${i.id})" title="Düzenle"><span class="material-symbols-rounded" style="font-size:16px;">edit</span></button>
+                    <button class="btn btn-danger btn-mini" onclick="deleteItem('announcement', ${i.id})" title="Sil"><span class="material-symbols-rounded" style="font-size:16px;">delete</span></button>
+                </div>`;
+            }).join('') || '<p style="font-size:0.8rem; color:var(--text-muted); text-align:center;">Henüz duyuru yok.</p>';
+
+            document.getElementById('admin-file-list').innerHTML = filesData.map(i => `
+                <div class="admin-item">
+                    <span class="material-symbols-rounded" style="color:var(--accent); font-size:18px;">${fileIcon(i.title || i.url)}</span>
+                    <div class="ai-title">${sanitizeHTML(i.title)}</div>
+                    <button class="btn btn-danger btn-mini" onclick="deleteItem('file', ${i.id})" title="Sil"><span class="material-symbols-rounded" style="font-size:16px;">delete</span></button>
+                </div>`).join('') || '<p style="font-size:0.8rem; color:var(--text-muted); text-align:center;">Henüz dosya yok.</p>';
+
+            document.getElementById('admin-schedule-list').innerHTML = (scheduleData || []).slice().sort((a, b) => a.day - b.day || String(a.start).localeCompare(String(b.start))).map(l => `
+                <div class="admin-item">
+                    <span class="material-symbols-rounded" style="color:var(--warning); font-size:18px;">schedule</span>
+                    <div class="ai-title">${DAYS[(+l.day) - 1]} ${l.start}-${l.end} • ${sanitizeHTML(l.course)}</div>
+                    <button class="btn btn-danger btn-mini" onclick="deleteLesson(${l.id})" title="Sil"><span class="material-symbols-rounded" style="font-size:16px;">delete</span></button>
+                </div>`).join('') || '<p style="font-size:0.8rem; color:var(--text-muted); text-align:center;">Program boş. Ders eklendiğinde öğrencilerde anında görünür.</p>';
+        }
+
+        /* ---------- DUYURU DÜZENLEME / SABİTLEME ---------- */
+        function toggleFormPin() {
+            formPinned = !formPinned;
+            document.getElementById('pin-switch').classList.toggle('on', formPinned);
+        }
+        function editAnn(id) {
+            const it = announcementsData.find(i => i.id === id);
+            if (!it) return;
+            editingAnnId = id;
+            document.getElementById('ann-title').value = it.title;
+            document.getElementById('ann-content').value = it.content;
+            document.getElementById('ann-category').value = it.category || 'duyuru';
+            formPinned = !!it.pinned;
+            document.getElementById('pin-switch').classList.toggle('on', formPinned);
+            document.getElementById('ann-save-btn').innerText = 'Değişiklikleri Kaydet';
+            document.getElementById('ann-cancel').style.display = 'inline-flex';
+            switchAdminTab('admin-ann');
+            document.querySelector('.modal-content').scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        function cancelEdit() {
+            editingAnnId = null; formPinned = false;
+            document.getElementById('pin-switch').classList.remove('on');
+            document.getElementById('ann-save-btn').innerText = 'Duyuruyu Yayınla';
+            document.getElementById('ann-cancel').style.display = 'none';
+            document.getElementById('ann-title').value = '';
+            document.getElementById('ann-content').value = '';
+        }
+        function togglePin(id) {
+            const it = announcementsData.find(i => i.id === id);
+            if (!it) return;
+            it.pinned = !it.pinned;
+            renderData(); renderAdminLists();
+            commitToGitHub('duyurular.json', announcementsData, `Duyuru ${it.pinned ? 'Sabitlendi' : 'Sabitlenmedi'}: ${it.title}`);
         }
 
         /* ---------- YÖNETİM ---------- */
@@ -1169,7 +1331,7 @@
 
         async function handleAdminAuth() {
             if (userToken) {
-                if (await validateGitHubToken(userToken)) openAdminModal();
+                if (await validateGitHubToken(userToken)) { openAdminModal(); renderAdminLists(); }
                 else { alert("Kayıtlı şifre geçersiz veya yetkisiz! Oturum kapatılıyor."); logoutAdmin(); }
             } else {
                 const token = prompt("Şifre girmeniz gereklidir.");
@@ -1208,9 +1370,10 @@
         }
 
         function switchAdminTab(tabId) {
-            ['admin-ann', 'admin-file', 'admin-sec'].forEach(id => { document.getElementById(id).style.display = (id === tabId) ? 'block' : 'none'; });
+            ['admin-ann', 'admin-file', 'admin-schedule', 'admin-sec'].forEach(id => { document.getElementById(id).style.display = (id === tabId) ? 'block' : 'none'; });
             document.getElementById('tab-ann-btn').classList.toggle('tab-btn-active', tabId === 'admin-ann');
             document.getElementById('tab-file-btn').classList.toggle('tab-btn-active', tabId === 'admin-file');
+            document.getElementById('tab-sched-btn').classList.toggle('tab-btn-active', tabId === 'admin-schedule');
             document.getElementById('tab-sec-btn').classList.toggle('tab-btn-active', tabId === 'admin-sec');
         }
 
@@ -1220,17 +1383,14 @@
                 let sha;
                 if (getRes.ok) sha = (await getRes.json()).sha;
                 else if (getRes.status !== 404) return alert("Hata! Token yetkisi yetersiz.");
-
                 const body = { message: `Sistem Güncellemesi: ${successMessage}`, content: utf8_to_b64(JSON.stringify(newData, null, 2)) };
                 if (sha) body.sha = sha;
-
                 const updateRes = await fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/${filename}`, {
                     method: 'PUT',
                     headers: { 'Authorization': `token ${userToken}`, 'Content-Type': 'application/json' },
                     body: JSON.stringify(body)
                 });
-
-                if (updateRes.ok) { alert(`${successMessage} başarıyla tamamlandı!`); await fetchData(); closeAdminModal(); }
+                if (updateRes.ok) { alert(`${successMessage} başarıyla tamamlandı!`); await fetchData(); }
                 else alert("Kayıt sırasında hata oluştu.");
             } catch (err) { alert("Bağlantı hatası: " + err); }
         }
@@ -1239,16 +1399,29 @@
             if (type === 'announcement') {
                 const t = document.getElementById('ann-title').value.trim();
                 const c = document.getElementById('ann-content').value.trim();
+                const cat = document.getElementById('ann-category').value;
                 if (!t || !c) return alert("Başlık ve içerik doldurulmalıdır!");
-                announcementsData = [{ id: Date.now(), title: t, content: c, date: new Date().toISOString() }, ...announcementsData];
-                renderData(); commitToGitHub('duyurular.json', announcementsData, `Duyuru: ${t}`);
-                document.getElementById('ann-title').value = ''; document.getElementById('ann-content').value = '';
+                if (editingAnnId) {
+                    const it = announcementsData.find(i => i.id === editingAnnId);
+                    if (it) { it.title = t; it.content = c; it.category = cat; it.pinned = formPinned; }
+                    renderData(); renderAdminLists();
+                    commitToGitHub('duyurular.json', announcementsData, `Duyuru Güncellendi: ${t}`);
+                    cancelEdit();
+                } else {
+                    announcementsData = [{ id: Date.now(), title: t, content: c, date: new Date().toISOString(), category: cat, pinned: formPinned }, ...announcementsData];
+                    renderData(); renderAdminLists();
+                    commitToGitHub('duyurular.json', announcementsData, `Duyuru: ${t}`);
+                    document.getElementById('ann-title').value = '';
+                    document.getElementById('ann-content').value = '';
+                    formPinned = false; document.getElementById('pin-switch').classList.remove('on');
+                }
             } else {
                 const t = document.getElementById('file-title').value.trim();
                 const u = document.getElementById('file-url').value.trim();
                 if (!t || !u) return alert("Dosya adı ve linki doldurulmalıdır!");
                 filesData = [{ id: Date.now(), title: t, url: u }, ...filesData];
-                renderData(); commitToGitHub('dosyalar.json', filesData, `Dosya Linki: ${t}`);
+                renderData(); renderAdminLists();
+                commitToGitHub('dosyalar.json', filesData, `Dosya Linki: ${t}`);
                 document.getElementById('file-title').value = ''; document.getElementById('file-url').value = '';
             }
         }
@@ -1256,11 +1429,14 @@
         function deleteItem(type, id) {
             if (!confirm("Bu kaydı silmek istediğinize emin misiniz?")) return;
             if (type === 'announcement') {
+                if (editingAnnId === id) cancelEdit();
                 announcementsData = announcementsData.filter(i => i.id !== id);
-                renderData(); commitToGitHub('duyurular.json', announcementsData, `Duyuru Silindi (ID: ${id})`);
+                renderData(); renderAdminLists();
+                commitToGitHub('duyurular.json', announcementsData, `Duyuru Silindi (ID: ${id})`);
             } else {
                 filesData = filesData.filter(i => i.id !== id);
-                renderData(); commitToGitHub('dosyalar.json', filesData, `Dosya Silindi (ID: ${id})`);
+                renderData(); renderAdminLists();
+                commitToGitHub('dosyalar.json', filesData, `Dosya Silindi (ID: ${id})`);
             }
         }
 
@@ -1268,10 +1444,8 @@
             const fileInput = document.getElementById('direct-file-input');
             const file = fileInput.files[0];
             if (!file) return alert("Lütfen dosya seçin.");
-
             const btn = document.getElementById('upload-btn');
             btn.innerText = "Yükleniyor..."; btn.disabled = true;
-
             const reader = new FileReader();
             reader.onload = async function (e) {
                 const base64Data = e.target.result.split(',')[1];
@@ -1286,6 +1460,7 @@
                     if (res.ok) {
                         const downloadUrl = `https://raw.githubusercontent.com/${GITHUB_USERNAME}/${REPO_NAME}/main/${filePath}`;
                         filesData = [{ id: Date.now(), title: file.name, url: downloadUrl }, ...filesData];
+                        renderData(); renderAdminLists();
                         await commitToGitHub('dosyalar.json', filesData, `Yeni Dosya Eklendi: ${file.name}`);
                     } else alert("Yükleme başarısız oldu. (GitHub API yanıtı: " + res.status + ")");
                 } catch (error) { alert("Ağ hatası oluştu."); }
