@@ -41,12 +41,10 @@
             --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
             --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 
-            --weather-gradient: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
             --timer-gradient: linear-gradient(135deg, #064e3b 0%, #0f172a 100%);
             --widget-text: #ffffff;
             --widget-muted: rgba(255,255,255,0.72);
             --widget-chip: rgba(255,255,255,0.12);
-            --widget-error: #fca5a5;
             --shimmer: rgba(255,255,255,0.08);
             --glow-1: rgba(59,130,246,0.12);
             --glow-2: rgba(16,185,129,0.09);
@@ -75,12 +73,10 @@
             --shadow: 0 12px 32px -14px rgba(2,6,23,0.10);
             --shadow-lift: 0 22px 48px -16px rgba(2,6,23,0.16);
 
-            --weather-gradient: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
             --timer-gradient: linear-gradient(135deg, #d1fae5 0%, #f0fdf4 100%);
             --widget-text: #0f172a;
             --widget-muted: rgba(15,23,42,0.65);
             --widget-chip: rgba(15,23,42,0.06);
-            --widget-error: #dc2626;
             --shimmer: rgba(0,0,0,0.05);
             --glow-1: rgba(37,98,235,0.08);
             --glow-2: rgba(5,150,105,0.07);
@@ -112,7 +108,7 @@
         button, .nav-item, .b-nav-item, a { touch-action: manipulation; }
         :focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 6px; }
 
-        /* ============ AÇILIŞ SPLASH ============ */
+        /* AÇILIŞ SPLASH */
         .intro-overlay {
             position: fixed; inset: 0; z-index: 2000; background: var(--bg-body);
             display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
@@ -128,16 +124,6 @@
         @keyframes spinSlow { to { transform: rotate(360deg); } }
         .spin-once { animation: spinOnce 0.5s var(--ease-soft); }
         @keyframes spinOnce { from { transform: rotate(-180deg); opacity: 0; } to { transform: rotate(0); opacity: 1; } }
-        .weather-float { animation: floatY 5s ease-in-out infinite; }
-        @keyframes floatY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-
-        .live-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 0.64rem; font-weight: 800; letter-spacing: 0.8px; color: var(--widget-muted); }
-        .live-dot { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; animation: pulseDot 2s infinite; }
-        @keyframes pulseDot {
-            0% { box-shadow: 0 0 0 0 rgba(34,197,94,0.55); }
-            70% { box-shadow: 0 0 0 8px rgba(34,197,94,0); }
-            100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
-        }
 
         .icon-chip { width: 38px; height: 38px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; background: var(--primary-soft); color: var(--primary); flex-shrink: 0; }
         .icon-chip .material-symbols-rounded { font-size: 22px; }
@@ -145,11 +131,10 @@
         .icon-chip.warn { background: var(--warning-soft); color: var(--warning); }
         .icon-chip.on-gradient { background: var(--widget-chip); color: var(--widget-text); }
 
-        .btn, .nav-item, .b-nav-item, .file-link { position: relative; overflow: hidden; }
+        .btn, .nav-item, .b-nav-item, .file-link, .up-item { position: relative; overflow: hidden; }
         .ripple { position: absolute; border-radius: 50%; background: currentColor; opacity: 0.22; transform: scale(0); animation: rippleAnim 0.6s var(--ease-soft) forwards; pointer-events: none; }
         @keyframes rippleAnim { to { transform: scale(2.8); opacity: 0; } }
 
-        /* Ana butonda parlama süpürmesi */
         .btn-primary::after {
             content: ''; position: absolute; top: 0; left: -70%; width: 45%; height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
@@ -204,12 +189,14 @@
         .top-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 26px; }
         .header-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
         .header-logo { display: none; }
+        /* Kırpılma düzeltmesi: gradyan başlıkta yeterli satır yüksekliği + alt pay */
         .page-title {
-            font-size: clamp(1.4rem, 1rem + 1.8vw, 1.95rem); font-weight: 800; line-height: 1.12; letter-spacing: -0.5px;
+            font-size: clamp(1.4rem, 1rem + 1.8vw, 1.95rem); font-weight: 800;
+            line-height: 1.3; padding-bottom: 3px; letter-spacing: -0.4px;
             background: linear-gradient(92deg, var(--primary) 0%, var(--accent) 100%);
             -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
         }
-        .header-date { color: var(--text-muted); font-size: 0.88rem; margin-top: 3px; font-weight: 600; }
+        .header-date { color: var(--text-muted); font-size: 0.88rem; margin-top: 2px; font-weight: 600; }
         .header-actions { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
 
         .btn {
@@ -236,13 +223,12 @@
         .view-section.active .stat:nth-child(1) { animation-delay: 0.03s; }
         .view-section.active .stat:nth-child(2) { animation-delay: 0.09s; }
         .view-section.active .stat:nth-child(3) { animation-delay: 0.15s; }
-        .view-section.active .dashboard-grid .card:nth-child(1) { animation-delay: 0.05s; }
-        .view-section.active .dashboard-grid .card:nth-child(2) { animation-delay: 0.12s; }
-        .view-section.active .dashboard-grid + .card { animation-delay: 0.2s; }
+        .view-section.active .timer-card { animation-delay: 0.1s; }
+        .view-section.active .lower-grid .card:nth-child(1) { animation-delay: 0.18s; }
+        .view-section.active .lower-grid .card:nth-child(2) { animation-delay: 0.24s; }
         .view-section.active .card + .card { animation-delay: 0.1s; }
         .view-section.active .card + .card + .card { animation-delay: 0.18s; }
 
-        /* Liste öğeleri kademeli giriş */
         .view-section.active .data-item { animation: cardIn 0.45s var(--ease-soft) both; }
         .view-section.active .data-item:nth-child(1) { animation-delay: 0.05s; }
         .view-section.active .data-item:nth-child(2) { animation-delay: 0.1s; }
@@ -254,13 +240,12 @@
         @keyframes rowIn { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: none; } }
         .view-section.active tbody tr { animation: rowIn 0.4s var(--ease-soft) both; animation-delay: calc(var(--i, 0) * 22ms); }
 
-        .stats-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; margin-bottom: 22px; }
+        .stats-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; margin-bottom: 20px; }
         .stat { display: flex; gap: 12px; align-items: center; background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 15px 17px; box-shadow: var(--shadow); transition: transform 0.25s var(--ease-soft), box-shadow 0.25s; }
         @media (hover: hover) { .stat:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); } }
         .stat-val { font-weight: 800; font-size: 1.2rem; line-height: 1.1; letter-spacing: -0.3px; font-variant-numeric: tabular-nums; }
         .stat-lbl { font-size: 0.68rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
 
-        .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 22px; margin-bottom: 22px; perspective: 1100px; }
         .card { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow); }
         @media (hover: hover) {
             .card { transition: transform 0.3s var(--ease-soft), box-shadow 0.3s var(--ease-soft), background-color 0.3s, border-color 0.3s; }
@@ -270,25 +255,32 @@
         .card-header { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; }
         .card-title { font-size: 1.08rem; font-weight: 800; display: flex; align-items: center; gap: 11px; letter-spacing: -0.2px; }
 
-        .weather-card { background: var(--weather-gradient); border-color: transparent; color: var(--widget-text); }
-        .weather-card .card-title { color: var(--widget-text); }
-        .weather-head-right { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
-        .widget-time { font-size: 0.7rem; color: var(--widget-muted); font-weight: 600; }
-        .weather-main { display: flex; align-items: center; gap: 18px; margin-top: 6px; }
-        .weather-temp { font-size: clamp(2.6rem, 2rem + 2.4vw, 3.6rem); font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; letter-spacing: -1px; }
-        .weather-desc { font-size: 1.05rem; font-weight: 700; opacity: 0.92; margin-top: 4px; }
-        .weather-details { display: flex; gap: 8px; margin-top: 18px; flex-wrap: wrap; }
-        .w-detail { background: var(--widget-chip); padding: 9px 13px; border-radius: var(--radius-sm); font-size: 0.83rem; font-weight: 700; display: flex; align-items: center; gap: 6px; }
-
-        .timer-card { background: var(--timer-gradient); border-color: transparent; color: var(--widget-text); display: flex; flex-direction: column; justify-content: center; }
-        .timer-title { font-size: 1rem; font-weight: 700; opacity: 0.92; margin-bottom: 18px; text-align: center; }
-        .timer-display { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-        .t-box { background: var(--widget-chip); padding: 13px 4px; border-radius: var(--radius-md); text-align: center; min-width: 0; transition: transform 0.25s var(--ease-soft); }
+        /* HERO SAYAÇ KARTI */
+        #view-dashboard { perspective: 1100px; }
+        .timer-card {
+            background: var(--timer-gradient); border-color: transparent; color: var(--widget-text);
+            display: flex; align-items: center; justify-content: space-between; gap: 22px; flex-wrap: wrap;
+            margin-bottom: 20px; position: relative; overflow: hidden;
+        }
+        .timer-card::before {
+            content: ''; position: absolute; inset: -40%;
+            background: radial-gradient(circle at 30% 30%, var(--widget-chip), transparent 60%);
+            animation: glowPulse 6s ease-in-out infinite; pointer-events: none;
+        }
+        @keyframes glowPulse { 0%,100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.15); opacity: 0.9; } }
+        .timer-card > * { position: relative; z-index: 1; }
+        .timer-left { display: flex; align-items: center; gap: 14px; min-width: 0; }
+        .timer-title { font-size: 1.06rem; font-weight: 800; letter-spacing: -0.2px; line-height: 1.35; }
+        .timer-sub { font-size: 0.76rem; color: var(--widget-muted); font-weight: 700; margin-top: 3px; }
+        .timer-display { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; flex: 1; min-width: 280px; max-width: 520px; }
+        .t-box { background: var(--widget-chip); padding: 14px 4px; border-radius: var(--radius-md); text-align: center; min-width: 0; transition: transform 0.25s var(--ease-soft); }
         .t-box:hover { transform: translateY(-3px); }
-        .t-val { font-size: clamp(1.3rem, 1rem + 1.5vw, 1.9rem); font-weight: 800; font-variant-numeric: tabular-nums; }
+        .t-val { font-size: clamp(1.35rem, 1rem + 1.6vw, 2rem); font-weight: 800; font-variant-numeric: tabular-nums; }
         .t-val.tick { animation: tickPulse 0.3s var(--ease-soft); }
         @keyframes tickPulse { 0% { transform: scale(1.18); } 100% { transform: scale(1); } }
         .t-lbl { font-size: 0.68rem; text-transform: uppercase; opacity: 0.8; margin-top: 4px; font-weight: 800; letter-spacing: 0.6px; }
+
+        .lower-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px; }
 
         .data-list { display: flex; flex-direction: column; gap: 12px; }
         .data-item { padding: 17px; border: 1px solid var(--border); border-radius: var(--radius-md); display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; transition: border-color 0.25s, background-color 0.25s, transform 0.25s var(--ease-soft); }
@@ -296,6 +288,12 @@
         .item-title { font-size: 1.05rem; font-weight: 800; color: var(--primary); margin-bottom: 6px; letter-spacing: -0.2px; }
         .item-meta { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 8px; display: flex; align-items: center; gap: 4px; font-weight: 600; }
         .item-content { font-size: 0.95rem; line-height: 1.7; white-space: pre-wrap; word-break: break-word; }
+
+        /* YAKLAŞAN TARİHLER (öğrenci odaklı) */
+        .up-item { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 14px; border: 1px solid var(--border); border-radius: 12px; cursor: pointer; transition: border-color 0.2s, background-color 0.2s, transform 0.2s var(--ease-soft); animation: rowIn 0.4s var(--ease-soft) both; animation-delay: calc(var(--i, 0) * 45ms); }
+        .up-item:hover { border-color: var(--primary); background: var(--bg-surface-hover); transform: translateX(4px); }
+        .up-name { font-weight: 700; font-size: 0.9rem; line-height: 1.45; }
+        .up-date { flex-shrink: 0; background: var(--primary-soft); color: var(--primary); border-radius: 50px; padding: 6px 12px; font-size: 0.75rem; font-weight: 800; white-space: nowrap; }
 
         .file-link { display: inline-flex; align-items: center; gap: 6px; background: var(--primary-soft); color: var(--primary); padding: 8px 15px; border-radius: 50px; font-weight: 700; font-size: 0.82rem; text-decoration: none; transition: background-color 0.2s, transform 0.15s var(--ease-soft); }
         .file-link:active { transform: scale(0.95); }
@@ -357,14 +355,19 @@
         .form-control:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-soft); }
         .form-hint { font-size: 0.74rem; color: var(--text-muted); margin-top: 6px; display: flex; align-items: center; gap: 4px; }
 
+        /* TABLET (rail sidebar) */
         @media (max-width: 1023px) and (min-width: 768px) {
             .sidebar { width: 84px; padding: 20px 10px; }
             .brand { justify-content: center; padding: 0; margin-bottom: 26px; }
             .brand-text, .nav-label { display: none; }
             .nav-item { justify-content: center; gap: 0; padding: 14px 0; }
             .main-content { padding: 24px; }
+            .lower-grid { grid-template-columns: 1fr; }
+            .timer-card { flex-direction: column; align-items: stretch; }
+            .timer-display { max-width: none; }
         }
 
+        /* MOBİL */
         @media (max-width: 767px) {
             :root { --banner-h: 58px; }
             .maintenance-banner { font-size: 0.7rem; }
@@ -377,17 +380,19 @@
             .btn { min-height: 46px; }
             .form-control, .search-wrap input { font-size: 1rem; }
             .search-wrap { max-width: 100%; }
-            .dashboard-grid { grid-template-columns: 1fr; gap: 14px; perspective: none; }
             .stats-strip { grid-template-columns: repeat(auto-fit, minmax(105px, 1fr)); gap: 10px; }
             .stat { padding: 12px; gap: 10px; }
             .icon-chip { width: 34px; height: 34px; border-radius: 10px; }
             .icon-chip .material-symbols-rounded { font-size: 20px; }
             .card { padding: 18px; border-radius: 20px; }
             .card-title { font-size: 1rem; }
-            .timer-display { gap: 6px; }
-            .t-box { padding: 10px 2px; }
+            .timer-card { flex-direction: column; align-items: stretch; gap: 16px; }
+            .timer-display { min-width: 0; max-width: none; gap: 6px; }
+            .t-box { padding: 11px 2px; }
+            .lower-grid { grid-template-columns: 1fr; gap: 14px; }
             .data-item { padding: 15px; }
             .item-content { font-size: 0.93rem; }
+            .up-name { font-size: 0.86rem; }
 
             .table-wrapper { border: none; overflow: visible; border-radius: 0; }
             table, .holiday-table { min-width: 0 !important; font-size: 0.9rem; }
@@ -413,7 +418,8 @@
         @media (max-width: 360px) {
             .b-nav-item { min-width: 52px; font-size: 0.62rem; }
             .b-icon { padding: 4px 10px; }
-            .t-val { font-size: 1.15rem; }
+            .t-val { font-size: 1.2rem; }
+            .up-date { font-size: 0.7rem; padding: 5px 10px; }
         }
 
         @media (max-height: 480px) and (orientation: landscape) {
@@ -443,7 +449,6 @@
 </head>
 <body>
 
-    <!-- AÇILIŞ SPLASH -->
     <div class="intro-overlay" aria-hidden="true">
         <img src="logo.png" alt="" class="intro-logo" onerror="this.style.display='none'">
         <div class="intro-title">ETP BİLGİ SİSTEMİ</div>
@@ -510,42 +515,40 @@
                     <div class="stat"><span class="icon-chip warn"><span class="material-symbols-rounded">event</span></span><div><div class="stat-val" id="stat-next" style="font-size:0.95rem;">—</div><div class="stat-lbl">Sıradaki Etkinlik</div></div></div>
                 </div>
 
-                <div class="dashboard-grid">
-                    <div class="card weather-card tilt">
-                        <div class="card-header" style="margin-bottom:8px;">
-                            <div class="card-title"><span class="icon-chip on-gradient"><span class="material-symbols-rounded">partly_cloudy_day</span></span> Görükle Kampüsü</div>
-                            <div class="weather-head-right">
-                                <span class="live-badge"><span class="live-dot"></span> CANLI</span>
-                                <span class="widget-time" id="weather-time"></span>
-                            </div>
-                        </div>
-                        <div id="weather-content">
-                            <div style="display:flex; flex-direction:column; gap:10px; margin-top:10px;">
-                                <div class="skeleton" style="height:56px;"></div>
-                                <div class="skeleton" style="height:22px; width:70%;"></div>
-                            </div>
+                <div class="card timer-card tilt">
+                    <div class="timer-left">
+                        <span class="icon-chip on-gradient" style="width:46px; height:46px;"><span class="material-symbols-rounded" style="font-size:26px;">timer</span></span>
+                        <div style="min-width:0;">
+                            <div class="timer-title" id="target-event-name">Yaklaşan Etkinlik Yükleniyor...</div>
+                            <div class="timer-sub" id="target-event-date">2026-2027 Akademik Yılı</div>
                         </div>
                     </div>
-
-                    <div class="card timer-card tilt">
-                        <div class="timer-title" id="target-event-name">Yaklaşan Etkinlik Yükleniyor...</div>
-                        <div class="timer-display">
-                            <div class="t-box"><div class="t-val" id="cd-days">00</div><div class="t-lbl">Gün</div></div>
-                            <div class="t-box"><div class="t-val" id="cd-hours">00</div><div class="t-lbl">Saat</div></div>
-                            <div class="t-box"><div class="t-val" id="cd-minutes">00</div><div class="t-lbl">Dak.</div></div>
-                            <div class="t-box"><div class="t-val" id="cd-seconds">00</div><div class="t-lbl">San.</div></div>
-                        </div>
+                    <div class="timer-display">
+                        <div class="t-box"><div class="t-val" id="cd-days">00</div><div class="t-lbl">Gün</div></div>
+                        <div class="t-box"><div class="t-val" id="cd-hours">00</div><div class="t-lbl">Saat</div></div>
+                        <div class="t-box"><div class="t-val" id="cd-minutes">00</div><div class="t-lbl">Dak.</div></div>
+                        <div class="t-box"><div class="t-val" id="cd-seconds">00</div><div class="t-lbl">San.</div></div>
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title"><span class="icon-chip"><span class="material-symbols-rounded">notifications_active</span></span> Son Duyurular</div>
-                        <button class="btn btn-tonal" onclick="switchView('announcements')">Tümünü Gör</button>
+                <div class="lower-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title"><span class="icon-chip"><span class="material-symbols-rounded">notifications_active</span></span> Son Duyurular</div>
+                            <button class="btn btn-tonal" onclick="switchView('announcements')">Tümünü Gör</button>
+                        </div>
+                        <div id="dashboard-recent-ann" class="data-list">
+                            <div class="skeleton" style="height:64px;"></div>
+                            <div class="skeleton" style="height:64px;"></div>
+                        </div>
                     </div>
-                    <div id="dashboard-recent-ann" class="data-list">
-                        <div class="skeleton" style="height:64px;"></div>
-                        <div class="skeleton" style="height:64px;"></div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title"><span class="icon-chip warn"><span class="material-symbols-rounded">event</span></span> Yaklaşan Tarihler</div>
+                            <button class="btn btn-tonal" onclick="switchView('calendar')">Takvim</button>
+                        </div>
+                        <div id="upcoming-list" class="data-list"></div>
                     </div>
                 </div>
             </div>
@@ -625,6 +628,10 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title"><span class="icon-chip accent"><span class="material-symbols-rounded">folder_open</span></span> Dokümanlar ve Formlar</div>
+                        <div class="search-wrap">
+                            <span class="material-symbols-rounded">search</span>
+                            <input type="search" id="file-search" placeholder="Dosyalarda ara..." oninput="renderData()">
+                        </div>
                     </div>
                     <div id="file-list" class="data-list"></div>
                 </div>
@@ -701,8 +708,6 @@
     <script>
         const GITHUB_USERNAME = "berat623";
         const REPO_NAME = "opendata";
-        const MGM_URL = "https://servis.mgm.gov.tr/web/sondurumlar?merkezid=91617";
-        const WEATHER_CACHE_KEY = "mgm_hava_cache";
 
         let userToken = localStorage.getItem("gh_admin_token") || "";
         let announcementsData = [];
@@ -767,16 +772,15 @@
             updateDateInfo();
             updateAdminUI();
             renderCalendar();
-            fetchCampusWeather();
+            renderUpcoming();
             startCountdown();
             fetchData();
             initTilt();
 
-            // Splash'i garanti kaldır
             setTimeout(() => { const io = document.querySelector('.intro-overlay'); if (io) io.remove(); }, 1800);
 
             document.addEventListener('pointerdown', function (e) {
-                const t = e.target.closest('.btn, .nav-item, .b-nav-item, .file-link');
+                const t = e.target.closest('.btn, .nav-item, .b-nav-item, .file-link, .up-item');
                 if (!t) return;
                 const rect = t.getBoundingClientRect();
                 const size = Math.max(rect.width, rect.height);
@@ -794,7 +798,7 @@
             document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAdminModal(); });
         });
 
-        /* ============ 3D TİLT EFEKTİ (yalnız masaüstü, GPU dostu) ============ */
+        /* 3D TİLT (yalnız masaüstü) */
         function initTilt() {
             if (window.matchMedia('(hover: none)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
             document.querySelectorAll('.tilt').forEach(card => {
@@ -813,7 +817,6 @@
             });
         }
 
-        /* ============ COUNT-UP (istatistik sayaçları) ============ */
         function animateValue(el, to) {
             const from = parseInt(el.innerText, 10) || 0;
             if (from === to) { el.innerText = to; return; }
@@ -827,167 +830,10 @@
             requestAnimationFrame(step);
         }
 
-        /* ================= MGM HAVA DURUMU v3 (ÇOK YOLLU + OTOMATİK YENİDEN DENEME) ================= */
-        const MGM_FULL_URL = "https://servis.mgm.gov.tr/web/sondurumlar";
-        let weatherRetryTimer = null;
-
-        function weatherCacheRead() {
-            try {
-                const raw = localStorage.getItem(WEATHER_CACHE_KEY);
-                if (!raw) return null;
-                const obj = JSON.parse(raw);
-                return (obj && obj.data) ? obj.data : null;
-            } catch (e) { return null; }
-        }
-        function weatherCacheWrite(data) {
-            try { localStorage.setItem(WEATHER_CACHE_KEY, JSON.stringify({ t: Date.now(), data })); } catch (e) {}
-        }
-
-        async function fetchWithTimeout(url, ms) {
-            const ctrl = new AbortController();
-            const id = setTimeout(() => ctrl.abort(), ms);
-            try { return await fetch(url, { signal: ctrl.signal, cache: "no-store" }); }
-            finally { clearTimeout(id); }
-        }
-
-        function extractJson(text) {
-            if (!text || typeof text !== 'string') return null;
-            const starts = [text.indexOf('['), text.indexOf('{')].filter(i => i !== -1);
-            if (!starts.length) return null;
-            try { return JSON.parse(text.slice(Math.min(...starts))); } catch (e) { return null; }
-        }
-
-        function normalizeWeather(parsed) {
-            if (!parsed) return null;
-            if (typeof parsed === 'string') return normalizeWeather(extractJson(parsed));
-            let item = null;
-            if (Array.isArray(parsed)) {
-                if (!parsed.length) return null;
-                const found = parsed.find(x => x && String(x.merkezId) === "91617");
-                item = found || (parsed.length <= 5 ? parsed[0] : null);
-            } else if (typeof parsed === 'object') {
-                if (typeof parsed.contents === 'string') return normalizeWeather(extractJson(parsed.contents));
-                item = parsed;
-            }
-            if (item && item.sicaklik !== undefined && item.sicaklik !== -9999 && item.sicaklik !== "-9999") return item;
-            return null;
-        }
-
-        function renderWeather(data) {
-            const contentEl = document.getElementById('weather-content');
-            const timeEl = document.getElementById('weather-time');
-
-            const valid = v => (v !== undefined && v !== null && v !== -9999 && v !== "-9999");
-            const temp = valid(data.sicaklik) ? `${data.sicaklik}°C` : '--';
-            const feels = valid(data.hissedilenSicaklik) ? `${data.hissedilenSicaklik}°C` : null;
-            const humidity = valid(data.nem) ? `%${data.nem}` : null;
-            const wind = valid(data.ruzgarHiz) ? `${data.ruzgarHiz} km/s` : null;
-
-            const hadiseMap = {
-                'A': { t: 'Açık / Güneşli', i: 'wb_sunny' }, 'AB': { t: 'Az Bulutlu', i: 'partly_cloudy_day' },
-                'PB': { t: 'Parçalı Bulutlu', i: 'partly_cloudy_day' }, 'CB': { t: 'Çok Bulutlu', i: 'cloud' },
-                'HY': { t: 'Hafif Yağmurlu', i: 'rainy' }, 'Y': { t: 'Yağmurlu', i: 'rainy' },
-                'GSY': { t: 'Gökgürültülü Sağanak', i: 'thunderstorm' }, 'KY': { t: 'Kar Yağışlı', i: 'ac_unit' },
-                'K': { t: 'Sisli', i: 'foggy' }
-            };
-            const status = hadiseMap[data.hadiseKodu] || { t: 'Açık', i: 'thermostat' };
-
-            if (data.veriZamani) {
-                const d = new Date(data.veriZamani);
-                timeEl.innerText = `Son Güncelleme: ${d.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' })}`;
-            }
-
-            contentEl.innerHTML = `
-                <div class="weather-main">
-                    <span class="material-symbols-rounded weather-float" style="font-size:clamp(2.8rem, 2rem + 3vw, 3.8rem);">${status.i}</span>
-                    <div>
-                        <div class="weather-temp">${temp}</div>
-                        <div class="weather-desc">${status.t}</div>
-                    </div>
-                </div>
-                <div class="weather-details">
-                    ${feels ? `<div class="w-detail"><span class="material-symbols-rounded" style="font-size:16px;">device_thermostat</span> Hissedilen: ${feels}</div>` : ''}
-                    ${humidity ? `<div class="w-detail"><span class="material-symbols-rounded" style="font-size:16px;">water_drop</span> Nem: ${humidity}</div>` : ''}
-                    ${wind ? `<div class="w-detail"><span class="material-symbols-rounded" style="font-size:16px;">air</span> Rüzgar: ${wind}</div>` : ''}
-                </div>`;
-        }
-
-        async function tryWeatherProxies() {
-            const enc = encodeURIComponent(MGM_URL);
-            const encFull = encodeURIComponent(MGM_FULL_URL);
-            const proxies = [
-                `https://api.allorigins.win/raw?url=${enc}`,
-                `https://api.codetabs.com/v1/proxy?quest=${MGM_URL}`,
-                `https://cors.bridged.cc/${MGM_URL}`,
-                `https://r.jina.ai/${MGM_URL}`,
-                `https://api.allorigins.win/get?url=${enc}`,
-                `https://corsproxy.io/?url=${enc}`,
-                `https://thingproxy.freeboard.io/fetch/${MGM_URL}`,
-                `https://api.allorigins.win/raw?url=${encFull}`,
-                `https://api.codetabs.com/v1/proxy?quest=${MGM_FULL_URL}`
-            ];
-            for (const p of proxies) {
-                try {
-                    const res = await fetchWithTimeout(p, 7000);
-                    if (!res.ok) continue;
-                    const item = normalizeWeather(await res.text());
-                    if (item) { renderWeather(item); weatherCacheWrite(item); weatherOk(); return true; }
-                } catch (e) {}
-            }
-            return false;
-        }
-
-        function weatherOk() { if (weatherRetryTimer) { clearTimeout(weatherRetryTimer); weatherRetryTimer = null; } }
-
-        function scheduleWeatherRetry() {
-            if (weatherRetryTimer) return;
-            weatherRetryTimer = setTimeout(() => { weatherRetryTimer = null; fetchCampusWeather(); }, 60000);
-        }
-
-        function retryWeather() {
-            document.getElementById('weather-content').innerHTML = `<div class="skeleton" style="height:56px;"></div>`;
-            fetchCampusWeather();
-        }
-
-        async function fetchCampusWeather() {
-            const contentEl = document.getElementById('weather-content');
-
-            // KATMAN 1: Önbellek (varsa anında göster)
-            const cached = weatherCacheRead();
-            if (cached) renderWeather(cached);
-
-            // KATMAN 2: Kendi reponuzdaki hava.json (GitHub Actions besler)
-            try {
-                const r = await fetchWithTimeout(`https://raw.githubusercontent.com/${GITHUB_USERNAME}/${REPO_NAME}/main/hava.json?t=${Date.now()}`, 8000);
-                if (r.ok) {
-                    const item = normalizeWeather(await r.text());
-                    if (item) { renderWeather(item); weatherCacheWrite(item); weatherOk(); return; }
-                }
-            } catch (e) {}
-
-            // KATMAN 3: 9 farklı CORS proxy'si
-            if (await tryWeatherProxies()) return;
-
-            // Hiçbiri olmadı
-            if (!cached) {
-                contentEl.innerHTML = `<div style="color:var(--widget-error); margin-top:10px; font-size:0.88rem; font-weight:700;">
-                    <div style="display:flex; align-items:center; gap:6px;">
-                        <span class="material-symbols-rounded" style="font-size:18px;">error</span>
-                        MGM istasyonuna şu an ulaşılamıyor.
-                    </div>
-                    <button class="btn btn-tonal" style="margin-top:12px; min-height:40px; padding:8px 16px;" onclick="retryWeather()">
-                        <span class="material-symbols-rounded" style="font-size:16px;">refresh</span> Tekrar Dene
-                    </button>
-                </div>`;
-            }
-            scheduleWeatherRetry();
-        }
-
-        setInterval(fetchCampusWeather, 10 * 60 * 1000);
-
         /* ---------- TAKVİM ---------- */
         function pd(str) { const [y, m, d] = str.split('-').map(Number); return new Date(y, m - 1, d); }
         function fmtDate(d) { return d.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' }); }
+        function fmtShort(d) { return d.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long' }); }
 
         function renderCalendar() {
             const today = new Date(); today.setHours(0, 0, 0, 0);
@@ -1018,6 +864,24 @@
             document.getElementById(tbodyId).innerHTML = rows;
         }
 
+        /* ---------- YAKLAŞAN TARİHLER (öğrenci özeti) ---------- */
+        function renderUpcoming() {
+            const today = new Date(); today.setHours(0, 0, 0, 0);
+            const all = [...FALL_RAW, ...SPRING_RAW].map(r => ({ name: r[0], s: pd(r[1]), e: pd(r[2]) }));
+            const upcoming = all.filter(i => i.e >= today).sort((a, b) => a.s - b.s).slice(0, 5);
+            const el = document.getElementById('upcoming-list');
+
+            if (!upcoming.length) {
+                el.innerHTML = `<div class="empty-state"><span class="material-symbols-rounded">event_busy</span><p>Yaklaşan tarih bulunmuyor.</p></div>`;
+                return;
+            }
+            el.innerHTML = upcoming.map((i, idx) => `
+                <div class="up-item" style="--i:${idx}" onclick="switchView('calendar')" title="Takvimde gör">
+                    <div class="up-name">${i.name}</div>
+                    <span class="up-date">${fmtShort(i.s)}</span>
+                </div>`).join('');
+        }
+
         /* ---------- TEMA ---------- */
         function isLightTheme() { return document.documentElement.classList.contains('light-mode'); }
         function setMetaTheme() {
@@ -1038,8 +902,11 @@
         }
 
         function updateDateInfo() {
+            const now = new Date();
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            document.getElementById('current-date').innerText = new Date().toLocaleDateString('tr-TR', options);
+            const h = now.getHours();
+            const g = h < 6 ? 'İyi geceler' : h < 12 ? 'Günaydın' : h < 18 ? 'İyi günler' : 'İyi akşamlar';
+            document.getElementById('current-date').innerText = `${now.toLocaleDateString('tr-TR', options)} • ${g}`;
         }
 
         function switchView(viewName) {
@@ -1069,12 +936,19 @@
 
         function startCountdown() {
             const statNext = document.getElementById('stat-next');
+            const subEl = document.getElementById('target-event-date');
             function tick() {
                 const now = new Date();
                 const next = academicEvents.find(e => e.date > now);
-                if (!next) { cdEls.t.innerText = "2026-2027 Akademik Yılı Tamamlandı"; statNext.innerText = "—"; return; }
+                if (!next) {
+                    cdEls.t.innerText = "2026-2027 Akademik Yılı Tamamlandı";
+                    statNext.innerText = "—";
+                    subEl.innerText = "2026-2027 Akademik Yılı";
+                    return;
+                }
                 cdEls.t.innerText = `${next.name} için kalan süre`;
-                statNext.innerText = next.date.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long' });
+                statNext.innerText = fmtShort(next.date);
+                subEl.innerText = `${next.date.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' })} • 2026-2027 Akademik Yılı`;
                 const diff = next.date - now;
                 setVal(cdEls.d, String(Math.floor(diff / 86400000)).padStart(2, '0'));
                 setVal(cdEls.h, String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0'));
@@ -1136,6 +1010,9 @@
             const q = (document.getElementById('ann-search')?.value || '').trim().toLowerCase();
             const filtered = q ? announcementsData.filter(i => (i.title || '').toLowerCase().includes(q) || (i.content || '').toLowerCase().includes(q)) : announcementsData;
 
+            const qf = (document.getElementById('file-search')?.value || '').trim().toLowerCase();
+            const filesFiltered = qf ? filesData.filter(i => (i.title || '').toLowerCase().includes(qf)) : filesData;
+
             const delBtn = (type, id) => userToken ? `<button class="btn btn-danger btn-icon" onclick="deleteItem('${type}', ${id})" aria-label="Sil"><span class="material-symbols-rounded">delete</span></button>` : '';
 
             if (!announcementsData || announcementsData.length === 0) {
@@ -1164,8 +1041,10 @@
 
             if (!filesData || filesData.length === 0) {
                 fileList.innerHTML = `<div class="empty-state"><span class="material-symbols-rounded">folder_off</span><p>Dosya bulunmuyor.</p></div>`;
+            } else if (filesFiltered.length === 0) {
+                fileList.innerHTML = `<div class="empty-state"><span class="material-symbols-rounded">search_off</span><p>Aramanızla eşleşen dosya bulunamadı.</p></div>`;
             } else {
-                fileList.innerHTML = filesData.map(item => `
+                fileList.innerHTML = filesFiltered.map(item => `
                     <div class="data-item" style="align-items:center;">
                         <div style="flex:1; min-width:0; display:flex; gap:12px; align-items:center;">
                             <span class="icon-chip" style="width:42px; height:42px;"><span class="material-symbols-rounded" style="font-size:22px;">${fileIcon(item.title || item.url)}</span></span>
