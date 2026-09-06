@@ -14,25 +14,44 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: MGM verisini çek ve doğrula
+      - name: MGM verisini cek (cok yollu)
         run: |
-          validate() {
-            node -e "const d=JSON.parse(require('fs').readFileSync('/tmp/hava.json','utf8'));const i=Array.isArray(d)?d[0]:d;if(!(i&&i.sicaklik!==undefined&&i.sicaklik!==-9999))process.exit(1);"
-          }
+          cat > /tmp/validate.js <<'EOF'
+          const fs = require('fs');
+          const t = fs.readFileSync('/tmp/hava.json', 'utf8');
+          const starts = ['[', '{'].map(c => t.indexOf(c)).filter(i => i !== -1);
+          if (!starts.length) process.exit(1);
+          let d; try { d = JSON.parse(t.slice(Math.min(...starts))); } catch (e) { process.exit(1); }
+          const i = Array.isArray(d) ? (d.find(x => x && String(x.merkezId) === '91617') || (d.length <= 5 ? d[0] : null)) : d;
+          if (!(i && i.sicaklik !== undefined && i.sicaklik !== -9999)) process.exit(1);
+          fs.writeFileSync('hava.json', JSON.stringify(i, null, 2));
+          console.log('OK: ' + i.sicaklik + 'C');
+          EOF
           UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36"
-          curl -sL --max-time 25 -A "$UA" -e "https://www.mgm.gov.tr/" "https://servis.mgm.gov.tr/web/sondurumlar?merkezid=91617" -o /tmp/hava.json || true
-          if ! validate; then curl -sL --max-time 25 "https://api.allorigins.win/raw?url=https%3A%2F%2Fservis.mgm.gov.tr%2Fweb%2Fsondurumlar%3Fmerkezid%3D91617" -o /tmp/hava.json || true; fi
-          if ! validate; then curl -sL --max-time 25 "https://api.codetabs.com/v1/proxy?quest=https://servis.mgm.gov.tr/web/sondurumlar?merkezid=91617" -o /tmp/hava.json || true; fi
-          if validate; then cp /tmp/hava.json hava.json; echo "MGM verisi alındı."; else echo "Bu çalıştırmada veri alınamadı; eski dosya korunuyor."; fi
+          URLS="https://servis.mgm.gov.tr/web/sondurumlar?merkezid=91617
+          https://www.mgm.gov.tr/web/sondurumlar?merkezid=91617
+          https://api.allorigins.win/raw?url=https%3A%2F%2Fservis.mgm.gov.tr%2Fweb%2Fsondurumlar%3Fmerkezid%3D91617
+          https://api.codetabs.com/v1/proxy?quest=https://servis.mgm.gov.tr/web/sondurumlar?merkezid=91617
+          https://cors.bridged.cc/https://servis.mgm.gov.tr/web/sondurumlar?merkezid=91617
+          https://r.jina.ai/https://servis.mgm.gov.tr/web/sondurumlar?merkezid=91617
+          https://api.allorigins.win/raw?url=https%3A%2F%2Fservis.mgm.gov.tr%2Fweb%2Fsondurumlar
+          https://api.codetabs.com/v1/proxy?quest=https://servis.mgm.gov.tr/web/sondurumlar"
+          OK=0
+          while IFS= read -r u; do
+            echo "Deneniyor: $u"
+            curl -sL --max-time 25 -A "$UA" -e "https://www.mgm.gov.tr/" "$u" -o /tmp/hava.json || true
+            if node /tmp/validate.js; then OK=1; break; fi
+          done <<< "$URLS"
+          if [ "$OK" != "1" ]; then echo "Bu calistirmada hicbir kaynak yanit vermedi."; fi
 
-      - name: Değişiklik varsa commit et
+      - name: Degisiklik varsa commit et
         run: |
           git config user.name "mgm-bot"
           git config user.email "mgm-bot@users.noreply.github.com"
           git add hava.json || true
           if ! git diff --cached --quiet; then
-            git commit -m "MGM hava durumu güncellendi"
+            git commit -m "MGM hava durumu guncellendi"
             git push
           else
-            echo "Değişiklik yok."
+            echo "Degisiklik yok."
           fi
