@@ -6,6 +6,11 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval';">
     <meta name="theme-color" content="#0b0f19">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="ETP Bilgi">
+    <link rel="apple-touch-icon" href="logo.png">
+    <link rel="manifest" href="manifest.webmanifest">
     <title>ETP Bilgi Sistemi | BUÜ</title>
     <link rel="icon" type="image/png" href="logo.png">
 
@@ -107,9 +112,15 @@
         .skeleton::after { content: ''; position: absolute; inset: 0; transform: translateX(-100%); background: linear-gradient(90deg, transparent, var(--shimmer), transparent); animation: shimmer 1.2s infinite; }
         @keyframes shimmer { 100% { transform: translateX(100%); } }
 
-        .maintenance-banner { position: sticky; top: 0; z-index: 1000; height: var(--banner-h); display: flex; align-items: center; justify-content: center; gap: 8px; padding: 4px 12px; text-align: center; background: var(--banner-bg); background-size: 200% 100%; color: var(--banner-text); font-size: 0.78rem; font-weight: 700; line-height: 1.25; animation: bannerFlow 9s linear infinite; }
+        .maintenance-banner { position: sticky; top: 0; z-index: 1000; min-height: var(--banner-h); display: flex; align-items: center; justify-content: center; gap: 8px; padding: 6px 12px; text-align: center; background: var(--banner-bg); background-size: 200% 100%; color: var(--banner-text); font-size: 0.78rem; font-weight: 700; line-height: 1.3; animation: bannerFlow 9s linear infinite; }
         @keyframes bannerFlow { 0% { background-position: 0% 0; } 100% { background-position: 200% 0; } }
         .banner-icon { font-size: 18px; flex-shrink: 0; animation: spinSlow 6s linear infinite; }
+
+        /* TOAST */
+        .toast { position: fixed; left: 50%; bottom: calc(92px + env(safe-area-inset-bottom)); transform: translateX(-50%) translateY(20px); background: var(--bg-surface); color: var(--text-main); border: 1px solid var(--border); border-radius: 50px; padding: 12px 20px; display: flex; gap: 10px; align-items: center; font-weight: 700; font-size: 0.85rem; box-shadow: var(--shadow-lift); opacity: 0; pointer-events: none; transition: opacity 0.3s var(--ease-soft), transform 0.3s var(--ease-soft); z-index: 1500; max-width: calc(100vw - 32px); text-align: center; }
+        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+        .toast .material-symbols-rounded { color: var(--warning); flex-shrink: 0; }
+        @media (min-width: 768px) { .toast { bottom: 32px; } }
 
         .app-container { display: flex; align-items: stretch; }
 
@@ -126,7 +137,8 @@
         .nav-item:active { transform: scale(0.97); }
         .nav-item:hover { background: var(--bg-surface-hover); color: var(--text-main); }
         .nav-item.active { background: var(--primary); color: #fff; box-shadow: 0 8px 20px -8px var(--primary); }
-        .sidebar-footer { padding-top: 14px; border-top: 1px solid var(--border); }
+        .nav-badge { margin-left: auto; background: var(--danger); color: #fff; border-radius: 20px; font-size: 0.66rem; font-weight: 800; padding: 2px 8px; min-width: 20px; display: none; align-items: center; justify-content: center; }
+        .sidebar-footer { padding-top: 14px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 6px; }
 
         .main-content { flex: 1; min-width: 0; max-width: 1160px; padding: 30px 40px; }
 
@@ -176,19 +188,20 @@
         .view-section.active tbody tr { animation: rowIn 0.4s var(--ease-soft) both; animation-delay: calc(var(--i, 0) * 22ms); }
 
         .stats-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; margin-bottom: 20px; }
-        .stat { display: flex; gap: 12px; align-items: center; background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 15px 17px; box-shadow: var(--shadow); transition: transform 0.25s var(--ease-soft), box-shadow 0.25s; cursor: pointer; }
+        .stat { display: flex; gap: 12px; align-items: center; background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 15px 17px; box-shadow: var(--shadow); transition: transform 0.25s var(--ease-soft), box-shadow 0.25s; cursor: pointer; min-width: 0; }
         @media (hover: hover) { .stat:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); } }
-        .stat-val { font-weight: 800; font-size: 1.2rem; line-height: 1.1; letter-spacing: -0.3px; font-variant-numeric: tabular-nums; }
+        .stat-val { font-weight: 800; font-size: 1.2rem; line-height: 1.1; letter-spacing: -0.3px; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
         .stat-lbl { font-size: 0.68rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
 
-        .card { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow); }
+        .card { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow); min-width: 0; }
         @media (hover: hover) {
             .card { transition: transform 0.3s var(--ease-soft), box-shadow 0.3s var(--ease-soft), background-color 0.3s, border-color 0.3s; }
             .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
         }
         .tilt { transform-style: preserve-3d; will-change: transform; }
         .card-header { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; }
-        .card-title { font-size: 1.08rem; font-weight: 800; display: flex; align-items: center; gap: 11px; letter-spacing: -0.2px; }
+        .card-header > * { min-width: 0; }
+        .card-title { font-size: 1.08rem; font-weight: 800; display: flex; align-items: center; gap: 11px; letter-spacing: -0.2px; min-width: 0; }
 
         #view-dashboard { perspective: 1100px; }
         .timer-card { background: var(--timer-gradient); border-color: transparent; color: var(--widget-text); display: flex; align-items: center; justify-content: space-between; gap: 22px; flex-wrap: wrap; margin-bottom: 20px; position: relative; overflow: hidden; }
@@ -196,7 +209,7 @@
         @keyframes glowPulse { 0%,100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.15); opacity: 0.9; } }
         .timer-card > * { position: relative; z-index: 1; }
         .timer-left { display: flex; align-items: center; gap: 14px; min-width: 0; }
-        .timer-title { font-size: 1.06rem; font-weight: 800; letter-spacing: -0.2px; line-height: 1.35; }
+        .timer-title { font-size: 1.06rem; font-weight: 800; letter-spacing: -0.2px; line-height: 1.35; overflow-wrap: anywhere; }
         .timer-sub { font-size: 0.76rem; color: var(--widget-muted); font-weight: 700; margin-top: 3px; }
         .timer-display { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; flex: 1; min-width: 280px; max-width: 520px; }
         .t-box { background: var(--widget-chip); padding: 14px 4px; border-radius: var(--radius-md); text-align: center; min-width: 0; transition: transform 0.25s var(--ease-soft); }
@@ -214,14 +227,14 @@
         .lower-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px; }
 
         .data-list { display: flex; flex-direction: column; gap: 12px; }
-        .data-item { padding: 17px; border: 1px solid var(--border); border-radius: var(--radius-md); display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; transition: border-color 0.25s, background-color 0.25s, transform 0.25s var(--ease-soft); }
+        .data-item { padding: 17px; border: 1px solid var(--border); border-radius: var(--radius-md); display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; transition: border-color 0.25s, background-color 0.25s, transform 0.25s var(--ease-soft); min-width: 0; }
         .data-item:hover { border-color: var(--primary); background: var(--bg-surface-hover); transform: translateX(4px); }
         .data-item.pinned-item { border-color: var(--warning); }
-        .item-title { font-size: 1.05rem; font-weight: 800; color: var(--primary); margin-bottom: 6px; letter-spacing: -0.2px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .item-title { font-size: 1.05rem; font-weight: 800; color: var(--primary); margin-bottom: 6px; letter-spacing: -0.2px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; overflow-wrap: anywhere; }
         .item-meta { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-weight: 600; }
-        .item-content { font-size: 0.95rem; line-height: 1.7; white-space: pre-wrap; word-break: break-word; }
+        .item-content { font-size: 0.95rem; line-height: 1.7; white-space: pre-wrap; word-break: break-word; overflow-wrap: anywhere; }
+        .item-actions { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; flex-shrink: 0; }
 
-        /* KATEGORİ & SABİT ETİKETLERİ */
         .cat-tag { display: inline-flex; align-items: center; gap: 4px; padding: 2px 10px; border-radius: 20px; font-size: 0.66rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.3px; }
         .cat-tag .material-symbols-rounded { font-size: 13px; }
         .cat-duyuru { background: var(--primary-soft); color: var(--primary); }
@@ -229,7 +242,6 @@
         .cat-staj { background: var(--warning-soft); color: var(--warning); }
         .cat-etkinlik { background: var(--accent-soft); color: var(--accent); }
 
-        /* FİLTRE ÇİPLERİ */
         .filter-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
         .filter-chip { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; min-height: 38px; border-radius: 50px; border: 1px solid var(--border); background: var(--bg-surface); color: var(--text-muted); font-weight: 700; font-size: 0.78rem; cursor: pointer; transition: all 0.2s var(--ease-soft); }
         .filter-chip .material-symbols-rounded { font-size: 15px; }
@@ -241,14 +253,13 @@
         .filter-chip[data-cat="staj"].active { background: var(--warning); border-color: var(--warning); }
         .filter-chip[data-cat="etkinlik"].active { background: var(--accent); border-color: var(--accent); }
 
-        /* DERS PROGRAMI */
         .schedule-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
         .day-card { padding: 18px; }
-        .day-title { font-weight: 800; font-size: 0.95rem; margin-bottom: 14px; display: flex; align-items: center; gap: 9px; }
+        .day-title { font-weight: 800; font-size: 0.95rem; margin-bottom: 14px; display: flex; align-items: center; gap: 9px; flex-wrap: wrap; }
         .lesson-item { display: flex; gap: 12px; padding: 12px; border: 1px solid var(--border); border-radius: 12px; margin-bottom: 10px; align-items: flex-start; transition: border-color 0.25s, background-color 0.25s; }
         .lesson-item:last-child { margin-bottom: 0; }
         .lesson-time { flex-shrink: 0; background: var(--primary-soft); color: var(--primary); border-radius: 10px; padding: 6px 10px; font-weight: 800; font-size: 0.74rem; text-align: center; line-height: 1.4; font-variant-numeric: tabular-nums; }
-        .l-course { font-weight: 800; font-size: 0.9rem; line-height: 1.35; }
+        .l-course { font-weight: 800; font-size: 0.9rem; line-height: 1.35; overflow-wrap: anywhere; }
         .l-meta { font-size: 0.74rem; color: var(--text-muted); margin-top: 4px; display: flex; flex-wrap: wrap; gap: 8px; font-weight: 600; }
         .live-chip { display: none; margin-left: auto; align-items: center; gap: 5px; background: var(--accent); color: #fff; border-radius: 20px; padding: 3px 10px; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.5px; flex-shrink: 0; }
         .live-dot2 { width: 6px; height: 6px; border-radius: 50%; background: #fff; animation: pulseDot 1.6s infinite; }
@@ -257,23 +268,23 @@
         .lesson-item.live .lesson-time { background: var(--accent); color: #fff; }
         .lesson-item.live .live-chip { display: inline-flex; }
 
-        .up-item { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 14px; border: 1px solid var(--border); border-radius: 12px; cursor: pointer; transition: border-color 0.2s, background-color 0.2s, transform 0.2s var(--ease-soft); animation: rowIn 0.4s var(--ease-soft) both; animation-delay: calc(var(--i, 0) * 45ms); }
+        .up-item { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 14px; border: 1px solid var(--border); border-radius: 12px; cursor: pointer; transition: border-color 0.2s, background-color 0.2s, transform 0.2s var(--ease-soft); animation: rowIn 0.4s var(--ease-soft) both; animation-delay: calc(var(--i, 0) * 45ms); min-width: 0; }
         .up-item:hover { border-color: var(--primary); background: var(--bg-surface-hover); transform: translateX(4px); }
-        .up-name { font-weight: 700; font-size: 0.9rem; line-height: 1.45; }
+        .up-name { font-weight: 700; font-size: 0.9rem; line-height: 1.45; overflow-wrap: anywhere; }
         .up-sub { font-size: 0.72rem; color: var(--text-muted); font-weight: 600; margin-top: 4px; display: flex; align-items: center; gap: 4px; }
         .up-date { flex-shrink: 0; background: var(--primary-soft); color: var(--primary); border-radius: 50px; padding: 6px 12px; font-size: 0.75rem; font-weight: 800; white-space: nowrap; }
         .up-date.ongoing { background: var(--accent-soft); color: var(--accent); }
 
-        .file-link { display: inline-flex; align-items: center; gap: 6px; background: var(--primary-soft); color: var(--primary); padding: 8px 15px; border-radius: 50px; font-weight: 700; font-size: 0.82rem; text-decoration: none; transition: background-color 0.2s, transform 0.15s var(--ease-soft); }
+        .file-link { display: inline-flex; align-items: center; gap: 6px; background: var(--primary-soft); color: var(--primary); padding: 8px 15px; border-radius: 50px; font-weight: 700; font-size: 0.82rem; text-decoration: none; transition: background-color 0.2s, transform 0.15s var(--ease-soft); max-width: 100%; }
         .file-link:active { transform: scale(0.95); }
 
         .empty-state { text-align: center; padding: 40px 20px; color: var(--text-muted); }
         .empty-state span { font-size: 3rem; margin-bottom: 10px; opacity: 0.5; }
 
-        .search-wrap { display: flex; align-items: center; gap: 8px; background: var(--bg-body); border: 1px solid var(--border); border-radius: 50px; padding: 10px 16px; flex: 1; max-width: 320px; transition: border-color 0.25s, box-shadow 0.25s; }
+        .search-wrap { display: flex; align-items: center; gap: 8px; background: var(--bg-body); border: 1px solid var(--border); border-radius: 50px; padding: 10px 16px; flex: 1; max-width: 320px; min-width: 0; transition: border-color 0.25s, box-shadow 0.25s; }
         .search-wrap:focus-within { border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-soft); }
         .search-wrap span { color: var(--text-muted); font-size: 20px; }
-        .search-wrap input { border: none; background: transparent; color: var(--text-main); outline: none; width: 100%; font-size: 0.9rem; }
+        .search-wrap input { border: none; background: transparent; color: var(--text-main); outline: none; width: 100%; font-size: 0.9rem; min-width: 0; }
 
         .cal-note { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 14px; font-weight: 600; display: flex; gap: 6px; align-items: center; }
         .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; border: 1px solid var(--border); border-radius: var(--radius-md); }
@@ -308,15 +319,15 @@
         .to-top:active { transform: scale(0.92); }
 
         .bottom-nav { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: var(--bg-surface); border-top: 1px solid var(--border); padding: 7px 4px; padding-bottom: calc(7px + env(safe-area-inset-bottom)); z-index: 900; justify-content: space-around; align-items: center; }
-        .b-nav-item { display: flex; flex-direction: column; align-items: center; gap: 3px; color: var(--text-muted); font-size: 0.62rem; font-weight: 700; cursor: pointer; padding: 4px 6px; border-radius: 12px; min-width: 50px; transition: color 0.2s, transform 0.15s var(--ease-soft); }
+        .b-nav-item { position: relative; display: flex; flex-direction: column; align-items: center; gap: 3px; color: var(--text-muted); font-size: 0.62rem; font-weight: 700; cursor: pointer; padding: 4px 6px; border-radius: 12px; min-width: 50px; transition: color 0.2s, transform 0.15s var(--ease-soft); }
         .b-nav-item:active { transform: scale(0.92); }
         .b-nav-item.active { color: var(--primary); }
         .b-icon { padding: 4px 12px; border-radius: 16px; transition: background-color 0.25s, transform 0.25s var(--ease-soft); }
         .b-nav-item.active .b-icon { background: var(--primary-soft); transform: translateY(-2px); animation: navBounce 0.45s var(--ease-spring); }
         @keyframes navBounce { 0% { transform: scale(0.7); } 60% { transform: scale(1.1) translateY(-3px); } 100% { transform: scale(1) translateY(-2px); } }
         .b-icon span { font-size: 23px; }
+        .b-badge { position: absolute; top: 0; right: 50%; transform: translateX(17px); background: var(--danger); color: #fff; border-radius: 20px; font-size: 0.58rem; font-weight: 800; padding: 1px 6px; display: none; align-items: center; justify-content: center; min-width: 16px; }
 
-        /* ADMİN */
         .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 1200; display: none; justify-content: center; align-items: center; padding: 20px; }
         .modal-content { background: var(--bg-surface); width: 100%; max-width: 640px; border-radius: var(--radius-lg); padding: 26px; border: 1px solid var(--border); max-height: 90vh; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; animation: modalIn 0.35s var(--ease-soft); }
         @keyframes modalIn { from { opacity: 0; transform: scale(0.95) translateY(12px); } to { opacity: 1; transform: none; } }
@@ -341,7 +352,7 @@
         @media (max-width: 1023px) and (min-width: 768px) {
             .sidebar { width: 84px; padding: 20px 10px; }
             .brand { justify-content: center; padding: 0; margin-bottom: 26px; }
-            .brand-text, .nav-label { display: none; }
+            .brand-text, .nav-label, .nav-badge { display: none; }
             .nav-item { justify-content: center; gap: 0; padding: 13px 0; }
             .main-content { padding: 24px; }
             .lower-grid { grid-template-columns: 1fr; }
@@ -351,7 +362,7 @@
 
         @media (max-width: 767px) {
             :root { --banner-h: 58px; }
-            .maintenance-banner { font-size: 0.7rem; }
+            .maintenance-banner { position: static; height: auto; font-size: 0.72rem; padding: 8px 12px; }
             .sidebar { display: none; }
             .bottom-nav { display: flex; }
             .main-content { padding: 16px 12px; padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
@@ -360,7 +371,10 @@
             .btn-text { display: none; }
             .btn { min-height: 46px; }
             .form-control, .search-wrap input { font-size: 1rem; }
-            .search-wrap { max-width: 100%; }
+            .search-wrap { max-width: 100%; width: 100%; }
+            .card-header { align-items: stretch; flex-direction: column; }
+            .card-header .card-title { align-items: center; }
+            .card-header .btn { align-self: stretch; justify-content: center; }
             .stats-strip { grid-template-columns: repeat(auto-fit, minmax(105px, 1fr)); gap: 10px; }
             .stat { padding: 12px; gap: 10px; }
             .icon-chip { width: 34px; height: 34px; border-radius: 10px; }
@@ -382,7 +396,7 @@
             thead { display: none; }
             tbody tr { display: block; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 10px; padding: 14px 15px; box-shadow: var(--shadow); }
             tbody td { display: block; border: none !important; padding: 0; background: transparent !important; }
-            tbody td strong { font-size: 0.94rem; line-height: 1.5; display: block; }
+            tbody td strong { font-size: 0.94rem; line-height: 1.5; display: block; overflow-wrap: anywhere; }
             td.cal-date { display: inline-flex; align-items: center; margin-top: 10px; background: var(--primary-soft); color: var(--primary); border-radius: 50px; padding: 7px 13px; font-size: 0.8rem; font-weight: 700; white-space: normal; line-height: 1.4; }
             td[data-h] { margin-top: 8px; font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
             td[data-h]::before { content: attr(data-h) ": "; color: var(--primary); font-weight: 800; }
@@ -418,7 +432,7 @@
         }
     </style>
 
-    <!-- TEMA FLAŞI ÖNLEYİCİ (otomatik mod dahil) -->
+    <!-- TEMA FLAŞI ÖNLEYİCİ -->
     <script>
         (function () {
             try {
@@ -446,6 +460,8 @@
         <span>Sistemde planlı bakım ve yenileme çalışmaları devam etmektedir. Anlayışınız için teşekkürler.</span>
     </div>
 
+    <div id="toast" class="toast"><span class="material-symbols-rounded">build_circle</span><span id="toast-msg"></span></div>
+
     <div class="app-container">
 
         <nav class="sidebar">
@@ -459,14 +475,17 @@
             </div>
             <div class="nav-links">
                 <div class="nav-item active" data-view="dashboard" title="Ana Sayfa" onclick="switchView('dashboard')"><span class="material-symbols-rounded">dashboard</span><span class="nav-label">Ana Sayfa</span></div>
-                <div class="nav-item" data-view="announcements" title="Duyurular" onclick="switchView('announcements')"><span class="material-symbols-rounded">campaign</span><span class="nav-label">Duyurular</span></div>
+                <div class="nav-item" data-view="announcements" title="Duyurular" onclick="switchView('announcements')"><span class="material-symbols-rounded">campaign</span><span class="nav-label">Duyurular</span><span class="nav-badge ann-badge"></span></div>
                 <div class="nav-item" data-view="schedule" title="Ders Programı" onclick="switchView('schedule')"><span class="material-symbols-rounded">schedule</span><span class="nav-label">Program</span></div>
                 <div class="nav-item" data-view="calendar" title="Takvim" onclick="switchView('calendar')"><span class="material-symbols-rounded">calendar_month</span><span class="nav-label">Takvim</span></div>
                 <div class="nav-item" data-view="files" title="Dosyalar" onclick="switchView('files')"><span class="material-symbols-rounded">folder_open</span><span class="nav-label">Dosyalar</span></div>
             </div>
             <div class="sidebar-footer">
-                <div class="nav-item" id="sidebar-admin-btn" title="Yönetim" onclick="handleAdminAuth()">
-                    <span class="material-symbols-rounded">shield_person</span><span class="nav-label">Yönetim</span>
+                <div class="nav-item" title="Öğrenci Girişi" onclick="studentLogin()">
+                    <span class="material-symbols-rounded">person</span><span class="nav-label">Öğrenci Girişi</span>
+                </div>
+                <div class="nav-item" id="sidebar-admin-btn" title="Yönetici Girişi" onclick="handleAdminAuth()">
+                    <span class="material-symbols-rounded">shield_person</span><span class="nav-label">Yönetici Girişi</span>
                 </div>
             </div>
         </nav>
@@ -671,11 +690,11 @@
 
         <nav class="bottom-nav">
             <div class="b-nav-item active" data-view="dashboard" onclick="switchView('dashboard')"><span class="b-icon"><span class="material-symbols-rounded">dashboard</span></span><span class="b-label">Ana Sayfa</span></div>
-            <div class="b-nav-item" data-view="announcements" onclick="switchView('announcements')"><span class="b-icon"><span class="material-symbols-rounded">campaign</span></span><span class="b-label">Duyurular</span></div>
+            <div class="b-nav-item" data-view="announcements" onclick="switchView('announcements')"><span class="b-icon"><span class="material-symbols-rounded">campaign</span></span><span class="b-badge ann-badge"></span><span class="b-label">Duyurular</span></div>
             <div class="b-nav-item" data-view="schedule" onclick="switchView('schedule')"><span class="b-icon"><span class="material-symbols-rounded">schedule</span></span><span class="b-label">Program</span></div>
             <div class="b-nav-item" data-view="calendar" onclick="switchView('calendar')"><span class="b-icon"><span class="material-symbols-rounded">calendar_month</span></span><span class="b-label">Takvim</span></div>
             <div class="b-nav-item" data-view="files" onclick="switchView('files')"><span class="b-icon"><span class="material-symbols-rounded">folder_open</span></span><span class="b-label">Dosyalar</span></div>
-            <div class="b-nav-item" id="mobile-admin-btn" onclick="handleAdminAuth()"><span class="b-icon"><span class="material-symbols-rounded">shield_person</span></span><span class="b-label">Yönetim</span></div>
+            <div class="b-nav-item" id="mobile-admin-btn" onclick="handleAdminAuth()"><span class="b-icon"><span class="material-symbols-rounded">shield_person</span></span><span class="b-label">Yönetici</span></div>
         </nav>
     </div>
 
@@ -701,7 +720,6 @@
                 <button class="btn btn-tonal btn-mini" id="tab-sec-btn" onclick="switchAdminTab('admin-sec')">Oturum</button>
             </div>
 
-            <!-- DUYURU YÖNETİMİ -->
             <div id="admin-ann">
                 <div class="input-group"><label>Duyuru Başlığı</label><input type="text" id="ann-title" class="form-control" placeholder="Örn: Vize Tarihleri Hakkında" maxlength="150"></div>
                 <div class="input-group"><label>Kategori</label>
@@ -725,7 +743,6 @@
                 <div id="admin-ann-list"></div>
             </div>
 
-            <!-- DOSYA YÖNETİMİ -->
             <div id="admin-file" style="display:none;">
                 <div class="input-group">
                     <label>Seçenek 1: Doğrudan Dosya Yükle</label>
@@ -741,7 +758,6 @@
                 <div id="admin-file-list"></div>
             </div>
 
-            <!-- DERS PROGRAMI YÖNETİMİ -->
             <div id="admin-schedule" style="display:none;">
                 <div class="form-row">
                     <div class="input-group"><label>Gün</label>
@@ -764,7 +780,6 @@
                 <div id="admin-schedule-list"></div>
             </div>
 
-            <!-- OTURUM -->
             <div id="admin-sec" style="display:none;">
                 <p style="font-size:0.84rem; color:var(--text-muted); margin-bottom:16px; line-height:1.5;">Yönetici oturumunuz GitHub API yetkilendirmesi ile korunmaktadır.</p>
                 <button class="btn btn-danger" style="width:100%; padding:12px;" onclick="logoutAdmin()">
@@ -786,6 +801,7 @@
         let formPinned = false;
         let currentCat = 'all';
         let themeMode = localStorage.getItem('theme') || 'dark';
+        let toastTimer = null;
 
         const CATS = {
             duyuru: { label: 'Duyuru', icon: 'campaign', cls: 'cat-duyuru' },
@@ -863,7 +879,6 @@
 
             setTimeout(() => { const io = document.querySelector('.intro-overlay'); if (io) io.remove(); }, 1800);
 
-            // Her dakika: otomatik tema + canlı ders vurgusu
             setInterval(() => {
                 if (themeMode === 'auto') applyTheme();
                 updateScheduleLive();
@@ -886,9 +901,29 @@
             const overlay = document.getElementById('admin-modal');
             overlay.addEventListener('click', e => { if (e.target === overlay) closeAdminModal(); });
             document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAdminModal(); });
+
+            // PWA (Service Worker) kaydı
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('./sw.js').catch(() => {});
+                });
+            }
         });
 
-        /* ---------- TEMA (Açık → Koyu → Otomatik) ---------- */
+        /* ---------- TOAST ---------- */
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            document.getElementById('toast-msg').innerText = msg;
+            t.classList.add('show');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => t.classList.remove('show'), 3400);
+        }
+
+        function studentLogin() {
+            showToast('Bu kısım bakımdadır, en yakın zamanda hizmetinizde olacak. 🛠️');
+        }
+
+        /* ---------- TEMA ---------- */
         function autoLight() { const h = new Date().getHours(); return h >= 7 && h < 19; }
         function applyTheme() {
             const light = themeMode === 'light' || (themeMode === 'auto' && autoLight());
@@ -923,7 +958,34 @@
             const titles = { 'dashboard': 'Ana Sayfa', 'announcements': 'Duyurular', 'schedule': 'Ders Programı', 'calendar': 'Akademik Takvim', 'files': 'Dosyalar' };
             document.getElementById('page-title-text').innerText = titles[viewName];
             document.querySelectorAll('.nav-item, .b-nav-item').forEach(el => el.classList.toggle('active', el.dataset.view === viewName));
+            if (viewName === 'announcements') {
+                localStorage.setItem('lastVisitAnn', String(Date.now()));
+                updateAnnBadge();
+            }
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        /* ---------- YENİ DUYURU ROZETİ ---------- */
+        function updateAnnBadge() {
+            const last = parseInt(localStorage.getItem('lastVisitAnn') || '0', 10);
+            const fresh = (announcementsData || []).filter(i => new Date(i.date).getTime() > last).length;
+            document.querySelectorAll('.ann-badge').forEach(b => {
+                if (fresh > 0) { b.style.display = 'inline-flex'; b.innerText = fresh > 9 ? '9+' : String(fresh); }
+                else { b.style.display = 'none'; b.innerText = ''; }
+            });
+        }
+
+        /* ---------- PAYLAŞ (Web Share API) ---------- */
+        async function shareAnn(id) {
+            const it = (announcementsData || []).find(i => i.id === id);
+            if (!it) return;
+            const text = `📢 ${it.title}\n\n${it.content}\n\n— BUÜ Elektronik Teknolojisi Programı`;
+            if (navigator.share) {
+                try { await navigator.share({ title: it.title, text: text }); } catch (e) {}
+            } else {
+                try { await navigator.clipboard.writeText(text); showToast('Duyuru panoya kopyalandı! 📋'); }
+                catch (e) { showToast('Paylaşım bu tarayıcıda desteklenmiyor.'); }
+            }
         }
 
         function initTilt() {
@@ -993,7 +1055,7 @@
             document.getElementById(tbodyId).innerHTML = rows;
         }
 
-        /* ---------- .ics İNDİRME ---------- */
+        /* ---------- .ics ---------- */
         function icsDate(d) { return d.getFullYear() + String(d.getMonth() + 1).padStart(2, '0') + String(d.getDate()).padStart(2, '0'); }
         function downloadICS() {
             const events = [];
@@ -1001,7 +1063,7 @@
             [...FALL_RAW.map(r => ['Güz', r]), ...SPRING_RAW.map(r => ['Bahar', r])].forEach(([sem, r], i) => {
                 const s = pd(r[1]); const e = pd(r[2]); const end = new Date(e); end.setDate(end.getDate() + 1);
                 const summary = (r[0] + (r[3] ? ` (${r[3]})` : '') + ` - ${sem} Yarıyılı`).replace(/[,;\\]/g, m => '\\' + m);
-                events.push(`BEGIN:VEVENT\r\nUID:etp-${i}-${sem}@buüetp\r\nDTSTAMP:${stamp}\r\nDTSTART;VALUE=DATE:${icsDate(s)}\r\nDTEND;VALUE=DATE:${icsDate(end)}\r\nSUMMARY:${summary}\r\nEND:VEVENT`);
+                events.push(`BEGIN:VEVENT\r\nUID:etp-${i}-${sem}@bu-etp\r\nDTSTAMP:${stamp}\r\nDTSTART;VALUE=DATE:${icsDate(s)}\r\nDTEND;VALUE=DATE:${icsDate(end)}\r\nSUMMARY:${summary}\r\nEND:VEVENT`);
             });
             const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//BUÜ ETP Bilgi Sistemi//TR', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH', ...events, 'END:VCALENDAR'].join('\r\n');
             const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
@@ -1010,6 +1072,7 @@
             a.download = 'BUU-Akademik-Takvim-2026-2027.ics';
             document.body.appendChild(a); a.click(); a.remove();
             URL.revokeObjectURL(a.href);
+            showToast('Takvim dosyası indirildi 📅');
         }
 
         /* ---------- YAKLAŞAN TARİHLER ---------- */
@@ -1097,9 +1160,7 @@
             if (!course || !start || !end) return alert("Ders adı ve saatleri doldurulmalıdır!");
             if (end <= start) return alert("Bitiş saati başlangıçtan sonra olmalıdır!");
             scheduleData = [...(scheduleData || []), {
-                id: Date.now(),
-                day: +document.getElementById('ls-day').value,
-                start, end, course,
+                id: Date.now(), day: +document.getElementById('ls-day').value, start, end, course,
                 room: document.getElementById('ls-room').value.trim(),
                 instructor: document.getElementById('ls-instructor').value.trim()
             }];
@@ -1161,7 +1222,6 @@
             return `<span class="cat-tag ${c.cls}"><span class="material-symbols-rounded">${c.icon}</span>${c.label}</span>`;
         }
 
-        /* ---------- FİLTRE ---------- */
         function setFilter(cat) {
             currentCat = cat;
             document.querySelectorAll('.filter-chip').forEach(ch => ch.classList.toggle('active', ch.dataset.cat === cat));
@@ -1191,6 +1251,7 @@
             renderData();
             renderSchedule();
             renderAdminLists();
+            updateAnnBadge();
         }
 
         function renderData() {
@@ -1201,7 +1262,6 @@
             animateValue(document.getElementById('stat-ann'), announcementsData.length);
             animateValue(document.getElementById('stat-file'), filesData.length);
 
-            // Kategori sayaçları
             const counts = { all: announcementsData.length, duyuru: 0, sinav: 0, staj: 0, etkinlik: 0 };
             announcementsData.forEach(i => { const c = i.category || 'duyuru'; if (counts[c] !== undefined) counts[c]++; });
             Object.keys(counts).forEach(k => { const el = document.getElementById('cnt-' + k); if (el) el.innerText = counts[k]; });
@@ -1211,7 +1271,7 @@
             if (currentCat !== 'all') filtered = filtered.filter(i => (i.category || 'duyuru') === currentCat);
             if (q) filtered = filtered.filter(i => (i.title || '').toLowerCase().includes(q) || (i.content || '').toLowerCase().includes(q));
 
-            const delBtn = (type, id) => userToken ? `<button class="btn btn-danger btn-icon" onclick="deleteItem('${type}', ${id})" aria-label="Sil"><span class="material-symbols-rounded">delete</span></button>` : '';
+            const delBtn = (type, id) => userToken ? `<button class="btn btn-danger btn-mini" onclick="deleteItem('${type}', ${id})" aria-label="Sil"><span class="material-symbols-rounded" style="font-size:16px;">delete</span></button>` : '';
 
             if (!announcementsData.length) {
                 annList.innerHTML = dashAnn.innerHTML = `<div class="empty-state"><span class="material-symbols-rounded">notifications_off</span><p>Kayıtlı duyuru bulunmuyor.</p></div>`;
@@ -1225,7 +1285,10 @@
                                 <div class="item-meta">${catTag(item)}<span style="display:inline-flex;align-items:center;gap:4px;"><span class="material-symbols-rounded" style="font-size:15px;">schedule</span>${sanitizeHTML(new Date(item.date).toLocaleString('tr-TR'))}</span></div>
                                 <div class="item-content">${sanitizeHTML(item.content)}</div>
                             </div>
-                            ${delBtn('announcement', item.id)}
+                            <div class="item-actions">
+                                <button class="btn btn-tonal btn-mini" onclick="shareAnn(${item.id})" aria-label="Paylaş" title="Paylaş"><span class="material-symbols-rounded" style="font-size:16px;">share</span></button>
+                                ${delBtn('announcement', item.id)}
+                            </div>
                         </div>`).join('');
 
                 dashAnn.innerHTML = sortAnns(announcementsData).slice(0, 3).map(item => `
@@ -1251,15 +1314,17 @@
                             <a href="${sanitizeHTML(item.url)}" target="_blank" rel="noopener noreferrer" class="file-link"><span class="material-symbols-rounded" style="font-size:16px;">download</span> İndir / Görüntüle</a>
                         </div>
                     </div>
-                    ${delBtn('file', item.id)}
+                    <div class="item-actions" style="flex-direction:row;">
+                        <button class="btn btn-tonal btn-mini" onclick="shareAnn(-1)" style="display:none;"></button>
+                        ${userToken ? `<button class="btn btn-danger btn-mini" onclick="deleteItem('file', ${item.id})" aria-label="Sil"><span class="material-symbols-rounded" style="font-size:16px;">delete</span></button>` : ''}
+                    </div>
                 </div>`).join('');
         }
 
         /* ---------- ADMİN LİSTELERİ ---------- */
         function renderAdminLists() {
             if (!userToken) return;
-            const annL = document.getElementById('admin-ann-list');
-            annL.innerHTML = sortAnns(announcementsData).map(i => {
+            document.getElementById('admin-ann-list').innerHTML = sortAnns(announcementsData).map(i => {
                 const c = CATS[i.category] || CATS.duyuru;
                 return `<div class="admin-item">
                     <span class="material-symbols-rounded" style="color:var(--primary); font-size:18px;">${c.icon}</span>
@@ -1317,7 +1382,7 @@
             if (!it) return;
             it.pinned = !it.pinned;
             renderData(); renderAdminLists();
-            commitToGitHub('duyurular.json', announcementsData, `Duyuru ${it.pinned ? 'Sabitlendi' : 'Sabitlenmedi'}: ${it.title}`);
+            commitToGitHub('duyurular.json', announcementsData, `Duyuru ${it.pinned ? 'Sabitlendi' : 'Sabitlemesi Kaldırıldı'}: ${it.title}`);
         }
 
         /* ---------- YÖNETİM ---------- */
@@ -1358,8 +1423,8 @@
                 mob.innerHTML = `<span class="b-icon"><span class="material-symbols-rounded" style="color:var(--accent);">verified_user</span></span><span class="b-label">Yönetici</span>`;
             } else {
                 lgBtn.style.display = 'none';
-                desk.innerHTML = `<span class="material-symbols-rounded">shield_person</span><span class="nav-label">Yönetim</span>`;
-                mob.innerHTML = `<span class="b-icon"><span class="material-symbols-rounded">shield_person</span></span><span class="b-label">Yönetim</span>`;
+                desk.innerHTML = `<span class="material-symbols-rounded">shield_person</span><span class="nav-label">Yönetici Girişi</span>`;
+                mob.innerHTML = `<span class="b-icon"><span class="material-symbols-rounded">shield_person</span></span><span class="b-label">Yönetici</span>`;
             }
         }
 
@@ -1409,7 +1474,7 @@
                     cancelEdit();
                 } else {
                     announcementsData = [{ id: Date.now(), title: t, content: c, date: new Date().toISOString(), category: cat, pinned: formPinned }, ...announcementsData];
-                    renderData(); renderAdminLists();
+                    renderData(); renderAdminLists(); updateAnnBadge();
                     commitToGitHub('duyurular.json', announcementsData, `Duyuru: ${t}`);
                     document.getElementById('ann-title').value = '';
                     document.getElementById('ann-content').value = '';
@@ -1431,7 +1496,7 @@
             if (type === 'announcement') {
                 if (editingAnnId === id) cancelEdit();
                 announcementsData = announcementsData.filter(i => i.id !== id);
-                renderData(); renderAdminLists();
+                renderData(); renderAdminLists(); updateAnnBadge();
                 commitToGitHub('duyurular.json', announcementsData, `Duyuru Silindi (ID: ${id})`);
             } else {
                 filesData = filesData.filter(i => i.id !== id);
