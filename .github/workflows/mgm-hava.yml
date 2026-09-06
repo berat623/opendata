@@ -1,0 +1,38 @@
+name: MGM Hava Durumu Güncelle
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-weather:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: MGM verisini çek ve doğrula
+        run: |
+          validate() {
+            node -e "const d=JSON.parse(require('fs').readFileSync('/tmp/hava.json','utf8'));const i=Array.isArray(d)?d[0]:d;if(!(i&&i.sicaklik!==undefined&&i.sicaklik!==-9999))process.exit(1);"
+          }
+          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36"
+          curl -sL --max-time 25 -A "$UA" -e "https://www.mgm.gov.tr/" "https://servis.mgm.gov.tr/web/sondurumlar?merkezid=91617" -o /tmp/hava.json || true
+          if ! validate; then curl -sL --max-time 25 "https://api.allorigins.win/raw?url=https%3A%2F%2Fservis.mgm.gov.tr%2Fweb%2Fsondurumlar%3Fmerkezid%3D91617" -o /tmp/hava.json || true; fi
+          if ! validate; then curl -sL --max-time 25 "https://api.codetabs.com/v1/proxy?quest=https://servis.mgm.gov.tr/web/sondurumlar?merkezid=91617" -o /tmp/hava.json || true; fi
+          if validate; then cp /tmp/hava.json hava.json; echo "MGM verisi alındı."; else echo "Bu çalıştırmada veri alınamadı; eski dosya korunuyor."; fi
+
+      - name: Değişiklik varsa commit et
+        run: |
+          git config user.name "mgm-bot"
+          git config user.email "mgm-bot@users.noreply.github.com"
+          git add hava.json || true
+          if ! git diff --cached --quiet; then
+            git commit -m "MGM hava durumu güncellendi"
+            git push
+          else
+            echo "Değişiklik yok."
+          fi
