@@ -33,7 +33,7 @@
 
             --nav-width: 260px;
             --banner-h: 44px;
-            --radius-lg: 24px;
+            --radius-lg: 26px;
             --radius-md: 16px;
             --radius-sm: 10px;
             --shadow: 0 12px 32px -14px rgba(0,0,0,0.5);
@@ -56,7 +56,6 @@
             --logo-bg: #ffffff;
         }
 
-        /* Açık tema artık <html> üzerinde → ilk boyamada doğru renk (flaş yok) */
         html.light-mode {
             --bg-body: #f1f5f9;
             --bg-surface: #ffffff;
@@ -120,6 +119,21 @@
         .weather-float { animation: floatY 5s ease-in-out infinite; }
         @keyframes floatY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
 
+        .live-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 0.64rem; font-weight: 800; letter-spacing: 0.8px; color: var(--widget-muted); }
+        .live-dot { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; animation: pulseDot 2s infinite; }
+        @keyframes pulseDot {
+            0% { box-shadow: 0 0 0 0 rgba(34,197,94,0.55); }
+            70% { box-shadow: 0 0 0 8px rgba(34,197,94,0); }
+            100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+        }
+
+        /* İKON CHİP (Premium kart başlıkları) */
+        .icon-chip { width: 38px; height: 38px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; background: var(--primary-soft); color: var(--primary); flex-shrink: 0; }
+        .icon-chip .material-symbols-rounded { font-size: 22px; }
+        .icon-chip.accent { background: var(--accent-soft); color: var(--accent); }
+        .icon-chip.warn { background: var(--warning-soft); color: var(--warning); }
+        .icon-chip.on-gradient { background: var(--widget-chip); color: var(--widget-text); }
+
         .btn, .nav-item, .b-nav-item, .file-link { position: relative; overflow: hidden; }
         .ripple { position: absolute; border-radius: 50%; background: currentColor; opacity: 0.22; transform: scale(0); animation: rippleAnim 0.6s var(--ease-soft) forwards; pointer-events: none; }
         @keyframes rippleAnim { to { transform: scale(2.8); opacity: 0; } }
@@ -147,15 +161,15 @@
             overflow-y: auto; z-index: 50;
         }
         .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; padding: 0 8px; }
-        .brand-logo { width: 42px; height: 42px; border-radius: 14px; object-fit: contain; background: var(--logo-bg); border: 1px solid var(--border); padding: 4px; flex-shrink: 0; }
-        .brand-fallback { display: none; align-items: center; justify-content: center; width: 42px; height: 42px; background: var(--primary); border-radius: 14px; color: #fff; font-weight: 800; font-size: 1.2rem; flex-shrink: 0; }
-        .brand-text h1 { font-size: 1.02rem; font-weight: 700; line-height: 1.2; }
-        .brand-text p { font-size: 0.7rem; color: var(--text-muted); }
+        .brand-logo { width: 44px; height: 44px; border-radius: 14px; object-fit: contain; background: var(--logo-bg); border: 1px solid var(--border); padding: 4px; flex-shrink: 0; }
+        .brand-fallback { display: none; align-items: center; justify-content: center; width: 44px; height: 44px; background: var(--primary); border-radius: 14px; color: #fff; font-weight: 800; font-size: 1.2rem; flex-shrink: 0; }
+        .brand-text h1 { font-size: 1.05rem; font-weight: 800; line-height: 1.2; letter-spacing: -0.2px; }
+        .brand-text p { font-size: 0.72rem; color: var(--text-muted); }
 
         .nav-links { display: flex; flex-direction: column; gap: 8px; flex: 1; }
         .nav-item {
             display: flex; align-items: center; gap: 12px; padding: 14px 16px; min-height: 48px;
-            border-radius: var(--radius-md); color: var(--text-muted); font-weight: 600; cursor: pointer;
+            border-radius: var(--radius-md); color: var(--text-muted); font-weight: 600; cursor: pointer; font-size: 0.95rem;
             transition: background-color 0.25s var(--ease-soft), color 0.25s, transform 0.15s var(--ease-soft), box-shadow 0.25s;
         }
         .nav-item:active { transform: scale(0.97); }
@@ -163,27 +177,27 @@
         .nav-item.active { background: var(--primary); color: #fff; box-shadow: 0 8px 20px -8px var(--primary); }
         .sidebar-footer { padding-top: 14px; border-top: 1px solid var(--border); }
 
-        .main-content { flex: 1; min-width: 0; max-width: 1100px; padding: 28px 40px; }
+        .main-content { flex: 1; min-width: 0; max-width: 1160px; padding: 30px 40px; }
 
-        .top-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 24px; }
+        .top-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 26px; }
         .header-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
         .header-logo { display: none; }
-        .page-title { font-size: clamp(1.35rem, 1rem + 1.6vw, 1.85rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.3px; }
-        .header-date { color: var(--text-muted); font-size: 0.86rem; margin-top: 2px; }
+        .page-title { font-size: clamp(1.4rem, 1rem + 1.8vw, 1.95rem); font-weight: 800; line-height: 1.12; letter-spacing: -0.5px; }
+        .header-date { color: var(--text-muted); font-size: 0.88rem; margin-top: 3px; font-weight: 600; }
         .header-actions { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
 
         .btn {
             display: inline-flex; align-items: center; justify-content: center; gap: 8px;
             min-height: 44px; padding: 10px 18px; border-radius: 50px;
-            font-weight: 600; font-size: 0.9rem; cursor: pointer; border: none;
+            font-weight: 700; font-size: 0.9rem; cursor: pointer; border: none;
             transition: background-color 0.25s, color 0.25s, transform 0.15s var(--ease-soft), box-shadow 0.25s;
         }
         .btn:active { transform: scale(0.96); }
         .btn-icon { padding: 10px; border-radius: 50%; }
         .btn-tonal { background: var(--bg-surface); color: var(--text-main); border: 1px solid var(--border); }
         .btn-tonal:hover { background: var(--bg-surface-hover); box-shadow: var(--shadow); }
-        .btn-primary { background: var(--primary); color: #fff; box-shadow: 0 8px 20px -8px var(--primary); }
-        .btn-primary:hover { background: var(--primary-hover); box-shadow: 0 12px 26px -8px var(--primary); }
+        .btn-primary { background: linear-gradient(135deg, var(--primary), var(--primary-hover)); color: #fff; box-shadow: 0 8px 20px -8px var(--primary); }
+        .btn-primary:hover { box-shadow: 0 12px 28px -8px var(--primary); filter: brightness(1.06); }
         .btn-danger { background: rgba(239,68,68,0.1); color: var(--danger); border: 1px solid rgba(239,68,68,0.25); }
         .btn-danger:hover { background: var(--danger); color: #fff; }
 
@@ -205,66 +219,67 @@
         @keyframes rowIn { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: none; } }
         .view-section.active tbody tr { animation: rowIn 0.4s var(--ease-soft) both; animation-delay: calc(var(--i, 0) * 22ms); }
 
-        .stats-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px; margin-bottom: 20px; }
-        .stat { display: flex; gap: 12px; align-items: center; background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 14px 16px; box-shadow: var(--shadow); }
-        .stat-val { font-weight: 800; font-size: 1.1rem; line-height: 1.1; }
-        .stat-lbl { font-size: 0.66rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; margin-top: 2px; }
+        .stats-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; margin-bottom: 22px; }
+        .stat { display: flex; gap: 12px; align-items: center; background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 15px 17px; box-shadow: var(--shadow); transition: transform 0.25s var(--ease-soft), box-shadow 0.25s; }
+        @media (hover: hover) { .stat:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); } }
+        .stat-val { font-weight: 800; font-size: 1.2rem; line-height: 1.1; letter-spacing: -0.3px; }
+        .stat-lbl { font-size: 0.68rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
 
-        .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 20px; margin-bottom: 20px; }
-        .card { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 22px; box-shadow: var(--shadow); }
+        .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 22px; margin-bottom: 22px; }
+        .card { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow); }
         @media (hover: hover) {
             .card { transition: transform 0.3s var(--ease-soft), box-shadow 0.3s var(--ease-soft), background-color 0.3s, border-color 0.3s; }
             .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
         }
-        .card-header { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
-        .card-title { font-size: 1.05rem; font-weight: 800; display: flex; align-items: center; gap: 8px; letter-spacing: -0.2px; }
-        .card-title .material-symbols-rounded { color: var(--primary); }
+        .card-header { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; }
+        .card-title { font-size: 1.08rem; font-weight: 800; display: flex; align-items: center; gap: 11px; letter-spacing: -0.2px; }
 
         .weather-card { background: var(--weather-gradient); border-color: transparent; color: var(--widget-text); }
-        .weather-card .card-title, .weather-card .card-title .material-symbols-rounded { color: var(--widget-text); opacity: 0.95; }
+        .weather-card .card-title { color: var(--widget-text); }
+        .weather-head-right { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
         .widget-time { font-size: 0.7rem; color: var(--widget-muted); font-weight: 600; }
-        .weather-main { display: flex; align-items: center; gap: 16px; margin-top: 4px; }
-        .weather-temp { font-size: clamp(2.4rem, 2rem + 2vw, 3.3rem); font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
-        .weather-desc { font-size: 1rem; font-weight: 600; opacity: 0.9; margin-top: 4px; }
-        .weather-details { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
-        .w-detail { background: var(--widget-chip); padding: 8px 12px; border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+        .weather-main { display: flex; align-items: center; gap: 18px; margin-top: 6px; }
+        .weather-temp { font-size: clamp(2.6rem, 2rem + 2.4vw, 3.6rem); font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; letter-spacing: -1px; }
+        .weather-desc { font-size: 1.05rem; font-weight: 700; opacity: 0.92; margin-top: 4px; }
+        .weather-details { display: flex; gap: 8px; margin-top: 18px; flex-wrap: wrap; }
+        .w-detail { background: var(--widget-chip); padding: 9px 13px; border-radius: var(--radius-sm); font-size: 0.83rem; font-weight: 700; display: flex; align-items: center; gap: 6px; }
 
         .timer-card { background: var(--timer-gradient); border-color: transparent; color: var(--widget-text); display: flex; flex-direction: column; justify-content: center; }
-        .timer-title { font-size: 0.98rem; font-weight: 700; opacity: 0.92; margin-bottom: 16px; text-align: center; }
+        .timer-title { font-size: 1rem; font-weight: 700; opacity: 0.92; margin-bottom: 18px; text-align: center; }
         .timer-display { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-        .t-box { background: var(--widget-chip); padding: 12px 4px; border-radius: var(--radius-md); text-align: center; min-width: 0; transition: transform 0.25s var(--ease-soft); }
+        .t-box { background: var(--widget-chip); padding: 13px 4px; border-radius: var(--radius-md); text-align: center; min-width: 0; transition: transform 0.25s var(--ease-soft); }
         .t-box:hover { transform: translateY(-3px); }
-        .t-val { font-size: clamp(1.25rem, 1rem + 1.4vw, 1.8rem); font-weight: 800; font-variant-numeric: tabular-nums; }
+        .t-val { font-size: clamp(1.3rem, 1rem + 1.5vw, 1.9rem); font-weight: 800; font-variant-numeric: tabular-nums; }
         .t-val.tick { animation: tickPulse 0.3s var(--ease-soft); }
         @keyframes tickPulse { 0% { transform: scale(1.18); } 100% { transform: scale(1); } }
-        .t-lbl { font-size: 0.68rem; text-transform: uppercase; opacity: 0.8; margin-top: 4px; font-weight: 700; }
+        .t-lbl { font-size: 0.68rem; text-transform: uppercase; opacity: 0.8; margin-top: 4px; font-weight: 800; letter-spacing: 0.6px; }
 
         .data-list { display: flex; flex-direction: column; gap: 12px; }
-        .data-item { padding: 16px; border: 1px solid var(--border); border-radius: var(--radius-md); display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; transition: border-color 0.25s, background-color 0.25s, transform 0.25s var(--ease-soft); }
+        .data-item { padding: 17px; border: 1px solid var(--border); border-radius: var(--radius-md); display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; transition: border-color 0.25s, background-color 0.25s, transform 0.25s var(--ease-soft); }
         .data-item:hover { border-color: var(--primary); background: var(--bg-surface-hover); transform: translateX(4px); }
-        .item-title { font-size: 1.02rem; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
-        .item-meta { font-size: 0.76rem; color: var(--text-muted); margin-bottom: 8px; display: flex; align-items: center; gap: 4px; }
-        .item-content { font-size: 0.92rem; line-height: 1.6; white-space: pre-wrap; word-break: break-word; }
+        .item-title { font-size: 1.05rem; font-weight: 800; color: var(--primary); margin-bottom: 6px; letter-spacing: -0.2px; }
+        .item-meta { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 8px; display: flex; align-items: center; gap: 4px; font-weight: 600; }
+        .item-content { font-size: 0.95rem; line-height: 1.7; white-space: pre-wrap; word-break: break-word; }
 
-        .file-link { display: inline-flex; align-items: center; gap: 6px; background: var(--primary-soft); color: var(--primary); padding: 7px 14px; border-radius: 50px; font-weight: 700; font-size: 0.8rem; text-decoration: none; transition: background-color 0.2s, transform 0.15s var(--ease-soft); }
+        .file-link { display: inline-flex; align-items: center; gap: 6px; background: var(--primary-soft); color: var(--primary); padding: 8px 15px; border-radius: 50px; font-weight: 700; font-size: 0.82rem; text-decoration: none; transition: background-color 0.2s, transform 0.15s var(--ease-soft); }
         .file-link:active { transform: scale(0.95); }
 
-        .empty-state { text-align: center; padding: 38px 20px; color: var(--text-muted); }
+        .empty-state { text-align: center; padding: 40px 20px; color: var(--text-muted); }
         .empty-state span { font-size: 3rem; margin-bottom: 10px; opacity: 0.5; }
 
-        .search-wrap { display: flex; align-items: center; gap: 8px; background: var(--bg-body); border: 1px solid var(--border); border-radius: 50px; padding: 9px 16px; flex: 1; max-width: 320px; transition: border-color 0.25s, box-shadow 0.25s; }
+        .search-wrap { display: flex; align-items: center; gap: 8px; background: var(--bg-body); border: 1px solid var(--border); border-radius: 50px; padding: 10px 16px; flex: 1; max-width: 320px; transition: border-color 0.25s, box-shadow 0.25s; }
         .search-wrap:focus-within { border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-soft); }
         .search-wrap span { color: var(--text-muted); font-size: 20px; }
         .search-wrap input { border: none; background: transparent; color: var(--text-main); outline: none; width: 100%; font-size: 0.9rem; }
 
-        .cal-note { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 14px; font-weight: 600; display: flex; gap: 6px; align-items: center; }
+        .cal-note { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 14px; font-weight: 600; display: flex; gap: 6px; align-items: center; }
         .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; border: 1px solid var(--border); border-radius: var(--radius-md); }
-        table { width: 100%; border-collapse: collapse; font-size: 0.87rem; text-align: left; }
-        th { background: var(--bg-surface-hover); padding: 14px 16px; font-weight: 800; color: var(--primary); border-bottom: 1px solid var(--border); }
-        td { padding: 13px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.9rem; text-align: left; }
+        th { background: var(--bg-surface-hover); padding: 15px 16px; font-weight: 800; color: var(--primary); border-bottom: 1px solid var(--border); }
+        td { padding: 14px 16px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.5; }
         tr:last-child td { border-bottom: none; }
         tr:hover td { background: var(--bg-surface-hover); }
-        .cal-date { font-weight: 600; white-space: nowrap; }
+        .cal-date { font-weight: 700; white-space: nowrap; }
 
         .status-chip { display: inline-block; margin-left: 8px; padding: 2px 10px; border-radius: 20px; font-size: 0.66rem; font-weight: 800; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.3px; }
         .chip-ongoing { background: var(--accent-soft); color: var(--accent); border: 1px solid var(--accent); }
@@ -276,21 +291,21 @@
 
         .holiday-table { min-width: 640px; }
         .h-muted { color: var(--text-muted); }
-        .info-note { display: flex; gap: 10px; align-items: flex-start; background: var(--warning-soft); border: 1px dashed var(--warning); padding: 14px 16px; border-radius: var(--radius-md); font-size: 0.82rem; font-weight: 600; margin-top: 14px; line-height: 1.5; }
+        .info-note { display: flex; gap: 10px; align-items: flex-start; background: var(--warning-soft); border: 1px dashed var(--warning); padding: 15px 16px; border-radius: var(--radius-md); font-size: 0.85rem; font-weight: 600; margin-top: 16px; line-height: 1.6; }
         .info-note .material-symbols-rounded { color: var(--warning); font-size: 20px; flex-shrink: 0; }
 
-        .footer { margin-top: 36px; padding: 20px 0 8px; border-top: 1px solid var(--border); }
-        .footer-inner { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; text-align: center; color: var(--text-muted); font-size: 0.82rem; font-weight: 600; }
+        .footer { margin-top: 38px; padding: 20px 0 8px; border-top: 1px solid var(--border); }
+        .footer-inner { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; text-align: center; color: var(--text-muted); font-size: 0.85rem; font-weight: 600; }
         .footer-inner .material-symbols-rounded { color: var(--primary); font-size: 19px; }
-        .footer-inner strong { color: var(--text-main); font-weight: 800; letter-spacing: 0.2px; }
+        .footer-inner strong { color: var(--text-main); font-weight: 800; letter-spacing: 0.2px; font-size: 0.9rem; }
         .footer-dot { opacity: 0.5; }
 
         .bottom-nav { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: var(--bg-surface); border-top: 1px solid var(--border); padding: 8px 6px; padding-bottom: calc(8px + env(safe-area-inset-bottom)); z-index: 900; justify-content: space-around; align-items: center; }
-        .b-nav-item { display: flex; flex-direction: column; align-items: center; gap: 3px; color: var(--text-muted); font-size: 0.66rem; font-weight: 700; cursor: pointer; padding: 5px 8px; border-radius: 12px; min-width: 58px; transition: color 0.2s, transform 0.15s var(--ease-soft); }
+        .b-nav-item { display: flex; flex-direction: column; align-items: center; gap: 3px; color: var(--text-muted); font-size: 0.68rem; font-weight: 700; cursor: pointer; padding: 5px 8px; border-radius: 12px; min-width: 58px; transition: color 0.2s, transform 0.15s var(--ease-soft); }
         .b-nav-item:active { transform: scale(0.92); }
         .b-nav-item.active { color: var(--primary); }
-        .b-icon { padding: 4px 14px; border-radius: 16px; transition: background-color 0.25s; }
-        .b-nav-item.active .b-icon { background: var(--primary-soft); }
+        .b-icon { padding: 4px 14px; border-radius: 16px; transition: background-color 0.25s, transform 0.25s var(--ease-soft); }
+        .b-nav-item.active .b-icon { background: var(--primary-soft); transform: translateY(-2px); }
         .b-icon span { font-size: 24px; }
 
         .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 1200; display: none; justify-content: center; align-items: center; padding: 20px; }
@@ -300,10 +315,10 @@
         .admin-tabs { display: flex; gap: 8px; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 12px; flex-wrap: wrap; }
         .tab-btn-active { border-color: var(--primary) !important; color: var(--primary); }
         .input-group { margin-bottom: 16px; }
-        .input-group label { display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 8px; color: var(--text-muted); }
+        .input-group label { display: block; font-size: 0.84rem; font-weight: 700; margin-bottom: 8px; color: var(--text-muted); }
         .form-control { width: 100%; padding: 13px; background: var(--bg-body); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text-main); font-size: 0.93rem; transition: border-color 0.2s, box-shadow 0.2s; }
         .form-control:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-soft); }
-        .form-hint { font-size: 0.72rem; color: var(--text-muted); margin-top: 6px; display: flex; align-items: center; gap: 4px; }
+        .form-hint { font-size: 0.74rem; color: var(--text-muted); margin-top: 6px; display: flex; align-items: center; gap: 4px; }
 
         @media (max-width: 1023px) and (min-width: 768px) {
             .sidebar { width: 84px; padding: 20px 10px; }
@@ -313,48 +328,38 @@
             .main-content { padding: 24px; }
         }
 
-        /* ================= MOBİL (Tüm telefonlar) ================= */
         @media (max-width: 767px) {
             :root { --banner-h: 58px; }
             .maintenance-banner { font-size: 0.7rem; }
             .sidebar { display: none; }
             .bottom-nav { display: flex; }
-            .main-content { padding: 16px 12px; padding-bottom: calc(94px + env(safe-area-inset-bottom)); }
-            .header-logo { display: block; width: 40px; height: 40px; border-radius: 12px; object-fit: contain; background: var(--logo-bg); border: 1px solid var(--border); padding: 4px; flex-shrink: 0; }
-            .header-logo-fallback { width: 40px; height: 40px; font-size: 1.05rem; }
+            .main-content { padding: 16px 12px; padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
+            .header-logo { display: block; width: 42px; height: 42px; border-radius: 12px; object-fit: contain; background: var(--logo-bg); border: 1px solid var(--border); padding: 4px; flex-shrink: 0; }
+            .header-logo-fallback { width: 42px; height: 42px; font-size: 1.05rem; }
             .btn-text { display: none; }
             .btn { min-height: 46px; }
-            /* iOS otomatik zoom'unu önle (input >= 16px) */
             .form-control, .search-wrap input { font-size: 1rem; }
             .search-wrap { max-width: 100%; }
             .dashboard-grid { grid-template-columns: 1fr; gap: 14px; }
             .stats-strip { grid-template-columns: repeat(auto-fit, minmax(105px, 1fr)); gap: 10px; }
-            .stat { padding: 12px; gap: 9px; }
-            .card { padding: 16px; border-radius: 20px; }
+            .stat { padding: 12px; gap: 10px; }
+            .icon-chip { width: 34px; height: 34px; border-radius: 10px; }
+            .icon-chip .material-symbols-rounded { font-size: 20px; }
+            .card { padding: 18px; border-radius: 20px; }
+            .card-title { font-size: 1rem; }
             .timer-display { gap: 6px; }
             .t-box { padding: 10px 2px; }
-            .data-item { padding: 14px; }
-            .item-content { font-size: 0.9rem; }
+            .data-item { padding: 15px; }
+            .item-content { font-size: 0.93rem; }
 
-            /* ===== TAKVİM: Telefonlarda yatay tablo yerine DİKEY KART listesi ===== */
             .table-wrapper { border: none; overflow: visible; border-radius: 0; }
-            table, .holiday-table { min-width: 0 !important; font-size: 0.88rem; }
+            table, .holiday-table { min-width: 0 !important; font-size: 0.9rem; }
             thead { display: none; }
-            tbody tr {
-                display: block; background: var(--bg-surface);
-                border: 1px solid var(--border); border-radius: 16px;
-                margin-bottom: 10px; padding: 14px 15px;
-                box-shadow: var(--shadow);
-            }
+            tbody tr { display: block; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 10px; padding: 14px 15px; box-shadow: var(--shadow); }
             tbody td { display: block; border: none !important; padding: 0; background: transparent !important; }
-            tbody td strong { font-size: 0.92rem; line-height: 1.45; display: block; }
-            td.cal-date {
-                display: inline-flex; align-items: center; margin-top: 10px;
-                background: var(--primary-soft); color: var(--primary);
-                border-radius: 50px; padding: 7px 13px;
-                font-size: 0.78rem; font-weight: 700; white-space: normal; line-height: 1.35;
-            }
-            td[data-h] { margin-top: 8px; font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; }
+            tbody td strong { font-size: 0.94rem; line-height: 1.5; display: block; }
+            td.cal-date { display: inline-flex; align-items: center; margin-top: 10px; background: var(--primary-soft); color: var(--primary); border-radius: 50px; padding: 7px 13px; font-size: 0.8rem; font-weight: 700; white-space: normal; line-height: 1.4; }
+            td[data-h] { margin-top: 8px; font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
             td[data-h]::before { content: attr(data-h) ": "; color: var(--primary); font-weight: 800; }
             td.dash { display: none; }
             tr.row-ongoing { background: var(--accent-soft); border-color: var(--accent); }
@@ -369,7 +374,7 @@
         @keyframes sheetUp { from { transform: translateY(70px); opacity: 0.4; } to { transform: none; opacity: 1; } }
 
         @media (max-width: 360px) {
-            .b-nav-item { min-width: 52px; font-size: 0.6rem; }
+            .b-nav-item { min-width: 52px; font-size: 0.62rem; }
             .b-icon { padding: 4px 10px; }
             .t-val { font-size: 1.15rem; }
         }
@@ -385,7 +390,7 @@
         }
     </style>
 
-    <!-- TEMA FLAŞI ÖNLEYİCİ: İlk boyamadan ÖNCE temayı uygular -->
+    <!-- TEMA FLAŞI ÖNLEYİCİ -->
     <script>
         (function () {
             try {
@@ -456,21 +461,24 @@
             <!-- 1) ANA SAYFA -->
             <div id="view-dashboard" class="view-section active">
                 <div class="stats-strip">
-                    <div class="stat"><span class="material-symbols-rounded" style="color:var(--primary); font-size:26px;">campaign</span><div><div class="stat-val" id="stat-ann">0</div><div class="stat-lbl">Duyuru</div></div></div>
-                    <div class="stat"><span class="material-symbols-rounded" style="color:var(--accent); font-size:26px;">folder_open</span><div><div class="stat-val" id="stat-file">0</div><div class="stat-lbl">Dosya</div></div></div>
-                    <div class="stat"><span class="material-symbols-rounded" style="color:var(--warning); font-size:26px;">event</span><div><div class="stat-val" id="stat-next" style="font-size:0.92rem;">—</div><div class="stat-lbl">Sıradaki Etkinlik</div></div></div>
+                    <div class="stat"><span class="icon-chip"><span class="material-symbols-rounded">campaign</span></span><div><div class="stat-val" id="stat-ann">0</div><div class="stat-lbl">Duyuru</div></div></div>
+                    <div class="stat"><span class="icon-chip accent"><span class="material-symbols-rounded">folder_open</span></span><div><div class="stat-val" id="stat-file">0</div><div class="stat-lbl">Dosya</div></div></div>
+                    <div class="stat"><span class="icon-chip warn"><span class="material-symbols-rounded">event</span></span><div><div class="stat-val" id="stat-next" style="font-size:0.95rem;">—</div><div class="stat-lbl">Sıradaki Etkinlik</div></div></div>
                 </div>
 
                 <div class="dashboard-grid">
                     <div class="card weather-card">
-                        <div class="card-header" style="margin-bottom:6px;">
-                            <div class="card-title"><span class="material-symbols-rounded">partly_cloudy_day</span> Görükle Kampüsü</div>
-                            <span class="widget-time" id="weather-time"></span>
+                        <div class="card-header" style="margin-bottom:8px;">
+                            <div class="card-title"><span class="icon-chip on-gradient"><span class="material-symbols-rounded">partly_cloudy_day</span></span> Görükle Kampüsü</div>
+                            <div class="weather-head-right">
+                                <span class="live-badge"><span class="live-dot"></span> CANLI</span>
+                                <span class="widget-time" id="weather-time"></span>
+                            </div>
                         </div>
                         <div id="weather-content">
                             <div style="display:flex; flex-direction:column; gap:10px; margin-top:10px;">
-                                <div class="skeleton" style="height:52px;"></div>
-                                <div class="skeleton" style="height:20px; width:70%;"></div>
+                                <div class="skeleton" style="height:56px;"></div>
+                                <div class="skeleton" style="height:22px; width:70%;"></div>
                             </div>
                         </div>
                     </div>
@@ -488,7 +496,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title"><span class="material-symbols-rounded">notifications_active</span> Son Duyurular</div>
+                        <div class="card-title"><span class="icon-chip"><span class="material-symbols-rounded">notifications_active</span></span> Son Duyurular</div>
                         <button class="btn btn-tonal" onclick="switchView('announcements')">Tümünü Gör</button>
                     </div>
                     <div id="dashboard-recent-ann" class="data-list">
@@ -502,7 +510,7 @@
             <div id="view-announcements" class="view-section">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title"><span class="material-symbols-rounded">campaign</span> Tüm Duyurular</div>
+                        <div class="card-title"><span class="icon-chip"><span class="material-symbols-rounded">campaign</span></span> Tüm Duyurular</div>
                         <div class="search-wrap">
                             <span class="material-symbols-rounded">search</span>
                             <input type="search" id="ann-search" placeholder="Duyurularda ara..." oninput="renderData()">
@@ -516,7 +524,7 @@
             <div id="view-calendar" class="view-section">
                 <div class="card" style="margin-bottom:20px;">
                     <div class="card-header">
-                        <div class="card-title"><span class="material-symbols-rounded">school</span> Güz Yarıyılı (2026-2027)</div>
+                        <div class="card-title"><span class="icon-chip"><span class="material-symbols-rounded">school</span></span> Güz Yarıyılı (2026-2027)</div>
                     </div>
                     <p class="cal-note"><span class="material-symbols-rounded" style="font-size:16px;">sort</span> Faaliyetler en yakın tarihten en uzağa doğru sıralanmıştır.</p>
                     <div class="table-wrapper">
@@ -526,7 +534,7 @@
 
                 <div class="card" style="margin-bottom:20px;">
                     <div class="card-header">
-                        <div class="card-title"><span class="material-symbols-rounded">eco</span> Bahar Yarıyılı (2026-2027)</div>
+                        <div class="card-title"><span class="icon-chip accent"><span class="material-symbols-rounded">eco</span></span> Bahar Yarıyılı (2026-2027)</div>
                     </div>
                     <p class="cal-note"><span class="material-symbols-rounded" style="font-size:16px;">sort</span> Faaliyetler en yakın tarihten en uzağa doğru sıralanmıştır.</p>
                     <div class="table-wrapper">
@@ -536,7 +544,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title"><span class="material-symbols-rounded">celebration</span> Resmi Tatiller ve Dini Bayramlar</div>
+                        <div class="card-title"><span class="icon-chip warn"><span class="material-symbols-rounded">celebration</span></span> Resmi Tatiller ve Dini Bayramlar</div>
                     </div>
                     <div class="table-wrapper">
                         <table class="holiday-table">
@@ -572,7 +580,7 @@
             <div id="view-files" class="view-section">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title"><span class="material-symbols-rounded">folder_open</span> Dokümanlar ve Formlar</div>
+                        <div class="card-title"><span class="icon-chip accent"><span class="material-symbols-rounded">folder_open</span></span> Dokümanlar ve Formlar</div>
                     </div>
                     <div id="file-list" class="data-list"></div>
                 </div>
@@ -649,6 +657,8 @@
     <script>
         const GITHUB_USERNAME = "berat623";
         const REPO_NAME = "opendata";
+        const MGM_URL = "https://servis.mgm.gov.tr/web/sondurumlar?merkezid=91617";
+        const WEATHER_CACHE_KEY = "mgm_hava_cache";
 
         let userToken = localStorage.getItem("gh_admin_token") || "";
         let announcementsData = [];
@@ -736,6 +746,126 @@
             document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAdminModal(); });
         });
 
+        /* ================= KESİN ÇÖZÜMLÜ MGM HAVA DURUMU =================
+           Katman 1: localStorage önbellek (anında gösterir, asla boş ekran yok)
+           Katman 2: Kendi reponuzdaki hava.json (GitHub Actions MGM'den besler)
+           Katman 3: Zaman aşımı kontrollü CORS proxy zinciri (canlı veri)      */
+        function weatherCacheRead() {
+            try {
+                const raw = localStorage.getItem(WEATHER_CACHE_KEY);
+                if (!raw) return null;
+                const obj = JSON.parse(raw);
+                return (obj && obj.data) ? obj.data : null;
+            } catch (e) { return null; }
+        }
+        function weatherCacheWrite(data) {
+            try { localStorage.setItem(WEATHER_CACHE_KEY, JSON.stringify({ t: Date.now(), data })); } catch (e) {}
+        }
+
+        async function fetchWithTimeout(url, ms) {
+            const ctrl = new AbortController();
+            const id = setTimeout(() => ctrl.abort(), ms);
+            try {
+                return await fetch(url, { signal: ctrl.signal, cache: "no-store" });
+            } finally { clearTimeout(id); }
+        }
+
+        function normalizeWeather(parsed) {
+            let item = null;
+            if (Array.isArray(parsed)) item = parsed[0];
+            else if (parsed && typeof parsed === 'object') {
+                if (typeof parsed.contents === 'string') {
+                    try { const inner = JSON.parse(parsed.contents); item = Array.isArray(inner) ? inner[0] : inner; } catch (e) {}
+                } else item = parsed;
+            }
+            if (item && item.sicaklik !== undefined && item.sicaklik !== -9999 && item.sicaklik !== "-9999") return item;
+            return null;
+        }
+
+        function renderWeather(data) {
+            const contentEl = document.getElementById('weather-content');
+            const timeEl = document.getElementById('weather-time');
+
+            const valid = v => (v !== undefined && v !== null && v !== -9999 && v !== "-9999");
+            const temp = valid(data.sicaklik) ? `${data.sicaklik}°C` : '--';
+            const feels = valid(data.hissedilenSicaklik) ? `${data.hissedilenSicaklik}°C` : null;
+            const humidity = valid(data.nem) ? `%${data.nem}` : null;
+            const wind = valid(data.ruzgarHiz) ? `${data.ruzgarHiz} km/s` : null;
+
+            const hadiseMap = {
+                'A': { t: 'Açık / Güneşli', i: 'wb_sunny' }, 'AB': { t: 'Az Bulutlu', i: 'partly_cloudy_day' },
+                'PB': { t: 'Parçalı Bulutlu', i: 'partly_cloudy_day' }, 'CB': { t: 'Çok Bulutlu', i: 'cloud' },
+                'HY': { t: 'Hafif Yağmurlu', i: 'rainy' }, 'Y': { t: 'Yağmurlu', i: 'rainy' },
+                'GSY': { t: 'Gökgürültülü Sağanak', i: 'thunderstorm' }, 'KY': { t: 'Kar Yağışlı', i: 'ac_unit' },
+                'K': { t: 'Sisli', i: 'foggy' }
+            };
+            const status = hadiseMap[data.hadiseKodu] || { t: 'Açık', i: 'thermostat' };
+
+            if (data.veriZamani) {
+                const d = new Date(data.veriZamani);
+                timeEl.innerText = `Son Güncelleme: ${d.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' })}`;
+            }
+
+            contentEl.innerHTML = `
+                <div class="weather-main">
+                    <span class="material-symbols-rounded weather-float" style="font-size:clamp(2.8rem, 2rem + 3vw, 3.8rem);">${status.i}</span>
+                    <div>
+                        <div class="weather-temp">${temp}</div>
+                        <div class="weather-desc">${status.t}</div>
+                    </div>
+                </div>
+                <div class="weather-details">
+                    ${feels ? `<div class="w-detail"><span class="material-symbols-rounded" style="font-size:16px;">device_thermostat</span> Hissedilen: ${feels}</div>` : ''}
+                    ${humidity ? `<div class="w-detail"><span class="material-symbols-rounded" style="font-size:16px;">water_drop</span> Nem: ${humidity}</div>` : ''}
+                    ${wind ? `<div class="w-detail"><span class="material-symbols-rounded" style="font-size:16px;">air</span> Rüzgar: ${wind}</div>` : ''}
+                </div>`;
+        }
+
+        async function fetchCampusWeather() {
+            const contentEl = document.getElementById('weather-content');
+
+            // KATMAN 1: Önbellek (varsa anında çiz)
+            const cached = weatherCacheRead();
+            if (cached) renderWeather(cached);
+
+            // KATMAN 2: Kendi reponuzdaki hava.json (Actions ile beslenir, CORS garantili)
+            try {
+                const r = await fetchWithTimeout(`https://raw.githubusercontent.com/${GITHUB_USERNAME}/${REPO_NAME}/main/hava.json?t=${Date.now()}`, 8000);
+                if (r.ok) {
+                    const item = normalizeWeather(await r.json());
+                    if (item) { renderWeather(item); weatherCacheWrite(item); return; }
+                }
+            } catch (e) {}
+
+            // KATMAN 3: Canlı veri için proxy zinciri (her deneme 6 sn ile sınırlı)
+            const enc = encodeURIComponent(MGM_URL);
+            const proxies = [
+                `https://api.allorigins.win/raw?url=${enc}`,
+                `https://api.codetabs.com/v1/proxy?quest=${MGM_URL}`,
+                `https://corsproxy.io/?url=${enc}`,
+                `https://corsproxy.io/?${enc}`,
+                `https://api.allorigins.win/get?url=${enc}`
+            ];
+            for (const p of proxies) {
+                try {
+                    const res = await fetchWithTimeout(p, 6000);
+                    if (!res.ok) continue;
+                    const item = normalizeWeather(await res.json());
+                    if (item) { renderWeather(item); weatherCacheWrite(item); return; }
+                } catch (e) {}
+            }
+
+            // Hiçbir kaynak çalışmadıysa: önbellek varsa onu göstermeye devam et
+            if (!cached) {
+                contentEl.innerHTML = `<div style="color:var(--widget-error); margin-top:10px; font-size:0.88rem; font-weight:700; display:flex; align-items:center; gap:6px;">
+                    <span class="material-symbols-rounded" style="font-size:18px;">error</span>
+                    MGM istasyonuna şu an ulaşılamıyor. Veriler birazdan otomatik yenilenecek.</div>`;
+            }
+        }
+
+        // Sayfa açıkken 10 dakikada bir sessizce tazele
+        setInterval(fetchCampusWeather, 10 * 60 * 1000);
+
         /* ---------- TAKVİM ---------- */
         function pd(str) { const [y, m, d] = str.split('-').map(Number); return new Date(y, m - 1, d); }
         function fmtDate(d) { return d.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' }); }
@@ -769,7 +899,7 @@
             document.getElementById(tbodyId).innerHTML = rows;
         }
 
-        /* ---------- TEMA (html üzerinde, flaşsız) ---------- */
+        /* ---------- TEMA ---------- */
         function isLightTheme() { return document.documentElement.classList.contains('light-mode'); }
         function setMetaTheme() {
             const meta = document.querySelector('meta[name="theme-color"]');
@@ -806,74 +936,6 @@
                 el.classList.toggle('active', el.dataset.view === viewName);
             });
             window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        /* ---------- HAVA DURUMU ---------- */
-        async function fetchCampusWeather() {
-            const mgmUrl = "https://servis.mgm.gov.tr/web/sondurumlar?merkezid=91617";
-            const enc = encodeURIComponent(mgmUrl);
-            const proxies = [
-                `https://api.allorigins.win/raw?url=${enc}`,
-                `https://api.codetabs.com/v1/proxy?quest=${mgmUrl}`,
-                `https://corsproxy.io/?${enc}`,
-                `https://thingproxy.freeboard.io/fetch/${mgmUrl}`
-            ];
-
-            let data = null;
-            for (const p of proxies) {
-                try {
-                    const res = await fetch(p, { cache: "no-store" });
-                    if (res.ok) {
-                        const parsed = await res.json();
-                        const item = Array.isArray(parsed) ? parsed[0] : parsed;
-                        if (item && item.sicaklik !== undefined && item.sicaklik !== -9999) { data = item; break; }
-                    }
-                } catch (e) { console.warn("Proxy atlandı:", p); }
-            }
-
-            const contentEl = document.getElementById('weather-content');
-            const timeEl = document.getElementById('weather-time');
-
-            if (!data) {
-                contentEl.innerHTML = `<div style="color:var(--widget-error); margin-top:10px; font-size:0.86rem; font-weight:600; display:flex; align-items:center; gap:6px;">
-                    <span class="material-symbols-rounded" style="font-size:18px;">error</span>
-                    Tarayıcı güvenlik kısıtlaması nedeniyle MGM verisi alınamadı.</div>`;
-                return;
-            }
-
-            const valid = v => (v !== undefined && v !== null && v !== -9999 && v !== "-9999");
-            const temp = valid(data.sicaklik) ? `${data.sicaklik}°C` : '--';
-            const feels = valid(data.hissedilenSicaklik) ? `${data.hissedilenSicaklik}°C` : null;
-            const humidity = valid(data.nem) ? `%${data.nem}` : null;
-            const wind = valid(data.ruzgarHiz) ? `${data.ruzgarHiz} km/s` : null;
-
-            const hadiseMap = {
-                'A': { t: 'Açık / Güneşli', i: 'wb_sunny' }, 'AB': { t: 'Az Bulutlu', i: 'partly_cloudy_day' },
-                'PB': { t: 'Parçalı Bulutlu', i: 'partly_cloudy_day' }, 'CB': { t: 'Çok Bulutlu', i: 'cloud' },
-                'HY': { t: 'Hafif Yağmurlu', i: 'rainy' }, 'Y': { t: 'Yağmurlu', i: 'rainy' },
-                'GSY': { t: 'Gökgürültülü Sağanak', i: 'thunderstorm' }, 'KY': { t: 'Kar Yağışlı', i: 'ac_unit' },
-                'K': { t: 'Sisli', i: 'foggy' }
-            };
-            const status = hadiseMap[data.hadiseKodu] || { t: 'Açık', i: 'thermostat' };
-
-            if (data.veriZamani) {
-                const d = new Date(data.veriZamani);
-                timeEl.innerText = `Son Güncelleme: ${d.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' })}`;
-            }
-
-            contentEl.innerHTML = `
-                <div class="weather-main">
-                    <span class="material-symbols-rounded weather-float" style="font-size:clamp(2.6rem, 2rem + 3vw, 3.6rem);">${status.i}</span>
-                    <div>
-                        <div class="weather-temp">${temp}</div>
-                        <div class="weather-desc">${status.t}</div>
-                    </div>
-                </div>
-                <div class="weather-details">
-                    ${feels ? `<div class="w-detail"><span class="material-symbols-rounded" style="font-size:16px;">device_thermostat</span> Hissedilen: ${feels}</div>` : ''}
-                    ${humidity ? `<div class="w-detail"><span class="material-symbols-rounded" style="font-size:16px;">water_drop</span> Nem: ${humidity}</div>` : ''}
-                    ${wind ? `<div class="w-detail"><span class="material-symbols-rounded" style="font-size:16px;">air</span> Rüzgar: ${wind}</div>` : ''}
-                </div>`;
         }
 
         /* ---------- GERİ SAYIM ---------- */
@@ -975,7 +1037,7 @@
                 dashAnn.innerHTML = announcementsData.slice(0, 3).map(item => `
                     <div class="data-item">
                         <div style="flex:1; min-width:0;">
-                            <div class="item-title" style="font-size:0.98rem;">${sanitizeHTML(item.title)}</div>
+                            <div class="item-title" style="font-size:1rem;">${sanitizeHTML(item.title)}</div>
                             <div class="item-meta" style="margin:0;">${sanitizeHTML(new Date(item.date).toLocaleDateString('tr-TR'))}</div>
                         </div>
                     </div>`).join('');
@@ -987,7 +1049,7 @@
                 fileList.innerHTML = filesData.map(item => `
                     <div class="data-item" style="align-items:center;">
                         <div style="flex:1; min-width:0; display:flex; gap:12px; align-items:center;">
-                            <span class="material-symbols-rounded" style="font-size:30px; color:var(--primary); flex-shrink:0;">${fileIcon(item.title || item.url)}</span>
+                            <span class="icon-chip" style="width:42px; height:42px;"><span class="material-symbols-rounded" style="font-size:22px;">${fileIcon(item.title || item.url)}</span></span>
                             <div style="min-width:0;">
                                 <div class="item-title" style="margin-bottom:4px;">${sanitizeHTML(item.title)}</div>
                                 <a href="${sanitizeHTML(item.url)}" target="_blank" rel="noopener noreferrer" class="file-link">
@@ -1137,4 +1199,4 @@
         }
     </script>
 </body>
-    </html>
+                        </html>
