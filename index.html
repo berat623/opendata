@@ -64,7 +64,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Parkinsans', sans-serif; -webkit-tap-highlight-color: transparent; -webkit-text-size-adjust: 100%; }
         html { scroll-behavior: smooth; }
         body { background: var(--bg-body); color: var(--text-main); transition: background-color 0.4s, color 0.4s; overflow-x: hidden; }
-        body.modal-open { overflow: hidden; }
+        body.modal-open, body.drawer-open { overflow: hidden; }
 
         body::before {
             content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none;
@@ -79,7 +79,7 @@
         ::-webkit-scrollbar-thumb { background: var(--scroll-thumb); border-radius: 8px; border: 3px solid transparent; background-clip: padding-box; }
         ::selection { background: var(--primary); color: #fff; }
 
-        button, .nav-item, .b-nav-item, a { touch-action: manipulation; }
+        button, .nav-item, a { touch-action: manipulation; }
         :focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 6px; }
 
         .intro-overlay { position: fixed; inset: 0; z-index: 2000; background: var(--bg-body); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; animation: introOut 0.55s var(--ease-soft) 0.9s forwards; }
@@ -98,10 +98,9 @@
         .icon-chip .material-symbols-rounded { font-size: 22px; }
         .icon-chip.accent { background: var(--accent-soft); color: var(--accent); }
         .icon-chip.warn { background: var(--warning-soft); color: var(--warning); }
-        .icon-chip.danger { background: var(--danger-soft); color: var(--danger); }
         .icon-chip.on-gradient { background: var(--widget-chip); color: var(--widget-text); }
 
-        .btn, .nav-item, .b-nav-item, .file-link, .up-item, .stat { position: relative; overflow: hidden; }
+        .btn, .nav-item, .file-link, .up-item, .stat { position: relative; overflow: hidden; }
         .ripple { position: absolute; border-radius: 50%; background: currentColor; opacity: 0.22; transform: scale(0); animation: rippleAnim 0.6s var(--ease-soft) forwards; pointer-events: none; }
         @keyframes rippleAnim { to { transform: scale(2.8); opacity: 0; } }
 
@@ -116,11 +115,9 @@
         @keyframes bannerFlow { 0% { background-position: 0% 0; } 100% { background-position: 200% 0; } }
         .banner-icon { font-size: 18px; flex-shrink: 0; animation: spinSlow 6s linear infinite; }
 
-        /* TOAST */
-        .toast { position: fixed; left: 50%; bottom: calc(92px + env(safe-area-inset-bottom)); transform: translateX(-50%) translateY(20px); background: var(--bg-surface); color: var(--text-main); border: 1px solid var(--border); border-radius: 50px; padding: 12px 20px; display: flex; gap: 10px; align-items: center; font-weight: 700; font-size: 0.85rem; box-shadow: var(--shadow-lift); opacity: 0; pointer-events: none; transition: opacity 0.3s var(--ease-soft), transform 0.3s var(--ease-soft); z-index: 1500; max-width: calc(100vw - 32px); text-align: center; }
+        .toast { position: fixed; left: 50%; bottom: 32px; transform: translateX(-50%) translateY(20px); background: var(--bg-surface); color: var(--text-main); border: 1px solid var(--border); border-radius: 50px; padding: 12px 20px; display: flex; gap: 10px; align-items: center; font-weight: 700; font-size: 0.85rem; box-shadow: var(--shadow-lift); opacity: 0; pointer-events: none; transition: opacity 0.3s var(--ease-soft), transform 0.3s var(--ease-soft); z-index: 1500; max-width: calc(100vw - 32px); text-align: center; }
         .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
         .toast .material-symbols-rounded { color: var(--warning); flex-shrink: 0; }
-        @media (min-width: 768px) { .toast { bottom: 32px; } }
 
         .app-container { display: flex; align-items: stretch; }
 
@@ -140,13 +137,24 @@
         .nav-badge { margin-left: auto; background: var(--danger); color: #fff; border-radius: 20px; font-size: 0.66rem; font-weight: 800; padding: 2px 8px; min-width: 20px; display: none; align-items: center; justify-content: center; }
         .sidebar-footer { padding-top: 14px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 6px; }
 
+        /* MOBİL ÇEKMECE MENÜ */
+        .menu-btn { display: none; }
+        .drawer { position: fixed; top: 0; left: 0; bottom: 0; width: min(300px, 85vw); background: var(--bg-surface); z-index: 1300; transform: translateX(-105%); transition: transform 0.35s var(--ease-soft); display: flex; flex-direction: column; padding: 18px 14px; overflow-y: auto; box-shadow: var(--shadow-lift); border-right: 1px solid var(--border); }
+        .drawer.open { transform: none; }
+        .drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1250; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+        .drawer-overlay.show { opacity: 1; pointer-events: auto; }
+        .drawer-head { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+        .drawer-head .brand-logo { width: 40px; height: 40px; }
+        .drawer-head .brand-fallback { width: 40px; height: 40px; font-size: 1.1rem; }
+        .drawer-footer { border-top: 1px solid var(--border); padding-top: 10px; display: flex; flex-direction: column; gap: 6px; }
+
         .main-content { flex: 1; min-width: 0; max-width: 1160px; padding: 30px 40px; }
 
         .top-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 26px; }
         .header-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
         .header-logo { display: none; }
         .page-title { font-size: clamp(1.4rem, 1rem + 1.8vw, 1.95rem); font-weight: 800; line-height: 1.3; padding-bottom: 3px; letter-spacing: -0.4px; background: linear-gradient(92deg, var(--primary) 0%, var(--accent) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-        .header-date { color: var(--text-muted); font-size: 0.88rem; margin-top: 2px; font-weight: 600; }
+        .header-date { color: var(--text-muted); font-size: 0.88rem; margin-top: 2px; font-weight: 600; overflow-wrap: anywhere; }
         .header-actions { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
 
         .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 10px 18px; border-radius: 50px; font-weight: 700; font-size: 0.9rem; cursor: pointer; border: none; transition: background-color 0.25s, color 0.25s, transform 0.15s var(--ease-soft), box-shadow 0.25s; }
@@ -190,7 +198,8 @@
         .stats-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; margin-bottom: 20px; }
         .stat { display: flex; gap: 12px; align-items: center; background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 15px 17px; box-shadow: var(--shadow); transition: transform 0.25s var(--ease-soft), box-shadow 0.25s; cursor: pointer; min-width: 0; }
         @media (hover: hover) { .stat:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); } }
-        .stat-val { font-weight: 800; font-size: 1.2rem; line-height: 1.1; letter-spacing: -0.3px; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+        .stat > div { min-width: 0; }
+        .stat-val { font-weight: 800; font-size: 1.2rem; line-height: 1.15; letter-spacing: -0.3px; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
         .stat-lbl { font-size: 0.68rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
 
         .card { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow); min-width: 0; }
@@ -318,16 +327,6 @@
         .to-top.show { opacity: 1; transform: none; pointer-events: auto; }
         .to-top:active { transform: scale(0.92); }
 
-        .bottom-nav { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: var(--bg-surface); border-top: 1px solid var(--border); padding: 7px 4px; padding-bottom: calc(7px + env(safe-area-inset-bottom)); z-index: 900; justify-content: space-around; align-items: center; }
-        .b-nav-item { position: relative; display: flex; flex-direction: column; align-items: center; gap: 3px; color: var(--text-muted); font-size: 0.62rem; font-weight: 700; cursor: pointer; padding: 4px 6px; border-radius: 12px; min-width: 50px; transition: color 0.2s, transform 0.15s var(--ease-soft); }
-        .b-nav-item:active { transform: scale(0.92); }
-        .b-nav-item.active { color: var(--primary); }
-        .b-icon { padding: 4px 12px; border-radius: 16px; transition: background-color 0.25s, transform 0.25s var(--ease-soft); }
-        .b-nav-item.active .b-icon { background: var(--primary-soft); transform: translateY(-2px); animation: navBounce 0.45s var(--ease-spring); }
-        @keyframes navBounce { 0% { transform: scale(0.7); } 60% { transform: scale(1.1) translateY(-3px); } 100% { transform: scale(1) translateY(-2px); } }
-        .b-icon span { font-size: 23px; }
-        .b-badge { position: absolute; top: 0; right: 50%; transform: translateX(17px); background: var(--danger); color: #fff; border-radius: 20px; font-size: 0.58rem; font-weight: 800; padding: 1px 6px; display: none; align-items: center; justify-content: center; min-width: 16px; }
-
         .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 1200; display: none; justify-content: center; align-items: center; padding: 20px; }
         .modal-content { background: var(--bg-surface); width: 100%; max-width: 640px; border-radius: var(--radius-lg); padding: 26px; border: 1px solid var(--border); max-height: 90vh; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; animation: modalIn 0.35s var(--ease-soft); }
         @keyframes modalIn { from { opacity: 0; transform: scale(0.95) translateY(12px); } to { opacity: 1; transform: none; } }
@@ -364,8 +363,8 @@
             :root { --banner-h: 58px; }
             .maintenance-banner { position: static; height: auto; font-size: 0.72rem; padding: 8px 12px; }
             .sidebar { display: none; }
-            .bottom-nav { display: flex; }
-            .main-content { padding: 16px 12px; padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
+            .menu-btn { display: inline-flex; }
+            .main-content { padding: 16px 12px; padding-bottom: 32px; }
             .header-logo { display: block; width: 42px; height: 42px; border-radius: 12px; object-fit: contain; background: var(--logo-bg); border: 1px solid var(--border); padding: 4px; flex-shrink: 0; }
             .header-logo-fallback { width: 42px; height: 42px; font-size: 1.05rem; }
             .btn-text { display: none; }
@@ -375,8 +374,11 @@
             .card-header { align-items: stretch; flex-direction: column; }
             .card-header .card-title { align-items: center; }
             .card-header .btn { align-self: stretch; justify-content: center; }
-            .stats-strip { grid-template-columns: repeat(auto-fit, minmax(105px, 1fr)); gap: 10px; }
-            .stat { padding: 12px; gap: 10px; }
+            /* Taşma düzeltmesi: 3. istatistik alta tam genişlik geçer */
+            .stats-strip { grid-template-columns: 1fr 1fr; gap: 10px; }
+            .stats-strip .stat:nth-child(3) { grid-column: 1 / -1; }
+            .stat { padding: 13px; gap: 10px; }
+            .stat-val { font-size: 1.05rem; }
             .icon-chip { width: 34px; height: 34px; border-radius: 10px; }
             .icon-chip .material-symbols-rounded { font-size: 20px; }
             .card { padding: 18px; border-radius: 20px; }
@@ -388,8 +390,9 @@
             .data-item { padding: 15px; }
             .item-content { font-size: 0.93rem; }
             .up-name { font-size: 0.86rem; }
-            .to-top { right: 14px; bottom: calc(84px + env(safe-area-inset-bottom)); }
+            .to-top { right: 14px; bottom: 20px; }
             .form-row { grid-template-columns: 1fr; }
+            .toast { bottom: 24px; }
 
             .table-wrapper { border: none; overflow: visible; border-radius: 0; }
             table, .holiday-table { min-width: 0 !important; font-size: 0.9rem; }
@@ -402,9 +405,9 @@
             td[data-h]::before { content: attr(data-h) ": "; color: var(--primary); font-weight: 800; }
             td.dash { display: none; }
             tr.row-ongoing { background: var(--accent-soft); border-color: var(--accent); }
+            .status-chip { display: inline-block; margin: 8px 0 0; }
             tr.row-next { background: var(--primary-soft); border-color: var(--primary); }
             tr.row-past { opacity: 0.62; }
-            .status-chip { display: inline-block; margin: 8px 0 0; }
 
             .modal-overlay { align-items: flex-end; padding: 0; }
             .modal-content { max-width: 100%; border-radius: 24px 24px 0 0; border-bottom: none; max-height: 92vh; padding: 18px 20px; padding-bottom: calc(24px + env(safe-area-inset-bottom)); animation: sheetUp 0.35s var(--ease-soft); }
@@ -413,17 +416,9 @@
         @keyframes sheetUp { from { transform: translateY(70px); opacity: 0.4; } to { transform: none; opacity: 1; } }
 
         @media (max-width: 360px) {
-            .b-nav-item { min-width: 46px; font-size: 0.56rem; }
-            .b-icon { padding: 4px 8px; }
             .t-val { font-size: 1.2rem; }
             .up-date { font-size: 0.7rem; padding: 5px 10px; }
-        }
-
-        @media (max-height: 480px) and (orientation: landscape) {
-            .bottom-nav { padding: 4px 6px; padding-bottom: calc(4px + env(safe-area-inset-bottom)); }
-            .b-label { display: none; }
-            .main-content { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
-            .to-top { bottom: 70px; }
+            .stat-val { font-size: 0.98rem; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -432,7 +427,6 @@
         }
     </style>
 
-    <!-- TEMA FLAŞI ÖNLEYİCİ -->
     <script>
         (function () {
             try {
@@ -461,6 +455,31 @@
     </div>
 
     <div id="toast" class="toast"><span class="material-symbols-rounded">build_circle</span><span id="toast-msg"></span></div>
+
+    <!-- MOBİL ÇEKMECE MENÜ -->
+    <div id="drawer-overlay" class="drawer-overlay" onclick="closeDrawer()"></div>
+    <aside id="drawer" class="drawer" aria-label="Menü">
+        <div class="drawer-head">
+            <img src="logo.png" alt="BUÜ Logo" class="brand-logo" decoding="async" onerror='this.onerror=null;this.style.display="none";this.nextElementSibling.style.display="flex";'>
+            <div class="brand-fallback">E</div>
+            <div class="brand-text" style="flex:1; min-width:0;">
+                <h1>Elektronik Teknolojisi</h1>
+                <p>Bursa Uludağ Üniversitesi</p>
+            </div>
+            <button class="btn btn-tonal btn-icon" onclick="closeDrawer()" aria-label="Menüyü kapat"><span class="material-symbols-rounded">close</span></button>
+        </div>
+        <div class="nav-links">
+            <div class="nav-item" data-view="dashboard" onclick="switchView('dashboard')"><span class="material-symbols-rounded">dashboard</span><span class="nav-label">Ana Sayfa</span></div>
+            <div class="nav-item" data-view="announcements" onclick="switchView('announcements')"><span class="material-symbols-rounded">campaign</span><span class="nav-label">Duyurular</span><span class="nav-badge ann-badge"></span></div>
+            <div class="nav-item" data-view="schedule" onclick="switchView('schedule')"><span class="material-symbols-rounded">schedule</span><span class="nav-label">Program</span></div>
+            <div class="nav-item" data-view="calendar" onclick="switchView('calendar')"><span class="material-symbols-rounded">calendar_month</span><span class="nav-label">Takvim</span></div>
+            <div class="nav-item" data-view="files" onclick="switchView('files')"><span class="material-symbols-rounded">folder_open</span><span class="nav-label">Dosyalar</span></div>
+        </div>
+        <div class="drawer-footer">
+            <div class="nav-item" onclick="studentLogin()"><span class="material-symbols-rounded">person</span><span class="nav-label">Öğrenci Girişi</span></div>
+            <div class="nav-item" id="drawer-admin-btn" onclick="handleAdminAuth()"><span class="material-symbols-rounded">shield_person</span><span class="nav-label">Yönetici Girişi</span></div>
+        </div>
+    </aside>
 
     <div class="app-container">
 
@@ -493,6 +512,9 @@
         <main class="main-content">
             <header class="top-header">
                 <div class="header-left">
+                    <button class="btn btn-tonal btn-icon menu-btn" onclick="openDrawer()" aria-label="Menüyü aç">
+                        <span class="material-symbols-rounded">menu</span>
+                    </button>
                     <img src="logo.png" alt="BUÜ Logo" class="header-logo" decoding="async" onerror='this.onerror=null;this.style.display="none";this.nextElementSibling.style.display="flex";'>
                     <div class="brand-fallback header-logo-fallback" style="display:none;">E</div>
                     <div style="min-width:0;">
@@ -687,15 +709,6 @@
         <button id="to-top" class="to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Yukarı çık">
             <span class="material-symbols-rounded">arrow_upward</span>
         </button>
-
-        <nav class="bottom-nav">
-            <div class="b-nav-item active" data-view="dashboard" onclick="switchView('dashboard')"><span class="b-icon"><span class="material-symbols-rounded">dashboard</span></span><span class="b-label">Ana Sayfa</span></div>
-            <div class="b-nav-item" data-view="announcements" onclick="switchView('announcements')"><span class="b-icon"><span class="material-symbols-rounded">campaign</span></span><span class="b-badge ann-badge"></span><span class="b-label">Duyurular</span></div>
-            <div class="b-nav-item" data-view="schedule" onclick="switchView('schedule')"><span class="b-icon"><span class="material-symbols-rounded">schedule</span></span><span class="b-label">Program</span></div>
-            <div class="b-nav-item" data-view="calendar" onclick="switchView('calendar')"><span class="b-icon"><span class="material-symbols-rounded">calendar_month</span></span><span class="b-label">Takvim</span></div>
-            <div class="b-nav-item" data-view="files" onclick="switchView('files')"><span class="b-icon"><span class="material-symbols-rounded">folder_open</span></span><span class="b-label">Dosyalar</span></div>
-            <div class="b-nav-item" id="mobile-admin-btn" onclick="handleAdminAuth()"><span class="b-icon"><span class="material-symbols-rounded">shield_person</span></span><span class="b-label">Yönetici</span></div>
-        </nav>
     </div>
 
     <!-- ADMİN MODAL -->
@@ -885,7 +898,7 @@
             }, 60000);
 
             document.addEventListener('pointerdown', function (e) {
-                const t = e.target.closest('.btn, .nav-item, .b-nav-item, .file-link, .up-item, .stat, .filter-chip');
+                const t = e.target.closest('.btn, .nav-item, .file-link, .up-item, .stat, .filter-chip');
                 if (!t) return;
                 const rect = t.getBoundingClientRect();
                 const size = Math.max(rect.width, rect.height);
@@ -900,15 +913,28 @@
 
             const overlay = document.getElementById('admin-modal');
             overlay.addEventListener('click', e => { if (e.target === overlay) closeAdminModal(); });
-            document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAdminModal(); });
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape') { closeAdminModal(); closeDrawer(); }
+            });
 
-            // PWA (Service Worker) kaydı
             if ('serviceWorker' in navigator) {
                 window.addEventListener('load', () => {
                     navigator.serviceWorker.register('./sw.js').catch(() => {});
                 });
             }
         });
+
+        /* ---------- ÇEKMECE MENÜ ---------- */
+        function openDrawer() {
+            document.getElementById('drawer').classList.add('open');
+            document.getElementById('drawer-overlay').classList.add('show');
+            document.body.classList.add('drawer-open');
+        }
+        function closeDrawer() {
+            document.getElementById('drawer').classList.remove('open');
+            document.getElementById('drawer-overlay').classList.remove('show');
+            document.body.classList.remove('drawer-open');
+        }
 
         /* ---------- TOAST ---------- */
         function showToast(msg) {
@@ -920,6 +946,7 @@
         }
 
         function studentLogin() {
+            closeDrawer();
             showToast('Bu kısım bakımdadır, en yakın zamanda hizmetinizde olacak. 🛠️');
         }
 
@@ -951,13 +978,14 @@
         }
 
         function switchView(viewName) {
+            closeDrawer();
             document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
             const target = document.getElementById('view-' + viewName);
             void target.offsetWidth;
             target.classList.add('active');
             const titles = { 'dashboard': 'Ana Sayfa', 'announcements': 'Duyurular', 'schedule': 'Ders Programı', 'calendar': 'Akademik Takvim', 'files': 'Dosyalar' };
             document.getElementById('page-title-text').innerText = titles[viewName];
-            document.querySelectorAll('.nav-item, .b-nav-item').forEach(el => el.classList.toggle('active', el.dataset.view === viewName));
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.toggle('active', el.dataset.view === viewName));
             if (viewName === 'announcements') {
                 localStorage.setItem('lastVisitAnn', String(Date.now()));
                 updateAnnBadge();
@@ -975,7 +1003,7 @@
             });
         }
 
-        /* ---------- PAYLAŞ (Web Share API) ---------- */
+        /* ---------- PAYLAŞ ---------- */
         async function shareAnn(id) {
             const it = (announcementsData || []).find(i => i.id === id);
             if (!it) return;
@@ -1314,10 +1342,7 @@
                             <a href="${sanitizeHTML(item.url)}" target="_blank" rel="noopener noreferrer" class="file-link"><span class="material-symbols-rounded" style="font-size:16px;">download</span> İndir / Görüntüle</a>
                         </div>
                     </div>
-                    <div class="item-actions" style="flex-direction:row;">
-                        <button class="btn btn-tonal btn-mini" onclick="shareAnn(-1)" style="display:none;"></button>
-                        ${userToken ? `<button class="btn btn-danger btn-mini" onclick="deleteItem('file', ${item.id})" aria-label="Sil"><span class="material-symbols-rounded" style="font-size:16px;">delete</span></button>` : ''}
-                    </div>
+                    ${userToken ? `<div class="item-actions"><button class="btn btn-danger btn-mini" onclick="deleteItem('file', ${item.id})" aria-label="Sil"><span class="material-symbols-rounded" style="font-size:16px;">delete</span></button></div>` : ''}
                 </div>`).join('');
         }
 
@@ -1395,6 +1420,7 @@
         }
 
         async function handleAdminAuth() {
+            closeDrawer();
             if (userToken) {
                 if (await validateGitHubToken(userToken)) { openAdminModal(); renderAdminLists(); }
                 else { alert("Kayıtlı şifre geçersiz veya yetkisiz! Oturum kapatılıyor."); logoutAdmin(); }
@@ -1416,15 +1442,15 @@
         function updateAdminUI() {
             const lgBtn = document.getElementById('logout-btn');
             const desk = document.getElementById('sidebar-admin-btn');
-            const mob = document.getElementById('mobile-admin-btn');
+            const drawer = document.getElementById('drawer-admin-btn');
             if (userToken) {
                 lgBtn.style.display = 'inline-flex';
                 desk.innerHTML = `<span class="material-symbols-rounded" style="color:var(--accent);">verified_user</span><span class="nav-label">Yönetici Paneli</span>`;
-                mob.innerHTML = `<span class="b-icon"><span class="material-symbols-rounded" style="color:var(--accent);">verified_user</span></span><span class="b-label">Yönetici</span>`;
+                drawer.innerHTML = `<span class="material-symbols-rounded" style="color:var(--accent);">verified_user</span><span class="nav-label">Yönetici Paneli</span>`;
             } else {
                 lgBtn.style.display = 'none';
                 desk.innerHTML = `<span class="material-symbols-rounded">shield_person</span><span class="nav-label">Yönetici Girişi</span>`;
-                mob.innerHTML = `<span class="b-icon"><span class="material-symbols-rounded">shield_person</span></span><span class="b-label">Yönetici</span>`;
+                drawer.innerHTML = `<span class="material-symbols-rounded">shield_person</span><span class="nav-label">Yönetici Girişi</span>`;
             }
         }
 
@@ -1535,4 +1561,4 @@
         }
     </script>
 </body>
-</html>
+                                                        </html>
