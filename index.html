@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://api.github.com https://raw.githubusercontent.com; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="light">
 <meta name="theme-color" content="#0b3d77">
 <link rel="icon" href="logo.png">
 <link rel="manifest" href="manifest.webmanifest">
@@ -12,30 +13,45 @@
 <style>
 :root{--gov:#0b3d77;--govd:#082a54;--red:#c1121f;--bg:#f4f6f8;--sf:#fff;--bd:#d9dfe6;--tx:#1c2833;--mu:#5b6b7b;--ok:#1e7e34;--warn:#8a5300;--warnbg:#fff3cd}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font:15px/1.55 -apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--tx)}
-.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+body{font:15px/1.55 -apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--tx);overflow-wrap:anywhere}
 .hide{display:none}
+.wrap{max-width:1080px;margin:0 auto}
+.topline{height:4px;background:var(--red)}
 .notice{background:var(--warnbg);border-bottom:1px solid #e0c36a;color:var(--warn);font-size:13px;font-weight:600;padding:8px 16px;text-align:center}
 header.top{background:#fff;border-bottom:3px solid var(--gov)}
 .top-in{display:flex;align-items:center;gap:12px;padding:12px 16px;max-width:1080px;margin:0 auto}
 .logo{width:48px;height:48px;background:#fff;border:1px solid var(--bd);border-radius:4px;padding:3px;object-fit:contain;flex-shrink:0}
-.t1{font-size:11.5px;color:var(--mu);letter-spacing:.5px;text-transform:uppercase;font-weight:600}
+.t1{font-size:11.5px;color:var(--mu);letter-spacing:.6px;text-transform:uppercase;font-weight:700}
 .t2{font-size:18px;font-weight:700;color:var(--gov);line-height:1.25}
 nav.bar{background:var(--gov)}
 .bar-in{display:flex;flex-wrap:wrap;max-width:1080px;margin:0 auto}
-.bar-in button{display:block;padding:11px 14px;color:#fff;background:none;border:none;border-left:1px solid rgba(255,255,255,.12);font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+.bar-in button{display:block;padding:11px 14px;color:#fff;background:none;border:none;border-left:1px solid rgba(255,255,255,.12);font:inherit;font-size:12.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;min-height:44px}
 .bar-in button:hover,.bar-in button.on{background:var(--govd)}
 .bar-in .sp{flex:1}
+.only-mob{display:none}
+.ov{position:fixed;inset:0;background:rgba(10,20,40,.5);z-index:60;display:none}
+.ov.open{display:block}
+.drawer{position:fixed;top:0;left:0;bottom:0;width:min(320px,86vw);background:#fff;z-index:70;transform:translateX(-100%);transition:transform .25s ease;display:flex;flex-direction:column;overflow-y:auto;border-right:1px solid var(--bd)}
+.drawer.open{transform:none}
+.d-head{display:flex;align-items:center;gap:10px;padding:12px;border-bottom:3px solid var(--gov);background:#fff}
+.d-head .logo{width:40px;height:40px}
+.d-head b{font-size:13.5px;color:var(--gov);flex:1;line-height:1.3}
+.d-nav button{display:flex;align-items:center;gap:8px;width:100%;text-align:left;padding:14px;background:none;border:none;border-bottom:1px solid var(--bd);font:inherit;font-size:14.5px;font-weight:600;color:var(--tx);cursor:pointer;min-height:48px}
+.d-nav button.on{background:#eef3fa;color:var(--gov);box-shadow:inset 3px 0 0 var(--gov)}
+.d-auth{margin-top:auto;border-top:1px solid var(--bd);padding:12px;background:#fafbfc}
+.d-auth .btn{width:100%;margin-bottom:8px}
+.d-auth .btn:last-child{margin-bottom:0}
 main{padding:22px 16px 48px;max-width:1080px;margin:0 auto}
 h2.sec{font-size:14px;letter-spacing:.7px;text-transform:uppercase;color:var(--gov);border-bottom:2px solid var(--gov);padding-bottom:6px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;gap:10px}
 .card{background:var(--sf);border:1px solid var(--bd);border-radius:4px;padding:16px;margin-bottom:18px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-@media(max-width:800px){.grid2{grid-template-columns:1fr}}
+.grid2{display:grid;grid-template-columns:1fr;gap:18px}
+@media(min-width:900px){.grid2{grid-template-columns:1fr 1fr}}
 .tbl{overflow-x:auto}
 table{width:100%;border-collapse:collapse;font-size:13.5px}
 table.minw{min-width:640px}
 th{background:var(--gov);color:#fff;text-align:left;padding:8px 10px;font-weight:700}
 td{border:1px solid var(--bd);padding:8px 10px;vertical-align:top}
+tbody tr:nth-child(even) td{background:#f6f8fa}
 .item{border:1px solid var(--bd);border-left:4px solid var(--gov);border-radius:3px;background:#fff;padding:12px 14px;margin-bottom:10px}
 .item.pin{border-left-color:var(--red)}
 .item h3{font-size:15px;color:var(--gov);margin-bottom:4px}
@@ -46,24 +62,24 @@ td{border:1px solid var(--bd);padding:8px 10px;vertical-align:top}
 .tag.staj{color:var(--warn);border-color:var(--warn)}
 .tag.etkinlik{color:var(--ok);border-color:var(--ok)}
 .tag.pin{color:var(--red);border-color:var(--red)}
-.btn{display:inline-block;border:1px solid var(--gov);background:var(--gov);color:#fff;padding:7px 14px;border-radius:3px;font:inherit;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none}
+.btn{display:inline-block;border:1px solid var(--gov);background:var(--gov);color:#fff;padding:9px 16px;min-height:44px;border-radius:3px;font:inherit;font-size:13px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;cursor:pointer;text-decoration:none}
 .btn.sec{background:#fff;color:var(--gov)}
 .btn.dgr{background:#fff;color:var(--red);border-color:var(--red)}
-.btn.sm{padding:4px 10px;font-size:12.5px}
+.btn.sm{padding:5px 10px;font-size:11.5px;min-height:34px}
 .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-input,select,textarea{width:100%;padding:8px 10px;border:1px solid var(--bd);border-radius:3px;font:inherit;font-size:14px;background:#fff}
+input,select,textarea{width:100%;padding:9px 10px;border:1px solid var(--bd);border-radius:3px;font:inherit;font-size:14px;background:#fff;min-height:42px}
 input:focus,select:focus,textarea:focus{outline:2px solid var(--gov);border-color:var(--gov)}
+textarea{min-height:0}
 label{font-size:12.5px;font-weight:700;color:var(--mu);display:block;margin-bottom:4px}
 .fld{margin-bottom:12px}
 .f2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(max-width:600px){.f2{grid-template-columns:1fr}}
 .chk{display:flex;gap:8px;align-items:center;font-size:13.5px;font-weight:600;margin-bottom:12px}
-.chk input{width:auto}
-.modal{position:fixed;inset:0;background:rgba(8,20,40,.55);display:none;z-index:50;padding:16px;overflow:auto}
+.chk input{width:auto;min-height:0}
+.modal{position:fixed;inset:0;background:rgba(8,20,40,.55);display:none;z-index:80;padding:16px;overflow:auto}
 .modal.open{display:block}
 .mbox{background:#fff;border:1px solid var(--bd);border-top:4px solid var(--gov);max-width:640px;margin:24px auto;padding:18px;border-radius:4px}
 .tabs{display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid var(--bd);margin-bottom:14px}
-.tabs button{border:1px solid transparent;background:none;padding:7px 12px;font:inherit;font-size:13.5px;font-weight:600;color:var(--mu);cursor:pointer;border-radius:3px 3px 0 0}
+.tabs button{border:1px solid transparent;background:none;padding:8px 12px;font:inherit;font-size:13px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;color:var(--mu);cursor:pointer;border-radius:3px 3px 0 0;min-height:40px}
 .tabs button.on{border-color:var(--bd);border-bottom-color:#fff;color:var(--gov);background:#fff}
 .empty{color:var(--mu);text-align:center;padding:24px;font-size:13.5px}
 .adm{display:flex;gap:6px;align-items:center;border:1px solid var(--bd);border-radius:3px;padding:6px 8px;margin-bottom:6px;background:#fff}
@@ -76,20 +92,58 @@ label{font-size:12.5px;font-weight:700;color:var(--mu);display:block;margin-bott
 .day-h{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--gov);margin:14px 0 6px;border-bottom:1px solid var(--bd);padding-bottom:4px}
 .lp{background:none;border:none;color:var(--gov);cursor:pointer;font:inherit;font-size:13px;text-decoration:underline;padding:0}
 .note{font-size:12.5px;color:var(--mu);background:var(--warnbg);border:1px solid #e0c36a;border-radius:3px;padding:10px 12px}
+/* TABLET */
+@media(min-width:768px) and (max-width:1023px){
+.top-in{padding:10px 14px}
+.t2{font-size:16.5px}
+.bar-in button{padding:10px 10px;font-size:11.5px}
+main{padding:20px 14px 44px}
+.card{padding:14px}
+}
+/* TELEFON */
+@media(max-width:767px){
+nav.bar{display:none}
+.only-mob{display:inline-flex}
+.top-in{padding:10px 12px;gap:10px}
+.logo{width:42px;height:42px}
+.t1{font-size:10px}
+.t2{font-size:15.5px}
+main{padding:16px 12px 40px}
+.btn{min-height:46px;font-size:12.5px}
+.btn.sm{min-height:36px}
+input,select,textarea{font-size:16px}
+h2.sec{font-size:13px}
+.item h3{font-size:15px}
+.f2{grid-template-columns:1fr}
+.tbl{overflow:visible}
+table.minw{min-width:0}
+table,tbody,tr,td{display:block;width:100%}
+thead{display:none}
+tr{border:1px solid var(--bd);border-radius:3px;margin-bottom:8px;overflow:hidden;background:#fff}
+td{border:none;border-bottom:1px solid var(--bd);padding:9px 12px}
+td:last-child{border-bottom:none}
+tbody tr:nth-child(even) td{background:#fff}
+td:first-child{font-weight:700;color:var(--gov);background:#f2f5f9}
+table.hol td:nth-child(2)::before{content:"Telafi (Güz): ";font-weight:700;color:var(--mu)}
+table.hol td:nth-child(3)::before{content:"Telafi (Bahar): ";font-weight:700;color:var(--mu)}
+.mbox{margin:12px auto;padding:14px}
+}
 </style>
 </head>
 <body>
 <noscript><div class="notice">Bu sistemi kullanabilmek için JavaScript etkinleştirilmelidir.</div></noscript>
+<div class="topline"></div>
 <div class="notice">Sistemde planlı bakım ve yenileme çalışmaları devam etmektedir. Anlayışınız için teşekkürler.</div>
 
 <header class="top"><div class="top-in">
-<img class="logo" src="logo.png" alt="BUÜ logosu" onerror="this.style.display='none'">
-<div><div class="t1">Bursa Uludağ Üniversitesi</div><div class="t2">Elektronik Teknolojisi Programı Bilgi Sistemi</div></div>
+<button class="btn sec only-mob" onclick="openNav()" aria-label="Menüyü aç" style="min-height:42px;padding:6px 12px;font-size:18px">☰</button>
+<img class="logo" src="logo.png" alt="BUÜ logosu" fetchpriority="high" onerror="this.style.display='none'">
+<div><div class="t1">T.C. Bursa Uludağ Üniversitesi</div><div class="t2">Elektronik Teknolojisi Programı Bilgi Sistemi</div></div>
 </div></header>
 
 <nav class="bar"><div class="bar-in">
 <button class="on" data-v="home" onclick="go('home')">Ana Sayfa</button>
-<button data-v="ann" onclick="go('ann')">Duyurular <span id="badge" class="tag pin hide"></span></button>
+<button data-v="ann" onclick="go('ann')">Duyurular <span class="bdg tag pin hide"></span></button>
 <button data-v="prog" onclick="go('prog')">Ders Programı</button>
 <button data-v="cal" onclick="go('cal')">Akademik Takvim</button>
 <button data-v="files" onclick="go('files')">Dosyalar</button>
@@ -98,6 +152,27 @@ label{font-size:12.5px;font-weight:700;color:var(--mu);display:block;margin-bott
 <button id="adminbtn" onclick="adminAuth()">Yönetici Girişi</button>
 <button id="logoutbtn" class="hide" onclick="logout()">Çıkış</button>
 </div></nav>
+
+<div id="ov" class="ov" onclick="closeNav()"></div>
+<aside id="drawer" class="drawer" aria-label="Menü">
+<div class="d-head">
+<img class="logo" src="logo.png" alt="" onerror="this.style.display='none'">
+<b>T.C. Bursa Uludağ Üniversitesi<br>Elektronik Teknolojisi Programı</b>
+<button class="btn sec" onclick="closeNav()" aria-label="Menüyü kapat" style="min-height:38px;padding:5px 11px;font-size:15px">✕</button>
+</div>
+<nav class="d-nav">
+<button class="on" data-v="home" onclick="go('home')">Ana Sayfa</button>
+<button data-v="ann" onclick="go('ann')">Duyurular <span class="bdg tag pin hide"></span></button>
+<button data-v="prog" onclick="go('prog')">Ders Programı</button>
+<button data-v="cal" onclick="go('cal')">Akademik Takvim</button>
+<button data-v="files" onclick="go('files')">Dosyalar</button>
+</nav>
+<div class="d-auth">
+<button class="btn sec" onclick="studentLogin()">Öğrenci Girişi</button>
+<button id="adminbtn2" class="btn" onclick="adminAuth()">Yönetici Girişi</button>
+<button id="logoutbtn2" class="btn dgr hide" onclick="logout()">Çıkış Yap</button>
+</div>
+</aside>
 
 <main>
 <section id="v-home">
@@ -111,7 +186,7 @@ label{font-size:12.5px;font-weight:700;color:var(--mu);display:block;margin-bott
 <h2 class="sec">Duyurular</h2>
 <div class="card">
 <div class="row srch">
-<input id="q" placeholder="Duyurularda ara..." oninput="renderAnn()" style="flex:1;min-width:160px">
+<input id="q" placeholder="Duyurularda ara..." oninput="renderAnn()" style="flex:1;min-width:150px">
 <select id="cat" onchange="renderAnn()" style="width:auto">
 <option value="all">Tüm Kategoriler</option><option value="duyuru">Duyuru</option><option value="sinav">Sınav</option><option value="staj">Staj</option><option value="etkinlik">Etkinlik</option>
 </select>
@@ -129,7 +204,7 @@ label{font-size:12.5px;font-weight:700;color:var(--mu);display:block;margin-bott
 <h2 class="sec">2026-2027 Akademik Takvimi <button class="btn sm" onclick="ics()">Takvime Ekle (.ics)</button></h2>
 <div class="card"><h2 class="sec" style="border-width:1px;font-size:13px">Güz Yarıyılı</h2><div class="tbl"><table class="minw"><thead><tr><th>Faaliyet / İdari İşlem</th><th>Tarih</th></tr></thead><tbody id="tb-f"></tbody></table></div></div>
 <div class="card"><h2 class="sec" style="border-width:1px;font-size:13px">Bahar Yarıyılı</h2><div class="tbl"><table class="minw"><thead><tr><th>Faaliyet / İdari İşlem</th><th>Tarih</th></tr></thead><tbody id="tb-s"></tbody></table></div></div>
-<div class="card"><h2 class="sec" style="border-width:1px;font-size:13px">Resmi Tatiller ve Dini Bayramlar</h2><div class="tbl"><table class="minw"><thead><tr><th>Tatil</th><th>Telafi (Güz)</th><th>Telafi (Bahar)</th></tr></thead><tbody>
+<div class="card"><h2 class="sec" style="border-width:1px;font-size:13px">Resmi Tatiller ve Dini Bayramlar</h2><div class="tbl"><table class="minw hol"><thead><tr><th>Tatil</th><th>Telafi (Güz)</th><th>Telafi (Bahar)</th></tr></thead><tbody>
 <tr><td>28 Ekim 2026 Çarşamba (Cumhuriyet Bayramı, yarım gün)</td><td>72 iş gününe dahil edilmemiştir</td><td>—</td></tr>
 <tr><td>29 Ekim 2026 Perşembe (Cumhuriyet Bayramı)</td><td>72 iş gününe dahil edilmemiştir</td><td>—</td></tr>
 <tr><td>1 Ocak 2027 Cuma (Yılbaşı)</td><td>72 iş gününe dahil edilmemiştir</td><td>—</td></tr>
@@ -147,7 +222,7 @@ label{font-size:12.5px;font-weight:700;color:var(--mu);display:block;margin-bott
 <tr><td>19 Mayıs 2027 Çarşamba (Kurban Bayramı 4. gün / Atatürk'ü Anma, Gençlik ve Spor Bayramı)</td><td>—</td><td>71 iş gününe dahil edilmemiştir</td></tr>
 <tr><td>15 Temmuz 2027 Perşembe (Demokrasi ve Milli Birlik Günü)</td><td>—</td><td>—</td></tr>
 </tbody></table></div></div>
-<p class="note">Resmi tatiller nedeniyle yapılamayan derslerin telafisi, Birim Yönetim Kurulu Kararı ile ilgili birim tarafından uygun görülen tarih, saat ve yerde yapılacaktır.</p>
+<p class="note">Kaynak: Bursa Uludağ Üniversitesi 2026-2027 Eğitim-Öğretim Yılı Önlisans ve Lisans Akademik Takvimi (FR 1.1.1_03). Resmi tatiller nedeniyle yapılamayan derslerin telafisi, Birim Yönetim Kurulu Kararı ile ilgili birim tarafından uygun görülen tarih, saat ve yerde yapılacaktır.</p>
 </section>
 
 <section id="v-files" class="hide">
@@ -181,7 +256,7 @@ label{font-size:12.5px;font-weight:700;color:var(--mu);display:block;margin-bott
 <div id="al"></div>
 </div>
 <div id="p-t2" class="hide">
-<div class="fld"><label>Dosya Yükle (tür/boyut sınırı yok)</label><input type="file" id="f-up" accept="*/*"></div>
+<div class="fld"><label>Dosya Yükle (tür/boyut sınırı yok)</label><input type="file" id="f-up" accept="*/*" style="min-height:0"></div>
 <button class="btn" id="f-upbtn" onclick="upload()">Sisteme Yükle</button>
 <div style="margin:14px 0 6px;font-size:12.5px;font-weight:700;color:var(--mu)">VEYA DIŞ BAĞLANTI</div>
 <div class="f2"><div class="fld"><label>Dosya Adı</label><input id="f-title" maxlength="100" autocomplete="off"></div><div class="fld"><label>URL</label><input id="f-url" type="url" autocomplete="off"></div></div>
@@ -219,11 +294,17 @@ const rng=r=>r[1]===r[2]?fd(r[1]):fd(r[1])+" - "+fd(r[2])+(r[3]?" ("+r[3]+")":""
 const empty=m=>'<div class="empty">'+m+"</div>";
 
 document.addEventListener("DOMContentLoaded",()=>{
- load(); adminUI();
+ load();adminUI();
  setInterval(markLive,60000);
- document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
+ document.addEventListener("keydown",e=>{if(e.key==="Escape"){$("modal").classList.contains("open")?closeModal():closeNav();}});
  if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js").catch(()=>{});
 });
+
+function openNav(){$("drawer").classList.add("open");$("ov").classList.add("open");document.body.style.overflow="hidden";}
+function closeNav(){$("drawer").classList.remove("open");$("ov").classList.remove("open");unlock();}
+function openModal(){$("modal").classList.add("open");document.body.style.overflow="hidden";adminLists();}
+function closeModal(){$("modal").classList.remove("open");unlock();}
+function unlock(){if(!$("drawer").classList.contains("open")&&!$("modal").classList.contains("open"))document.body.style.overflow="";}
 
 async function get(f){
  try{const h={};if(tok)h.Authorization="token "+tok;
@@ -245,19 +326,17 @@ async function load(){
  ANN=await get("duyurular.json");FIL=await get("dosyalar.json");SCH=await get("dersprogrami.json");
  renderAnn();renderFiles();renderProg();renderCal();badge();adminLists();
 }
-
 function go(v){
  ["home","ann","prog","cal","files"].forEach(x=>$("v-"+x).classList.toggle("hide",x!==v));
- document.querySelectorAll(".bar-in button[data-v]").forEach(b=>b.classList.toggle("on",b.dataset.v===v));
+ document.querySelectorAll("[data-v]").forEach(b=>b.classList.toggle("on",b.dataset.v===v));
  if(v==="ann"){localStorage.lastVisit=Date.now();badge();}
- scrollTo(0,0);
+ closeNav();scrollTo(0,0);
 }
 function badge(){
- const last=+localStorage.lastVisit||0,n=ANN.filter(i=>+new Date(i.date)>last).length,b=$("badge");
- if(n){b.textContent=n>9?"9+":n;b.classList.remove("hide");}else b.classList.add("hide");
+ const last=+localStorage.lastVisit||0,n=ANN.filter(i=>+new Date(i.date)>last).length;
+ document.querySelectorAll(".bdg").forEach(b=>{if(n){b.textContent=n>9?"9+":n;b.classList.remove("hide");}else b.classList.add("hide");});
 }
-function sorted(){return ANN.slice().sort((a,b)=>(b.pinned?1:0)-(a.pinned?1:0)||new Date(b.date)-new Date(a.date));}
-
+const sorted=()=>ANN.slice().sort((a,b)=>(b.pinned?1:0)-(a.pinned?1:0)||new Date(b.date)-new Date(a.date));
 function annRow(i,full){
  const c=i.category||"duyuru";
  return `<div class="item${i.pinned?" pin":""}"><h3>${i.pinned?'<span class="tag pin">Sabit</span> ':""}${esc(i.title)}</h3>
@@ -320,24 +399,20 @@ async function share(id){
  else{try{await navigator.clipboard.writeText(txt);alert("Metin panoya kopyalandı.");}catch(e){alert("Paylaşım desteklenmiyor.");}}
 }
 function studentLogin(){alert("Bu kısım bakımdadır, en yakın zamanda hizmetinizde olacaktır.");}
-
+const ok=t=>fetch("https://api.github.com/user",{headers:{Authorization:"token "+t}}).then(r=>r.ok).catch(()=>false);
 async function adminAuth(){
- if(tok){if(await ok(tok)){openModal();}else{alert("Oturum geçersiz.");logout();}}
+ if(tok){if(await ok(tok))openModal();else{alert("Oturum geçersiz.");logout();}}
  else{const t=prompt("Şifre girmeniz gereklidir.");
   if(t&&t.trim()&&await ok(t.trim())){tok=t.trim();localStorage.gh=tok;adminUI();load();openModal();}
   else if(t)alert("Şifre geçersiz. Erişim reddedildi.");}
 }
-const ok=t=>fetch("https://api.github.com/user",{headers:{Authorization:"token "+t}}).then(r=>r.ok).catch(()=>false);
-function openModal(){$("modal").classList.add("open");document.body.style.overflow="hidden";adminLists();}
-function closeModal(){$("modal").classList.remove("open");document.body.style.overflow="";}
 function adminUI(){
- $("logoutbtn").classList.toggle("hide",!tok);
- $("adminbtn").classList.toggle("hide",!!tok);
+ const on=!!tok;
+ $("logoutbtn").classList.toggle("hide",!on);$("adminbtn").classList.toggle("hide",on);
+ $("logoutbtn2").classList.toggle("hide",!on);$("adminbtn2").classList.toggle("hide",on);
 }
 function logout(){tok="";localStorage.removeItem("gh");adminUI();renderAnn();renderFiles();renderProg();closeModal();alert("Oturum kapatıldı.");}
-function tab(id){
- ["t1","t2","t3","t4"].forEach(x=>{$(x).classList.toggle("on",x===id);$("p-"+x).classList.toggle("hide",x!==id);});
-}
+function tab(id){["t1","t2","t3","t4"].forEach(x=>{$(x).classList.toggle("on",x===id);$("p-"+x).classList.toggle("hide",x!==id);});}
 function adminLists(){
  if(!tok)return;
  $("al").innerHTML=sorted().map(i=>`<div class="adm"><span class="t">${i.pinned?"★ ":""}${esc(i.title)}</span><button class="btn sec sm" onclick="editAnn(${i.id})">Düzenle</button><button class="btn dgr sm" onclick="delAnn(${i.id})">Sil</button></div>`).join("")||empty("Duyuru yok.");
