@@ -3,11 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.github.com https://raw.githubusercontent.com; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="referrer" content="no-referrer">
     <meta name="theme-color" content="#0b0f19">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="ETP Bilgi">
     <link rel="apple-touch-icon" href="logo.png">
     <link rel="manifest" href="manifest.webmanifest">
@@ -16,83 +16,48 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet" />
 
     <style>
         :root {
             --bg-body: #0b0f19; --bg-surface: #141b2d; --bg-surface-hover: #1e293b;
             --text-main: #f8fafc; --text-muted: #94a3b8;
-            --primary: #3b82f6; --primary-hover: #2563eb; --primary-soft: rgba(59,130,246,0.16);
+            --primary: #3b82f6; --primary-soft: rgba(59,130,246,0.16);
             --accent: #10b981; --accent-soft: rgba(16,185,129,0.12);
             --warning: #f59e0b; --warning-soft: rgba(245,158,11,0.12);
             --danger: #ef4444; --danger-soft: rgba(239,68,68,0.12);
             --border: rgba(255,255,255,0.08);
             --nav-width: 260px; --banner-h: 44px;
-            --radius-lg: 26px; --radius-md: 16px; --radius-sm: 10px;
-            --shadow: 0 12px 32px -14px rgba(0,0,0,0.5);
-            --shadow-lift: 0 22px 48px -16px rgba(0,0,0,0.55);
-            --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
-            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --radius-lg: 24px; --radius-md: 16px; --radius-sm: 10px;
+            --shadow: 0 10px 28px -14px rgba(0,0,0,0.5);
             --timer-gradient: linear-gradient(135deg, #064e3b 0%, #0f172a 100%);
             --widget-text: #ffffff; --widget-muted: rgba(255,255,255,0.72); --widget-chip: rgba(255,255,255,0.12);
-            --shimmer: rgba(255,255,255,0.08);
-            --glow-1: rgba(59,130,246,0.12); --glow-2: rgba(16,185,129,0.09);
-            --scroll-thumb: rgba(255,255,255,0.18);
-            --banner-bg: linear-gradient(90deg, #78350f, #92400e, #78350f);
-            --banner-text: #fde68a; --logo-bg: #ffffff;
+            --banner-bg: #8a4a12; --banner-text: #fde68a; --logo-bg: #ffffff;
         }
         html.light-mode {
             --bg-body: #f1f5f9; --bg-surface: #ffffff; --bg-surface-hover: #f8fafc;
             --text-main: #0f172a; --text-muted: #64748b;
-            --primary: #2563eb; --primary-hover: #1d4ed8; --primary-soft: rgba(37,98,235,0.10);
+            --primary: #2563eb; --primary-soft: rgba(37,98,235,0.10);
             --accent: #059669; --accent-soft: rgba(5,150,105,0.08);
             --warning: #d97706; --warning-soft: rgba(217,119,6,0.10);
             --danger: #dc2626; --danger-soft: rgba(220,38,38,0.10);
             --border: rgba(15,23,42,0.08);
-            --shadow: 0 12px 32px -14px rgba(2,6,23,0.10);
-            --shadow-lift: 0 22px 48px -16px rgba(2,6,23,0.16);
+            --shadow: 0 10px 28px -14px rgba(2,6,23,0.10);
             --timer-gradient: linear-gradient(135deg, #d1fae5 0%, #f0fdf4 100%);
             --widget-text: #0f172a; --widget-muted: rgba(15,23,42,0.65); --widget-chip: rgba(15,23,42,0.06);
-            --shimmer: rgba(0,0,0,0.05);
-            --glow-1: rgba(37,98,235,0.08); --glow-2: rgba(5,150,105,0.07);
-            --scroll-thumb: rgba(15,23,42,0.22);
-            --banner-bg: linear-gradient(90deg, #fef3c7, #fde68a, #fef3c7);
-            --banner-text: #92400e;
+            --banner-bg: #fde68a; --banner-text: #92400e;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Parkinsans', sans-serif; -webkit-tap-highlight-color: transparent; -webkit-text-size-adjust: 100%; }
-        html { scroll-behavior: smooth; }
-        body { background: var(--bg-body); color: var(--text-main); transition: background-color 0.4s, color 0.4s; overflow-x: hidden; }
+        body { background: var(--bg-body); color: var(--text-main); overflow-x: hidden; }
         body.modal-open, body.drawer-open { overflow: hidden; }
 
-        body::before {
-            content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none;
-            background: radial-gradient(640px 420px at 88% -10%, var(--glow-1), transparent 62%),
-                        radial-gradient(720px 520px at -12% 112%, var(--glow-2), transparent 62%);
-            animation: glowFloat 18s ease-in-out infinite;
-        }
-        @keyframes glowFloat { 0%,100% { transform: translate3d(0,0,0); } 50% { transform: translate3d(0,-18px,0); } }
-
-        ::-webkit-scrollbar { width: 10px; height: 10px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: var(--scroll-thumb); border-radius: 8px; border: 3px solid transparent; background-clip: padding-box; }
         ::selection { background: var(--primary); color: #fff; }
-
-        button, .nav-item, a { touch-action: manipulation; }
+        button, .nav-item, a { touch-action: manipulation; cursor: pointer; }
         :focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 6px; }
 
-        .intro-overlay { position: fixed; inset: 0; z-index: 2000; background: var(--bg-body); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; animation: introOut 0.55s var(--ease-soft) 0.9s forwards; }
-        .intro-logo { width: 76px; height: 76px; border-radius: 22px; object-fit: contain; background: var(--logo-bg); padding: 7px; box-shadow: var(--shadow-lift); animation: introPop 0.6s var(--ease-spring); }
-        .intro-title { font-weight: 800; letter-spacing: 0.6px; color: var(--text-muted); font-size: 0.9rem; animation: introPop 0.6s var(--ease-spring) 0.12s both; }
-        @keyframes introOut { to { opacity: 0; visibility: hidden; } }
-        @keyframes introPop { from { opacity: 0; transform: scale(0.7) translateY(12px); } to { opacity: 1; transform: none; } }
-
         .material-symbols-rounded { font-variation-settings: 'FILL' 1; user-select: none; }
-        .spin { animation: spinSlow 1.6s linear infinite; }
-        @keyframes spinSlow { to { transform: rotate(360deg); } }
-        .spin-once { animation: spinOnce 0.5s var(--ease-soft); }
-        @keyframes spinOnce { from { transform: rotate(-180deg); opacity: 0; } to { transform: rotate(0); opacity: 1; } }
 
         .icon-chip { width: 38px; height: 38px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; background: var(--primary-soft); color: var(--primary); flex-shrink: 0; }
         .icon-chip .material-symbols-rounded { font-size: 22px; }
@@ -100,146 +65,91 @@
         .icon-chip.warn { background: var(--warning-soft); color: var(--warning); }
         .icon-chip.on-gradient { background: var(--widget-chip); color: var(--widget-text); }
 
-        .btn, .nav-item, .file-link, .up-item, .stat { position: relative; overflow: hidden; }
-        .ripple { position: absolute; border-radius: 50%; background: currentColor; opacity: 0.22; transform: scale(0); animation: rippleAnim 0.6s var(--ease-soft) forwards; pointer-events: none; }
-        @keyframes rippleAnim { to { transform: scale(2.8); opacity: 0; } }
+        .btn, .nav-item, .stat { position: relative; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 10px 18px; border-radius: 50px; font-weight: 700; font-size: 0.9rem; border: none; }
+        .btn:active { transform: scale(0.97); }
+        .btn-icon { padding: 10px; border-radius: 50%; }
+        .btn-mini { min-height: 38px; padding: 6px 12px; font-size: 0.8rem; }
+        .btn-tonal { background: var(--bg-surface); color: var(--text-main); border: 1px solid var(--border); }
+        .btn-primary { background: var(--primary); color: #fff; }
+        .btn-danger { background: var(--danger-soft); color: var(--danger); border: 1px solid rgba(239,68,68,0.25); }
+        button.menu-btn { display: none; }
 
-        .btn-primary::after { content: ''; position: absolute; top: 0; left: -70%; width: 45%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent); transform: skewX(-20deg); transition: left 0.6s var(--ease-soft); }
-        .btn-primary:hover::after { left: 130%; }
+        .skeleton { background: var(--bg-surface-hover); border-radius: 10px; }
 
-        .skeleton { position: relative; overflow: hidden; background: var(--bg-surface-hover); border-radius: 10px; }
-        .skeleton::after { content: ''; position: absolute; inset: 0; transform: translateX(-100%); background: linear-gradient(90deg, transparent, var(--shimmer), transparent); animation: shimmer 1.2s infinite; }
-        @keyframes shimmer { 100% { transform: translateX(100%); } }
+        .maintenance-banner { position: sticky; top: 0; z-index: 1000; min-height: var(--banner-h); display: flex; align-items: center; justify-content: center; gap: 8px; padding: 6px 12px; text-align: center; background: var(--banner-bg); color: var(--banner-text); font-size: 0.78rem; font-weight: 700; line-height: 1.3; }
+        .banner-icon { font-size: 18px; flex-shrink: 0; }
 
-        .maintenance-banner { position: sticky; top: 0; z-index: 1000; min-height: var(--banner-h); display: flex; align-items: center; justify-content: center; gap: 8px; padding: 6px 12px; text-align: center; background: var(--banner-bg); background-size: 200% 100%; color: var(--banner-text); font-size: 0.78rem; font-weight: 700; line-height: 1.3; animation: bannerFlow 9s linear infinite; }
-        @keyframes bannerFlow { 0% { background-position: 0% 0; } 100% { background-position: 200% 0; } }
-        .banner-icon { font-size: 18px; flex-shrink: 0; animation: spinSlow 6s linear infinite; }
-
-        .toast { position: fixed; left: 50%; bottom: 32px; transform: translateX(-50%) translateY(20px); background: var(--bg-surface); color: var(--text-main); border: 1px solid var(--border); border-radius: 50px; padding: 12px 20px; display: flex; gap: 10px; align-items: center; font-weight: 700; font-size: 0.85rem; box-shadow: var(--shadow-lift); opacity: 0; pointer-events: none; transition: opacity 0.3s var(--ease-soft), transform 0.3s var(--ease-soft); z-index: 1500; max-width: calc(100vw - 32px); text-align: center; }
-        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+        .toast { position: fixed; left: 50%; bottom: 32px; transform: translateX(-50%); background: var(--bg-surface); color: var(--text-main); border: 1px solid var(--border); border-radius: 50px; padding: 12px 20px; display: none; gap: 10px; align-items: center; font-weight: 700; font-size: 0.85rem; box-shadow: var(--shadow); z-index: 1500; max-width: calc(100vw - 32px); text-align: center; }
+        .toast.show { display: flex; }
         .toast .material-symbols-rounded { color: var(--warning); flex-shrink: 0; }
 
         .app-container { display: flex; align-items: stretch; }
 
         .sidebar { width: var(--nav-width); flex-shrink: 0; background: var(--bg-surface); border-right: 1px solid var(--border); padding: 24px 16px; display: flex; flex-direction: column; position: sticky; top: var(--banner-h); height: calc(100vh - var(--banner-h)); overflow-y: auto; z-index: 50; }
         .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 30px; padding: 0 8px; }
-        .brand-logo { width: 44px; height: 44px; border-radius: 14px; object-fit: contain; background: var(--logo-bg); border: 1px solid var(--border); padding: 4px; flex-shrink: 0; transition: transform 0.3s var(--ease-spring); }
-        .brand-logo:hover { transform: scale(1.06) rotate(-2deg); }
+        .brand-logo { width: 44px; height: 44px; border-radius: 14px; object-fit: contain; background: var(--logo-bg); border: 1px solid var(--border); padding: 4px; flex-shrink: 0; }
         .brand-fallback { display: none; align-items: center; justify-content: center; width: 44px; height: 44px; background: var(--primary); border-radius: 14px; color: #fff; font-weight: 800; font-size: 1.2rem; flex-shrink: 0; }
-        .brand-text h1 { font-size: 1.05rem; font-weight: 800; line-height: 1.2; letter-spacing: -0.2px; }
+        .brand-text h1 { font-size: 1.05rem; font-weight: 800; line-height: 1.2; }
         .brand-text p { font-size: 0.72rem; color: var(--text-muted); }
 
         .nav-links { display: flex; flex-direction: column; gap: 6px; flex: 1; }
-        .nav-item { display: flex; align-items: center; gap: 12px; padding: 13px 16px; min-height: 46px; border-radius: var(--radius-md); color: var(--text-muted); font-weight: 600; cursor: pointer; font-size: 0.94rem; transition: background-color 0.25s var(--ease-soft), color 0.25s, transform 0.15s var(--ease-soft), box-shadow 0.25s; }
-        .nav-item:active { transform: scale(0.97); }
+        .nav-item { display: flex; align-items: center; gap: 12px; padding: 13px 16px; min-height: 46px; border-radius: var(--radius-md); color: var(--text-muted); font-weight: 600; font-size: 0.94rem; }
         .nav-item:hover { background: var(--bg-surface-hover); color: var(--text-main); }
-        .nav-item.active { background: var(--primary); color: #fff; box-shadow: 0 8px 20px -8px var(--primary); }
+        .nav-item.active { background: var(--primary); color: #fff; }
         .nav-badge { margin-left: auto; background: var(--danger); color: #fff; border-radius: 20px; font-size: 0.66rem; font-weight: 800; padding: 2px 8px; min-width: 20px; display: none; align-items: center; justify-content: center; }
         .sidebar-footer { padding-top: 14px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 6px; }
 
-        /* MOBİL ÇEKMECE MENÜ */
-        .menu-btn { display: none; }
-        .drawer { position: fixed; top: 0; left: 0; bottom: 0; width: min(300px, 85vw); background: var(--bg-surface); z-index: 1300; transform: translateX(-105%); transition: transform 0.35s var(--ease-soft); display: flex; flex-direction: column; padding: 18px 14px; overflow-y: auto; box-shadow: var(--shadow-lift); border-right: 1px solid var(--border); }
+        .drawer { position: fixed; top: 0; left: 0; bottom: 0; width: min(300px, 85vw); background: var(--bg-surface); z-index: 1300; transform: translateX(-105%); display: flex; flex-direction: column; padding: 18px 14px; overflow-y: auto; box-shadow: var(--shadow); border-right: 1px solid var(--border); }
         .drawer.open { transform: none; }
-        .drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1250; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
-        .drawer-overlay.show { opacity: 1; pointer-events: auto; }
+        .drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1250; display: none; }
+        .drawer-overlay.show { display: block; }
         .drawer-head { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
-        .drawer-head .brand-logo { width: 40px; height: 40px; }
-        .drawer-head .brand-fallback { width: 40px; height: 40px; font-size: 1.1rem; }
+        .drawer-head .brand-logo, .drawer-head .brand-fallback { width: 40px; height: 40px; }
         .drawer-footer { border-top: 1px solid var(--border); padding-top: 10px; display: flex; flex-direction: column; gap: 6px; }
 
         .main-content { flex: 1; min-width: 0; max-width: 1160px; padding: 30px 40px; }
-
         .top-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 26px; }
         .header-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
         .header-logo { display: none; }
-        .page-title { font-size: clamp(1.4rem, 1rem + 1.8vw, 1.95rem); font-weight: 800; line-height: 1.3; padding-bottom: 3px; letter-spacing: -0.4px; background: linear-gradient(92deg, var(--primary) 0%, var(--accent) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .page-title { font-size: clamp(1.4rem, 1rem + 1.8vw, 1.95rem); font-weight: 800; line-height: 1.3; padding-bottom: 3px; letter-spacing: -0.4px; }
         .header-date { color: var(--text-muted); font-size: 0.88rem; margin-top: 2px; font-weight: 600; overflow-wrap: anywhere; }
         .header-actions { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
 
-        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 10px 18px; border-radius: 50px; font-weight: 700; font-size: 0.9rem; cursor: pointer; border: none; transition: background-color 0.25s, color 0.25s, transform 0.15s var(--ease-soft), box-shadow 0.25s; }
-        .btn:active { transform: scale(0.96); }
-        .btn-icon { padding: 10px; border-radius: 50%; }
-        .btn-mini { min-height: 38px; padding: 6px 12px; font-size: 0.8rem; }
-        .btn-tonal { background: var(--bg-surface); color: var(--text-main); border: 1px solid var(--border); }
-        .btn-tonal:hover { background: var(--bg-surface-hover); box-shadow: var(--shadow); }
-        .btn-primary { background: linear-gradient(135deg, var(--primary), var(--primary-hover)); color: #fff; box-shadow: 0 8px 20px -8px var(--primary); }
-        .btn-primary:hover { box-shadow: 0 12px 28px -8px var(--primary); filter: brightness(1.06); }
-        .btn-danger { background: var(--danger-soft); color: var(--danger); border: 1px solid rgba(239,68,68,0.25); }
-        .btn-danger:hover { background: var(--danger); color: #fff; }
-
         .view-section { display: none; }
-        .view-section.active { display: block; animation: fadeIn 0.4s var(--ease-soft); }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        @keyframes cardIn { from { opacity: 0; transform: translateY(18px) scale(0.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
-        .view-section.active .card, .view-section.active .stat { animation: cardIn 0.55s var(--ease-soft) both; }
-        .view-section.active .stat:nth-child(1) { animation-delay: 0.03s; }
-        .view-section.active .stat:nth-child(2) { animation-delay: 0.09s; }
-        .view-section.active .stat:nth-child(3) { animation-delay: 0.15s; }
-        .view-section.active .timer-card { animation-delay: 0.1s; }
-        .view-section.active .lower-grid .card:nth-child(1) { animation-delay: 0.18s; }
-        .view-section.active .lower-grid .card:nth-child(2) { animation-delay: 0.24s; }
-        .view-section.active .card + .card { animation-delay: 0.1s; }
-        .view-section.active .card + .card + .card { animation-delay: 0.18s; }
-        .view-section.active .card + .card + .card + .card { animation-delay: 0.26s; }
-
-        .view-section.active .data-item { animation: cardIn 0.45s var(--ease-soft) both; }
-        .view-section.active .data-item:nth-child(1) { animation-delay: 0.05s; }
-        .view-section.active .data-item:nth-child(2) { animation-delay: 0.1s; }
-        .view-section.active .data-item:nth-child(3) { animation-delay: 0.15s; }
-        .view-section.active .data-item:nth-child(4) { animation-delay: 0.2s; }
-        .view-section.active .data-item:nth-child(5) { animation-delay: 0.25s; }
-        .view-section.active .data-item:nth-child(6) { animation-delay: 0.3s; }
-
-        @keyframes rowIn { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: none; } }
-        .view-section.active tbody tr { animation: rowIn 0.4s var(--ease-soft) both; animation-delay: calc(var(--i, 0) * 22ms); }
+        .view-section.active { display: block; }
 
         .stats-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; margin-bottom: 20px; }
-        .stat { display: flex; gap: 12px; align-items: center; background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 15px 17px; box-shadow: var(--shadow); transition: transform 0.25s var(--ease-soft), box-shadow 0.25s; cursor: pointer; min-width: 0; }
-        @media (hover: hover) { .stat:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); } }
+        .stat { display: flex; gap: 12px; align-items: center; background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 15px 17px; box-shadow: var(--shadow); cursor: pointer; min-width: 0; }
         .stat > div { min-width: 0; }
-        .stat-val { font-weight: 800; font-size: 1.2rem; line-height: 1.15; letter-spacing: -0.3px; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+        .stat-val { font-weight: 800; font-size: 1.2rem; line-height: 1.15; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
         .stat-lbl { font-size: 0.68rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
 
         .card { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow); min-width: 0; }
-        @media (hover: hover) {
-            .card { transition: transform 0.3s var(--ease-soft), box-shadow 0.3s var(--ease-soft), background-color 0.3s, border-color 0.3s; }
-            .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
-        }
-        .tilt { transform-style: preserve-3d; will-change: transform; }
         .card-header { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; }
         .card-header > * { min-width: 0; }
-        .card-title { font-size: 1.08rem; font-weight: 800; display: flex; align-items: center; gap: 11px; letter-spacing: -0.2px; min-width: 0; }
+        .card-title { font-size: 1.08rem; font-weight: 800; display: flex; align-items: center; gap: 11px; min-width: 0; }
 
-        #view-dashboard { perspective: 1100px; }
-        .timer-card { background: var(--timer-gradient); border-color: transparent; color: var(--widget-text); display: flex; align-items: center; justify-content: space-between; gap: 22px; flex-wrap: wrap; margin-bottom: 20px; position: relative; overflow: hidden; }
-        .timer-card::before { content: ''; position: absolute; inset: -40%; background: radial-gradient(circle at 30% 30%, var(--widget-chip), transparent 60%); animation: glowPulse 6s ease-in-out infinite; pointer-events: none; }
-        @keyframes glowPulse { 0%,100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.15); opacity: 0.9; } }
-        .timer-card > * { position: relative; z-index: 1; }
+        .timer-card { background: var(--timer-gradient); border-color: transparent; color: var(--widget-text); display: flex; align-items: center; justify-content: space-between; gap: 22px; flex-wrap: wrap; margin-bottom: 20px; }
         .timer-left { display: flex; align-items: center; gap: 14px; min-width: 0; }
-        .timer-title { font-size: 1.06rem; font-weight: 800; letter-spacing: -0.2px; line-height: 1.35; overflow-wrap: anywhere; }
+        .timer-title { font-size: 1.06rem; font-weight: 800; line-height: 1.35; overflow-wrap: anywhere; }
         .timer-sub { font-size: 0.76rem; color: var(--widget-muted); font-weight: 700; margin-top: 3px; }
         .timer-display { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; flex: 1; min-width: 280px; max-width: 520px; }
-        .t-box { background: var(--widget-chip); padding: 14px 4px; border-radius: var(--radius-md); text-align: center; min-width: 0; transition: transform 0.25s var(--ease-soft); }
-        .t-box:hover { transform: translateY(-3px); }
+        .t-box { background: var(--widget-chip); padding: 14px 4px; border-radius: var(--radius-md); text-align: center; min-width: 0; }
         .t-val { font-size: clamp(1.35rem, 1rem + 1.6vw, 2rem); font-weight: 800; font-variant-numeric: tabular-nums; }
-        .t-val.tick { animation: tickPulse 0.3s var(--ease-soft); }
-        @keyframes tickPulse { 0% { transform: scale(1.18); } 100% { transform: scale(1); } }
         .t-lbl { font-size: 0.68rem; text-transform: uppercase; opacity: 0.8; margin-top: 4px; font-weight: 800; letter-spacing: 0.6px; }
         .timer-progress { flex-basis: 100%; }
-        .tp-head { display: flex; justify-content: space-between; gap: 10px; font-size: 0.75rem; font-weight: 800; color: var(--widget-muted); margin-bottom: 8px; letter-spacing: 0.3px; }
-        .tp-head #tp-pct { color: var(--widget-text); font-variant-numeric: tabular-nums; }
+        .tp-head { display: flex; justify-content: space-between; gap: 10px; font-size: 0.75rem; font-weight: 800; color: var(--widget-muted); margin-bottom: 8px; }
+        .tp-head #tp-pct { color: var(--widget-text); }
         .tp-bar { height: 8px; border-radius: 999px; background: var(--widget-chip); overflow: hidden; }
-        .tp-fill { height: 100%; width: 0; border-radius: inherit; background: linear-gradient(90deg, var(--accent), #34d399); transition: width 1.2s var(--ease-soft); }
+        .tp-fill { height: 100%; width: 0; border-radius: inherit; background: var(--accent); }
 
         .lower-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px; }
 
         .data-list { display: flex; flex-direction: column; gap: 12px; }
-        .data-item { padding: 17px; border: 1px solid var(--border); border-radius: var(--radius-md); display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; transition: border-color 0.25s, background-color 0.25s, transform 0.25s var(--ease-soft); min-width: 0; }
-        .data-item:hover { border-color: var(--primary); background: var(--bg-surface-hover); transform: translateX(4px); }
+        .data-item { padding: 17px; border: 1px solid var(--border); border-radius: var(--radius-md); display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; min-width: 0; }
         .data-item.pinned-item { border-color: var(--warning); }
-        .item-title { font-size: 1.05rem; font-weight: 800; color: var(--primary); margin-bottom: 6px; letter-spacing: -0.2px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; overflow-wrap: anywhere; }
+        .item-title { font-size: 1.05rem; font-weight: 800; color: var(--primary); margin-bottom: 6px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; overflow-wrap: anywhere; }
         .item-meta { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-weight: 600; }
         .item-content { font-size: 0.95rem; line-height: 1.7; white-space: pre-wrap; word-break: break-word; overflow-wrap: anywhere; }
         .item-actions { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; flex-shrink: 0; }
@@ -252,7 +162,7 @@
         .cat-etkinlik { background: var(--accent-soft); color: var(--accent); }
 
         .filter-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
-        .filter-chip { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; min-height: 38px; border-radius: 50px; border: 1px solid var(--border); background: var(--bg-surface); color: var(--text-muted); font-weight: 700; font-size: 0.78rem; cursor: pointer; transition: all 0.2s var(--ease-soft); }
+        .filter-chip { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; min-height: 38px; border-radius: 50px; border: 1px solid var(--border); background: var(--bg-surface); color: var(--text-muted); font-weight: 700; font-size: 0.78rem; }
         .filter-chip .material-symbols-rounded { font-size: 15px; }
         .filter-chip .cnt { background: var(--bg-surface-hover); border-radius: 20px; padding: 1px 8px; font-size: 0.68rem; }
         .filter-chip.active { color: #fff; }
@@ -265,43 +175,39 @@
         .schedule-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
         .day-card { padding: 18px; }
         .day-title { font-weight: 800; font-size: 0.95rem; margin-bottom: 14px; display: flex; align-items: center; gap: 9px; flex-wrap: wrap; }
-        .lesson-item { display: flex; gap: 12px; padding: 12px; border: 1px solid var(--border); border-radius: 12px; margin-bottom: 10px; align-items: flex-start; transition: border-color 0.25s, background-color 0.25s; }
+        .lesson-item { display: flex; gap: 12px; padding: 12px; border: 1px solid var(--border); border-radius: 12px; margin-bottom: 10px; align-items: flex-start; }
         .lesson-item:last-child { margin-bottom: 0; }
-        .lesson-time { flex-shrink: 0; background: var(--primary-soft); color: var(--primary); border-radius: 10px; padding: 6px 10px; font-weight: 800; font-size: 0.74rem; text-align: center; line-height: 1.4; font-variant-numeric: tabular-nums; }
+        .lesson-time { flex-shrink: 0; background: var(--primary-soft); color: var(--primary); border-radius: 10px; padding: 6px 10px; font-weight: 800; font-size: 0.74rem; text-align: center; line-height: 1.4; }
         .l-course { font-weight: 800; font-size: 0.9rem; line-height: 1.35; overflow-wrap: anywhere; }
         .l-meta { font-size: 0.74rem; color: var(--text-muted); margin-top: 4px; display: flex; flex-wrap: wrap; gap: 8px; font-weight: 600; }
-        .live-chip { display: none; margin-left: auto; align-items: center; gap: 5px; background: var(--accent); color: #fff; border-radius: 20px; padding: 3px 10px; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.5px; flex-shrink: 0; }
-        .live-dot2 { width: 6px; height: 6px; border-radius: 50%; background: #fff; animation: pulseDot 1.6s infinite; }
-        @keyframes pulseDot { 0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.6); } 70% { box-shadow: 0 0 0 6px rgba(255,255,255,0); } 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); } }
+        .live-chip { display: none; margin-left: auto; align-items: center; gap: 5px; background: var(--accent); color: #fff; border-radius: 20px; padding: 3px 10px; font-size: 0.62rem; font-weight: 800; flex-shrink: 0; }
+        .live-dot2 { width: 6px; height: 6px; border-radius: 50%; background: #fff; }
         .lesson-item.live { border-color: var(--accent); background: var(--accent-soft); }
         .lesson-item.live .lesson-time { background: var(--accent); color: #fff; }
         .lesson-item.live .live-chip { display: inline-flex; }
 
-        .up-item { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 14px; border: 1px solid var(--border); border-radius: 12px; cursor: pointer; transition: border-color 0.2s, background-color 0.2s, transform 0.2s var(--ease-soft); animation: rowIn 0.4s var(--ease-soft) both; animation-delay: calc(var(--i, 0) * 45ms); min-width: 0; }
-        .up-item:hover { border-color: var(--primary); background: var(--bg-surface-hover); transform: translateX(4px); }
+        .up-item { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 14px; border: 1px solid var(--border); border-radius: 12px; cursor: pointer; min-width: 0; }
         .up-name { font-weight: 700; font-size: 0.9rem; line-height: 1.45; overflow-wrap: anywhere; }
         .up-sub { font-size: 0.72rem; color: var(--text-muted); font-weight: 600; margin-top: 4px; display: flex; align-items: center; gap: 4px; }
         .up-date { flex-shrink: 0; background: var(--primary-soft); color: var(--primary); border-radius: 50px; padding: 6px 12px; font-size: 0.75rem; font-weight: 800; white-space: nowrap; }
         .up-date.ongoing { background: var(--accent-soft); color: var(--accent); }
 
-        .file-link { display: inline-flex; align-items: center; gap: 6px; background: var(--primary-soft); color: var(--primary); padding: 8px 15px; border-radius: 50px; font-weight: 700; font-size: 0.82rem; text-decoration: none; transition: background-color 0.2s, transform 0.15s var(--ease-soft); max-width: 100%; }
-        .file-link:active { transform: scale(0.95); }
+        .file-link { display: inline-flex; align-items: center; gap: 6px; background: var(--primary-soft); color: var(--primary); padding: 8px 15px; border-radius: 50px; font-weight: 700; font-size: 0.82rem; text-decoration: none; max-width: 100%; }
 
         .empty-state { text-align: center; padding: 40px 20px; color: var(--text-muted); }
         .empty-state span { font-size: 3rem; margin-bottom: 10px; opacity: 0.5; }
 
-        .search-wrap { display: flex; align-items: center; gap: 8px; background: var(--bg-body); border: 1px solid var(--border); border-radius: 50px; padding: 10px 16px; flex: 1; max-width: 320px; min-width: 0; transition: border-color 0.25s, box-shadow 0.25s; }
-        .search-wrap:focus-within { border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-soft); }
+        .search-wrap { display: flex; align-items: center; gap: 8px; background: var(--bg-body); border: 1px solid var(--border); border-radius: 50px; padding: 10px 16px; flex: 1; max-width: 320px; min-width: 0; }
+        .search-wrap:focus-within { border-color: var(--primary); }
         .search-wrap span { color: var(--text-muted); font-size: 20px; }
         .search-wrap input { border: none; background: transparent; color: var(--text-main); outline: none; width: 100%; font-size: 0.9rem; min-width: 0; }
 
         .cal-note { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 14px; font-weight: 600; display: flex; gap: 6px; align-items: center; }
-        .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; border: 1px solid var(--border); border-radius: var(--radius-md); }
+        .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border); border-radius: var(--radius-md); }
         table { width: 100%; border-collapse: collapse; font-size: 0.9rem; text-align: left; }
         th { background: var(--bg-surface-hover); padding: 15px 16px; font-weight: 800; color: var(--primary); border-bottom: 1px solid var(--border); }
         td { padding: 14px 16px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.5; }
         tr:last-child td { border-bottom: none; }
-        tr:hover td { background: var(--bg-surface-hover); }
         .cal-date { font-weight: 700; white-space: nowrap; }
 
         .status-chip { display: inline-block; margin-left: 8px; padding: 2px 10px; border-radius: 20px; font-size: 0.66rem; font-weight: 800; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.3px; }
@@ -317,34 +223,26 @@
         .info-note { display: flex; gap: 10px; align-items: flex-start; background: var(--warning-soft); border: 1px dashed var(--warning); padding: 15px 16px; border-radius: var(--radius-md); font-size: 0.85rem; font-weight: 600; margin-top: 16px; line-height: 1.6; }
         .info-note .material-symbols-rounded { color: var(--warning); font-size: 20px; flex-shrink: 0; }
 
-        .footer { margin-top: 38px; padding: 20px 0 8px; border-top: 1px solid var(--border); }
-        .footer-inner { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; text-align: center; color: var(--text-muted); font-size: 0.85rem; font-weight: 600; }
-        .footer-inner .material-symbols-rounded { color: var(--primary); font-size: 19px; }
-        .footer-inner strong { color: var(--text-main); font-weight: 800; letter-spacing: 0.2px; font-size: 0.9rem; }
-        .footer-dot { opacity: 0.5; }
-
-        .to-top { position: fixed; right: 18px; bottom: 24px; z-index: 950; width: 48px; height: 48px; border-radius: 50%; border: none; background: var(--primary); color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 10px 24px -8px var(--primary); opacity: 0; transform: translateY(16px) scale(0.9); pointer-events: none; transition: opacity 0.3s var(--ease-soft), transform 0.3s var(--ease-soft); }
-        .to-top.show { opacity: 1; transform: none; pointer-events: auto; }
-        .to-top:active { transform: scale(0.92); }
+        .to-top { position: fixed; right: 18px; bottom: 24px; z-index: 950; width: 48px; height: 48px; border-radius: 50%; border: none; background: var(--primary); color: #fff; display: none; align-items: center; justify-content: center; box-shadow: var(--shadow); }
+        .to-top.show { display: flex; }
 
         .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 1200; display: none; justify-content: center; align-items: center; padding: 20px; }
-        .modal-content { background: var(--bg-surface); width: 100%; max-width: 640px; border-radius: var(--radius-lg); padding: 26px; border: 1px solid var(--border); max-height: 90vh; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; animation: modalIn 0.35s var(--ease-soft); }
-        @keyframes modalIn { from { opacity: 0; transform: scale(0.95) translateY(12px); } to { opacity: 1; transform: none; } }
+        .modal-content { background: var(--bg-surface); width: 100%; max-width: 640px; border-radius: var(--radius-lg); padding: 26px; border: 1px solid var(--border); max-height: 90vh; overflow-y: auto; }
         .admin-status-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 20px; font-size: 0.73rem; font-weight: 700; background: var(--accent-soft); color: var(--accent); border: 1px solid var(--accent); margin-bottom: 16px; }
         .admin-tabs { display: flex; gap: 8px; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 12px; flex-wrap: wrap; }
         .tab-btn-active { border-color: var(--primary) !important; color: var(--primary); }
         .input-group { margin-bottom: 16px; }
         .input-group label { display: block; font-size: 0.84rem; font-weight: 700; margin-bottom: 8px; color: var(--text-muted); }
-        .form-control { width: 100%; padding: 13px; background: var(--bg-body); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text-main); font-size: 0.93rem; transition: border-color 0.2s, box-shadow 0.2s; }
-        .form-control:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-soft); }
+        .form-control { width: 100%; padding: 13px; background: var(--bg-body); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text-main); font-size: 0.93rem; }
+        .form-control:focus { outline: none; border-color: var(--primary); }
         .form-hint { font-size: 0.74rem; color: var(--text-muted); margin-top: 6px; display: flex; align-items: center; gap: 4px; }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         .admin-divider { text-align: center; margin: 18px 0; color: var(--text-muted); font-size: 0.76rem; font-weight: 800; }
         .admin-item { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border: 1px solid var(--border); border-radius: 12px; margin-bottom: 8px; }
         .ai-title { flex: 1; min-width: 0; font-weight: 700; font-size: 0.85rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
         .switch-row { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
-        .switch { position: relative; width: 46px; height: 26px; background: var(--bg-surface-hover); border: 1px solid var(--border); border-radius: 999px; cursor: pointer; transition: 0.2s; flex-shrink: 0; }
-        .switch::after { content: ''; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; border-radius: 50%; background: var(--text-muted); transition: 0.25s var(--ease-spring); }
+        .switch { position: relative; width: 46px; height: 26px; background: var(--bg-surface-hover); border: 1px solid var(--border); border-radius: 999px; flex-shrink: 0; }
+        .switch::after { content: ''; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; border-radius: 50%; background: var(--text-muted); }
         .switch.on { background: var(--accent-soft); border-color: var(--accent); }
         .switch.on::after { left: 22px; background: var(--accent); }
 
@@ -363,7 +261,7 @@
             :root { --banner-h: 58px; }
             .maintenance-banner { position: static; height: auto; font-size: 0.72rem; padding: 8px 12px; }
             .sidebar { display: none; }
-            .menu-btn { display: inline-flex; }
+            button.menu-btn { display: inline-flex; }
             .main-content { padding: 16px 12px; padding-bottom: 32px; }
             .header-logo { display: block; width: 42px; height: 42px; border-radius: 12px; object-fit: contain; background: var(--logo-bg); border: 1px solid var(--border); padding: 4px; flex-shrink: 0; }
             .header-logo-fallback { width: 42px; height: 42px; font-size: 1.05rem; }
@@ -374,7 +272,6 @@
             .card-header { align-items: stretch; flex-direction: column; }
             .card-header .card-title { align-items: center; }
             .card-header .btn { align-self: stretch; justify-content: center; }
-            /* Taşma düzeltmesi: 3. istatistik alta tam genişlik geçer */
             .stats-strip { grid-template-columns: 1fr 1fr; gap: 10px; }
             .stats-strip .stat:nth-child(3) { grid-column: 1 / -1; }
             .stat { padding: 13px; gap: 10px; }
@@ -405,35 +302,26 @@
             td[data-h]::before { content: attr(data-h) ": "; color: var(--primary); font-weight: 800; }
             td.dash { display: none; }
             tr.row-ongoing { background: var(--accent-soft); border-color: var(--accent); }
-            .status-chip { display: inline-block; margin: 8px 0 0; }
             tr.row-next { background: var(--primary-soft); border-color: var(--primary); }
             tr.row-past { opacity: 0.62; }
+            .status-chip { display: inline-block; margin: 8px 0 0; }
 
             .modal-overlay { align-items: flex-end; padding: 0; }
-            .modal-content { max-width: 100%; border-radius: 24px 24px 0 0; border-bottom: none; max-height: 92vh; padding: 18px 20px; padding-bottom: calc(24px + env(safe-area-inset-bottom)); animation: sheetUp 0.35s var(--ease-soft); }
+            .modal-content { max-width: 100%; border-radius: 24px 24px 0 0; border-bottom: none; max-height: 92vh; padding: 18px 20px; padding-bottom: calc(24px + env(safe-area-inset-bottom)); }
             .modal-content::before { content: ''; display: block; width: 44px; height: 4px; border-radius: 2px; background: var(--border); margin: 0 auto 14px; }
         }
-        @keyframes sheetUp { from { transform: translateY(70px); opacity: 0.4; } to { transform: none; opacity: 1; } }
 
         @media (max-width: 360px) {
             .t-val { font-size: 1.2rem; }
             .up-date { font-size: 0.7rem; padding: 5px 10px; }
             .stat-val { font-size: 0.98rem; }
         }
-
-        @media (prefers-reduced-motion: reduce) {
-            * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
-            .intro-overlay { display: none; }
-        }
     </style>
 
     <script>
         (function () {
             try {
-                var t = localStorage.getItem('theme') || 'dark';
-                var h = new Date().getHours();
-                var light = t === 'light' || (t === 'auto' && h >= 7 && h < 19);
-                if (light) {
+                if (localStorage.getItem('theme') === 'light') {
                     document.documentElement.classList.add('light-mode');
                     var m = document.querySelector('meta[name="theme-color"]');
                     if (m) m.setAttribute('content', '#f1f5f9');
@@ -444,11 +332,6 @@
 </head>
 <body>
 
-    <div class="intro-overlay" aria-hidden="true">
-        <img src="logo.png" alt="" class="intro-logo" onerror="this.style.display='none'">
-        <div class="intro-title">ETP BİLGİ SİSTEMİ</div>
-    </div>
-
     <div class="maintenance-banner" role="status">
         <span class="material-symbols-rounded banner-icon">build_circle</span>
         <span>Sistemde planlı bakım ve yenileme çalışmaları devam etmektedir. Anlayışınız için teşekkürler.</span>
@@ -456,7 +339,6 @@
 
     <div id="toast" class="toast"><span class="material-symbols-rounded">build_circle</span><span id="toast-msg"></span></div>
 
-    <!-- MOBİL ÇEKMECE MENÜ -->
     <div id="drawer-overlay" class="drawer-overlay" onclick="closeDrawer()"></div>
     <aside id="drawer" class="drawer" aria-label="Menü">
         <div class="drawer-head">
@@ -493,28 +375,22 @@
                 </div>
             </div>
             <div class="nav-links">
-                <div class="nav-item active" data-view="dashboard" title="Ana Sayfa" onclick="switchView('dashboard')"><span class="material-symbols-rounded">dashboard</span><span class="nav-label">Ana Sayfa</span></div>
-                <div class="nav-item" data-view="announcements" title="Duyurular" onclick="switchView('announcements')"><span class="material-symbols-rounded">campaign</span><span class="nav-label">Duyurular</span><span class="nav-badge ann-badge"></span></div>
-                <div class="nav-item" data-view="schedule" title="Ders Programı" onclick="switchView('schedule')"><span class="material-symbols-rounded">schedule</span><span class="nav-label">Program</span></div>
-                <div class="nav-item" data-view="calendar" title="Takvim" onclick="switchView('calendar')"><span class="material-symbols-rounded">calendar_month</span><span class="nav-label">Takvim</span></div>
-                <div class="nav-item" data-view="files" title="Dosyalar" onclick="switchView('files')"><span class="material-symbols-rounded">folder_open</span><span class="nav-label">Dosyalar</span></div>
+                <div class="nav-item active" data-view="dashboard" onclick="switchView('dashboard')"><span class="material-symbols-rounded">dashboard</span><span class="nav-label">Ana Sayfa</span></div>
+                <div class="nav-item" data-view="announcements" onclick="switchView('announcements')"><span class="material-symbols-rounded">campaign</span><span class="nav-label">Duyurular</span><span class="nav-badge ann-badge"></span></div>
+                <div class="nav-item" data-view="schedule" onclick="switchView('schedule')"><span class="material-symbols-rounded">schedule</span><span class="nav-label">Program</span></div>
+                <div class="nav-item" data-view="calendar" onclick="switchView('calendar')"><span class="material-symbols-rounded">calendar_month</span><span class="nav-label">Takvim</span></div>
+                <div class="nav-item" data-view="files" onclick="switchView('files')"><span class="material-symbols-rounded">folder_open</span><span class="nav-label">Dosyalar</span></div>
             </div>
             <div class="sidebar-footer">
-                <div class="nav-item" title="Öğrenci Girişi" onclick="studentLogin()">
-                    <span class="material-symbols-rounded">person</span><span class="nav-label">Öğrenci Girişi</span>
-                </div>
-                <div class="nav-item" id="sidebar-admin-btn" title="Yönetici Girişi" onclick="handleAdminAuth()">
-                    <span class="material-symbols-rounded">shield_person</span><span class="nav-label">Yönetici Girişi</span>
-                </div>
+                <div class="nav-item" onclick="studentLogin()"><span class="material-symbols-rounded">person</span><span class="nav-label">Öğrenci Girişi</span></div>
+                <div class="nav-item" id="sidebar-admin-btn" onclick="handleAdminAuth()"><span class="material-symbols-rounded">shield_person</span><span class="nav-label">Yönetici Girişi</span></div>
             </div>
         </nav>
 
         <main class="main-content">
             <header class="top-header">
                 <div class="header-left">
-                    <button class="btn btn-tonal btn-icon menu-btn" onclick="openDrawer()" aria-label="Menüyü aç">
-                        <span class="material-symbols-rounded">menu</span>
-                    </button>
+                    <button class="btn btn-tonal btn-icon menu-btn" onclick="openDrawer()" aria-label="Menüyü aç"><span class="material-symbols-rounded">menu</span></button>
                     <img src="logo.png" alt="BUÜ Logo" class="header-logo" decoding="async" onerror='this.onerror=null;this.style.display="none";this.nextElementSibling.style.display="flex";'>
                     <div class="brand-fallback header-logo-fallback" style="display:none;">E</div>
                     <div style="min-width:0;">
@@ -523,37 +399,32 @@
                     </div>
                 </div>
                 <div class="header-actions">
-                    <button class="btn btn-tonal btn-icon" id="theme-btn" onclick="cycleTheme()" title="Temayı değiştir (Açık → Koyu → Otomatik)">
-                        <span class="material-symbols-rounded" id="theme-icon">light_mode</span>
-                    </button>
-                    <button class="btn btn-danger" id="logout-btn" style="display:none;" onclick="logoutAdmin()">
-                        <span class="material-symbols-rounded">logout</span><span class="btn-text">Çıkış Yap</span>
-                    </button>
+                    <button class="btn btn-tonal btn-icon" onclick="toggleTheme()" aria-label="Tema değiştir"><span class="material-symbols-rounded" id="theme-icon">light_mode</span></button>
+                    <button class="btn btn-danger" id="logout-btn" style="display:none;" onclick="logoutAdmin()"><span class="material-symbols-rounded">logout</span><span class="btn-text">Çıkış Yap</span></button>
                 </div>
             </header>
 
-            <!-- 1) ANA SAYFA -->
             <div id="view-dashboard" class="view-section active">
                 <div class="stats-strip">
-                    <div class="stat" onclick="switchView('announcements')" title="Duyurulara git" role="button" tabindex="0">
+                    <div class="stat" onclick="switchView('announcements')" role="button" tabindex="0">
                         <span class="icon-chip"><span class="material-symbols-rounded">campaign</span></span>
                         <div><div class="stat-val" id="stat-ann">0</div><div class="stat-lbl">Duyuru</div></div>
                     </div>
-                    <div class="stat" onclick="switchView('files')" title="Dosyalara git" role="button" tabindex="0">
+                    <div class="stat" onclick="switchView('files')" role="button" tabindex="0">
                         <span class="icon-chip accent"><span class="material-symbols-rounded">folder_open</span></span>
                         <div><div class="stat-val" id="stat-file">0</div><div class="stat-lbl">Dosya</div></div>
                     </div>
-                    <div class="stat" onclick="switchView('calendar')" title="Akademik takvime git" role="button" tabindex="0">
+                    <div class="stat" onclick="switchView('calendar')" role="button" tabindex="0">
                         <span class="icon-chip warn"><span class="material-symbols-rounded">event</span></span>
                         <div><div class="stat-val" id="stat-next" style="font-size:0.95rem;">—</div><div class="stat-lbl">Sıradaki Etkinlik</div></div>
                     </div>
                 </div>
 
-                <div class="card timer-card tilt">
+                <div class="card timer-card">
                     <div class="timer-left">
                         <span class="icon-chip on-gradient" style="width:46px; height:46px;"><span class="material-symbols-rounded" style="font-size:26px;">timer</span></span>
                         <div style="min-width:0;">
-                            <div class="timer-title" id="target-event-name">Yaklaşan Etkinlik Yükleniyor...</div>
+                            <div class="timer-title" id="target-event-name">Yükleniyor...</div>
                             <div class="timer-sub" id="target-event-date">2026-2027 Akademik Yılı</div>
                         </div>
                     </div>
@@ -564,7 +435,7 @@
                         <div class="t-box"><div class="t-val" id="cd-seconds">00</div><div class="t-lbl">San.</div></div>
                     </div>
                     <div class="timer-progress">
-                        <div class="tp-head"><span id="tp-label">Dönem durumu hesaplanıyor...</span><span id="tp-pct"></span></div>
+                        <div class="tp-head"><span id="tp-label"></span><span id="tp-pct"></span></div>
                         <div class="tp-bar"><div class="tp-fill" id="tp-fill"></div></div>
                     </div>
                 </div>
@@ -590,7 +461,6 @@
                 </div>
             </div>
 
-            <!-- 2) DUYURULAR -->
             <div id="view-announcements" class="view-section">
                 <div class="card">
                     <div class="card-header">
@@ -611,7 +481,6 @@
                 </div>
             </div>
 
-            <!-- 3) DERS PROGRAMI -->
             <div id="view-schedule" class="view-section">
                 <div class="card">
                     <div class="card-header">
@@ -621,7 +490,6 @@
                 </div>
             </div>
 
-            <!-- 4) AKADEMİK TAKVİM -->
             <div id="view-calendar" class="view-section">
                 <div class="card" style="margin-bottom:20px; display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap;">
                     <div class="card-title" style="margin:0;"><span class="icon-chip accent"><span class="material-symbols-rounded">calendar_add_on</span></span> Takvimini tek dokunuşla doldur</div>
@@ -632,7 +500,7 @@
                     <div class="card-header">
                         <div class="card-title"><span class="icon-chip"><span class="material-symbols-rounded">school</span></span> Güz Yarıyılı (2026-2027)</div>
                     </div>
-                    <p class="cal-note"><span class="material-symbols-rounded" style="font-size:16px;">sort</span> Faaliyetler en yakın tarihten en uzağa doğru sıralanmıştır.</p>
+                    <p class="cal-note"><span class="material-symbols-rounded" style="font-size:16px;">sort</span> Faaliyetler en yakın tarihten en uzağa sıralanmıştır.</p>
                     <div class="table-wrapper">
                         <table><thead><tr><th>Faaliyet / İdari İşlem</th><th>Tarih</th></tr></thead><tbody id="fall-tbody"></tbody></table>
                     </div>
@@ -642,7 +510,7 @@
                     <div class="card-header">
                         <div class="card-title"><span class="icon-chip accent"><span class="material-symbols-rounded">eco</span></span> Bahar Yarıyılı (2026-2027)</div>
                     </div>
-                    <p class="cal-note"><span class="material-symbols-rounded" style="font-size:16px;">sort</span> Faaliyetler en yakın tarihten en uzağa doğru sıralanmıştır.</p>
+                    <p class="cal-note"><span class="material-symbols-rounded" style="font-size:16px;">sort</span> Faaliyetler en yakın tarihten en uzağa sıralanmıştır.</p>
                     <div class="table-wrapper">
                         <table><thead><tr><th>Faaliyet / İdari İşlem</th><th>Tarih</th></tr></thead><tbody id="spring-tbody"></tbody></table>
                     </div>
@@ -656,22 +524,22 @@
                         <table class="holiday-table">
                             <thead><tr><th>Resmi Tatil / Dini Bayram</th><th>Telafi Durumu (Güz)</th><th>Telafi Durumu (Bahar)</th></tr></thead>
                             <tbody>
-                                <tr style="--i:0"><td>28 Ekim 2026 Çarşamba — Cumhuriyet Bayramı (Yarım Gün)</td><td data-h="Güz">72 iş gününe dahil edilmemiştir</td><td data-h="Bahar" class="dash">—</td></tr>
-                                <tr style="--i:1"><td>29 Ekim 2026 Perşembe — Cumhuriyet Bayramı</td><td data-h="Güz">72 iş gününe dahil edilmemiştir</td><td data-h="Bahar" class="dash">—</td></tr>
-                                <tr style="--i:2"><td>1 Ocak 2027 Cuma — Yılbaşı</td><td data-h="Güz">72 iş gününe dahil edilmemiştir</td><td data-h="Bahar" class="dash">—</td></tr>
-                                <tr style="--i:3"><td>8 Mart 2027 Pazartesi — Ramazan Bayramı Arefe</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar" class="dash">—</td></tr>
-                                <tr style="--i:4"><td>9 Mart 2027 Salı — Ramazan Bayramı 1. Gün</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar" class="dash">—</td></tr>
-                                <tr style="--i:5"><td>10 Mart 2027 Çarşamba — Ramazan Bayramı 2. Gün</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar" class="dash">—</td></tr>
-                                <tr style="--i:6"><td>11 Mart 2027 Perşembe — Ramazan Bayramı 3. Gün</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar" class="dash">—</td></tr>
-                                <tr style="--i:7"><td>12 Mart 2027 Cuma</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar">Ramazan Bayramı haftası nedeniyle 71 iş gününe dahil edilmemiştir</td></tr>
-                                <tr style="--i:8"><td>23 Nisan 2027 Cuma — Ulusal Egemenlik ve Çocuk Bayramı</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar">71 iş gününe dahil edilmemiştir</td></tr>
-                                <tr style="--i:9"><td>1 Mayıs 2027 Cumartesi — İşçi ve Emekçiler Bayramı</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar">71 iş gününe dahil edilmemiştir</td></tr>
-                                <tr style="--i:10"><td>15 Mayıs 2027 Cumartesi — Arefe</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar" class="dash">—</td></tr>
-                                <tr style="--i:11"><td>16 Mayıs 2027 Pazar — Kurban Bayramı 1. Gün</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar" class="dash">—</td></tr>
-                                <tr style="--i:12"><td>17 Mayıs 2027 Pazartesi — Kurban Bayramı 2. Gün</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar">71 iş gününe dahil edilmemiştir</td></tr>
-                                <tr style="--i:13"><td>18 Mayıs 2027 Salı — Kurban Bayramı 3. Gün</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar">71 iş gününe dahil edilmemiştir</td></tr>
-                                <tr style="--i:14"><td>19 Mayıs 2027 Çarşamba — Kurban Bayramı 4. Gün / Atatürk'ü Anma, Gençlik ve Spor Bayramı</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar">71 iş gününe dahil edilmemiştir</td></tr>
-                                <tr style="--i:15"><td>15 Temmuz 2027 Perşembe — Demokrasi ve Milli Birlik Günü</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar" class="dash">—</td></tr>
+                                <tr><td>28 Ekim 2026 Çarşamba — Cumhuriyet Bayramı (Yarım Gün)</td><td data-h="Güz">72 iş gününe dahil edilmemiştir</td><td data-h="Bahar" class="dash">—</td></tr>
+                                <tr><td>29 Ekim 2026 Perşembe — Cumhuriyet Bayramı</td><td data-h="Güz">72 iş gününe dahil edilmemiştir</td><td data-h="Bahar" class="dash">—</td></tr>
+                                <tr><td>1 Ocak 2027 Cuma — Yılbaşı</td><td data-h="Güz">72 iş gününe dahil edilmemiştir</td><td data-h="Bahar" class="dash">—</td></tr>
+                                <tr><td>8 Mart 2027 Pazartesi — Ramazan Bayramı Arefe</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar" class="dash">—</td></tr>
+                                <tr><td>9 Mart 2027 Salı — Ramazan Bayramı 1. Gün</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar" class="dash">—</td></tr>
+                                <tr><td>10 Mart 2027 Çarşamba — Ramazan Bayramı 2. Gün</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar" class="dash">—</td></tr>
+                                <tr><td>11 Mart 2027 Perşembe — Ramazan Bayramı 3. Gün</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar" class="dash">—</td></tr>
+                                <tr><td>12 Mart 2027 Cuma</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar">Ramazan Bayramı haftası nedeniyle 71 iş gününe dahil edilmemiştir</td></tr>
+                                <tr><td>23 Nisan 2027 Cuma — Ulusal Egemenlik ve Çocuk Bayramı</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar">71 iş gününe dahil edilmemiştir</td></tr>
+                                <tr><td>1 Mayıs 2027 Cumartesi — İşçi ve Emekçiler Bayramı</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar">71 iş gününe dahil edilmemiştir</td></tr>
+                                <tr><td>15 Mayıs 2027 Cumartesi — Arefe</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar" class="dash">—</td></tr>
+                                <tr><td>16 Mayıs 2027 Pazar — Kurban Bayramı 1. Gün</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar" class="dash">—</td></tr>
+                                <tr><td>17 Mayıs 2027 Pazartesi — Kurban Bayramı 2. Gün</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar">71 iş gününe dahil edilmemiştir</td></tr>
+                                <tr><td>18 Mayıs 2027 Salı — Kurban Bayramı 3. Gün</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar">71 iş gününe dahil edilmemiştir</td></tr>
+                                <tr><td>19 Mayıs 2027 Çarşamba — Kurban Bayramı 4. Gün / Atatürk'ü Anma, Gençlik ve Spor Bayramı</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar">71 iş gününe dahil edilmemiştir</td></tr>
+                                <tr><td>15 Temmuz 2027 Perşembe — Demokrasi ve Milli Birlik Günü</td><td data-h="Güz" class="dash">—</td><td data-h="Bahar" class="dash">—</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -682,7 +550,6 @@
                 </div>
             </div>
 
-            <!-- 5) DOSYALAR -->
             <div id="view-files" class="view-section">
                 <div class="card">
                     <div class="card-header">
@@ -695,36 +562,19 @@
                     <div id="file-list" class="data-list"></div>
                 </div>
             </div>
-
-            <footer class="footer">
-                <div class="footer-inner">
-                    <span class="material-symbols-rounded">school</span>
-                    <strong>BUÜ Elektronik Teknolojisi Programı</strong>
-                    <span class="footer-dot">•</span>
-                    <span>© 2026</span>
-                </div>
-            </footer>
         </main>
 
-        <button id="to-top" class="to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Yukarı çık">
-            <span class="material-symbols-rounded">arrow_upward</span>
-        </button>
+        <button id="to-top" class="to-top" onclick="window.scrollTo(0,0)" aria-label="Yukarı çık"><span class="material-symbols-rounded">arrow_upward</span></button>
     </div>
 
-    <!-- ADMİN MODAL -->
     <div id="admin-modal" class="modal-overlay">
         <div class="modal-content">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
-                <h2 style="display:flex; align-items:center; gap:8px; color:var(--primary); font-size:1.15rem;">
-                    <span class="material-symbols-rounded">admin_panel_settings</span> Yönetici Paneli
-                </h2>
+                <h2 style="display:flex; align-items:center; gap:8px; color:var(--primary); font-size:1.15rem;"><span class="material-symbols-rounded">admin_panel_settings</span> Yönetici Paneli</h2>
                 <button class="btn btn-tonal btn-icon" onclick="closeAdminModal()" aria-label="Kapat"><span class="material-symbols-rounded">close</span></button>
             </div>
 
-            <div class="admin-status-badge">
-                <span class="material-symbols-rounded" style="font-size:16px;">verified</span>
-                <span>Yönetici Oturumu Doğrulandı</span>
-            </div>
+            <div class="admin-status-badge"><span class="material-symbols-rounded" style="font-size:16px;">verified</span><span>Yönetici Oturumu Doğrulandı</span></div>
 
             <div class="admin-tabs">
                 <button class="btn btn-tonal btn-mini tab-btn-active" id="tab-ann-btn" onclick="switchAdminTab('admin-ann')">Duyuru</button>
@@ -734,18 +584,15 @@
             </div>
 
             <div id="admin-ann">
-                <div class="input-group"><label>Duyuru Başlığı</label><input type="text" id="ann-title" class="form-control" placeholder="Örn: Vize Tarihleri Hakkında" maxlength="150"></div>
+                <div class="input-group"><label>Duyuru Başlığı</label><input type="text" id="ann-title" class="form-control" placeholder="Örn: Vize Tarihleri Hakkında" maxlength="150" autocomplete="off"></div>
                 <div class="input-group"><label>Kategori</label>
                     <select id="ann-category" class="form-control">
-                        <option value="duyuru">📢 Duyuru</option>
-                        <option value="sinav">📝 Sınav</option>
-                        <option value="staj">💼 Staj</option>
-                        <option value="etkinlik">🎉 Etkinlik</option>
+                        <option value="duyuru">Duyuru</option><option value="sinav">Sınav</option><option value="staj">Staj</option><option value="etkinlik">Etkinlik</option>
                     </select>
                 </div>
                 <div class="switch-row">
                     <div id="pin-switch" class="switch" onclick="toggleFormPin()"></div>
-                    <span style="font-size:0.84rem; font-weight:700; color:var(--text-muted);">⭐ Önemli duyuru (üste sabitle)</span>
+                    <span style="font-size:0.84rem; font-weight:700; color:var(--text-muted);">Önemli duyuru (üste sabitle)</span>
                 </div>
                 <div class="input-group"><label>Duyuru İçeriği</label><textarea id="ann-content" class="form-control" rows="5" placeholder="Detayları buraya yazın..." maxlength="3000"></textarea></div>
                 <div style="display:flex; gap:10px;">
@@ -760,12 +607,12 @@
                 <div class="input-group">
                     <label>Seçenek 1: Doğrudan Dosya Yükle</label>
                     <input type="file" id="direct-file-input" class="form-control" style="padding:10px;" accept="*/*">
-                    <p class="form-hint"><span class="material-symbols-rounded" style="font-size:14px;">cloud_upload</span> Tüm dosya türleri • Boyut/tür sınırı yok • İndirme limitsiz</p>
+                    <p class="form-hint"><span class="material-symbols-rounded" style="font-size:14px;">cloud_upload</span> Tüm dosya türleri • Boyut/tür sınırı yok</p>
                     <button class="btn btn-primary" id="upload-btn" style="width:100%; margin-top:10px;" onclick="uploadDirectFile()">Sisteme Yükle</button>
                 </div>
                 <div class="admin-divider">--- VEYA DIŞ BAĞLANTI (URL) EKLE ---</div>
-                <div class="input-group"><label>Dosya Görünüm Adı</label><input type="text" id="file-title" class="form-control" placeholder="Örn: Staj Başvuru Formu" maxlength="100"></div>
-                <div class="input-group"><label>Dosya Linki (URL)</label><input type="url" id="file-url" class="form-control" placeholder="https://..."></div>
+                <div class="input-group"><label>Dosya Görünüm Adı</label><input type="text" id="file-title" class="form-control" placeholder="Örn: Staj Başvuru Formu" maxlength="100" autocomplete="off"></div>
+                <div class="input-group"><label>Dosya Linki (URL)</label><input type="url" id="file-url" class="form-control" placeholder="https://..." autocomplete="off"></div>
                 <button class="btn btn-tonal" style="width:100%;" onclick="saveItem('file')">Link Olarak Ekle</button>
                 <div class="admin-divider">--- YAYINDAKİ DOSYALAR ---</div>
                 <div id="admin-file-list"></div>
@@ -774,19 +621,17 @@
             <div id="admin-schedule" style="display:none;">
                 <div class="form-row">
                     <div class="input-group"><label>Gün</label>
-                        <select id="ls-day" class="form-control">
-                            <option value="1">Pazartesi</option><option value="2">Salı</option><option value="3">Çarşamba</option><option value="4">Perşembe</option><option value="5">Cuma</option>
-                        </select>
+                        <select id="ls-day" class="form-control"><option value="1">Pazartesi</option><option value="2">Salı</option><option value="3">Çarşamba</option><option value="4">Perşembe</option><option value="5">Cuma</option></select>
                     </div>
-                    <div class="input-group"><label>Ders Adı</label><input type="text" id="ls-course" class="form-control" placeholder="Örn: Mikrodenetleyiciler"></div>
+                    <div class="input-group"><label>Ders Adı</label><input type="text" id="ls-course" class="form-control" placeholder="Örn: Mikrodenetleyiciler" autocomplete="off"></div>
                 </div>
                 <div class="form-row">
                     <div class="input-group"><label>Başlangıç</label><input type="time" id="ls-start" class="form-control" value="09:00"></div>
                     <div class="input-group"><label>Bitiş</label><input type="time" id="ls-end" class="form-control" value="10:50"></div>
                 </div>
                 <div class="form-row">
-                    <div class="input-group"><label>Derslik</label><input type="text" id="ls-room" class="form-control" placeholder="Örn: E-Blok 201"></div>
-                    <div class="input-group"><label>Öğretim Elemanı</label><input type="text" id="ls-instructor" class="form-control" placeholder="Örn: Dr. Öğr. Üyesi ..."></div>
+                    <div class="input-group"><label>Derslik</label><input type="text" id="ls-room" class="form-control" placeholder="Örn: E-Blok 201" autocomplete="off"></div>
+                    <div class="input-group"><label>Öğretim Elemanı</label><input type="text" id="ls-instructor" class="form-control" placeholder="Örn: Dr. Öğr. Üyesi ..." autocomplete="off"></div>
                 </div>
                 <button class="btn btn-primary" style="width:100%;" onclick="saveLesson()">Dersi Programa Ekle</button>
                 <div class="admin-divider">--- MEVCUT PROGRAM ---</div>
@@ -795,9 +640,7 @@
 
             <div id="admin-sec" style="display:none;">
                 <p style="font-size:0.84rem; color:var(--text-muted); margin-bottom:16px; line-height:1.5;">Yönetici oturumunuz GitHub API yetkilendirmesi ile korunmaktadır.</p>
-                <button class="btn btn-danger" style="width:100%; padding:12px;" onclick="logoutAdmin()">
-                    <span class="material-symbols-rounded">logout</span> Oturumu Güvenli Şekilde Kapat
-                </button>
+                <button class="btn btn-danger" style="width:100%; padding:12px;" onclick="logoutAdmin()"><span class="material-symbols-rounded">logout</span> Oturumu Güvenli Şekilde Kapat</button>
             </div>
         </div>
     </div>
@@ -807,14 +650,8 @@
         const REPO_NAME = "opendata";
 
         let userToken = localStorage.getItem("gh_admin_token") || "";
-        let announcementsData = [];
-        let filesData = [];
-        let scheduleData = [];
-        let editingAnnId = null;
-        let formPinned = false;
-        let currentCat = 'all';
-        let themeMode = localStorage.getItem('theme') || 'dark';
-        let toastTimer = null;
+        let announcementsData = [], filesData = [], scheduleData = [];
+        let editingAnnId = null, formPinned = false, currentCat = 'all', toastTimer = null;
 
         const CATS = {
             duyuru: { label: 'Duyuru', icon: 'campaign', cls: 'cat-duyuru' },
@@ -879,185 +716,88 @@
         };
 
         document.addEventListener('DOMContentLoaded', function () {
-            applyTheme();
-            updateDateInfo();
+            syncThemeUI();
+            document.getElementById('current-date').innerText = new Date().toLocaleDateString('tr-TR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
             updateAdminUI();
             renderCalendar();
             renderUpcoming();
             renderPhase();
             startCountdown();
             fetchData();
-            initTilt();
-            initToTop();
 
-            setTimeout(() => { const io = document.querySelector('.intro-overlay'); if (io) io.remove(); }, 1800);
-
-            setInterval(() => {
-                if (themeMode === 'auto') applyTheme();
-                updateScheduleLive();
-            }, 60000);
-
-            document.addEventListener('pointerdown', function (e) {
-                const t = e.target.closest('.btn, .nav-item, .file-link, .up-item, .stat, .filter-chip');
-                if (!t) return;
-                const rect = t.getBoundingClientRect();
-                const size = Math.max(rect.width, rect.height);
-                const r = document.createElement('span');
-                r.className = 'ripple';
-                r.style.width = r.style.height = size + 'px';
-                r.style.left = (e.clientX - rect.left - size / 2) + 'px';
-                r.style.top = (e.clientY - rect.top - size / 2) + 'px';
-                t.appendChild(r);
-                setTimeout(() => r.remove(), 650);
+            let raf = null;
+            window.addEventListener('scroll', () => {
+                if (raf) return;
+                raf = requestAnimationFrame(() => {
+                    document.getElementById('to-top').classList.toggle('show', window.scrollY > 400);
+                    raf = null;
+                });
             }, { passive: true });
 
-            const overlay = document.getElementById('admin-modal');
-            overlay.addEventListener('click', e => { if (e.target === overlay) closeAdminModal(); });
-            document.addEventListener('keydown', e => {
-                if (e.key === 'Escape') { closeAdminModal(); closeDrawer(); }
-            });
+            document.getElementById('admin-modal').addEventListener('click', e => { if (e.target.id === 'admin-modal') closeAdminModal(); });
+            document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeAdminModal(); closeDrawer(); } });
 
-            if ('serviceWorker' in navigator) {
-                window.addEventListener('load', () => {
-                    navigator.serviceWorker.register('./sw.js').catch(() => {});
-                });
-            }
+            if ('serviceWorker' in navigator) window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
+
+            setInterval(updateScheduleLive, 60000);
         });
 
-        /* ---------- ÇEKMECE MENÜ ---------- */
-        function openDrawer() {
-            document.getElementById('drawer').classList.add('open');
-            document.getElementById('drawer-overlay').classList.add('show');
-            document.body.classList.add('drawer-open');
-        }
-        function closeDrawer() {
-            document.getElementById('drawer').classList.remove('open');
-            document.getElementById('drawer-overlay').classList.remove('show');
-            document.body.classList.remove('drawer-open');
-        }
+        /* MENÜ */
+        function openDrawer() { document.getElementById('drawer').classList.add('open'); document.getElementById('drawer-overlay').classList.add('show'); document.body.classList.add('drawer-open'); }
+        function closeDrawer() { document.getElementById('drawer').classList.remove('open'); document.getElementById('drawer-overlay').classList.remove('show'); document.body.classList.remove('drawer-open'); }
 
-        /* ---------- TOAST ---------- */
+        /* TOAST */
         function showToast(msg) {
-            const t = document.getElementById('toast');
             document.getElementById('toast-msg').innerText = msg;
-            t.classList.add('show');
+            document.getElementById('toast').classList.add('show');
             clearTimeout(toastTimer);
-            toastTimer = setTimeout(() => t.classList.remove('show'), 3400);
+            toastTimer = setTimeout(() => document.getElementById('toast').classList.remove('show'), 3400);
         }
+        function studentLogin() { closeDrawer(); showToast('Bu kısım bakımdadır, en yakın zamanda hizmetinizde olacak.'); }
 
-        function studentLogin() {
-            closeDrawer();
-            showToast('Bu kısım bakımdadır, en yakın zamanda hizmetinizde olacak. 🛠️');
-        }
-
-        /* ---------- TEMA ---------- */
-        function autoLight() { const h = new Date().getHours(); return h >= 7 && h < 19; }
-        function applyTheme() {
-            const light = themeMode === 'light' || (themeMode === 'auto' && autoLight());
-            document.documentElement.classList.toggle('light-mode', light);
+        /* TEMA (yalnız manuel) */
+        function syncThemeUI() {
+            const light = document.documentElement.classList.contains('light-mode');
+            document.getElementById('theme-icon').innerText = light ? 'dark_mode' : 'light_mode';
             const meta = document.querySelector('meta[name="theme-color"]');
             if (meta) meta.setAttribute('content', light ? '#f1f5f9' : '#0b0f19');
-            const ic = document.getElementById('theme-icon');
-            ic.innerText = themeMode === 'auto' ? 'brightness_auto' : (light ? 'dark_mode' : 'light_mode');
-            document.getElementById('theme-btn').title = 'Tema: ' + (themeMode === 'auto' ? 'Otomatik (saate göre)' : themeMode === 'light' ? 'Açık' : 'Koyu');
         }
-        function cycleTheme() {
-            themeMode = themeMode === 'dark' ? 'light' : themeMode === 'light' ? 'auto' : 'dark';
-            localStorage.setItem('theme', themeMode);
-            applyTheme();
-            const ic = document.getElementById('theme-icon');
-            ic.classList.remove('spin-once'); void ic.offsetWidth; ic.classList.add('spin-once');
-        }
-
-        function updateDateInfo() {
-            const now = new Date();
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            const h = now.getHours();
-            const g = h < 6 ? 'İyi geceler' : h < 12 ? 'Günaydın' : h < 18 ? 'İyi günler' : 'İyi akşamlar';
-            document.getElementById('current-date').innerText = `${now.toLocaleDateString('tr-TR', options)} • ${g}`;
+        function toggleTheme() {
+            const isLight = document.documentElement.classList.toggle('light-mode');
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            syncThemeUI();
         }
 
         function switchView(viewName) {
             closeDrawer();
             document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
-            const target = document.getElementById('view-' + viewName);
-            void target.offsetWidth;
-            target.classList.add('active');
-            const titles = { 'dashboard': 'Ana Sayfa', 'announcements': 'Duyurular', 'schedule': 'Ders Programı', 'calendar': 'Akademik Takvim', 'files': 'Dosyalar' };
+            document.getElementById('view-' + viewName).classList.add('active');
+            const titles = { dashboard: 'Ana Sayfa', announcements: 'Duyurular', schedule: 'Ders Programı', calendar: 'Akademik Takvim', files: 'Dosyalar' };
             document.getElementById('page-title-text').innerText = titles[viewName];
             document.querySelectorAll('.nav-item').forEach(el => el.classList.toggle('active', el.dataset.view === viewName));
-            if (viewName === 'announcements') {
-                localStorage.setItem('lastVisitAnn', String(Date.now()));
-                updateAnnBadge();
-            }
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (viewName === 'announcements') { localStorage.setItem('lastVisitAnn', String(Date.now())); updateAnnBadge(); }
+            window.scrollTo(0, 0);
         }
 
-        /* ---------- YENİ DUYURU ROZETİ ---------- */
         function updateAnnBadge() {
             const last = parseInt(localStorage.getItem('lastVisitAnn') || '0', 10);
-            const fresh = (announcementsData || []).filter(i => new Date(i.date).getTime() > last).length;
+            const fresh = announcementsData.filter(i => new Date(i.date).getTime() > last).length;
             document.querySelectorAll('.ann-badge').forEach(b => {
                 if (fresh > 0) { b.style.display = 'inline-flex'; b.innerText = fresh > 9 ? '9+' : String(fresh); }
-                else { b.style.display = 'none'; b.innerText = ''; }
+                else b.style.display = 'none';
             });
         }
 
-        /* ---------- PAYLAŞ ---------- */
         async function shareAnn(id) {
-            const it = (announcementsData || []).find(i => i.id === id);
+            const it = announcementsData.find(i => i.id === id);
             if (!it) return;
-            const text = `📢 ${it.title}\n\n${it.content}\n\n— BUÜ Elektronik Teknolojisi Programı`;
-            if (navigator.share) {
-                try { await navigator.share({ title: it.title, text: text }); } catch (e) {}
-            } else {
-                try { await navigator.clipboard.writeText(text); showToast('Duyuru panoya kopyalandı! 📋'); }
-                catch (e) { showToast('Paylaşım bu tarayıcıda desteklenmiyor.'); }
-            }
+            const text = it.title + '\n\n' + it.content + '\n\n— BUÜ Elektronik Teknolojisi Programı';
+            if (navigator.share) { try { await navigator.share({ title: it.title, text: text }); } catch (e) {} }
+            else { try { await navigator.clipboard.writeText(text); showToast('Duyuru panoya kopyalandı.'); } catch (e) { showToast('Paylaşım desteklenmiyor.'); } }
         }
 
-        function initTilt() {
-            if (window.matchMedia('(hover: none)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-            document.querySelectorAll('.tilt').forEach(card => {
-                let raf = null;
-                card.addEventListener('pointermove', e => {
-                    if (raf) return;
-                    raf = requestAnimationFrame(() => {
-                        const r = card.getBoundingClientRect();
-                        const x = (e.clientX - r.left) / r.width - 0.5;
-                        const y = (e.clientY - r.top) / r.height - 0.5;
-                        card.style.transform = `translateY(-4px) rotateX(${(-y * 5).toFixed(2)}deg) rotateY(${(x * 5).toFixed(2)}deg)`;
-                        raf = null;
-                    });
-                }, { passive: true });
-                card.addEventListener('pointerleave', () => { card.style.transform = ''; }, { passive: true });
-            });
-        }
-
-        function initToTop() {
-            const btn = document.getElementById('to-top');
-            let raf = null;
-            window.addEventListener('scroll', () => {
-                if (raf) return;
-                raf = requestAnimationFrame(() => { btn.classList.toggle('show', window.scrollY > 400); raf = null; });
-            }, { passive: true });
-        }
-
-        function animateValue(el, to) {
-            const from = parseInt(el.innerText, 10) || 0;
-            if (from === to) { el.innerText = to; return; }
-            const t0 = performance.now(), dur = 600;
-            function step(t) {
-                const p = Math.min(1, (t - t0) / dur);
-                const e = 1 - Math.pow(1 - p, 3);
-                el.innerText = Math.round(from + (to - from) * e);
-                if (p < 1) requestAnimationFrame(step);
-            }
-            requestAnimationFrame(step);
-        }
-
-        /* ---------- TAKVİM ---------- */
-        function pd(str) { const [y, m, d] = str.split('-').map(Number); return new Date(y, m - 1, d); }
+        /* TAKVİM */
+        function pd(str) { const p = str.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
         function fmtDate(d) { return d.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' }); }
         function fmtShort(d) { return d.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long' }); }
         function dayDiff(a, b) { return Math.round((a - b) / 86400000); }
@@ -1067,219 +807,166 @@
             buildSemester('fall-tbody', FALL_RAW, today);
             buildSemester('spring-tbody', SPRING_RAW, today);
         }
-
         function buildSemester(tbodyId, rawList, today) {
             const sorted = rawList.map(r => ({ name: r[0], s: pd(r[1]), e: pd(r[2]), note: r[3] || null, same: r[1] === r[2] })).sort((a, b) => a.s - b.s);
             let nextMarked = false;
-            const rows = sorted.map((item, idx) => {
+            document.getElementById(tbodyId).innerHTML = sorted.map(item => {
                 const endOfDay = new Date(item.e); endOfDay.setHours(23, 59, 59, 999);
                 let chip = '', rowClass = '';
                 if (today > endOfDay) { rowClass = 'row-past'; chip = '<span class="status-chip chip-done">Tamamlandı</span>'; }
                 else if (today >= item.s && today <= endOfDay) { rowClass = 'row-ongoing'; chip = '<span class="status-chip chip-ongoing">Devam Ediyor</span>'; }
                 else if (!nextMarked) { rowClass = 'row-next'; chip = '<span class="status-chip chip-next">Yaklaşan</span>'; nextMarked = true; }
-                const label = (item.same ? fmtDate(item.s) : `${fmtDate(item.s)} - ${fmtDate(item.e)}`) + (item.note ? ` (${item.note})` : '');
-                return `<tr class="${rowClass}" style="--i:${idx}"><td><strong>${item.name}</strong>${chip}</td><td class="cal-date">${label}</td></tr>`;
+                const label = (item.same ? fmtDate(item.s) : fmtDate(item.s) + ' - ' + fmtDate(item.e)) + (item.note ? ' (' + item.note + ')' : '');
+                return '<tr class="' + rowClass + '"><td><strong>' + item.name + '</strong>' + chip + '</td><td class="cal-date">' + label + '</td></tr>';
             }).join('');
-            document.getElementById(tbodyId).innerHTML = rows;
         }
 
-        /* ---------- .ics ---------- */
         function icsDate(d) { return d.getFullYear() + String(d.getMonth() + 1).padStart(2, '0') + String(d.getDate()).padStart(2, '0'); }
         function downloadICS() {
             const events = [];
             const stamp = icsDate(new Date()) + 'T000000Z';
-            [...FALL_RAW.map(r => ['Güz', r]), ...SPRING_RAW.map(r => ['Bahar', r])].forEach(([sem, r], i) => {
-                const s = pd(r[1]); const e = pd(r[2]); const end = new Date(e); end.setDate(end.getDate() + 1);
-                const summary = (r[0] + (r[3] ? ` (${r[3]})` : '') + ` - ${sem} Yarıyılı`).replace(/[,;\\]/g, m => '\\' + m);
-                events.push(`BEGIN:VEVENT\r\nUID:etp-${i}-${sem}@bu-etp\r\nDTSTAMP:${stamp}\r\nDTSTART;VALUE=DATE:${icsDate(s)}\r\nDTEND;VALUE=DATE:${icsDate(end)}\r\nSUMMARY:${summary}\r\nEND:VEVENT`);
+            FALL_RAW.concat(SPRING_RAW).forEach((r, i) => {
+                const s = pd(r[1]), e = pd(r[2]); const end = new Date(e); end.setDate(end.getDate() + 1);
+                const summary = (r[0] + (r[3] ? ' (' + r[3] + ')' : '')).replace(/[,;\\]/g, m => '\\' + m);
+                events.push('BEGIN:VEVENT\r\nUID:etp-' + i + '@bu-etp\r\nDTSTAMP:' + stamp + '\r\nDTSTART;VALUE=DATE:' + icsDate(s) + '\r\nDTEND;VALUE=DATE:' + icsDate(end) + '\r\nSUMMARY:' + summary + '\r\nEND:VEVENT');
             });
-            const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//BUÜ ETP Bilgi Sistemi//TR', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH', ...events, 'END:VCALENDAR'].join('\r\n');
-            const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+            const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//BUÜ ETP//TR', 'CALSCALE:GREGORIAN'].concat(events, ['END:VCALENDAR']).join('\r\n');
             const a = document.createElement('a');
-            a.href = URL.createObjectURL(blob);
+            a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar;charset=utf-8' }));
             a.download = 'BUU-Akademik-Takvim-2026-2027.ics';
             document.body.appendChild(a); a.click(); a.remove();
             URL.revokeObjectURL(a.href);
-            showToast('Takvim dosyası indirildi 📅');
+            showToast('Takvim dosyası indirildi.');
         }
 
-        /* ---------- YAKLAŞAN TARİHLER ---------- */
         function renderUpcoming() {
             const today = new Date(); today.setHours(0, 0, 0, 0);
-            const relevant = [...FALL_RAW, ...SPRING_RAW].map(r => ({ name: r[0], s: pd(r[1]), e: pd(r[2]) })).filter(i => i.e >= today);
-            relevant.sort((a, b) => {
-                const ao = a.s <= today ? 0 : 1, bo = b.s <= today ? 0 : 1;
-                if (ao !== bo) return ao - bo;
-                return ao === 0 ? (a.e - b.e) : (a.s - b.s);
-            });
-            const list = relevant.slice(0, 5);
+            const rel = FALL_RAW.concat(SPRING_RAW).map(r => ({ name: r[0], s: pd(r[1]), e: pd(r[2]) })).filter(i => i.e >= today);
+            rel.sort((a, b) => { const ao = a.s <= today ? 0 : 1, bo = b.s <= today ? 0 : 1; return ao !== bo ? ao - bo : (ao === 0 ? a.e - b.e : a.s - b.s); });
+            const list = rel.slice(0, 5);
             const el = document.getElementById('upcoming-list');
-            if (!list.length) { el.innerHTML = `<div class="empty-state"><span class="material-symbols-rounded">event_busy</span><p>Yaklaşan tarih bulunmuyor.</p></div>`; return; }
-            el.innerHTML = list.map((i, idx) => {
+            if (!list.length) { el.innerHTML = '<div class="empty-state"><span class="material-symbols-rounded">event_busy</span><p>Yaklaşan tarih bulunmuyor.</p></div>'; return; }
+            el.innerHTML = list.map(i => {
                 const ongoing = i.s <= today;
                 const days = dayDiff(i.s, today);
-                const chip = ongoing ? `<span class="up-date ongoing">Devam Ediyor</span>` : `<span class="up-date">${fmtShort(i.s)}</span>`;
-                const sub = ongoing ? `Son gün: ${fmtShort(i.e)}` : (days === 0 ? 'Bugün başlıyor' : `${days} gün sonra başlıyor`);
-                return `<div class="up-item" style="--i:${idx}" onclick="switchView('calendar')" title="Takvimde gör">
-                    <div style="min-width:0;"><div class="up-name">${i.name}</div>
-                    <div class="up-sub"><span class="material-symbols-rounded" style="font-size:14px;">${ongoing ? 'hourglass_bottom' : 'hourglass_top'}</span> ${sub}</div></div>
-                    ${chip}</div>`;
+                const chip = ongoing ? '<span class="up-date ongoing">Devam Ediyor</span>' : '<span class="up-date">' + fmtShort(i.s) + '</span>';
+                const sub = ongoing ? 'Son gün: ' + fmtShort(i.e) : (days === 0 ? 'Bugün başlıyor' : days + ' gün sonra başlıyor');
+                return '<div class="up-item" onclick="switchView(\'calendar\')"><div style="min-width:0;"><div class="up-name">' + i.name + '</div><div class="up-sub"><span class="material-symbols-rounded" style="font-size:14px;">' + (ongoing ? 'hourglass_bottom' : 'hourglass_top') + '</span> ' + sub + '</div></div>' + chip + '</div>';
             }).join('');
         }
 
-        /* ---------- DÖNEM ÇUBUĞU ---------- */
         function renderPhase() {
             const today = new Date(); today.setHours(0, 0, 0, 0);
-            const fallStart = pd('2026-09-28'), fallEnd = pd('2027-01-08');
-            const springStart = pd('2027-02-22'), springEnd = pd('2027-06-11');
+            const fs = pd('2026-09-28'), fe = pd('2027-01-08'), ss = pd('2027-02-22'), se = pd('2027-06-11');
             let label = '', pct = 0;
-            if (today < fallStart) { label = `Güz yarıyılına ${dayDiff(fallStart, today)} gün var`; pct = 0; }
-            else if (today <= fallEnd) { pct = Math.min(100, Math.max(0, Math.round(dayDiff(today, fallStart) / dayDiff(fallEnd, fallStart) * 100))); label = 'Güz Yarıyılı devam ediyor'; }
-            else if (today < springStart) { label = 'Ara tatil • Bahar yarıyılı bekleniyor'; pct = 100; }
-            else if (today <= springEnd) { pct = Math.min(100, Math.max(0, Math.round(dayDiff(today, springStart) / dayDiff(springEnd, springStart) * 100))); label = 'Bahar Yarıyılı devam ediyor'; }
-            else { label = '2026-2027 Akademik Yılı tamamlandı'; pct = 100; }
+            if (today < fs) { label = 'Güz yarıyılına ' + dayDiff(fs, today) + ' gün var'; }
+            else if (today <= fe) { pct = Math.min(100, Math.max(0, Math.round(dayDiff(today, fs) / dayDiff(fe, fs) * 100))); label = 'Güz Yarıyılı devam ediyor'; }
+            else if (today < ss) { label = 'Ara tatil'; pct = 100; }
+            else if (today <= se) { pct = Math.min(100, Math.max(0, Math.round(dayDiff(today, ss) / dayDiff(se, ss) * 100))); label = 'Bahar Yarıyılı devam ediyor'; }
+            else { label = 'Akademik yıl tamamlandı'; pct = 100; }
             document.getElementById('tp-label').innerText = label;
-            document.getElementById('tp-pct').innerText = `%${pct}`;
-            requestAnimationFrame(() => requestAnimationFrame(() => { document.getElementById('tp-fill').style.width = pct + '%'; }));
+            document.getElementById('tp-pct').innerText = '%' + pct;
+            document.getElementById('tp-fill').style.width = pct + '%';
         }
 
-        /* ---------- DERS PROGRAMI ---------- */
         function renderSchedule() {
             const wrap = document.getElementById('schedule-grid');
-            if (!scheduleData || !scheduleData.length) {
-                wrap.innerHTML = `<div class="empty-state" style="grid-column:1/-1;"><span class="material-symbols-rounded">school</span><p>Ders programı henüz açıklanmadı.<br>Açıklandığında burada otomatik olarak görünecek.</p></div>`;
-                return;
-            }
+            if (!scheduleData.length) { wrap.innerHTML = '<div class="empty-state" style="grid-column:1/-1;"><span class="material-symbols-rounded">school</span><p>Ders programı henüz açıklanmadı.</p></div>'; return; }
             const todayIdx = (new Date().getDay() + 6) % 7;
             const html = DAYS.map((d, di) => {
                 const lessons = scheduleData.filter(l => +l.day === di + 1).sort((a, b) => String(a.start).localeCompare(String(b.start)));
                 if (!lessons.length) return '';
-                return `<div class="card day-card">
-                    <div class="day-title"><span class="icon-chip" style="width:32px;height:32px;"><span class="material-symbols-rounded" style="font-size:18px;">today</span></span>${d}${di === todayIdx ? '<span class="cat-tag cat-etkinlik">Bugün</span>' : ''}</div>
-                    ${lessons.map(l => `
-                        <div class="lesson-item" data-day="${l.day}" data-start="${l.start}" data-end="${l.end}">
-                            <div class="lesson-time">${l.start}<br>${l.end}</div>
-                            <div style="min-width:0; flex:1;">
-                                <div class="l-course">${sanitizeHTML(l.course)}</div>
-                                <div class="l-meta"><span>📍 ${sanitizeHTML(l.room || '-')}</span><span>👤 ${sanitizeHTML(l.instructor || '-')}</span></div>
-                            </div>
-                            <span class="live-chip"><span class="live-dot2"></span>ŞU AN</span>
-                        </div>`).join('')}
-                </div>`;
+                return '<div class="card day-card"><div class="day-title"><span class="icon-chip" style="width:32px;height:32px;"><span class="material-symbols-rounded" style="font-size:18px;">today</span></span>' + d + (di === todayIdx ? '<span class="cat-tag cat-etkinlik">Bugün</span>' : '') + '</div>' +
+                    lessons.map(l => '<div class="lesson-item" data-day="' + l.day + '" data-start="' + l.start + '" data-end="' + l.end + '"><div class="lesson-time">' + l.start + '<br>' + l.end + '</div><div style="min-width:0;flex:1;"><div class="l-course">' + sanitizeHTML(l.course) + '</div><div class="l-meta"><span>' + sanitizeHTML(l.room || '-') + '</span><span>' + sanitizeHTML(l.instructor || '-') + '</span></div></div><span class="live-chip"><span class="live-dot2"></span>ŞU AN</span></div>').join('') + '</div>';
             }).join('');
-            wrap.innerHTML = html || `<div class="empty-state" style="grid-column:1/-1;"><span class="material-symbols-rounded">school</span><p>Ders programı henüz açıklanmadı.</p></div>`;
+            wrap.innerHTML = html || '<div class="empty-state" style="grid-column:1/-1;"><span class="material-symbols-rounded">school</span><p>Ders programı henüz açıklanmadı.</p></div>';
             updateScheduleLive();
         }
-
         function updateScheduleLive() {
             const now = new Date();
-            const day = now.getDay();
             const hm = String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0');
             document.querySelectorAll('.lesson-item').forEach(el => {
-                const live = +el.dataset.day === day && hm >= el.dataset.start && hm < el.dataset.end;
-                el.classList.toggle('live', live);
+                el.classList.toggle('live', +el.dataset.day === now.getDay() && hm >= el.dataset.start && hm < el.dataset.end);
             });
         }
-
         function saveLesson() {
             const course = document.getElementById('ls-course').value.trim();
-            const start = document.getElementById('ls-start').value;
-            const end = document.getElementById('ls-end').value;
-            if (!course || !start || !end) return alert("Ders adı ve saatleri doldurulmalıdır!");
-            if (end <= start) return alert("Bitiş saati başlangıçtan sonra olmalıdır!");
-            scheduleData = [...(scheduleData || []), {
-                id: Date.now(), day: +document.getElementById('ls-day').value, start, end, course,
-                room: document.getElementById('ls-room').value.trim(),
-                instructor: document.getElementById('ls-instructor').value.trim()
-            }];
+            const start = document.getElementById('ls-start').value, end = document.getElementById('ls-end').value;
+            if (!course || !start || !end) return alert('Ders adı ve saatleri doldurulmalıdır!');
+            if (end <= start) return alert('Bitiş saati başlangıçtan sonra olmalıdır!');
+            scheduleData.push({ id: Date.now(), day: +document.getElementById('ls-day').value, start, end, course, room: document.getElementById('ls-room').value.trim(), instructor: document.getElementById('ls-instructor').value.trim() });
             renderSchedule(); renderAdminLists();
-            commitToGitHub('dersprogrami.json', scheduleData, `Ders Eklendi: ${course}`);
+            commitToGitHub('dersprogrami.json', scheduleData, 'Ders Eklendi: ' + course);
             ['ls-course', 'ls-room', 'ls-instructor'].forEach(id => document.getElementById(id).value = '');
         }
-
         function deleteLesson(id) {
-            if (!confirm("Bu dersi programdan silmek istediğinize emin misiniz?")) return;
+            if (!confirm('Bu dersi silmek istediğinize emin misiniz?')) return;
             scheduleData = scheduleData.filter(i => i.id !== id);
             renderSchedule(); renderAdminLists();
-            commitToGitHub('dersprogrami.json', scheduleData, `Ders Silindi (ID: ${id})`);
+            commitToGitHub('dersprogrami.json', scheduleData, 'Ders Silindi');
         }
 
-        /* ---------- GERİ SAYIM ---------- */
-        function setVal(el, v) {
-            if (el.innerText !== v) { el.innerText = v; el.classList.remove('tick'); void el.offsetWidth; el.classList.add('tick'); }
-        }
         function startCountdown() {
-            const statNext = document.getElementById('stat-next');
-            const subEl = document.getElementById('target-event-date');
+            const statNext = document.getElementById('stat-next'), subEl = document.getElementById('target-event-date');
             function tick() {
                 const now = new Date();
                 const next = academicEvents.find(e => e.date > now);
-                if (!next) { cdEls.t.innerText = "2026-2027 Akademik Yılı Tamamlandı"; statNext.innerText = "—"; subEl.innerText = "2026-2027 Akademik Yılı"; return; }
-                cdEls.t.innerText = `${next.name} için kalan süre`;
+                if (!next) { cdEls.t.innerText = '2026-2027 Akademik Yılı Tamamlandı'; statNext.innerText = '—'; return; }
+                cdEls.t.innerText = next.name + ' için kalan süre';
                 statNext.innerText = fmtShort(next.date);
-                subEl.innerText = `${fmtDate(next.date)} • 2026-2027 Akademik Yılı`;
+                subEl.innerText = fmtDate(next.date) + ' • 2026-2027 Akademik Yılı';
                 const diff = next.date - now;
-                setVal(cdEls.d, String(Math.floor(diff / 86400000)).padStart(2, '0'));
-                setVal(cdEls.h, String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0'));
-                setVal(cdEls.m, String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0'));
-                setVal(cdEls.s, String(Math.floor((diff % 60000) / 1000)).padStart(2, '0'));
+                cdEls.d.innerText = String(Math.floor(diff / 86400000)).padStart(2, '0');
+                cdEls.h.innerText = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
+                cdEls.m.innerText = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+                cdEls.s.innerText = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
             }
             tick(); setInterval(tick, 1000);
         }
 
-        /* ---------- YARDIMCILAR ---------- */
+        /* YARDIMCILAR */
         function sanitizeHTML(str) {
             if (typeof str !== 'string') return '';
-            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+            return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
         }
-        function utf8_to_b64(str) { return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (m, p1) => String.fromCharCode('0x' + p1))); }
+        function utf8_to_b64(str) { return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (m, p) => String.fromCharCode('0x' + p))); }
         function b64_to_utf8(str) {
-            try { return decodeURIComponent(Array.prototype.map.call(atob(str.replace(/\s/g, '')), c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join('')); }
+            try { return decodeURIComponent(atob(str.replace(/\s/g, '')).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join('')); }
             catch (e) { return atob(str); }
         }
         function fileIcon(name) {
             const ext = (name.split('.').pop() || '').toLowerCase();
-            const map = { pdf: 'picture_as_pdf', doc: 'description', docx: 'description', txt: 'description', xls: 'table_chart', xlsx: 'table_chart', csv: 'table_chart', ppt: 'slideshow', pptx: 'slideshow', zip: 'folder_zip', rar: 'folder_zip', '7z': 'folder_zip', png: 'image', jpg: 'image', jpeg: 'image', gif: 'image', webp: 'image', svg: 'image', mp4: 'movie', mkv: 'movie', avi: 'movie', mp3: 'audio_file', wav: 'audio_file' };
+            const map = { pdf: 'picture_as_pdf', doc: 'description', docx: 'description', txt: 'description', xls: 'table_chart', xlsx: 'table_chart', csv: 'table_chart', ppt: 'slideshow', pptx: 'slideshow', zip: 'folder_zip', rar: 'folder_zip', png: 'image', jpg: 'image', jpeg: 'image', gif: 'image', webp: 'image', mp4: 'movie', mp3: 'audio_file' };
             return map[ext] || 'insert_drive_file';
         }
-        function sortAnns(list) {
-            return [...list].sort((a, b) => ((b.pinned ? 1 : 0) - (a.pinned ? 1 : 0)) || (new Date(b.date) - new Date(a.date)));
-        }
-        function catTag(item) {
-            const c = CATS[item.category] || CATS.duyuru;
-            return `<span class="cat-tag ${c.cls}"><span class="material-symbols-rounded">${c.icon}</span>${c.label}</span>`;
-        }
-
+        function sortAnns(list) { return list.slice().sort((a, b) => ((b.pinned ? 1 : 0) - (a.pinned ? 1 : 0)) || (new Date(b.date) - new Date(a.date))); }
+        function catTag(item) { const c = CATS[item.category] || CATS.duyuru; return '<span class="cat-tag ' + c.cls + '"><span class="material-symbols-rounded">' + c.icon + '</span>' + c.label + '</span>'; }
         function setFilter(cat) {
             currentCat = cat;
             document.querySelectorAll('.filter-chip').forEach(ch => ch.classList.toggle('active', ch.dataset.cat === cat));
             renderData();
         }
 
-        /* ---------- GITHUB ---------- */
+        /* GITHUB */
         async function fetchFileDirect(filename) {
             const ts = Date.now();
             try {
-                const headers = { 'Cache-Control': 'no-cache, no-store, must-revalidate' };
-                if (userToken) headers['Authorization'] = `token ${userToken}`;
-                const res = await fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/${filename}?cb=${ts}`, { headers, cache: 'no-store' });
-                if (res.ok) { const json = await res.json(); return JSON.parse(b64_to_utf8(json.content)); }
-            } catch (err) { console.warn(`REST çekimi başarısız (${filename})`, err); }
+                const headers = { 'Cache-Control': 'no-cache' };
+                if (userToken) headers['Authorization'] = 'token ' + userToken;
+                const res = await fetch('https://api.github.com/repos/' + GITHUB_USERNAME + '/' + REPO_NAME + '/contents/' + filename + '?cb=' + ts, { headers, cache: 'no-store' });
+                if (res.ok) return JSON.parse(b64_to_utf8((await res.json()).content));
+            } catch (e) {}
             try {
-                const rawRes = await fetch(`https://raw.githubusercontent.com/${GITHUB_USERNAME}/${REPO_NAME}/main/${filename}?t=${ts}`, { cache: 'no-store' });
-                if (rawRes.ok) return await rawRes.json();
+                const raw = await fetch('https://raw.githubusercontent.com/' + GITHUB_USERNAME + '/' + REPO_NAME + '/main/' + filename + '?t=' + ts, { cache: 'no-store' });
+                if (raw.ok) return await raw.json();
             } catch (e) {}
             return [];
         }
-
         async function fetchData() {
             announcementsData = await fetchFileDirect('duyurular.json');
             filesData = await fetchFileDirect('dosyalar.json');
             scheduleData = await fetchFileDirect('dersprogrami.json');
-            renderData();
-            renderSchedule();
-            renderAdminLists();
-            updateAnnBadge();
+            renderData(); renderSchedule(); renderAdminLists(); updateAnnBadge();
         }
 
         function renderData() {
@@ -1287,99 +974,49 @@
             const dashAnn = document.getElementById('dashboard-recent-ann');
             const fileList = document.getElementById('file-list');
 
-            animateValue(document.getElementById('stat-ann'), announcementsData.length);
-            animateValue(document.getElementById('stat-file'), filesData.length);
+            document.getElementById('stat-ann').innerText = announcementsData.length;
+            document.getElementById('stat-file').innerText = filesData.length;
 
             const counts = { all: announcementsData.length, duyuru: 0, sinav: 0, staj: 0, etkinlik: 0 };
             announcementsData.forEach(i => { const c = i.category || 'duyuru'; if (counts[c] !== undefined) counts[c]++; });
             Object.keys(counts).forEach(k => { const el = document.getElementById('cnt-' + k); if (el) el.innerText = counts[k]; });
 
-            const q = (document.getElementById('ann-search')?.value || '').trim().toLowerCase();
+            const q = (document.getElementById('ann-search').value || '').trim().toLowerCase();
             let filtered = sortAnns(announcementsData);
             if (currentCat !== 'all') filtered = filtered.filter(i => (i.category || 'duyuru') === currentCat);
             if (q) filtered = filtered.filter(i => (i.title || '').toLowerCase().includes(q) || (i.content || '').toLowerCase().includes(q));
 
-            const delBtn = (type, id) => userToken ? `<button class="btn btn-danger btn-mini" onclick="deleteItem('${type}', ${id})" aria-label="Sil"><span class="material-symbols-rounded" style="font-size:16px;">delete</span></button>` : '';
+            const delBtn = (type, id) => userToken ? '<button class="btn btn-danger btn-mini" onclick="deleteItem(\'' + type + '\',' + id + ')" aria-label="Sil"><span class="material-symbols-rounded" style="font-size:16px;">delete</span></button>' : '';
 
             if (!announcementsData.length) {
-                annList.innerHTML = dashAnn.innerHTML = `<div class="empty-state"><span class="material-symbols-rounded">notifications_off</span><p>Kayıtlı duyuru bulunmuyor.</p></div>`;
+                annList.innerHTML = dashAnn.innerHTML = '<div class="empty-state"><span class="material-symbols-rounded">notifications_off</span><p>Kayıtlı duyuru bulunmuyor.</p></div>';
             } else {
                 annList.innerHTML = filtered.length === 0
-                    ? `<div class="empty-state"><span class="material-symbols-rounded">search_off</span><p>Filtre/arama ile eşleşen duyuru bulunamadı.</p></div>`
-                    : filtered.map(item => `
-                        <div class="data-item ${item.pinned ? 'pinned-item' : ''}">
-                            <div style="flex:1; min-width:0;">
-                                <div class="item-title">${item.pinned ? '<span class="material-symbols-rounded" style="color:var(--warning); font-size:18px;">star</span>' : ''}${sanitizeHTML(item.title)}</div>
-                                <div class="item-meta">${catTag(item)}<span style="display:inline-flex;align-items:center;gap:4px;"><span class="material-symbols-rounded" style="font-size:15px;">schedule</span>${sanitizeHTML(new Date(item.date).toLocaleString('tr-TR'))}</span></div>
-                                <div class="item-content">${sanitizeHTML(item.content)}</div>
-                            </div>
-                            <div class="item-actions">
-                                <button class="btn btn-tonal btn-mini" onclick="shareAnn(${item.id})" aria-label="Paylaş" title="Paylaş"><span class="material-symbols-rounded" style="font-size:16px;">share</span></button>
-                                ${delBtn('announcement', item.id)}
-                            </div>
-                        </div>`).join('');
-
-                dashAnn.innerHTML = sortAnns(announcementsData).slice(0, 3).map(item => `
-                    <div class="data-item ${item.pinned ? 'pinned-item' : ''}">
-                        <div style="flex:1; min-width:0;">
-                            <div class="item-title" style="font-size:1rem;">${item.pinned ? '<span class="material-symbols-rounded" style="color:var(--warning); font-size:16px;">star</span>' : ''}${sanitizeHTML(item.title)}</div>
-                            <div class="item-meta" style="margin:0;">${catTag(item)}<span>${sanitizeHTML(new Date(item.date).toLocaleDateString('tr-TR'))}</span></div>
-                        </div>
-                    </div>`).join('');
+                    ? '<div class="empty-state"><span class="material-symbols-rounded">search_off</span><p>Eşleşen duyuru bulunamadı.</p></div>'
+                    : filtered.map(item => '<div class="data-item' + (item.pinned ? ' pinned-item' : '') + '"><div style="flex:1;min-width:0;"><div class="item-title">' + (item.pinned ? '<span class="material-symbols-rounded" style="color:var(--warning);font-size:18px;">star</span>' : '') + sanitizeHTML(item.title) + '</div><div class="item-meta">' + catTag(item) + '<span>' + sanitizeHTML(new Date(item.date).toLocaleString('tr-TR')) + '</span></div><div class="item-content">' + sanitizeHTML(item.content) + '</div></div><div class="item-actions"><button class="btn btn-tonal btn-mini" onclick="shareAnn(' + item.id + ')" aria-label="Paylaş"><span class="material-symbols-rounded" style="font-size:16px;">share</span></button>' + delBtn('announcement', item.id) + '</div></div>').join('');
+                dashAnn.innerHTML = sortAnns(announcementsData).slice(0, 3).map(item => '<div class="data-item' + (item.pinned ? ' pinned-item' : '') + '"><div style="flex:1;min-width:0;"><div class="item-title" style="font-size:1rem;">' + (item.pinned ? '<span class="material-symbols-rounded" style="color:var(--warning);font-size:16px;">star</span>' : '') + sanitizeHTML(item.title) + '</div><div class="item-meta" style="margin:0;">' + catTag(item) + '<span>' + sanitizeHTML(new Date(item.date).toLocaleDateString('tr-TR')) + '</span></div></div></div>').join('');
             }
 
-            const qf = (document.getElementById('file-search')?.value || '').trim().toLowerCase();
-            const filesFiltered = qf ? filesData.filter(i => (i.title || '').toLowerCase().includes(qf)) : filesData;
-
-            if (!filesData.length) fileList.innerHTML = `<div class="empty-state"><span class="material-symbols-rounded">folder_off</span><p>Dosya bulunmuyor.</p></div>`;
-            else if (!filesFiltered.length) fileList.innerHTML = `<div class="empty-state"><span class="material-symbols-rounded">search_off</span><p>Aramanızla eşleşen dosya bulunamadı.</p></div>`;
-            else fileList.innerHTML = filesFiltered.map(item => `
-                <div class="data-item" style="align-items:center;">
-                    <div style="flex:1; min-width:0; display:flex; gap:12px; align-items:center;">
-                        <span class="icon-chip" style="width:42px; height:42px;"><span class="material-symbols-rounded" style="font-size:22px;">${fileIcon(item.title || item.url)}</span></span>
-                        <div style="min-width:0;">
-                            <div class="item-title" style="margin-bottom:4px;">${sanitizeHTML(item.title)}</div>
-                            <a href="${sanitizeHTML(item.url)}" target="_blank" rel="noopener noreferrer" class="file-link"><span class="material-symbols-rounded" style="font-size:16px;">download</span> İndir / Görüntüle</a>
-                        </div>
-                    </div>
-                    ${userToken ? `<div class="item-actions"><button class="btn btn-danger btn-mini" onclick="deleteItem('file', ${item.id})" aria-label="Sil"><span class="material-symbols-rounded" style="font-size:16px;">delete</span></button></div>` : ''}
-                </div>`).join('');
+            const qf = (document.getElementById('file-search').value || '').trim().toLowerCase();
+            const ff = qf ? filesData.filter(i => (i.title || '').toLowerCase().includes(qf)) : filesData;
+            if (!filesData.length) fileList.innerHTML = '<div class="empty-state"><span class="material-symbols-rounded">folder_off</span><p>Dosya bulunmuyor.</p></div>';
+            else if (!ff.length) fileList.innerHTML = '<div class="empty-state"><span class="material-symbols-rounded">search_off</span><p>Eşleşen dosya bulunamadı.</p></div>';
+            else fileList.innerHTML = ff.map(item => '<div class="data-item" style="align-items:center;"><div style="flex:1;min-width:0;display:flex;gap:12px;align-items:center;"><span class="icon-chip" style="width:42px;height:42px;"><span class="material-symbols-rounded" style="font-size:22px;">' + fileIcon(item.title || item.url) + '</span></span><div style="min-width:0;"><div class="item-title" style="margin-bottom:4px;">' + sanitizeHTML(item.title) + '</div><a href="' + sanitizeHTML(item.url) + '" target="_blank" rel="noopener noreferrer" class="file-link"><span class="material-symbols-rounded" style="font-size:16px;">download</span> İndir / Görüntüle</a></div></div>' + (userToken ? '<div class="item-actions">' + delBtn('file', item.id) + '</div>' : '') + '</div>').join('');
         }
 
-        /* ---------- ADMİN LİSTELERİ ---------- */
         function renderAdminLists() {
             if (!userToken) return;
             document.getElementById('admin-ann-list').innerHTML = sortAnns(announcementsData).map(i => {
                 const c = CATS[i.category] || CATS.duyuru;
-                return `<div class="admin-item">
-                    <span class="material-symbols-rounded" style="color:var(--primary); font-size:18px;">${c.icon}</span>
-                    <div class="ai-title">${i.pinned ? '⭐ ' : ''}${sanitizeHTML(i.title)}</div>
-                    <button class="btn btn-tonal btn-mini" onclick="togglePin(${i.id})" title="${i.pinned ? 'Sabitlemeyi kaldır' : 'Üste sabitle'}"><span class="material-symbols-rounded" style="font-size:16px;">${i.pinned ? 'star' : 'star_outline'}</span></button>
-                    <button class="btn btn-tonal btn-mini" onclick="editAnn(${i.id})" title="Düzenle"><span class="material-symbols-rounded" style="font-size:16px;">edit</span></button>
-                    <button class="btn btn-danger btn-mini" onclick="deleteItem('announcement', ${i.id})" title="Sil"><span class="material-symbols-rounded" style="font-size:16px;">delete</span></button>
-                </div>`;
-            }).join('') || '<p style="font-size:0.8rem; color:var(--text-muted); text-align:center;">Henüz duyuru yok.</p>';
+                return '<div class="admin-item"><span class="material-symbols-rounded" style="color:var(--primary);font-size:18px;">' + c.icon + '</span><div class="ai-title">' + (i.pinned ? '★ ' : '') + sanitizeHTML(i.title) + '</div><button class="btn btn-tonal btn-mini" onclick="togglePin(' + i.id + ')"><span class="material-symbols-rounded" style="font-size:16px;">' + (i.pinned ? 'star' : 'star_outline') + '</span></button><button class="btn btn-tonal btn-mini" onclick="editAnn(' + i.id + ')"><span class="material-symbols-rounded" style="font-size:16px;">edit</span></button><button class="btn btn-danger btn-mini" onclick="deleteItem(\'announcement\',' + i.id + ')"><span class="material-symbols-rounded" style="font-size:16px;">delete</span></button></div>';
+            }).join('') || '<p style="font-size:0.8rem;color:var(--text-muted);text-align:center;">Henüz duyuru yok.</p>';
 
-            document.getElementById('admin-file-list').innerHTML = filesData.map(i => `
-                <div class="admin-item">
-                    <span class="material-symbols-rounded" style="color:var(--accent); font-size:18px;">${fileIcon(i.title || i.url)}</span>
-                    <div class="ai-title">${sanitizeHTML(i.title)}</div>
-                    <button class="btn btn-danger btn-mini" onclick="deleteItem('file', ${i.id})" title="Sil"><span class="material-symbols-rounded" style="font-size:16px;">delete</span></button>
-                </div>`).join('') || '<p style="font-size:0.8rem; color:var(--text-muted); text-align:center;">Henüz dosya yok.</p>';
+            document.getElementById('admin-file-list').innerHTML = filesData.map(i => '<div class="admin-item"><span class="material-symbols-rounded" style="color:var(--accent);font-size:18px;">' + fileIcon(i.title || i.url) + '</span><div class="ai-title">' + sanitizeHTML(i.title) + '</div><button class="btn btn-danger btn-mini" onclick="deleteItem(\'file\',' + i.id + ')"><span class="material-symbols-rounded" style="font-size:16px;">delete</span></button></div>').join('') || '<p style="font-size:0.8rem;color:var(--text-muted);text-align:center;">Henüz dosya yok.</p>';
 
-            document.getElementById('admin-schedule-list').innerHTML = (scheduleData || []).slice().sort((a, b) => a.day - b.day || String(a.start).localeCompare(String(b.start))).map(l => `
-                <div class="admin-item">
-                    <span class="material-symbols-rounded" style="color:var(--warning); font-size:18px;">schedule</span>
-                    <div class="ai-title">${DAYS[(+l.day) - 1]} ${l.start}-${l.end} • ${sanitizeHTML(l.course)}</div>
-                    <button class="btn btn-danger btn-mini" onclick="deleteLesson(${l.id})" title="Sil"><span class="material-symbols-rounded" style="font-size:16px;">delete</span></button>
-                </div>`).join('') || '<p style="font-size:0.8rem; color:var(--text-muted); text-align:center;">Program boş. Ders eklendiğinde öğrencilerde anında görünür.</p>';
+            document.getElementById('admin-schedule-list').innerHTML = scheduleData.slice().sort((a, b) => a.day - b.day || String(a.start).localeCompare(String(b.start))).map(l => '<div class="admin-item"><span class="material-symbols-rounded" style="color:var(--warning);font-size:18px;">schedule</span><div class="ai-title">' + DAYS[(+l.day) - 1] + ' ' + l.start + '-' + l.end + ' • ' + sanitizeHTML(l.course) + '</div><button class="btn btn-danger btn-mini" onclick="deleteLesson(' + l.id + ')"><span class="material-symbols-rounded" style="font-size:16px;">delete</span></button></div>').join('') || '<p style="font-size:0.8rem;color:var(--text-muted);text-align:center;">Program boş.</p>';
         }
 
-        /* ---------- DUYURU DÜZENLEME / SABİTLEME ---------- */
-        function toggleFormPin() {
-            formPinned = !formPinned;
-            document.getElementById('pin-switch').classList.toggle('on', formPinned);
-        }
+        function toggleFormPin() { formPinned = !formPinned; document.getElementById('pin-switch').classList.toggle('on', formPinned); }
         function editAnn(id) {
             const it = announcementsData.find(i => i.id === id);
             if (!it) return;
@@ -1392,7 +1029,6 @@
             document.getElementById('ann-save-btn').innerText = 'Değişiklikleri Kaydet';
             document.getElementById('ann-cancel').style.display = 'inline-flex';
             switchAdminTab('admin-ann');
-            document.querySelector('.modal-content').scrollTo({ top: 0, behavior: 'smooth' });
         }
         function cancelEdit() {
             editingAnnId = null; formPinned = false;
@@ -1407,83 +1043,70 @@
             if (!it) return;
             it.pinned = !it.pinned;
             renderData(); renderAdminLists();
-            commitToGitHub('duyurular.json', announcementsData, `Duyuru ${it.pinned ? 'Sabitlendi' : 'Sabitlemesi Kaldırıldı'}: ${it.title}`);
+            commitToGitHub('duyurular.json', announcementsData, 'Duyuru Sabitleme Güncellendi');
         }
 
-        /* ---------- YÖNETİM ---------- */
         async function validateGitHubToken(token) {
-            if (!token || token.trim() === '') return false;
-            try {
-                const res = await fetch('https://api.github.com/user', { headers: { 'Authorization': `token ${token.trim()}` } });
-                return res.ok;
-            } catch (err) { return false; }
+            if (!token) return false;
+            try { return (await fetch('https://api.github.com/user', { headers: { 'Authorization': 'token ' + token } })).ok; }
+            catch (e) { return false; }
         }
-
         async function handleAdminAuth() {
             closeDrawer();
             if (userToken) {
                 if (await validateGitHubToken(userToken)) { openAdminModal(); renderAdminLists(); }
-                else { alert("Kayıtlı şifre geçersiz veya yetkisiz! Oturum kapatılıyor."); logoutAdmin(); }
+                else { alert('Kayıtlı şifre geçersiz! Oturum kapatılıyor.'); logoutAdmin(); }
             } else {
-                const token = prompt("Şifre girmeniz gereklidir.");
-                if (token && token.trim() !== "") {
+                const token = prompt('Şifre girmeniz gereklidir.');
+                if (token && token.trim()) {
                     if (await validateGitHubToken(token.trim())) {
                         userToken = token.trim();
-                        localStorage.setItem("gh_admin_token", userToken);
+                        localStorage.setItem('gh_admin_token', userToken);
                         updateAdminUI(); fetchData(); openAdminModal();
-                    } else alert("HATA: Girdiğiniz şifre GEÇERSİZ! Erişim reddedildi.");
+                    } else alert('HATA: Girdiğiniz şifre GEÇERSİZ!');
                 }
             }
         }
-
         function openAdminModal() { document.getElementById('admin-modal').style.display = 'flex'; document.body.classList.add('modal-open'); }
         function closeAdminModal() { document.getElementById('admin-modal').style.display = 'none'; document.body.classList.remove('modal-open'); }
 
         function updateAdminUI() {
-            const lgBtn = document.getElementById('logout-btn');
+            const lg = document.getElementById('logout-btn');
             const desk = document.getElementById('sidebar-admin-btn');
             const drawer = document.getElementById('drawer-admin-btn');
             if (userToken) {
-                lgBtn.style.display = 'inline-flex';
-                desk.innerHTML = `<span class="material-symbols-rounded" style="color:var(--accent);">verified_user</span><span class="nav-label">Yönetici Paneli</span>`;
-                drawer.innerHTML = `<span class="material-symbols-rounded" style="color:var(--accent);">verified_user</span><span class="nav-label">Yönetici Paneli</span>`;
+                lg.style.display = 'inline-flex';
+                desk.innerHTML = '<span class="material-symbols-rounded" style="color:var(--accent);">verified_user</span><span class="nav-label">Yönetici Paneli</span>';
+                drawer.innerHTML = '<span class="material-symbols-rounded" style="color:var(--accent);">verified_user</span><span class="nav-label">Yönetici Paneli</span>';
             } else {
-                lgBtn.style.display = 'none';
-                desk.innerHTML = `<span class="material-symbols-rounded">shield_person</span><span class="nav-label">Yönetici Girişi</span>`;
-                drawer.innerHTML = `<span class="material-symbols-rounded">shield_person</span><span class="nav-label">Yönetici Girişi</span>`;
+                lg.style.display = 'none';
+                desk.innerHTML = '<span class="material-symbols-rounded">shield_person</span><span class="nav-label">Yönetici Girişi</span>';
+                drawer.innerHTML = '<span class="material-symbols-rounded">shield_person</span><span class="nav-label">Yönetici Girişi</span>';
             }
         }
-
         function logoutAdmin() {
-            userToken = ""; localStorage.removeItem("gh_admin_token");
+            userToken = ''; localStorage.removeItem('gh_admin_token');
             updateAdminUI(); renderData(); closeAdminModal();
-            alert("Oturum kapatıldı.");
         }
 
         function switchAdminTab(tabId) {
             ['admin-ann', 'admin-file', 'admin-schedule', 'admin-sec'].forEach(id => { document.getElementById(id).style.display = (id === tabId) ? 'block' : 'none'; });
-            document.getElementById('tab-ann-btn').classList.toggle('tab-btn-active', tabId === 'admin-ann');
-            document.getElementById('tab-file-btn').classList.toggle('tab-btn-active', tabId === 'admin-file');
-            document.getElementById('tab-sched-btn').classList.toggle('tab-btn-active', tabId === 'admin-schedule');
-            document.getElementById('tab-sec-btn').classList.toggle('tab-btn-active', tabId === 'admin-sec');
+            ['tab-ann-btn', 'tab-file-btn', 'tab-sched-btn', 'tab-sec-btn'].forEach(id => document.getElementById(id).classList.remove('tab-btn-active'));
+            document.getElementById({ 'admin-ann': 'tab-ann-btn', 'admin-file': 'tab-file-btn', 'admin-schedule': 'tab-sched-btn', 'admin-sec': 'tab-sec-btn' }[tabId]).classList.add('tab-btn-active');
         }
 
-        async function commitToGitHub(filename, newData, successMessage) {
+        async function commitToGitHub(filename, newData, msg) {
             try {
-                const getRes = await fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/${filename}?t=${Date.now()}`, { headers: { 'Authorization': `token ${userToken}`, 'Cache-Control': 'no-cache' } });
+                const getRes = await fetch('https://api.github.com/repos/' + GITHUB_USERNAME + '/' + REPO_NAME + '/contents/' + filename + '?t=' + Date.now(), { headers: { 'Authorization': 'token ' + userToken } });
                 let sha;
                 if (getRes.ok) sha = (await getRes.json()).sha;
-                else if (getRes.status !== 404) return alert("Hata! Token yetkisi yetersiz.");
-                const body = { message: `Sistem Güncellemesi: ${successMessage}`, content: utf8_to_b64(JSON.stringify(newData, null, 2)) };
+                else if (getRes.status !== 404) return alert('Hata! Token yetkisi yetersiz.');
+                const body = { message: msg, content: utf8_to_b64(JSON.stringify(newData, null, 2)) };
                 if (sha) body.sha = sha;
-                const updateRes = await fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/${filename}`, {
-                    method: 'PUT',
-                    headers: { 'Authorization': `token ${userToken}`, 'Content-Type': 'application/json' },
-                    body: JSON.stringify(body)
-                });
-                if (updateRes.ok) { alert(`${successMessage} başarıyla tamamlandı!`); await fetchData(); }
-                else alert("Kayıt sırasında hata oluştu.");
-            } catch (err) { alert("Bağlantı hatası: " + err); }
+                const res = await fetch('https://api.github.com/repos/' + GITHUB_USERNAME + '/' + REPO_NAME + '/contents/' + filename, { method: 'PUT', headers: { 'Authorization': 'token ' + userToken, 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+                if (res.ok) { alert('İşlem başarıyla tamamlandı!'); fetchData(); }
+                else alert('Kayıt sırasında hata oluştu.');
+            } catch (e) { alert('Bağlantı hatası.'); }
         }
 
         function saveItem(type) {
@@ -1491,74 +1114,68 @@
                 const t = document.getElementById('ann-title').value.trim();
                 const c = document.getElementById('ann-content').value.trim();
                 const cat = document.getElementById('ann-category').value;
-                if (!t || !c) return alert("Başlık ve içerik doldurulmalıdır!");
+                if (!t || !c) return alert('Başlık ve içerik doldurulmalıdır!');
                 if (editingAnnId) {
                     const it = announcementsData.find(i => i.id === editingAnnId);
                     if (it) { it.title = t; it.content = c; it.category = cat; it.pinned = formPinned; }
-                    renderData(); renderAdminLists();
-                    commitToGitHub('duyurular.json', announcementsData, `Duyuru Güncellendi: ${t}`);
+                    commitToGitHub('duyurular.json', announcementsData, 'Duyuru Güncellendi');
                     cancelEdit();
                 } else {
-                    announcementsData = [{ id: Date.now(), title: t, content: c, date: new Date().toISOString(), category: cat, pinned: formPinned }, ...announcementsData];
-                    renderData(); renderAdminLists(); updateAnnBadge();
-                    commitToGitHub('duyurular.json', announcementsData, `Duyuru: ${t}`);
+                    announcementsData.unshift({ id: Date.now(), title: t, content: c, date: new Date().toISOString(), category: cat, pinned: formPinned });
+                    commitToGitHub('duyurular.json', announcementsData, 'Duyuru Eklendi');
                     document.getElementById('ann-title').value = '';
                     document.getElementById('ann-content').value = '';
                     formPinned = false; document.getElementById('pin-switch').classList.remove('on');
                 }
+                renderData(); renderAdminLists(); updateAnnBadge();
             } else {
                 const t = document.getElementById('file-title').value.trim();
                 const u = document.getElementById('file-url').value.trim();
-                if (!t || !u) return alert("Dosya adı ve linki doldurulmalıdır!");
-                filesData = [{ id: Date.now(), title: t, url: u }, ...filesData];
+                if (!t || !u) return alert('Dosya adı ve linki doldurulmalıdır!');
+                filesData.unshift({ id: Date.now(), title: t, url: u });
                 renderData(); renderAdminLists();
-                commitToGitHub('dosyalar.json', filesData, `Dosya Linki: ${t}`);
-                document.getElementById('file-title').value = ''; document.getElementById('file-url').value = '';
+                commitToGitHub('dosyalar.json', filesData, 'Dosya Eklendi');
+                document.getElementById('file-title').value = '';
+                document.getElementById('file-url').value = '';
             }
         }
 
         function deleteItem(type, id) {
-            if (!confirm("Bu kaydı silmek istediğinize emin misiniz?")) return;
+            if (!confirm('Bu kaydı silmek istediğinize emin misiniz?')) return;
             if (type === 'announcement') {
                 if (editingAnnId === id) cancelEdit();
                 announcementsData = announcementsData.filter(i => i.id !== id);
-                renderData(); renderAdminLists(); updateAnnBadge();
-                commitToGitHub('duyurular.json', announcementsData, `Duyuru Silindi (ID: ${id})`);
+                commitToGitHub('duyurular.json', announcementsData, 'Duyuru Silindi');
             } else {
                 filesData = filesData.filter(i => i.id !== id);
-                renderData(); renderAdminLists();
-                commitToGitHub('dosyalar.json', filesData, `Dosya Silindi (ID: ${id})`);
+                commitToGitHub('dosyalar.json', filesData, 'Dosya Silindi');
             }
+            renderData(); renderAdminLists(); updateAnnBadge();
         }
 
         async function uploadDirectFile() {
             const fileInput = document.getElementById('direct-file-input');
             const file = fileInput.files[0];
-            if (!file) return alert("Lütfen dosya seçin.");
+            if (!file) return alert('Lütfen dosya seçin.');
             const btn = document.getElementById('upload-btn');
-            btn.innerText = "Yükleniyor..."; btn.disabled = true;
+            btn.innerText = 'Yükleniyor...'; btn.disabled = true;
             const reader = new FileReader();
             reader.onload = async function (e) {
-                const base64Data = e.target.result.split(',')[1];
+                const b64 = e.target.result.split(',')[1];
                 const safeName = file.name.replace(/\s+/g, '_').replace(/[^a-zA-Z0-9.\-_]/g, '');
-                const filePath = `dosyalar/${Date.now()}_${safeName}`;
+                const filePath = 'dosyalar/' + Date.now() + '_' + safeName;
                 try {
-                    const res = await fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/${filePath}`, {
-                        method: 'PUT',
-                        headers: { 'Authorization': `token ${userToken}`, 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ message: `Dosya Yüklendi: ${file.name}`, content: base64Data })
-                    });
+                    const res = await fetch('https://api.github.com/repos/' + GITHUB_USERNAME + '/' + REPO_NAME + '/contents/' + filePath, { method: 'PUT', headers: { 'Authorization': 'token ' + userToken, 'Content-Type': 'application/json' }, body: JSON.stringify({ message: 'Dosya Yüklendi', content: b64 }) });
                     if (res.ok) {
-                        const downloadUrl = `https://raw.githubusercontent.com/${GITHUB_USERNAME}/${REPO_NAME}/main/${filePath}`;
-                        filesData = [{ id: Date.now(), title: file.name, url: downloadUrl }, ...filesData];
+                        filesData.unshift({ id: Date.now(), title: file.name, url: 'https://raw.githubusercontent.com/' + GITHUB_USERNAME + '/' + REPO_NAME + '/main/' + filePath });
                         renderData(); renderAdminLists();
-                        await commitToGitHub('dosyalar.json', filesData, `Yeni Dosya Eklendi: ${file.name}`);
-                    } else alert("Yükleme başarısız oldu. (GitHub API yanıtı: " + res.status + ")");
-                } catch (error) { alert("Ağ hatası oluştu."); }
-                finally { btn.innerText = "Sisteme Yükle"; btn.disabled = false; fileInput.value = ''; }
+                        await commitToGitHub('dosyalar.json', filesData, 'Dosya Eklendi');
+                    } else alert('Yükleme başarısız. (HTTP ' + res.status + ')');
+                } catch (e) { alert('Ağ hatası.'); }
+                finally { btn.innerText = 'Sisteme Yükle'; btn.disabled = false; fileInput.value = ''; }
             };
             reader.readAsDataURL(file);
         }
     </script>
 </body>
-                                                        </html>
+</html>
