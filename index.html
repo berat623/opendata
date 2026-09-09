@@ -1,469 +1,223 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://api.github.com https://raw.githubusercontent.com; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
-<meta name="referrer" content="no-referrer">
-<meta name="color-scheme" content="light">
-<meta name="theme-color" content="#0b3d77">
-<link rel="icon" href="logo.png">
-<link rel="manifest" href="manifest.webmanifest">
-<title>Elektronik Teknolojisi Programı | Bursa Uludağ Üniversitesi</title>
-<style>
-:root{--gov:#0b3d77;--govd:#082a54;--red:#c1121f;--bg:#f4f6f8;--sf:#fff;--bd:#d9dfe6;--tx:#1c2833;--mu:#5b6b7b;--ok:#1e7e34;--warn:#8a5300;--warnbg:#fff3cd}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font:15px/1.55 -apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--tx);overflow-wrap:anywhere}
-.hide{display:none}
-.wrap{max-width:1080px;margin:0 auto}
-.topline{height:4px;background:var(--red)}
-.notice{background:var(--warnbg);border-bottom:1px solid #e0c36a;color:var(--warn);font-size:13px;font-weight:600;padding:8px 16px;text-align:center}
-header.top{background:#fff;border-bottom:3px solid var(--gov)}
-.top-in{display:flex;align-items:center;gap:12px;padding:12px 16px;max-width:1080px;margin:0 auto}
-.logo{width:48px;height:48px;background:#fff;border:1px solid var(--bd);border-radius:4px;padding:3px;object-fit:contain;flex-shrink:0}
-.t1{font-size:11.5px;color:var(--mu);letter-spacing:.6px;text-transform:uppercase;font-weight:700}
-.t2{font-size:18px;font-weight:700;color:var(--gov);line-height:1.25}
-nav.bar{background:var(--gov)}
-.bar-in{display:flex;flex-wrap:wrap;max-width:1080px;margin:0 auto}
-.bar-in button{display:block;padding:11px 14px;color:#fff;background:none;border:none;border-left:1px solid rgba(255,255,255,.12);font:inherit;font-size:12.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;min-height:44px}
-.bar-in button:hover,.bar-in button.on{background:var(--govd)}
-.bar-in .sp{flex:1}
-.only-mob{display:none}
-.ov{position:fixed;inset:0;background:rgba(10,20,40,.5);z-index:60;display:none}
-.ov.open{display:block}
-.drawer{position:fixed;top:0;left:0;bottom:0;width:min(320px,86vw);background:#fff;z-index:70;transform:translateX(-100%);transition:transform .25s ease;display:flex;flex-direction:column;overflow-y:auto;border-right:1px solid var(--bd)}
-.drawer.open{transform:none}
-.d-head{display:flex;align-items:center;gap:10px;padding:12px;border-bottom:3px solid var(--gov);background:#fff}
-.d-head .logo{width:40px;height:40px}
-.d-head b{font-size:13.5px;color:var(--gov);flex:1;line-height:1.3}
-.d-nav button{display:flex;align-items:center;gap:8px;width:100%;text-align:left;padding:14px;background:none;border:none;border-bottom:1px solid var(--bd);font:inherit;font-size:14.5px;font-weight:600;color:var(--tx);cursor:pointer;min-height:48px}
-.d-nav button.on{background:#eef3fa;color:var(--gov);box-shadow:inset 3px 0 0 var(--gov)}
-.d-auth{margin-top:auto;border-top:1px solid var(--bd);padding:12px;background:#fafbfc}
-.d-auth .btn{width:100%;margin-bottom:8px}
-.d-auth .btn:last-child{margin-bottom:0}
-main{padding:22px 16px 48px;max-width:1080px;margin:0 auto}
-h2.sec{font-size:14px;letter-spacing:.7px;text-transform:uppercase;color:var(--gov);border-bottom:2px solid var(--gov);padding-bottom:6px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;gap:10px}
-.card{background:var(--sf);border:1px solid var(--bd);border-radius:4px;padding:16px;margin-bottom:18px}
-.grid2{display:grid;grid-template-columns:1fr;gap:18px}
-@media(min-width:900px){.grid2{grid-template-columns:1fr 1fr}}
-.tbl{overflow-x:auto}
-table{width:100%;border-collapse:collapse;font-size:13.5px}
-table.minw{min-width:640px}
-th{background:var(--gov);color:#fff;text-align:left;padding:8px 10px;font-weight:700}
-td{border:1px solid var(--bd);padding:8px 10px;vertical-align:top}
-tbody tr:nth-child(even) td{background:#f6f8fa}
-.item{border:1px solid var(--bd);border-left:4px solid var(--gov);border-radius:3px;background:#fff;padding:12px 14px;margin-bottom:10px}
-.item.pin{border-left-color:var(--red)}
-.item h3{font-size:15px;color:var(--gov);margin-bottom:4px}
-.meta{font-size:12px;color:var(--mu);margin-bottom:6px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.tag{font-size:10.5px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:1px 7px;border:1px solid;border-radius:2px;white-space:nowrap}
-.tag.duyuru{color:var(--gov);border-color:var(--gov)}
-.tag.sinav{color:var(--red);border-color:var(--red)}
-.tag.staj{color:var(--warn);border-color:var(--warn)}
-.tag.etkinlik{color:var(--ok);border-color:var(--ok)}
-.tag.pin{color:var(--red);border-color:var(--red)}
-.btn{display:inline-block;border:1px solid var(--gov);background:var(--gov);color:#fff;padding:9px 16px;min-height:44px;border-radius:3px;font:inherit;font-size:13px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;cursor:pointer;text-decoration:none}
-.btn.sec{background:#fff;color:var(--gov)}
-.btn.dgr{background:#fff;color:var(--red);border-color:var(--red)}
-.btn.sm{padding:5px 10px;font-size:11.5px;min-height:34px}
-.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-input,select,textarea{width:100%;padding:9px 10px;border:1px solid var(--bd);border-radius:3px;font:inherit;font-size:14px;background:#fff;min-height:42px}
-input:focus,select:focus,textarea:focus{outline:2px solid var(--gov);border-color:var(--gov)}
-textarea{min-height:0}
-label{font-size:12.5px;font-weight:700;color:var(--mu);display:block;margin-bottom:4px}
-.fld{margin-bottom:12px}
-.f2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.chk{display:flex;gap:8px;align-items:center;font-size:13.5px;font-weight:600;margin-bottom:12px}
-.chk input{width:auto;min-height:0}
-.modal{position:fixed;inset:0;background:rgba(8,20,40,.55);display:none;z-index:80;padding:16px;overflow:auto}
-.modal.open{display:block}
-.mbox{background:#fff;border:1px solid var(--bd);border-top:4px solid var(--gov);max-width:640px;margin:24px auto;padding:18px;border-radius:4px}
-.tabs{display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid var(--bd);margin-bottom:14px}
-.tabs button{border:1px solid transparent;background:none;padding:8px 12px;font:inherit;font-size:13px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;color:var(--mu);cursor:pointer;border-radius:3px 3px 0 0;min-height:40px}
-.tabs button.on{border-color:var(--bd);border-bottom-color:#fff;color:var(--gov);background:#fff}
-.empty{color:var(--mu);text-align:center;padding:24px;font-size:13.5px}
-.adm{display:flex;gap:6px;align-items:center;border:1px solid var(--bd);border-radius:3px;padding:6px 8px;margin-bottom:6px;background:#fff}
-.adm .t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px;font-weight:600}
-.srch{margin-bottom:12px}
-.lesson{border:1px solid var(--bd);border-radius:3px;padding:10px 12px;margin-bottom:8px;background:#fff}
-.lesson.live{border-color:var(--ok);background:#eef7ee}
-.lesson .tm{font-weight:700;color:var(--gov)}
-.live-tag{color:var(--ok);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.4px}
-.day-h{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--gov);margin:14px 0 6px;border-bottom:1px solid var(--bd);padding-bottom:4px}
-.lp{background:none;border:none;color:var(--gov);cursor:pointer;font:inherit;font-size:13px;text-decoration:underline;padding:0}
-.note{font-size:12.5px;color:var(--mu);background:var(--warnbg);border:1px solid #e0c36a;border-radius:3px;padding:10px 12px}
-/* TABLET */
-@media(min-width:768px) and (max-width:1023px){
-.top-in{padding:10px 14px}
-.t2{font-size:16.5px}
-.bar-in button{padding:10px 10px;font-size:11.5px}
-main{padding:20px 14px 44px}
-.card{padding:14px}
-}
-/* TELEFON */
-@media(max-width:767px){
-nav.bar{display:none}
-.only-mob{display:inline-flex}
-.top-in{padding:10px 12px;gap:10px}
-.logo{width:42px;height:42px}
-.t1{font-size:10px}
-.t2{font-size:15.5px}
-main{padding:16px 12px 40px}
-.btn{min-height:46px;font-size:12.5px}
-.btn.sm{min-height:36px}
-input,select,textarea{font-size:16px}
-h2.sec{font-size:13px}
-.item h3{font-size:15px}
-.f2{grid-template-columns:1fr}
-.tbl{overflow:visible}
-table.minw{min-width:0}
-table,tbody,tr,td{display:block;width:100%}
-thead{display:none}
-tr{border:1px solid var(--bd);border-radius:3px;margin-bottom:8px;overflow:hidden;background:#fff}
-td{border:none;border-bottom:1px solid var(--bd);padding:9px 12px}
-td:last-child{border-bottom:none}
-tbody tr:nth-child(even) td{background:#fff}
-td:first-child{font-weight:700;color:var(--gov);background:#f2f5f9}
-table.hol td:nth-child(2)::before{content:"Telafi (Güz): ";font-weight:700;color:var(--mu)}
-table.hol td:nth-child(3)::before{content:"Telafi (Bahar): ";font-weight:700;color:var(--mu)}
-.mbox{margin:12px auto;padding:14px}
-}
-</style>
-</head>
-<body>
-<noscript><div class="notice">Bu sistemi kullanabilmek için JavaScript etkinleştirilmelidir.</div></noscript>
-<div class="topline"></div>
-<div class="notice">Sistemde planlı bakım ve yenileme çalışmaları devam etmektedir. Anlayışınız için teşekkürler.</div>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.github.com https://raw.githubusercontent.com; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="referrer" content="no-referrer">
+    <meta name="theme-color" content="#0b0f19">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="ETP Bilgi">
+    <link rel="apple-touch-icon" href="logo.png">
+    <link rel="manifest" href="manifest.webmanifest">
+    <title>ETP Bilgi Sistemi | BUÜ</title>
+    <link rel="icon" type="image/png" href="logo.png">
 
-<header class="top"><div class="top-in">
-<button class="btn sec only-mob" onclick="openNav()" aria-label="Menüyü aç" style="min-height:42px;padding:6px 12px;font-size:18px">☰</button>
-<img class="logo" src="logo.png" alt="BUÜ logosu" fetchpriority="high" onerror="this.style.display='none'">
-<div><div class="t1">T.C. Bursa Uludağ Üniversitesi</div><div class="t2">Elektronik Teknolojisi Programı Bilgi Sistemi</div></div>
-</div></header>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet" />
 
-<nav class="bar"><div class="bar-in">
-<button class="on" data-v="home" onclick="go('home')">Ana Sayfa</button>
-<button data-v="ann" onclick="go('ann')">Duyurular <span class="bdg tag pin hide"></span></button>
-<button data-v="prog" onclick="go('prog')">Ders Programı</button>
-<button data-v="cal" onclick="go('cal')">Akademik Takvim</button>
-<button data-v="files" onclick="go('files')">Dosyalar</button>
-<span class="sp"></span>
-<button onclick="studentLogin()">Öğrenci Girişi</button>
-<button id="adminbtn" onclick="adminAuth()">Yönetici Girişi</button>
-<button id="logoutbtn" class="hide" onclick="logout()">Çıkış</button>
-</div></nav>
+    <style>
+        :root {
+            --bg-body: #0b0f19; --bg-surface: #141b2d; --bg-surface-hover: #1e293b;
+            --text-main: #f8fafc; --text-muted: #94a3b8;
+            --primary: #3b82f6; --primary-soft: rgba(59,130,246,0.16);
+            --accent: #10b981; --accent-soft: rgba(16,185,129,0.12);
+            --warning: #f59e0b; --warning-soft: rgba(245,158,11,0.12);
+            --danger: #ef4444; --danger-soft: rgba(239,68,68,0.12);
+            --border: rgba(255,255,255,0.08);
+            --nav-width: 260px; --banner-h: 44px;
+            --radius-lg: 24px; --radius-md: 16px; --radius-sm: 10px;
+            --shadow: 0 10px 28px -14px rgba(0,0,0,0.5);
+            --timer-gradient: linear-gradient(135deg, #064e3b 0%, #0f172a 100%);
+            --widget-text: #ffffff; --widget-muted: rgba(255,255,255,0.72); --widget-chip: rgba(255,255,255,0.12);
+            --banner-bg: #8a4a12; --banner-text: #fde68a; --logo-bg: #ffffff;
+        }
+        html.light-mode {
+            --bg-body: #f1f5f9; --bg-surface: #ffffff; --bg-surface-hover: #f8fafc;
+            --text-main: #0f172a; --text-muted: #64748b;
+            --primary: #2563eb; --primary-soft: rgba(37,98,235,0.10);
+            --accent: #059669; --accent-soft: rgba(5,150,105,0.08);
+            --warning: #d97706; --warning-soft: rgba(217,119,6,0.10);
+            --danger: #dc2626; --danger-soft: rgba(220,38,38,0.10);
+            --border: rgba(15,23,42,0.08);
+            --shadow: 0 10px 28px -14px rgba(2,6,23,0.10);
+            --timer-gradient: linear-gradient(135deg, #d1fae5 0%, #f0fdf4 100%);
+            --widget-text: #0f172a; --widget-muted: rgba(15,23,42,0.65); --widget-chip: rgba(15,23,42,0.06);
+            --banner-bg: #fde68a; --banner-text: #92400e;
+        }
 
-<div id="ov" class="ov" onclick="closeNav()"></div>
-<aside id="drawer" class="drawer" aria-label="Menü">
-<div class="d-head">
-<img class="logo" src="logo.png" alt="" onerror="this.style.display='none'">
-<b>T.C. Bursa Uludağ Üniversitesi<br>Elektronik Teknolojisi Programı</b>
-<button class="btn sec" onclick="closeNav()" aria-label="Menüyü kapat" style="min-height:38px;padding:5px 11px;font-size:15px">✕</button>
-</div>
-<nav class="d-nav">
-<button class="on" data-v="home" onclick="go('home')">Ana Sayfa</button>
-<button data-v="ann" onclick="go('ann')">Duyurular <span class="bdg tag pin hide"></span></button>
-<button data-v="prog" onclick="go('prog')">Ders Programı</button>
-<button data-v="cal" onclick="go('cal')">Akademik Takvim</button>
-<button data-v="files" onclick="go('files')">Dosyalar</button>
-</nav>
-<div class="d-auth">
-<button class="btn sec" onclick="studentLogin()">Öğrenci Girişi</button>
-<button id="adminbtn2" class="btn" onclick="adminAuth()">Yönetici Girişi</button>
-<button id="logoutbtn2" class="btn dgr hide" onclick="logout()">Çıkış Yap</button>
-</div>
-</aside>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Parkinsans', sans-serif; -webkit-tap-highlight-color: transparent; -webkit-text-size-adjust: 100%; }
+        body { background: var(--bg-body); color: var(--text-main); overflow-x: hidden; }
+        body.modal-open, body.drawer-open { overflow: hidden; }
 
-<main>
-<section id="v-home">
-<div class="grid2">
-<div><h2 class="sec">Son Duyurular <button class="lp" onclick="go('ann')">Tümünü Gör</button></h2><div id="home-ann"></div></div>
-<div><h2 class="sec">Önemli Tarihler</h2><div id="home-dates"></div></div>
-</div>
-</section>
+        ::selection { background: var(--primary); color: #fff; }
+        button, .nav-item, a { touch-action: manipulation; cursor: pointer; }
+        :focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 6px; }
 
-<section id="v-ann" class="hide">
-<h2 class="sec">Duyurular</h2>
-<div class="card">
-<div class="row srch">
-<input id="q" placeholder="Duyurularda ara..." oninput="renderAnn()" style="flex:1;min-width:150px">
-<select id="cat" onchange="renderAnn()" style="width:auto">
-<option value="all">Tüm Kategoriler</option><option value="duyuru">Duyuru</option><option value="sinav">Sınav</option><option value="staj">Staj</option><option value="etkinlik">Etkinlik</option>
-</select>
-</div>
-<div id="ann-list"></div>
-</div>
-</section>
+        .material-symbols-rounded { font-variation-settings: 'FILL' 1; user-select: none; }
 
-<section id="v-prog" class="hide">
-<h2 class="sec">Haftalık Ders Programı</h2>
-<div id="prog-list"></div>
-</section>
+        .icon-chip { width: 38px; height: 38px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; background: var(--primary-soft); color: var(--primary); flex-shrink: 0; }
+        .icon-chip .material-symbols-rounded { font-size: 22px; }
+        .icon-chip.accent { background: var(--accent-soft); color: var(--accent); }
+        .icon-chip.warn { background: var(--warning-soft); color: var(--warning); }
+        .icon-chip.on-gradient { background: var(--widget-chip); color: var(--widget-text); }
 
-<section id="v-cal" class="hide">
-<h2 class="sec">2026-2027 Akademik Takvimi <button class="btn sm" onclick="ics()">Takvime Ekle (.ics)</button></h2>
-<div class="card"><h2 class="sec" style="border-width:1px;font-size:13px">Güz Yarıyılı</h2><div class="tbl"><table class="minw"><thead><tr><th>Faaliyet / İdari İşlem</th><th>Tarih</th></tr></thead><tbody id="tb-f"></tbody></table></div></div>
-<div class="card"><h2 class="sec" style="border-width:1px;font-size:13px">Bahar Yarıyılı</h2><div class="tbl"><table class="minw"><thead><tr><th>Faaliyet / İdari İşlem</th><th>Tarih</th></tr></thead><tbody id="tb-s"></tbody></table></div></div>
-<div class="card"><h2 class="sec" style="border-width:1px;font-size:13px">Resmi Tatiller ve Dini Bayramlar</h2><div class="tbl"><table class="minw hol"><thead><tr><th>Tatil</th><th>Telafi (Güz)</th><th>Telafi (Bahar)</th></tr></thead><tbody>
-<tr><td>28 Ekim 2026 Çarşamba (Cumhuriyet Bayramı, yarım gün)</td><td>72 iş gününe dahil edilmemiştir</td><td>—</td></tr>
-<tr><td>29 Ekim 2026 Perşembe (Cumhuriyet Bayramı)</td><td>72 iş gününe dahil edilmemiştir</td><td>—</td></tr>
-<tr><td>1 Ocak 2027 Cuma (Yılbaşı)</td><td>72 iş gününe dahil edilmemiştir</td><td>—</td></tr>
-<tr><td>8 Mart 2027 Pazartesi (Ramazan Bayramı Arefe)</td><td>—</td><td>—</td></tr>
-<tr><td>9 Mart 2027 Salı (Ramazan Bayramı 1. gün)</td><td>—</td><td>—</td></tr>
-<tr><td>10 Mart 2027 Çarşamba (Ramazan Bayramı 2. gün)</td><td>—</td><td>—</td></tr>
-<tr><td>11 Mart 2027 Perşembe (Ramazan Bayramı 3. gün)</td><td>—</td><td>—</td></tr>
-<tr><td>12 Mart 2027 Cuma</td><td>—</td><td>Ramazan Bayramı haftası nedeniyle 71 iş gününe dahil edilmemiştir</td></tr>
-<tr><td>23 Nisan 2027 Cuma (Ulusal Egemenlik ve Çocuk Bayramı)</td><td>—</td><td>71 iş gününe dahil edilmemiştir</td></tr>
-<tr><td>1 Mayıs 2027 Cumartesi (İşçi ve Emekçiler Bayramı)</td><td>—</td><td>71 iş gününe dahil edilmemiştir</td></tr>
-<tr><td>15 Mayıs 2027 Cumartesi (Arefe)</td><td>—</td><td>—</td></tr>
-<tr><td>16 Mayıs 2027 Pazar (Kurban Bayramı 1. gün)</td><td>—</td><td>—</td></tr>
-<tr><td>17 Mayıs 2027 Pazartesi (Kurban Bayramı 2. gün)</td><td>—</td><td>71 iş gününe dahil edilmemiştir</td></tr>
-<tr><td>18 Mayıs 2027 Salı (Kurban Bayramı 3. gün)</td><td>—</td><td>71 iş gününe dahil edilmemiştir</td></tr>
-<tr><td>19 Mayıs 2027 Çarşamba (Kurban Bayramı 4. gün / Atatürk'ü Anma, Gençlik ve Spor Bayramı)</td><td>—</td><td>71 iş gününe dahil edilmemiştir</td></tr>
-<tr><td>15 Temmuz 2027 Perşembe (Demokrasi ve Milli Birlik Günü)</td><td>—</td><td>—</td></tr>
-</tbody></table></div></div>
-<p class="note">Kaynak: Bursa Uludağ Üniversitesi 2026-2027 Eğitim-Öğretim Yılı Önlisans ve Lisans Akademik Takvimi (FR 1.1.1_03). Resmi tatiller nedeniyle yapılamayan derslerin telafisi, Birim Yönetim Kurulu Kararı ile ilgili birim tarafından uygun görülen tarih, saat ve yerde yapılacaktır.</p>
-</section>
+        .btn, .nav-item, .stat { position: relative; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 10px 18px; border-radius: 50px; font-weight: 700; font-size: 0.9rem; border: none; }
+        .btn:active { transform: scale(0.97); }
+        .btn-icon { padding: 10px; border-radius: 50%; }
+        .btn-mini { min-height: 38px; padding: 6px 12px; font-size: 0.8rem; }
+        .btn-tonal { background: var(--bg-surface); color: var(--text-main); border: 1px solid var(--border); }
+        .btn-primary { background: var(--primary); color: #fff; }
+        .btn-danger { background: var(--danger-soft); color: var(--danger); border: 1px solid rgba(239,68,68,0.25); }
+        button.menu-btn { display: none; }
 
-<section id="v-files" class="hide">
-<h2 class="sec">Dosyalar ve Formlar</h2>
-<div class="card">
-<input id="qf" class="srch" placeholder="Dosyalarda ara..." oninput="renderFiles()">
-<div id="file-list"></div>
-</div>
-</section>
-</main>
+        .skeleton { background: var(--bg-surface-hover); border-radius: 10px; }
 
-<div class="modal" id="modal" onclick="if(event.target===this)closeModal()">
-<div class="mbox">
-<div class="row" style="justify-content:space-between;margin-bottom:12px">
-<strong style="color:var(--gov);letter-spacing:.5px">YÖNETİCİ PANELİ</strong>
-<button class="btn sec sm" onclick="closeModal()">Kapat</button>
-</div>
-<div class="tabs">
-<button id="t1" class="on" onclick="tab('t1')">Duyuru</button>
-<button id="t2" onclick="tab('t2')">Dosya</button>
-<button id="t3" onclick="tab('t3')">Ders Programı</button>
-<button id="t4" onclick="tab('t4')">Oturum</button>
-</div>
-<div id="p-t1">
-<div class="fld"><label>Başlık</label><input id="a-title" maxlength="150" autocomplete="off"></div>
-<div class="fld"><label>Kategori</label><select id="a-cat"><option value="duyuru">Duyuru</option><option value="sinav">Sınav</option><option value="staj">Staj</option><option value="etkinlik">Etkinlik</option></select></div>
-<label class="chk"><input type="checkbox" id="a-pin"> Önemli duyuru (liste başına sabitle)</label>
-<div class="fld"><label>İçerik</label><textarea id="a-content" rows="5" maxlength="3000"></textarea></div>
-<div class="row"><button class="btn" id="a-save" onclick="saveAnn()">Yayınla</button><button class="btn sec hide" id="a-cancel" onclick="cancelEdit()">Vazgeç</button></div>
-<div style="margin:14px 0 6px;font-size:12.5px;font-weight:700;color:var(--mu)">YAYINDAKİ DUYURULAR</div>
-<div id="al"></div>
-</div>
-<div id="p-t2" class="hide">
-<div class="fld"><label>Dosya Yükle (tür/boyut sınırı yok)</label><input type="file" id="f-up" accept="*/*" style="min-height:0"></div>
-<button class="btn" id="f-upbtn" onclick="upload()">Sisteme Yükle</button>
-<div style="margin:14px 0 6px;font-size:12.5px;font-weight:700;color:var(--mu)">VEYA DIŞ BAĞLANTI</div>
-<div class="f2"><div class="fld"><label>Dosya Adı</label><input id="f-title" maxlength="100" autocomplete="off"></div><div class="fld"><label>URL</label><input id="f-url" type="url" autocomplete="off"></div></div>
-<button class="btn sec" onclick="addUrl()">Link Olarak Ekle</button>
-<div style="margin:14px 0 6px;font-size:12.5px;font-weight:700;color:var(--mu)">YAYINDAKİ DOSYALAR</div>
-<div id="fl"></div>
-</div>
-<div id="p-t3" class="hide">
-<div class="f2"><div class="fld"><label>Gün</label><select id="l-day"><option value="1">Pazartesi</option><option value="2">Salı</option><option value="3">Çarşamba</option><option value="4">Perşembe</option><option value="5">Cuma</option></select></div><div class="fld"><label>Ders Adı</label><input id="l-course" autocomplete="off"></div></div>
-<div class="f2"><div class="fld"><label>Başlangıç</label><input type="time" id="l-start" value="09:00"></div><div class="fld"><label>Bitiş</label><input type="time" id="l-end" value="10:50"></div></div>
-<div class="f2"><div class="fld"><label>Derslik</label><input id="l-room" autocomplete="off"></div><div class="fld"><label>Öğretim Elemanı</label><input id="l-ins" autocomplete="off"></div></div>
-<button class="btn" onclick="saveLesson()">Programa Ekle</button>
-<div style="margin:14px 0 6px;font-size:12.5px;font-weight:700;color:var(--mu)">MEVCUT PROGRAM</div>
-<div id="sl"></div>
-</div>
-<div id="p-t4" class="hide">
-<p style="font-size:13.5px;color:var(--mu);margin-bottom:14px">Oturum, GitHub API kimlik doğrulaması ile korunmaktadır.</p>
-<button class="btn dgr" onclick="logout()">Oturumu Kapat</button>
-</div>
-</div>
-</div>
+        .maintenance-banner { position: sticky; top: 0; z-index: 1000; min-height: var(--banner-h); display: flex; align-items: center; justify-content: center; gap: 8px; padding: 6px 12px; text-align: center; background: var(--banner-bg); color: var(--banner-text); font-size: 0.78rem; font-weight: 700; line-height: 1.3; }
+        .banner-icon { font-size: 18px; flex-shrink: 0; }
 
-<script>
-const U="berat623",R="opendata",$=id=>document.getElementById(id);
-let tok=localStorage.gh||"",ANN=[],FIL=[],SCH=[],editId=null;
-const CAT={duyuru:"Duyuru",sinav:"Sınav",staj:"Staj",etkinlik:"Etkinlik"};
-const DAYS=["Pazartesi","Salı","Çarşamba","Perşembe","Cuma"];
-const F=[["Katkı Payı / Öğrenim Ücreti Yatırma Süresi","2026-08-31","2026-09-25"],["Ders Kaydı Yenileme Süresi","2026-09-14","2026-09-17","4 iş günü"],["Kapanan Seçmeli Derslerin İlanı","2026-09-22","2026-09-22"],["Kapanan Seçmeli Ders Bırakma / Yerine Ders Ekleme Süresi","2026-09-23","2026-09-25","3 iş günü"],["Mazeret Ders Kaydı Süresi","2026-09-23","2026-09-25","3 iş günü"],["Eğitim-Öğretimin (Derslerin) Başlaması","2026-09-28","2026-09-28"],["Eğitim-Öğretimin (Derslerin) Sona Ermesi","2027-01-08","2027-01-08","72 iş günü"],["Yarıyıl Sonu Sınavları (Final)","2027-01-11","2027-01-22","12 gün"],["Yarıyıl Sonu Sınav Not Girişlerinin Son Günü","2027-01-25","2027-01-25"],["Yarıyıl Arası Tatil (ARA)","2027-01-25","2027-01-31","7 gün"],["Bütünleme Sınavları","2027-02-01","2027-02-06","6 gün"],["Bütünleme Sınav Not Girişlerinin Son Günü","2027-02-08","2027-02-08","1 iş günü"],["Ek Sınav Müracaat Süresi (31. Madde)","2027-02-10","2027-02-11","2 iş günü"],["Azami Süre Sonu Müracaat Süresi","2027-02-10","2027-02-11","2 iş günü"],["Azami Süre Sonu 1. Ek Sınavları","2027-02-15","2027-02-19","5 iş günü"],["Ek Sınavlar (31. Madde)","2027-02-16","2027-02-17","2 iş günü"],["Azami Süre Sonu 2. Ek Sınavları","2027-02-23","2027-02-26","4 iş günü"]];
-const S=[["Katkı Payı / Öğrenim Ücreti Yatırma Süresi","2027-02-01","2027-02-19"],["Ders Kaydı Yenileme Süresi","2027-02-08","2027-02-11","4 iş günü"],["Kapanan Seçmeli Derslerin İlanı","2027-02-16","2027-02-16"],["Kapanan Seçmeli Ders Bırakma / Yerine Ders Ekleme Süresi","2027-02-17","2027-02-19","3 iş günü"],["Mazeret Ders Kaydı Süresi","2027-02-17","2027-02-19","3 iş günü"],["Eğitim-Öğretimin (Derslerin) Başlaması","2027-02-22","2027-02-22"],["Eğitim-Öğretimin (Derslerin) Sona Ermesi","2027-06-11","2027-06-11","71 iş günü"],["Yarıyıl Sonu Sınavları (Final)","2027-06-14","2027-06-25","12 gün"],["Yarıyıl Sonu Sınav Not Girişlerinin Son Günü","2027-06-28","2027-06-28"],["Yarıyıl Arası Tatil (ARA)","2027-06-28","2027-07-04","7 gün"],["Bütünleme Sınavları","2027-07-05","2027-07-10","6 gün"],["Bütünleme Sınav Not Girişlerinin Son Günü","2027-07-12","2027-07-12","1 iş günü"],["Ek Sınav Müracaat Süresi (31. Madde)","2027-07-13","2027-07-14","2 iş günü"],["Ek Sınavlar (31. Madde)","2027-07-20","2027-07-21","2 iş günü"],["Azami Süre Sonu Müracaat Süresi","2027-09-14","2027-09-15","2 iş günü"],["Ek Sınav Müracaat Süresi (31. Madde) (Yaz Öğretimi Sonrası)","2027-09-14","2027-09-15","2 iş günü"],["Azami Süre Sonu 1. Ek Sınavları","2027-09-20","2027-09-24","5 iş günü"],["Ek Sınavlar (31. Madde) (Yaz Öğretimi Sonrası)","2027-09-21","2027-09-22","2 iş günü"],["Azami Süre Sonu 2. Ek Sınavları","2027-09-27","2027-10-01","5 iş günü"]];
+        .toast { position: fixed; left: 50%; bottom: 32px; transform: translateX(-50%); background: var(--bg-surface); color: var(--text-main); border: 1px solid var(--border); border-radius: 50px; padding: 12px 20px; display: none; gap: 10px; align-items: center; font-weight: 700; font-size: 0.85rem; box-shadow: var(--shadow); z-index: 1500; max-width: calc(100vw - 32px); text-align: center; }
+        .toast.show { display: flex; }
+        .toast .material-symbols-rounded { color: var(--warning); flex-shrink: 0; }
 
-const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const pd=s=>{const p=s.split("-");return new Date(+p[0],p[1]-1,+p[2])};
-const fd=s=>pd(s).toLocaleDateString("tr-TR",{day:"numeric",month:"long",year:"numeric"});
-const rng=r=>r[1]===r[2]?fd(r[1]):fd(r[1])+" - "+fd(r[2])+(r[3]?" ("+r[3]+")":"");
-const empty=m=>'<div class="empty">'+m+"</div>";
+        .app-container { display: flex; align-items: stretch; }
 
-document.addEventListener("DOMContentLoaded",()=>{
- load();adminUI();
- setInterval(markLive,60000);
- document.addEventListener("keydown",e=>{if(e.key==="Escape"){$("modal").classList.contains("open")?closeModal():closeNav();}});
- if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js").catch(()=>{});
-});
+        .sidebar { width: var(--nav-width); flex-shrink: 0; background: var(--bg-surface); border-right: 1px solid var(--border); padding: 24px 16px; display: flex; flex-direction: column; position: sticky; top: var(--banner-h); height: calc(100vh - var(--banner-h)); overflow-y: auto; z-index: 50; }
+        .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 30px; padding: 0 8px; }
+        .brand-logo { width: 44px; height: 44px; border-radius: 14px; object-fit: contain; background: var(--logo-bg); border: 1px solid var(--border); padding: 4px; flex-shrink: 0; }
+        .brand-fallback { display: none; align-items: center; justify-content: center; width: 44px; height: 44px; background: var(--primary); border-radius: 14px; color: #fff; font-weight: 800; font-size: 1.2rem; flex-shrink: 0; }
+        .brand-text h1 { font-size: 1.05rem; font-weight: 800; line-height: 1.2; }
+        .brand-text p { font-size: 0.72rem; color: var(--text-muted); }
 
-function openNav(){$("drawer").classList.add("open");$("ov").classList.add("open");document.body.style.overflow="hidden";}
-function closeNav(){$("drawer").classList.remove("open");$("ov").classList.remove("open");unlock();}
-function openModal(){$("modal").classList.add("open");document.body.style.overflow="hidden";adminLists();}
-function closeModal(){$("modal").classList.remove("open");unlock();}
-function unlock(){if(!$("drawer").classList.contains("open")&&!$("modal").classList.contains("open"))document.body.style.overflow="";}
+        .nav-links { display: flex; flex-direction: column; gap: 6px; flex: 1; }
+        .nav-item { display: flex; align-items: center; gap: 12px; padding: 13px 16px; min-height: 46px; border-radius: var(--radius-md); color: var(--text-muted); font-weight: 600; font-size: 0.94rem; }
+        .nav-item:hover { background: var(--bg-surface-hover); color: var(--text-main); }
+        .nav-item.active { background: var(--primary); color: #fff; }
+        .nav-badge { margin-left: auto; background: var(--danger); color: #fff; border-radius: 20px; font-size: 0.66rem; font-weight: 800; padding: 2px 8px; min-width: 20px; display: none; align-items: center; justify-content: center; }
+        .sidebar-footer { padding-top: 14px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 6px; }
 
-async function get(f){
- try{const h={};if(tok)h.Authorization="token "+tok;
-  const r=await fetch(`https://api.github.com/repos/${U}/${R}/contents/${f}?t=${Date.now()}`,{headers:h,cache:"no-store"});
-  if(r.ok)return JSON.parse(decodeURIComponent(atob((await r.json()).content).replace(/\s/g,"").split("").map(c=>"%"+("00"+c.charCodeAt(0).toString(16)).slice(-2)).join("")));}catch(e){}
- try{const r=await fetch(`https://raw.githubusercontent.com/${U}/${R}/main/${f}?t=${Date.now()}`,{cache:"no-store"});if(r.ok)return await r.json();}catch(e){}
- return [];
-}
-async function put(f,d,m){
- try{
-  const g=await fetch(`https://api.github.com/repos/${U}/${R}/contents/${f}?t=${Date.now()}`,{headers:{Authorization:"token "+tok}});
-  let sha;if(g.ok)sha=(await g.json()).sha;else if(g.status!==404)return alert("Yetki hatası.");
-  const b={message:m,content:btoa(unescape(encodeURIComponent(JSON.stringify(d,null,2))))};if(sha)b.sha=sha;
-  const r=await fetch(`https://api.github.com/repos/${U}/${R}/contents/${f}`,{method:"PUT",headers:{Authorization:"token "+tok,"Content-Type":"application/json"},body:JSON.stringify(b)});
-  if(r.ok){alert("İşlem tamamlandı.");load();}else alert("Kayıt hatası.");
- }catch(e){alert("Bağlantı hatası.");}
-}
-async function load(){
- ANN=await get("duyurular.json");FIL=await get("dosyalar.json");SCH=await get("dersprogrami.json");
- renderAnn();renderFiles();renderProg();renderCal();badge();adminLists();
-}
-function go(v){
- ["home","ann","prog","cal","files"].forEach(x=>$("v-"+x).classList.toggle("hide",x!==v));
- document.querySelectorAll("[data-v]").forEach(b=>b.classList.toggle("on",b.dataset.v===v));
- if(v==="ann"){localStorage.lastVisit=Date.now();badge();}
- closeNav();scrollTo(0,0);
-}
-function badge(){
- const last=+localStorage.lastVisit||0,n=ANN.filter(i=>+new Date(i.date)>last).length;
- document.querySelectorAll(".bdg").forEach(b=>{if(n){b.textContent=n>9?"9+":n;b.classList.remove("hide");}else b.classList.add("hide");});
-}
-const sorted=()=>ANN.slice().sort((a,b)=>(b.pinned?1:0)-(a.pinned?1:0)||new Date(b.date)-new Date(a.date));
-function annRow(i,full){
- const c=i.category||"duyuru";
- return `<div class="item${i.pinned?" pin":""}"><h3>${i.pinned?'<span class="tag pin">Sabit</span> ':""}${esc(i.title)}</h3>
- <div class="meta"><span class="tag ${c}">${CAT[c]}</span><span>${new Date(i.date).toLocaleDateString("tr-TR",{day:"numeric",month:"long",year:"numeric"})}</span></div>
- ${full?`<p style="margin-bottom:8px;white-space:pre-wrap">${esc(i.content)}</p><div class="row"><button class="btn sec sm" onclick="share(${i.id})">Paylaş</button>${tok?`<button class="btn sec sm" onclick="pinAnn(${i.id})">${i.pinned?"Sabiti Kaldır":"Sabitle"}</button><button class="btn sec sm" onclick="editAnn(${i.id})">Düzenle</button><button class="btn dgr sm" onclick="delAnn(${i.id})">Sil</button>`:""}</div>`:""}</div>`;
-}
-function renderAnn(){
- const list=sorted();
- $("home-ann").innerHTML=list.slice(0,5).map(i=>annRow(i,false)).join("")||empty("Kayıtlı duyuru bulunmamaktadır.");
- const q=$("q").value.trim().toLowerCase(),c=$("cat").value;
- let f=list;if(c!=="all")f=f.filter(i=>(i.category||"duyuru")===c);
- if(q)f=f.filter(i=>(i.title+" "+i.content).toLowerCase().includes(q));
- $("ann-list").innerHTML=f.map(i=>annRow(i,true)).join("")||empty("Aramayla eşleşen duyuru bulunamadı.");
-}
-function renderFiles(){
- const q=$("qf").value.trim().toLowerCase();
- const f=q?FIL.filter(i=>(i.title||"").toLowerCase().includes(q)):FIL;
- $("file-list").innerHTML=f.map(i=>`<div class="item"><h3>${esc(i.title)}</h3><div class="row"><a class="btn sec sm" href="${esc(i.url)}" target="_blank" rel="noopener noreferrer">İndir / Görüntüle</a>${tok?`<button class="btn dgr sm" onclick="delFile(${i.id})">Sil</button>`:""}</div></div>`).join("")||empty("Kayıtlı dosya bulunmamaktadır.");
-}
-function renderProg(){
- if(!SCH.length){$("prog-list").innerHTML=empty("Ders programı henüz açıklanmamıştır. Açıklandığında bu sayfada yayımlanacaktır.");return;}
- $("prog-list").innerHTML=DAYS.map((d,di)=>{
-  const L=SCH.filter(l=>+l.day===di+1).sort((a,b)=>String(a.start).localeCompare(String(b.start)));
-  if(!L.length)return"";
-  return `<div class="day-h">${d}</div>`+L.map(l=>`<div class="lesson" data-day="${l.day}" data-start="${l.start}" data-end="${l.end}"><span class="tm">${l.start}-${l.end}</span> <strong>${esc(l.course)}</strong>${tok?` <button class="btn dgr sm" style="float:right" onclick="delLesson(${l.id})">Sil</button>`:""}<div style="font-size:12.5px;color:var(--mu);margin-top:2px">${esc(l.room||"")} ${l.room&&l.instructor?"•":""} ${esc(l.instructor||"")} <span class="live-tag"></span></div></div>`).join("");
- }).join("")||empty("Ders programı henüz açıklanmamıştır.");
- markLive();
-}
-function markLive(){
- const n=new Date(),hm=String(n.getHours()).padStart(2,"0")+":"+String(n.getMinutes()).padStart(2,"0");
- document.querySelectorAll(".lesson").forEach(el=>{
-  const live=+el.dataset.day===n.getDay()&&hm>=el.dataset.start&&hm<el.dataset.end;
-  el.classList.toggle("live",live);
-  el.querySelector(".live-tag").textContent=live?"• Şu an derste":"";
- });
-}
-function renderCal(){
- $("tb-f").innerHTML=F.map(r=>`<tr><td>${r[0]}</td><td>${rng(r)}</td></tr>`).join("");
- $("tb-s").innerHTML=S.map(r=>`<tr><td>${r[0]}</td><td>${rng(r)}</td></tr>`).join("");
- const t=new Date();t.setHours(0,0,0,0);
- const rel=F.concat(S).map(r=>({n:r[0],s:pd(r[1]),e:pd(r[2])})).filter(i=>i.e>=t)
-  .sort((a,b)=>(a.s<=t?0:1)-(b.s<=t?0:1)||(a.s<=t?a.e-b.e:a.s-b.s)).slice(0,6);
- $("home-dates").innerHTML=rel.map(i=>{
-  const on=i.s<=t;
-  return `<div class="item"><h3 style="font-size:14px">${i.n}</h3><div class="meta"><span>${on?"Devam ediyor • son gün: "+i.e.toLocaleDateString("tr-TR",{day:"numeric",month:"long"}):"Başlangıç: "+i.s.toLocaleDateString("tr-TR",{day:"numeric",month:"long",year:"numeric"})}</span></div></div>`;
- }).join("")||empty("Yaklaşan tarih bulunmamaktadır.");
-}
-function ics(){
- const z=d=>d.getFullYear()+String(d.getMonth()+1).padStart(2,"0")+String(d.getDate()).padStart(2,"0");
- const ev=F.concat(S).map((r,i)=>{const s=pd(r[1]),e=pd(r[2]);e.setDate(e.getDate()+1);
-  return `BEGIN:VEVENT\r\nUID:etp${i}@buu\r\nDTSTAMP:${z(new Date())}T000000Z\r\nDTSTART;VALUE=DATE:${z(s)}\r\nDTEND;VALUE=DATE:${z(e)}\r\nSUMMARY:${(r[0]+" ("+(r[1]===r[2]?fd(r[1]):fd(r[1])+" - "+fd(r[2]))+")").replace(/[,;\\]/g,m=>"\\"+m)}\r\nEND:VEVENT`;});
- const a=document.createElement("a");
- a.href=URL.createObjectURL(new Blob([["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//BUU ETP//TR","CALSCALE:GREGORIAN",...ev,"END:VCALENDAR"].join("\r\n")],{type:"text/calendar"}));
- a.download="BUU-Akademik-Takvim-2026-2027.ics";a.click();URL.revokeObjectURL(a.href);
-}
-async function share(id){
- const i=ANN.find(x=>x.id===id);if(!i)return;
- const txt=i.title+"\n\n"+i.content+"\n\n— BUÜ Elektronik Teknolojisi Programı";
- if(navigator.share){try{await navigator.share({title:i.title,text:txt});}catch(e){}}
- else{try{await navigator.clipboard.writeText(txt);alert("Metin panoya kopyalandı.");}catch(e){alert("Paylaşım desteklenmiyor.");}}
-}
-function studentLogin(){alert("Bu kısım bakımdadır, en yakın zamanda hizmetinizde olacaktır.");}
-const ok=t=>fetch("https://api.github.com/user",{headers:{Authorization:"token "+t}}).then(r=>r.ok).catch(()=>false);
-async function adminAuth(){
- if(tok){if(await ok(tok))openModal();else{alert("Oturum geçersiz.");logout();}}
- else{const t=prompt("Şifre girmeniz gereklidir.");
-  if(t&&t.trim()&&await ok(t.trim())){tok=t.trim();localStorage.gh=tok;adminUI();load();openModal();}
-  else if(t)alert("Şifre geçersiz. Erişim reddedildi.");}
-}
-function adminUI(){
- const on=!!tok;
- $("logoutbtn").classList.toggle("hide",!on);$("adminbtn").classList.toggle("hide",on);
- $("logoutbtn2").classList.toggle("hide",!on);$("adminbtn2").classList.toggle("hide",on);
-}
-function logout(){tok="";localStorage.removeItem("gh");adminUI();renderAnn();renderFiles();renderProg();closeModal();alert("Oturum kapatıldı.");}
-function tab(id){["t1","t2","t3","t4"].forEach(x=>{$(x).classList.toggle("on",x===id);$("p-"+x).classList.toggle("hide",x!==id);});}
-function adminLists(){
- if(!tok)return;
- $("al").innerHTML=sorted().map(i=>`<div class="adm"><span class="t">${i.pinned?"★ ":""}${esc(i.title)}</span><button class="btn sec sm" onclick="editAnn(${i.id})">Düzenle</button><button class="btn dgr sm" onclick="delAnn(${i.id})">Sil</button></div>`).join("")||empty("Duyuru yok.");
- $("fl").innerHTML=FIL.map(i=>`<div class="adm"><span class="t">${esc(i.title)}</span><button class="btn dgr sm" onclick="delFile(${i.id})">Sil</button></div>`).join("")||empty("Dosya yok.");
- $("sl").innerHTML=SCH.slice().sort((a,b)=>a.day-b.day||String(a.start).localeCompare(String(b.start))).map(l=>`<div class="adm"><span class="t">${DAYS[l.day-1]} ${l.start} • ${esc(l.course)}</span><button class="btn dgr sm" onclick="delLesson(${l.id})">Sil</button></div>`).join("")||empty("Program boş.");
-}
-function editAnn(id){
- const i=ANN.find(x=>x.id===id);if(!i)return;
- editId=id;$("a-title").value=i.title;$("a-content").value=i.content;$("a-cat").value=i.category||"duyuru";$("a-pin").checked=!!i.pinned;
- $("a-save").textContent="Değişiklikleri Kaydet";$("a-cancel").classList.remove("hide");tab("t1");
-}
-function cancelEdit(){editId=null;$("a-save").textContent="Yayınla";$("a-cancel").classList.add("hide");$("a-title").value="";$("a-content").value="";$("a-pin").checked=false;}
-function saveAnn(){
- const t=$("a-title").value.trim(),c=$("a-content").value.trim();
- if(!t||!c)return alert("Başlık ve içerik zorunludur.");
- if(editId){const i=ANN.find(x=>x.id===editId);if(i){i.title=t;i.content=c;i.category=$("a-cat").value;i.pinned=$("a-pin").checked;}put("duyurular.json",ANN,"Duyuru güncellendi");cancelEdit();}
- else{ANN.unshift({id:Date.now(),title:t,content:c,date:new Date().toISOString(),category:$("a-cat").value,pinned:$("a-pin").checked});put("duyurular.json",ANN,"Duyuru eklendi");$("a-title").value="";$("a-content").value="";$("a-pin").checked=false;}
- renderAnn();badge();adminLists();
-}
-function delAnn(id){if(!confirm("Silinsin mi?"))return;ANN=ANN.filter(i=>i.id!==id);if(editId===id)cancelEdit();renderAnn();badge();adminLists();put("duyurular.json",ANN,"Duyuru silindi");}
-function pinAnn(id){const i=ANN.find(x=>x.id===id);if(!i)return;i.pinned=!i.pinned;renderAnn();adminLists();put("duyurular.json",ANN,"Sabitleme güncellendi");}
-function addUrl(){
- const t=$("f-title").value.trim(),u=$("f-url").value.trim();
- if(!t||!u)return alert("Ad ve URL zorunludur.");
- FIL.unshift({id:Date.now(),title:t,url:u});renderFiles();adminLists();put("dosyalar.json",FIL,"Dosya eklendi");
- $("f-title").value="";$("f-url").value="";
-}
-function delFile(id){if(!confirm("Silinsin mi?"))return;FIL=FIL.filter(i=>i.id!==id);renderFiles();adminLists();put("dosyalar.json",FIL,"Dosya silindi");}
-async function upload(){
- const inp=$("f-up"),f=inp.files[0];if(!f)return alert("Dosya seçin.");
- const b=$("f-upbtn");b.disabled=true;b.textContent="Yükleniyor...";
- const rd=new FileReader();
- rd.onload=async e=>{
-  const name="dosyalar/"+Date.now()+"_"+f.name.replace(/\s+/g,"_").replace(/[^a-zA-Z0-9.\-_]/g,"");
-  try{
-   const r=await fetch(`https://api.github.com/repos/${U}/${R}/contents/${name}`,{method:"PUT",headers:{Authorization:"token "+tok,"Content-Type":"application/json"},body:JSON.stringify({message:"Dosya yüklendi",content:e.target.result.split(",")[1]})});
-   if(r.ok){FIL.unshift({id:Date.now(),title:f.name,url:`https://raw.githubusercontent.com/${U}/${R}/main/${name}`});renderFiles();adminLists();await put("dosyalar.json",FIL,"Dosya eklendi");}
-   else alert("Yükleme hatası (HTTP "+r.status+").");
-  }catch(err){alert("Ağ hatası.");}
-  finally{b.disabled=false;b.textContent="Sisteme Yükle";inp.value="";}
- };
- rd.readAsDataURL(f);
-}
-function saveLesson(){
- const c=$("l-course").value.trim(),s=$("l-start").value,e=$("l-end").value;
- if(!c||!s||!e)return alert("Ders adı ve saat zorunludur.");
- if(e<=s)return alert("Bitiş, başlangıçtan sonra olmalıdır.");
- SCH.push({id:Date.now(),day:+$("l-day").value,start:s,end:e,course:c,room:$("l-room").value.trim(),instructor:$("l-ins").value.trim()});
- renderProg();adminLists();put("dersprogrami.json",SCH,"Ders eklendi");$("l-course").value="";$("l-room").value="";$("l-ins").value="";
-}
-function delLesson(id){if(!confirm("Silinsin mi?"))return;SCH=SCH.filter(i=>i.id!==id);renderProg();adminLists();put("dersprogrami.json",SCH,"Ders silindi");}
-</script>
-</body>
-</html>
+        .drawer { position: fixed; top: 0; left: 0; bottom: 0; width: min(300px, 85vw); background: var(--bg-surface); z-index: 1300; transform: translateX(-105%); display: flex; flex-direction: column; padding: 18px 14px; overflow-y: auto; box-shadow: var(--shadow); border-right: 1px solid var(--border); }
+        .drawer.open { transform: none; }
+        .drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1250; display: none; }
+        .drawer-overlay.show { display: block; }
+        .drawer-head { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+        .drawer-head .brand-logo, .drawer-head .brand-fallback { width: 40px; height: 40px; }
+        .drawer-footer { border-top: 1px solid var(--border); padding-top: 10px; display: flex; flex-direction: column; gap: 6px; }
+
+        .main-content { flex: 1; min-width: 0; max-width: 1160px; padding: 30px 40px; }
+        .top-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 26px; }
+        .header-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
+        .header-logo { display: none; }
+        .page-title { font-size: clamp(1.4rem, 1rem + 1.8vw, 1.95rem); font-weight: 800; line-height: 1.3; padding-bottom: 3px; letter-spacing: -0.4px; }
+        .header-date { color: var(--text-muted); font-size: 0.88rem; margin-top: 2px; font-weight: 600; overflow-wrap: anywhere; }
+        .header-actions { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
+
+        .view-section { display: none; }
+        .view-section.active { display: block; }
+
+        .stats-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; margin-bottom: 20px; }
+        .stat { display: flex; gap: 12px; align-items: center; background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 15px 17px; box-shadow: var(--shadow); cursor: pointer; min-width: 0; }
+        .stat > div { min-width: 0; }
+        .stat-val { font-weight: 800; font-size: 1.2rem; line-height: 1.15; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+        .stat-lbl { font-size: 0.68rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+
+        .card { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow); min-width: 0; }
+        .card-header { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; }
+        .card-header > * { min-width: 0; }
+        .card-title { font-size: 1.08rem; font-weight: 800; display: flex; align-items: center; gap: 11px; min-width: 0; }
+
+        .timer-card { background: var(--timer-gradient); border-color: transparent; color: var(--widget-text); display: flex; align-items: center; justify-content: space-between; gap: 22px; flex-wrap: wrap; margin-bottom: 20px; }
+        .timer-left { display: flex; align-items: center; gap: 14px; min-width: 0; }
+        .timer-title { font-size: 1.06rem; font-weight: 800; line-height: 1.35; overflow-wrap: anywhere; }
+        .timer-sub { font-size: 0.76rem; color: var(--widget-muted); font-weight: 700; margin-top: 3px; }
+        .timer-display { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; flex: 1; min-width: 280px; max-width: 520px; }
+        .t-box { background: var(--widget-chip); padding: 14px 4px; border-radius: var(--radius-md); text-align: center; min-width: 0; }
+        .t-val { font-size: clamp(1.35rem, 1rem + 1.6vw, 2rem); font-weight: 800; font-variant-numeric: tabular-nums; }
+        .t-lbl { font-size: 0.68rem; text-transform: uppercase; opacity: 0.8; margin-top: 4px; font-weight: 800; letter-spacing: 0.6px; }
+        .timer-progress { flex-basis: 100%; }
+        .tp-head { display: flex; justify-content: space-between; gap: 10px; font-size: 0.75rem; font-weight: 800; color: var(--widget-muted); margin-bottom: 8px; }
+        .tp-head #tp-pct { color: var(--widget-text); }
+        .tp-bar { height: 8px; border-radius: 999px; background: var(--widget-chip); overflow: hidden; }
+        .tp-fill { height: 100%; width: 0; border-radius: inherit; background: var(--accent); }
+
+        .lower-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px; }
+
+        .data-list { display: flex; flex-direction: column; gap: 12px; }
+        .data-item { padding: 17px; border: 1px solid var(--border); border-radius: var(--radius-md); display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; min-width: 0; }
+        .data-item.pinned-item { border-color: var(--warning); }
+        .item-title { font-size: 1.05rem; font-weight: 800; color: var(--primary); margin-bottom: 6px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; overflow-wrap: anywhere; }
+        .item-meta { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-weight: 600; }
+        .item-content { font-size: 0.95rem; line-height: 1.7; white-space: pre-wrap; word-break: break-word; overflow-wrap: anywhere; }
+        .item-actions { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; flex-shrink: 0; }
+
+        .cat-tag { display: inline-flex; align-items: center; gap: 4px; padding: 2px 10px; border-radius: 20px; font-size: 0.66rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.3px; }
+        .cat-tag .material-symbols-rounded { font-size: 13px; }
+        .cat-duyuru { background: var(--primary-soft); color: var(--primary); }
+        .cat-sinav { background: var(--danger-soft); color: var(--danger); }
+        .cat-staj { background: var(--warning-soft); color: var(--warning); }
+        .cat-etkinlik { background: var(--accent-soft); color: var(--accent); }
+
+        .filter-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+        .filter-chip { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; min-height: 38px; border-radius: 50px; border: 1px solid var(--border); background: var(--bg-surface); color: var(--text-muted); font-weight: 700; font-size: 0.78rem; }
+        .filter-chip .material-symbols-rounded { font-size: 15px; }
+        .filter-chip .cnt { background: var(--bg-surface-hover); border-radius: 20px; padding: 1px 8px; font-size: 0.68rem; }
+        .filter-chip.active { color: #fff; }
+        .filter-chip.active .cnt { background: rgba(255,255,255,0.2); }
+        .filter-chip[data-cat="all"].active, .filter-chip[data-cat="duyuru"].active { background: var(--primary); border-color: var(--primary); }
+        .filter-chip[data-cat="sinav"].active { background: var(--danger); border-color: var(--danger); }
+        .filter-chip[data-cat="staj"].active { background: var(--warning); border-color: var(--warning); }
+        .filter-chip[data-cat="etkinlik"].active { background: var(--accent); border-color: var(--accent); }
+
+        .schedule-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+        .day-card { padding: 18px; }
+        .day-title { font-weight: 800; font-size: 0.95rem; margin-bottom: 14px; display: flex; align-items: center; gap: 9px; flex-wrap: wrap; }
+        .lesson-item { display: flex; gap: 12px; padding: 12px; border: 1px solid var(--border); border-radius: 12px; margin-bottom: 10px; align-items: flex-start; }
+        .lesson-item:last-child { margin-bottom: 0; }
+        .lesson-time { flex-shrink: 0; background: var(--primary-soft); color: var(--primary); border-radius: 10px; padding: 6px 10px; font-weight: 800; font-size: 0.74rem; text-align: center; line-height: 1.4; }
+        .l-course { font-weight: 800; font-size: 0.9rem; line-height: 1.35; overflow-wrap: anywhere; }
+        .l-meta { font-size: 0.74rem; color: var(--text-muted); margin-top: 4px; display: flex; flex-wrap: wrap; gap: 8px; font-weight: 600; }
+        .live-chip { display: none; margin-left: auto; align-items: center; gap: 5px; background: var(--accent); color: #fff; border-radius: 20px; padding: 3px 10px; font-size: 0.62rem; font-weight: 800; flex-shrink: 0; }
+        .live-dot2 { width: 6px; height: 6px; border-radius: 50%; background: #fff; }
+        .lesson-item.live { border-color: var(--accent); background: var(--accent-soft); }
+        .lesson-item.live .lesson-time { background: var(--accent); color: #fff; }
+        .lesson-item.live .live-chip { display: inline-flex; }
+
+        .up-item { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 14px; border: 1px solid var(--border); border-radius: 12px; cursor: pointer; min-width: 0; }
+        .up-name { font-weight: 700; font-size: 0.9rem; line-height: 1.45; overflow-wrap: anywhere; }
+        .up-sub { font-size: 0.72rem; color: var(--text-muted); font-weight: 600; margin-top: 4px; display: flex; align-items: center; gap: 4px; }
+        .up-date { flex-shrink: 0; background: var(--primary-soft); color: var(--primary); border-radius: 50px; padding: 6px 12px; font-size: 0.75rem; font-weight: 800; white-space: nowrap; }
+        .up-date.ongoing { background: var(--accent-soft); color: var(--accent); }
+
+        .file-link { display: inline-flex; align-items: center; gap: 6px; background: var(--primary-soft); color: var(--primary); padding: 8px 15px; border-radius: 50px; font-weight: 700; font-size: 0.82rem; text-decoration: none; max-width: 100%; }
+
+        .empty-state { text-align: center; padding: 40px 20px; color: var(--text-muted); }
+        .empty-state span { font-size: 3rem; margin-bottom: 10px; opacity: 0.5; }
+
+        .search-wrap { display: flex; align-items: center; gap: 8px; background: var(--bg-body); border: 1px solid var(--border); border-radius: 50px; padding: 10px 16px; flex: 1; max-width: 320px; min-width: 0; }
+        .search-wrap:focus-within { border-color: var(--primary); }
+        .search-wrap span { color: var(--text-muted); font-size: 20px; }
+        .search-wrap input { border: none; background: transparent; color: var(--text-main); outline: none; width: 100%; font-size: 0.9rem; min-width: 0; }
+
+        .cal-note { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 14px; font-weight: 600; display: flex; gap: 6px; align-items: center; }
+        .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border); border-radius: var(--radius-md); }
+        table { width: 100%; border-collapse: collapse; font-size: 0.9rem; text-align: left; }
+        th { background: var(--bg-surface-hover); padding: 15px 16px; font-weight: 800; color: var(--primary); border-bottom: 1px solid var(--border); }
+        td { padding: 14px 16px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.5; }
+        tr:last-child td { border-bottom: none; }
+        .cal-date { font-weight: 700; white-space: nowrap; }
+
+        .status-chip { display: inline-block; margin-left: 8px; padding: 2px 10px; border-radius: 20px; font-size: 0.66rem; font-weight: 800; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.3px; }
+        .chip-ongoing { background: var(--accent-soft); color: var(--accent); border: 1px solid var(--accent); }
+        .chip-next { background: var(--primary-soft); color: var(--primary); border: 1px solid var(--primary); }
+        .chip-done { background: var(--bg-surface-hover); color: var(--text-muted); border: 1px solid var(--border); }
+        tr.row-past td { opacity: 0.55; }
+        tr.row-ongoing td { background: var(--accent-soft); }
+        tr.row-next td { background: var(--primary-soft); }
+
+        .holiday-table { min-width: 640px; }
+        .h-muted { color: var(--text-muted); }
+        .info-note { display: flex; gap: 10px; align-items: flex-start; ba
