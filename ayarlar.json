@@ -1,5 +1,5 @@
 {
-  "maintenanceMode": true,
+  "maintenanceMode": false,
   "maintenanceTitle": "Bakım Yapılmaktadır",
   "maintenanceMessage": "Bakım yapılmaktadır daha sonra tekrar deneyiniz.",
   "popupEnabled": true,
