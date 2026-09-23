@@ -1,0 +1,10 @@
+{
+  "maintenanceMode": true,
+  "maintenanceTitle": "Bakım Yapılmaktadır",
+  "maintenanceMessage": "Bakım yapılmaktadır daha sonra tekrar deneyiniz.",
+  "popupEnabled": true,
+  "popupBadge": "Önemli Duyuru",
+  "popupTitle": "Ders Programı Açıklandı!",
+  "popupDesc": "2026-2027 Güz Yarıyılı haftalık ders programı, derslik dağılımları ve online ders planı yayınlanmıştır. Derslerinizi, dersliklerinizi ve saatlerinizi hemen görüntüleyin.",
+  "popupButtonText": "Ders Programını Görüntüle"
+}

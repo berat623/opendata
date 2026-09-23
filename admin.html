@@ -1,0 +1,2212 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://avatars.githubusercontent.com https://cdn.jsdelivr.net; connect-src 'self' https://api.github.com https://raw.githubusercontent.com; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="referrer" content="no-referrer">
+    <meta name="theme-color" content="#080d1a">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Yönetim Konsolu | BUÜ ETP Bilgi Portalı</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <link rel="manifest" href="manifest.webmanifest">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet" />
+
+    <style>
+        :root {
+            --bg-body: #080d1a;
+            --bg-surface: rgba(15, 23, 42, 0.68);
+            --bg-surface-elevated: rgba(22, 34, 56, 0.65);
+            --bg-surface-hover: rgba(30, 45, 74, 0.75);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --primary: #3b82f6;
+            --primary-soft: rgba(59, 130, 246, 0.16);
+            --primary-border: rgba(59, 130, 246, 0.35);
+            --accent: #10b981;
+            --accent-soft: rgba(16, 185, 129, 0.16);
+            --warning: #f59e0b;
+            --warning-soft: rgba(245, 158, 11, 0.16);
+            --danger: #ef4444;
+            --danger-soft: rgba(239, 68, 68, 0.16);
+            --border: rgba(255, 255, 255, 0.12);
+            --border-hover: rgba(255, 255, 255, 0.28);
+            --radius-lg: 22px;
+            --radius-md: 16px;
+            --radius-sm: 10px;
+            --shadow: 0 18px 45px -10px rgba(0, 0, 0, 0.60);
+            --shadow-sm: 0 8px 26px -6px rgba(0, 0, 0, 0.42);
+            --glass-blur: blur(26px) saturate(200%);
+            --glass-reflection: inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.22), inset 0 0 0 1px rgba(255, 255, 255, 0.10);
+            --glass-bg: rgba(15, 23, 42, 0.68);
+            --glass-border: rgba(255, 255, 255, 0.12);
+        }
+
+        html.light-mode {
+            --bg-body: #ecf1f7;
+            --bg-surface: rgba(255, 255, 255, 0.70);
+            --bg-surface-elevated: rgba(248, 250, 252, 0.76);
+            --bg-surface-hover: rgba(238, 242, 246, 0.88);
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --primary: #2563eb;
+            --primary-soft: rgba(37, 98, 235, 0.12);
+            --primary-border: rgba(37, 98, 235, 0.25);
+            --accent: #059669;
+            --accent-soft: rgba(5, 150, 105, 0.12);
+            --warning: #d97706;
+            --warning-soft: rgba(217, 119, 6, 0.12);
+            --danger: #dc2626;
+            --danger-soft: rgba(220, 38, 38, 0.12);
+            --border: rgba(255, 255, 255, 0.80);
+            --border-hover: rgba(15, 23, 42, 0.25);
+            --shadow: 0 18px 42px -10px rgba(15, 23, 42, 0.10);
+            --shadow-sm: 0 8px 24px -6px rgba(15, 23, 42, 0.06);
+            --glass-blur: blur(26px) saturate(200%);
+            --glass-reflection: inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.98), inset 0 0 0 1px rgba(255, 255, 255, 0.65);
+            --glass-bg: rgba(255, 255, 255, 0.70);
+            --glass-border: rgba(255, 255, 255, 0.80);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Parkinsans', sans-serif; -webkit-tap-highlight-color: transparent; }
+        body {
+            background-color: var(--bg-body);
+            background-image: 
+                radial-gradient(at 5% 10%, rgba(59, 130, 246, 0.20) 0px, transparent 45%),
+                radial-gradient(at 95% 15%, rgba(16, 185, 129, 0.18) 0px, transparent 45%),
+                radial-gradient(at 85% 85%, rgba(99, 102, 241, 0.16) 0px, transparent 50%),
+                radial-gradient(at 15% 90%, rgba(14, 165, 233, 0.16) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(139, 92, 246, 0.08) 0px, transparent 60%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+        html.light-mode body {
+            background-image: 
+                radial-gradient(at 5% 10%, rgba(59, 130, 246, 0.14) 0px, transparent 45%),
+                radial-gradient(at 95% 15%, rgba(16, 185, 129, 0.12) 0px, transparent 45%),
+                radial-gradient(at 85% 85%, rgba(99, 102, 241, 0.10) 0px, transparent 50%),
+                radial-gradient(at 15% 90%, rgba(14, 165, 233, 0.10) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(139, 92, 246, 0.06) 0px, transparent 60%);
+        }
+        ::selection { background: var(--primary); color: #fff; }
+
+        .material-symbols-rounded { font-variation-settings: 'FILL' 1; user-select: none; }
+
+        /* SAYFA YÜKLEME VE GEÇİŞ İLERLEME ÇUBUĞU */
+        .page-loader-bar {
+            position: fixed; top: 0; left: 0; height: 3.5px; width: 0%;
+            background: linear-gradient(90deg, #3b82f6 0%, #10b981 50%, #6366f1 100%);
+            background-size: 200% 100%;
+            animation: loaderGlow 1.8s ease infinite;
+            z-index: 10001; pointer-events: none;
+            box-shadow: 0 0 12px rgba(59, 130, 246, 0.8), 0 0 4px rgba(16, 185, 129, 0.6);
+            transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+        }
+        @keyframes loaderGlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .page-loader-bar.finish {
+            width: 100% !important;
+            opacity: 0;
+            transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s 0.25s ease;
+        }
+
+        .top-nav {
+            position: sticky; top: 0; z-index: 100;
+            background: var(--bg-surface);
+            backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+            border-bottom: 1px solid var(--border);
+            box-shadow: var(--glass-reflection);
+            padding: 12px 24px;
+            display: flex; align-items: center; justify-content: space-between; gap: 16px;
+        }
+        .nav-left { display: flex; align-items: center; gap: 14px; }
+        .logo-img { width: 42px; height: 42px; border-radius: 12px; object-fit: contain; background: #fff; padding: 3px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+        .brand-title { font-size: 1.05rem; font-weight: 800; line-height: 1.2; }
+        .brand-subtitle { font-size: 0.76rem; color: var(--text-muted); font-weight: 600; }
+        .nav-actions { display: flex; align-items: center; gap: 10px; }
+
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            min-height: 42px; padding: 9px 18px; border-radius: 50px; font-weight: 700; font-size: 0.88rem;
+            border: 1px solid transparent; cursor: pointer; text-decoration: none;
+            transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12); }
+        .btn:active { transform: translateY(1px) scale(0.97); }
+        .btn-icon { width: 42px; height: 42px; padding: 0; border-radius: 50%; }
+        .btn-primary { background: var(--primary); color: #fff; box-shadow: 0 4px 14px -3px var(--primary); }
+        .btn-primary:hover { box-shadow: 0 6px 20px -3px var(--primary); }
+        .btn-tonal {
+            background: var(--bg-surface-elevated); color: var(--text-main); border-color: var(--border);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: var(--glass-reflection);
+        }
+        .btn-tonal:hover { background: var(--bg-surface-hover); border-color: var(--border-hover); }
+        .btn-danger { background: var(--danger-soft); color: var(--danger); border-color: rgba(239, 68, 68, 0.25); }
+        .btn-danger:hover { background: var(--danger); color: #fff; }
+        .btn-mini { min-height: 34px; padding: 5px 14px; font-size: 0.78rem; border-radius: 8px; }
+
+        .main-wrap { flex: 1; max-width: 1080px; width: 100%; margin: 0 auto; padding: 28px 20px; }
+
+        .card {
+            background: var(--bg-surface); border: 1px solid var(--border);
+            border-radius: var(--radius-lg); padding: 26px;
+            box-shadow: var(--shadow), var(--glass-reflection);
+            margin-bottom: 24px;
+            backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+        }
+        .card-header { display: flex; justify-content: space-between; align-items: center; gap: 14px; margin-bottom: 20px; flex-wrap: wrap; }
+        .card-title { font-size: 1.15rem; font-weight: 800; display: flex; align-items: center; gap: 10px; }
+        .card-desc { font-size: 0.84rem; color: var(--text-muted); margin-top: 4px; line-height: 1.5; }
+
+        /* GİRİŞ EKRANI VE DASHBOARD (YUKARIDAN AŞAĞIYA SOFT AKICI ANİMASYON) */
+        .login-hero, #dashboard-screen {
+            animation: adminTopDown 0.44s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        .login-hero {
+            max-width: 460px; margin: 40px auto; text-align: center;
+        }
+        @keyframes adminTopDown {
+            0% { opacity: 0; transform: translateY(-24px) scale(0.992); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .login-badge {
+            width: 72px; height: 72px; border-radius: 22px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(16, 185, 129, 0.20));
+            color: var(--primary);
+            display: inline-flex; align-items: center; justify-content: center;
+            margin-bottom: 20px; border: 2px solid rgba(59, 130, 246, 0.4);
+            box-shadow: 0 12px 28px -6px rgba(59, 130, 246, 0.35);
+        }
+        .login-badge .material-symbols-rounded { font-size: 38px; }
+        .login-title { font-size: 1.65rem; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.5px; }
+        .login-sub { font-size: 0.88rem; color: var(--text-muted); line-height: 1.55; margin-bottom: 26px; }
+
+        .input-group { margin-bottom: 18px; text-align: left; }
+        .input-group label { display: block; font-size: 0.84rem; font-weight: 700; margin-bottom: 8px; color: var(--text-muted); }
+        .input-wrap { position: relative; display: flex; align-items: center; }
+        .input-wrap .material-symbols-rounded { position: absolute; left: 14px; color: var(--text-muted); font-size: 20px; pointer-events: none; }
+        .form-control {
+            width: 100%; padding: 12px 14px 12px 42px;
+            background: var(--bg-surface-elevated); border: 1px solid var(--border);
+            border-radius: var(--radius-sm); color: var(--text-main); font-size: 0.94rem;
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            box-shadow: var(--glass-reflection);
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .form-control:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-soft), var(--glass-reflection); background: var(--bg-surface); }
+        .pass-toggle { position: absolute; right: 12px; background: none; border: none; color: var(--text-muted); cursor: pointer; display: flex; padding: 4px; border-radius: 6px; }
+        .pass-toggle:hover { color: var(--text-main); }
+
+        .security-notice {
+            background: var(--bg-surface-elevated); border: 1px solid var(--border);
+            border-radius: var(--radius-sm); padding: 12px 14px; font-size: 0.78rem; color: var(--text-muted);
+            line-height: 1.5; text-align: left; margin-bottom: 22px; display: flex; gap: 10px; align-items: flex-start;
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            box-shadow: var(--glass-reflection);
+        }
+
+        /* USER STATUS BAR */
+        .user-bar {
+            display: flex; align-items: center; justify-content: space-between; gap: 16px;
+            background: var(--bg-surface); border: 1px solid var(--border);
+            border-radius: var(--radius-md); padding: 14px 20px; margin-bottom: 24px; flex-wrap: wrap;
+            backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+            box-shadow: var(--shadow-sm), var(--glass-reflection);
+            animation: adminTopDown 0.44s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        .user-info { display: flex; align-items: center; gap: 12px; }
+        .user-avatar-icon {
+            width: 44px; height: 44px; border-radius: 50%;
+            background: var(--primary-soft); color: var(--primary);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .user-details h3 { font-size: 1rem; font-weight: 800; display: flex; align-items: center; gap: 8px; }
+        .user-details p { font-size: 0.78rem; color: var(--text-muted); }
+        .status-pill {
+            display: inline-flex; align-items: center; gap: 5px;
+            background: var(--accent-soft); color: var(--accent);
+            padding: 3px 10px; border-radius: 20px; font-size: 0.72rem; font-weight: 800;
+        }
+
+        /* SEKMELER (ADMIN TABS) */
+        .admin-nav {
+            display: flex; gap: 8px; border-bottom: 1px solid var(--border);
+            padding-bottom: 14px; margin-bottom: 24px; overflow-x: auto;
+            -webkit-overflow-scrolling: touch; scrollbar-width: none;
+        }
+        .admin-nav::-webkit-scrollbar { display: none; }
+        .admin-tab-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 10px 18px; border-radius: 50px; font-weight: 700; font-size: 0.88rem;
+            background: var(--bg-surface-elevated); color: var(--text-muted); border: 1px solid var(--border);
+            cursor: pointer; transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1); white-space: nowrap;
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            box-shadow: var(--glass-reflection);
+        }
+        .admin-tab-btn:hover { color: var(--text-main); border-color: var(--border-hover); transform: translateY(-2px); }
+        .admin-tab-btn:active { transform: translateY(1px) scale(0.97); }
+        .admin-tab-btn.active {
+            background: var(--primary); color: #fff; border-color: var(--primary);
+            box-shadow: 0 4px 14px -2px var(--primary); transform: none;
+        }
+
+        .tab-content {
+            animation: adminTabEnter 0.44s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        @keyframes adminTabEnter {
+            0% { opacity: 0; transform: translateY(-22px) scale(0.994); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+        .switch-row { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; cursor: pointer; user-select: none; }
+        .switch {
+            position: relative; width: 48px; height: 26px; background: var(--bg-surface-hover);
+            border: 1px solid var(--border); border-radius: 999px; transition: 0.2s;
+        }
+        .switch::after {
+            content: ''; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px;
+            border-radius: 50%; background: var(--text-muted); transition: 0.2s;
+        }
+        .switch.on { background: var(--accent-soft); border-color: var(--accent); }
+        .switch.on::after { left: 24px; background: var(--accent); }
+
+        .item-list { display: flex; flex-direction: column; gap: 10px; max-height: 520px; overflow-y: auto; }
+        .list-item {
+            background: var(--bg-surface-elevated); border: 1px solid var(--border);
+            border-radius: var(--radius-md); padding: 14px 16px;
+            display: flex; align-items: center; justify-content: space-between; gap: 14px;
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            box-shadow: var(--glass-reflection);
+            transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s;
+        }
+        .list-item:hover { transform: translateY(-2px); border-color: var(--border-hover); }
+        .item-text { flex: 1; min-width: 0; }
+        .item-text h4 { font-size: 0.94rem; font-weight: 700; margin-bottom: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .item-text p { font-size: 0.78rem; color: var(--text-muted); display: flex; align-items: center; gap: 8px; }
+
+        .toast {
+            position: fixed; left: 50%; bottom: 32px; transform: translateX(-50%);
+            background: var(--bg-surface); color: var(--text-main); border: 1px solid var(--border);
+            border-radius: 50px; padding: 12px 24px; display: none; gap: 10px; align-items: center;
+            font-weight: 700; font-size: 0.88rem; box-shadow: var(--shadow), var(--glass-reflection);
+            backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+            z-index: 1500;
+        }
+        .toast.show { display: flex; animation: toastIn 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+        @keyframes toastIn {
+            from { opacity: 0; transform: translate(-50%, 12px) scale(0.95); }
+            to { opacity: 1; transform: translate(-50%, 0) scale(1); }
+        }
+
+        /* İSTATİSTİK KARTLARI */
+        .stat-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px;
+            margin-bottom: 24px;
+        }
+        .stat-card {
+            background: var(--bg-surface); border: 1px solid var(--border);
+            border-radius: var(--radius-md); padding: 18px;
+            box-shadow: var(--shadow-sm), var(--glass-reflection);
+            backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+            display: flex; align-items: center; gap: 14px; cursor: pointer;
+            transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .stat-card:hover { transform: translateY(-3px); border-color: var(--primary); }
+        .stat-icon {
+            width: 46px; height: 46px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+        }
+        .stat-val { font-size: 1.35rem; font-weight: 800; line-height: 1.2; }
+        .stat-lbl { font-size: 0.76rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase; }
+
+        /* BAKIM MODU HIZLI KONTROL KARTI */
+        .maint-control-card {
+            background: var(--bg-surface); border: 1px solid var(--border);
+            border-radius: var(--radius-md); padding: 18px 22px; margin-bottom: 24px;
+            display: flex; align-items: center; justify-content: space-between; gap: 16px;
+            box-shadow: var(--shadow-sm), var(--glass-reflection);
+            backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+            flex-wrap: wrap; transition: all 0.3s ease;
+        }
+        .maint-control-card.is-active {
+            border-color: rgba(239, 68, 68, 0.5);
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.14) 0%, var(--bg-surface) 100%);
+        }
+        .maint-control-left { display: flex; align-items: center; gap: 14px; }
+        .maint-status-icon {
+            width: 44px; height: 44px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+        }
+        .maint-status-text h4 { font-size: 1rem; font-weight: 800; display: flex; align-items: center; gap: 8px; }
+        .maint-status-text p { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
+        .badge-live {
+            background: var(--accent-soft); color: var(--accent); padding: 3px 10px;
+            border-radius: 20px; font-size: 0.74rem; font-weight: 800; display: inline-flex; align-items: center; gap: 5px;
+        }
+        .badge-maint {
+            background: var(--danger-soft); color: var(--danger); padding: 3px 10px;
+            border-radius: 20px; font-size: 0.74rem; font-weight: 800; display: inline-flex; align-items: center; gap: 5px;
+        }
+
+        /* FİLTRELEME & ARAMA ÇUBUĞU */
+        .admin-filter-bar {
+            display: flex; align-items: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;
+        }
+        .admin-search-input {
+            flex: 1; min-width: 200px; padding: 10px 14px; background: var(--bg-surface-elevated);
+            border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text-main);
+            font-size: 0.88rem; outline: none; transition: border-color 0.2s;
+        }
+        .admin-search-input:focus { border-color: var(--primary); }
+        .admin-chips-row { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 2px; }
+        .admin-chip {
+            padding: 6px 14px; border-radius: 50px; font-size: 0.78rem; font-weight: 700;
+            background: var(--bg-surface-elevated); color: var(--text-muted); border: 1px solid var(--border);
+            cursor: pointer; white-space: nowrap; transition: all 0.15s;
+        }
+        .admin-chip:hover { color: var(--text-main); border-color: var(--primary); }
+        .admin-chip.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+        /* HAFTALIK MATRİS TABLOSU (ADMİN İÇİ ÖNİZLEME) */
+        .admin-matrix-wrap {
+            overflow-x: auto; margin-top: 14px; border: 1px solid var(--border); border-radius: var(--radius-sm);
+        }
+        .admin-matrix-table {
+            width: 100%; border-collapse: collapse; font-size: 0.8rem; min-width: 640px;
+        }
+        .admin-matrix-table th, .admin-matrix-table td {
+            border: 1px solid var(--border); padding: 8px 10px; vertical-align: top;
+        }
+        .admin-matrix-table th { background: var(--bg-surface-elevated); font-weight: 800; text-align: center; }
+        .admin-matrix-lesson {
+            background: var(--primary-soft); border-left: 3px solid var(--primary);
+            padding: 4px 6px; border-radius: 4px; margin-bottom: 4px; font-size: 0.75rem;
+        }
+
+        @media (max-width: 767px) {
+            .main-wrap { padding: 14px 10px 32px; width: 100%; max-width: 100vw; overflow-x: hidden; box-sizing: border-box; }
+            .form-row { grid-template-columns: 1fr; gap: 12px; }
+            .top-nav { padding: 10px 12px; }
+            .brand-title { font-size: 0.95rem; }
+            .brand-subtitle { display: none; }
+            .top-nav .nav-actions .btn { padding: 8px 12px; }
+            .top-nav .nav-actions span:not(.material-symbols-rounded) { display: none; }
+            .user-bar { flex-direction: column; align-items: stretch; gap: 12px; padding: 14px; }
+            .user-bar > div:last-child { width: 100%; display: flex; justify-content: stretch; gap: 8px; }
+            .user-bar > div:last-child .btn { flex: 1; justify-content: center; }
+            .card { padding: 16px 12px; border-radius: var(--radius-md); }
+            
+            /* İSTATİSTİK GRID MOBİL */
+            .stat-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 18px; }
+            .stat-card { padding: 12px 10px; gap: 10px; }
+            .stat-icon { width: 38px; height: 38px; border-radius: 10px; }
+            .stat-val { font-size: 1.15rem; }
+            .stat-lbl { font-size: 0.68rem; }
+
+            /* BAKIM MODU HIZLI KONTROLÜ */
+            .maint-control-card { flex-direction: column; align-items: stretch; gap: 14px; padding: 16px 14px; }
+            .maint-control-left { gap: 10px; }
+            .maint-control-card > div:last-child { width: 100%; flex-direction: column; gap: 8px; }
+            .maint-control-card > div:last-child .btn { width: 100%; justify-content: center; }
+
+            /* LİSTE ÖĞELERİ MOBİL */
+            .list-item { flex-direction: column; align-items: stretch; gap: 10px; padding: 12px 14px; }
+            .list-item .item-text h4 { white-space: normal; word-break: break-word; font-size: 0.90rem; }
+            .list-item .item-actions { width: 100%; justify-content: flex-end; border-top: 1px dashed var(--border); padding-top: 8px; }
+            .list-item .item-actions .btn { flex: 1; justify-content: center; }
+
+            /* MATRİS VE TABLOLAR */
+            .admin-matrix-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .admin-matrix-table { min-width: 580px; font-size: 0.74rem; }
+
+            /* GİRİŞ EKRANI */
+            .login-hero { margin: 20px auto; padding: 0 4px; }
+            .login-hero .card { padding: 24px 16px; }
+            .login-title { font-size: 1.35rem; }
+            .login-sub { font-size: 0.82rem; }
+        }
+
+        @media (max-width: 480px) {
+            .stat-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+            .stat-card { padding: 10px 8px; }
+            .stat-val { font-size: 1.05rem; }
+            .stat-lbl { font-size: 0.62rem; }
+            .admin-tab-btn { padding: 8px 14px; font-size: 0.80rem; }
+        }
+    </style>
+
+    <script>
+        (function () {
+            try {
+                var savedTheme = localStorage.getItem('theme');
+                var prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+                var isLight = (savedTheme === 'light') || (!savedTheme && prefersLight);
+
+                if (isLight) {
+                    document.documentElement.classList.add('light-mode');
+                    var m = document.querySelector('meta[name="theme-color"]');
+                    if (m) m.setAttribute('content', '#f8fafc');
+                } else {
+                    document.documentElement.classList.remove('light-mode');
+                    var m = document.querySelector('meta[name="theme-color"]');
+                    if (m) m.setAttribute('content', '#090d16');
+                }
+            } catch (e) {}
+        })();
+    </script>
+</head>
+<body>
+    <!-- SAYFA YÜKLEME VE GEÇİŞ İLERLEME ÇUBUĞU -->
+    <div id="page-loader" class="page-loader-bar" aria-hidden="true"></div>
+
+    <header class="top-nav">
+        <div class="nav-left">
+            <img src="logo.png" alt="BUÜ Logo" class="logo-img" onerror='this.style.display="none"'>
+            <div>
+                <h1 class="brand-title">Yönetim Konsolu</h1>
+                <p class="brand-subtitle">BUÜ Elektronik Teknolojisi Programı</p>
+            </div>
+        </div>
+        <div class="nav-actions">
+            <a href="index.html" class="btn btn-tonal">
+                <span class="material-symbols-rounded">arrow_back</span>
+                <span>Ana Siteye Dön</span>
+            </a>
+            <button class="btn btn-tonal btn-icon" onclick="toggleTheme()" aria-label="Tema Değiştir">
+                <span class="material-symbols-rounded" id="theme-icon">light_mode</span>
+            </button>
+        </div>
+    </header>
+
+    <div id="toast" class="toast">
+        <span class="material-symbols-rounded" id="toast-icon">check_circle</span>
+        <span id="toast-msg"></span>
+    </div>
+
+    <main class="main-wrap">
+
+        <!-- KURUMSAL GİRİŞ EKRANI -->
+        <div id="auth-screen" class="login-hero" style="display:none;">
+            <div class="card">
+                <div class="login-badge">
+                    <span class="material-symbols-rounded">admin_panel_settings</span>
+                </div>
+                <h2 class="login-title">Yönetici Giriş Portalı</h2>
+                <p class="login-sub">Tüm içerikleri, duyuruları, ders programını, akademik takvimi ve site ayarlarını yönetmek için şifrenizi giriniz.</p>
+
+                <div class="input-group">
+                    <label>Yönetici Güvenlik Şifresi</label>
+                    <div class="input-wrap">
+                        <span class="material-symbols-rounded">lock</span>
+                        <input type="password" id="gh-token-input" class="form-control" placeholder="••••••••••••••••••••" autocomplete="current-password">
+                        <button type="button" class="pass-toggle" onclick="togglePassVisibility()" aria-label="Şifre görünürlüğü">
+                            <span class="material-symbols-rounded" id="pass-eye">visibility</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="security-notice">
+                    <span class="material-symbols-rounded" style="font-size:18px; color:var(--primary); flex-shrink:0;">security</span>
+                    <span>Bu konsol program koordinatörleri ve yetkili personel erişimi içindir. Yapılan tüm değişiklikler anında genel sitede yayına alınır.</span>
+                </div>
+
+                <button class="btn btn-primary" style="width:100%;" id="login-btn" onclick="loginWithToken()">
+                    <span class="material-symbols-rounded">login</span>
+                    <span>Güvenli Giriş Yap</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- DASHBOARD (TAM KONTROL MERKEZİ) -->
+        <div id="dashboard-screen" style="display:none;">
+
+            <div class="user-bar">
+                <div class="user-info">
+                    <div class="user-avatar-icon">
+                        <span class="material-symbols-rounded">verified_user</span>
+                    </div>
+                    <div class="user-details">
+                        <h3 id="user-name">Sistem Yöneticisi <span class="status-pill"><span class="material-symbols-rounded" style="font-size:14px;">verified</span> Oturum Açık</span></h3>
+                        <p>Bursa Uludağ Üniversitesi • Merkezi İçerik ve Sistem Yönetimi</p>
+                    </div>
+                </div>
+                <div style="display:flex; gap:10px;">
+                    <a href="index.html" class="btn btn-tonal btn-mini" target="_blank">
+                        <span class="material-symbols-rounded">open_in_new</span>
+                        <span>Siteyi Görüntüle</span>
+                    </a>
+                    <button class="btn btn-danger btn-mini" onclick="logout()">
+                        <span class="material-symbols-rounded">logout</span>
+                        <span>Çıkış Yap</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- HIZLI BAKIM MODU KONTROLÜ -->
+            <div id="quick-maint-card" class="maint-control-card">
+                <div class="maint-control-left">
+                    <div id="quick-maint-icon" class="maint-status-icon" style="background:var(--accent-soft); color:var(--accent);">
+                        <span class="material-symbols-rounded" style="font-size:26px;">check_circle</span>
+                    </div>
+                    <div class="maint-status-text">
+                        <h4>Site Yayın Durumu: <span id="quick-maint-badge" class="badge-live"><span class="material-symbols-rounded" style="font-size:14px;">check</span> Site Yayında (Canlı)</span></h4>
+                        <p id="quick-maint-desc">Ziyaretçiler siteye normal şekilde erişebilir.</p>
+                    </div>
+                </div>
+                <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+                    <button class="btn btn-tonal btn-mini" onclick="previewMaintenanceScreen()">
+                        <span class="material-symbols-rounded" style="font-size:16px;">visibility</span>
+                        <span>Bakım Ekranını Önizle</span>
+                    </button>
+                    <button id="quick-maint-toggle-btn" class="btn btn-danger btn-mini" onclick="toggleQuickMaintenance()">
+                        <span class="material-symbols-rounded" style="font-size:16px;">power_settings_new</span>
+                        <span>Bakım Modunu Aç</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- HIZLI İSTATİSTİK KARTLARI -->
+            <div class="stat-grid">
+                <div class="stat-card" onclick="switchTab('tab-ann')">
+                    <div class="stat-icon" style="background:var(--primary-soft); color:var(--primary);">
+                        <span class="material-symbols-rounded">campaign</span>
+                    </div>
+                    <div>
+                        <div class="stat-val" id="stat-ann-num">0</div>
+                        <div class="stat-lbl">Duyurular</div>
+                    </div>
+                </div>
+                <div class="stat-card" onclick="switchTab('tab-sched')">
+                    <div class="stat-icon" style="background:var(--warning-soft); color:var(--warning);">
+                        <span class="material-symbols-rounded">schedule</span>
+                    </div>
+                    <div>
+                        <div class="stat-val" id="stat-sched-num">0</div>
+                        <div class="stat-lbl">Ders Saati</div>
+                    </div>
+                </div>
+                <div class="stat-card" onclick="switchTab('tab-cal')">
+                    <div class="stat-icon" style="background:var(--accent-soft); color:var(--accent);">
+                        <span class="material-symbols-rounded">calendar_month</span>
+                    </div>
+                    <div>
+                        <div class="stat-val" id="stat-cal-num">0</div>
+                        <div class="stat-lbl">Takvim Faaliyeti</div>
+                    </div>
+                </div>
+                <div class="stat-card" onclick="switchTab('tab-file')">
+                    <div class="stat-icon" style="background:rgba(168, 85, 247, 0.16); color:#a855f7;">
+                        <span class="material-symbols-rounded">folder_open</span>
+                    </div>
+                    <div>
+                        <div class="stat-val" id="stat-file-num">0</div>
+                        <div class="stat-lbl">Yayında Dosya</div>
+                    </div>
+                </div>
+                <div class="stat-card" onclick="switchTab('tab-backup')">
+                    <div class="stat-icon" style="background:rgba(14, 165, 233, 0.16); color:#0ea5e9;">
+                        <span class="material-symbols-rounded">cloud_sync</span>
+                    </div>
+                    <div>
+                        <div class="stat-val" style="font-size:0.95rem;">Tam Yedek</div>
+                        <div class="stat-lbl">Yedekleme & İçe Aktar</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEKMELER: 6 KAPSAMLI MODÜL -->
+            <div class="admin-nav">
+                <button class="admin-tab-btn active" data-tab="tab-ann" onclick="switchTab('tab-ann')">
+                    <span class="material-symbols-rounded">campaign</span>
+                    <span>Duyurular</span>
+                </button>
+                <button class="admin-tab-btn" data-tab="tab-sched" onclick="switchTab('tab-sched')">
+                    <span class="material-symbols-rounded">schedule</span>
+                    <span>Ders Programı</span>
+                </button>
+                <button class="admin-tab-btn" data-tab="tab-cal" onclick="switchTab('tab-cal')">
+                    <span class="material-symbols-rounded">calendar_month</span>
+                    <span>Akademik Takvim</span>
+                </button>
+                <button class="admin-tab-btn" data-tab="tab-file" onclick="switchTab('tab-file')">
+                    <span class="material-symbols-rounded">folder</span>
+                    <span>Dosya Yönetimi</span>
+                </button>
+                <button class="admin-tab-btn" data-tab="tab-settings" onclick="switchTab('tab-settings')">
+                    <span class="material-symbols-rounded">tune</span>
+                    <span>Site & Bakım Ayarları</span>
+                </button>
+                <button class="admin-tab-btn" data-tab="tab-backup" onclick="switchTab('tab-backup')">
+                    <span class="material-symbols-rounded">settings_backup_restore</span>
+                    <span>Yedekleme & Araçlar</span>
+                </button>
+            </div>
+
+            <!-- 1. DUYURU YÖNETİMİ -->
+            <div id="tab-ann" class="tab-content">
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title" id="ann-form-title"><span class="material-symbols-rounded" style="color:var(--primary);">add_circle</span> Yeni Duyuru Yayınla</h3>
+                            <p class="card-desc">Ana sitede anında yayına alınacak yeni bir duyuru oluşturun veya var olanı düzenleyin.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label>Duyuru Başlığı</label>
+                            <input type="text" id="ann-title" class="form-control" placeholder="Örn: 2026 Güz Dönemi Vize Sınav Takvimi" style="padding-left:14px;">
+                        </div>
+                        <div class="input-group">
+                            <label>Kategori</label>
+                            <select id="ann-cat" class="form-control" style="padding-left:14px;">
+                                <option value="duyuru">Genel Duyuru</option>
+                                <option value="sinav">Sınav Bildirimi</option>
+                                <option value="staj">Staj İşlemleri</option>
+                                <option value="etkinlik">Etkinlik & Konferans</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label>Yayın Tarihi & Saati (İsteğe bağlı, boş bırakılırsa şu an alınır)</label>
+                            <input type="datetime-local" id="ann-date" class="form-control" style="padding-left:14px;">
+                        </div>
+                        <div class="switch-row" style="margin-top:28px;" onclick="togglePin()">
+                            <div id="pin-switch" class="switch"></div>
+                            <span style="font-size:0.86rem; font-weight:700; color:var(--text-muted);">Önemli Duyuru — En üste sabitle (Yıldızlı Çerçeve)</span>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Duyuru İçeriği</label>
+                        <textarea id="ann-content" class="form-control" rows="5" placeholder="Duyuru metnini detaylıca yazın..." style="padding-left:14px; resize:vertical;"></textarea>
+                    </div>
+
+                    <div style="display:flex; gap:10px;">
+                        <button class="btn btn-primary" id="save-ann-btn" onclick="saveAnnouncement()">
+                            <span class="material-symbols-rounded">publish</span>
+                            <span id="save-ann-text">Duyuruyu Yayınla</span>
+                        </button>
+                        <button class="btn btn-tonal" id="cancel-ann-btn" style="display:none;" onclick="cancelEditAnnouncement()">
+                            <span>Vazgeç</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><span class="material-symbols-rounded" style="color:var(--primary);">list_alt</span> Yayındaki Duyurular (<span id="ann-count">0</span>)</h3>
+                    </div>
+                    <div class="admin-filter-bar">
+                        <input type="text" id="ann-search" class="admin-search-input" placeholder="Başlık veya içerikte ara..." oninput="onAnnFilterChange()">
+                        <div class="admin-chips-row">
+                            <button class="admin-chip active" onclick="setAnnCatFilter('all', this)">Tümü</button>
+                            <button class="admin-chip" onclick="setAnnCatFilter('duyuru', this)">Genel</button>
+                            <button class="admin-chip" onclick="setAnnCatFilter('sinav', this)">Sınav</button>
+                            <button class="admin-chip" onclick="setAnnCatFilter('staj', this)">Staj</button>
+                            <button class="admin-chip" onclick="setAnnCatFilter('etkinlik', this)">Etkinlik</button>
+                        </div>
+                    </div>
+                    <div id="ann-list" class="item-list">
+                        <p style="color:var(--text-muted); font-size:0.85rem;">Yükleniyor...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. DERS PROGRAMI YÖNETİMİ -->
+            <div id="tab-sched" class="tab-content" style="display:none;">
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title" id="ls-form-title"><span class="material-symbols-rounded" style="color:var(--warning);">add_task</span> Ders Programına Ekle</h3>
+                            <p class="card-desc">Haftalık ders saatlerini, laboratuvar ve derslik bilgilerini ekleyin veya düzenleyin.</p>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label>Gün</label>
+                            <select id="ls-day" class="form-control" style="padding-left:14px;">
+                                <option value="1">Pazartesi</option>
+                                <option value="2">Salı</option>
+                                <option value="3">Çarşamba</option>
+                                <option value="4">Perşembe</option>
+                                <option value="5">Cuma</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>Ders Kodu ve Adı</label>
+                            <input type="text" id="ls-course" class="form-control" placeholder="Örn: ELNZ101 Temel Elektronik (T)" style="padding-left:14px;">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label>Başlangıç Saati</label>
+                            <input type="time" id="ls-start" class="form-control" value="09:00" style="padding-left:14px;">
+                        </div>
+                        <div class="input-group">
+                            <label>Bitiş Saati</label>
+                            <input type="time" id="ls-end" class="form-control" value="10:25" style="padding-left:14px;">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label>Derslik / Laboratuvar</label>
+                            <input type="text" id="ls-room" class="form-control" placeholder="Örn: D-8 / ELEKTRONİK LAB." style="padding-left:14px;">
+                        </div>
+                        <div class="input-group">
+                            <label>Açıklama / Eğitmen</label>
+                            <input type="text" id="ls-inst" class="form-control" placeholder="Örn: Elektronik Teknolojisi" style="padding-left:14px;">
+                        </div>
+                    </div>
+                    <div style="display:flex; gap:10px;">
+                        <button class="btn btn-primary" id="save-ls-btn" onclick="saveLesson()">
+                            <span class="material-symbols-rounded">save</span>
+                            <span id="save-ls-text">Dersi Programa Ekle</span>
+                        </button>
+                        <button class="btn btn-tonal" id="cancel-ls-btn" style="display:none;" onclick="cancelEditLesson()">
+                            <span>Vazgeç</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><span class="material-symbols-rounded" style="color:var(--warning);">calendar_view_week</span> Güncel Program Listesi (<span id="sched-count">0</span>)</h3>
+                        <button class="btn btn-tonal btn-mini" onclick="toggleAdminMatrix()">
+                            <span class="material-symbols-rounded">table_chart</span>
+                            <span id="btn-matrix-text">Haftalık Tabloyu Göster</span>
+                        </button>
+                    </div>
+
+                    <!-- HAFTALIK MATRİS TABLOSU (AÇILIP KAPANIR) -->
+                    <div id="admin-matrix-box" style="display:none;" class="admin-matrix-wrap">
+                        <table class="admin-matrix-table" id="admin-matrix-table"></table>
+                    </div>
+
+                    <div class="admin-filter-bar">
+                        <input type="text" id="ls-search" class="admin-search-input" placeholder="Ders, hoca veya derslikte ara..." oninput="onSchedFilterChange()">
+                        <div class="admin-chips-row">
+                            <button class="admin-chip active" onclick="setSchedDayFilter(0, this)">Tüm Günler</button>
+                            <button class="admin-chip" onclick="setSchedDayFilter(1, this)">Pazartesi</button>
+                            <button class="admin-chip" onclick="setSchedDayFilter(2, this)">Salı</button>
+                            <button class="admin-chip" onclick="setSchedDayFilter(3, this)">Çarşamba</button>
+                            <button class="admin-chip" onclick="setSchedDayFilter(4, this)">Perşembe</button>
+                            <button class="admin-chip" onclick="setSchedDayFilter(5, this)">Cuma</button>
+                        </div>
+                    </div>
+
+                    <div id="sched-list" class="item-list">
+                        <p style="color:var(--text-muted); font-size:0.85rem;">Yükleniyor...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. AKADEMİK TAKVİM YÖNETİMİ -->
+            <div id="tab-cal" class="tab-content" style="display:none;">
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title" id="cal-form-title"><span class="material-symbols-rounded" style="color:var(--accent);">edit_calendar</span> Akademik Takvime Faaliyet Ekle</h3>
+                            <p class="card-desc">Sınav tarihleri, kayıt yenileme veya resmi tatil günlerini takvime işleyin veya düzenleyin.</p>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label>Dönem / Tür</label>
+                            <select id="cal-sem" class="form-control" style="padding-left:14px;">
+                                <option value="guz">Güz Yarıyılı</option>
+                                <option value="bahar">Bahar Yarıyılı</option>
+                                <option value="tatil">Resmi / Dini Tatil</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>Faaliyet / İşlem Adı</label>
+                            <input type="text" id="cal-name" class="form-control" placeholder="Örn: Vize Sınavları Başlangıcı" style="padding-left:14px;">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label>Başlangıç Tarihi</label>
+                            <input type="date" id="cal-start" class="form-control" style="padding-left:14px;">
+                        </div>
+                        <div class="input-group">
+                            <label>Bitiş Tarihi</label>
+                            <input type="date" id="cal-end" class="form-control" style="padding-left:14px;">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Ek Not (İsteğe bağlı)</label>
+                        <input type="text" id="cal-note" class="form-control" placeholder="Örn: 5 iş günü" style="padding-left:14px;">
+                    </div>
+                    <div style="display:flex; gap:10px;">
+                        <button class="btn btn-primary" id="save-cal-btn" onclick="saveCalendarEvent()">
+                            <span class="material-symbols-rounded">save</span>
+                            <span id="save-cal-text">Takvime Kaydet</span>
+                        </button>
+                        <button class="btn btn-tonal" id="cancel-cal-btn" style="display:none;" onclick="cancelEditCalendarEvent()">
+                            <span>Vazgeç</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><span class="material-symbols-rounded" style="color:var(--accent);">event_note</span> Kayıtlı Faaliyetler (<span id="cal-count">0</span>)</h3>
+                    </div>
+                    <div class="admin-filter-bar">
+                        <input type="text" id="cal-search" class="admin-search-input" placeholder="Faaliyet veya notta ara..." oninput="onCalFilterChange()">
+                        <div class="admin-chips-row">
+                            <button class="admin-chip active" onclick="setCalSemFilter('all', this)">Tümü</button>
+                            <button class="admin-chip" onclick="setCalSemFilter('guz', this)">Güz Yarıyılı</button>
+                            <button class="admin-chip" onclick="setCalSemFilter('bahar', this)">Bahar Yarıyılı</button>
+                            <button class="admin-chip" onclick="setCalSemFilter('tatil', this)">Resmi Tatiller</button>
+                        </div>
+                    </div>
+                    <div id="cal-list" class="item-list">
+                        <p style="color:var(--text-muted); font-size:0.85rem;">Yükleniyor...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. DOSYA YÖNETİMİ -->
+            <div id="tab-file" class="tab-content" style="display:none;">
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title"><span class="material-symbols-rounded" style="color:var(--accent);">cloud_upload</span> Dosya Yükle</h3>
+                            <p class="card-desc">Öğrencilerin indirebileceği PDF, doküman veya form dosyalarını sisteme yükleyin.</p>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Cihazınızdan Dosya Seçin</label>
+                        <input type="file" id="file-upload-input" class="form-control" style="padding:10px;">
+                    </div>
+                    <button class="btn btn-primary" id="upload-file-btn" onclick="uploadDirectFile()">
+                        <span class="material-symbols-rounded">upload</span>
+                        <span>Dosyayı Sisteme Yükle</span>
+                    </button>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title" id="file-link-form-title"><span class="material-symbols-rounded" style="color:var(--accent);">link</span> Dış Bağlantı (URL) Ekle veya Düzenle</h3>
+                            <p class="card-desc">Google Drive, UKEY veya üniversite linkini dosya listesine ekleyin veya düzenleyin.</p>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label>Dosya Adı</label>
+                            <input type="text" id="link-file-title" class="form-control" placeholder="Örn: Staj Defteri Şablonu" style="padding-left:14px;">
+                        </div>
+                        <div class="input-group">
+                            <label>Dosya Bağlantısı (URL)</label>
+                            <input type="url" id="link-file-url" class="form-control" placeholder="https://..." style="padding-left:14px;">
+                        </div>
+                    </div>
+                    <div style="display:flex; gap:10px;">
+                        <button class="btn btn-tonal" id="save-file-link-btn" onclick="saveFileLink()">
+                            <span class="material-symbols-rounded">add_link</span>
+                            <span id="save-file-link-text">Link Olarak Ekle</span>
+                        </button>
+                        <button class="btn btn-tonal" id="cancel-file-edit-btn" style="display:none;" onclick="cancelEditFileLink()">
+                            <span>Vazgeç</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><span class="material-symbols-rounded" style="color:var(--accent);">folder_open</span> Yayındaki Dosyalar (<span id="file-count">0</span>)</h3>
+                    </div>
+                    <div class="admin-filter-bar">
+                        <input type="text" id="file-search-admin" class="admin-search-input" placeholder="Dosya adı veya linkte ara..." oninput="onFileFilterChange()">
+                    </div>
+                    <div id="file-list" class="item-list">
+                        <p style="color:var(--text-muted); font-size:0.85rem;">Yükleniyor...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. SİTE & BAKIM AYARLARI -->
+            <div id="tab-settings" class="tab-content" style="display:none;">
+                <div class="card" id="card-maint-setting">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title"><span class="material-symbols-rounded" style="color:var(--danger);">engineering</span> Tam Ekran Sistem Bakım Modu</h3>
+                            <p class="card-desc">Bakım modu açıldığında normal ziyaretçilere tam ekran 'Bakım Yapılmaktadır' sayfası gösterilir. Sağ üstteki 'Yönetici Girişi' ile siz girdiğinizde site size açılır.</p>
+                        </div>
+                    </div>
+                    <div class="switch-row" onclick="toggleSetting('maintenanceMode')">
+                        <div id="maint-mode-switch" class="switch"></div>
+                        <span style="font-size:0.92rem; font-weight:800;" id="maint-switch-label">Bakım Modu Kapalı (Site Herkese Açık)</span>
+                    </div>
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label>Bakım Ekranı Başlığı</label>
+                            <input type="text" id="setting-maint-title" class="form-control" placeholder="Örn: Bakım Yapılmaktadır" style="padding-left:14px;">
+                        </div>
+                        <div class="input-group">
+                            <label>Bakım Açıklama Metni</label>
+                            <input type="text" id="setting-maint-desc" class="form-control" placeholder="Örn: Bakım yapılmaktadır daha sonra tekrar deneyiniz." style="padding-left:14px;">
+                        </div>
+                    </div>
+                    <div style="display:flex; gap:10px; margin-top:8px;">
+                        <button class="btn btn-primary" onclick="saveSiteSettings()">
+                            <span class="material-symbols-rounded">save</span>
+                            <span>Bakım Ayarlarını Kaydet</span>
+                        </button>
+                        <button class="btn btn-tonal" onclick="previewMaintenanceScreen()">
+                            <span class="material-symbols-rounded">visibility</span>
+                            <span>Bakım Ekranını Önizle</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title"><span class="material-symbols-rounded" style="color:var(--primary);">fullscreen</span> Giriş Pop-Up Ekranı (ÖSYM Tarzı)</h3>
+                            <p class="card-desc">Site açıldığında ziyaretçilere gösterilen önemli ilan penceresi.</p>
+                        </div>
+                    </div>
+                    <div class="switch-row" onclick="toggleSetting('popupEnabled')">
+                        <div id="popup-switch" class="switch on"></div>
+                        <span style="font-size:0.88rem; font-weight:700;">Giriş Pop-up'ı Aktif Olsun</span>
+                    </div>
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label>Rozet Metni (Badge)</label>
+                            <input type="text" id="setting-popup-badge" class="form-control" placeholder="Örn: Önemli Duyuru" style="padding-left:14px;">
+                        </div>
+                        <div class="input-group">
+                            <label>Pop-up Başlığı</label>
+                            <input type="text" id="setting-popup-title" class="form-control" placeholder="Örn: Ders Programı Açıklandı!" style="padding-left:14px;">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Pop-up Açıklama Metni</label>
+                        <textarea id="setting-popup-desc" class="form-control" rows="3" placeholder="Pop-up açıklama detayları" style="padding-left:14px;"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label>Buton Metni</label>
+                        <input type="text" id="setting-popup-btn" class="form-control" placeholder="Örn: Ders Programı İçin Tıklayınız" style="padding-left:14px;">
+                    </div>
+                    <div style="display:flex; gap:10px;">
+                        <button class="btn btn-primary" onclick="saveSiteSettings()">
+                            <span class="material-symbols-rounded">save</span>
+                            <span>Site Ayarlarını Kaydet</span>
+                        </button>
+                        <button class="btn btn-tonal" onclick="previewPopupInAdmin()">
+                            <span class="material-symbols-rounded">visibility</span>
+                            <span>Pop-Up'ı Önizle</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. YEDEKLEME & SİSTEM ARAÇLARI (YENİ!) -->
+            <div id="tab-backup" class="tab-content" style="display:none;">
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title"><span class="material-symbols-rounded" style="color:var(--primary);">download</span> Tek Tıkla Tam Site Yedeği İndir</h3>
+                            <p class="card-desc">Sitedeki tüm duyurular, ders programı, akademik takvim, dosyalar ve ayarları tek bir JSON dosyasında güvenle yedekleyin.</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="exportFullSiteBackup()">
+                        <span class="material-symbols-rounded">download_for_offline</span>
+                        <span>Tüm Verileri Bilgisayarıma İndir (.json)</span>
+                    </button>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title"><span class="material-symbols-rounded" style="color:var(--danger);">restore</span> Yedekten Geri Yükle (Import JSON)</h3>
+                            <p class="card-desc">Daha önce indirdiğiniz bir site yedeğini sisteme yükleyerek tüm verileri geri yükleyin.</p>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Yedek Dosyası Seçin (.json)</label>
+                        <input type="file" id="backup-import-input" accept=".json" class="form-control" style="padding:10px;">
+                    </div>
+                    <button class="btn btn-danger" id="import-backup-btn" onclick="importFullSiteBackup()">
+                        <span class="material-symbols-rounded">upload</span>
+                        <span>Yedeği Sisteme Yükle ve Geri Yükle</span>
+                    </button>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title"><span class="material-symbols-rounded" style="color:var(--accent);">hub</span> Sistem Bilgileri & Hızlı Bağlantılar</h3>
+                            <p class="card-desc">Merkezi sistem yapılandırması ve canlı sayfalara doğrudan erişim.</p>
+                        </div>
+                    </div>
+                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px; margin-bottom:16px;">
+                        <div style="background:var(--bg-surface-elevated); padding:14px; border-radius:12px; border:1px solid var(--border);">
+                            <div style="font-size:0.78rem; color:var(--text-muted); font-weight:700;">GITHUB REPOSU</div>
+                            <div style="font-weight:800; font-size:0.95rem; margin-top:4px;">berat623 / opendata</div>
+                        </div>
+                        <div style="background:var(--bg-surface-elevated); padding:14px; border-radius:12px; border:1px solid var(--border);">
+                            <div style="font-size:0.78rem; color:var(--text-muted); font-weight:700;">OTURUM DURUMU</div>
+                            <div style="font-weight:800; font-size:0.95rem; color:var(--accent); margin-top:4px;">Yönetici Yetkili</div>
+                        </div>
+                    </div>
+                    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                        <a href="index.html" target="_blank" class="btn btn-tonal btn-mini">
+                            <span class="material-symbols-rounded">open_in_new</span>
+                            <span>Ana Site</span>
+                        </a>
+                        <a href="ogrenci.html" target="_blank" class="btn btn-tonal btn-mini">
+                            <span class="material-symbols-rounded">person</span>
+                            <span>Öğrenci Girişi</span>
+                        </a>
+                        <button class="btn btn-tonal btn-mini" onclick="fetchData()">
+                            <span class="material-symbols-rounded">sync</span>
+                            <span>Verileri Yeniden Senkronize Et</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ADMİN İÇİ ÖNİZLEME MODALİ -->
+            <div id="admin-preview-modal" class="admin-modal-overlay" style="display:none;" onclick="if(event.target===this)closeAdminPreviewModal()">
+                <div class="card" style="max-width:580px; width:100%; max-height:85vh; overflow-y:auto; position:relative; text-align:left;">
+                    <button class="btn btn-tonal btn-icon" style="position:absolute; top:16px; right:16px;" onclick="closeAdminPreviewModal()">
+                        <span class="material-symbols-rounded">close</span>
+                    </button>
+                    <div id="admin-preview-content"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script>
+        const GITHUB_USERNAME = "berat623";
+        const REPO_NAME = "opendata";
+
+        let userToken = localStorage.getItem("gh_admin_token") || "";
+        let announcementsData = [];
+        let filesData = [];
+        let scheduleData = [];
+        let calendarData = [];
+        let siteSettings = {
+            maintenanceMode: false,
+            maintenanceTitle: "Bakım Yapılmaktadır",
+            maintenanceMessage: "Bakım yapılmaktadır daha sonra tekrar deneyiniz.",
+            popupEnabled: true,
+            popupBadge: "Önemli Duyuru",
+            popupTitle: "Ders Programı Açıklandı!",
+            popupDesc: "2026-2027 Güz Yarıyılı haftalık ders programı, derslik dağılımları ve online ders planı yayınlanmıştır. Derslerinizi, dersliklerinizi ve saatlerinizi hemen görüntüleyin.",
+            popupButtonText: "Ders Programını Görüntüle"
+        };
+
+        // Düzenleme Durumları
+        let editingAnnId = null;
+        let editingLessonId = null;
+        let editingCalId = null;
+        let editingFileId = null;
+        let formPinned = false;
+        let toastTimer = null;
+
+        // Filtreleme Durumları
+        let annCatFilter = 'all';
+        let annSearchQuery = '';
+        let schedDayFilter = 0;
+        let schedSearchQuery = '';
+        let calSemFilter = 'all';
+        let calSearchQuery = '';
+        let fileSearchQuery = '';
+        let showAdminMatrix = false;
+
+        const DAYS = ["Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma"];
+
+        /* SAYFA İLERLEME VE AKICI GEÇİŞ ANİMASYONLARI */
+        function setPageProgress(pct) {
+            const bar = document.getElementById('page-loader');
+            if (!bar) return;
+            bar.classList.remove('finish');
+            bar.style.width = pct + '%';
+            if (pct >= 100) {
+                setTimeout(() => {
+                    bar.classList.add('finish');
+                }, 180);
+            }
+        }
+
+        function triggerPageProgress() {
+            setPageProgress(35);
+            setTimeout(() => setPageProgress(80), 90);
+            setTimeout(() => setPageProgress(100), 240);
+        }
+
+        document.addEventListener("DOMContentLoaded", async function () {
+            setPageProgress(25);
+            syncThemeUI();
+            if (userToken) {
+                const ok = await validateToken(userToken);
+                if (ok) {
+                    showDashboard();
+                    fetchData();
+                } else {
+                    logout();
+                }
+            } else {
+                showAuth();
+            }
+        });
+
+        function syncThemeUI() {
+            const isLight = document.documentElement.classList.contains('light-mode');
+            const icon = document.getElementById('theme-icon');
+            if (icon) icon.innerText = isLight ? 'dark_mode' : 'light_mode';
+            const meta = document.querySelector('meta[name="theme-color"]');
+            if (meta) meta.setAttribute('content', isLight ? '#f8fafc' : '#090d16');
+        }
+
+        function toggleTheme() {
+            const isLight = !document.documentElement.classList.contains('light-mode');
+            if (isLight) {
+                document.documentElement.classList.add('light-mode');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.remove('light-mode');
+                localStorage.setItem('theme', 'dark');
+            }
+            syncThemeUI();
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
+                if (!localStorage.getItem('theme')) {
+                    if (e.matches) {
+                        document.documentElement.classList.add('light-mode');
+                    } else {
+                        document.documentElement.classList.remove('light-mode');
+                    }
+                    syncThemeUI();
+                }
+            });
+        }
+
+        function showToast(msg, isErr) {
+            const t = document.getElementById('toast');
+            document.getElementById('toast-msg').innerText = msg;
+            document.getElementById('toast-icon').innerText = isErr ? 'error' : 'check_circle';
+            document.getElementById('toast-icon').style.color = isErr ? 'var(--danger)' : 'var(--accent)';
+            t.classList.add('show');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => t.classList.remove('show'), 3500);
+        }
+
+        function togglePassVisibility() {
+            const inp = document.getElementById('gh-token-input');
+            const eye = document.getElementById('pass-eye');
+            if (inp.type === 'password') {
+                inp.type = 'text'; eye.innerText = 'visibility_off';
+            } else {
+                inp.type = 'password'; eye.innerText = 'visibility';
+            }
+        }
+
+        async function validateToken(token) {
+            try {
+                const res = await fetch("https://api.github.com/user", {
+                    headers: { "Authorization": "token " + token }
+                });
+                return res.ok;
+            } catch (e) {
+                return (token.length >= 8);
+            }
+        }
+
+        async function loginWithToken() {
+            const inp = document.getElementById('gh-token-input');
+            const token = (inp.value || '').trim();
+            if (!token) return showToast("Lütfen yönetici şifrenizi giriniz!", true);
+
+            const btn = document.getElementById('login-btn');
+            btn.disabled = true;
+            btn.innerHTML = '<span class="material-symbols-rounded">sync</span> Kimlik Doğrulanıyor...';
+
+            const valid = await validateToken(token);
+            if (valid) {
+                userToken = token;
+                localStorage.setItem("gh_admin_token", token);
+                triggerPageProgress();
+                showToast("Yönetici girişi başarılı!");
+                showDashboard();
+                fetchData();
+            } else {
+                showToast("Hata: Girdiğiniz şifre geçersiz veya yetkisiz!", true);
+            }
+            btn.disabled = false;
+            btn.innerHTML = '<span class="material-symbols-rounded">login</span> Güvenli Giriş Yap';
+        }
+
+        function logout() {
+            userToken = "";
+            localStorage.removeItem("gh_admin_token");
+            triggerPageProgress();
+            showAuth();
+            showToast("Oturum kapatıldı.");
+        }
+
+        function showAuth() {
+            const auth = document.getElementById('auth-screen');
+            auth.style.display = 'block';
+            auth.style.animation = 'none';
+            auth.offsetHeight;
+            auth.style.animation = null;
+            document.getElementById('dashboard-screen').style.display = 'none';
+        }
+
+        function showDashboard() {
+            document.getElementById('auth-screen').style.display = 'none';
+            const dash = document.getElementById('dashboard-screen');
+            dash.style.display = 'block';
+            dash.style.animation = 'none';
+            dash.offsetHeight;
+            dash.style.animation = null;
+        }
+
+        function switchTab(tabId) {
+            triggerPageProgress();
+            document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
+            const target = document.getElementById(tabId);
+            if (target) {
+                target.style.display = 'block';
+                target.style.animation = 'none';
+                target.offsetHeight;
+                target.style.animation = null;
+            }
+            document.querySelectorAll('.admin-tab-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.tab === tabId);
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function sanitizeHTML(str) {
+            if (typeof str !== 'string') return '';
+            return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+        }
+        function utf8_to_b64(str) { return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (m, p) => String.fromCharCode('0x' + p))); }
+        function b64_to_utf8(str) {
+            try { return decodeURIComponent(atob(str.replace(/\s/g, '')).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join('')); }
+            catch (e) { return atob(str); }
+        }
+
+        async function fetchFileDirect(filename) {
+            const ts = Date.now();
+            try {
+                const headers = { 'Cache-Control': 'no-cache' };
+                if (userToken) headers['Authorization'] = 'token ' + userToken;
+                const res = await fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/${filename}?cb=${ts}`, { headers, cache: 'no-store' });
+                if (res.ok) {
+                    const data = await res.json();
+                    return JSON.parse(b64_to_utf8(data.content));
+                }
+            } catch (e) {}
+            try {
+                const raw = await fetch(`./${filename}?t=${ts}`, { cache: 'no-store' });
+                if (raw.ok) return await raw.json();
+            } catch (e) {}
+            return null;
+        }
+
+        async function fetchData() {
+            setPageProgress(60);
+            announcementsData = (await fetchFileDirect('duyurular.json')) || [];
+            filesData = (await fetchFileDirect('dosyalar.json')) || [];
+            scheduleData = (await fetchFileDirect('dersprogrami.json')) || [];
+            calendarData = (await fetchFileDirect('takvim.json')) || [];
+            const loadedSettings = await fetchFileDirect('ayarlar.json');
+            if (loadedSettings) siteSettings = loadedSettings;
+
+            updateStatCards();
+            renderLists();
+            renderSettingsUI();
+            if (showAdminMatrix) renderAdminMatrix();
+            setPageProgress(100);
+        }
+
+        function updateStatCards() {
+            document.getElementById('stat-ann-num').innerText = announcementsData.length;
+            document.getElementById('stat-sched-num').innerText = scheduleData.length;
+            document.getElementById('stat-cal-num').innerText = calendarData.length;
+            document.getElementById('stat-file-num').innerText = filesData.length;
+        }
+
+        function renderLists() {
+            // 1. DUYURULAR
+            document.getElementById('ann-count').innerText = announcementsData.length;
+            const annEl = document.getElementById('ann-list');
+            
+            let filteredAnns = announcementsData.slice();
+            if (annCatFilter !== 'all') {
+                filteredAnns = filteredAnns.filter(i => (i.category || 'duyuru') === annCatFilter);
+            }
+            if (annSearchQuery) {
+                filteredAnns = filteredAnns.filter(i => (i.title || '').toLowerCase().includes(annSearchQuery) || (i.content || '').toLowerCase().includes(annSearchQuery));
+            }
+
+            if (!filteredAnns.length) {
+                annEl.innerHTML = '<p style="color:var(--text-muted);font-size:0.85rem;padding:16px;text-align:center;">Kayıtlı veya filtreye uygun duyuru bulunamadı.</p>';
+            } else {
+                annEl.innerHTML = filteredAnns.map(i => `
+                    <div class="list-item">
+                        <div class="item-text">
+                            <h4>${i.pinned ? '<span class="material-symbols-rounded" style="color:var(--warning);font-size:16px;vertical-align:middle;">star</span> ' : ''}${sanitizeHTML(i.title)}</h4>
+                            <p>
+                                <span style="text-transform:uppercase;font-weight:700;color:var(--primary);">${i.category || 'Duyuru'}</span>
+                                • ${new Date(i.date).toLocaleString('tr-TR')}
+                            </p>
+                        </div>
+                        <div class="item-actions" style="display:flex; gap:6px;">
+                            <button class="btn btn-tonal btn-mini" onclick="togglePinItem(${i.id})" title="Sabitle">${i.pinned ? '<span class="material-symbols-rounded" style="color:var(--warning);font-size:16px;">star</span>' : '<span class="material-symbols-rounded" style="font-size:16px;">star_outline</span>'}</button>
+                            <button class="btn btn-tonal btn-mini" onclick="editAnnouncement(${i.id})" title="Düzenle"><span class="material-symbols-rounded" style="font-size:16px;">edit</span></button>
+                            <button class="btn btn-danger btn-mini" onclick="deleteAnnouncement(${i.id})" title="Sil"><span class="material-symbols-rounded" style="font-size:16px;">delete</span></button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // 2. DERS PROGRAMI
+            document.getElementById('sched-count').innerText = scheduleData.length;
+            const schedEl = document.getElementById('sched-list');
+            
+            let filteredSched = scheduleData.slice();
+            if (schedDayFilter > 0) {
+                filteredSched = filteredSched.filter(s => +s.day === schedDayFilter);
+            }
+            if (schedSearchQuery) {
+                filteredSched = filteredSched.filter(s => 
+                    (s.course || '').toLowerCase().includes(schedSearchQuery) || 
+                    (s.room || '').toLowerCase().includes(schedSearchQuery) || 
+                    (s.instructor || '').toLowerCase().includes(schedSearchQuery)
+                );
+            }
+
+            if (!filteredSched.length) {
+                schedEl.innerHTML = '<p style="color:var(--text-muted);font-size:0.85rem;padding:16px;text-align:center;">Filtreye uygun ders bulunmuyor.</p>';
+            } else {
+                const sorted = filteredSched.sort((a,b) => a.day - b.day || a.start.localeCompare(b.start));
+                schedEl.innerHTML = sorted.map(s => `
+                    <div class="list-item">
+                        <div class="item-text">
+                            <h4>${DAYS[(+s.day)-1]} • ${s.start} - ${s.end} — ${sanitizeHTML(s.course)}</h4>
+                            <p>${sanitizeHTML(s.room || 'Derslik Belirtilmedi')} • ${sanitizeHTML(s.instructor || '-')}</p>
+                        </div>
+                        <div class="item-actions" style="display:flex; gap:6px;">
+                            <button class="btn btn-tonal btn-mini" onclick="editLesson(${s.id})" title="Dersi Düzenle"><span class="material-symbols-rounded" style="font-size:16px;">edit</span></button>
+                            <button class="btn btn-danger btn-mini" onclick="deleteLessonItem(${s.id})" title="Dersi Sil"><span class="material-symbols-rounded" style="font-size:16px;">delete</span></button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // 3. AKADEMİK TAKVİM
+            document.getElementById('cal-count').innerText = calendarData.length;
+            const calEl = document.getElementById('cal-list');
+            
+            let filteredCal = calendarData.slice();
+            if (calSemFilter !== 'all') {
+                filteredCal = filteredCal.filter(c => c.semester === calSemFilter);
+            }
+            if (calSearchQuery) {
+                filteredCal = filteredCal.filter(c => 
+                    (c.name || '').toLowerCase().includes(calSearchQuery) || 
+                    (c.note || '').toLowerCase().includes(calSearchQuery)
+                );
+            }
+
+            if (!filteredCal.length) {
+                calEl.innerHTML = '<p style="color:var(--text-muted);font-size:0.85rem;padding:16px;text-align:center;">Filtreye uygun takvim faaliyeti bulunmuyor.</p>';
+            } else {
+                const sortedCal = filteredCal.sort((a,b) => a.start.localeCompare(b.start));
+                calEl.innerHTML = sortedCal.map(c => `
+                    <div class="list-item">
+                        <div class="item-text">
+                            <h4>${sanitizeHTML(c.name)}</h4>
+                            <p><span style="text-transform:uppercase;font-weight:700;color:var(--accent);">${c.semester}</span> • ${c.start} ${c.end !== c.start ? 'ile ' + c.end : ''} ${c.note ? '(' + sanitizeHTML(c.note) + ')' : ''}</p>
+                        </div>
+                        <div class="item-actions" style="display:flex; gap:6px;">
+                            <button class="btn btn-tonal btn-mini" onclick="editCalendarEvent(${c.id})" title="Faaliyeti Düzenle"><span class="material-symbols-rounded" style="font-size:16px;">edit</span></button>
+                            <button class="btn btn-danger btn-mini" onclick="deleteCalendarEvent(${c.id})" title="Faaliyeti Sil"><span class="material-symbols-rounded" style="font-size:16px;">delete</span></button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // 4. DOSYALAR
+            document.getElementById('file-count').innerText = filesData.length;
+            const fileEl = document.getElementById('file-list');
+            
+            let filteredFiles = filesData.slice();
+            if (fileSearchQuery) {
+                filteredFiles = filteredFiles.filter(f => (f.title || '').toLowerCase().includes(fileSearchQuery) || (f.url || '').toLowerCase().includes(fileSearchQuery));
+            }
+
+            if (!filteredFiles.length) {
+                fileEl.innerHTML = '<p style="color:var(--text-muted);font-size:0.85rem;padding:16px;text-align:center;">Henüz dosya bulunmuyor.</p>';
+            } else {
+                fileEl.innerHTML = filteredFiles.map(f => `
+                    <div class="list-item">
+                        <div class="item-text">
+                            <h4>${sanitizeHTML(f.title)}</h4>
+                            <p><a href="${sanitizeHTML(f.url)}" target="_blank" rel="noopener noreferrer" style="color:var(--primary); word-break:break-all;">${sanitizeHTML(f.url)}</a></p>
+                        </div>
+                        <div class="item-actions" style="display:flex; gap:6px;">
+                            <button class="btn btn-tonal btn-mini" onclick="copyFileUrl('${sanitizeHTML(f.url)}')" title="Bağlantıyı Kopyala"><span class="material-symbols-rounded" style="font-size:16px;">content_copy</span></button>
+                            <button class="btn btn-tonal btn-mini" onclick="editFileItem(${f.id})" title="Düzenle"><span class="material-symbols-rounded" style="font-size:16px;">edit</span></button>
+                            <button class="btn btn-danger btn-mini" onclick="deleteFileItem(${f.id})" title="Sil"><span class="material-symbols-rounded" style="font-size:16px;">delete</span></button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        /* SİTE & BAKIM AYARLARI ARAYÜZÜ */
+        function renderSettingsUI() {
+            const isMaint = !!siteSettings.maintenanceMode;
+
+            // Hızlı Bakım Kartı (Üst)
+            const qCard = document.getElementById('quick-maint-card');
+            const qIcon = document.getElementById('quick-maint-icon');
+            const qBadge = document.getElementById('quick-maint-badge');
+            const qDesc = document.getElementById('quick-maint-desc');
+            const qBtn = document.getElementById('quick-maint-toggle-btn');
+
+            if (qCard) {
+                qCard.classList.toggle('is-active', isMaint);
+                if (isMaint) {
+                    qIcon.style.background = 'var(--danger-soft)';
+                    qIcon.style.color = 'var(--danger)';
+                    qIcon.innerHTML = '<span class="material-symbols-rounded" style="font-size:26px;">engineering</span>';
+                    qBadge.className = 'badge-maint';
+                    qBadge.innerHTML = '<span class="material-symbols-rounded" style="font-size:14px;">warning</span> Bakım Modu Aktif (Site Kilitli)';
+                    qDesc.innerText = 'Normal ziyaretçilere tam ekran "Bakım Yapılmaktadır" sayfası gösteriliyor.';
+                    qBtn.className = 'btn btn-primary btn-mini';
+                    qBtn.innerHTML = '<span class="material-symbols-rounded" style="font-size:16px;">check_circle</span> <span>Bakım Modunu Kapat</span>';
+                } else {
+                    qIcon.style.background = 'var(--accent-soft)';
+                    qIcon.style.color = 'var(--accent)';
+                    qIcon.innerHTML = '<span class="material-symbols-rounded" style="font-size:26px;">check_circle</span>';
+                    qBadge.className = 'badge-live';
+                    qBadge.innerHTML = '<span class="material-symbols-rounded" style="font-size:14px;">check</span> Site Yayında (Canlı)';
+                    qDesc.innerText = 'Ziyaretçiler siteye normal şekilde erişebilir.';
+                    qBtn.className = 'btn btn-danger btn-mini';
+                    qBtn.innerHTML = '<span class="material-symbols-rounded" style="font-size:16px;">power_settings_new</span> <span>Bakım Modunu Aç</span>';
+                }
+            }
+
+            // Ayarlar Sekmesi İçindeki Anahtarlar
+            const mSwitch = document.getElementById('maint-mode-switch');
+            if (mSwitch) mSwitch.classList.toggle('on', isMaint);
+            const mLabel = document.getElementById('maint-switch-label');
+            if (mLabel) {
+                mLabel.innerText = isMaint ? 'Bakım Modu Aktif (Ziyaretçilere Bakım Ekranı Gösteriliyor)' : 'Bakım Modu Kapalı (Site Herkese Açık)';
+                mLabel.style.color = isMaint ? 'var(--danger)' : 'var(--text-main)';
+            }
+
+            const titleInp = document.getElementById('setting-maint-title');
+            if (titleInp) titleInp.value = siteSettings.maintenanceTitle || 'Bakım Yapılmaktadır';
+            const descInp = document.getElementById('setting-maint-desc');
+            if (descInp) descInp.value = siteSettings.maintenanceMessage || 'Bakım yapılmaktadır daha sonra tekrar deneyiniz.';
+
+            const pSwitch = document.getElementById('popup-switch');
+            if (pSwitch) pSwitch.classList.toggle('on', !!siteSettings.popupEnabled);
+            const pBadge = document.getElementById('setting-popup-badge');
+            if (pBadge) pBadge.value = siteSettings.popupBadge || 'Önemli Duyuru';
+            const pTitle = document.getElementById('setting-popup-title');
+            if (pTitle) pTitle.value = siteSettings.popupTitle || '';
+            const pDesc = document.getElementById('setting-popup-desc');
+            if (pDesc) pDesc.value = siteSettings.popupDesc || '';
+            const pBtn = document.getElementById('setting-popup-btn');
+            if (pBtn) pBtn.value = siteSettings.popupButtonText || '';
+        }
+
+        function toggleSetting(key) {
+            siteSettings[key] = !siteSettings[key];
+            renderSettingsUI();
+        }
+
+        async function toggleQuickMaintenance() {
+            const next = !siteSettings.maintenanceMode;
+            const promptMsg = next 
+                ? "Bakım modunu açmak istediğinize emin misiniz?\n\nBu işlem sonrasında siteye giren tüm normal ziyaretçilere tam ekran 'Bakım Yapılmaktadır' sayfası gösterilecektir." 
+                : "Bakım modunu kapatmak istediğinize emin misiniz?\n\nSite anında tüm ziyaretçilere erişime açılacaktır.";
+            if (!confirm(promptMsg)) return;
+
+            siteSettings.maintenanceMode = next;
+            try { localStorage.setItem('cached_maint_mode', next ? 'true' : 'false'); } catch(e) {}
+            renderSettingsUI();
+            const ok = await commitToGitHub('ayarlar.json', siteSettings, next ? 'Bakım Modu Açıldı (Tam Ekran)' : 'Bakım Modu Kapatıldı');
+            if (ok) {
+                showToast(next ? "Bakım modu açıldı! Ziyaretçilere bakım ekranı gösteriliyor." : "Bakım modu kapatıldı! Site herkese erişime açıldı.");
+            }
+        }
+
+        async function saveSiteSettings() {
+            siteSettings.maintenanceTitle = (document.getElementById('setting-maint-title').value || '').trim() || 'Bakım Yapılmaktadır';
+            siteSettings.maintenanceMessage = (document.getElementById('setting-maint-desc').value || '').trim() || 'Bakım yapılmaktadır daha sonra tekrar deneyiniz.';
+            siteSettings.popupBadge = (document.getElementById('setting-popup-badge').value || '').trim() || 'Önemli Duyuru';
+            siteSettings.popupTitle = (document.getElementById('setting-popup-title').value || '').trim();
+            siteSettings.popupDesc = (document.getElementById('setting-popup-desc').value || '').trim();
+            siteSettings.popupButtonText = (document.getElementById('setting-popup-btn').value || '').trim();
+
+            try {
+                localStorage.setItem('cached_maint_mode', siteSettings.maintenanceMode ? 'true' : 'false');
+                localStorage.setItem('cached_maint_title', siteSettings.maintenanceTitle);
+                localStorage.setItem('cached_maint_msg', siteSettings.maintenanceMessage);
+            } catch(e) {}
+
+            const ok = await commitToGitHub('ayarlar.json', siteSettings, 'Site ve Bakım Ayarları Güncellendi');
+            if (ok) showToast("Site ayarları başarıyla kaydedildi!");
+        }
+
+        async function commitToGitHub(filename, newData, commitMsg) {
+            try {
+                showToast("Değişiklikler GitHub'a kaydediliyor...");
+                const getRes = await fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/${filename}?t=${Date.now()}`, {
+                    headers: { 'Authorization': 'token ' + userToken }
+                });
+                let sha;
+                if (getRes.ok) {
+                    const data = await getRes.json();
+                    sha = data.sha;
+                }
+                const body = {
+                    message: commitMsg,
+                    content: utf8_to_b64(JSON.stringify(newData, null, 2))
+                };
+                if (sha) body.sha = sha;
+
+                const putRes = await fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/${filename}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': 'token ' + userToken,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(body)
+                });
+
+                if (putRes.ok) {
+                    showToast("Başarıyla kaydedildi!");
+                    fetchData();
+                    return true;
+                } else {
+                    showToast("Kayıt hatası: Yetkiniz yetersiz veya bağlantı kısıtlı.", true);
+                    return false;
+                }
+            } catch (e) {
+                showToast("Bağlantı hatası oluştu.", true);
+                return false;
+            }
+        }
+
+        /* DUYURU METODLARI */
+        function togglePin() {
+            formPinned = !formPinned;
+            document.getElementById('pin-switch').classList.toggle('on', formPinned);
+        }
+
+        function setAnnCatFilter(cat, btn) {
+            annCatFilter = cat;
+            document.querySelectorAll('#tab-ann .admin-chip').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+            renderLists();
+        }
+
+        function onAnnFilterChange() {
+            const inp = document.getElementById('ann-search');
+            annSearchQuery = (inp.value || '').trim().toLowerCase();
+            renderLists();
+        }
+
+        function editAnnouncement(id) {
+            const it = announcementsData.find(i => i.id === id);
+            if (!it) return;
+            editingAnnId = id;
+            document.getElementById('ann-title').value = it.title;
+            document.getElementById('ann-content').value = it.content;
+            document.getElementById('ann-cat').value = it.category || 'duyuru';
+            if (it.date) {
+                try {
+                    const d = new Date(it.date);
+                    const dtLocal = new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
+                    document.getElementById('ann-date').value = dtLocal;
+                } catch(e) {}
+            }
+            formPinned = !!it.pinned;
+            document.getElementById('pin-switch').classList.toggle('on', formPinned);
+            document.getElementById('ann-form-title').innerHTML = '<span class="material-symbols-rounded" style="color:var(--primary);">edit</span> Duyuruyu Düzenle';
+            document.getElementById('save-ann-text').innerText = 'Değişiklikleri Kaydet';
+            document.getElementById('cancel-ann-btn').style.display = 'inline-flex';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function cancelEditAnnouncement() {
+            editingAnnId = null;
+            formPinned = false;
+            document.getElementById('pin-switch').classList.remove('on');
+            document.getElementById('ann-title').value = '';
+            document.getElementById('ann-content').value = '';
+            document.getElementById('ann-date').value = '';
+            document.getElementById('ann-form-title').innerHTML = '<span class="material-symbols-rounded" style="color:var(--primary);">add_circle</span> Yeni Duyuru Yayınla';
+            document.getElementById('save-ann-text').innerText = 'Duyuruyu Yayınla';
+            document.getElementById('cancel-ann-btn').style.display = 'none';
+        }
+
+        function togglePinItem(id) {
+            const it = announcementsData.find(i => i.id === id);
+            if (!it) return;
+            it.pinned = !it.pinned;
+            renderLists();
+            commitToGitHub('duyurular.json', announcementsData, 'Duyuru Sabitleme Durumu Güncellendi');
+        }
+
+        async function saveAnnouncement() {
+            const title = document.getElementById('ann-title').value.trim();
+            const content = document.getElementById('ann-content').value.trim();
+            const category = document.getElementById('ann-cat').value;
+            const dateInp = document.getElementById('ann-date').value;
+
+            if (!title || !content) return showToast("Lütfen başlık ve içerik giriniz!", true);
+
+            let pubDate = dateInp ? new Date(dateInp).toISOString() : new Date().toISOString();
+
+            if (editingAnnId) {
+                const it = announcementsData.find(i => i.id === editingAnnId);
+                if (it) {
+                    it.title = title;
+                    it.content = content;
+                    it.category = category;
+                    it.pinned = formPinned;
+                    if (dateInp) it.date = pubDate;
+                }
+                await commitToGitHub('duyurular.json', announcementsData, 'Duyuru Güncellendi: ' + title);
+                cancelEditAnnouncement();
+            } else {
+                announcementsData.unshift({
+                    id: Date.now(),
+                    title: title,
+                    content: content,
+                    category: category,
+                    pinned: formPinned,
+                    date: pubDate
+                });
+                await commitToGitHub('duyurular.json', announcementsData, 'Yeni Duyuru Eklendi: ' + title);
+                cancelEditAnnouncement();
+            }
+        }
+
+        async function deleteAnnouncement(id) {
+            if (!confirm("Bu duyuruyu silmek istediğinize emin misiniz?")) return;
+            announcementsData = announcementsData.filter(i => i.id !== id);
+            if (editingAnnId === id) cancelEditAnnouncement();
+            renderLists();
+            await commitToGitHub('duyurular.json', announcementsData, 'Duyuru Silindi');
+        }
+
+        /* DERS PROGRAMI METODLARI */
+        function setSchedDayFilter(dayNum, btn) {
+            schedDayFilter = dayNum;
+            document.querySelectorAll('#tab-sched .admin-chip').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+            renderLists();
+        }
+
+        function onSchedFilterChange() {
+            const inp = document.getElementById('ls-search');
+            schedSearchQuery = (inp.value || '').trim().toLowerCase();
+            renderLists();
+        }
+
+        function editLesson(id) {
+            const s = scheduleData.find(l => l.id === id);
+            if (!s) return;
+            editingLessonId = id;
+            document.getElementById('ls-day').value = s.day;
+            document.getElementById('ls-course').value = s.course;
+            document.getElementById('ls-start').value = s.start;
+            document.getElementById('ls-end').value = s.end;
+            document.getElementById('ls-room').value = s.room || '';
+            document.getElementById('ls-inst').value = s.instructor || '';
+
+            document.getElementById('ls-form-title').innerHTML = '<span class="material-symbols-rounded" style="color:var(--warning);">edit</span> Dersi Düzenle';
+            document.getElementById('save-ls-text').innerText = 'Değişiklikleri Kaydet';
+            document.getElementById('cancel-ls-btn').style.display = 'inline-flex';
+            window.scrollTo({ top: 150, behavior: 'smooth' });
+        }
+
+        function cancelEditLesson() {
+            editingLessonId = null;
+            document.getElementById('ls-course').value = '';
+            document.getElementById('ls-room').value = '';
+            document.getElementById('ls-inst').value = '';
+            document.getElementById('ls-form-title').innerHTML = '<span class="material-symbols-rounded" style="color:var(--warning);">add_task</span> Ders Programına Ekle';
+            document.getElementById('save-ls-text').innerText = 'Dersi Programa Ekle';
+            document.getElementById('cancel-ls-btn').style.display = 'none';
+        }
+
+        async function saveLesson() {
+            const course = document.getElementById('ls-course').value.trim();
+            const start = document.getElementById('ls-start').value;
+            const end = document.getElementById('ls-end').value;
+            const room = document.getElementById('ls-room').value.trim();
+            const inst = document.getElementById('ls-inst').value.trim();
+            const day = +document.getElementById('ls-day').value;
+
+            if (!course || !start || !end) return showToast("Ders adı ve saatleri zorunludur!", true);
+            if (end <= start) return showToast("Bitiş saati başlangıç saatinden sonra olmalıdır!", true);
+
+            if (editingLessonId) {
+                const s = scheduleData.find(l => l.id === editingLessonId);
+                if (s) {
+                    s.day = day;
+                    s.start = start;
+                    s.end = end;
+                    s.course = course;
+                    s.room = room;
+                    s.instructor = inst;
+                }
+                await commitToGitHub('dersprogrami.json', scheduleData, 'Ders Güncellendi: ' + course);
+                cancelEditLesson();
+            } else {
+                scheduleData.push({
+                    id: Date.now(),
+                    day: day,
+                    start: start,
+                    end: end,
+                    course: course,
+                    room: room,
+                    instructor: inst
+                });
+                await commitToGitHub('dersprogrami.json', scheduleData, 'Ders Eklendi: ' + course);
+                cancelEditLesson();
+            }
+        }
+
+        async function deleteLessonItem(id) {
+            if (!confirm("Bu dersi programdan silmek istediğinize emin misiniz?")) return;
+            scheduleData = scheduleData.filter(i => i.id !== id);
+            if (editingLessonId === id) cancelEditLesson();
+            renderLists();
+            if (showAdminMatrix) renderAdminMatrix();
+            await commitToGitHub('dersprogrami.json', scheduleData, 'Ders Silindi');
+        }
+
+        function toggleAdminMatrix() {
+            showAdminMatrix = !showAdminMatrix;
+            const box = document.getElementById('admin-matrix-box');
+            const btnText = document.getElementById('btn-matrix-text');
+            if (box) box.style.display = showAdminMatrix ? 'block' : 'none';
+            if (btnText) btnText.innerText = showAdminMatrix ? 'Tabloyu Gizle' : 'Haftalık Tabloyu Göster';
+            if (showAdminMatrix) renderAdminMatrix();
+        }
+
+        function renderAdminMatrix() {
+            const tbl = document.getElementById('admin-matrix-table');
+            if (!tbl) return;
+
+            const TIME_PERIODS = [
+                { s: '08:50', e: '09:35', label: '08:50 - 09:35' },
+                { s: '09:40', e: '10:25', label: '09:40 - 10:25' },
+                { s: '10:30', e: '11:15', label: '10:30 - 11:15' },
+                { s: '11:15', e: '12:00', label: '11:15 - 12:00' },
+                { isBreak: true, label: '12:00 - 13:00 (Öğle Molası)' },
+                { s: '13:00', e: '13:45', label: '13:00 - 13:45' },
+                { s: '13:50', e: '14:35', label: '13:50 - 14:35' },
+                { s: '14:40', e: '15:25', label: '14:40 - 15:25' },
+                { s: '15:30', e: '16:15', label: '15:30 - 16:15' },
+                { s: '16:15', e: '17:00', label: '16:15 - 17:00' }
+            ];
+
+            let html = '<thead><tr><th style="width:110px;">Saat</th>';
+            DAYS.forEach(d => html += `<th>${d}</th>`);
+            html += '</tr></thead><tbody>';
+
+            TIME_PERIODS.forEach(tp => {
+                if (tp.isBreak) {
+                    html += `<tr><td colspan="6" style="text-align:center;background:var(--bg-surface-elevated);color:var(--text-muted);font-weight:700;padding:4px;">${tp.label}</td></tr>`;
+                    return;
+                }
+                html += `<tr><td style="font-weight:700;white-space:nowrap;text-align:center;">${tp.label}</td>`;
+                for (let d = 1; d <= 5; d++) {
+                    const lessons = scheduleData.filter(l => +l.day === d && l.start === tp.s);
+                    if (!lessons.length) {
+                        html += '<td></td>';
+                    } else {
+                        html += '<td>' + lessons.map(l => `
+                            <div class="admin-matrix-lesson">
+                                <strong>${sanitizeHTML(l.course)}</strong>
+                                <div style="font-size:0.7rem;color:var(--text-muted);">${sanitizeHTML(l.room || '-')} • ${sanitizeHTML(l.instructor || '-')}</div>
+                            </div>
+                        `).join('') + '</td>';
+                    }
+                }
+                html += '</tr>';
+            });
+            html += '</tbody>';
+            tbl.innerHTML = html;
+        }
+
+        /* AKADEMİK TAKVİM METODLARI */
+        function setCalSemFilter(sem, btn) {
+            calSemFilter = sem;
+            document.querySelectorAll('#tab-cal .admin-chip').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+            renderLists();
+        }
+
+        function onCalFilterChange() {
+            const inp = document.getElementById('cal-search');
+            calSearchQuery = (inp.value || '').trim().toLowerCase();
+            renderLists();
+        }
+
+        function editCalendarEvent(id) {
+            const c = calendarData.find(ev => ev.id === id);
+            if (!c) return;
+            editingCalId = id;
+            document.getElementById('cal-sem').value = c.semester;
+            document.getElementById('cal-name').value = c.name;
+            document.getElementById('cal-start').value = c.start;
+            document.getElementById('cal-end').value = c.end || c.start;
+            document.getElementById('cal-note').value = c.note || '';
+
+            document.getElementById('cal-form-title').innerHTML = '<span class="material-symbols-rounded" style="color:var(--accent);">edit</span> Faaliyeti Düzenle';
+            document.getElementById('save-cal-text').innerText = 'Değişiklikleri Kaydet';
+            document.getElementById('cancel-cal-btn').style.display = 'inline-flex';
+            window.scrollTo({ top: 150, behavior: 'smooth' });
+        }
+
+        function cancelEditCalendarEvent() {
+            editingCalId = null;
+            document.getElementById('cal-name').value = '';
+            document.getElementById('cal-start').value = '';
+            document.getElementById('cal-end').value = '';
+            document.getElementById('cal-note').value = '';
+            document.getElementById('cal-form-title').innerHTML = '<span class="material-symbols-rounded" style="color:var(--accent);">edit_calendar</span> Akademik Takvime Faaliyet Ekle';
+            document.getElementById('save-cal-text').innerText = 'Takvime Kaydet';
+            document.getElementById('cancel-cal-btn').style.display = 'none';
+        }
+
+        async function saveCalendarEvent() {
+            const sem = document.getElementById('cal-sem').value;
+            const name = document.getElementById('cal-name').value.trim();
+            const s = document.getElementById('cal-start').value;
+            const e = document.getElementById('cal-end').value || s;
+            const note = document.getElementById('cal-note').value.trim();
+
+            if (!name || !s) return showToast("Lütfen faaliyet adı ve başlangıç tarihi giriniz!", true);
+
+            if (editingCalId) {
+                const c = calendarData.find(ev => ev.id === editingCalId);
+                if (c) {
+                    c.semester = sem;
+                    c.name = name;
+                    c.start = s;
+                    c.end = e;
+                    c.note = note;
+                }
+                await commitToGitHub('takvim.json', calendarData, 'Takvim Faaliyeti Güncellendi: ' + name);
+                cancelEditCalendarEvent();
+            } else {
+                calendarData.push({
+                    id: Date.now(),
+                    semester: sem,
+                    name: name,
+                    start: s,
+                    end: e,
+                    note: note
+                });
+                await commitToGitHub('takvim.json', calendarData, 'Takvim Faaliyeti Eklendi: ' + name);
+                cancelEditCalendarEvent();
+            }
+        }
+
+        async function deleteCalendarEvent(id) {
+            if (!confirm("Bu takvim faaliyetini silmek istediğinize emin misiniz?")) return;
+            calendarData = calendarData.filter(i => i.id !== id);
+            if (editingCalId === id) cancelEditCalendarEvent();
+            renderLists();
+            await commitToGitHub('takvim.json', calendarData, 'Takvim Faaliyeti Silindi');
+        }
+
+        /* DOSYA METODLARI */
+        function onFileFilterChange() {
+            const inp = document.getElementById('file-search-admin');
+            fileSearchQuery = (inp.value || '').trim().toLowerCase();
+            renderLists();
+        }
+
+        async function copyFileUrl(url) {
+            try {
+                await navigator.clipboard.writeText(url);
+                showToast("Dosya bağlantısı panoya kopyalandı!");
+            } catch (e) {
+                showToast("Kopyalanamadı: " + url);
+            }
+        }
+
+        function editFileItem(id) {
+            const f = filesData.find(item => item.id === id);
+            if (!f) return;
+            editingFileId = id;
+            document.getElementById('link-file-title').value = f.title;
+            document.getElementById('link-file-url').value = f.url;
+
+            document.getElementById('file-link-form-title').innerHTML = '<span class="material-symbols-rounded" style="color:var(--accent);">edit</span> Dosya Bilgisini Düzenle';
+            document.getElementById('save-file-link-text').innerText = 'Değişiklikleri Kaydet';
+            document.getElementById('cancel-file-edit-btn').style.display = 'inline-flex';
+            window.scrollTo({ top: 150, behavior: 'smooth' });
+        }
+
+        function cancelEditFileLink() {
+            editingFileId = null;
+            document.getElementById('link-file-title').value = '';
+            document.getElementById('link-file-url').value = '';
+            document.getElementById('file-link-form-title').innerHTML = '<span class="material-symbols-rounded" style="color:var(--accent);">link</span> Dış Bağlantı (URL) Ekle veya Düzenle';
+            document.getElementById('save-file-link-text').innerText = 'Link Olarak Ekle';
+            document.getElementById('cancel-file-edit-btn').style.display = 'none';
+        }
+
+        async function uploadDirectFile() {
+            const inp = document.getElementById('file-upload-input');
+            const file = inp.files[0];
+            if (!file) return showToast("Lütfen yüklenecek bir dosya seçin!", true);
+
+            const btn = document.getElementById('upload-file-btn');
+            btn.disabled = true;
+            btn.innerHTML = '<span class="material-symbols-rounded">sync</span> Yükleniyor...';
+
+            const reader = new FileReader();
+            reader.onload = async function (e) {
+                const b64 = e.target.result.split(',')[1];
+                const safeName = file.name.replace(/\s+/g, '_').replace(/[^a-zA-Z0-9.\-_]/g, '');
+                const filePath = 'dosyalar/' + Date.now() + '_' + safeName;
+
+                try {
+                    const res = await fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/${filePath}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Authorization': 'token ' + userToken,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            message: 'Dosya Yüklendi: ' + file.name,
+                            content: b64
+                        })
+                    });
+
+                    if (res.ok) {
+                        const rawUrl = `https://raw.githubusercontent.com/${GITHUB_USERNAME}/${REPO_NAME}/main/${filePath}`;
+                        filesData.unshift({
+                            id: Date.now(),
+                            title: file.name,
+                            url: rawUrl
+                        });
+                        await commitToGitHub('dosyalar.json', filesData, 'Dosya Listesi Güncellendi');
+                        inp.value = '';
+                    } else {
+                        showToast("Yükleme başarısız oldu!", true);
+                    }
+                } catch (err) {
+                    showToast("Dosya yükleme hatası!", true);
+                } finally {
+                    btn.disabled = false;
+                    btn.innerHTML = '<span class="material-symbols-rounded">upload</span> Dosyayı Sisteme Yükle';
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+
+        async function saveFileLink() {
+            const title = document.getElementById('link-file-title').value.trim();
+            const url = document.getElementById('link-file-url').value.trim();
+            if (!title || !url) return showToast("Dosya adı ve bağlantı giriniz!", true);
+
+            if (editingFileId) {
+                const f = filesData.find(item => item.id === editingFileId);
+                if (f) {
+                    f.title = title;
+                    f.url = url;
+                }
+                await commitToGitHub('dosyalar.json', filesData, 'Dosya Güncellendi: ' + title);
+                cancelEditFileLink();
+            } else {
+                filesData.unshift({
+                    id: Date.now(),
+                    title: title,
+                    url: url
+                });
+                await commitToGitHub('dosyalar.json', filesData, 'Yeni Dosya Bağlantısı: ' + title);
+                cancelEditFileLink();
+            }
+        }
+
+        async function deleteFileItem(id) {
+            if (!confirm("Bu dosyayı listeden kaldırmak istediğinize emin misiniz?")) return;
+            filesData = filesData.filter(i => i.id !== id);
+            if (editingFileId === id) cancelEditFileLink();
+            renderLists();
+            await commitToGitHub('dosyalar.json', filesData, 'Dosya Silindi');
+        }
+
+        /* TAM SİTE YEDEKLEME VE GERİ YÜKLEME (EXPORT / IMPORT) */
+        function exportFullSiteBackup() {
+            const backupPayload = {
+                siteName: "BUÜ Elektronik Teknolojisi Programı Bilgi Sistemi",
+                backupDate: new Date().toISOString(),
+                version: "2.0",
+                announcements: announcementsData,
+                schedule: scheduleData,
+                calendar: calendarData,
+                files: filesData,
+                settings: siteSettings
+            };
+
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(backupPayload, null, 2));
+            const downloadAnchor = document.createElement('a');
+            const dateStr = new Date().toISOString().split('T')[0];
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", `buu_etp_tam_yedek_${dateStr}.json`);
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+            showToast("Tüm site yedeği başarıyla indirildi!");
+        }
+
+        async function importFullSiteBackup() {
+            const inp = document.getElementById('backup-import-input');
+            const file = inp.files[0];
+            if (!file) return showToast("Lütfen geçerli bir .json yedek dosyası seçiniz!", true);
+
+            const reader = new FileReader();
+            reader.onload = async function (e) {
+                try {
+                    const parsed = JSON.parse(e.target.result);
+                    if (!parsed.announcements || !parsed.schedule || !parsed.calendar) {
+                        return showToast("Geçersiz yedek dosyası formatı!", true);
+                    }
+
+                    const confirmMsg = `Yedek Onayı:\n` +
+                        `- Duyurular: ${parsed.announcements.length} adet\n` +
+                        `- Dersler: ${parsed.schedule.length} adet\n` +
+                        `- Takvim Faaliyetleri: ${parsed.calendar.length} adet\n` +
+                        `- Dosyalar: ${(parsed.files || []).length} adet\n\n` +
+                        `Tüm mevcut veriler bu yedekle değiştirilecek ve GitHub'a yazılacaktır. Onaylıyor musunuz?`;
+
+                    if (!confirm(confirmMsg)) return;
+
+                    const btn = document.getElementById('import-backup-btn');
+                    btn.disabled = true;
+                    btn.innerHTML = '<span class="material-symbols-rounded">sync</span> Geri Yükleniyor...';
+
+                    announcementsData = parsed.announcements;
+                    scheduleData = parsed.schedule;
+                    calendarData = parsed.calendar;
+                    if (parsed.files) filesData = parsed.files;
+                    if (parsed.settings) siteSettings = parsed.settings;
+
+                    await commitToGitHub('duyurular.json', announcementsData, 'Yedekten Geri Yüklendi (Duyurular)');
+                    await commitToGitHub('dersprogrami.json', scheduleData, 'Yedekten Geri Yüklendi (Ders Programı)');
+                    await commitToGitHub('takvim.json', calendarData, 'Yedekten Geri Yüklendi (Takvim)');
+                    await commitToGitHub('dosyalar.json', filesData, 'Yedekten Geri Yüklendi (Dosyalar)');
+                    await commitToGitHub('ayarlar.json', siteSettings, 'Yedekten Geri Yüklendi (Ayarlar)');
+
+                    inp.value = '';
+                    btn.disabled = false;
+                    btn.innerHTML = '<span class="material-symbols-rounded">upload</span> Yedeği Sisteme Yükle ve Geri Yükle';
+                    showToast("Tüm site verileri yedekten başarıyla geri yüklendi!");
+                    fetchData();
+                } catch (err) {
+                    showToast("Dosya okuma veya JSON hatası!", true);
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        /* ÖNİZLEME MODALLERİ */
+        function previewMaintenanceScreen() {
+            const m = document.getElementById('admin-preview-modal');
+            const cont = document.getElementById('admin-preview-content');
+            const title = (document.getElementById('setting-maint-title').value || '').trim() || siteSettings.maintenanceTitle || 'Bakım Yapılmaktadır';
+            const desc = (document.getElementById('setting-maint-desc').value || '').trim() || siteSettings.maintenanceMessage || 'Bakım yapılmaktadır daha sonra tekrar deneyiniz.';
+
+            cont.innerHTML = `
+                <div style="text-align:center; padding:20px 10px;">
+                    <div style="width:68px; height:68px; border-radius:20px; background:var(--warning-soft); color:var(--warning); display:inline-flex; align-items:center; justify-content:center; margin-bottom:16px;">
+                        <span class="material-symbols-rounded" style="font-size:38px;">construction</span>
+                    </div>
+                    <div style="display:inline-block; background:rgba(239, 68, 68, 0.16); color:#f87171; border:1px solid rgba(239, 68, 68, 0.32); border-radius:50px; padding:4px 14px; font-size:0.78rem; font-weight:800; margin-bottom:14px;">
+                        🔴 Sistem Bakım Çalışması
+                    </div>
+                    <h2 style="font-size:1.6rem; font-weight:800; margin-bottom:8px;">${sanitizeHTML(title)}</h2>
+                    <p style="font-size:1rem; color:var(--text-muted); line-height:1.6; margin-bottom:24px;">${sanitizeHTML(desc)}</p>
+                    <div style="background:var(--bg-surface-elevated); border:1px solid var(--border); border-radius:12px; padding:12px; font-size:0.8rem; color:var(--text-muted); text-align:left; margin-bottom:20px;">
+                        <div style="margin-bottom:6px;">ℹ️ <strong>Ziyaretçi Görünümü:</strong> Sağ üstte "Yönetici Girişi" butonu yer alır.</div>
+                        <div>🔒 Yönetici giriş yaptığı an site tam erişimle açılır.</div>
+                    </div>
+                    <button class="btn btn-primary" style="width:100%;" onclick="closeAdminPreviewModal()">Önizlemeyi Kapat</button>
+                </div>
+            `;
+            m.style.display = 'flex';
+        }
+
+        function previewPopupInAdmin() {
+            const m = document.getElementById('admin-preview-modal');
+            const cont = document.getElementById('admin-preview-content');
+            const badge = (document.getElementById('setting-popup-badge').value || '').trim() || 'Önemli Duyuru';
+            const title = (document.getElementById('setting-popup-title').value || '').trim() || 'Ders Programı Açıklandı!';
+            const desc = (document.getElementById('setting-popup-desc').value || '').trim() || 'Duyuru detayları burada yer alacaktır.';
+            const btn = (document.getElementById('setting-popup-btn').value || '').trim() || 'Görüntüle';
+
+            cont.innerHTML = `
+                <div style="text-align:center; padding:20px 10px;">
+                    <div style="width:56px; height:56px; border-radius:16px; background:var(--primary-soft); color:var(--primary); display:inline-flex; align-items:center; justify-content:center; margin-bottom:16px;">
+                        <span class="material-symbols-rounded" style="font-size:32px;">notifications_active</span>
+                    </div>
+                    <div style="display:inline-block; background:var(--primary-soft); color:var(--primary); border:1px solid var(--primary-border); border-radius:50px; padding:4px 14px; font-size:0.78rem; font-weight:800; margin-bottom:14px;">
+                        ${sanitizeHTML(badge)}
+                    </div>
+                    <h2 style="font-size:1.6rem; font-weight:800; margin-bottom:10px;">${sanitizeHTML(title)}</h2>
+                    <p style="font-size:0.92rem; color:var(--text-muted); line-height:1.6; margin-bottom:24px;">${sanitizeHTML(desc)}</p>
+                    <button class="btn btn-primary" style="width:100%; margin-bottom:10px;" onclick="closeAdminPreviewModal()">${sanitizeHTML(btn)}</button>
+                    <button class="btn btn-tonal" style="width:100%;" onclick="closeAdminPreviewModal()">Kapat</button>
+                </div>
+            `;
+            m.style.display = 'flex';
+        }
+
+        function closeAdminPreviewModal() {
+            const m = document.getElementById('admin-preview-modal');
+            if (m) m.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

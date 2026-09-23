@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#080d1a">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Öğrenci Girişi • Çok Yakında Planlanıyor | Bursa Uludağ Üniversitesi</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <link rel="manifest" href="manifest.webmanifest">
+
+    <script>
+        (function () {
+            try {
+                var savedTheme = localStorage.getItem('theme');
+                var prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+                var isLight = (savedTheme === 'light') || (!savedTheme && prefersLight);
+
+                if (isLight) {
+                    document.documentElement.classList.add('light-mode');
+                    var m = document.querySelector('meta[name="theme-color"]');
+                    if (m) m.setAttribute('content', '#f8fafc');
+                } else {
+                    document.documentElement.classList.remove('light-mode');
+                    var m = document.querySelector('meta[name="theme-color"]');
+                    if (m) m.setAttribute('content', '#080d1a');
+                }
+            } catch (e) {}
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet" />
+
+    <style>
+        :root {
+            --bg-body: #080d1a;
+            --bg-surface: rgba(15, 23, 42, 0.72);
+            --bg-surface-elevated: rgba(22, 34, 56, 0.75);
+            --bg-surface-hover: rgba(30, 45, 74, 0.85);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --primary: #3b82f6;
+            --primary-soft: rgba(59, 130, 246, 0.16);
+            --primary-border: rgba(59, 130, 246, 0.35);
+            --accent: #10b981;
+            --accent-soft: rgba(16, 185, 129, 0.16);
+            --warning: #f59e0b;
+            --warning-soft: rgba(245, 158, 11, 0.16);
+            --border: rgba(255, 255, 255, 0.12);
+            --border-hover: rgba(255, 255, 255, 0.25);
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --radius-sm: 10px;
+            --shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.65);
+            --shadow-sm: 0 8px 24px -6px rgba(0, 0, 0, 0.4);
+            --glass-blur: blur(24px) saturate(180%);
+            --glass-reflection: inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.18), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+        }
+
+        html.light-mode {
+            --bg-body: #f8fafc;
+            --bg-surface: rgba(255, 255, 255, 0.90);
+            --bg-surface-elevated: #f1f5f9;
+            --bg-surface-hover: #e2e8f0;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --primary: #2563eb;
+            --primary-soft: rgba(37, 98, 235, 0.10);
+            --primary-border: rgba(37, 98, 235, 0.28);
+            --border: rgba(15, 23, 42, 0.10);
+            --border-hover: rgba(15, 23, 42, 0.22);
+            --shadow: 0 18px 45px -12px rgba(15, 23, 42, 0.12);
+            --shadow-sm: 0 6px 20px -4px rgba(15, 23, 42, 0.08);
+            --glass-reflection: inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.9), inset 0 0 0 1px rgba(0, 0, 0, 0.04);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Parkinsans', sans-serif; -webkit-tap-highlight-color: transparent; }
+        
+        body {
+            background-color: var(--bg-body);
+            background-image: 
+                radial-gradient(at 10% 12%, rgba(59, 130, 246, 0.22) 0px, transparent 50%),
+                radial-gradient(at 90% 15%, rgba(16, 185, 129, 0.18) 0px, transparent 50%),
+                radial-gradient(at 50% 85%, rgba(139, 92, 246, 0.15) 0px, transparent 60%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        html.light-mode body {
+            background-image: 
+                radial-gradient(at 10% 12%, rgba(59, 130, 246, 0.12) 0px, transparent 50%),
+                radial-gradient(at 90% 15%, rgba(16, 185, 129, 0.10) 0px, transparent 50%),
+                radial-gradient(at 50% 85%, rgba(139, 92, 246, 0.08) 0px, transparent 60%);
+        }
+
+        ::selection { background: var(--primary); color: #fff; }
+        .material-symbols-rounded { font-variation-settings: 'FILL' 1; user-select: none; }
+
+        /* ÜST ÇUBUK (NAVBAR) */
+        .top-nav {
+            position: sticky; top: 0; z-index: 100;
+            background: var(--bg-surface); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+            border-bottom: 1px solid var(--border);
+            padding: 14px 24px;
+            display: flex; align-items: center; justify-content: space-between; gap: 14px;
+            box-shadow: var(--shadow-sm);
+        }
+        .nav-left { display: flex; align-items: center; gap: 14px; min-width: 0; }
+        .logo-img {
+            width: 44px; height: 44px; border-radius: 12px; object-fit: contain;
+            background: #fff; padding: 3px; border: 1px solid var(--border); flex-shrink: 0;
+        }
+        .brand-text { min-width: 0; overflow: hidden; }
+        .brand-title {
+            font-size: 1.05rem; font-weight: 800; line-height: 1.25;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .brand-subtitle { font-size: 0.76rem; color: var(--text-muted); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .nav-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+
+        /* BUTONLAR */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            min-height: 42px; padding: 9px 18px; border-radius: 50px; font-weight: 700; font-size: 0.88rem;
+            border: 1px solid transparent; cursor: pointer; text-decoration: none;
+            transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+            white-space: nowrap;
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12); }
+        .btn:active { transform: translateY(1px) scale(0.98); }
+        .btn-icon { width: 42px; height: 42px; padding: 0; border-radius: 50%; }
+        .btn-primary { background: var(--primary); color: #fff; box-shadow: 0 4px 14px -3px var(--primary); }
+        .btn-tonal {
+            background: var(--bg-surface-elevated); color: var(--text-main); border-color: var(--border);
+            box-shadow: var(--glass-reflection);
+        }
+        .btn-tonal:hover { background: var(--bg-surface-hover); border-color: var(--border-hover); }
+
+        /* ANA GÖVDE & KART */
+        .main-wrap {
+            flex: 1; display: flex; align-items: center; justify-content: center;
+            padding: 36px 20px; width: 100%; box-sizing: border-box;
+        }
+        .coming-card {
+            background: var(--bg-surface); border: 1px solid var(--border);
+            border-radius: var(--radius-lg); padding: 48px 36px;
+            max-width: 680px; width: 100%; text-align: center;
+            box-shadow: var(--shadow), var(--glass-reflection);
+            backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+            animation: cardAppear 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative; overflow: hidden;
+            box-sizing: border-box;
+        }
+        @keyframes cardAppear {
+            from { opacity: 0; transform: translateY(20px) scale(0.97); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* İKON & BADGE */
+        .icon-wrap {
+            position: relative; width: 96px; height: 96px; margin: 0 auto 24px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .icon-pulse-bg {
+            position: absolute; inset: 0; border-radius: 28px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.35) 0%, rgba(59, 130, 246, 0.05) 70%, transparent 100%);
+            border: 2px solid rgba(59, 130, 246, 0.4);
+            animation: pulseGlow 2.6s infinite ease-in-out;
+        }
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(0.94); opacity: 0.7; }
+            50% { transform: scale(1.1); opacity: 0.3; }
+        }
+        .icon-center {
+            width: 76px; height: 76px; border-radius: 24px;
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: #fff; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.6);
+            position: relative; z-index: 2;
+        }
+        .icon-center .material-symbols-rounded { font-size: 42px; }
+
+        .status-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(245, 158, 11, 0.16); color: #f59e0b;
+            border: 1px solid rgba(245, 158, 11, 0.32);
+            border-radius: 50px; padding: 6px 16px; font-size: 0.82rem; font-weight: 800;
+            margin-bottom: 20px;
+        }
+        .badge-dot {
+            width: 8px; height: 8px; border-radius: 50%; background: #f59e0b;
+            box-shadow: 0 0 8px #f59e0b; animation: blinkDot 1.4s infinite;
+        }
+        @keyframes blinkDot { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+        .card-title {
+            font-size: 2.2rem; font-weight: 800; letter-spacing: -0.6px;
+            margin-bottom: 14px; line-height: 1.25; color: var(--text-main);
+            overflow-wrap: break-word; word-break: break-word;
+        }
+        .card-desc {
+            font-size: 1.02rem; color: var(--text-muted); line-height: 1.7;
+            margin-bottom: 32px; max-width: 580px; margin-left: auto; margin-right: auto;
+            overflow-wrap: break-word; word-break: break-word; font-weight: 500;
+        }
+
+        /* PLANLANAN ÖZELLİK KUTULARI (GRID) */
+        .features-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+            margin-bottom: 36px; text-align: left;
+        }
+        .feature-box {
+            background: var(--bg-surface-elevated); border: 1px solid var(--border);
+            border-radius: var(--radius-md); padding: 18px 16px;
+            box-shadow: var(--glass-reflection);
+            transition: all 0.25s ease;
+        }
+        .feature-box:hover {
+            transform: translateY(-2px); border-color: var(--primary-border);
+        }
+        .feature-icon {
+            width: 36px; height: 36px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 12px; font-size: 20px;
+        }
+        .feature-title {
+            font-size: 0.92rem; font-weight: 800; color: var(--text-main);
+            margin-bottom: 4px; line-height: 1.3;
+        }
+        .feature-desc {
+            font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; font-weight: 500;
+        }
+
+        /* HIZLI GEÇİŞ BUTONLARI */
+        .actions-group {
+            display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+        }
+
+        /* REDUCED MOTION */
+        @media (prefers-reduced-motion: reduce) {
+            .coming-card, .icon-pulse-bg, .badge-dot {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        /* RESPONSIVE (TABLET VE TELEFON) */
+        @media (max-width: 768px) {
+            .top-nav { padding: 12px 16px; }
+            .main-wrap { padding: 24px 14px; }
+            .coming-card { padding: 36px 20px; border-radius: 20px; }
+            .card-title { font-size: 1.7rem; }
+            .card-desc { font-size: 0.92rem; margin-bottom: 24px; }
+            .features-grid { grid-template-columns: 1fr; gap: 10px; margin-bottom: 26px; }
+            .feature-box { padding: 14px; display: flex; align-items: flex-start; gap: 12px; }
+            .feature-icon { margin-bottom: 0; flex-shrink: 0; }
+            .actions-group { flex-direction: column; width: 100%; gap: 10px; }
+            .actions-group .btn { width: 100%; }
+        }
+
+        @media (max-width: 480px) {
+            .top-nav { padding: 10px 12px; }
+            .top-nav .btn { padding: 8px 12px; }
+            .top-nav .btn-text { display: none; }
+            .brand-subtitle { display: none; }
+            .card-title { font-size: 1.35rem; }
+            .coming-card { padding: 24px 14px; }
+            .icon-wrap { width: 76px; height: 76px; margin-bottom: 16px; }
+            .icon-center { width: 60px; height: 60px; }
+            .icon-center .material-symbols-rounded { font-size: 30px; }
+            .status-badge { font-size: 0.75rem; padding: 5px 12px; }
+            .card-desc { font-size: 0.88rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="top-nav">
+        <div class="nav-left">
+            <img src="logo.png" alt="BUÜ Logo" class="logo-img" onerror='this.style.display="none"'>
+            <div class="brand-text">
+                <h1 class="brand-title">Bursa Uludağ Üniversitesi</h1>
+                <p class="brand-subtitle">Elektronik Teknolojisi Programı • Öğrenci Portalı</p>
+            </div>
+        </div>
+        <div class="nav-actions">
+            <a href="index.html" class="btn btn-tonal" title="Ana Sayfaya Git">
+                <span class="material-symbols-rounded" style="font-size:18px;">home</span>
+                <span class="btn-text">Ana Sayfa</span>
+            </a>
+            <button class="btn btn-tonal btn-icon" onclick="toggleTheme()" aria-label="Tema Değiştir" title="Açık / Koyu Tema">
+                <span class="material-symbols-rounded" id="theme-icon">light_mode</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="main-wrap">
+        <div class="coming-card">
+            <!-- İKON GRUBU -->
+            <div class="icon-wrap">
+                <div class="icon-pulse-bg"></div>
+                <div class="icon-center">
+                    <span class="material-symbols-rounded">rocket_launch</span>
+                </div>
+            </div>
+
+            <!-- ROZET -->
+            <div class="status-badge">
+                <span class="badge-dot"></span>
+                <span>Geliştirme & Planlama Aşamasında</span>
+            </div>
+
+            <!-- BAŞLIK & METİN -->
+            <h2 class="card-title">Çok Yakında Planlanıyor</h2>
+            <p class="card-desc">
+                Öğrenci Bilgi ve Not Sistemi şu anda teknik altyapı hazırlığı ve planlama aşamasındadır. Çok yakında öğrenci numaranız ile giriş yaparak notlarınızı, devamsızlık durumunuzu ve kişisel ders programınızı buradan takip edebileceksiniz.
+            </p>
+
+            <!-- ÖZELLİK ÖNİZLEME KARTLARI -->
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="feature-icon" style="background:var(--primary-soft); color:var(--primary);">
+                        <span class="material-symbols-rounded">grade</span>
+                    </div>
+                    <div>
+                        <h4 class="feature-title">Not & Sınav Takibi</h4>
+                        <p class="feature-desc">Vize, final ve bütünleme notlarınızı anlık olarak sorgulayın.</p>
+                    </div>
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-icon" style="background:var(--accent-soft); color:var(--accent);">
+                        <span class="material-symbols-rounded">schedule</span>
+                    </div>
+                    <div>
+                        <h4 class="feature-title">Kişisel Ders Planı</h4>
+                        <p class="feature-desc">Seçtiğiniz derslere göre özelleştirilmiş haftalık ders programınız.</p>
+                    </div>
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-icon" style="background:var(--warning-soft); color:var(--warning);">
+                        <span class="material-symbols-rounded">mark_email_unread</span>
+                    </div>
+                    <div>
+                        <h4 class="feature-title">Akademik Bildirimler</h4>
+                        <p class="feature-desc">Sınıfınıza özel duyurular, staj ve sınav takvimi hatırlatmaları.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HIZLI ERİŞİM BUTONLARI -->
+            <div class="actions-group">
+                <a href="index.html#schedule" onclick="localStorage.setItem('openView','schedule')" class="btn btn-primary">
+                    <span class="material-symbols-rounded">calendar_month</span>
+                    <span>Haftalık Ders Programı</span>
+                </a>
+                <a href="index.html#announcements" onclick="localStorage.setItem('openView','announcements')" class="btn btn-tonal">
+                    <span class="material-symbols-rounded">campaign</span>
+                    <span>Duyuruları İncele</span>
+                </a>
+                <a href="index.html#calendar" onclick="localStorage.setItem('openView','calendar')" class="btn btn-tonal">
+                    <span class="material-symbols-rounded">event</span>
+                    <span>Akademik Takvim</span>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function syncThemeUI() {
+            const isLight = document.documentElement.classList.contains('light-mode');
+            const icon = document.getElementById('theme-icon');
+            if (icon) icon.innerText = isLight ? 'dark_mode' : 'light_mode';
+            const meta = document.querySelector('meta[name="theme-color"]');
+            if (meta) meta.setAttribute('content', isLight ? '#f8fafc' : '#080d1a');
+        }
+
+        function toggleTheme() {
+            const isLight = !document.documentElement.classList.contains('light-mode');
+            if (isLight) {
+                document.documentElement.classList.add('light-mode');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.remove('light-mode');
+                localStorage.setItem('theme', 'dark');
+            }
+            syncThemeUI();
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
+                if (!localStorage.getItem('theme')) {
+                    if (e.matches) {
+                        document.documentElement.classList.add('light-mode');
+                    } else {
+                        document.documentElement.classList.remove('light-mode');
+                    }
+                    syncThemeUI();
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            syncThemeUI();
+        });
+    </script>
+</body>
+</html>

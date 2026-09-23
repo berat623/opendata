@@ -1,0 +1,64 @@
+{
+  "id": "buu-etp-bilgi-sistemi",
+  "name": "BUÜ Elektronik Teknolojisi Bilgi Sistemi",
+  "short_name": "ETP Bilgi",
+  "description": "Bursa Uludağ Üniversitesi Elektronik Teknolojisi Programı Öğrenci ve Bilgi Portalı",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui", "window-controls-overlay"],
+  "orientation": "any",
+  "background_color": "#080d1a",
+  "theme_color": "#080d1a",
+  "lang": "tr",
+  "categories": ["education", "productivity"],
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "logo.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Ders Programı",
+      "short_name": "Program",
+      "description": "Haftalık ders programı ve derslikler",
+      "url": "./#schedule",
+      "icons": [{ "src": "logo.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Duyurular",
+      "short_name": "Duyurular",
+      "description": "Güncel bölüm duyuruları ve sınav ilanları",
+      "url": "./#announcements",
+      "icons": [{ "src": "logo.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Akademik Takvim",
+      "short_name": "Takvim",
+      "description": "Önemli akademik tarihler ve sınav haftaları",
+      "url": "./#calendar",
+      "icons": [{ "src": "logo.png", "sizes": "192x192" }]
+    }
+  ]
+}
