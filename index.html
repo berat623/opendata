@@ -4409,9 +4409,9 @@
             if (!silent) showToast('UKEY canlı verileri ve dosyaları senkronize ediliyor...');
             const adminToken = localStorage.getItem('gh_admin_token') || '';
             if (!silent && adminToken) {
-                fetch(https://api.github.com/repos///actions/workflows/ukey-auto-sync.yml/dispatches, {
+                fetch('https://api.github.com/repos/' + GITHUB_USERNAME + '/' + REPO_NAME + '/actions/workflows/ukey-auto-sync.yml/dispatches', {
                     method: 'POST',
-                    headers: { 'Authorization': 	oken , 'Accept': 'application/vnd.github+json' },
+                    headers: { 'Authorization': 'token ' + adminToken, 'Accept': 'application/vnd.github+json' },
                     body: JSON.stringify({ ref: 'main' })
                 }).catch(() => {});
             }
