@@ -1576,115 +1576,110 @@
         /* =========================================================
            UKEY PORTAL ENTEGRASYON STİLLERİ (GLASSMORPHIC NATIVE UI)
            ========================================================= */
-        .ukey-hero-bar {
+        .ukey-toolbar {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 16px;
-            padding: 20px 24px;
-            border-radius: var(--radius-lg);
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.16) 0%, rgba(59, 130, 246, 0.14) 55%, var(--bg-surface) 100%);
-            border: 1px solid rgba(16, 185, 129, 0.35);
-            box-shadow: var(--shadow-sm), var(--glass-reflection);
-            backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur);
-            margin-bottom: 18px;
-        }
-        .ukey-profile-left {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            min-width: 0;
-        }
-        .ukey-avatar {
-            width: 54px;
-            height: 54px;
-            border-radius: 16px;
-            background: linear-gradient(135deg, #10b981, #3b82f6);
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-            font-weight: 800;
-            flex-shrink: 0;
-            box-shadow: 0 8px 20px -4px rgba(16, 185, 129, 0.45);
-        }
-        .ukey-profile-info h3 {
-            font-size: 1.12rem;
-            font-weight: 800;
-            margin: 0 0 4px 0;
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        .ukey-profile-info p {
-            font-size: 0.82rem;
-            color: var(--text-muted);
-            margin: 0;
-        }
-        .ukey-sec-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            padding: 3px 10px;
-            border-radius: 999px;
-            font-size: 0.72rem;
-            font-weight: 700;
-            background: rgba(16, 185, 129, 0.18);
-            color: var(--accent);
-            border: 1px solid rgba(16, 185, 129, 0.35);
-        }
-        .ukey-top-actions {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
             gap: 10px;
+            padding: 8px 10px;
+            margin-bottom: 18px;
+            border-radius: 16px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm), var(--glass-reflection);
         }
         .ukey-nav-tabs {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             overflow-x: auto;
-            padding-bottom: 6px;
-            margin-bottom: 18px;
-            scrollbar-width: thin;
+            flex: 1;
+            min-width: 0;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .ukey-nav-tabs::-webkit-scrollbar {
+            display: none;
         }
         .ukey-nav-tab {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 10px 16px;
-            border-radius: 14px;
-            font-size: 0.85rem;
+            gap: 7px;
+            padding: 9px 13px;
+            border-radius: 11px;
+            font-size: 0.82rem;
             font-weight: 700;
             color: var(--text-muted);
-            background: var(--bg-surface);
-            border: 1px solid var(--border);
+            background: transparent;
+            border: 1px solid transparent;
             cursor: pointer;
             white-space: nowrap;
-            transition: all 0.2s ease;
+            transition: all 0.18s ease;
         }
         .ukey-nav-tab:hover {
             color: var(--text-main);
-            border-color: var(--border-hover);
             background: var(--bg-surface-hover);
         }
         .ukey-nav-tab.active {
-            color: #fff;
+            color: #ffffff !important;
             background: linear-gradient(135deg, var(--primary), #2563eb);
-            border-color: rgba(59, 130, 246, 0.6);
-            box-shadow: 0 8px 20px -6px rgba(59, 130, 246, 0.55);
+            border-color: rgba(59, 130, 246, 0.55);
+            box-shadow: 0 6px 16px -4px rgba(59, 130, 246, 0.5);
+        }
+        .ukey-nav-tab.active span {
+            color: #ffffff !important;
         }
         .ukey-tab-badge {
             padding: 2px 7px;
             border-radius: 999px;
-            font-size: 0.7rem;
+            font-size: 0.69rem;
             font-weight: 800;
-            background: rgba(255, 255, 255, 0.16);
+            background: rgba(148, 163, 184, 0.18);
             color: inherit;
+        }
+        .ukey-nav-tab.active .ukey-tab-badge {
+            background: rgba(255, 255, 255, 0.22);
+            color: #ffffff !important;
+        }
+        .ukey-refresh-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            padding: 9px 15px;
+            min-height: 38px;
+            border-radius: 11px;
+            font-size: 0.82rem;
+            font-weight: 800;
+            color: #ffffff !important;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border: 1px solid rgba(255, 255, 255, 0.24);
+            box-shadow: 0 5px 14px -3px rgba(16, 185, 129, 0.45);
+            cursor: pointer;
+            white-space: nowrap;
+            flex-shrink: 0;
+            transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+        }
+        .ukey-refresh-btn span {
+            color: #ffffff !important;
+        }
+        .ukey-refresh-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 7px 18px -3px rgba(16, 185, 129, 0.6);
+        }
+        .ukey-refresh-btn:active {
+            transform: scale(0.97);
+        }
+        .ukey-refresh-btn.is-syncing {
+            opacity: 0.88;
+            pointer-events: none;
+        }
+        @keyframes ukeySpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .ukey-refresh-btn.is-syncing .ukey-refresh-icon {
+            animation: ukeySpin 0.8s linear infinite;
         }
         .ukey-urgent-banner {
             display: flex;
@@ -2114,31 +2109,31 @@
             }
 
             /* UKEY MOBİL OPTİMİZASYONU */
-            .ukey-hero-bar {
-                padding: 10px 12px !important;
-                margin-bottom: 12px;
+            .ukey-toolbar {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+                padding: 8px;
+                margin-bottom: 14px;
                 border-radius: 14px;
             }
-            .ukey-top-actions {
-                width: 100%;
-                justify-content: stretch;
-            }
-            .ukey-top-actions .btn {
-                width: 100%;
-                justify-content: center;
-            }
             .ukey-nav-tabs {
+                width: 100%;
                 gap: 6px;
-                margin-bottom: 14px;
-                padding-bottom: 4px;
                 scrollbar-width: none;
                 -webkit-overflow-scrolling: touch;
             }
             .ukey-nav-tab {
                 padding: 8px 12px;
                 font-size: 0.78rem;
-                border-radius: 11px;
+                border-radius: 10px;
                 gap: 6px;
+            }
+            .ukey-refresh-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 9px 14px;
+                border-radius: 10px;
             }
             .ukey-urgent-banner {
                 flex-direction: column;
@@ -2934,50 +2929,46 @@
             <!-- 6. UKEY TAM ENTEGRE EĞİTİM VE DERS PORTALI VIEW -->
             <div id="view-ukey" class="view-section">
 
-                <!-- UKEY ÜST BARI (YALNIZCA VERİLERİ YENİLE BUTONU) -->
-                <div class="ukey-hero-bar" style="padding:12px 18px; justify-content:flex-end;">
-                    <div class="ukey-top-actions">
-                        <button class="btn btn-tonal btn-mini" onclick="refreshUkeyData()" title="UKEY verilerini ve dosyaları yenile">
-                            <span class="material-symbols-rounded" style="font-size:17px;">sync</span>
-                            <span>Verileri Yenile</span>
+                <!-- UKEY TÜM SEÇENEKLER / MODÜLLER MENÜSÜ VE VERİ YENİLEME ŞERİDİ -->
+                <div class="ukey-toolbar">
+                    <div class="ukey-nav-tabs" id="ukey-main-tabs">
+                        <button class="ukey-nav-tab active" data-utab="overview" onclick="switchUkeyMainTab('overview')">
+                            <span class="material-symbols-rounded" style="font-size:18px;">space_dashboard</span>
+                            <span>Kontrol Paneli</span>
+                        </button>
+                        <button class="ukey-nav-tab" data-utab="courses" onclick="switchUkeyMainTab('courses')">
+                            <span class="material-symbols-rounded" style="font-size:18px;">menu_book</span>
+                            <span>Derslerim &amp; İçerikler</span>
+                            <span class="ukey-tab-badge" id="utab-badge-courses">9</span>
+                        </button>
+                        <button class="ukey-nav-tab" data-utab="materials" onclick="switchUkeyMainTab('materials')">
+                            <span class="material-symbols-rounded" style="font-size:18px;">folder_zip</span>
+                            <span>Ders Materyalleri</span>
+                            <span class="ukey-tab-badge" id="utab-badge-materials">25</span>
+                        </button>
+                        <button class="ukey-nav-tab" data-utab="homeworks" onclick="switchUkeyMainTab('homeworks')">
+                            <span class="material-symbols-rounded" style="font-size:18px;">assignment</span>
+                            <span>Ödevler &amp; E-Sınavlar</span>
+                            <span class="ukey-tab-badge" id="utab-badge-hw">5</span>
+                        </button>
+                        <button class="ukey-nav-tab" data-utab="meetings" onclick="switchUkeyMainTab('meetings')">
+                            <span class="material-symbols-rounded" style="font-size:18px;">videocam</span>
+                            <span>Toplantılar &amp; Canlı Dersler</span>
+                            <span class="ukey-tab-badge">3</span>
+                        </button>
+                        <button class="ukey-nav-tab" data-utab="agenda" onclick="switchUkeyMainTab('agenda')">
+                            <span class="material-symbols-rounded" style="font-size:18px;">event_note</span>
+                            <span>Ajanda</span>
+                        </button>
+                        <button class="ukey-nav-tab" data-utab="erasmus" onclick="switchUkeyMainTab('erasmus')">
+                            <span class="material-symbols-rounded" style="font-size:18px;">flight_takeoff</span>
+                            <span>Erasmus Başvurular</span>
+                            <span class="ukey-tab-badge">10</span>
                         </button>
                     </div>
-                </div>
-
-                <!-- UKEY TÜM SEÇENEKLER / MODÜLLER MENÜSÜ -->
-                <div class="ukey-nav-tabs" id="ukey-main-tabs">
-                    <button class="ukey-nav-tab active" data-utab="overview" onclick="switchUkeyMainTab('overview')">
-                        <span class="material-symbols-rounded" style="font-size:18px;">space_dashboard</span>
-                        <span>Kontrol Paneli</span>
-                    </button>
-                    <button class="ukey-nav-tab" data-utab="courses" onclick="switchUkeyMainTab('courses')">
-                        <span class="material-symbols-rounded" style="font-size:18px;">menu_book</span>
-                        <span>Derslerim &amp; İçerikler</span>
-                        <span class="ukey-tab-badge" id="utab-badge-courses">9</span>
-                    </button>
-                    <button class="ukey-nav-tab" data-utab="materials" onclick="switchUkeyMainTab('materials')">
-                        <span class="material-symbols-rounded" style="font-size:18px;">folder_zip</span>
-                        <span>Ders Materyalleri</span>
-                        <span class="ukey-tab-badge" id="utab-badge-materials">25</span>
-                    </button>
-                    <button class="ukey-nav-tab" data-utab="homeworks" onclick="switchUkeyMainTab('homeworks')">
-                        <span class="material-symbols-rounded" style="font-size:18px;">assignment</span>
-                        <span>Ödevler &amp; E-Sınavlar</span>
-                        <span class="ukey-tab-badge" id="utab-badge-hw">5</span>
-                    </button>
-                    <button class="ukey-nav-tab" data-utab="meetings" onclick="switchUkeyMainTab('meetings')">
-                        <span class="material-symbols-rounded" style="font-size:18px;">videocam</span>
-                        <span>Toplantılar &amp; Canlı Dersler</span>
-                        <span class="ukey-tab-badge">3</span>
-                    </button>
-                    <button class="ukey-nav-tab" data-utab="agenda" onclick="switchUkeyMainTab('agenda')">
-                        <span class="material-symbols-rounded" style="font-size:18px;">event_note</span>
-                        <span>Ajanda</span>
-                    </button>
-                    <button class="ukey-nav-tab" data-utab="erasmus" onclick="switchUkeyMainTab('erasmus')">
-                        <span class="material-symbols-rounded" style="font-size:18px;">flight_takeoff</span>
-                        <span>Erasmus Başvurular</span>
-                        <span class="ukey-tab-badge">10</span>
+                    <button id="btn-ukey-refresh" class="ukey-refresh-btn" onclick="refreshUkeyData()" title="UKEY verilerini ve dosyaları şimdi yenile">
+                        <span class="material-symbols-rounded ukey-refresh-icon" id="ukey-refresh-icon" style="font-size:18px;">sync</span>
+                        <span id="ukey-refresh-text">Verileri Yenile</span>
                     </button>
                 </div>
 
@@ -3329,7 +3320,13 @@
         async function fetchFileDirect(filename, forceBust = false) {
             const qs = forceBust ? ('?t=' + Date.now()) : '';
             const fetchOpts = forceBust ? { cache: 'no-store' } : { cache: 'default' };
-            // 1. Önce doğrudan yerel / GitHub Pages kaynağından çek (anında önbellek & ETag destekli)
+            if (forceBust) {
+                try {
+                    const ghRaw = await fetch('https://raw.githubusercontent.com/' + GITHUB_USERNAME + '/' + REPO_NAME + '/main/' + filename + qs, fetchOpts);
+                    if (ghRaw.ok) return await ghRaw.json();
+                } catch (e) {}
+            }
+            // 1. Doğrudan yerel / GitHub Pages kaynağından çek (anında önbellek & ETag destekli)
             try {
                 const raw = await fetch('./' + filename + qs, fetchOpts);
                 if (raw.ok) return await raw.json();
@@ -4794,7 +4791,15 @@
         }
 
         async function refreshUkeyData(silent = false) {
-            if (!silent) showToast('UKEY ders, materyal ve kayıt verileri yenileniyor...');
+            const btn = document.getElementById('btn-ukey-refresh');
+            const icon = document.getElementById('ukey-refresh-icon');
+            const txt = document.getElementById('ukey-refresh-text');
+            if (!silent) {
+                if (btn) btn.classList.add('is-syncing');
+                if (icon) icon.innerText = 'sync';
+                if (txt) txt.innerText = 'Yenileniyor...';
+                showToast('UKEY ders, materyal ve kayıt verileri yenileniyor...');
+            }
             const adminToken = localStorage.getItem('gh_admin_token') || '';
             if (!silent && adminToken) {
                 fetch('https://api.github.com/repos/' + GITHUB_USERNAME + '/' + REPO_NAME + '/actions/workflows/ukey-auto-sync.yml/dispatches', {
@@ -4810,6 +4815,15 @@
                 if (!silent) showToast('UKEY ders içerikleri, dosyalar ve Teams bağlantıları güncellendi!');
             } else if (!silent) {
                 showToast('Güncel UKEY verileri aktif.');
+            }
+            if (!silent) {
+                if (btn) btn.classList.remove('is-syncing');
+                if (icon) icon.innerText = 'check_circle';
+                if (txt) txt.innerText = 'Güncellendi';
+                setTimeout(() => {
+                    if (icon) icon.innerText = 'sync';
+                    if (txt) txt.innerText = 'Verileri Yenile';
+                }, 1600);
             }
         }
         setInterval(() => refreshUkeyData(true), 120000);

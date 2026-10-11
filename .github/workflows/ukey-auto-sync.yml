@@ -2,8 +2,8 @@ name: UKEY Otomatik Veri ve Dosya Senkronizasyonu
 
 on:
   schedule:
-    # Her 2 saatte bir UKEY'e otomatik bağlanıp yeni materyal, Teams linki, ödev ve sınavları çeker
-    - cron: '0 */2 * * *'
+    # Her 30 dakikada bir UKEY'e otomatik bağlanıp yeni materyal, Teams linki, ödev ve sınavları çeker
+    - cron: '*/30 * * * *'
   workflow_dispatch:
   push:
     branches:
