@@ -75,8 +75,8 @@
             --glass-border: rgba(255, 255, 255, 0.80);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Google Sans Flex', sans-serif; font-optical-sizing: auto; font-weight: 800; font-style: normal; -webkit-tap-highlight-color: transparent; }
-        *:not(.material-symbols-rounded) { font-variation-settings: "ROND" 100; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body, button, input, select, textarea { font-family: 'Google Sans Flex', sans-serif; font-optical-sizing: auto; font-weight: 800; font-style: normal; font-variation-settings: "ROND" 100; }
         body {
             background-color: var(--bg-body);
             background-image: 
@@ -85,7 +85,7 @@
                 radial-gradient(at 85% 85%, rgba(99, 102, 241, 0.16) 0px, transparent 50%),
                 radial-gradient(at 15% 90%, rgba(14, 165, 233, 0.16) 0px, transparent 50%),
                 radial-gradient(at 50% 50%, rgba(139, 92, 246, 0.08) 0px, transparent 60%);
-            background-attachment: fixed;
+            
             color: var(--text-main);
             min-height: 100vh;
             display: flex;
@@ -450,6 +450,25 @@
             .stat-lbl { font-size: 0.62rem; }
             .admin-tab-btn { padding: 8px 14px; font-size: 0.80rem; }
         }
+
+        @media (max-width: 992px), (hover: none) and (pointer: coarse) {
+            :root {
+                --bg-surface: #0f172a;
+                --bg-surface-elevated: #17233b;
+                --glass-bg: #0f172a;
+                --glass-blur: none;
+            }
+            html.light-mode {
+                --bg-surface: #ffffff;
+                --bg-surface-elevated: #f4f7fb;
+                --glass-bg: #ffffff;
+            }
+            .card, .sidebar, .login-box, .stat-box, .toast {
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+            }
+        }
+
     </style>
 
     <script>

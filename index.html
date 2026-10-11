@@ -103,28 +103,22 @@
             --timer-bar-fill: #059669;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Google Sans Flex', sans-serif; font-optical-sizing: auto; font-weight: 800; font-style: normal; -webkit-tap-highlight-color: transparent; }
-        *:not(.material-symbols-rounded) { font-variation-settings: "ROND" 100; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body, button, input, select, textarea { font-family: 'Google Sans Flex', sans-serif; font-optical-sizing: auto; font-weight: 800; font-style: normal; font-variation-settings: "ROND" 100; }
         body {
             background-color: var(--bg-body);
-            background-image: 
-                radial-gradient(at 5% 10%, rgba(59, 130, 246, 0.20) 0px, transparent 45%),
-                radial-gradient(at 95% 15%, rgba(16, 185, 129, 0.18) 0px, transparent 45%),
-                radial-gradient(at 85% 85%, rgba(99, 102, 241, 0.16) 0px, transparent 50%),
-                radial-gradient(at 15% 90%, rgba(14, 165, 233, 0.16) 0px, transparent 50%),
-                radial-gradient(at 50% 50%, rgba(139, 92, 246, 0.08) 0px, transparent 60%);
-            background-attachment: fixed;
+            background-image:
+                radial-gradient(at 10% 10%, rgba(59, 130, 246, 0.16) 0px, transparent 50%),
+                radial-gradient(at 90% 15%, rgba(16, 185, 129, 0.14) 0px, transparent 50%);
             color: var(--text-main);
             overflow-x: hidden;
             min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
         }
         html.light-mode body {
-            background-image: 
-                radial-gradient(at 5% 10%, rgba(59, 130, 246, 0.14) 0px, transparent 45%),
-                radial-gradient(at 95% 15%, rgba(16, 185, 129, 0.12) 0px, transparent 45%),
-                radial-gradient(at 85% 85%, rgba(99, 102, 241, 0.10) 0px, transparent 50%),
-                radial-gradient(at 15% 90%, rgba(14, 165, 233, 0.10) 0px, transparent 50%),
-                radial-gradient(at 50% 50%, rgba(139, 92, 246, 0.06) 0px, transparent 60%);
+            background-image:
+                radial-gradient(at 10% 10%, rgba(59, 130, 246, 0.10) 0px, transparent 50%),
+                radial-gradient(at 90% 15%, rgba(16, 185, 129, 0.08) 0px, transparent 50%);
         }
         body.modal-open, body.drawer-open { overflow: hidden; }
 
@@ -146,7 +140,8 @@
         .page-loader-bar.finish {
             width: 100% !important;
             opacity: 0;
-            transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s 0.25s ease;
+            animation: none !important;
+            transition: width 0.25s ease, opacity 0.3s 0.15s ease;
         }
 
         ::selection { background: var(--primary); color: #fff; }
@@ -439,11 +434,11 @@
         .header-date { color: var(--text-muted); font-size: 0.88rem; font-weight: 600; margin-top: 2px; }
         .header-actions { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
 
-        .view-section { display: none; opacity: 0; transform: translateY(-24px) scale(0.995); }
-        .view-section.active { display: block; animation: viewSmoothEnter 0.44s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+        .view-section { display: none; }
+        .view-section.active { display: block; animation: viewSmoothEnter 0.22s ease-out; }
         @keyframes viewSmoothEnter {
-            0% { opacity: 0; transform: translateY(-24px) scale(0.992); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
 
         /* KARTLAR */
@@ -697,9 +692,8 @@
             box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); animation: livePulse 1.8s infinite; flex-shrink: 0;
         }
         @keyframes livePulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+            0%, 100% { transform: scale(0.92); opacity: 0.75; }
+            50% { transform: scale(1.12); opacity: 1; }
         }
         .sched-live-title { font-size: 0.95rem; font-weight: 800; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
         .sched-live-meta { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; font-weight: 600; }
@@ -2227,6 +2221,73 @@
             }
         }
 
+
+        /* =========================================================
+           MOBİL PERFORMANS VE AKICILIK OPTİMİZASYONU (SIFIR TAKILMA)
+           ========================================================= */
+        /* İç içe (nested) elemanlarda gereksiz backdrop-filter kullanımını tüm cihazlarda kaldır */
+        .btn-tonal,
+        .t-box,
+        .lesson-card,
+        .lesson-card-simple,
+        .ukey-course-card,
+        .cal-mob-item,
+        .table-wrapper {
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+        }
+
+        /* Mobil ve dokunmatik cihazlarda GPU'yu kilitleyen çoklu blur katmanlarını devre dışı bırak */
+        @media (max-width: 992px), (hover: none) and (pointer: coarse) {
+            :root {
+                --bg-surface: #0f172a;
+                --bg-surface-elevated: #17233b;
+                --bg-surface-hover: #1e2d4a;
+                --glass-blur: none;
+                --shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.45);
+                --shadow-sm: 0 4px 12px -3px rgba(0, 0, 0, 0.32);
+            }
+            html.light-mode {
+                --bg-surface: #ffffff;
+                --bg-surface-elevated: #f4f7fb;
+                --bg-surface-hover: #e9eef5;
+                --border: rgba(15, 23, 42, 0.10);
+                --shadow: 0 6px 18px -4px rgba(15, 23, 42, 0.07);
+                --shadow-sm: 0 3px 10px -2px rgba(15, 23, 42, 0.05);
+            }
+            .card,
+            .stat-card,
+            .ann-card,
+            .timer-card,
+            .sched-live-card,
+            .day-card,
+            .milestone-card,
+            .cal-detail-card,
+            .ukey-hero-bar,
+            .toast,
+            .admin-maintenance-bar {
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+            }
+            /* Mobil kaydırma sırasında hover/transform tetiklenmesini engelle */
+            .card,
+            .stat-card,
+            .ann-card,
+            .ukey-course-card,
+            .lesson-card-simple,
+            .up-card-item {
+                transition: none !important;
+            }
+            .card:hover,
+            .stat-card:hover,
+            .ann-card:hover,
+            .ukey-course-card:hover,
+            .lesson-card-simple:hover,
+            .up-card-item:hover {
+                transform: none !important;
+            }
+        }
+
     </style>
 
     <script>
@@ -3187,9 +3248,49 @@
         function openDrawer() { document.getElementById('drawer').classList.add('open'); document.getElementById('drawer-overlay').classList.add('show'); document.body.classList.add('drawer-open'); }
         function closeDrawer() { document.getElementById('drawer').classList.remove('open'); document.getElementById('drawer-overlay').classList.remove('show'); document.body.classList.remove('drawer-open'); }
 
+        let activeViewName = 'dashboard';
+        const renderedViews = {
+            dashboard: false,
+            announcements: false,
+            schedule: false,
+            calendar: false,
+            files: false,
+            ukey: false
+        };
+
+        function ensureViewRendered(viewName) {
+            if (viewName === 'dashboard' || viewName === 'announcements' || viewName === 'files') {
+                if (!renderedViews.dashboard && (announcementsData.length || filesData.length || calendarData.length)) {
+                    renderData();
+                    renderUpcoming();
+                    renderedViews.dashboard = true;
+                    renderedViews.announcements = true;
+                    renderedViews.files = true;
+                }
+            } else if (viewName === 'schedule') {
+                if (!renderedViews.schedule && scheduleData.length) {
+                    renderSchedule();
+                    renderedViews.schedule = true;
+                }
+            } else if (viewName === 'calendar') {
+                if (!renderedViews.calendar && calendarData.length) {
+                    renderInteractiveCalendar();
+                    renderedViews.calendar = true;
+                }
+            } else if (viewName === 'ukey') {
+                if (!renderedViews.ukey && ukeyPortalData) {
+                    renderUkeyPortal();
+                    renderedViews.ukey = true;
+                }
+            }
+        }
+
         function switchView(viewName, updateHash = true) {
+            activeViewName = viewName;
             closeDrawer();
             triggerPageProgress();
+            ensureViewRendered(viewName);
+
             document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
             const targetEl = document.getElementById('view-' + viewName);
             if (targetEl) targetEl.classList.add('active');
@@ -3205,7 +3306,7 @@
             if (updateHash && window.location.hash.replace('#', '') !== viewName) {
                 try { history.replaceState(null, null, '#' + viewName); } catch (e) {}
             }
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo(0, 0);
         }
 
         function showToast(msg) {
@@ -3223,23 +3324,24 @@
             catch (e) { return atob(str); }
         }
 
-        async function fetchFileDirect(filename) {
-            const ts = Date.now();
-            // 1. Önce doğrudan yerel / GitHub Pages kaynağından çek (ışık hızında ve limitsiz)
+        async function fetchFileDirect(filename, forceBust = false) {
+            const qs = forceBust ? ('?t=' + Date.now()) : '';
+            const fetchOpts = forceBust ? { cache: 'no-store' } : { cache: 'default' };
+            // 1. Önce doğrudan yerel / GitHub Pages kaynağından çek (anında önbellek & ETag destekli)
             try {
-                const raw = await fetch(`./${filename}?t=${ts}`, { cache: 'no-store' });
+                const raw = await fetch('./' + filename + qs, fetchOpts);
                 if (raw.ok) return await raw.json();
             } catch (e) {}
 
             // 2. GitHub Raw içeriğinden çek
             try {
-                const ghRaw = await fetch(`https://raw.githubusercontent.com/${GITHUB_USERNAME}/${REPO_NAME}/main/${filename}?t=${ts}`, { cache: 'no-store' });
+                const ghRaw = await fetch('https://raw.githubusercontent.com/' + GITHUB_USERNAME + '/' + REPO_NAME + '/main/' + filename + qs, fetchOpts);
                 if (ghRaw.ok) return await ghRaw.json();
             } catch (e) {}
 
             // 3. GitHub API üzerinden çek
             try {
-                const res = await fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/${filename}?cb=${ts}`, { cache: 'no-store' });
+                const res = await fetch('https://api.github.com/repos/' + GITHUB_USERNAME + '/' + REPO_NAME + '/contents/' + filename + qs, fetchOpts);
                 if (res.ok) return JSON.parse(b64_to_utf8((await res.json()).content));
             } catch (e) {}
 
@@ -3249,45 +3351,61 @@
         async function fetchData() {
             setPageProgress(30);
 
-            // 1. AYARLARI ÖNCELİKLİ ÇEK (Bakım modunun sıfır gecikmeyle güncellenmesi için)
-            const settingsPromise = fetchFileDirect('ayarlar.json').then(settings => {
-                if (settings) {
-                    siteSettings = settings;
-                    try {
-                        localStorage.setItem('cached_maint_mode', settings.maintenanceMode ? 'true' : 'false');
-                        if (settings.maintenanceTitle) localStorage.setItem('cached_maint_title', settings.maintenanceTitle);
-                        if (settings.maintenanceMessage) localStorage.setItem('cached_maint_msg', settings.maintenanceMessage);
-                    } catch(e) {}
-                    applySiteSettings();
-                }
-            });
-
-            // 2. DİĞER VERİLERİ PARALEL ÇEK
-            const contentPromise = Promise.all([
+            // 1. AYARLARI VE HAFİF ANA VERİLERİ ANINDA ÇEK (Toplam ~18 KB)
+            const [settings, anns, files, sched, cal] = await Promise.all([
+                fetchFileDirect('ayarlar.json'),
                 fetchFileDirect('duyurular.json'),
                 fetchFileDirect('dosyalar.json'),
                 fetchFileDirect('dersprogrami.json'),
-                fetchFileDirect('takvim.json'),
-                fetchFileDirect('ukey.json')
-            ]).then(([anns, files, sched, cal, ukey]) => {
-                announcementsData = anns || [];
-                filesData = files || [];
-                scheduleData = sched || [];
-                calendarData = cal || [];
-                if (ukey) ukeyPortalData = ukey;
-                setPageProgress(80);
-            });
+                fetchFileDirect('takvim.json')
+            ]);
 
-            await Promise.all([settingsPromise, contentPromise]);
+            if (settings) {
+                siteSettings = settings;
+                try {
+                    localStorage.setItem('cached_maint_mode', settings.maintenanceMode ? 'true' : 'false');
+                    if (settings.maintenanceTitle) localStorage.setItem('cached_maint_title', settings.maintenanceTitle);
+                    if (settings.maintenanceMessage) localStorage.setItem('cached_maint_msg', settings.maintenanceMessage);
+                } catch(e) {}
+                applySiteSettings();
+            }
 
-            renderData();
-            renderSchedule();
-            renderInteractiveCalendar();
-            renderUpcoming();
-            renderUkeyPortal();
+            announcementsData = anns || [];
+            filesData = files || [];
+            scheduleData = sched || [];
+            calendarData = cal || [];
+
+            // İstatistik sayılarını hemen güncelle
+            if (document.getElementById('stat-ann')) document.getElementById('stat-ann').innerText = announcementsData.length;
+            if (document.getElementById('stat-file')) document.getElementById('stat-file').innerText = filesData.length;
+            if (document.getElementById('stat-sched')) document.getElementById('stat-sched').innerText = scheduleData.length;
+            if (document.getElementById('stat-cal')) document.getElementById('stat-cal').innerText = calendarData.length;
+
+            // Sadece o an açık olan sekmeyi hemen çiz (Ana iş parçacığını kilitleme!)
+            renderedViews.dashboard = false;
+            renderedViews.announcements = false;
+            renderedViews.schedule = false;
+            renderedViews.calendar = false;
+            renderedViews.files = false;
+            ensureViewRendered(activeViewName);
+
             updateAnnBadge();
             checkAnnPopup();
             setPageProgress(100);
+
+            // 2. UKEY VERİSİNİ (276 KB) ARKA PLANDA ANA İŞ PARÇACIĞINI DONDURMADAN YÜKLE
+            fetchFileDirect('ukey.json').then(ukey => {
+                if (ukey) {
+                    ukeyPortalData = ukey;
+                    if (ukey.courses && document.getElementById('stat-ukey')) {
+                        document.getElementById('stat-ukey').innerText = ukey.courses.length;
+                    }
+                    renderedViews.ukey = false;
+                    if (activeViewName === 'ukey') {
+                        ensureViewRendered('ukey');
+                    }
+                }
+            });
         }
 
         function checkMaintenanceMode() {
@@ -4683,7 +4801,7 @@
                     body: JSON.stringify({ ref: 'main' })
                 }).catch(() => {});
             }
-            const fresh = await fetchFileDirect('ukey.json');
+            const fresh = await fetchFileDirect('ukey.json', true);
             if (fresh) {
                 ukeyPortalData = fresh;
                 renderUkeyPortal();
