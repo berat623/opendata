@@ -359,9 +359,11 @@
             backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: var(--glass-reflection);
         }
         .btn-tonal:hover { background: var(--bg-surface-hover); border-color: var(--border-hover); }
-        .btn-primary { background: var(--primary); color: #fff; box-shadow: 0 4px 14px -3px var(--primary); }
+        .btn-primary { background: var(--primary); color: #ffffff !important; box-shadow: 0 4px 14px -3px var(--primary); }
+        .btn-primary span { color: #ffffff !important; }
         .btn-primary:hover { box-shadow: 0 6px 20px -3px var(--primary); }
-        .btn-accent { background: var(--accent); color: #fff; }
+        .btn-accent { background: var(--accent); color: #ffffff !important; }
+        .btn-accent span { color: #ffffff !important; }
 
         /* TOAST */
         .toast {
@@ -1823,13 +1825,13 @@
             background: var(--bg-surface-elevated);
             border: 1px solid var(--border);
         }
-        .ukey-info-box span {
+        .ukey-info-box > span {
             display: block;
             font-size: 0.73rem;
             color: var(--text-muted);
             margin-bottom: 4px;
         }
-        .ukey-info-box strong {
+        .ukey-info-box > strong {
             font-size: 0.92rem;
             color: var(--text-main);
             font-weight: 800;
@@ -5407,15 +5409,15 @@
             const ownUkeyNoticeHtml = `
                 <div class="ukey-info-box" style="margin-top:14px; border:1px solid var(--warning); background:var(--warning-soft);">
                     <div style="display:flex; align-items:flex-start; gap:12px;">
-                        <span class="material-symbols-rounded" style="color:var(--warning); font-size:24px; flex-shrink:0;">info</span>
+                        <span class="material-symbols-rounded" style="color:var(--warning); font-size:24px; flex-shrink:0; margin:0;">info</span>
                         <div style="flex:1;">
-                            <div style="font-weight:800; font-size:0.92rem; color:var(--text-main); margin-bottom:4px;">Kendi UKEY Sisteminize Giriş Yapıp Dosyanızı Yüklemelisiniz</div>
-                            <div style="font-size:0.84rem; color:var(--text-muted); line-height:1.55; margin-bottom:10px;">
-                                Bu portal üzerinden ödev dosyası yükleme işlemi yapılmamaktadır. Hazırladığınız ödev dosyasını teslim etmek için kendi öğrenci bilgilerinizle resmi <strong>UKEY (ukey.uludag.edu.tr)</strong> sistemine giriş yaparak dosyanızı yüklemelisiniz.
+                            <div style="font-weight:800; font-size:0.94rem; color:var(--text-main); margin-bottom:6px;">Kendi UKEY Sisteminize Giriş Yapıp Dosyanızı Yüklemelisiniz</div>
+                            <div style="font-size:0.85rem; color:var(--text-muted); line-height:1.55; margin-bottom:12px;">
+                                Bu portal üzerinden ödev dosyası yükleme işlemi yapılmamaktadır. Hazırladığınız ödev dosyasını teslim etmek için kendi öğrenci bilgilerinizle resmi <strong style="color:var(--text-main);">UKEY (ukey.uludag.edu.tr)</strong> sistemine giriş yaparak dosyanızı yüklemelisiniz.
                             </div>
-                            <a href="https://ukey.uludag.edu.tr/Home" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-mini" style="text-decoration:none; display:inline-flex;">
-                                <span class="material-symbols-rounded" style="font-size:16px;">open_in_new</span>
-                                <span>Kendi UKEY Sisteminize Giriş Yapın</span>
+                            <a href="https://ukey.uludag.edu.tr/Home" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="text-decoration:none; display:inline-flex; align-items:center; gap:8px; padding:10px 18px; min-height:40px; border-radius:10px; font-size:0.86rem; font-weight:800; background:linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); color:#ffffff !important; border:1px solid rgba(255,255,255,0.28); box-shadow:0 6px 16px -3px rgba(37, 99, 235, 0.55);">
+                                <span class="material-symbols-rounded" style="font-size:18px; color:#ffffff !important; margin:0; display:inline-block;">open_in_new</span>
+                                <span style="color:#ffffff !important; font-size:0.86rem; font-weight:800; margin:0; display:inline-block;">Kendi UKEY Sisteminize Giriş Yapın</span>
                             </a>
                         </div>
                     </div>
