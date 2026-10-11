@@ -6,36 +6,35 @@
       "id": "notif-65235",
       "type": "odev",
       "courseCode": "ELNZ101",
-      "courseName": "ELEKTRONİK MESLEK BİLGİSİ VE GÜVENLİĞİ",
-      "instructor": "Öğr.Gör.Dr. HÜSEYİN Hakan GÜR",
-      "title": "ödev 1",
-      "description": "TBMYO Elektronik Teknolojisi Programı tanımı, dersleri, olanakları, staj, DGS vb. bilgilerini içeren en az 10 sayfalık sunu hazırlanması.",
-      "start": "05.10.2026 10:34",
-      "end": "12.10.2026 10:30",
-      "endIso": "2026-10-12T10:30:00+03:00",
-      "badgeText": "7 Gün İçindeki Görev Bildirimi",
-      "allowedFormat": "PowerPoint (.pptx / .ppt)",
+      "courseName": "ELEKTRONİK MESLEK BİLGİSİ ve GÜVENLİĞİ",
+      "instructor": "Öğr.Gör. BASRİ KUL (Dersin Yürütücüsü)",
+      "title": "ödev 1- Elektronik Komponentlerin çalışma prensipleri",
+      "description": "Elektronik Komponentlerin çalışma prensipleri\r\nDirenç, kondansator, bobin, transistör, mosfet",
+      "start": "5.10.2026 10:34:00",
+      "end": "12.10.2026 10:30:00",
+      "badgeText": "7 Gün İçindeki Görev Bildirimi (1 gün kaldı)",
+      "allowedFormat": "power point",
       "maxSizeMB": 20
     }
   ],
   "agendaEvents": [
     {
       "id": "ag-hw-22HRTZ115-04-0",
-      "title": "22HRTZ115-04 - Kariyer Planlama Dersi Dönem Sonunda İstenecek Değerlendirme Formu (DERSİ GEÇMEK İÇİN HAZIRLANMASI GEREKEN BELGELERİ HAZIRLAYARAK YARDIMCI DÖKÜMANLA)",
+      "title": "22HRTZ115-04 - Kariyer Planlama Dersi Dönem Sonunda İstenecek Değerlendirme Formu",
       "courseCode": "22HRTZ115-04",
       "category": "Ödev Teslimi",
       "displayRange": "27.10.2025 09:50:00 – 18.01.2026 23:55:00",
-      "color": "#ef4444",
-      "status": "Aktif"
+      "color": "#64748b",
+      "status": "Süresi Doldu"
     },
     {
       "id": "ag-hw-22HRTZ115-04-1",
-      "title": "22HRTZ115-04 - Kariyer Planlama Dersi Dönem Sonunda İstenecek Değerlendirme Formu (Bütünlemeye kalanlar için) (DERSİ GEÇMEK İÇİN HAZIRLANMASI GEREKEN BELGELERİ HAZIRLAYARAK YARDIMCI DÖKÜMANLA)",
+      "title": "22HRTZ115-04 - Kariyer Planlama Dersi Dönem Sonunda İstenecek Değerlendirme Formu (Bütünlemeye kalanlar için)",
       "courseCode": "22HRTZ115-04",
       "category": "Ödev Teslimi",
       "displayRange": "1.02.2026 04:05:00 – 6.02.2026 23:55:00",
-      "color": "#ef4444",
-      "status": "Aktif"
+      "color": "#64748b",
+      "status": "Süresi Doldu"
     },
     {
       "id": "ag-rec-22YAD105-1-7",
@@ -57,12 +56,12 @@
     },
     {
       "id": "ag-hw-ELNZ101-0",
-      "title": "ELNZ101 - ödev 1- Elektronik Komponentlerin çalışma prensipleri (Elektronik Komponentlerin çalışma prensipleri\r\nDirenç, kondansator, bobin, trans)",
+      "title": "ELNZ101 - ödev 1- Elektronik Komponentlerin çalışma prensipleri",
       "courseCode": "ELNZ101",
       "category": "Ödev Teslimi",
       "displayRange": "5.10.2026 10:34:00 – 12.10.2026 10:30:00",
       "color": "#ef4444",
-      "status": "Aktif"
+      "status": "Aktif Ödev"
     }
   ],
   "meetingsSummary": {
@@ -198,22 +197,24 @@
   ],
   "guides": [
     {
-      "title": "Öğrenciler için UKEY Kılavuzu",
+      "title": "Öğrenciler için UKEY Kullanma Kılavuzu",
       "type": "Resmi PDF Kılavuz",
-      "url": "ukey_dosyalar/22YAD105-1_6.pdf",
-      "localFallback": "ukey_dosyalar/22YAD105-1_6.pdf",
-      "description": "UKEY sistemi üzerinden ders içerikleri, ödev yükleme, e-sınav ve sanal toplantı adımları."
+      "url": "https://www.uludag.edu.tr/dosyalar/bilgiislem/ukey/UKEY_KK.pdf",
+      "localFallback": "ukey_dosyalar/UKEY_Kullanma_Kilavuzu.pdf",
+      "description": "UKEY sistemi üzerinden ders içerikleri, ödev teslim kuralları, e-sınav ve sanal toplantı adımları."
     },
     {
       "title": "Microsoft Teams Öğrenci Kullanım Kılavuzu",
       "type": "PDF Kılavuz (İndirilebilir)",
       "url": "ukey_dosyalar/22YAD105-1_6.pdf",
+      "localFallback": "ukey_dosyalar/22YAD105-1_6.pdf",
       "description": "Bursa Uludağ Üniversitesi canlı derslerine Microsoft Teams üzerinden katılım rehberi."
     },
     {
       "title": "Microsoft Office 365 Hesabı Oluşturma Kılavuzu",
       "type": "PDF Kılavuz (İndirilebilir)",
       "url": "ukey_dosyalar/22YAD105-1_5.pdf",
+      "localFallback": "ukey_dosyalar/22YAD105-1_5.pdf",
       "description": "@ogr.uludag.edu.tr uzantılı öğrenci e-postası ile ücretsiz Office 365 ve Teams aktivasyonu."
     }
   ],
@@ -305,7 +306,7 @@
       ],
       "homeworks": [
         {
-          "id": 64100,
+          "id": 65296,
           "courseCode": "22HRTZ115-04",
           "courseName": "KARİYER PLANLAMA",
           "instructor": "Öğr. Gör. ÖZCAN TEMEL (Dersin Yürütücüsü)",
@@ -314,11 +315,11 @@
           "type": "Diğer",
           "start": "27.10.2025 09:50:00",
           "end": "18.01.2026 23:55:00",
-          "week": "14. Hafta",
+          "week": "Dönemlik / Genel",
           "fileCountLimit": 1,
-          "allowedFileTypes": "Word / PDF (.docx, .pdf)",
+          "allowedFileTypes": "Microsoft Word",
           "maxFileSizeMB": 20,
-          "submissionStatus": "Henüz Dosya Gönderilmedi",
+          "submissionStatus": "Ödev Teslimi Sona Ermiştir",
           "attachedMaterials": [
             {
               "title": "Kariyer Planlama Dersi Dönem Sonunda İstenecek Değerlendirme Formu",
@@ -329,7 +330,7 @@
           ]
         },
         {
-          "id": 64101,
+          "id": 65297,
           "courseCode": "22HRTZ115-04",
           "courseName": "KARİYER PLANLAMA",
           "instructor": "Öğr. Gör. ÖZCAN TEMEL (Dersin Yürütücüsü)",
@@ -338,16 +339,16 @@
           "type": "Diğer",
           "start": "1.02.2026 04:05:00",
           "end": "6.02.2026 23:55:00",
-          "week": "14. Hafta",
+          "week": "Dönemlik / Genel",
           "fileCountLimit": 1,
-          "allowedFileTypes": "Word / PDF (.docx, .pdf)",
+          "allowedFileTypes": "Belirtilmemiş",
           "maxFileSizeMB": 20,
-          "submissionStatus": "Henüz Dosya Gönderilmedi",
+          "submissionStatus": "Ödev Teslimi Sona Ermiştir",
           "attachedMaterials": [
             {
-              "title": "Kariyer Planlama Dersi Dönem Sonunda İstenecek Değerlendirme Formu",
+              "title": "Kariyer Planlama Dersi Değerlendirme Formu",
               "origName": "Değerlendirme Formu - Kariyer Planlama Dersi Dönem Sonunda İstenecek Değerlendirme Formu.docx",
-              "localPath": "ukey_dosyalar/22HRTZ115-04_1.docx",
+              "localPath": "ukey_dosyalar/22HRTZ115-04_2.docx",
               "sizeBytes": 36770
             }
           ]
@@ -388,35 +389,35 @@
           "title": "Duyurular",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "22HRTZ115-04-forum-2",
           "title": "Ders içeriği ile ilgili tartışma alanı",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "22HRTZ115-04-forum-3",
           "title": "Ödevlerle ilgili tartışma alanı",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "22HRTZ115-04-forum-4",
           "title": "Genel konular",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "22HRTZ115-04-forum-5",
           "title": "Dersi veren öğretim elemanına sorular",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         }
       ],
       "groups": [],
@@ -647,35 +648,35 @@
           "title": "Duyurular",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "22YAD105-1-forum-2",
           "title": "Ders içeriği ile ilgili tartışma alanı",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "22YAD105-1-forum-3",
           "title": "Ödevlerle ilgili tartışma alanı",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "22YAD105-1-forum-4",
           "title": "Genel konular",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "22YAD105-1-forum-5",
           "title": "Dersi veren öğretim elemanına sorular",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         }
       ],
       "groups": [],
@@ -779,9 +780,9 @@
           "end": "12.10.2026 10:30:00",
           "week": "1. Hafta",
           "fileCountLimit": 1,
-          "allowedFileTypes": "PowerPoint (.pptx, .ppt)",
+          "allowedFileTypes": "power point",
           "maxFileSizeMB": 20,
-          "submissionStatus": "Henüz Dosya Gönderilmedi",
+          "submissionStatus": "Aktif (UKEY Üzerinden Teslim Bekleniyor)",
           "attachedMaterials": []
         }
       ],
@@ -807,35 +808,35 @@
           "title": "Duyurular",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "ELNZ101-forum-2",
           "title": "Ders içeriği ile ilgili tartışma alanı",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "ELNZ101-forum-3",
           "title": "Ödevlerle ilgili tartışma alanı",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "ELNZ101-forum-4",
           "title": "Genel konular",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "ELNZ101-forum-5",
           "title": "Dersi veren öğretim elemanına sorular",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         }
       ],
       "groups": [],
@@ -1014,35 +1015,35 @@
           "title": "Duyurular",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "ELNZ103-04-forum-2",
           "title": "Ders içeriği ile ilgili tartışma alanı",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "ELNZ103-04-forum-3",
           "title": "Ödevlerle ilgili tartışma alanı",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "ELNZ103-04-forum-4",
           "title": "Genel konular",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "ELNZ103-04-forum-5",
           "title": "Dersi veren öğretim elemanına sorular",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         }
       ],
       "groups": [],
@@ -1169,35 +1170,35 @@
           "title": "Duyurular",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "ELNZ105-04-forum-2",
           "title": "Ders içeriği ile ilgili tartışma alanı",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "ELNZ105-04-forum-3",
           "title": "Ödevlerle ilgili tartışma alanı",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "ELNZ105-04-forum-4",
           "title": "Genel konular",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "ELNZ105-04-forum-5",
           "title": "Dersi veren öğretim elemanına sorular",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         }
       ],
       "groups": [],
@@ -1297,35 +1298,35 @@
           "title": "Duyurular",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "ELNZ107-04-forum-2",
           "title": "Ders içeriği ile ilgili tartışma alanı",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "ELNZ107-04-forum-3",
           "title": "Ödevlerle ilgili tartışma alanı",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "ELNZ107-04-forum-4",
           "title": "Genel konular",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "ELNZ107-04-forum-5",
           "title": "Dersi veren öğretim elemanına sorular",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         }
       ],
       "groups": [],
@@ -1452,35 +1453,35 @@
           "title": "Duyurular",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "OTPZ001-04-forum-2",
           "title": "Ders içeriği ile ilgili tartışma alanı",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "OTPZ001-04-forum-3",
           "title": "Ödevlerle ilgili tartışma alanı",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "OTPZ001-04-forum-4",
           "title": "Genel konular",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "OTPZ001-04-forum-5",
           "title": "Dersi veren öğretim elemanına sorular",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         }
       ],
       "groups": [],
@@ -1607,35 +1608,35 @@
           "title": "Duyurular",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "OTPZ010-04-forum-2",
           "title": "Ders içeriği ile ilgili tartışma alanı",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "OTPZ010-04-forum-3",
           "title": "Ödevlerle ilgili tartışma alanı",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "OTPZ010-04-forum-4",
           "title": "Genel konular",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "OTPZ010-04-forum-5",
           "title": "Dersi veren öğretim elemanına sorular",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         }
       ],
       "groups": [],
@@ -1749,35 +1750,35 @@
           "title": "Duyurular",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "OTPZ101-04-forum-2",
           "title": "Ders içeriği ile ilgili tartışma alanı",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "OTPZ101-04-forum-3",
           "title": "Ödevlerle ilgili tartışma alanı",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "OTPZ101-04-forum-4",
           "title": "Genel konular",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         },
         {
           "id": "OTPZ101-04-forum-5",
           "title": "Dersi veren öğretim elemanına sorular",
           "topicCount": 0,
           "messageCount": 0,
-          "lastActivity": "Henüz mesaj yok"
+          "lastActivity": "Henüz konu eklenmemiş"
         }
       ],
       "groups": [],

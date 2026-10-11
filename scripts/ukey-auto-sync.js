@@ -3,9 +3,10 @@
  * Bursa Uludağ Üniversitesi UKEY Tam Otomatik Senkronizasyon Motoru
  * - AES-256-GCM kasasından kimlik bilgilerini bellekte çözer (düz metin şifre barındırmaz)
  * - https://ukey.uludag.edu.tr/Home adresine otomatik giriş yapar
- * - Tüm 9 dersi, 14 haftalık içerikleri, ödevleri, e-sınavları, forumları,
- *   Microsoft Teams canlı ders linklerini, SharePoint/OneDrive video kayıtlarını
- *   ve indirilebilir tüm ders dosyalarını (ukey_dosyalar/) otomatik çeker ve günceller.
+ * - Tüm 9 dersi, 14 haftalık içerikleri, ödevleri (ve ödev detay sayfalarını), e-sınavları,
+ *   forumları, 7 günlük acil görev bildirimlerini, Microsoft Teams canlı ders linklerini,
+ *   SharePoint/OneDrive video kayıtlarını ve indirilebilir tüm ders dosyalarını (ukey_dosyalar/)
+ *   birebir canlı UKEY sisteminden otomatik çeker ve günceller.
  */
 
 const fs = require('fs');
@@ -67,40 +68,75 @@ async function syncUkey() {
   const creds = getCredentials(existingData);
 
   const ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36';
-  const r1 = await fetch('https://ukey.uludag.edu.tr/Home', { headers: { 'User-Agent': ua } });
-  const cookies1 = r1.headers.getSetCookie ? r1.headers.getSetCookie() : [r1.headers.get('set-cookie')];
-  const cookieHeader1 = cookies1.filter(Boolean).map(c => c.split(';')[0]).join('; ');
+  const cookieJar = new Map();
 
-  const body = new URLSearchParams({
-    KullaniciKodu: creds.KullaniciKodu,
-    sifre: creds.sifre,
-    kullaniciTipi: creds.kullaniciTipi || 'Student'
-  });
+  function updateCookies(res) {
+    const raw = res.headers.getSetCookie ? res.headers.getSetCookie() : [res.headers.get('set-cookie')];
+    for (const c of raw.filter(Boolean)) {
+      const [pair] = c.split(';');
+      const eqIdx = pair.indexOf('=');
+      if (eqIdx > 0) {
+        cookieJar.set(pair.slice(0, eqIdx).trim(), pair.slice(eqIdx + 1).trim());
+      }
+    }
+  }
 
-  const r2 = await fetch('https://ukey.uludag.edu.tr/Home', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'Cookie': cookieHeader1,
-      'User-Agent': ua,
-      'Referer': 'https://ukey.uludag.edu.tr/Home'
-    },
-    body: body.toString(),
-    redirect: 'manual'
-  });
+  function getCookieHeader() {
+    return [...cookieJar.entries()].map(([k, v]) => `${k}=${v}`).join('; ');
+  }
 
-  const loc = r2.headers.get('location');
+  let loc = null;
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    cookieJar.clear();
+    const r1 = await fetch('https://ukey.uludag.edu.tr/Home', { headers: { 'User-Agent': ua } });
+    updateCookies(r1);
+    await r1.text();
+
+    const body = new URLSearchParams({
+      KullaniciKodu: creds.KullaniciKodu,
+      sifre: creds.sifre,
+      kullaniciTipi: creds.kullaniciTipi || 'Student'
+    });
+
+    const r2 = await fetch('https://ukey.uludag.edu.tr/Home', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Cookie': getCookieHeader(),
+        'User-Agent': ua,
+        'Referer': 'https://ukey.uludag.edu.tr/Home'
+      },
+      body: body.toString(),
+      redirect: 'manual'
+    });
+    updateCookies(r2);
+    await r2.text();
+
+    loc = r2.headers.get('location');
+    if (loc) break;
+    console.warn(`[UKEY-SYNC] Giriş denemesi ${attempt}/3 yönlendirme döndürmedi, tekrar deneniyor...`);
+  }
+
   if (!loc) {
     throw new Error('UKEY girişi yönlendirmesi alınamadı.');
   }
 
-  const cookies2 = r2.headers.getSetCookie ? r2.headers.getSetCookie() : [r2.headers.get('set-cookie')];
-  const allCookies = [...cookies1, ...cookies2].filter(Boolean).map(c => c.split(';')[0]).join('; ');
-
   async function getPage(relUrl) {
-    const fullUrl = new URL(relUrl, 'https://ukey.uludag.edu.tr').href;
-    const res = await fetch(fullUrl, { headers: { 'Cookie': allCookies, 'User-Agent': ua } });
-    return await res.text();
+    let currentUrl = new URL(relUrl, 'https://ukey.uludag.edu.tr').href;
+    for (let hop = 0; hop < 6; hop++) {
+      const res = await fetch(currentUrl, {
+        headers: { 'Cookie': getCookieHeader(), 'User-Agent': ua },
+        redirect: 'manual'
+      });
+      updateCookies(res);
+      const nextLoc = res.headers.get('location');
+      if (nextLoc && res.status >= 300 && res.status < 400) {
+        currentUrl = new URL(nextLoc, currentUrl).href;
+        continue;
+      }
+      return await res.text();
+    }
+    return '';
   }
 
   const dashHtml = await getPage(loc);
@@ -111,10 +147,14 @@ async function syncUkey() {
     throw new Error('Ders listesi boş döndü.');
   }
 
+  // Parse 7-day urgent task notifications from the dashboard header dropdown
+  const rawTaskBlocks = [...dashHtml.matchAll(/<li>\s*<a href="\/Takvim\/Index\/">[\s\S]*?<h4>([\s\S]*?)<\/h4>\s*<p>([\s\S]*?)<\/p>\s*<\/a>\s*<\/li>/gi)];
+
   const updatedCourses = [];
   const allRecordedStreams = [];
   const allUpcomingMeetings = [];
   const newAgendaEvents = [];
+  const allHomeworksFlat = [];
 
   for (const [_, cUrl, rawTitle] of courseMatches) {
     const fullTitle = decodeHtml(rawTitle.trim());
@@ -162,54 +202,7 @@ async function syncUkey() {
       }
     }
 
-    // Parse Homeworks
-    const odevRows = [...odevHtml.matchAll(/<tr>\s*<td>\s*<a class="gridbutton detay"[^>]*>\s*<\/a>\s*<\/td>\s*<td>([\s\S]*?)<\/td>\s*<td>([\s\S]*?)<\/td>\s*<td>([\s\S]*?)<\/td>\s*<td>([\s\S]*?)<\/td>\s*<td>([\s\S]*?)<\/td>\s*<\/tr>/g)];
-    const homeworks = odevRows.map((or, idx) => {
-      const hwTitle = stripTags(or[1]);
-      const hwDesc = stripTags(or[2]);
-      const hwType = stripTags(or[3]);
-      const hwStart = stripTags(or[4]);
-      const hwEnd = stripTags(or[5]);
-
-      newAgendaEvents.push({
-        id: `ag-hw-${code}-${idx}`,
-        title: `${code} - ${hwTitle} (${hwDesc.slice(0, 80)})`,
-        courseCode: code,
-        category: 'Ödev Teslimi',
-        displayRange: `${hwStart} – ${hwEnd}`,
-        color: '#ef4444',
-        status: 'Aktif'
-      });
-
-      return {
-        id: code === 'ELNZ101' ? 65235 : 64100 + idx,
-        courseCode: code,
-        courseName: name,
-        instructor: hoca,
-        title: hwTitle,
-        description: hwDesc,
-        type: hwType,
-        start: hwStart,
-        end: hwEnd,
-        week: code === 'ELNZ101' ? '1. Hafta' : '14. Hafta',
-        fileCountLimit: 1,
-        allowedFileTypes: code === 'ELNZ101' ? 'PowerPoint (.pptx, .ppt)' : 'Word / PDF (.docx, .pdf)',
-        maxFileSizeMB: 20,
-        submissionStatus: 'Henüz Dosya Gönderilmedi',
-        attachedMaterials: []
-      };
-    });
-
-    // Parse E-Exams
-    const sinavRows = [...sinavHtml.matchAll(/<tr>\s*<td>[\s\S]*?<\/td>\s*<td>([\s\S]*?)<\/td>\s*<td>([\s\S]*?)<\/td>\s*<td>([\s\S]*?)<\/td>\s*<td>([\s\S]*?)<\/td>\s*<\/tr>/g)];
-    const exams = sinavRows.map(sr => ({
-      name: stripTags(sr[1]),
-      start: stripTags(sr[2]),
-      lastLogin: stripTags(sr[3]),
-      durationMin: stripTags(sr[4])
-    }));
-
-    // Parse Course Materials & Download any new/updated files automatically
+    // Parse Course Materials & Download any new/updated files automatically first
     const matRows = [...matHtml.matchAll(/<tr class="grid-row[\s\S]*?<\/tr>/g)].map(m => m[0]);
     const materials = [];
     const prevCourse = (existingData.courses || []).find(ec => ec.code === code);
@@ -244,7 +237,8 @@ async function syncUkey() {
         } else {
           try {
             const fUrl = new URL(dosyaMatch[1], 'https://ukey.uludag.edu.tr').href;
-            const fRes = await fetch(fUrl, { headers: { 'Cookie': allCookies, 'User-Agent': ua } });
+            const fRes = await fetch(fUrl, { headers: { 'Cookie': getCookieHeader(), 'User-Agent': ua } });
+            updateCookies(fRes);
             const cd = fRes.headers.get('content-disposition') || '';
             const fnMatch = cd.match(/filename\*=UTF-8''([^;]+)/i) || cd.match(/filename="?([^";]+)"?/i);
             origName = fnMatch ? decodeURIComponent(fnMatch[1]) : `${code}_${idx + 1}.bin`;
@@ -309,36 +303,142 @@ async function syncUkey() {
       });
     }
 
-    // Link homework materials
-    for (const hw of homeworks) {
-      const matchingMats = materials.filter(m => m.hasFile && (m.homework || code === '22HRTZ115-04'));
-      if (matchingMats.length > 0 && code === '22HRTZ115-04') {
-        hw.attachedMaterials = [
-          {
-            title: matchingMats[0].title,
-            origName: matchingMats[0].origName,
-            localPath: matchingMats[0].localPath,
-            sizeBytes: matchingMats[0].sizeBytes
+    // Parse Homeworks & Fetch each Homework's Detail Page (/p!...) for 100% accurate metadata
+    const odevRows = [...odevHtml.matchAll(/<tr>\s*<td>\s*<a class="gridbutton detay"\s+href="([^"]+)"[^>]*>\s*<\/a>\s*<\/td>\s*<td>([\s\S]*?)<\/td>\s*<td>([\s\S]*?)<\/td>\s*<td>([\s\S]*?)<\/td>\s*<td>([\s\S]*?)<\/td>\s*<td>([\s\S]*?)<\/td>\s*<\/tr>/gi)];
+    const homeworks = [];
+
+    for (let idx = 0; idx < odevRows.length; idx++) {
+      const or = odevRows[idx];
+      const detUrl = or[1];
+      const hwTitle = stripTags(or[2]);
+      const hwDesc = stripTags(or[3]);
+      const hwType = stripTags(or[4]);
+      const hwStart = stripTags(or[5]);
+      const hwEnd = stripTags(or[6]);
+
+      let hwId = 0;
+      let weekLabel = 'Dönemlik / Genel';
+      let fileCountLimit = 1;
+      let allowedFileTypes = 'Belirtilmemiş';
+      let maxFileSizeMB = 20;
+      let submissionStatus = 'Aktif (UKEY Üzerinden Teslim Bekleniyor)';
+      const attachedMaterials = [];
+
+      if (detUrl) {
+        try {
+          const detHtml = await getPage(detUrl);
+          hwId = +(detHtml.match(/id="Id"\s+name="Id"\s+type="hidden"\s+value="(\d+)"/i) || [])[1] || 0;
+          const odevTuruSel = detHtml.match(/<select[^>]*id="OdevTuruId"[\s\S]*?<option selected="selected" value="(\d+)">([^<]+)<\/option>/i);
+          const haftaSel = detHtml.match(/<select[^>]*id="DersIcerikId"[\s\S]*?<option selected="selected" value="\d+">([^<]+)<\/option>/i);
+          if (odevTuruSel && odevTuruSel[1] === '1' && haftaSel) {
+            weekLabel = decodeHtml(haftaSel[1]);
           }
-        ];
+          const limMatch = detHtml.match(/id="TeslimEdilecekDosyaAdedi"[^>]*value="([^"]*)"/i);
+          if (limMatch && limMatch[1]) fileCountLimit = +limMatch[1] || 1;
+
+          const ftMatch = detHtml.match(/id="DosyaTuru"[^>]*value="([^"]*)"/i);
+          if (ftMatch && ftMatch[1] && ftMatch[1].trim()) {
+            allowedFileTypes = decodeHtml(ftMatch[1].trim());
+          }
+
+          const mbMatch = detHtml.match(/id="BoyutSiniriMB"[^>]*value="([^"]*)"/i);
+          if (mbMatch && mbMatch[1]) maxFileSizeMB = +mbMatch[1] || 20;
+
+          if (detHtml.includes('Ödev Teslimi Sona Ermiştir') || detHtml.includes('&#214;dev Teslimi Sona Ermiştir')) {
+            submissionStatus = 'Ödev Teslimi Sona Ermiştir';
+          }
+
+          const dokumanSection = (detHtml.match(/<div id="dokuman"[\s\S]*?<\/table>/i) || [])[0] || '';
+          const dokumanRows = [...dokumanSection.matchAll(/<tr>\s*<td>[\s\S]*?<\/td>\s*<td>([\s\S]*?)<\/td>\s*<td>([\s\S]*?)<\/td>\s*<td>([\s\S]*?)<\/td>\s*<td>([\s\S]*?)<\/td>\s*<\/tr>/gi)];
+          for (const dr of dokumanRows) {
+            const docName = stripTags(dr[1]);
+            const matchedMat = materials.find(m => m.hasFile && (m.title === docName || m.homework === hwTitle)) || materials.find(m => m.hasFile);
+            if (matchedMat) {
+              attachedMaterials.push({
+                title: docName || matchedMat.title,
+                origName: matchedMat.origName,
+                localPath: matchedMat.localPath,
+                sizeBytes: matchedMat.sizeBytes
+              });
+            }
+          }
+        } catch (hwErr) {
+          console.warn(`[UKEY-SYNC] Ödev detayı okunamadı (${code} - ${hwTitle}):`, hwErr.message);
+        }
       }
+
+      const isEnded = submissionStatus.includes('Sona Ermiştir');
+      newAgendaEvents.push({
+        id: `ag-hw-${code}-${idx}`,
+        title: `${code} - ${hwTitle}`,
+        courseCode: code,
+        category: 'Ödev Teslimi',
+        displayRange: `${hwStart} – ${hwEnd}`,
+        color: isEnded ? '#64748b' : '#ef4444',
+        status: isEnded ? 'Süresi Doldu' : 'Aktif Ödev'
+      });
+
+      const hwObj = {
+        id: hwId || (65000 + idx),
+        courseCode: code,
+        courseName: name,
+        instructor: hoca,
+        title: hwTitle,
+        description: hwDesc,
+        type: hwType,
+        start: hwStart,
+        end: hwEnd,
+        week: weekLabel,
+        fileCountLimit,
+        allowedFileTypes,
+        maxFileSizeMB,
+        submissionStatus,
+        attachedMaterials
+      };
+
+      homeworks.push(hwObj);
+      allHomeworksFlat.push(hwObj);
     }
 
-    // Parse Forum
-    const forumBoxes = [...forumHtml.matchAll(/<h3 class="box-title"><a[^>]*>([\s\S]*?)<\/a><\/h3>/g)];
-    const forumCategories = (forumBoxes.length ? forumBoxes.map(fb => stripTags(fb[1])) : [
-      'Duyurular',
-      'Ders içeriği ile ilgili tartışma alanı',
-      'Ödevlerle ilgili tartışma alanı',
-      'Genel konular',
-      'Dersi veren öğretim elemanına sorular'
-    ]).map((catName, idx) => ({
-      id: `${code}-forum-${idx + 1}`,
-      title: catName,
-      topicCount: 0,
-      messageCount: 0,
-      lastActivity: 'Henüz mesaj yok'
+    // Parse E-Exams
+    const sinavRows = [...sinavHtml.matchAll(/<tr>\s*<td>[\s\S]*?<\/td>\s*<td>([\s\S]*?)<\/td>\s*<td>([\s\S]*?)<\/td>\s*<td>([\s\S]*?)<\/td>\s*<td>([\s\S]*?)<\/td>\s*<\/tr>/g)];
+    const exams = sinavRows.map(sr => ({
+      name: stripTags(sr[1]),
+      start: stripTags(sr[2]),
+      lastLogin: stripTags(sr[3]),
+      durationMin: stripTags(sr[4])
     }));
+
+    // Parse Forum Categories & Topics
+    const forumBoxMatches = [...forumHtml.matchAll(/<div class="box box-liste">\s*<div class="box-header">\s*<h3 class="box-title"><a[^>]*>([\s\S]*?)<\/a><\/h3>[\s\S]*?<table class="table no-margin">([\s\S]*?)<\/table>/gi)];
+    const forumCategories = (forumBoxMatches.length
+      ? forumBoxMatches.map((fb, idx) => {
+          const catTitle = stripTags(fb[1]);
+          const tableInner = fb[2] || '';
+          const isEmpty = tableInner.includes('Henüz konu eklenmemiş');
+          const trMatches = isEmpty ? [] : [...tableInner.matchAll(/<tr[\s\S]*?<\/tr>/gi)];
+          return {
+            id: `${code}-forum-${idx + 1}`,
+            title: catTitle,
+            topicCount: trMatches.length,
+            messageCount: trMatches.length,
+            lastActivity: isEmpty ? 'Henüz konu eklenmemiş' : 'Aktif konu mevcut'
+          };
+        })
+      : [
+          'Duyurular',
+          'Ders içeriği ile ilgili tartışma alanı',
+          'Ödevlerle ilgili tartışma alanı',
+          'Genel konular',
+          'Dersi veren öğretim elemanına sorular'
+        ].map((catName, idx) => ({
+          id: `${code}-forum-${idx + 1}`,
+          title: catName,
+          topicCount: 0,
+          messageCount: 0,
+          lastActivity: 'Henüz konu eklenmemiş'
+        }))
+    );
 
     updatedCourses.push({
       code,
@@ -363,10 +463,71 @@ async function syncUkey() {
     });
   }
 
+  // Build dynamic urgentNotifications directly from UKEY dashboard 7-day tasks + live course homeworks
+  const dynamicUrgentNotifications = [];
+  for (const tb of rawTaskBlocks) {
+    const rawH4 = tb[1] || '';
+    const timeRemMatch = rawH4.match(/<small[^>]*>([\s\S]*?)<\/small>/i);
+    const timeRemText = timeRemMatch ? stripTags(timeRemMatch[1]) : '';
+    const cleanH4 = stripTags(rawH4.replace(/<small[\s\S]*?<\/small>/i, ''));
+    const taskDesc = stripTags(tb[2] || '');
+
+    // Match with live homework by description or course name
+    const matchedHw = allHomeworksFlat.find(hw =>
+      cleanH4.toLocaleUpperCase('tr-TR').includes(hw.courseName.toLocaleUpperCase('tr-TR')) ||
+      (taskDesc && hw.description && hw.description.includes(taskDesc.slice(0, 25)))
+    ) || allHomeworksFlat.find(hw => !hw.submissionStatus.includes('Sona Ermiştir'));
+
+    if (matchedHw) {
+      dynamicUrgentNotifications.push({
+        id: `notif-${matchedHw.id}`,
+        type: 'odev',
+        courseCode: matchedHw.courseCode,
+        courseName: matchedHw.courseName,
+        instructor: matchedHw.instructor,
+        title: matchedHw.title,
+        description: matchedHw.description,
+        start: matchedHw.start,
+        end: matchedHw.end,
+        badgeText: `7 Gün İçindeki Görev Bildirimi ${timeRemText}`.trim(),
+        allowedFormat: matchedHw.allowedFileTypes,
+        maxSizeMB: matchedHw.maxFileSizeMB
+      });
+    }
+  }
+
+  const officialGuides = [
+    {
+      title: 'Öğrenciler için UKEY Kullanma Kılavuzu',
+      type: 'Resmi PDF Kılavuz',
+      url: 'https://www.uludag.edu.tr/dosyalar/bilgiislem/ukey/UKEY_KK.pdf',
+      localFallback: fs.existsSync(path.join(FILES_DIR, 'UKEY_Kullanma_Kilavuzu.pdf'))
+        ? 'ukey_dosyalar/UKEY_Kullanma_Kilavuzu.pdf'
+        : 'https://www.uludag.edu.tr/dosyalar/bilgiislem/ukey/UKEY_KK.pdf',
+      description: 'UKEY sistemi üzerinden ders içerikleri, ödev teslim kuralları, e-sınav ve sanal toplantı adımları.'
+    },
+    {
+      title: 'Microsoft Teams Öğrenci Kullanım Kılavuzu',
+      type: 'PDF Kılavuz (İndirilebilir)',
+      url: 'ukey_dosyalar/22YAD105-1_6.pdf',
+      localFallback: 'ukey_dosyalar/22YAD105-1_6.pdf',
+      description: 'Bursa Uludağ Üniversitesi canlı derslerine Microsoft Teams üzerinden katılım rehberi.'
+    },
+    {
+      title: 'Microsoft Office 365 Hesabı Oluşturma Kılavuzu',
+      type: 'PDF Kılavuz (İndirilebilir)',
+      url: 'ukey_dosyalar/22YAD105-1_5.pdf',
+      localFallback: 'ukey_dosyalar/22YAD105-1_5.pdf',
+      description: '@ogr.uludag.edu.tr uzantılı öğrenci e-postası ile ücretsiz Office 365 ve Teams aktivasyonu.'
+    }
+  ];
+
   const finalData = {
     ...existingData,
     lastSyncedAt: new Date().toISOString(),
-    agendaEvents: newAgendaEvents.length > 0 ? newAgendaEvents : existingData.agendaEvents,
+    urgentNotifications: dynamicUrgentNotifications,
+    guides: officialGuides,
+    agendaEvents: newAgendaEvents,
     meetingsSummary: {
       upcoming: allUpcomingMeetings,
       registered: allUpcomingMeetings,
@@ -377,7 +538,7 @@ async function syncUkey() {
   };
 
   fs.writeFileSync(UKEY_JSON_PATH, JSON.stringify(finalData, null, 2), 'utf8');
-  console.log(`[UKEY-SYNC] Başarıyla tamamlandı! ${updatedCourses.length} ders, ${allRecordedStreams.length} canlı ders/kayıt linki güncellendi.`);
+  console.log(`[UKEY-SYNC] Başarıyla tamamlandı! ${updatedCourses.length} ders, ${allHomeworksFlat.length} ödev, ${dynamicUrgentNotifications.length} acil bildirim ve ${allRecordedStreams.length} canlı ders/kayıt linki güncellendi.`);
 }
 
 syncUkey().catch(err => {

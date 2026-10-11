@@ -3693,15 +3693,15 @@
         let scheduleViewMode = localStorage.getItem('schedule_view_mode') || 'cards';
 
         const COURSE_META_MAP = {
-            'ELNZ101': { name: 'Elektronik Meslek Bilgisi ve Güvenliği', instructor: 'Öğr. Gör. Dr. H. H. ÇELİK' },
-            '22YAD105': { name: 'Yabancı Dil I (İngilizce)', instructor: 'Öğr. Gör. T. ÇETİN' },
-            'ELNZ107': { name: 'Sayısal Elektronik', instructor: 'Öğr. Gör. M. D. KAYA' },
-            'OTPZ101': { name: 'Mesleki Matematik', instructor: 'Öğr. Gör. H. S. YENİGÜN' },
-            '22HRTZ115': { name: 'Kariyer Planlama', instructor: 'Öğr. Gör. B. YILDIRIM' },
-            'ELNZ103': { name: 'Ölçme Tekniği', instructor: 'Öğr. Gör. H. S. YENİGÜN' },
-            'ELNZ105': { name: 'Doğru Akım Devre Analizi', instructor: 'Öğr. Gör. Dr. H. H. ÇELİK' },
-            'OTPZ010': { name: 'Bilgi ve İletişim Teknolojisi', instructor: 'Öğr. Gör. M. D. KAYA' },
-            'OTPZ001': { name: 'İş Sağlığı ve Güvenliği', instructor: 'Öğr. Gör. Dr. H. H. ÇELİK' }
+            'ELNZ101': { name: 'Elektronik Meslek Bilgisi ve Güvenliği', instructor: 'Öğr. Gör. BASRİ KUL' },
+            '22YAD105': { name: 'Yabancı Dil (İngilizce)', instructor: 'Öğr. Gör. SİNEM ÜRKMEZ' },
+            'ELNZ107': { name: 'Sayısal Elektronik', instructor: 'Öğr. Gör. ÖZCAN TEMEL' },
+            'OTPZ101': { name: 'Mesleki Matematik', instructor: 'Öğr. Gör. HÜLYA BOZYOKUŞ' },
+            '22HRTZ115': { name: 'Kariyer Planlama', instructor: 'Öğr. Gör. ÖZCAN TEMEL' },
+            'ELNZ103': { name: 'Ölçme Tekniği', instructor: 'Öğr. Gör. ERCAN YAVUZ' },
+            'ELNZ105': { name: 'Doğru Akım Devre Analizi', instructor: 'Öğr. Gör. Dr. ÇAĞLAR KILIKÇIER' },
+            'OTPZ010': { name: 'Bilgi ve İletişim Teknolojisi', instructor: 'Öğr. Gör. MURAT ÇALIŞ' },
+            'OTPZ001': { name: 'İş Sağlığı ve Güvenliği', instructor: 'Öğr. Gör. MUSTAFA PALA' }
         };
 
         function parseLessonInfo(l) {
@@ -4872,6 +4872,7 @@
             const urgentList = ukeyPortalData.urgentNotifications || [];
             const totalAkts = courses.reduce((acc, c) => acc + (c.akts || 0), 0);
             const localFilesCount = courses.reduce((acc, c) => acc + (c.materials ? c.materials.filter(m => m.hasFile).length : 0), 0);
+            const totalStreams = (ukeyPortalData.meetingsSummary && ukeyPortalData.meetingsSummary.recordedStreams) ? ukeyPortalData.meetingsSummary.recordedStreams.length : 0;
 
             let urgentHtml = '';
             if (urgentList.length > 0) {
@@ -4938,7 +4939,7 @@
                     </div>
                     <div class="stat-card" onclick="switchUkeyMainTab('meetings')">
                         <span class="icon-chip"><span class="material-symbols-rounded">video_library</span></span>
-                        <div><div class="stat-num">3</div><div class="stat-name">Canlı Ders &amp; Video Kaydı</div></div>
+                        <div><div class="stat-num">${totalStreams}</div><div class="stat-name">Canlı Ders &amp; Video Kaydı</div></div>
                     </div>
                 </div>
 
@@ -5032,7 +5033,7 @@
                 { id: 'esinavlar', label: 'E-Sınavlar', icon: 'quiz', count: course.exams ? course.exams.length : 0 },
                 { id: 'forum', label: 'Forum', icon: 'forum', count: course.forumCategories ? course.forumCategories.length : 5 },
                 { id: 'gruplar', label: 'Gruplar', icon: 'groups', count: 0 },
-                { id: 'toplantilar', label: 'Sanal Toplantılar', icon: 'videocam', count: course.code === '22YAD105-1' ? 3 : 0 }
+                { id: 'toplantilar', label: 'Sanal Toplantılar', icon: 'videocam', count: ((ukeyPortalData.meetingsSummary && ukeyPortalData.meetingsSummary.recordedStreams) || []).filter(s => s.courseCode === course.code).length }
             ];
 
             let subContentHtml = '';
@@ -5089,26 +5090,29 @@
             } else if (ukeySelectedCourseSubTab === 'odevler') {
                 const hws = course.homeworks || [];
                 if (hws.length === 0) {
-                    subContentHtml = '<p style="color:var(--text-muted); padding:18px 0;">Bu derse ait aktif ödev veya proje kaydı bulunmamaktadır.</p>';
+                    subContentHtml = '<p style="color:var(--text-muted); padding:18px 0;">Bu derse ait ödev veya proje kaydı bulunmamaktadır.</p>';
                 } else {
-                    subContentHtml = hws.map((hw, idx) => `
+                    subContentHtml = hws.map((hw, idx) => {
+                        const isEnded = (hw.submissionStatus || '').includes('Sona Ermiştir');
+                        return `
                         <div class="ukey-mat-item">
                             <div>
-                                <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
-                                    <span class="ukey-course-code">${sanitizeHTML(hw.type || 'Ödev')}</span>
+                                <div style="display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:4px;">
+                                    <span class="ukey-course-code">${sanitizeHTML(hw.type || 'Ödev')}${hw.week ? ' • ' + sanitizeHTML(hw.week) : ''}</span>
+                                    <span class="ukey-mini-chip ${isEnded ? '' : 'has-hw'}">${isEnded ? 'Teslim Süresi Sona Erdi' : 'Aktif Ödev'}</span>
                                     <span style="font-size:0.78rem; color:var(--warning); font-weight:700;">${sanitizeHTML(hw.start)} – ${sanitizeHTML(hw.end)}</span>
                                 </div>
                                 <div style="font-weight:800; font-size:0.95rem; margin-bottom:3px;">${sanitizeHTML(hw.title)}</div>
-                                <div style="font-size:0.83rem; color:var(--text-muted);">${sanitizeHTML(hw.description)}</div>
+                                <div style="font-size:0.83rem; color:var(--text-muted); white-space:pre-line;">${sanitizeHTML(hw.description)}</div>
                             </div>
                             <div style="display:flex; gap:8px; flex-wrap:wrap;">
                                 <button class="btn btn-primary btn-mini" onclick="openUkeyHomeworkModal('${course.code}', ${idx})">
                                     <span class="material-symbols-rounded" style="font-size:16px;">visibility</span>
-                                    <span>Detay &amp; Dosya Yükle</span>
+                                    <span>Ödev Detayını Görüntüle</span>
                                 </button>
                             </div>
                         </div>
-                    `).join('');
+                    `;}).join('');
                 }
             } else if (ukeySelectedCourseSubTab === 'esinavlar') {
                 const exs = course.exams || [];
@@ -5134,26 +5138,23 @@
                 const cats = course.forumCategories || [];
                 subContentHtml = `
                     <div style="margin-bottom:12px; font-size:0.84rem; color:var(--text-muted);">
-                        Ders tartışma alanlarını görüntüleyebilir ve ilgili kategoriye konu/soru ekleyebilirsiniz.
+                        UKEY ders tartışma ve duyuru kategorileri aşağıda listelenmektedir.
                     </div>
-                    ${cats.map((fc, fIdx) => {
-                        const savedPosts = JSON.parse(localStorage.getItem('ukey_forum_' + fc.id) || '[]');
-                        const totalMsg = (fc.messageCount || 0) + savedPosts.length;
-                        return `
+                    ${cats.map((fc, fIdx) => `
                         <div class="ukey-mat-item">
                             <div style="display:flex; align-items:center; gap:12px;">
                                 <span class="icon-chip"><span class="material-symbols-rounded">forum</span></span>
                                 <div>
                                     <div style="font-weight:800; font-size:0.92rem;">${sanitizeHTML(fc.title)}</div>
-                                    <div style="font-size:0.78rem; color:var(--text-muted);">${savedPosts.length} Konu • ${totalMsg} Mesaj • ${savedPosts.length ? 'Aktif' : sanitizeHTML(fc.lastActivity)}</div>
+                                    <div style="font-size:0.78rem; color:var(--text-muted);">${fc.topicCount || 0} Konu • ${fc.messageCount || 0} Mesaj • ${sanitizeHTML(fc.lastActivity || 'Henüz konu eklenmemiş')}</div>
                                 </div>
                             </div>
                             <button class="btn btn-tonal btn-mini" onclick="openUkeyForumModal('${course.code}', ${fIdx})">
-                                <span class="material-symbols-rounded" style="font-size:16px;">chat</span>
-                                <span>Konuları Gör / Yaz</span>
+                                <span class="material-symbols-rounded" style="font-size:16px;">visibility</span>
+                                <span>Kategori Detayı</span>
                             </button>
                         </div>
-                    `;}).join('')}
+                    `).join('')}
                 `;
             } else if (ukeySelectedCourseSubTab === 'gruplar') {
                 subContentHtml = `
@@ -5323,7 +5324,7 @@
             `;
         }
 
-        /* 4. ÖDEVLER VE E-SINAVLAR MERKEZİ + SITE İÇİ 4 SEKMELİ UKEY ÖDEV MODALİ */
+        /* 4. ÖDEVLER VE E-SINAVLAR MERKEZİ + UKEY ÖDEV DETAY MODALİ */
         function renderUkeyHomeworksAndExams(container, courses) {
             const allHws = [];
             const allExams = [];
@@ -5341,25 +5342,27 @@
                         </h3>
                     </div>
                     <div style="margin-top:14px;">
-                        ${allHws.map(({ course, hw, idx }) => `
+                        ${allHws.map(({ course, hw, idx }) => {
+                            const isEnded = (hw.submissionStatus || '').includes('Sona Ermiştir');
+                            return `
                             <div class="ukey-mat-item">
                                 <div style="flex:1; min-width:0;">
                                     <div style="display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:4px;">
                                         <span class="ukey-course-code">${sanitizeHTML(course.code)} - ${sanitizeHTML(course.name)}</span>
-                                        <span class="ukey-mini-chip has-hw">${sanitizeHTML(hw.type || 'Ödev')}</span>
+                                        <span class="ukey-mini-chip ${isEnded ? '' : 'has-hw'}">${sanitizeHTML(hw.type || 'Ödev')} • ${isEnded ? 'Teslim Süresi Doldu' : 'Aktif Ödev'}</span>
                                         <span style="font-size:0.78rem; font-weight:700; color:var(--warning);">Teslim: ${sanitizeHTML(hw.start)} – ${sanitizeHTML(hw.end)}</span>
                                     </div>
                                     <div style="font-weight:800; font-size:0.98rem; margin-bottom:4px;">${sanitizeHTML(hw.title)}</div>
-                                    <div style="font-size:0.84rem; color:var(--text-muted);">${sanitizeHTML(hw.description)}</div>
+                                    <div style="font-size:0.84rem; color:var(--text-muted); white-space:pre-line;">${sanitizeHTML(hw.description)}</div>
                                 </div>
                                 <div style="display:flex; gap:8px; flex-wrap:wrap;">
                                     <button class="btn btn-primary btn-mini" onclick="openUkeyHomeworkModal('${course.code}', ${idx})">
                                         <span class="material-symbols-rounded" style="font-size:16px;">visibility</span>
-                                        <span>Ödev Detayı &amp; Dosya Yükle</span>
+                                        <span>Ödev Detayını Görüntüle</span>
                                     </button>
                                 </div>
                             </div>
-                        `).join('')}
+                        `;}).join('')}
                     </div>
                 </div>
 
@@ -5398,29 +5401,53 @@
             const hw = course && course.homeworks ? course.homeworks[hwIdx] : null;
             if (!hw) return;
 
-            const savedKey = `ukey_hw_sub_${courseCode}_${hwIdx}`;
-            const savedSub = JSON.parse(localStorage.getItem(savedKey) || 'null');
+            const mats = hw.attachedMaterials || [];
+            const isEnded = (hw.submissionStatus || '').includes('Sona Ermiştir');
+
+            const ownUkeyNoticeHtml = `
+                <div class="ukey-info-box" style="margin-top:14px; border:1px solid var(--warning); background:var(--warning-soft);">
+                    <div style="display:flex; align-items:flex-start; gap:12px;">
+                        <span class="material-symbols-rounded" style="color:var(--warning); font-size:24px; flex-shrink:0;">info</span>
+                        <div style="flex:1;">
+                            <div style="font-weight:800; font-size:0.92rem; color:var(--text-main); margin-bottom:4px;">Kendi UKEY Sisteminize Giriş Yapıp Dosyanızı Yüklemelisiniz</div>
+                            <div style="font-size:0.84rem; color:var(--text-muted); line-height:1.55; margin-bottom:10px;">
+                                Bu portal üzerinden ödev dosyası yükleme işlemi yapılmamaktadır. Hazırladığınız ödev dosyasını teslim etmek için kendi öğrenci bilgilerinizle resmi <strong>UKEY (ukey.uludag.edu.tr)</strong> sistemine giriş yaparak dosyanızı yüklemelisiniz.
+                            </div>
+                            <a href="https://ukey.uludag.edu.tr/Home" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-mini" style="text-decoration:none; display:inline-flex;">
+                                <span class="material-symbols-rounded" style="font-size:16px;">open_in_new</span>
+                                <span>Kendi UKEY Sisteminize Giriş Yapın</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
 
             let tabBody = '';
             if (activeTab === 1) {
                 tabBody = `
                     <div class="ukey-info-grid">
-                        <div class="ukey-info-box"><span>Ödev Kodu / Ders</span><strong>#${hw.id || 65235} • ${sanitizeHTML(course.code)}</strong></div>
-                        <div class="ukey-info-box"><span>Hafta / Tür</span><strong>${sanitizeHTML(hw.week || '1. Hafta')} • ${sanitizeHTML(hw.type || 'Ödev')}</strong></div>
-                        <div class="ukey-info-box"><span>Başlama Tarihi</span><strong>${sanitizeHTML(hw.start)}</strong></div>
-                        <div class="ukey-info-box"><span>Bitiş (Son Teslim) Tarihi</span><strong style="color:var(--warning);">${sanitizeHTML(hw.end)}</strong></div>
-                        <div class="ukey-info-box"><span>İzin Verilen Dosya Adedi</span><strong>${hw.fileCountLimit || 1} Adet (Max ${hw.maxFileSizeMB || 20} MB)</strong></div>
-                        <div class="ukey-info-box"><span>İzin Verilen Dosya Türü</span><strong>${sanitizeHTML(hw.allowedFileTypes || 'PowerPoint / Word / PDF')}</strong></div>
+                        <div class="ukey-info-box"><span>Ödev Kodu / Ders</span><strong>#${hw.id || '-'} • ${sanitizeHTML(course.code)}</strong></div>
+                        <div class="ukey-info-box"><span>Hafta / Ödev Türü</span><strong>${sanitizeHTML(hw.week || 'Genel')} • ${sanitizeHTML(hw.type || 'Ödev')}</strong></div>
+                        <div class="ukey-info-box"><span>Teslim Başlangıç</span><strong>${sanitizeHTML(hw.start)}</strong></div>
+                        <div class="ukey-info-box"><span>Teslim Bitiş (Son Teslim)</span><strong style="color:var(--warning);">${sanitizeHTML(hw.end)}</strong></div>
+                        <div class="ukey-info-box"><span>Dosya Adedi / Boyut Sınırı</span><strong>${hw.fileCountLimit || 1} Adet (Max ${hw.maxFileSizeMB || 20} MB)</strong></div>
+                        <div class="ukey-info-box"><span>İzin Verilen Dosya Türü</span><strong>${sanitizeHTML(hw.allowedFileTypes || 'Belirtilmemiş')}</strong></div>
+                        <div class="ukey-info-box" style="grid-column:1 / -1;"><span>UKEY Teslim Durumu</span><strong style="color:${isEnded ? 'var(--text-muted)' : 'var(--accent)'};">${sanitizeHTML(hw.submissionStatus || 'Aktif')}</strong></div>
                     </div>
                     <div class="ukey-info-box">
                         <span>Ödev Açıklaması &amp; Yönergesi</span>
-                        <div style="font-size:0.9rem; line-height:1.55; margin-top:4px;">${sanitizeHTML(hw.description)}</div>
+                        <div style="font-size:0.9rem; line-height:1.55; margin-top:4px; white-space:pre-line;">${sanitizeHTML(hw.description)}</div>
                     </div>
+                    ${ownUkeyNoticeHtml}
                 `;
             } else if (activeTab === 2) {
-                const mats = hw.attachedMaterials || [];
                 if (mats.length === 0) {
-                    tabBody = '<p style="color:var(--text-muted); padding:16px 0;">Bu ödev için ek şablon dosyası bulunmamaktadır. Doğrudan sunu/belge hazırlayarak 3. sekmeden yükleyebilirsiniz.</p>';
+                    tabBody = `
+                        <div class="ukey-info-box" style="text-align:center; padding:22px; color:var(--text-muted);">
+                            Bu ödev için öğretim elemanı tarafından eklenmiş yardımcı şablon veya doküman dosyası bulunmamaktadır.
+                        </div>
+                        ${ownUkeyNoticeHtml}
+                    `;
                 } else {
                     tabBody = mats.map(m => `
                         <div class="ukey-mat-item">
@@ -5428,46 +5455,12 @@
                                 <div style="font-weight:800;">${sanitizeHTML(m.title)}</div>
                                 <div style="font-size:0.78rem; color:var(--text-muted);">${sanitizeHTML(m.origName)} (${formatBytesToSize(m.sizeBytes)})</div>
                             </div>
-                            <a href="${sanitizeHTML(m.localPath)}" download="${sanitizeHTML(m.origName)}" class="btn btn-primary btn-mini" style="text-decoration:none;">İndir</a>
+                            <a href="${sanitizeHTML(m.localPath)}" download="${sanitizeHTML(m.origName)}" class="btn btn-primary btn-mini" style="text-decoration:none;">
+                                <span class="material-symbols-rounded" style="font-size:16px;">download</span>
+                                <span>İndir</span>
+                            </a>
                         </div>
-                    `).join('');
-                }
-            } else if (activeTab === 3) {
-                tabBody = `
-                    <div class="ukey-info-box" style="margin-bottom:14px;">
-                        <span>Dosya Gönderim Kuralları</span>
-                        <div style="font-size:0.84rem; color:var(--text-muted);">
-                            • Maksimum dosya boyutu: <strong>${hw.maxFileSizeMB || 20} MB</strong> • İzin verilen format: <strong>${sanitizeHTML(hw.allowedFileTypes)}</strong>
-                        </div>
-                    </div>
-                    <div style="margin-bottom:12px;">
-                        <label style="display:block; font-size:0.82rem; font-weight:700; margin-bottom:6px;">Ödev Açıklaması / Notunuz</label>
-                        <input type="text" id="ukey-hw-note-inp" placeholder="Ödev teslim açıklaması giriniz..." style="width:100%; padding:10px 14px; border-radius:10px; border:1px solid var(--border); background:var(--bg-surface-elevated); color:var(--text-main);">
-                    </div>
-                    <div style="margin-bottom:16px;">
-                        <label style="display:block; font-size:0.82rem; font-weight:700; margin-bottom:6px;">Yüklenecek Dosya Seçin</label>
-                        <input type="file" id="ukey-hw-file-inp" style="width:100%; padding:10px; border-radius:10px; border:1px dashed var(--primary-border); background:var(--bg-surface-elevated); color:var(--text-main);">
-                    </div>
-                    <div style="display:flex; gap:10px; flex-wrap:wrap;">
-                        <button class="btn btn-primary" onclick="saveUkeyHomeworkDraft('${courseCode}', ${hwIdx})">
-                            <span class="material-symbols-rounded">cloud_upload</span>
-                            <span>Ödev Dosyasını Kaydet</span>
-                        </button>
-                    </div>
-                `;
-            } else if (activeTab === 4) {
-                if (savedSub) {
-                    tabBody = `
-                        <div class="ukey-mat-item">
-                            <div>
-                                <div style="font-weight:800; color:var(--accent);">${sanitizeHTML(savedSub.fileName)}</div>
-                                <div style="font-size:0.8rem; color:var(--text-muted);">Açıklama: ${sanitizeHTML(savedSub.note || '-')} • Tarih: ${sanitizeHTML(savedSub.date)}</div>
-                            </div>
-                            <span class="ukey-mini-chip has-data">Kaydedildi</span>
-                        </div>
-                    `;
-                } else {
-                    tabBody = '<p style="color:var(--text-muted); padding:16px 0;">Henüz bu ödev için yüklenmiş bir dosya bulunmamaktadır.</p>';
+                    `).join('') + ownUkeyNoticeHtml;
                 }
             }
 
@@ -5478,35 +5471,14 @@
                     <p style="font-size:0.8rem; color:var(--text-muted); margin:0;">${sanitizeHTML(course.instructor)}</p>
                 </div>
                 <div class="ukey-subtabs">
-                    <button class="ukey-subtab-btn ${activeTab === 1 ? 'active' : ''}" onclick="openUkeyHomeworkModal('${courseCode}', ${hwIdx}, 1)">1. Ödev Bilgileri</button>
-                    <button class="ukey-subtab-btn ${activeTab === 2 ? 'active' : ''}" onclick="openUkeyHomeworkModal('${courseCode}', ${hwIdx}, 2)">2. Ödev Materyalleri</button>
-                    <button class="ukey-subtab-btn ${activeTab === 3 ? 'active' : ''}" onclick="openUkeyHomeworkModal('${courseCode}', ${hwIdx}, 3)">3. Dosya Yükle</button>
-                    <button class="ukey-subtab-btn ${activeTab === 4 ? 'active' : ''}" onclick="openUkeyHomeworkModal('${courseCode}', ${hwIdx}, 4)">4. Yüklenen Dosyalar</button>
+                    <button class="ukey-subtab-btn ${activeTab === 1 ? 'active' : ''}" onclick="openUkeyHomeworkModal('${courseCode}', ${hwIdx}, 1)">1. Ödev Detay Bilgileri</button>
+                    <button class="ukey-subtab-btn ${activeTab === 2 ? 'active' : ''}" onclick="openUkeyHomeworkModal('${courseCode}', ${hwIdx}, 2)">2. Yardımcı Dokümanlar (${mats.length})</button>
                 </div>
                 <div>${tabBody}</div>
             `;
 
             modal.style.display = 'flex';
             document.body.classList.add('modal-open');
-        }
-
-        function saveUkeyHomeworkDraft(courseCode, hwIdx) {
-            const fileInp = document.getElementById('ukey-hw-file-inp');
-            const noteInp = document.getElementById('ukey-hw-note-inp');
-            const file = fileInp && fileInp.files && fileInp.files[0];
-            if (!file) {
-                showToast('Lütfen önce yüklenecek ödev dosyasını seçiniz.');
-                return;
-            }
-            const savedKey = `ukey_hw_sub_${courseCode}_${hwIdx}`;
-            localStorage.setItem(savedKey, JSON.stringify({
-                fileName: file.name,
-                size: file.size,
-                note: noteInp ? noteInp.value : '',
-                date: new Date().toLocaleString('tr-TR')
-            }));
-            showToast('Ödev dosyanız başarıyla kaydedildi!');
-            openUkeyHomeworkModal(courseCode, hwIdx, 4);
         }
 
         function openUkeyExamDetailModal(courseCode, eIdx) {
@@ -5549,55 +5521,24 @@
             const fc = course && course.forumCategories ? course.forumCategories[fIdx] : null;
             if (!fc) return;
 
-            const storageKey = 'ukey_forum_' + fc.id;
-            const posts = JSON.parse(localStorage.getItem(storageKey) || '[]');
-
             content.innerHTML = `
                 <div style="margin-bottom:14px;">
                     <span class="ukey-course-code">${sanitizeHTML(course.code)} • Ders Forumu</span>
                     <h3 style="font-size:1.15rem; font-weight:800; margin:6px 0 2px 0;">${sanitizeHTML(fc.title)}</h3>
                     <p style="font-size:0.8rem; color:var(--text-muted); margin:0;">${sanitizeHTML(course.instructor)}</p>
                 </div>
-                <div style="margin-bottom:16px;">
-                    ${posts.length === 0 ? '<div class="ukey-info-box" style="text-align:center; padding:18px; color:var(--text-muted);">Bu forum kategorisinde henüz açılmış bir konu bulunmamaktadır.</div>' : posts.map(p => `
-                        <div class="ukey-mat-item">
-                            <div>
-                                <div style="font-weight:800; font-size:0.92rem;">${sanitizeHTML(p.subject)}</div>
-                                <div style="font-size:0.84rem; color:var(--text-main); margin:4px 0;">${sanitizeHTML(p.body)}</div>
-                                <div style="font-size:0.75rem; color:var(--text-muted);">${sanitizeHTML(p.date)}</div>
-                            </div>
-                        </div>
-                    `).join('')}
+                <div class="ukey-info-box" style="text-align:center; padding:20px; color:var(--text-muted); margin-bottom:14px;">
+                    ${sanitizeHTML(fc.lastActivity || 'Bu forum kategorisinde henüz açılmış bir konu bulunmamaktadır.')}
                 </div>
-                <div class="ukey-info-box">
-                    <span>Yeni Konu / Soru Ekle</span>
-                    <div style="display:flex; flex-direction:column; gap:10px; margin-top:8px;">
-                        <input type="text" id="ukey-forum-subj" placeholder="Konu başlığı..." style="width:100%; padding:10px 12px; border-radius:10px; border:1px solid var(--border); background:var(--bg-surface); color:var(--text-main);">
-                        <textarea id="ukey-forum-body" rows="3" placeholder="Mesajınızı veya sorunuzu yazınız..." style="width:100%; padding:10px 12px; border-radius:10px; border:1px solid var(--border); background:var(--bg-surface); color:var(--text-main);"></textarea>
-                        <button class="btn btn-primary btn-mini" style="align-self:flex-start;" onclick="submitUkeyForumPost('${courseCode}', ${fIdx}, '${storageKey}')">
-                            <span class="material-symbols-rounded" style="font-size:16px;">send</span>
-                            <span>Mesajı Gönder</span>
-                        </button>
+                <div class="ukey-info-box" style="border:1px solid var(--primary-border); background:var(--primary-soft);">
+                    <span>Forum Bilgilendirmesi</span>
+                    <div style="font-size:0.84rem; color:var(--text-muted); line-height:1.55; margin-top:4px;">
+                        Ders forumuna soru veya konu eklemek için kendi öğrenci bilgilerinizle resmi <a href="https://ukey.uludag.edu.tr/Home" target="_blank" rel="noopener noreferrer" style="color:var(--primary); font-weight:800;">UKEY sistemine (ukey.uludag.edu.tr)</a> giriş yapabilirsiniz.
                     </div>
                 </div>
             `;
             modal.style.display = 'flex';
             document.body.classList.add('modal-open');
-        }
-
-        function submitUkeyForumPost(courseCode, fIdx, storageKey) {
-            const subj = (document.getElementById('ukey-forum-subj')?.value || '').trim();
-            const body = (document.getElementById('ukey-forum-body')?.value || '').trim();
-            if (!subj || !body) {
-                showToast('Lütfen konu başlığı ve mesajınızı giriniz.');
-                return;
-            }
-            const posts = JSON.parse(localStorage.getItem(storageKey) || '[]');
-            posts.push({ subject: subj, body: body, date: new Date().toLocaleString('tr-TR') });
-            localStorage.setItem(storageKey, JSON.stringify(posts));
-            showToast('Mesajınız ders forumuna eklendi!');
-            openUkeyForumModal(courseCode, fIdx);
-            renderUkeyPortal();
         }
 
         function closeUkeyHwModal() {
@@ -5671,20 +5612,15 @@
 
         /* 6. UKEY AJANDA */
         function renderUkeyAgenda(container) {
-            const customNotes = JSON.parse(localStorage.getItem('ukey_custom_agenda') || '[]');
-            const events = (ukeyPortalData.agendaEvents || []).concat(customNotes);
+            const events = ukeyPortalData.agendaEvents || [];
 
             container.innerHTML = `
                 <div class="card">
                     <div class="card-header" style="flex-wrap:wrap; gap:12px;">
                         <h3 class="card-title">
                             <span class="icon-chip warn"><span class="material-symbols-rounded">event_note</span></span>
-                            <span>UKEY Akademik Ajanda ve Görev Takvimi</span>
+                            <span>UKEY Akademik Ajanda ve Görev Takvimi (${events.length})</span>
                         </h3>
-                        <button class="btn btn-tonal btn-mini" onclick="addUkeyCustomAgendaPrompt()">
-                            <span class="material-symbols-rounded" style="font-size:16px;">add</span>
-                            <span>Ajandaya Not Ekle</span>
-                        </button>
                     </div>
                     <div style="margin-top:14px;">
                         ${events.map(ev => `
@@ -5703,25 +5639,6 @@
                     </div>
                 </div>
             `;
-        }
-
-        function addUkeyCustomAgendaPrompt() {
-            const title = prompt('Ajandaya eklenecek görev veya hatırlatma başlığı:');
-            if (!title) return;
-            const dateStr = prompt('Tarih / Saat aralığı (Örn: 15 Ekim 2026 14:00):', new Date().toLocaleDateString('tr-TR'));
-            const list = JSON.parse(localStorage.getItem('ukey_custom_agenda') || '[]');
-            list.push({
-                id: 'custom-' + Date.now(),
-                title: title.trim(),
-                courseCode: 'NOT',
-                category: 'Ajanda Notu',
-                displayRange: dateStr || 'Belirtilmedi',
-                color: '#10b981',
-                status: 'Kayıtlı'
-            });
-            localStorage.setItem('ukey_custom_agenda', JSON.stringify(list));
-            renderUkeyPortal();
-            showToast('Görev UKEY Ajandasına eklendi!');
         }
 
         /* 7. ERASMUS BAŞVURULAR (10 ALT SEÇENEK & SITE İÇİ DETAY MODALİ) */

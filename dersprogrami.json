@@ -6,7 +6,7 @@
     "end": "11:15",
     "course": "ELNZ101 (T)",
     "room": "D-8",
-    "instructor": "Elektronik Teknolojisi"
+    "instructor": "Öğr. Gör. BASRİ KUL"
   },
   {
     "id": 102,
@@ -15,7 +15,7 @@
     "end": "12:00",
     "course": "ELNZ101 (T)",
     "room": "D-8",
-    "instructor": "Elektronik Teknolojisi"
+    "instructor": "Öğr. Gör. BASRİ KUL"
   },
   {
     "id": 201,
@@ -24,7 +24,7 @@
     "end": "09:35",
     "course": "22YAD105 - Yabancı Dil I (T)",
     "room": "UKEY 23",
-    "instructor": "UKEY (Online)"
+    "instructor": "Öğr. Gör. SİNEM ÜRKMEZ"
   },
   {
     "id": 202,
@@ -33,7 +33,7 @@
     "end": "10:25",
     "course": "22YAD105 - Yabancı Dil I (T)",
     "room": "UKEY 23",
-    "instructor": "UKEY (Online)"
+    "instructor": "Öğr. Gör. SİNEM ÜRKMEZ"
   },
   {
     "id": 203,
@@ -42,7 +42,7 @@
     "end": "11:15",
     "course": "22YAD105 - Yabancı Dil I (T)",
     "room": "UKEY 23",
-    "instructor": "UKEY (Online)"
+    "instructor": "Öğr. Gör. SİNEM ÜRKMEZ"
   },
   {
     "id": 204,
@@ -51,7 +51,7 @@
     "end": "12:00",
     "course": "22YAD105 - Yabancı Dil I (T)",
     "room": "UKEY 23",
-    "instructor": "UKEY (Online)"
+    "instructor": "Öğr. Gör. SİNEM ÜRKMEZ"
   },
   {
     "id": 205,
@@ -60,7 +60,7 @@
     "end": "13:45",
     "course": "ELNZ107 (T)",
     "room": "D-15",
-    "instructor": "Elektronik Teknolojisi"
+    "instructor": "Öğr. Gör. ÖZCAN TEMEL"
   },
   {
     "id": 206,
@@ -69,7 +69,7 @@
     "end": "14:35",
     "course": "ELNZ107 (T)",
     "room": "D-15",
-    "instructor": "Elektronik Teknolojisi"
+    "instructor": "Öğr. Gör. ÖZCAN TEMEL"
   },
   {
     "id": 207,
@@ -78,7 +78,7 @@
     "end": "15:25",
     "course": "ELNZ107 (T)",
     "room": "D-15",
-    "instructor": "Elektronik Teknolojisi"
+    "instructor": "Öğr. Gör. ÖZCAN TEMEL"
   },
   {
     "id": 208,
@@ -87,7 +87,7 @@
     "end": "16:15",
     "course": "ELNZ107 (L) - Laboratuvar",
     "room": "ELEKTRONİK LAB.",
-    "instructor": "Elektronik Teknolojisi"
+    "instructor": "Öğr. Gör. ÖZCAN TEMEL"
   },
   {
     "id": 209,
@@ -96,7 +96,7 @@
     "end": "17:00",
     "course": "ELNZ107 (L) - Laboratuvar",
     "room": "ELEKTRONİK LAB.",
-    "instructor": "Elektronik Teknolojisi"
+    "instructor": "Öğr. Gör. ÖZCAN TEMEL"
   },
   {
     "id": 301,
@@ -105,7 +105,7 @@
     "end": "09:35",
     "course": "OTPZ101 (T)",
     "room": "D-8",
-    "instructor": "Ortak Program"
+    "instructor": "Öğr. Gör. HÜLYA BOZYOKUŞ"
   },
   {
     "id": 302,
@@ -114,7 +114,7 @@
     "end": "10:25",
     "course": "OTPZ101 (T)",
     "room": "D-8",
-    "instructor": "Ortak Program"
+    "instructor": "Öğr. Gör. HÜLYA BOZYOKUŞ"
   },
   {
     "id": 303,
@@ -123,7 +123,7 @@
     "end": "11:15",
     "course": "OTPZ101 (T)",
     "room": "D-8",
-    "instructor": "Ortak Program"
+    "instructor": "Öğr. Gör. HÜLYA BOZYOKUŞ"
   },
   {
     "id": 304,
@@ -132,7 +132,7 @@
     "end": "12:00",
     "course": "22HRTZ115 (T)",
     "room": "D-8",
-    "instructor": "Ortak Program"
+    "instructor": "Öğr. Gör. ÖZCAN TEMEL"
   },
   {
     "id": 305,
@@ -141,7 +141,7 @@
     "end": "13:45",
     "course": "ELNZ103 (T)",
     "room": "D-6",
-    "instructor": "Elektronik Teknolojisi"
+    "instructor": "Öğr. Gör. ERCAN YAVUZ"
   },
   {
     "id": 306,
@@ -150,7 +150,7 @@
     "end": "14:35",
     "course": "ELNZ103 (T)",
     "room": "D-6",
-    "instructor": "Elektronik Teknolojisi"
+    "instructor": "Öğr. Gör. ERCAN YAVUZ"
   },
   {
     "id": 307,
@@ -159,7 +159,7 @@
     "end": "15:25",
     "course": "ELNZ103 (L) - Laboratuvar",
     "room": "ELEKTRONİK LAB.",
-    "instructor": "Elektronik Teknolojisi"
+    "instructor": "Öğr. Gör. ERCAN YAVUZ"
   },
   {
     "id": 308,
@@ -168,7 +168,7 @@
     "end": "16:15",
     "course": "ELNZ103 (L) - Laboratuvar",
     "room": "ELEKTRONİK LAB.",
-    "instructor": "Elektronik Teknolojisi"
+    "instructor": "Öğr. Gör. ERCAN YAVUZ"
   },
   {
     "id": 401,
@@ -177,7 +177,7 @@
     "end": "12:50",
     "course": "ELNZ105 (T)",
     "room": "D-8",
-    "instructor": "Elektronik Teknolojisi"
+    "instructor": "Öğr. Gör. Dr. ÇAĞLAR KILIKÇIER"
   },
   {
     "id": 402,
@@ -186,7 +186,7 @@
     "end": "13:45",
     "course": "ELNZ105 (T)",
     "room": "D-8",
-    "instructor": "Elektronik Teknolojisi"
+    "instructor": "Öğr. Gör. Dr. ÇAĞLAR KILIKÇIER"
   },
   {
     "id": 403,
@@ -195,7 +195,7 @@
     "end": "14:35",
     "course": "ELNZ105 (L) - Laboratuvar",
     "room": "ELEKTRONİK LAB.",
-    "instructor": "Elektronik Teknolojisi"
+    "instructor": "Öğr. Gör. Dr. ÇAĞLAR KILIKÇIER"
   },
   {
     "id": 404,
@@ -204,7 +204,7 @@
     "end": "15:25",
     "course": "ELNZ105 (L) - Laboratuvar",
     "room": "ELEKTRONİK LAB.",
-    "instructor": "Elektronik Teknolojisi"
+    "instructor": "Öğr. Gör. Dr. ÇAĞLAR KILIKÇIER"
   },
   {
     "id": 501,
@@ -213,7 +213,7 @@
     "end": "09:35",
     "course": "OTPZ010 (T)",
     "room": "GENEL BİL. LAB.",
-    "instructor": "Ortak Program"
+    "instructor": "Öğr. Gör. MURAT ÇALIŞ"
   },
   {
     "id": 502,
@@ -222,7 +222,7 @@
     "end": "10:25",
     "course": "OTPZ010 (T)",
     "room": "GENEL BİL. LAB.",
-    "instructor": "Ortak Program"
+    "instructor": "Öğr. Gör. MURAT ÇALIŞ"
   },
   {
     "id": 503,
@@ -231,7 +231,7 @@
     "end": "11:15",
     "course": "OTPZ010 (L) - Laboratuvar",
     "room": "GENEL BİL. LAB.",
-    "instructor": "Ortak Program"
+    "instructor": "Öğr. Gör. MURAT ÇALIŞ"
   },
   {
     "id": 504,
@@ -240,7 +240,7 @@
     "end": "12:00",
     "course": "OTPZ010 (L) - Laboratuvar",
     "room": "GENEL BİL. LAB.",
-    "instructor": "Ortak Program"
+    "instructor": "Öğr. Gör. MURAT ÇALIŞ"
   },
   {
     "id": 505,
@@ -249,7 +249,7 @@
     "end": "14:35",
     "course": "OTPZ001 (T)",
     "room": "D-8",
-    "instructor": "Ortak Program"
+    "instructor": "Öğr. Gör. MUSTAFA PALA"
   },
   {
     "id": 506,
@@ -258,6 +258,6 @@
     "end": "15:25",
     "course": "OTPZ001 (T)",
     "room": "D-8",
-    "instructor": "Ortak Program"
+    "instructor": "Öğr. Gör. MUSTAFA PALA"
   }
 ]
