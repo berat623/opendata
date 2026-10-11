@@ -2280,8 +2280,7 @@
         .stat-card,
         .ukey-course-card,
         .lesson-card-simple,
-        .cal-simple-item,
-        .mgm-weather-card {
+        .cal-simple-item {
             contain: layout style;
         }
 
@@ -2373,137 +2372,6 @@
         .ukey-simple-popup-btn:hover {
             transform: translateY(-1px);
             box-shadow: 0 10px 26px -4px rgba(37, 99, 235, 0.6);
-        }
-
-        /* =========================================================
-           MGM BURSA / NİLÜFER CANLI HAVA DURUMU KARTI (BASINÇ HARİÇ)
-           ========================================================= */
-        .mgm-weather-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 16px 22px;
-            margin-bottom: 22px;
-            box-shadow: var(--shadow-sm), var(--glass-reflection);
-        }
-        .mgm-weather-head {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-bottom: 12px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--border);
-        }
-        .mgm-weather-head-left {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-        .mgm-head-title {
-            font-size: 0.8rem;
-            font-weight: 800;
-            letter-spacing: 0.3px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-        }
-        .mgm-loc-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            padding: 3px 9px;
-            border-radius: 999px;
-            font-size: 0.73rem;
-            font-weight: 800;
-            background: rgba(14, 165, 233, 0.14);
-            color: #0ea5e9;
-            border: 1px solid rgba(14, 165, 233, 0.3);
-        }
-        .mgm-weather-strip {
-            display: grid;
-            grid-template-columns: 1.35fr 1fr 1fr 1.15fr;
-            align-items: center;
-            gap: 16px;
-        }
-        .mgm-main-temp-wrap {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            min-width: 0;
-        }
-        .mgm-temp-val {
-            font-size: clamp(2.1rem, 1.6rem + 1.5vw, 2.85rem);
-            font-weight: 800;
-            color: #0ea5e9;
-            line-height: 1;
-            letter-spacing: -1px;
-            white-space: nowrap;
-        }
-        .mgm-temp-unit {
-            font-size: 1.15rem;
-            font-weight: 700;
-            vertical-align: super;
-            margin-left: 2px;
-        }
-        .mgm-hadise-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            min-width: 76px;
-        }
-        .mgm-hadise-icon {
-            width: 54px;
-            height: 54px;
-            object-fit: contain;
-            display: block;
-            margin: -4px 0;
-        }
-        .mgm-hadise-label {
-            font-size: 0.78rem;
-            font-weight: 800;
-            color: var(--text-main);
-            line-height: 1.2;
-            margin-top: 2px;
-        }
-        .mgm-metric-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding-left: 14px;
-            border-left: 1px solid var(--border);
-            min-width: 0;
-        }
-        .mgm-metric-icon-wrap {
-            width: 44px;
-            height: 44px;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-        .mgm-metric-lbl {
-            font-size: 0.78rem;
-            color: var(--text-muted);
-            font-weight: 700;
-            line-height: 1.2;
-        }
-        .mgm-metric-val {
-            font-size: 1.02rem;
-            font-weight: 800;
-            color: var(--text-main);
-            line-height: 1.25;
-            margin-top: 2px;
-        }
-        .mgm-metric-sub {
-            font-size: 0.71rem;
-            font-weight: 700;
-            color: var(--accent);
-            margin-top: 1px;
         }
 
         /* =========================================================
@@ -2609,40 +2477,7 @@
             color: var(--text-muted);
         }
 
-        @media (max-width: 900px) {
-            .mgm-weather-strip {
-                grid-template-columns: 1fr 1fr;
-                gap: 14px;
-            }
-            .mgm-metric-item {
-                padding-left: 0;
-                border-left: none;
-                padding-top: 10px;
-                border-top: 1px solid var(--border);
-            }
-            .mgm-weather-strip > .mgm-metric-item:nth-child(2) {
-                padding-top: 0;
-                border-top: none;
-            }
-        }
         @media (max-width: 640px) {
-            .mgm-weather-card {
-                padding: 14px 15px;
-            }
-            .mgm-weather-strip {
-                grid-template-columns: 1fr 1fr;
-                gap: 12px;
-            }
-            .mgm-main-temp-wrap {
-                grid-column: 1 / -1;
-                justify-content: space-between;
-                padding-bottom: 10px;
-                border-bottom: 1px solid var(--border);
-            }
-            .mgm-metric-item {
-                padding-top: 0 !important;
-                border-top: none !important;
-            }
             .cal-simple-item {
                 flex-direction: column;
                 align-items: stretch;
@@ -3022,92 +2857,6 @@
                     <div class="stat-card" onclick="switchView('ukey')" style="border-color:rgba(16,185,129,0.35);">
                         <span class="icon-chip accent"><span class="material-symbols-rounded">school</span></span>
                         <div><div class="stat-num" id="stat-ukey">9</div><div class="stat-name">UKEY Derslerim</div></div>
-                    </div>
-                </div>
-
-                <!-- MGM BURSA / NİLÜFER ANLIK HAVA DURUMU KARTI (BASINÇ HARİÇ, METEOCONS HAREKETLİ İKONLAR) -->
-                <div class="mgm-weather-card" id="mgm-weather-card">
-                    <div class="mgm-weather-head">
-                        <div class="mgm-weather-loc">
-                            <div class="mgm-weather-loc-badge">
-                                <span class="material-symbols-rounded" style="font-size:20px;">location_on</span>
-                            </div>
-                            <div>
-                                <div class="mgm-weather-loc-title">
-                                    <span>Bursa / Nilüfer — Anlık Hava Durumu</span>
-                                    <span class="mgm-live-dot" title="MGM Canlı Veri"></span>
-                                </div>
-                                <div class="mgm-weather-loc-sub" id="mgm-veri-zamani">MGM (Meteoroloji Genel Müdürlüğü) • Kampüs Bölgesi</div>
-                            </div>
-                        </div>
-                        <div class="mgm-weather-actions">
-                            <a href="https://www.mgm.gov.tr/tahmin/il-ve-ilceler.aspx?il=Bursa&amp;ilce=Nil%C3%BCfer" target="_blank" rel="noopener noreferrer" class="mgm-source-link" title="MGM Resmi Sayfası">
-                                <span>MGM Nilüfer</span>
-                                <span class="material-symbols-rounded" style="font-size:14px;">open_in_new</span>
-                            </a>
-                            <button type="button" class="mgm-refresh-btn" id="btn-mgm-refresh" onclick="refreshMgmWeather(false)" title="Hava Durumunu Yenile">
-                                <span class="material-symbols-rounded" style="font-size:15px;">refresh</span>
-                                <span>Yenile</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="mgm-weather-strip" id="mgm-weather-strip">
-                        <!-- 1. Sıcaklık -->
-                        <div class="mgm-metric-box">
-                            <div class="mgm-temp-main">
-                                <span class="mgm-temp-val" id="mgm-val-temp">28,9</span>
-                                <span class="mgm-temp-unit">°C</span>
-                            </div>
-                            <div class="mgm-metric-lbl">Sıcaklık</div>
-                        </div>
-
-                        <!-- 2. Hadise (Meteocons Hareketli İkon) -->
-                        <div class="mgm-metric-box">
-                            <div class="mgm-hadise-wrap">
-                                <img id="mgm-hadise-icon" class="mgm-hadise-icon" src="https://cdn.jsdelivr.net/gh/basmilius/weather-icons@dev/production/fill/svg/clear-day.svg" alt="Hadise" width="56" height="56" loading="eager">
-                                <div class="mgm-hadise-text" id="mgm-val-hadise">Açık</div>
-                            </div>
-                            <div class="mgm-metric-lbl">Hadise</div>
-                        </div>
-
-                        <!-- 3. Yağış -->
-                        <div class="mgm-metric-box">
-                            <div class="mgm-rain-wrap">
-                                <img class="mgm-rain-icon" src="https://cdn.jsdelivr.net/gh/basmilius/weather-icons@dev/production/fill/svg/raindrops.svg" alt="Yağış" width="44" height="44" loading="lazy">
-                                <div class="mgm-rain-val"><span id="mgm-val-rain">0</span> <small>mm</small></div>
-                            </div>
-                            <div class="mgm-metric-lbl">Yağış</div>
-                        </div>
-
-                        <!-- 4. Nem (%) -->
-                        <div class="mgm-metric-box">
-                            <div class="mgm-hum-ring-wrap" id="mgm-hum-ring">
-                                <svg viewBox="0 0 56 56" width="54" height="54">
-                                    <circle cx="28" cy="28" r="22" fill="none" stroke="rgba(148,163,184,0.2)" stroke-width="5"></circle>
-                                    <circle id="mgm-hum-arc" cx="28" cy="28" r="22" fill="none" stroke="#10b981" stroke-width="5" stroke-linecap="round" stroke-dasharray="138.23" stroke-dashoffset="85.7" transform="rotate(-90 28 28)"></circle>
-                                </svg>
-                                <div class="mgm-hum-ring-val" id="mgm-val-hum">%38</div>
-                            </div>
-                            <div class="mgm-metric-lbl">Nem (%)</div>
-                        </div>
-
-                        <!-- 5. Rüzgar -->
-                        <div class="mgm-metric-box">
-                            <div class="mgm-wind-wrap">
-                                <div class="mgm-wind-compass" title="Rüzgar Yönü">
-                                    <svg id="mgm-wind-svg" viewBox="0 0 40 40" width="42" height="42" style="transform: rotate(294deg); transition: transform 0.4s ease;">
-                                        <path fill="rgba(148,163,184,0.28)" d="M20,0.35C9.15,0.35,0.35,9.15,0.35,20c0,10.85,8.8,19.65,19.65,19.65c10.85,0,19.65-8.801,19.65-19.65C39.65,9.15,30.85,0.35,20,0.35z M20,36.5c-9.11,0-16.5-7.391-16.5-16.5c0-9.11,7.39-16.5,16.5-16.5c9.109,0,16.5,7.39,16.5,16.5C36.5,29.109,29.109,36.5,20,36.5z"></path>
-                                        <path fill="#10b981" d="M25.43,19.69l-5.41,9.5l-5.45-9.569l3.81,1.09V7.09c0.59-0.2,1.64-0.38,3.24-0.03v13.67L25.43,19.69z"></path>
-                                    </svg>
-                                </div>
-                                <div class="mgm-wind-info">
-                                    <div class="mgm-wind-dir" id="mgm-val-wind-dir">Kuzeybatıdan</div>
-                                    <div class="mgm-wind-speed"><span id="mgm-val-wind-speed">5</span> <small>km/sa</small></div>
-                                </div>
-                            </div>
-                            <div class="mgm-metric-lbl">Rüzgar</div>
-                        </div>
                     </div>
                 </div>
 
@@ -3699,241 +3448,17 @@
             return null;
         }
 
-        /* ============================================================================
-           MGM BURSA / NİLÜFER CANLI HAVA DURUMU SİSTEMİ (METEOCONS HAREKETLİ İKONLAR)
-           ============================================================================ */
-        const METEOCONS_BASE = 'https://cdn.jsdelivr.net/gh/basmilius/weather-icons@dev/production/fill/svg/';
-
-        // Tam Genişletilmiş MGM Hadise Sözlüğü (Gece/Gündüz ve Tüm MGM Kodları)
-        const MGM_HADISE_DICT = {
-            // Açık & Bulutluluk
-            'A':    { label: 'Açık', dayIcon: 'clear-day.svg', nightIcon: 'clear-night.svg' },
-            'A0':   { label: 'Açık', dayIcon: 'clear-night.svg', nightIcon: 'clear-night.svg' },
-            'ACIK': { label: 'Açık', dayIcon: 'clear-day.svg', nightIcon: 'clear-night.svg' },
-            'AB':   { label: 'Az Bulutlu', dayIcon: 'partly-cloudy-day.svg', nightIcon: 'partly-cloudy-night.svg' },
-            'AB0':  { label: 'Az Bulutlu', dayIcon: 'partly-cloudy-night.svg', nightIcon: 'partly-cloudy-night.svg' },
-            'PB':   { label: 'Parçalı Bulutlu', dayIcon: 'partly-cloudy-day.svg', nightIcon: 'partly-cloudy-night.svg' },
-            'PB0':  { label: 'Parçalı Bulutlu', dayIcon: 'partly-cloudy-night.svg', nightIcon: 'partly-cloudy-night.svg' },
-            'CB':   { label: 'Çok Bulutlu', dayIcon: 'overcast-day.svg', nightIcon: 'overcast-night.svg' },
-            'CB0':  { label: 'Çok Bulutlu', dayIcon: 'overcast-night.svg', nightIcon: 'overcast-night.svg' },
-            'B':    { label: 'Bulutlu', dayIcon: 'cloudy.svg', nightIcon: 'cloudy.svg' },
-            'K':    { label: 'Kapalı', dayIcon: 'overcast.svg', nightIcon: 'overcast.svg' },
-
-            // Yağışlı / Yağmurlu (Y = Şemsiye İkonu)
-            'Y':    { label: 'Yağışlı', dayIcon: 'umbrella.svg', nightIcon: 'umbrella.svg' },
-            'Y0':   { label: 'Yağışlı', dayIcon: 'umbrella.svg', nightIcon: 'umbrella.svg' },
-            'HHY':  { label: 'Yağışlı', dayIcon: 'umbrella.svg', nightIcon: 'umbrella.svg' },
-            'HY':   { label: 'Hafif Yağmurlu', dayIcon: 'partly-cloudy-day-drizzle.svg', nightIcon: 'partly-cloudy-night-drizzle.svg' },
-            'HY0':  { label: 'Hafif Yağmurlu', dayIcon: 'partly-cloudy-night-drizzle.svg', nightIcon: 'partly-cloudy-night-drizzle.svg' },
-            'KY':   { label: 'Kuvvetli Yağmurlu', dayIcon: 'extreme-rain.svg', nightIcon: 'extreme-rain.svg' },
-            'KY0':  { label: 'Kuvvetli Yağmurlu', dayIcon: 'extreme-rain.svg', nightIcon: 'extreme-rain.svg' },
-            'CIS':  { label: 'Çisenti', dayIcon: 'drizzle.svg', nightIcon: 'drizzle.svg' },
-
-            // Sağanak Yağışlar
-            'SY':   { label: 'Sağanak Yağışlı', dayIcon: 'rain.svg', nightIcon: 'rain.svg' },
-            'SY0':  { label: 'Sağanak Yağışlı', dayIcon: 'rain.svg', nightIcon: 'rain.svg' },
-            'HSY':  { label: 'Hafif Sağanak Yağışlı', dayIcon: 'partly-cloudy-day-rain.svg', nightIcon: 'partly-cloudy-night-rain.svg' },
-            'HSY0': { label: 'Hafif Sağanak Yağışlı', dayIcon: 'partly-cloudy-night-rain.svg', nightIcon: 'partly-cloudy-night-rain.svg' },
-            'KSY':  { label: 'Kuvvetli Sağanak Yağışlı', dayIcon: 'extreme-rain.svg', nightIcon: 'extreme-rain.svg' },
-            'KSY0': { label: 'Kuvvetli Sağanak Yağışlı', dayIcon: 'extreme-rain.svg', nightIcon: 'extreme-rain.svg' },
-            'MSY':  { label: 'Mevzi Sağanak Yağışlı', dayIcon: 'partly-cloudy-day-rain.svg', nightIcon: 'partly-cloudy-night-rain.svg' },
-            'DY':   { label: 'Şiddetli Sağanak Yağışlı', dayIcon: 'extreme-rain.svg', nightIcon: 'extreme-rain.svg' },
-
-            // Gökgürültülü Sağanaklar
-            'GSY':  { label: 'Gökgürültülü Sağanak Yağışlı', dayIcon: 'thunderstorms-day-rain.svg', nightIcon: 'thunderstorms-night-rain.svg' },
-            'GSY0': { label: 'Gökgürültülü Sağanak Yağışlı', dayIcon: 'thunderstorms-night-rain.svg', nightIcon: 'thunderstorms-night-rain.svg' },
-            'KGY':  { label: 'Kuvvetli Gökgürültülü Sağanak', dayIcon: 'thunderstorms-extreme-rain.svg', nightIcon: 'thunderstorms-extreme-rain.svg' },
-            'KGSY': { label: 'Kuvvetli Gökgürültülü Sağanak', dayIcon: 'thunderstorms-extreme-rain.svg', nightIcon: 'thunderstorms-extreme-rain.svg' },
-            'TS':   { label: 'Gökgürültülü Fırtına', dayIcon: 'thunderstorms.svg', nightIcon: 'thunderstorms.svg' },
-
-            // Kar & Karla Karışık Yağmur & Dolu
-            'KKY':  { label: 'Karla Karışık Yağmurlu', dayIcon: 'sleet.svg', nightIcon: 'sleet.svg' },
-            'KKY0': { label: 'Karla Karışık Yağmurlu', dayIcon: 'sleet.svg', nightIcon: 'sleet.svg' },
-            'HKY':  { label: 'Hafif Karla Karışık Yağmurlu', dayIcon: 'sleet.svg', nightIcon: 'sleet.svg' },
-            'KR':   { label: 'Kar Yağışlı', dayIcon: 'snow.svg', nightIcon: 'snow.svg' },
-            'KAR':  { label: 'Kar Yağışlı', dayIcon: 'snow.svg', nightIcon: 'snow.svg' },
-            'KRY':  { label: 'Kar Yağışlı', dayIcon: 'snow.svg', nightIcon: 'snow.svg' },
-            'HKR':  { label: 'Hafif Kar Yağışlı', dayIcon: 'partly-cloudy-day-snow.svg', nightIcon: 'partly-cloudy-night-snow.svg' },
-            'HKR0': { label: 'Hafif Kar Yağışlı', dayIcon: 'partly-cloudy-night-snow.svg', nightIcon: 'partly-cloudy-night-snow.svg' },
-            'YKR':  { label: 'Yoğun Kar Yağışlı', dayIcon: 'extreme-snow.svg', nightIcon: 'extreme-snow.svg' },
-            'KKR':  { label: 'Yoğun Kar Yağışlı', dayIcon: 'extreme-snow.svg', nightIcon: 'extreme-snow.svg' },
-            'GKR':  { label: 'Gökgürültülü Kar Yağışlı', dayIcon: 'thunderstorms-snow.svg', nightIcon: 'thunderstorms-snow.svg' },
-            'GKRY': { label: 'Gökgürültülü Kar Yağışlı', dayIcon: 'thunderstorms-snow.svg', nightIcon: 'thunderstorms-snow.svg' },
-            'KYK':  { label: 'Tipi / Kar Fırtınası', dayIcon: 'extreme-snow.svg', nightIcon: 'extreme-snow.svg' },
-            'DL':   { label: 'Dolu Yağışlı', dayIcon: 'hail.svg', nightIcon: 'hail.svg' },
-            'DOLU': { label: 'Dolu Yağışlı', dayIcon: 'hail.svg', nightIcon: 'hail.svg' },
-
-            // Sis, Pus, Duman, Toz
-            'SIS':  { label: 'Sisli', dayIcon: 'fog-day.svg', nightIcon: 'fog-night.svg' },
-            'SIS0': { label: 'Sisli', dayIcon: 'fog-night.svg', nightIcon: 'fog-night.svg' },
-            'PUS':  { label: 'Puslu', dayIcon: 'mist.svg', nightIcon: 'mist.svg' },
-            'PUS0': { label: 'Puslu', dayIcon: 'mist.svg', nightIcon: 'mist.svg' },
-            'DMN':  { label: 'Dumanlı', dayIcon: 'smoke.svg', nightIcon: 'smoke.svg' },
-            'TOZ':  { label: 'Toz / Kum Fırtınası', dayIcon: 'dust-wind.svg', nightIcon: 'dust-wind.svg' },
-            'KF':   { label: 'Toz veya Kum Fırtınası', dayIcon: 'dust-wind.svg', nightIcon: 'dust-wind.svg' },
-            'KTF':  { label: 'Kuvvetli Toz Fırtınası', dayIcon: 'dust-wind.svg', nightIcon: 'dust-wind.svg' },
-
-            // Rüzgar & Sıcaklık Ekstremleri
-            'R':    { label: 'Rüzgarlı', dayIcon: 'wind.svg', nightIcon: 'wind.svg' },
-            'KRZ':  { label: 'Kuvvetli Rüzgar', dayIcon: 'wind-beaufort-7.svg', nightIcon: 'wind-beaufort-7.svg' },
-            'GKRZ': { label: 'Güneyli Kuvvetli Rüzgar (Lodos)', dayIcon: 'wind-beaufort-7.svg', nightIcon: 'wind-beaufort-7.svg' },
-            'KKRZ': { label: 'Kuzeyli Kuvvetli Rüzgar (Poyraz)', dayIcon: 'wind-beaufort-7.svg', nightIcon: 'wind-beaufort-7.svg' },
-            'F':    { label: 'Fırtınalı', dayIcon: 'wind-beaufort-8.svg', nightIcon: 'wind-beaufort-8.svg' },
-            'FIR':  { label: 'Kuvvetli Fırtına', dayIcon: 'wind-beaufort-8.svg', nightIcon: 'wind-beaufort-8.svg' },
-            'SCK':  { label: 'Sıcak', dayIcon: 'thermometer-warmer.svg', nightIcon: 'thermometer-warmer.svg' },
-            'SGK':  { label: 'Soğuk', dayIcon: 'thermometer-colder.svg', nightIcon: 'thermometer-colder.svg' },
-            'DON':  { label: 'Don / Buzlanma', dayIcon: 'snowflake.svg', nightIcon: 'snowflake.svg' },
-            'BZ':   { label: 'Buzlanma', dayIcon: 'snowflake.svg', nightIcon: 'snowflake.svg' }
-        };
-
-        function getMgmHadiseInfo(rawCode, veriZamaniStr) {
-            const code = String(rawCode || 'A').trim().toUpperCase();
-            let isNight = code.endsWith('0');
-            if (!isNight) {
-                let hr = new Date().getHours();
-                if (veriZamaniStr) {
-                    const d = new Date(veriZamaniStr);
-                    if (!isNaN(d.getTime())) hr = d.getHours();
-                }
-                isNight = (hr >= 20 || hr < 6);
-            }
-
-            const entry = MGM_HADISE_DICT[code] || MGM_HADISE_DICT[code.replace(/0$/, '')];
-            if (entry) {
-                return {
-                    label: entry.label,
-                    iconUrl: METEOCONS_BASE + (isNight ? entry.nightIcon : entry.dayIcon)
-                };
-            }
-
-            // Esnek yedek eşleştirme
-            if (code.includes('GSY')) return { label: 'Gökgürültülü Sağanak Yağışlı', iconUrl: METEOCONS_BASE + 'thunderstorms-day-rain.svg' };
-            if (code.includes('KKY')) return { label: 'Karla Karışık Yağmurlu', iconUrl: METEOCONS_BASE + 'sleet.svg' };
-            if (code.includes('KR'))  return { label: 'Kar Yağışlı', iconUrl: METEOCONS_BASE + 'snow.svg' };
-            if (code.includes('SY'))  return { label: 'Sağanak Yağışlı', iconUrl: METEOCONS_BASE + 'rain.svg' };
-            if (code.includes('Y'))   return { label: 'Yağışlı', iconUrl: METEOCONS_BASE + 'umbrella.svg' };
-            if (code.includes('CB'))  return { label: 'Çok Bulutlu', iconUrl: METEOCONS_BASE + (isNight ? 'overcast-night.svg' : 'overcast-day.svg') };
-            if (code.includes('PB'))  return { label: 'Parçalı Bulutlu', iconUrl: METEOCONS_BASE + (isNight ? 'partly-cloudy-night.svg' : 'partly-cloudy-day.svg') };
-            if (code.includes('AB'))  return { label: 'Az Bulutlu', iconUrl: METEOCONS_BASE + (isNight ? 'partly-cloudy-night.svg' : 'partly-cloudy-day.svg') };
-            if (code.includes('SIS')) return { label: 'Sisli', iconUrl: METEOCONS_BASE + (isNight ? 'fog-night.svg' : 'fog-day.svg') };
-            if (code.includes('PUS')) return { label: 'Puslu', iconUrl: METEOCONS_BASE + 'mist.svg' };
-
-            return {
-                label: 'Açık',
-                iconUrl: METEOCONS_BASE + (isNight ? 'clear-night.svg' : 'clear-day.svg')
-            };
-        }
-
-        // MGM Resmi Rüzgar Yönü Dönüştürücüsü (convertruzgarYonu ile birebir uyumlu)
-        function getMgmWindInfo(deg) {
-            const d = ((Number(deg) || 0) % 360 + 360) % 360;
-            if (d >= 22.5 && d < 67.5)   return { name: 'Kuzeydoğudan', short: 'KD', deg: d };
-            if (d >= 67.5 && d < 112.5)  return { name: 'Doğudan', short: 'D', deg: d };
-            if (d >= 112.5 && d < 157.5) return { name: 'Güneydoğudan', short: 'GD', deg: d };
-            if (d >= 157.5 && d < 202.5) return { name: 'Güneyden', short: 'G', deg: d };
-            if (d >= 202.5 && d < 247.5) return { name: 'Güneybatıdan', short: 'GB', deg: d };
-            if (d >= 247.5 && d < 292.5) return { name: 'Batıdan', short: 'B', deg: d };
-            if (d >= 292.5 && d < 337.5) return { name: 'Kuzeybatıdan', short: 'KB', deg: d };
-            return { name: 'Kuzeyden', short: 'K', deg: d };
-        }
-
-        function renderMgmWeather(data) {
-            if (!data || data.sicaklik === undefined) return;
-
-            // 1. Sıcaklık (Virgüllü Türkiye formatı: 28,9)
-            const tempNum = Number(data.sicaklik);
-            const tempStr = isNaN(tempNum) ? String(data.sicaklik) : tempNum.toFixed(1).replace('.', ',').replace(',0', '');
-            const tempEl = document.getElementById('mgm-val-temp');
-            if (tempEl) tempEl.innerText = tempStr;
-
-            // 2. Hadise & Hareketli Meteocons İkonu
-            const hadise = getMgmHadiseInfo(data.hadiseKodu, data.veriZamani);
-            const hadiseTextEl = document.getElementById('mgm-val-hadise');
-            const hadiseIconEl = document.getElementById('mgm-hadise-icon');
-            if (hadiseTextEl) hadiseTextEl.innerText = hadise.label;
-            if (hadiseIconEl) {
-                hadiseIconEl.src = hadise.iconUrl;
-                hadiseIconEl.alt = hadise.label;
-            }
-
-            // 3. Yağış (mm)
-            const rainVal = (data.yagis00Now !== undefined && data.yagis00Now !== null && data.yagis00Now >= 0) ? Number(data.yagis00Now) : 0;
-            const rainEl = document.getElementById('mgm-val-rain');
-            if (rainEl) rainEl.innerText = String(rainVal).replace('.', ',');
-
-            // 4. Nem (%) + Dairesel MGM Halkası
-            const humVal = Math.max(0, Math.min(100, Math.round(Number(data.nem) || 0)));
-            const humEl = document.getElementById('mgm-val-hum');
-            if (humEl) humEl.innerText = '%' + humVal;
-            const humArc = document.getElementById('mgm-hum-arc');
-            if (humArc) {
-                const circumference = 138.23; // 2 * PI * 22
-                const offset = circumference - (humVal / 100) * circumference;
-                humArc.setAttribute('stroke-dashoffset', offset.toFixed(2));
-            }
-
-            // 5. Rüzgar Yönü (MGM Orijinal Ok Açısı) & Hızı (km/sa)
-            const windInfo = getMgmWindInfo(data.ruzgarYon);
-            const windSpeed = Math.round(Number(data.ruzgarHiz) || 0);
-            const windDirEl = document.getElementById('mgm-val-wind-dir');
-            const windSpdEl = document.getElementById('mgm-val-wind-speed');
-            const windSvgEl = document.getElementById('mgm-wind-svg');
-            if (windDirEl) windDirEl.innerText = windInfo.name;
-            if (windSpdEl) windSpdEl.innerText = String(windSpeed);
-            if (windSvgEl) {
-                windSvgEl.style.transform = `rotate(${windInfo.deg}deg)`;
-            }
-
-            // 6. Ölçüm Zamanı Bilgisi
-            const timeEl = document.getElementById('mgm-veri-zamani');
-            if (timeEl && data.veriZamani) {
-                const dt = new Date(data.veriZamani);
-                if (!isNaN(dt.getTime())) {
-                    const timeFormatted = dt.toLocaleString('tr-TR', { day: '2-digit', month: 'long', hour: '2-digit', minute: '2-digit' });
-                    timeEl.innerText = `Son Ölçüm: ${timeFormatted} • İstasyon: ${data.istNo || '18386'}`;
-                }
-            }
-        }
-
-        async function refreshMgmWeather(silent = true) {
-            const btn = document.getElementById('btn-mgm-refresh');
-            if (!silent && btn) btn.classList.add('is-syncing');
-            try {
-                const adminToken = localStorage.getItem('gh_admin_token') || '';
-                if (!silent && adminToken) {
-                    fetch('https://api.github.com/repos/' + GITHUB_USERNAME + '/' + REPO_NAME + '/actions/workflows/ukey-auto-sync.yml/dispatches', {
-                        method: 'POST',
-                        headers: { 'Authorization': 'token ' + adminToken, 'Accept': 'application/vnd.github+json' },
-                        body: JSON.stringify({ ref: 'main' })
-                    }).catch(() => {});
-                }
-                const mgmData = await fetchFileDirect('mgm.json', true);
-                if (mgmData) {
-                    renderMgmWeather(mgmData);
-                    if (!silent) showToast('Bursa / Nilüfer MGM hava durumu verileri güncellendi!');
-                }
-            } catch (e) {}
-            if (!silent && btn) {
-                setTimeout(() => btn.classList.remove('is-syncing'), 400);
-            }
-        }
-
         async function fetchData() {
             setPageProgress(30);
 
-            // 1. AYARLARI, HAVA DURUMUNU VE HAFİF ANA VERİLERİ ANINDA ÇEK
-            const [settings, anns, files, sched, cal, mgm] = await Promise.all([
+            // 1. AYARLARI VE HAFİF ANA VERİLERİ ANINDA ÇEK
+            const [settings, anns, files, sched, cal] = await Promise.all([
                 fetchFileDirect('ayarlar.json'),
                 fetchFileDirect('duyurular.json'),
                 fetchFileDirect('dosyalar.json'),
                 fetchFileDirect('dersprogrami.json'),
-                fetchFileDirect('takvim.json'),
-                fetchFileDirect('mgm.json', true)
+                fetchFileDirect('takvim.json')
             ]);
-
-            if (mgm) {
-                renderMgmWeather(mgm);
-            }
 
             if (settings) {
                 siteSettings = settings;
@@ -3981,13 +3506,6 @@
                     }
                 }
             });
-
-            // MGM Hava Durumunu her 2 dakikada bir arka planda sessizce güncelle
-            setInterval(() => {
-                if (!document.hidden && activeViewName === 'dashboard') {
-                    refreshMgmWeather(true);
-                }
-            }, 120000);
         }
 
         function checkMaintenanceMode() {

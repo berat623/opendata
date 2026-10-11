@@ -1,4 +1,4 @@
-const CACHE = 'etp-cache-v25';
+const CACHE = 'etp-cache-v26';
 const ASSETS = [
   './',
   './index.html',
@@ -12,7 +12,6 @@ const ASSETS = [
   './dersprogrami.json',
   './takvim.json',
   './ayarlar.json',
-  './mgm.json',
   './ukey.json'
 ];
 

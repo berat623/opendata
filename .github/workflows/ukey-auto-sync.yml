@@ -2,15 +2,14 @@ name: UKEY Otomatik Veri ve Dosya Senkronizasyonu
 
 on:
   schedule:
-    # Her 15 dakikada bir MGM Bursa Nilüfer hava durumunu ve UKEY verilerini otomatik çeker
-    - cron: '*/15 * * * *'
+    # Her 30 dakikada bir UKEY verilerini otomatik çeker
+    - cron: '*/30 * * * *'
   workflow_dispatch:
   push:
     branches:
       - main
     paths:
       - 'scripts/ukey-auto-sync.js'
-      - 'scripts/mgm-sync.js'
 
 permissions:
   contents: write
@@ -27,23 +26,19 @@ jobs:
         with:
           node-version: '22'
 
-      - name: MGM Bursa Nilüfer Canlı Hava Durumu Senkronizasyonu
-        run: node scripts/mgm-sync.js
-        continue-on-error: true
-
       - name: UKEY Otomatik Senkronizasyon Motorunu Çalıştır
         run: node scripts/ukey-auto-sync.js
         continue-on-error: true
 
-      - name: Güncellenen MGM ve UKEY Verilerini Kaydet (Commit & Push)
+      - name: Güncellenen UKEY Verilerini Kaydet (Commit & Push)
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "UKEY & MGM Auto-Sync Bot"
-          git add mgm.json ukey.json ukey_dosyalar/
+          git config --local user.name "UKEY Auto-Sync Bot"
+          git add ukey.json ukey_dosyalar/
           if git diff --staged --quiet; then
             echo "Verilerde yeni bir değişiklik yok."
           else
-            git commit -m "chore(sync): otomatik MGM Nilüfer hava durumu ve UKEY senkronizasyonu [skip ci]"
+            git commit -m "chore(ukey): otomatik UKEY senkronizasyonu [skip ci]"
             git pull --rebase origin main
             git push
           fi
