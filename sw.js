@@ -1,4 +1,4 @@
-const CACHE = 'etp-cache-v15';
+const CACHE = 'etp-cache-v16';
 const ASSETS = [
   './',
   './index.html',
@@ -10,7 +10,8 @@ const ASSETS = [
   './dosyalar.json',
   './dersprogrami.json',
   './takvim.json',
-  './ayarlar.json'
+  './ayarlar.json',
+  './ukey.json'
 ];
 
 self.addEventListener('install', e => {

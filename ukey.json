@@ -1,0 +1,1810 @@
+{
+  "lastSyncedAt": "2026-10-11T11:29:44.396Z",
+  "portalUrl": "https://ukey.uludag.edu.tr/Home",
+  "student": {
+    "id": 279889,
+    "studentNo": "222604023",
+    "fullName": "BERAT TORUN",
+    "email": "222604023@ogr.uludag.edu.tr",
+    "userType": "Student",
+    "faculty": "Teknik Bilimler Meslek Yüksekokulu",
+    "department": "Elektronik ve Otomasyon Bölümü",
+    "program": "Elektronik Teknolojisi Programı",
+    "semester": "2026-2027 Güz Dönemi (1. Sınıf)",
+    "notificationPreference": "TUM",
+    "notificationPreferenceLabel": "Tüm güncellemelerden e-posta ile haberdar olmak istiyorum",
+    "language": "tr-TR"
+  },
+  "securityVault": {
+    "algorithm": "AES-256-GCM",
+    "kdf": "PBKDF2-SHA256",
+    "iterations": 100000,
+    "saltB64": "/x/2utL7CJTOjqdMd/JSsQ==",
+    "ivB64": "GH29dG5GLGDCXovz",
+    "ciphertextB64": "fxDEe21xIuxMcTjvdzR2eXjClVEJOjjO1L0iwm998hPcllTkG2eH75nOF2w9qhFKEji0eHf+nlD8go3+SZOSuYL/z2IJ6F+1c3JPWDY5bMvSeEdrTTLVxyz92zoPSRBzxRhmSMlzmga//f95OK/Md8MHW0Yz0t+66VOEBcPFkfKF60GMLm9Ha/Yc/FkzkTbFBFHqAzij/tSxmnYSfiu6Va0=",
+    "keyDerivationHint": "BUU-UKEY-VAULT-2026::<email>::<studentId>"
+  },
+  "urgentNotifications": [
+    {
+      "id": "notif-65235",
+      "type": "odev",
+      "courseCode": "ELNZ101",
+      "courseName": "ELEKTRONİK MESLEK BİLGİSİ VE GÜVENLİĞİ",
+      "instructor": "Öğr.Gör.Dr. HÜSEYİN Hakan GÜR",
+      "title": "ödev 1",
+      "description": "TBMYO Elektronik Teknolojisi Programı tanımı, dersleri, olanakları, staj, DGS vb. bilgilerini içeren en az 10 sayfalık sunu hazırlanması.",
+      "start": "05.10.2026 10:34",
+      "end": "12.10.2026 10:30",
+      "endIso": "2026-10-12T10:30:00+03:00",
+      "badgeText": "7 Gün İçindeki Görev Bildirimi",
+      "allowedFormat": "PowerPoint (.pptx / .ppt)",
+      "maxSizeMB": 20
+    }
+  ],
+  "agendaEvents": [
+    {
+      "id": "ag-hw-22HRTZ115-04-0",
+      "title": "22HRTZ115-04 - Kariyer Planlama Dersi Dönem Sonunda İstenecek Değerlendirme Formu (DERSİ GEÇMEK İÇİN HAZIRLANMASI GEREKEN BELGELERİ HAZIRLAYARAK YARDIMCI DÖKÜMANLA)",
+      "courseCode": "22HRTZ115-04",
+      "category": "Ödev Teslimi",
+      "displayRange": "27.10.2025 09:50:00 – 18.01.2026 23:55:00",
+      "color": "#ef4444",
+      "status": "Aktif"
+    },
+    {
+      "id": "ag-hw-22HRTZ115-04-1",
+      "title": "22HRTZ115-04 - Kariyer Planlama Dersi Dönem Sonunda İstenecek Değerlendirme Formu (Bütünlemeye kalanlar için) (DERSİ GEÇMEK İÇİN HAZIRLANMASI GEREKEN BELGELERİ HAZIRLAYARAK YARDIMCI DÖKÜMANLA)",
+      "courseCode": "22HRTZ115-04",
+      "category": "Ödev Teslimi",
+      "displayRange": "1.02.2026 04:05:00 – 6.02.2026 23:55:00",
+      "color": "#ef4444",
+      "status": "Aktif"
+    },
+    {
+      "id": "ag-rec-22YAD105-1-7",
+      "title": "22YAD105-1 - 1. HAFTA DERS KAYDI (INTRODUCTION)",
+      "courseCode": "22YAD105-1",
+      "category": "Sanal Toplantı / Kayıt",
+      "displayRange": "1. Hafta",
+      "color": "#3b82f6",
+      "status": "Kayıt Yüklendi"
+    },
+    {
+      "id": "ag-rec-22YAD105-1-8",
+      "title": "22YAD105-1 - 2. HAFTA DERS KAYDI",
+      "courseCode": "22YAD105-1",
+      "category": "Sanal Toplantı / Kayıt",
+      "displayRange": "2. Hafta",
+      "color": "#3b82f6",
+      "status": "Kayıt Yüklendi"
+    },
+    {
+      "id": "ag-hw-ELNZ101-0",
+      "title": "ELNZ101 - ödev 1- Elektronik Komponentlerin çalışma prensipleri (Elektronik Komponentlerin çalışma prensipleri\r\nDirenç, kondansator, bobin, trans)",
+      "courseCode": "ELNZ101",
+      "category": "Ödev Teslimi",
+      "displayRange": "5.10.2026 10:34:00 – 12.10.2026 10:30:00",
+      "color": "#ef4444",
+      "status": "Aktif"
+    }
+  ],
+  "meetingsSummary": {
+    "upcoming": [
+      {
+        "courseCode": "22YAD105-1",
+        "courseName": "YABANCI DİL (İNGİLİZCE)",
+        "instructor": "Öğr. Gör. SİNEM ÜRKMEZ (Dersin Yürütücüsü)",
+        "title": "22YAD105-1 - DERS ERİŞİM LİNKİ (Microsoft Teams)",
+        "schedule": "Aktif Dönem Boyunca • Microsoft Teams",
+        "url": "https://teams.microsoft.com/meet/34352499825333?p=hHP20rGggHjgJAU5sq"
+      }
+    ],
+    "registered": [
+      {
+        "courseCode": "22YAD105-1",
+        "courseName": "YABANCI DİL (İNGİLİZCE)",
+        "instructor": "Öğr. Gör. SİNEM ÜRKMEZ (Dersin Yürütücüsü)",
+        "title": "22YAD105-1 - DERS ERİŞİM LİNKİ (Microsoft Teams)",
+        "schedule": "Aktif Dönem Boyunca • Microsoft Teams",
+        "url": "https://teams.microsoft.com/meet/34352499825333?p=hHP20rGggHjgJAU5sq"
+      }
+    ],
+    "publicMeetings": [],
+    "recordedStreams": [
+      {
+        "courseCode": "22YAD105-1",
+        "courseName": "YABANCI DİL (İNGİLİZCE)",
+        "instructor": "Öğr. Gör. SİNEM ÜRKMEZ (Dersin Yürütücüsü)",
+        "week": 0,
+        "title": "DERS ERİŞİM LİNKİ",
+        "url": "https://teams.microsoft.com/meet/34352499825333?p=hHP20rGggHjgJAU5sq"
+      },
+      {
+        "courseCode": "22YAD105-1",
+        "courseName": "YABANCI DİL (İNGİLİZCE)",
+        "instructor": "Öğr. Gör. SİNEM ÜRKMEZ (Dersin Yürütücüsü)",
+        "week": 1,
+        "title": "1. HAFTA DERS KAYDI (INTRODUCTION)",
+        "url": "https://uludagedutr-my.sharepoint.com/:v:/g/personal/surkmez_uludag_edu_tr/IQDOYiS1UsNrQYlRx6ZsDx5yAa2EIcIJoTVV3jS7NdVzg6M?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=510p57"
+      },
+      {
+        "courseCode": "22YAD105-1",
+        "courseName": "YABANCI DİL (İNGİLİZCE)",
+        "instructor": "Öğr. Gör. SİNEM ÜRKMEZ (Dersin Yürütücüsü)",
+        "week": 2,
+        "title": "2. HAFTA DERS KAYDI",
+        "url": "https://uludagedutr-my.sharepoint.com/:v:/g/personal/surkmez_uludag_edu_tr/IQAXNjQ1kOVGRJsySmCtCaQsAcIV9P2AE5YIXyg3tdfOY8g?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=0c63eY"
+      }
+    ]
+  },
+  "erasmusMenu": [
+    {
+      "group": "Öğrenci Hareketliliği (Learning Mobility)",
+      "items": [
+        {
+          "code": "SMP-OUT",
+          "title": "Giden Öğrenci Staj Başvuruları",
+          "status": "Başvuru Dönemi Bekleniyor",
+          "description": "Erasmus+ Staj Hareketliliği (SMP) kapsamında yurt dışı işletme ve kurumlarda staj başvurusu."
+        },
+        {
+          "code": "SMS-OUT",
+          "title": "Giden Öğrenci Öğrenim Başvuruları",
+          "status": "Başvuru Dönemi Bekleniyor",
+          "description": "Erasmus+ Öğrenim Hareketliliği (SMS) kapsamında anlaşmalı Avrupa üniversitelerinde dönemlik öğrenim başvurusu."
+        },
+        {
+          "code": "SMP-IN",
+          "title": "Gelen Öğrenci Staj Başvuruları",
+          "status": "Yabancı Uyruklu / Gelen Öğrenci Modülü",
+          "description": "Yurt dışından Bursa Uludağ Üniversitesi’ne staj için gelecek öğrencilerin başvuru ekranı."
+        },
+        {
+          "code": "SMS-IN",
+          "title": "Gelen Öğrenci Öğrenim Başvuruları",
+          "status": "Yabancı Uyruklu / Gelen Öğrenci Modülü",
+          "description": "Yurt dışından Bursa Uludağ Üniversitesi’ne öğrenim için gelecek öğrencilerin başvuru ekranı."
+        }
+      ]
+    },
+    {
+      "group": "Personel Hareketliliği (Staff Mobility)",
+      "items": [
+        {
+          "code": "STA-OUT",
+          "title": "Giden Personel Ders Verme Başvuruları",
+          "status": "Akademik Personel Modülü",
+          "description": "Öğretim elemanları için Erasmus+ ders verme hareketliliği başvuruları."
+        },
+        {
+          "code": "STT-OUT",
+          "title": "Giden Personel Eğitim Alma Başvuruları",
+          "status": "Personel Modülü",
+          "description": "Akademik ve idari personel için eğitim alma hareketliliği başvuruları."
+        },
+        {
+          "code": "STA-IN",
+          "title": "Gelen Personel Ders Verme Başvuruları",
+          "status": "Misafir Akademisyen Modülü",
+          "description": "Anlaşmalı kurumlardan gelen öğretim elemanları için başvuru ekranı."
+        },
+        {
+          "code": "STT-IN",
+          "title": "Gelen Personel Eğitim Alma Başvuruları",
+          "status": "Misafir Personel Modülü",
+          "description": "Anlaşmalı kurumlardan eğitim alma amacıyla gelen personel başvuruları."
+        }
+      ]
+    },
+    {
+      "group": "İkili Anlaşmalar & Koordinatörlük",
+      "items": [
+        {
+          "code": "IIA-LIST",
+          "title": "İkili Anlaşmalar Listesi",
+          "status": "Aktif (TBMYO Anlaşmaları)",
+          "description": "Bursa Uludağ Üniversitesi bölümlerinin Avrupa üniversiteleri ile imzaladığı Erasmus+ ikili anlaşmaları."
+        }
+      ]
+    },
+    {
+      "group": "Başvurularım",
+      "items": [
+        {
+          "code": "MY-APPS",
+          "title": "Erasmus Başvuru İşlemleri (Başvurularım)",
+          "status": "Kayıtlı Başvuru Bulunmamaktadır",
+          "description": "222604023 numaralı öğrenci kaydınıza ait geçmiş veya aktif Erasmus+ başvurularınızın listesi."
+        }
+      ]
+    }
+  ],
+  "guides": [
+    {
+      "title": "Öğrenciler için UKEY Kılavuzu",
+      "type": "Resmi PDF Kılavuz",
+      "url": "https://ukey.uludag.edu.tr/Content/ Kilavuzlar/Ogrenci_UKEY_Kilavuzu.pdf",
+      "localFallback": "ukey_dosyalar/22YAD105-1_6.pdf",
+      "description": "UKEY sistemi üzerinden ders içerikleri, ödev yükleme, e-sınav ve sanal toplantı adımları."
+    },
+    {
+      "title": "Microsoft Teams Öğrenci Kullanım Kılavuzu",
+      "type": "PDF Kılavuz (İndirilebilir)",
+      "url": "ukey_dosyalar/22YAD105-1_6.pdf",
+      "description": "Bursa Uludağ Üniversitesi canlı derslerine Microsoft Teams üzerinden katılım rehberi."
+    },
+    {
+      "title": "Microsoft Office 365 Hesabı Oluşturma Kılavuzu",
+      "type": "PDF Kılavuz (İndirilebilir)",
+      "url": "ukey_dosyalar/22YAD105-1_5.pdf",
+      "description": "@ogr.uludag.edu.tr uzantılı öğrenci e-postası ile ücretsiz Office 365 ve Teams aktivasyonu."
+    }
+  ],
+  "courses": [
+    {
+      "code": "22HRTZ115-04",
+      "name": "KARİYER PLANLAMA",
+      "fullTitle": "22HRTZ115-04 - KARİYER PLANLAMA",
+      "ects": 1,
+      "akts": 1,
+      "teori": 1,
+      "uygulama": 0,
+      "lab": 0,
+      "kredi": 1,
+      "instructor": "Öğr. Gör. ÖZCAN TEMEL (Dersin Yürütücüsü)",
+      "purpose": "Elektronik sektöründeki mesleki imkanların ve hedeflerin belirlenmesi ile bu doğrultuda kariyer planlaması yapabilmek.",
+      "references": "https://www.yetenekkapisi.org/\r\nkarmer.uludag.edu.tr",
+      "weeks": [
+        {
+          "week": 1,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 2,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 3,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 4,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 5,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 6,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 7,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 8,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 9,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 10,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 11,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 12,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 13,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 14,
+          "teorik": "",
+          "uygulama": ""
+        }
+      ],
+      "homeworks": [
+        {
+          "id": 64100,
+          "courseCode": "22HRTZ115-04",
+          "courseName": "KARİYER PLANLAMA",
+          "instructor": "Öğr. Gör. ÖZCAN TEMEL (Dersin Yürütücüsü)",
+          "title": "Kariyer Planlama Dersi Dönem Sonunda İstenecek Değerlendirme Formu",
+          "description": "DERSİ GEÇMEK İÇİN HAZIRLANMASI GEREKEN BELGELERİ HAZIRLAYARAK YARDIMCI DÖKÜMANLAR KISMINDA VERİLEN MS WORD DOSYASINA EKLEYİP BELİRTİLEN TARİHE KADAR SİSTEME YÜKLEYİNİZ. SÜRE UZATIMI SÖZ KONUSU OLMAYACAKTIR. BİLGİLERİNİZE SUNARIM. BAŞARILAR.",
+          "type": "Diğer",
+          "start": "27.10.2025 09:50:00",
+          "end": "18.01.2026 23:55:00",
+          "week": "14. Hafta",
+          "fileCountLimit": 1,
+          "allowedFileTypes": "Word / PDF (.docx, .pdf)",
+          "maxFileSizeMB": 20,
+          "submissionStatus": "Henüz Dosya Gönderilmedi",
+          "attachedMaterials": [
+            {
+              "title": "Kariyer Planlama Dersi Dönem Sonunda İstenecek Değerlendirme Formu",
+              "origName": "Değerlendirme Formu - Kariyer Planlama Dersi Dönem Sonunda İstenecek Değerlendirme Formu.docx",
+              "localPath": "ukey_dosyalar/22HRTZ115-04_1.docx",
+              "sizeBytes": 36770
+            }
+          ]
+        },
+        {
+          "id": 64101,
+          "courseCode": "22HRTZ115-04",
+          "courseName": "KARİYER PLANLAMA",
+          "instructor": "Öğr. Gör. ÖZCAN TEMEL (Dersin Yürütücüsü)",
+          "title": "Kariyer Planlama Dersi Dönem Sonunda İstenecek Değerlendirme Formu (Bütünlemeye kalanlar için)",
+          "description": "DERSİ GEÇMEK İÇİN HAZIRLANMASI GEREKEN BELGELERİ HAZIRLAYARAK YARDIMCI DÖKÜMANLAR KISMINDA VERİLEN MS WORD DOSYASINA EKLEYİP BELİRTİLEN TARİHE KADAR SİSTEME YÜKLEYİNİZ. SÜRE UZATIMI SÖZ KONUSU OLMAYACAKTIR. BİLGİLERİNİZE SUNARIM. BAŞARILAR.",
+          "type": "Diğer",
+          "start": "1.02.2026 04:05:00",
+          "end": "6.02.2026 23:55:00",
+          "week": "14. Hafta",
+          "fileCountLimit": 1,
+          "allowedFileTypes": "Word / PDF (.docx, .pdf)",
+          "maxFileSizeMB": 20,
+          "submissionStatus": "Henüz Dosya Gönderilmedi",
+          "attachedMaterials": [
+            {
+              "title": "Kariyer Planlama Dersi Dönem Sonunda İstenecek Değerlendirme Formu",
+              "origName": "Değerlendirme Formu - Kariyer Planlama Dersi Dönem Sonunda İstenecek Değerlendirme Formu.docx",
+              "localPath": "ukey_dosyalar/22HRTZ115-04_1.docx",
+              "sizeBytes": 36770
+            }
+          ]
+        }
+      ],
+      "exams": [],
+      "materials": [
+        {
+          "title": "Kariyer Planlama Dersi Dönem Sonunda İstenecek Değerlendirme Formu",
+          "category": "Ödev Yardımcı Dokümanı",
+          "week": 0,
+          "homework": "Kariyer Planlama Dersi Dönem Sonunda İstenecek Değerlendirme Formu",
+          "type": "Metin",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/22HRTZ115-04_1.docx",
+          "origName": "Değerlendirme Formu - Kariyer Planlama Dersi Dönem Sonunda İstenecek Değerlendirme Formu.docx",
+          "sizeBytes": 36770,
+          "contentType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "externalUrl": ""
+        },
+        {
+          "title": "Kariyer Planlama Dersi Değerlendirme Formu",
+          "category": "Ödev Yardımcı Dokümanı",
+          "week": 0,
+          "homework": "Kariyer Planlama Dersi Dönem Sonunda İstenecek Değerlendirme Formu (Bütünlemeye kalanlar için)",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/22HRTZ115-04_2.docx",
+          "origName": "Değerlendirme Formu - Kariyer Planlama Dersi Dönem Sonunda İstenecek Değerlendirme Formu.docx",
+          "sizeBytes": 36770,
+          "contentType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "externalUrl": ""
+        }
+      ],
+      "forumCategories": [
+        {
+          "id": "22HRTZ115-04-forum-1",
+          "title": "Duyurular",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "22HRTZ115-04-forum-2",
+          "title": "Ders içeriği ile ilgili tartışma alanı",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "22HRTZ115-04-forum-3",
+          "title": "Ödevlerle ilgili tartışma alanı",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "22HRTZ115-04-forum-4",
+          "title": "Genel konular",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "22HRTZ115-04-forum-5",
+          "title": "Dersi veren öğretim elemanına sorular",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        }
+      ],
+      "groups": [],
+      "meetings": []
+    },
+    {
+      "code": "22YAD105-1",
+      "name": "YABANCI DİL (İNGİLİZCE)",
+      "fullTitle": "22YAD105-1 - YABANCI DİL (İNGİLİZCE)",
+      "ects": 4,
+      "akts": 4,
+      "teori": 4,
+      "uygulama": 0,
+      "lab": 0,
+      "kredi": 4,
+      "instructor": "Öğr. Gör. SİNEM ÜRKMEZ (Dersin Yürütücüsü)",
+      "purpose": "",
+      "references": "",
+      "weeks": [
+        {
+          "week": 1,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 2,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 3,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 4,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 5,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 6,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 7,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 8,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 9,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 10,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 11,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 12,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 13,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 14,
+          "teorik": "",
+          "uygulama": ""
+        }
+      ],
+      "homeworks": [],
+      "exams": [
+        {
+          "name": "YAD101-YAD102  MUAFİYET SINAVI MYO",
+          "start": "3.10.2026 14:00:00",
+          "lastLogin": "3.10.2026 14:05:00",
+          "durationMin": "50"
+        },
+        {
+          "name": "YAD101-YAD102  MUAFİYET SINAVI MYO",
+          "start": "10.10.2026 14:00:00",
+          "lastLogin": "10.10.2026 14:05:00",
+          "durationMin": "50"
+        }
+      ],
+      "materials": [
+        {
+          "title": "MUAFİYET YÖNERGESİ",
+          "category": "Referans",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/22YAD105-1_1.pdf",
+          "origName": "Yabancı Dil Dersi Muafiyet Sınavı Yönergesi_25_26.pdf",
+          "sizeBytes": 768383,
+          "contentType": "application/pdf",
+          "externalUrl": ""
+        },
+        {
+          "title": "DERS AÇIKLAMALARI",
+          "category": "Referans",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/22YAD105-1_2.pdf",
+          "origName": "YabancDil-I-II-Ders Aciklamalar i_ve_Sınav_Takvimi_2026-2027.pdf",
+          "sizeBytes": 341243,
+          "contentType": "application/pdf",
+          "externalUrl": ""
+        },
+        {
+          "title": "HAFTALIK ÇALIŞMA PLANI",
+          "category": "Referans",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/22YAD105-1_3.pdf",
+          "origName": "2026-27 YAD105 Haftalık Çalışma Planı.pdf",
+          "sizeBytes": 78313,
+          "contentType": "application/pdf",
+          "externalUrl": ""
+        },
+        {
+          "title": "ORYANTASYON SUNUMU",
+          "category": "Referans",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/22YAD105-1_4.pptx",
+          "origName": "2026-27 5i YAD105 Oryantasyon.pptx",
+          "sizeBytes": 3500591,
+          "contentType": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+          "externalUrl": ""
+        },
+        {
+          "title": "MICROSOFT OFFICE 365 KULLANIM KLAVUZU",
+          "category": "Referans",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/22YAD105-1_5.pdf",
+          "origName": "MICROSOFT OFFICE 365 HESABI OLUSTURMA.pdf",
+          "sizeBytes": 264267,
+          "contentType": "application/pdf",
+          "externalUrl": ""
+        },
+        {
+          "title": "TEAMS ÖĞRENCİ KLAVUZU",
+          "category": "Referans",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/22YAD105-1_6.pdf",
+          "origName": "ogrenci_kilavuzu_teamse_baslarken.pdf",
+          "sizeBytes": 1462622,
+          "contentType": "application/pdf",
+          "externalUrl": ""
+        },
+        {
+          "title": "DERS ERİŞİM LİNKİ",
+          "category": "Referans",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": false,
+          "localPath": "",
+          "origName": "",
+          "sizeBytes": 0,
+          "contentType": "",
+          "externalUrl": "https://teams.microsoft.com/meet/34352499825333?p=hHP20rGggHjgJAU5sq"
+        },
+        {
+          "title": "1. HAFTA DERS KAYDI (INTRODUCTION)",
+          "category": "Haftalık Ders Notu",
+          "week": 1,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": false,
+          "localPath": "",
+          "origName": "",
+          "sizeBytes": 0,
+          "contentType": "",
+          "externalUrl": "https://uludagedutr-my.sharepoint.com/:v:/g/personal/surkmez_uludag_edu_tr/IQDOYiS1UsNrQYlRx6ZsDx5yAa2EIcIJoTVV3jS7NdVzg6M?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=510p57"
+        },
+        {
+          "title": "2. HAFTA DERS KAYDI",
+          "category": "Haftalık Ders Notu",
+          "week": 2,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": false,
+          "localPath": "",
+          "origName": "",
+          "sizeBytes": 0,
+          "contentType": "",
+          "externalUrl": "https://uludagedutr-my.sharepoint.com/:v:/g/personal/surkmez_uludag_edu_tr/IQAXNjQ1kOVGRJsySmCtCaQsAcIV9P2AE5YIXyg3tdfOY8g?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=0c63eY"
+        }
+      ],
+      "forumCategories": [
+        {
+          "id": "22YAD105-1-forum-1",
+          "title": "Duyurular",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "22YAD105-1-forum-2",
+          "title": "Ders içeriği ile ilgili tartışma alanı",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "22YAD105-1-forum-3",
+          "title": "Ödevlerle ilgili tartışma alanı",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "22YAD105-1-forum-4",
+          "title": "Genel konular",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "22YAD105-1-forum-5",
+          "title": "Dersi veren öğretim elemanına sorular",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        }
+      ],
+      "groups": [],
+      "meetings": []
+    },
+    {
+      "code": "ELNZ101",
+      "name": "ELEKTRONİK MESLEK BİLGİSİ ve GÜVENLİĞİ",
+      "fullTitle": "ELNZ101 - ELEKTRONİK MESLEK BİLGİSİ ve GÜVENLİĞİ",
+      "ects": 3,
+      "akts": 3,
+      "teori": 2,
+      "uygulama": 0,
+      "lab": 0,
+      "kredi": 3,
+      "instructor": "Öğr.Gör. BASRİ KUL (Dersin Yürütücüsü)",
+      "purpose": "Öğrenciler gruplara bölünerek, bölüm öğretim elemanları tarafından atölye  ortamının tanıtılması, atölyede kullanılacak temel aletleri kullanma becerisini geliştirilmesi sağlanarak, lehim ve güç kaynağı yapmaya yönelik bilgi ve becerilerin kazandırılması",
+      "references": "ELEKTRİK VE ELEKTRONİK ÖLÇME TEKNİĞİ VE GÜVENLİK  M. ALACACI\r\nİNTERNET SAYFALARI",
+      "weeks": [
+        {
+          "week": 1,
+          "teorik": "Kişisel emniyet sağlama\r\nİş ortamı güvenliği sağlama",
+          "uygulama": ""
+        },
+        {
+          "week": 2,
+          "teorik": "İş Ortamı Güvenliği Sağlama",
+          "uygulama": ""
+        },
+        {
+          "week": 3,
+          "teorik": "Kontrol ve Vida Sıkma Aletleri\r\nKesici, Şekillendirici ve Delici Aletler",
+          "uygulama": ""
+        },
+        {
+          "week": 4,
+          "teorik": "Anahtarlar\r\nGüvenlik Aletleri",
+          "uygulama": ""
+        },
+        {
+          "week": 5,
+          "teorik": "Lehimleme malzemeleri Lehimleme\r\nDelikli plaket",
+          "uygulama": ""
+        },
+        {
+          "week": 6,
+          "teorik": "Baskı devre",
+          "uygulama": ""
+        },
+        {
+          "week": 7,
+          "teorik": "Baskı devre Plakete malzemelerin yerleştirilmesi",
+          "uygulama": ""
+        },
+        {
+          "week": 8,
+          "teorik": "Ders tekrarı ve Ara Sınav",
+          "uygulama": ""
+        },
+        {
+          "week": 9,
+          "teorik": "Güç kaynağı kutusuna elemanların yerleştirilmesi",
+          "uygulama": ""
+        },
+        {
+          "week": 10,
+          "teorik": "Güç kaynağının test edilmesi",
+          "uygulama": ""
+        },
+        {
+          "week": 11,
+          "teorik": "Güç kaynağının test edilmesi",
+          "uygulama": ""
+        },
+        {
+          "week": 12,
+          "teorik": "Baskı devre kalemi ile devre hazırlama",
+          "uygulama": ""
+        },
+        {
+          "week": 13,
+          "teorik": "Baskı devre ütü ile devre hazırlama",
+          "uygulama": ""
+        },
+        {
+          "week": 14,
+          "teorik": "Baskı devre pozlandırma ile devre hazırlama",
+          "uygulama": ""
+        }
+      ],
+      "homeworks": [
+        {
+          "id": 65235,
+          "courseCode": "ELNZ101",
+          "courseName": "ELEKTRONİK MESLEK BİLGİSİ ve GÜVENLİĞİ",
+          "instructor": "Öğr.Gör. BASRİ KUL (Dersin Yürütücüsü)",
+          "title": "ödev 1- Elektronik Komponentlerin çalışma prensipleri",
+          "description": "Elektronik Komponentlerin çalışma prensipleri\r\nDirenç, kondansator, bobin, transistör, mosfet",
+          "type": "Haftalık",
+          "start": "5.10.2026 10:34:00",
+          "end": "12.10.2026 10:30:00",
+          "week": "1. Hafta",
+          "fileCountLimit": 1,
+          "allowedFileTypes": "PowerPoint (.pptx, .ppt)",
+          "maxFileSizeMB": 20,
+          "submissionStatus": "Henüz Dosya Gönderilmedi",
+          "attachedMaterials": []
+        }
+      ],
+      "exams": [],
+      "materials": [
+        {
+          "title": "Ders Notları",
+          "category": "Ders Kitabı - Notu",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/ELNZ101_1.rar",
+          "origName": "elektronik_meslek_bilgisi_ve_güvenliği.rar",
+          "sizeBytes": 1653819,
+          "contentType": "application/rar",
+          "externalUrl": ""
+        }
+      ],
+      "forumCategories": [
+        {
+          "id": "ELNZ101-forum-1",
+          "title": "Duyurular",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "ELNZ101-forum-2",
+          "title": "Ders içeriği ile ilgili tartışma alanı",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "ELNZ101-forum-3",
+          "title": "Ödevlerle ilgili tartışma alanı",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "ELNZ101-forum-4",
+          "title": "Genel konular",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "ELNZ101-forum-5",
+          "title": "Dersi veren öğretim elemanına sorular",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        }
+      ],
+      "groups": [],
+      "meetings": []
+    },
+    {
+      "code": "ELNZ103-04",
+      "name": "ÖLÇME TEKNİĞİ",
+      "fullTitle": "ELNZ103-04 - ÖLÇME TEKNİĞİ",
+      "ects": 4,
+      "akts": 4,
+      "teori": 2,
+      "uygulama": 0,
+      "lab": 2,
+      "kredi": 4,
+      "instructor": "Öğr.Gör. ERCAN YAVUZ (Dersin Yürütücüsü)",
+      "purpose": "Ölçme işleminin uygulamalardaki önemini kavrayabilme, elektrik ve elekronik temel büyüklükleri tanıyabilme",
+      "references": "1. )Prof. Dr. Abdi DALFES, Elektrik Ölçme Laboratuarı Deneyleri 2.) Doç. Dr. H.Pastacı, \"Elektrik ve Elektronik Ölçmeleri\", Yıldız Üni., 1992 3.)Hasan ÖNAL, Elektronik ve Ölçme Dersleri 4.)Kadir ANASIZ, Elektrik Ölçü Aletleri ve Elektriksel Ölçmeler 5.)Saip DEVELİ, Elektriksel Ölçme Aletleri ve Elektriksel Ölçmeler 6.) Hasan ÖNAL, Ölçme Tekniği 7. Nacar, Mahmut; Elektrik-Elektronik Ölçmeleri ve İş Güvenliği, İskenderun 8.)Metin BEREKET, Engin TEKİN; Elektrik Elektronik ve Ölçme1-2",
+      "weeks": [
+        {
+          "week": 1,
+          "teorik": "ölçme, ölçme işleminde birimler, temel elektriksel büyüklüklerin tanıtımı",
+          "uygulama": ""
+        },
+        {
+          "week": 2,
+          "teorik": "Hata ve hataların sınıflandırılması",
+          "uygulama": ""
+        },
+        {
+          "week": 3,
+          "teorik": "Elektriksel büyüklüklerin tanıtılması ve ölçü aletlerinin çalışma ilkeleri ve yapıları. dc ölçü aletleri, galvanometrenin yapısı ve çalışması galvanometrenin akım ve gerilim ölçümlerinde kullanılması",
+          "uygulama": ""
+        },
+        {
+          "week": 4,
+          "teorik": "Elektrodinamik ölçü aletlerinin temel özelliklerinin ölçme üzerine etkisi (doğruluk, çözünürlük",
+          "uygulama": ""
+        },
+        {
+          "week": 5,
+          "teorik": "Doğru akımda (DC) akım ve gerilim ölçme",
+          "uygulama": ""
+        },
+        {
+          "week": 6,
+          "teorik": "Alternatif akımda (AC) büyüklüklerin ölçülmesi",
+          "uygulama": ""
+        },
+        {
+          "week": 7,
+          "teorik": "Akım ve gerilim trafoları, kullanımı",
+          "uygulama": ""
+        },
+        {
+          "week": 8,
+          "teorik": "Elektrodinamik ölçü aletlerinin yapısı ve Wattmetre",
+          "uygulama": ""
+        },
+        {
+          "week": 9,
+          "teorik": "Voltmetrelerin ölçme alanlarının genişletilmesi",
+          "uygulama": ""
+        },
+        {
+          "week": 10,
+          "teorik": "Ampermetrelerin ölçme alanlarının genişletilmesi",
+          "uygulama": ""
+        },
+        {
+          "week": 11,
+          "teorik": "Ölçme sonuçlarının istatiksel analizi",
+          "uygulama": ""
+        },
+        {
+          "week": 12,
+          "teorik": "Osiloskop yapısı",
+          "uygulama": ""
+        },
+        {
+          "week": 13,
+          "teorik": "osiloskop ölçümleri",
+          "uygulama": ""
+        },
+        {
+          "week": 14,
+          "teorik": "Tekrar",
+          "uygulama": ""
+        }
+      ],
+      "homeworks": [],
+      "exams": [],
+      "materials": [
+        {
+          "title": "0___Ölçme",
+          "category": "Diğer",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/ELNZ103-04_1.zip",
+          "origName": "0___Ölçme.zip",
+          "sizeBytes": 11578004,
+          "contentType": "application/zip",
+          "externalUrl": ""
+        },
+        {
+          "title": "1______ÖLÇME",
+          "category": "Diğer",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/ELNZ103-04_2.pdf",
+          "origName": "1______ÖLÇME.pdf",
+          "sizeBytes": 5045209,
+          "contentType": "application/pdf",
+          "externalUrl": ""
+        },
+        {
+          "title": "2____ölçme dersi_xxxxxxx___",
+          "category": "Diğer",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/ELNZ103-04_3.rar",
+          "origName": "2____ölçme dersi_xxxxxxx___.rar",
+          "sizeBytes": 7139347,
+          "contentType": "application/octet-stream",
+          "externalUrl": ""
+        },
+        {
+          "title": "3___Ölçme Tekniği_xxxx",
+          "category": "Diğer",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/ELNZ103-04_4.rar",
+          "origName": "3___Ölçme Tekniği_xxxx.rar",
+          "sizeBytes": 8484583,
+          "contentType": "application/octet-stream",
+          "externalUrl": ""
+        },
+        {
+          "title": "4_ÖLÇME_",
+          "category": "Diğer",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/ELNZ103-04_5.pptx",
+          "origName": "4_ÖLÇME_.pptx",
+          "sizeBytes": 10112968,
+          "contentType": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+          "externalUrl": ""
+        },
+        {
+          "title": "5____Ölçme Tekn XXXX",
+          "category": "Diğer",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/ELNZ103-04_6.rar",
+          "origName": "5____Ölçme Tekn XXXX.rar",
+          "sizeBytes": 3024998,
+          "contentType": "application/octet-stream",
+          "externalUrl": ""
+        }
+      ],
+      "forumCategories": [
+        {
+          "id": "ELNZ103-04-forum-1",
+          "title": "Duyurular",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "ELNZ103-04-forum-2",
+          "title": "Ders içeriği ile ilgili tartışma alanı",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "ELNZ103-04-forum-3",
+          "title": "Ödevlerle ilgili tartışma alanı",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "ELNZ103-04-forum-4",
+          "title": "Genel konular",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "ELNZ103-04-forum-5",
+          "title": "Dersi veren öğretim elemanına sorular",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        }
+      ],
+      "groups": [],
+      "meetings": []
+    },
+    {
+      "code": "ELNZ105-04",
+      "name": "DOĞRU AKIM DEVRE ANALİZİ",
+      "fullTitle": "ELNZ105-04 - DOĞRU AKIM DEVRE ANALİZİ",
+      "ects": 5,
+      "akts": 5,
+      "teori": 2,
+      "uygulama": 0,
+      "lab": 2,
+      "kredi": 5,
+      "instructor": "Öğr. Gör. Dr. ÇAĞLAR KILIKÇIER (Dersin Yürütücüsü)",
+      "purpose": "Doğru akımda devre çözüm yöntemlerinin ve iş  , enerji konularının incelenmesi.",
+      "references": "ELEKTRONİK 2   A. H. SAÇKAN\r\nTEMEL ELEKTRONİK  M. METİN ,G. F. ÖZTÜRK J.J.BROPHY      \r\nELEKTRONİK   İ. COŞKUN, E. GÜVEN",
+      "weeks": [
+        {
+          "week": 1,
+          "teorik": "Akım,Gerilim,Direnç,Enerji,Güç tanımı",
+          "uygulama": "Akım,Gerilim,Direnç,ölçümü"
+        },
+        {
+          "week": 2,
+          "teorik": "Elektrik kaynakları",
+          "uygulama": "Direnç,akım,gerilim ölçme"
+        },
+        {
+          "week": 3,
+          "teorik": "Kirşof kanunları",
+          "uygulama": "Kirşof kanunları deneyi"
+        },
+        {
+          "week": 4,
+          "teorik": "Thevenin yöntemi",
+          "uygulama": "Köprü Devresi için Thevenin uygulaması"
+        },
+        {
+          "week": 5,
+          "teorik": "Norton yöntemi",
+          "uygulama": "Norton uygulaması"
+        },
+        {
+          "week": 6,
+          "teorik": "Çevre akımları yöntemi",
+          "uygulama": "Çevre akımları yöntemi uygulaması"
+        },
+        {
+          "week": 7,
+          "teorik": "Düğüm gerilimleri yöntemi",
+          "uygulama": "Düğüm gerilimleri yöntemi uygulaması"
+        },
+        {
+          "week": 8,
+          "teorik": "Ders tekrarı ve Ara Sınav",
+          "uygulama": "ARA SINAV"
+        },
+        {
+          "week": 9,
+          "teorik": "Süperpozisyon yöntemi",
+          "uygulama": "Düğüm gerilimleri yöntemi ve süperpozisyon uygulaması"
+        },
+        {
+          "week": 10,
+          "teorik": "Maksimum güç transferi teoremi",
+          "uygulama": "Maksimum güç transferi teoremi deneyi"
+        },
+        {
+          "week": 11,
+          "teorik": "Kondansatörün doğru akıma verdiği tepkiler.Kondansatörün harcadığı enerji",
+          "uygulama": "Kondansatörün şarj ve deşarjı uygulaması"
+        },
+        {
+          "week": 12,
+          "teorik": "Bobinin doğru akıma verdiği tepkiler.Bobinin harcadığı enerji",
+          "uygulama": "Kondansatörün şarj ve deşarjı deneyi"
+        },
+        {
+          "week": 13,
+          "teorik": "Manyetik alan ve EMK",
+          "uygulama": "EMK uygulamaları"
+        },
+        {
+          "week": 14,
+          "teorik": "Faraday ve Lenz kanunları.",
+          "uygulama": "Genel tekrar"
+        }
+      ],
+      "homeworks": [],
+      "exams": [],
+      "materials": [
+        {
+          "title": "Ders notu 1",
+          "category": "Diğer",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/ELNZ105-04_1.pdf",
+          "origName": "H1-Akım-Gerilim-Direnç-Enerji-Güç_tanımı.pdf",
+          "sizeBytes": 704822,
+          "contentType": "application/pdf",
+          "externalUrl": ""
+        },
+        {
+          "title": "Ders notu 2",
+          "category": "Diğer",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/ELNZ105-04_2.pdf",
+          "origName": "H2-Elektrik kaynakları.pdf",
+          "sizeBytes": 1303782,
+          "contentType": "application/pdf",
+          "externalUrl": ""
+        }
+      ],
+      "forumCategories": [
+        {
+          "id": "ELNZ105-04-forum-1",
+          "title": "Duyurular",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "ELNZ105-04-forum-2",
+          "title": "Ders içeriği ile ilgili tartışma alanı",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "ELNZ105-04-forum-3",
+          "title": "Ödevlerle ilgili tartışma alanı",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "ELNZ105-04-forum-4",
+          "title": "Genel konular",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "ELNZ105-04-forum-5",
+          "title": "Dersi veren öğretim elemanına sorular",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        }
+      ],
+      "groups": [],
+      "meetings": []
+    },
+    {
+      "code": "ELNZ107-04",
+      "name": "SAYISAL ELEKTRONİK",
+      "fullTitle": "ELNZ107-04 - SAYISAL ELEKTRONİK",
+      "ects": 5,
+      "akts": 5,
+      "teori": 3,
+      "uygulama": 0,
+      "lab": 2,
+      "kredi": 5,
+      "instructor": "Öğr. Gör. ÖZCAN TEMEL (Dersin Yürütücüsü)",
+      "purpose": "Bu derste; temel mantık devrelerini, bileşik mantık devrelerini ve aritmetik mantık devrelerini kurabilme bilgi ve becerilerinin kazandırılması amaçlanmaktadır.",
+      "references": "DERS KİTABI: Yayınlanmamış Sayısal Elektronik ders notları. (Öğr. Gör. Özcan TEMEL) YARDIMCI KİTAPLAR: 1. Mano, M.Morris. Sayısal Tasarım,M.E.B. Yayınları, 1997. ss.527 2. Floyd, Thomas L.. Digital Fundamentals – 5th ed.,Macmillan Publishing Co., 1994. ISBN: 0-02-338502-2. pp. 875",
+      "weeks": [
+        {
+          "week": 1,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 2,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 3,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 4,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 5,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 6,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 7,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 8,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 9,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 10,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 11,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 12,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 13,
+          "teorik": "",
+          "uygulama": ""
+        },
+        {
+          "week": 14,
+          "teorik": "",
+          "uygulama": ""
+        }
+      ],
+      "homeworks": [],
+      "exams": [],
+      "materials": [],
+      "forumCategories": [
+        {
+          "id": "ELNZ107-04-forum-1",
+          "title": "Duyurular",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "ELNZ107-04-forum-2",
+          "title": "Ders içeriği ile ilgili tartışma alanı",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "ELNZ107-04-forum-3",
+          "title": "Ödevlerle ilgili tartışma alanı",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "ELNZ107-04-forum-4",
+          "title": "Genel konular",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "ELNZ107-04-forum-5",
+          "title": "Dersi veren öğretim elemanına sorular",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        }
+      ],
+      "groups": [],
+      "meetings": []
+    },
+    {
+      "code": "OTPZ001-04",
+      "name": "İŞ SAĞLIĞI ve GÜVENLİĞİ",
+      "fullTitle": "OTPZ001-04 - İŞ SAĞLIĞI ve GÜVENLİĞİ",
+      "ects": 2,
+      "akts": 2,
+      "teori": 2,
+      "uygulama": 0,
+      "lab": 0,
+      "kredi": 2,
+      "instructor": "Öğr.Gör. MUSTAFA PALA (Dersin Yürütücüsü)",
+      "purpose": "İş Güvenliği kavramının dünyadaki ve ülkemizdeki tarihsel gelişimi, bugünkü iş güvenliği uygulamaları ve ilkeleri hakkında bilgi sahibi olmak.",
+      "references": "İş Güvenliği, Prof. Dr. Abdulvahap Yiğit, Dora Yayınevi\r\nİşçi Sağlığı ve İş Güvenliği, Hüseyin Altınel, Detay Yayıncılık\r\nİş Güvenliği Kültürü, Doç. Dr. Tunç Demirbilek, Legal Yayıncılık\r\nİş Güvenliği Kültürü, Dr. Salih Dursun, Beta Yayınevi",
+      "weeks": [
+        {
+          "week": 1,
+          "teorik": "İş sağlığı ve güvenliği tanımı ve amacı, önemi, İşçi sınıfının doğuşu ve İş sağlığı ve güvenliğinin dünyadaki tarihsel gelişimi: Sanayi Devrimi Öncesi",
+          "uygulama": ""
+        },
+        {
+          "week": 2,
+          "teorik": "Sanayi Devrimi ve Sonrasında Dünyada İSG ve gelişim aşamaları, İSG'nin Türkiye'de gelişimi: Osmanlı dönemi, 1.Büyük Millet Meclisi Dönemi, Cumhuriyet dönemi",
+          "uygulama": ""
+        },
+        {
+          "week": 3,
+          "teorik": "Uluslararası İSG Kaynakları: ILO Sözleşmeleri, Avrupa Sosyal Şartı, AB Direktifleri.",
+          "uygulama": ""
+        },
+        {
+          "week": 4,
+          "teorik": "İSG ile ilgili ulusal kuruluşlar ve görevleri: ÇSGB, ÇASGEM, İSGAGEM, SGK, Teftiş Kurulu",
+          "uygulama": ""
+        },
+        {
+          "week": 5,
+          "teorik": "İSG'nin amaçları, uygulanmasında rol alan taraflar, taraflar açısından İSG maliyetlerinin değerlendirilmesi",
+          "uygulama": ""
+        },
+        {
+          "week": 6,
+          "teorik": "Kaza tanımı ve iş kazası, kaza oluşum teorileri, kaza çeşitleri, meslek hastalıkları",
+          "uygulama": ""
+        },
+        {
+          "week": 7,
+          "teorik": "Psikososyal Risk etmenleri ve korunma yolları, Fiziksel risk etmenleri korunma yolları, kaza raporu doldurma ve uygulama",
+          "uygulama": ""
+        },
+        {
+          "week": 8,
+          "teorik": "İşletme Güvenliğini Bozabilecek Olaylar: Yangın. yanma, Yangın çeşitleri, söndürme cihazları, yangın nedenleri",
+          "uygulama": ""
+        },
+        {
+          "week": 9,
+          "teorik": "İşletme Güvenliğini Bozabilecek Olaylar: Yangın. yanma, Yangın çeşitleri, söndürme cihazları, yangın nedenleri",
+          "uygulama": ""
+        },
+        {
+          "week": 10,
+          "teorik": "İSG ile ilgili belgeler, iş kazası örnek videoları izleme ve uygulama",
+          "uygulama": ""
+        },
+        {
+          "week": 11,
+          "teorik": "Temel risk analizi kavramı, uygulanış biçimi",
+          "uygulama": ""
+        },
+        {
+          "week": 12,
+          "teorik": "Kişisel koruyucular ve bu koruyucuların kullanılmasının önemi",
+          "uygulama": ""
+        },
+        {
+          "week": 13,
+          "teorik": "Meslek hastalığının genel ve hukuki tanımı, hukuki sorumluluk",
+          "uygulama": ""
+        },
+        {
+          "week": 14,
+          "teorik": "Meslek Hastalığının nedenleri ve alınabilecek teknik önlemler",
+          "uygulama": ""
+        }
+      ],
+      "homeworks": [],
+      "exams": [],
+      "materials": [
+        {
+          "title": "İŞ SAĞLIĞI ve GÜVENLİĞİ ders notları-1",
+          "category": "Ders Kitabı - Notu",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/OTPZ001-04_1.pdf",
+          "origName": "İŞ SAĞLIĞI VE GÜVENLİĞİ dn.1 - 2026.pdf",
+          "sizeBytes": 18108509,
+          "contentType": "application/pdf",
+          "externalUrl": ""
+        },
+        {
+          "title": "İŞ SAĞLIĞI ve GÜVENLİĞİ ders notları-2",
+          "category": "Ders Kitabı - Notu",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/OTPZ001-04_2.pdf",
+          "origName": "İŞ SAĞLIĞI VE GÜVENLİĞİ dn.2 - 2026.pdf",
+          "sizeBytes": 17281488,
+          "contentType": "application/pdf",
+          "externalUrl": ""
+        }
+      ],
+      "forumCategories": [
+        {
+          "id": "OTPZ001-04-forum-1",
+          "title": "Duyurular",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "OTPZ001-04-forum-2",
+          "title": "Ders içeriği ile ilgili tartışma alanı",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "OTPZ001-04-forum-3",
+          "title": "Ödevlerle ilgili tartışma alanı",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "OTPZ001-04-forum-4",
+          "title": "Genel konular",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "OTPZ001-04-forum-5",
+          "title": "Dersi veren öğretim elemanına sorular",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        }
+      ],
+      "groups": [],
+      "meetings": []
+    },
+    {
+      "code": "OTPZ010-04",
+      "name": "BİLGİ ve İLETİŞİM TEKNOLOJİSİ",
+      "fullTitle": "OTPZ010-04 - BİLGİ ve İLETİŞİM TEKNOLOJİSİ",
+      "ects": 3,
+      "akts": 3,
+      "teori": 2,
+      "uygulama": 0,
+      "lab": 2,
+      "kredi": 3,
+      "instructor": "Öğr. Gör. MURAT ÇALIŞ (Dersin Yürütücüsü)",
+      "purpose": "Bu derste bilişim olanaklarını kullanarak kendini geliştirmek ile ilgili yeterliklerin kazandırılması amaçlanmaktadır.",
+      "references": "Dersi veren öğretim elemanının ders notları veya çeşitli kaynak kitapları.",
+      "weeks": [
+        {
+          "week": 1,
+          "teorik": "Bilişim Teknolojilerine ait temel kavramların tanıtılması, bir bilgisayar sistemindeki temel donanım ve yazılım bileşenleri, işletim sisteminin amaçları.",
+          "uygulama": "Giriş"
+        },
+        {
+          "week": 2,
+          "teorik": "İşletim sisteminin kullanımı ve ayarlarının temel düzeyde gerçekleştirilmesi",
+          "uygulama": "İşletim sisteminin kullanımı"
+        },
+        {
+          "week": 3,
+          "teorik": "İnternet teknolojisi ve kavramları",
+          "uygulama": "Internet tarayıcısı, arama motorları ve elektronik posta kullanımı"
+        },
+        {
+          "week": 4,
+          "teorik": "Bir kelime işlemci programının tanıtılması ve kullanımı hakkında temel bilgilerin verilmesi",
+          "uygulama": "Kelime işlemci programı ara yüzü tanıtımı ve kullanımı"
+        },
+        {
+          "week": 5,
+          "teorik": "Kelime işlemci araç çubukları ve komutları",
+          "uygulama": "Giriş sekmesi ve kullanımı"
+        },
+        {
+          "week": 6,
+          "teorik": "Kelime işlemci araç çubukları ve komutları",
+          "uygulama": "Sayfa düzeni, Görünüm ve Başvurular sekmeleri"
+        },
+        {
+          "week": 7,
+          "teorik": "Kelime işlemci araç çubukları ve komutları",
+          "uygulama": "Ekle sekmesindeki şekil ve çizim araçlarının kullanımı"
+        },
+        {
+          "week": 8,
+          "teorik": "Ders tekrarı ve Ara Sınav",
+          "uygulama": "Gözden geçirme"
+        },
+        {
+          "week": 9,
+          "teorik": "Bir elektronik tablolama yazılımının tanıtılması ve kullanımı",
+          "uygulama": "Elektronik tablolama yazılım arayüzünün kullanımı"
+        },
+        {
+          "week": 10,
+          "teorik": "Bir elektronik tablolama yazılımının tanıtılması ve kullanımı",
+          "uygulama": "Giriş sekmesi, Sayfa düzeni, Görünüm ve Ekle sekmeleri"
+        },
+        {
+          "week": 11,
+          "teorik": "Bir elektronik tablolama yazılımının tanıtılması ve kullanımı",
+          "uygulama": "Formüller sekmesi"
+        },
+        {
+          "week": 12,
+          "teorik": "Bir elektronik tablolama yazılımının tanıtılması ve kullanımı",
+          "uygulama": "Formüller sekmesi"
+        },
+        {
+          "week": 13,
+          "teorik": "Bir elektronik tablolama yazılımının tanıtılması ve kullanımı",
+          "uygulama": "Veri sekmesi ve grafik oluşturma"
+        },
+        {
+          "week": 14,
+          "teorik": "Bir sunu yazılımının tanıtımı ve kullanımı",
+          "uygulama": "Sunu yazılımı ara yüzü. Tasarım, Geçişler ve Animasyon sekmeleri."
+        }
+      ],
+      "homeworks": [],
+      "exams": [],
+      "materials": [
+        {
+          "title": "Ders materyali 1",
+          "category": "Ders Kitabı - Notu",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": false,
+          "localPath": "",
+          "origName": "",
+          "sizeBytes": 0,
+          "contentType": "",
+          "externalUrl": ""
+        },
+        {
+          "title": "Ders materyali 1",
+          "category": "Ders Kitabı - Notu",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/OTPZ010-04_2.zip",
+          "origName": "Bilgi iletişim.zip",
+          "sizeBytes": 12397171,
+          "contentType": "application/x-zip-compressed",
+          "externalUrl": ""
+        }
+      ],
+      "forumCategories": [
+        {
+          "id": "OTPZ010-04-forum-1",
+          "title": "Duyurular",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "OTPZ010-04-forum-2",
+          "title": "Ders içeriği ile ilgili tartışma alanı",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "OTPZ010-04-forum-3",
+          "title": "Ödevlerle ilgili tartışma alanı",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "OTPZ010-04-forum-4",
+          "title": "Genel konular",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "OTPZ010-04-forum-5",
+          "title": "Dersi veren öğretim elemanına sorular",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        }
+      ],
+      "groups": [],
+      "meetings": []
+    },
+    {
+      "code": "OTPZ101-04",
+      "name": "MESLEKİ MATEMATİK",
+      "fullTitle": "OTPZ101-04 - MESLEKİ MATEMATİK",
+      "ects": 4,
+      "akts": 4,
+      "teori": 3,
+      "uygulama": 0,
+      "lab": 0,
+      "kredi": 4,
+      "instructor": "Öğr. Gör. HÜLYA BOZYOKUŞ (Dersin Yürütücüsü)",
+      "purpose": "Öğrenciye, mesleği için gerekli olan matematik bilgi ve becerilerini işine uygulayabilme yeterliği kazandırmak.",
+      "references": "Basri Çelik (2012), Mesleki Matematik, Dora Yayınları\r\nBasri Çelik (2010), Temel Matematik, Dora Yayınları",
+      "weeks": [
+        {
+          "week": 1,
+          "teorik": "Dersi hakkında Bilgilendirme, Ön Bilgiler",
+          "uygulama": ""
+        },
+        {
+          "week": 2,
+          "teorik": "Tamsayılar, Kesirli sayılar",
+          "uygulama": ""
+        },
+        {
+          "week": 3,
+          "teorik": "Üslü sayılar, Köklü sayılar, Mutlak değer,  Tamdeğer , Logaritma",
+          "uygulama": ""
+        },
+        {
+          "week": 4,
+          "teorik": "Cebirsel ifadeler, Birinci dereceden denklemler, Oran, orantı problemleri",
+          "uygulama": ""
+        },
+        {
+          "week": 5,
+          "teorik": "İkinci dereceden denklemler,  Eşitsizlikler",
+          "uygulama": ""
+        },
+        {
+          "week": 6,
+          "teorik": "Lineer denklem sistemleri ve",
+          "uygulama": ""
+        },
+        {
+          "week": 7,
+          "teorik": "Lineer eşitsizlik sistemleri",
+          "uygulama": ""
+        },
+        {
+          "week": 8,
+          "teorik": "Açı, Üçgen ve temel özellikler",
+          "uygulama": ""
+        },
+        {
+          "week": 9,
+          "teorik": "Temel dörtgen çeşitleri,",
+          "uygulama": ""
+        },
+        {
+          "week": 10,
+          "teorik": "Çember denklemi ve temel özellikleri",
+          "uygulama": ""
+        },
+        {
+          "week": 11,
+          "teorik": "Katı cisimler",
+          "uygulama": ""
+        },
+        {
+          "week": 12,
+          "teorik": "Temel Özellikler",
+          "uygulama": ""
+        },
+        {
+          "week": 13,
+          "teorik": "Matrisler",
+          "uygulama": ""
+        },
+        {
+          "week": 14,
+          "teorik": "Determinantlar, Üç değişkenli lineer denklem sistemleri",
+          "uygulama": ""
+        }
+      ],
+      "homeworks": [],
+      "exams": [],
+      "materials": [
+        {
+          "title": "Ders İzlencesi",
+          "category": "Haftalık Ders Notu",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/OTPZ101-04_1.docx",
+          "origName": "KAVRAM YANILGILARI_DERS İZLENCESİ.docx",
+          "sizeBytes": 49679,
+          "contentType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "externalUrl": ""
+        }
+      ],
+      "forumCategories": [
+        {
+          "id": "OTPZ101-04-forum-1",
+          "title": "Duyurular",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "OTPZ101-04-forum-2",
+          "title": "Ders içeriği ile ilgili tartışma alanı",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "OTPZ101-04-forum-3",
+          "title": "Ödevlerle ilgili tartışma alanı",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "OTPZ101-04-forum-4",
+          "title": "Genel konular",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        },
+        {
+          "id": "OTPZ101-04-forum-5",
+          "title": "Dersi veren öğretim elemanına sorular",
+          "topicCount": 0,
+          "messageCount": 0,
+          "lastActivity": "Henüz mesaj yok"
+        }
+      ],
+      "groups": [],
+      "meetings": []
+    }
+  ]
+}

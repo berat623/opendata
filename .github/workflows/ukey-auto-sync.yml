@@ -1,0 +1,42 @@
+name: UKEY Otomatik Veri ve Dosya Senkronizasyonu
+
+on:
+  schedule:
+    # Her 2 saatte bir UKEY'e otomatik bağlanıp yeni materyal, Teams linki, ödev ve sınavları çeker
+    - cron: '0 */2 * * *'
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'scripts/ukey-auto-sync.js'
+
+permissions:
+  contents: write
+
+jobs:
+  sync-ukey:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Depoyu Çek (Checkout)
+        uses: actions/checkout@v4
+
+      - name: Node.js 22 Kurulumu
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: UKEY Otomatik Senkronizasyon Motorunu Çalıştır
+        run: node scripts/ukey-auto-sync.js
+
+      - name: Güncellenen UKEY Verilerini ve İndirilen Dosyaları Kaydet (Commit & Push)
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "UKEY Auto-Sync Bot"
+          git add ukey.json ukey_dosyalar/
+          if git diff --staged --quiet; then
+            echo "UKEY verilerinde yeni bir değişiklik yok."
+          else
+            git commit -m "chore(ukey): otomatik UKEY ders, materyal, Teams linki ve ödev senkronizasyonu [skip ci]"
+            git push
+          fi

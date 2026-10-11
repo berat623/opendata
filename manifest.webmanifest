@@ -2,7 +2,7 @@
   "id": "buu-etp-bilgi-sistemi",
   "name": "BUÜ Elektronik Teknolojisi Bilgi Sistemi",
   "short_name": "ETP Bilgi",
-  "description": "Bursa Uludağ Üniversitesi Elektronik Teknolojisi Programı Öğrenci ve Bilgi Portalı",
+  "description": "Bursa Uludağ Üniversitesi Elektronik Teknolojisi Programı Öğrenci ve UKEY Portalı",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
@@ -39,6 +39,13 @@
     }
   ],
   "shortcuts": [
+    {
+      "name": "UKEY Portalı",
+      "short_name": "UKEY",
+      "description": "UKEY derslerim, materyaller, ödevler ve canlı dersler",
+      "url": "./#ukey",
+      "icons": [{ "src": "logo.png", "sizes": "192x192" }]
+    },
     {
       "name": "Ders Programı",
       "short_name": "Program",
