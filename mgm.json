@@ -3,18 +3,18 @@
   "sourceUrl": "https://www.mgm.gov.tr/tahmin/il-ve-ilceler.aspx?il=Bursa&ilce=Nil%C3%BCfer",
   "merkezId": 91617,
   "istNo": 18386,
-  "updatedAt": "2026-10-11T13:27:50.698Z",
+  "updatedAt": "2026-10-11T13:41:17.245Z",
   "sondurum": {
-    "sicaklik": 28.9,
-    "hissedilenSicaklik": 28.9,
-    "hadiseKodu": "A",
+    "sicaklik": 28.7,
+    "hissedilenSicaklik": 28.7,
+    "hadiseKodu": "CB",
     "yagis00Now": 0,
     "yagis1Saat": 0,
     "yagis24Saat": 0,
-    "nem": 38,
-    "ruzgarHiz": 4.680000000000001,
-    "ruzgarYon": 294,
-    "veriZamani": "2026-10-11T13:24:00.000Z"
+    "nem": 39,
+    "ruzgarHiz": 9,
+    "ruzgarYon": 352,
+    "veriZamani": "2026-10-11T13:39:00.000Z"
   },
   "saatlik": [
     {
