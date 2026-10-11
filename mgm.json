@@ -1,0 +1,87 @@
+{
+  "location": "Bursa / Nilüfer",
+  "sourceUrl": "https://www.mgm.gov.tr/tahmin/il-ve-ilceler.aspx?il=Bursa&ilce=Nil%C3%BCfer",
+  "merkezId": 91617,
+  "istNo": 18386,
+  "updatedAt": "2026-10-11T13:27:50.698Z",
+  "sondurum": {
+    "sicaklik": 28.9,
+    "hissedilenSicaklik": 28.9,
+    "hadiseKodu": "A",
+    "yagis00Now": 0,
+    "yagis1Saat": 0,
+    "yagis24Saat": 0,
+    "nem": 38,
+    "ruzgarHiz": 4.680000000000001,
+    "ruzgarYon": 294,
+    "veriZamani": "2026-10-11T13:24:00.000Z"
+  },
+  "saatlik": [
+    {
+      "tarih": "2026-10-11T15:00:00.000Z",
+      "hadise": "PB",
+      "sicaklik": 24,
+      "hissedilenSicaklik": 24,
+      "nem": 63,
+      "ruzgarYonu": 193,
+      "ruzgarHizi": 2,
+      "maksimumRuzgarHizi": 16
+    },
+    {
+      "tarih": "2026-10-11T18:00:00.000Z",
+      "hadise": "PB",
+      "sicaklik": 20,
+      "hissedilenSicaklik": 20,
+      "nem": 68,
+      "ruzgarYonu": 155,
+      "ruzgarHizi": 4,
+      "maksimumRuzgarHizi": 11
+    },
+    {
+      "tarih": "2026-10-11T21:00:00.000Z",
+      "hadise": "PB",
+      "sicaklik": 17,
+      "hissedilenSicaklik": 17,
+      "nem": 68,
+      "ruzgarYonu": 172,
+      "ruzgarHizi": 4,
+      "maksimumRuzgarHizi": 14
+    },
+    {
+      "tarih": "2026-10-12T00:00:00.000Z",
+      "hadise": "PB",
+      "sicaklik": 16,
+      "hissedilenSicaklik": 16,
+      "nem": 65,
+      "ruzgarYonu": 160,
+      "ruzgarHizi": 2,
+      "maksimumRuzgarHizi": 12
+    },
+    {
+      "tarih": "2026-10-12T03:00:00.000Z",
+      "hadise": "PB",
+      "sicaklik": 14,
+      "hissedilenSicaklik": 14,
+      "nem": 62,
+      "ruzgarYonu": 176,
+      "ruzgarHizi": 2,
+      "maksimumRuzgarHizi": 8
+    },
+    {
+      "tarih": "2026-10-12T06:00:00.000Z",
+      "hadise": "PB",
+      "sicaklik": 18,
+      "hissedilenSicaklik": 18,
+      "nem": 61,
+      "ruzgarYonu": 174,
+      "ruzgarHizi": 2,
+      "maksimumRuzgarHizi": 8
+    }
+  ],
+  "gunluk": {
+    "tarihGun1": "2026-10-12T00:00:00.000Z",
+    "hadiseGun1": "GSY",
+    "enDusukGun1": 13,
+    "enYuksekGun1": 27
+  }
+}

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://cdn.jsdelivr.net https://avatars.githubusercontent.com; connect-src 'self' https://api.github.com https://raw.githubusercontent.com; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://ukey.uludag.edu.tr">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https://cdn.jsdelivr.net https://avatars.githubusercontent.com; connect-src 'self' https://api.github.com https://raw.githubusercontent.com; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://ukey.uludag.edu.tr">
     <meta name="referrer" content="no-referrer">
     <meta name="theme-color" content="#080d1a">
     <meta name="mobile-web-app-capable" content="yes">
@@ -23,14 +23,46 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght,ROND@6..144,800,100&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet" />
 
     <style>
+        /* İKONLARIN YAZI OLARAK GÖRÜNMESİNİ ENGELLEYEN ANINDA YÜKLEME (0ms YEREL WOFF2) */
+        @font-face {
+            font-family: 'Material Symbols Rounded';
+            font-style: normal;
+            font-weight: 100 700;
+            font-display: block;
+            src: url('data:font/woff2;base64,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') format('woff2');
+        }
+        .material-symbols-rounded {
+            font-family: 'Material Symbols Rounded' !important;
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            width: 1em;
+            height: 1em;
+            overflow: hidden;
+            flex-shrink: 0;
+            user-select: none;
+        }
+
         :root {
             --bg-body: #080d1a;
-            --bg-surface: rgba(15, 23, 42, 0.68);
-            --bg-surface-elevated: rgba(22, 34, 56, 0.65);
-            --bg-surface-hover: rgba(30, 45, 74, 0.75);
+            --bg-surface: #0f172a;
+            --bg-surface-elevated: #17233b;
+            --bg-surface-hover: #1e2d4a;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --primary: #3b82f6;
@@ -42,36 +74,36 @@
             --warning-soft: rgba(245, 158, 11, 0.16);
             --danger: #ef4444;
             --danger-soft: rgba(239, 68, 68, 0.16);
-            --border: rgba(255, 255, 255, 0.12);
-            --border-hover: rgba(255, 255, 255, 0.28);
+            --border: rgba(255, 255, 255, 0.11);
+            --border-hover: rgba(255, 255, 255, 0.25);
             --nav-width: 270px;
             --banner-h: 0px;
-            --radius-lg: 22px;
-            --radius-md: 16px;
+            --radius-lg: 20px;
+            --radius-md: 15px;
             --radius-sm: 10px;
-            --shadow: 0 18px 45px -10px rgba(0, 0, 0, 0.60);
-            --shadow-sm: 0 8px 26px -6px rgba(0, 0, 0, 0.42);
-            --glass-blur: blur(26px) saturate(200%);
-            --glass-reflection: inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.22), inset 0 0 0 1px rgba(255, 255, 255, 0.10);
+            --shadow: 0 10px 28px -8px rgba(0, 0, 0, 0.48);
+            --shadow-sm: 0 4px 14px -4px rgba(0, 0, 0, 0.34);
+            --glass-blur: none;
+            --glass-reflection: inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
             
             /* TEMA KARTLARI - DARK */
-            --timer-bg: linear-gradient(135deg, rgba(6, 78, 59, 0.72) 0%, rgba(15, 23, 42, 0.84) 100%);
+            --timer-bg: linear-gradient(135deg, #063e31 0%, #0f172a 100%);
             --timer-border: rgba(16, 185, 129, 0.40);
             --timer-text: #ffffff;
             --timer-sub: rgba(255, 255, 255, 0.85);
             --timer-chip: rgba(16, 185, 129, 0.25);
             --timer-chip-color: #34d399;
-            --timer-box-bg: rgba(255, 255, 255, 0.08);
-            --timer-box-border: rgba(255, 255, 255, 0.16);
+            --timer-box-bg: rgba(255, 255, 255, 0.07);
+            --timer-box-border: rgba(255, 255, 255, 0.15);
             --timer-bar-track: rgba(255, 255, 255, 0.12);
             --timer-bar-fill: #10b981;
         }
 
         html.light-mode {
             --bg-body: #ecf1f7;
-            --bg-surface: rgba(255, 255, 255, 0.70);
-            --bg-surface-elevated: rgba(248, 250, 252, 0.76);
-            --bg-surface-hover: rgba(238, 242, 246, 0.88);
+            --bg-surface: #ffffff;
+            --bg-surface-elevated: #f4f7fb;
+            --bg-surface-hover: #eaeff7;
             --text-main: #0f172a;
             --text-muted: #475569;
             --primary: #2563eb;
@@ -83,22 +115,22 @@
             --warning-soft: rgba(217, 119, 6, 0.12);
             --danger: #dc2626;
             --danger-soft: rgba(220, 38, 38, 0.12);
-            --border: rgba(255, 255, 255, 0.80);
-            --border-hover: rgba(15, 23, 42, 0.25);
-            --shadow: 0 18px 42px -10px rgba(15, 23, 42, 0.10);
-            --shadow-sm: 0 8px 24px -6px rgba(15, 23, 42, 0.06);
-            --glass-blur: blur(26px) saturate(200%);
-            --glass-reflection: inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.98), inset 0 0 0 1px rgba(255, 255, 255, 0.65);
+            --border: rgba(15, 23, 42, 0.09);
+            --border-hover: rgba(15, 23, 42, 0.22);
+            --shadow: 0 10px 26px -8px rgba(15, 23, 42, 0.07);
+            --shadow-sm: 0 4px 14px -4px rgba(15, 23, 42, 0.04);
+            --glass-blur: none;
+            --glass-reflection: inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
 
-            /* TEMA KARTLARI - LIGHT (YÜKSEK KONTRAST CAM) */
-            --timer-bg: linear-gradient(135deg, rgba(240, 253, 244, 0.88) 0%, rgba(255, 255, 255, 0.78) 100%);
-            --timer-border: rgba(16, 185, 129, 0.45);
+            /* TEMA KARTLARI - LIGHT */
+            --timer-bg: linear-gradient(135deg, #ecfdf5 0%, #ffffff 100%);
+            --timer-border: rgba(16, 185, 129, 0.42);
             --timer-text: #064e3b;
             --timer-sub: #047857;
             --timer-chip: rgba(5, 150, 105, 0.14);
             --timer-chip-color: #059669;
-            --timer-box-bg: rgba(255, 255, 255, 0.85);
-            --timer-box-border: rgba(5, 150, 105, 0.30);
+            --timer-box-bg: #ffffff;
+            --timer-box-border: rgba(5, 150, 105, 0.28);
             --timer-bar-track: rgba(5, 150, 105, 0.15);
             --timer-bar-fill: #059669;
         }
@@ -2220,53 +2252,424 @@
 
 
         /* =========================================================
-           MOBİL PERFORMANS VE AKICILIK OPTİMİZASYONU (SIFIR TAKILMA)
+           MASAÜSTÜ VE MOBİL 120 FPS PERFORMANS OPTİMİZASYONU
            ========================================================= */
-        /* İç içe (nested) elemanlarda gereksiz backdrop-filter kullanımını tüm cihazlarda kaldır */
+        .sidebar,
+        .card,
+        .stat-card,
+        .ann-card,
+        .timer-card,
+        .sched-live-card,
+        .day-card,
+        .milestone-card,
+        .cal-detail-card,
+        .ukey-toolbar,
+        .ukey-course-card,
         .btn-tonal,
         .t-box,
         .lesson-card,
         .lesson-card-simple,
-        .ukey-course-card,
         .cal-mob-item,
-        .table-wrapper {
+        .table-wrapper,
+        .toast,
+        .admin-maintenance-bar {
             backdrop-filter: none !important;
             -webkit-backdrop-filter: none !important;
         }
+        .card,
+        .stat-card,
+        .ukey-course-card,
+        .lesson-card-simple,
+        .cal-simple-item,
+        .mgm-weather-card {
+            contain: layout style;
+        }
 
-        /* Mobil ve dokunmatik cihazlarda GPU'yu kilitleyen çoklu blur katmanlarını devre dışı bırak */
+        /* =========================================================
+           SADE UKEY AÇILIŞ BİLDİRİM PENCERESİ (İLK GİRİŞ POPUP)
+           ========================================================= */
+        .ukey-simple-popup-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9500;
+            background: rgba(8, 13, 26, 0.72);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+        }
+        html.light-mode .ukey-simple-popup-overlay {
+            background: rgba(15, 23, 42, 0.48);
+        }
+        .ukey-simple-popup-box {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 32px 24px 26px 24px;
+            text-align: center;
+            box-shadow: 0 24px 54px -12px rgba(0, 0, 0, 0.55);
+        }
+        .ukey-simple-popup-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: var(--bg-surface-elevated);
+            color: var(--text-muted);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .ukey-simple-popup-close:hover {
+            color: var(--text-main);
+            background: var(--bg-surface-hover);
+        }
+        .ukey-simple-popup-icon {
+            width: 58px;
+            height: 58px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(59, 130, 246, 0.2));
+            color: var(--accent);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+        .ukey-simple-popup-title {
+            font-size: 1.32rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        .ukey-simple-popup-btn {
+            width: 100%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 13px 20px;
+            border-radius: 14px;
+            font-size: 0.94rem;
+            font-weight: 800;
+            color: #ffffff !important;
+            background: linear-gradient(135deg, #2563eb 0%, #10b981 100%);
+            border: none;
+            box-shadow: 0 8px 22px -4px rgba(37, 99, 235, 0.48);
+            cursor: pointer;
+            transition: transform 0.16s ease, box-shadow 0.16s ease;
+        }
+        .ukey-simple-popup-btn span {
+            color: #ffffff !important;
+        }
+        .ukey-simple-popup-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 26px -4px rgba(37, 99, 235, 0.6);
+        }
+
+        /* =========================================================
+           MGM BURSA / NİLÜFER CANLI HAVA DURUMU KARTI (BASINÇ HARİÇ)
+           ========================================================= */
+        .mgm-weather-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 16px 22px;
+            margin-bottom: 22px;
+            box-shadow: var(--shadow-sm), var(--glass-reflection);
+        }
+        .mgm-weather-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+        .mgm-weather-head-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .mgm-head-title {
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.3px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+        .mgm-loc-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 9px;
+            border-radius: 999px;
+            font-size: 0.73rem;
+            font-weight: 800;
+            background: rgba(14, 165, 233, 0.14);
+            color: #0ea5e9;
+            border: 1px solid rgba(14, 165, 233, 0.3);
+        }
+        .mgm-weather-strip {
+            display: grid;
+            grid-template-columns: 1.35fr 1fr 1fr 1.15fr;
+            align-items: center;
+            gap: 16px;
+        }
+        .mgm-main-temp-wrap {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            min-width: 0;
+        }
+        .mgm-temp-val {
+            font-size: clamp(2.1rem, 1.6rem + 1.5vw, 2.85rem);
+            font-weight: 800;
+            color: #0ea5e9;
+            line-height: 1;
+            letter-spacing: -1px;
+            white-space: nowrap;
+        }
+        .mgm-temp-unit {
+            font-size: 1.15rem;
+            font-weight: 700;
+            vertical-align: super;
+            margin-left: 2px;
+        }
+        .mgm-hadise-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-width: 76px;
+        }
+        .mgm-hadise-icon {
+            width: 54px;
+            height: 54px;
+            object-fit: contain;
+            display: block;
+            margin: -4px 0;
+        }
+        .mgm-hadise-label {
+            font-size: 0.78rem;
+            font-weight: 800;
+            color: var(--text-main);
+            line-height: 1.2;
+            margin-top: 2px;
+        }
+        .mgm-metric-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-left: 14px;
+            border-left: 1px solid var(--border);
+            min-width: 0;
+        }
+        .mgm-metric-icon-wrap {
+            width: 44px;
+            height: 44px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .mgm-metric-lbl {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        .mgm-metric-val {
+            font-size: 1.02rem;
+            font-weight: 800;
+            color: var(--text-main);
+            line-height: 1.25;
+            margin-top: 2px;
+        }
+        .mgm-metric-sub {
+            font-size: 0.71rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-top: 1px;
+        }
+
+        /* =========================================================
+           SADE VE KULLANIŞLI AKADEMİK TAKVİM TASARIMI
+           ========================================================= */
+        .cal-simple-next-banner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            flex-wrap: wrap;
+            padding: 16px 20px;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, var(--primary-soft) 0%, var(--accent-soft) 100%);
+            border: 1px solid var(--primary-border);
+            margin-bottom: 18px;
+        }
+        .cal-simple-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .cal-simple-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            padding: 14px 16px;
+            border-radius: 14px;
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--primary);
+        }
+        .cal-simple-item.sem-bahar { border-left-color: var(--accent); }
+        .cal-simple-item.sem-tatil { border-left-color: var(--warning); }
+        .cal-simple-item.sem-sinav { border-left-color: var(--danger); }
+        .cal-simple-item.is-past { opacity: 0.62; }
+        .cal-simple-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            min-width: 0;
+            flex: 1;
+        }
+        .cal-simple-date-pill {
+            min-width: 135px;
+            padding: 8px 12px;
+            border-radius: 10px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .cal-simple-date-main {
+            font-size: 0.82rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.25;
+        }
+        .cal-simple-date-sub {
+            font-size: 0.69rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+        .cal-simple-info {
+            min-width: 0;
+            flex: 1;
+        }
+        .cal-simple-title {
+            font-size: 0.94rem;
+            font-weight: 800;
+            color: var(--text-main);
+            line-height: 1.35;
+        }
+        .cal-simple-meta {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 5px;
+        }
+        .cal-simple-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+        .cal-countdown-chip {
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 0.74rem;
+            font-weight: 800;
+            background: var(--primary-soft);
+            color: var(--primary);
+            white-space: nowrap;
+        }
+        .cal-countdown-chip.active-now {
+            background: var(--accent-soft);
+            color: var(--accent);
+        }
+        .cal-countdown-chip.done {
+            background: rgba(148, 163, 184, 0.14);
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 900px) {
+            .mgm-weather-strip {
+                grid-template-columns: 1fr 1fr;
+                gap: 14px;
+            }
+            .mgm-metric-item {
+                padding-left: 0;
+                border-left: none;
+                padding-top: 10px;
+                border-top: 1px solid var(--border);
+            }
+            .mgm-weather-strip > .mgm-metric-item:nth-child(2) {
+                padding-top: 0;
+                border-top: none;
+            }
+        }
+        @media (max-width: 640px) {
+            .mgm-weather-card {
+                padding: 14px 15px;
+            }
+            .mgm-weather-strip {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .mgm-main-temp-wrap {
+                grid-column: 1 / -1;
+                justify-content: space-between;
+                padding-bottom: 10px;
+                border-bottom: 1px solid var(--border);
+            }
+            .mgm-metric-item {
+                padding-top: 0 !important;
+                border-top: none !important;
+            }
+            .cal-simple-item {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+                padding: 12px 14px;
+            }
+            .cal-simple-left {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            .cal-simple-date-pill {
+                min-width: 0;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 6px 10px;
+            }
+            .cal-simple-right {
+                width: 100%;
+                justify-content: space-between;
+                padding-top: 8px;
+                border-top: 1px dashed var(--border);
+            }
+        }
         @media (max-width: 992px), (hover: none) and (pointer: coarse) {
-            :root {
-                --bg-surface: #0f172a;
-                --bg-surface-elevated: #17233b;
-                --bg-surface-hover: #1e2d4a;
-                --glass-blur: none;
-                --shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.45);
-                --shadow-sm: 0 4px 12px -3px rgba(0, 0, 0, 0.32);
-            }
-            html.light-mode {
-                --bg-surface: #ffffff;
-                --bg-surface-elevated: #f4f7fb;
-                --bg-surface-hover: #e9eef5;
-                --border: rgba(15, 23, 42, 0.10);
-                --shadow: 0 6px 18px -4px rgba(15, 23, 42, 0.07);
-                --shadow-sm: 0 3px 10px -2px rgba(15, 23, 42, 0.05);
-            }
-            .card,
-            .stat-card,
-            .ann-card,
-            .timer-card,
-            .sched-live-card,
-            .day-card,
-            .milestone-card,
-            .cal-detail-card,
-            .ukey-hero-bar,
-            .toast,
-            .admin-maintenance-bar {
-                backdrop-filter: none !important;
-                -webkit-backdrop-filter: none !important;
-            }
-            /* Mobil kaydırma sırasında hover/transform tetiklenmesini engelle */
             .card,
             .stat-card,
             .ann-card,
@@ -2430,84 +2833,20 @@
         </div>
     </div>
 
-    <!-- TAM EKRAN AÇILIŞ DUYURUSU (DERS PROGRAMI AÇIKLANDI - TÜM EKRANI KAPLAR) -->
-    <div id="ann-popup" class="ann-fs-overlay" role="dialog" aria-modal="true" aria-label="Ders Programı Duyurusu">
-        <div class="ann-fs-topbar">
-            <div class="ann-fs-brand">
-                <img src="logo.png" alt="BUÜ Logo">
-                <div class="ann-fs-brand-text">
-                    <strong>Bursa Uludağ Üniversitesi</strong>
-                    <span>Elektronik Teknolojisi Programı</span>
-                </div>
-            </div>
-            <button class="ann-fs-close-btn" onclick="closeAnnPopup()" aria-label="Kapat">
+    <!-- BASİT İLK GİRİŞ DUYURUSU (UKEY SİSTEMİ ENTEGRE EDİLDİ) -->
+    <div id="ann-popup" class="ukey-simple-popup-overlay" role="dialog" aria-modal="true" aria-label="UKEY Sistemi Entegre Edildi" onclick="if(event.target===this)closeAnnPopup()">
+        <div class="ukey-simple-popup-box">
+            <button class="ukey-simple-popup-close" onclick="closeAnnPopup()" aria-label="Kapat">
                 <span class="material-symbols-rounded" style="font-size:18px;">close</span>
-                <span>Kapat</span>
             </button>
-        </div>
-
-        <div class="ann-fs-content">
-            <div class="ann-fs-crest">
-                <img src="logo.png" alt="BUÜ">
+            <div class="ukey-simple-popup-icon">
+                <span class="material-symbols-rounded" style="font-size:30px;">school</span>
             </div>
-
-            <div>
-                <span class="ann-fs-badge" id="popup-badge">
-                    <span class="material-symbols-rounded" style="font-size:15px;">notifications_active</span>
-                    Önemli Duyuru • 2026-2027 Güz
-                </span>
-            </div>
-
-            <h1 class="ann-fs-title" id="popup-title">Ders Programı Açıklandı!</h1>
-
-            <p class="ann-fs-desc" id="popup-desc">
-                2026-2027 Güz Yarıyılı haftalık ders programı, derslik dağılımları ve online ders planı yayınlanmıştır. Derslerinizi, dersliklerinizi ve saatlerinizi hemen görüntüleyin.
-            </p>
-
-            <div class="ann-fs-cards">
-                <div class="ann-fs-card">
-                    <div class="ann-fs-card-icon" style="background:var(--primary-soft); color:var(--primary);">
-                        <span class="material-symbols-rounded">calendar_month</span>
-                    </div>
-                    <div>
-                        <h4>1. ve 2. Sınıf Programı</h4>
-                        <p>Haftalık tüm derslerin gün ve saat çizelgesi hazırlandı.</p>
-                    </div>
-                </div>
-                <div class="ann-fs-card">
-                    <div class="ann-fs-card-icon" style="background:var(--accent-soft); color:var(--accent);">
-                        <span class="material-symbols-rounded">meeting_room</span>
-                    </div>
-                    <div>
-                        <h4>Derslikler & UKEY</h4>
-                        <p>D-8 amfisi ve online derslik dağılımları netleşti.</p>
-                    </div>
-                </div>
-                <div class="ann-fs-card">
-                    <div class="ann-fs-card-icon" style="background:var(--warning-soft); color:var(--warning);">
-                        <span class="material-symbols-rounded">event</span>
-                    </div>
-                    <div>
-                        <h4>Tek Tıkla Takvime Ekle</h4>
-                        <p>Derslerinizi telefon ve bilgisayar takviminize aktarın.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="ann-fs-actions">
-                <button class="ann-fs-btn-main" onclick="goToScheduleFromPopup()">
-                    <span class="material-symbols-rounded">calendar_month</span>
-                    <span id="popup-btn-text">Ders Programını Görüntüle</span>
-                    <span class="material-symbols-rounded" style="font-size:18px;">arrow_forward</span>
-                </button>
-                <button class="ann-fs-btn-sub" onclick="closeAnnPopup()">
-                    Ana Sayfaya Geç
-                </button>
-            </div>
-        </div>
-
-        <div class="ann-fs-bottom-hint">
-            <span>Teknik Bilimler MYO • Elektronik ve Otomasyon Bölümü</span>
+            <h2 class="ukey-simple-popup-title" id="popup-title">UKEY Sistemi Entegre Edildi</h2>
+            <button class="ukey-simple-popup-btn" onclick="goToUkeyFromPopup()">
+                <span id="popup-btn-text">Görüntülemek İçin Tıklayınız</span>
+                <span class="material-symbols-rounded" style="font-size:18px;">arrow_forward</span>
+            </button>
         </div>
     </div>
 
@@ -2686,6 +3025,92 @@
                     </div>
                 </div>
 
+                <!-- MGM BURSA / NİLÜFER ANLIK HAVA DURUMU KARTI (BASINÇ HARİÇ, METEOCONS HAREKETLİ İKONLAR) -->
+                <div class="mgm-weather-card" id="mgm-weather-card">
+                    <div class="mgm-weather-head">
+                        <div class="mgm-weather-loc">
+                            <div class="mgm-weather-loc-badge">
+                                <span class="material-symbols-rounded" style="font-size:20px;">location_on</span>
+                            </div>
+                            <div>
+                                <div class="mgm-weather-loc-title">
+                                    <span>Bursa / Nilüfer — Anlık Hava Durumu</span>
+                                    <span class="mgm-live-dot" title="MGM Canlı Veri"></span>
+                                </div>
+                                <div class="mgm-weather-loc-sub" id="mgm-veri-zamani">MGM (Meteoroloji Genel Müdürlüğü) • Kampüs Bölgesi</div>
+                            </div>
+                        </div>
+                        <div class="mgm-weather-actions">
+                            <a href="https://www.mgm.gov.tr/tahmin/il-ve-ilceler.aspx?il=Bursa&amp;ilce=Nil%C3%BCfer" target="_blank" rel="noopener noreferrer" class="mgm-source-link" title="MGM Resmi Sayfası">
+                                <span>MGM Nilüfer</span>
+                                <span class="material-symbols-rounded" style="font-size:14px;">open_in_new</span>
+                            </a>
+                            <button type="button" class="mgm-refresh-btn" id="btn-mgm-refresh" onclick="refreshMgmWeather(false)" title="Hava Durumunu Yenile">
+                                <span class="material-symbols-rounded" style="font-size:15px;">refresh</span>
+                                <span>Yenile</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mgm-weather-strip" id="mgm-weather-strip">
+                        <!-- 1. Sıcaklık -->
+                        <div class="mgm-metric-box">
+                            <div class="mgm-temp-main">
+                                <span class="mgm-temp-val" id="mgm-val-temp">28,9</span>
+                                <span class="mgm-temp-unit">°C</span>
+                            </div>
+                            <div class="mgm-metric-lbl">Sıcaklık</div>
+                        </div>
+
+                        <!-- 2. Hadise (Meteocons Hareketli İkon) -->
+                        <div class="mgm-metric-box">
+                            <div class="mgm-hadise-wrap">
+                                <img id="mgm-hadise-icon" class="mgm-hadise-icon" src="https://cdn.jsdelivr.net/gh/basmilius/weather-icons@dev/production/fill/svg/clear-day.svg" alt="Hadise" width="56" height="56" loading="eager">
+                                <div class="mgm-hadise-text" id="mgm-val-hadise">Açık</div>
+                            </div>
+                            <div class="mgm-metric-lbl">Hadise</div>
+                        </div>
+
+                        <!-- 3. Yağış -->
+                        <div class="mgm-metric-box">
+                            <div class="mgm-rain-wrap">
+                                <img class="mgm-rain-icon" src="https://cdn.jsdelivr.net/gh/basmilius/weather-icons@dev/production/fill/svg/raindrops.svg" alt="Yağış" width="44" height="44" loading="lazy">
+                                <div class="mgm-rain-val"><span id="mgm-val-rain">0</span> <small>mm</small></div>
+                            </div>
+                            <div class="mgm-metric-lbl">Yağış</div>
+                        </div>
+
+                        <!-- 4. Nem (%) -->
+                        <div class="mgm-metric-box">
+                            <div class="mgm-hum-ring-wrap" id="mgm-hum-ring">
+                                <svg viewBox="0 0 56 56" width="54" height="54">
+                                    <circle cx="28" cy="28" r="22" fill="none" stroke="rgba(148,163,184,0.2)" stroke-width="5"></circle>
+                                    <circle id="mgm-hum-arc" cx="28" cy="28" r="22" fill="none" stroke="#10b981" stroke-width="5" stroke-linecap="round" stroke-dasharray="138.23" stroke-dashoffset="85.7" transform="rotate(-90 28 28)"></circle>
+                                </svg>
+                                <div class="mgm-hum-ring-val" id="mgm-val-hum">%38</div>
+                            </div>
+                            <div class="mgm-metric-lbl">Nem (%)</div>
+                        </div>
+
+                        <!-- 5. Rüzgar -->
+                        <div class="mgm-metric-box">
+                            <div class="mgm-wind-wrap">
+                                <div class="mgm-wind-compass" title="Rüzgar Yönü">
+                                    <svg id="mgm-wind-svg" viewBox="0 0 40 40" width="42" height="42" style="transform: rotate(294deg); transition: transform 0.4s ease;">
+                                        <path fill="rgba(148,163,184,0.28)" d="M20,0.35C9.15,0.35,0.35,9.15,0.35,20c0,10.85,8.8,19.65,19.65,19.65c10.85,0,19.65-8.801,19.65-19.65C39.65,9.15,30.85,0.35,20,0.35z M20,36.5c-9.11,0-16.5-7.391-16.5-16.5c0-9.11,7.39-16.5,16.5-16.5c9.109,0,16.5,7.39,16.5,16.5C36.5,29.109,29.109,36.5,20,36.5z"></path>
+                                        <path fill="#10b981" d="M25.43,19.69l-5.41,9.5l-5.45-9.569l3.81,1.09V7.09c0.59-0.2,1.64-0.38,3.24-0.03v13.67L25.43,19.69z"></path>
+                                    </svg>
+                                </div>
+                                <div class="mgm-wind-info">
+                                    <div class="mgm-wind-dir" id="mgm-val-wind-dir">Kuzeybatıdan</div>
+                                    <div class="mgm-wind-speed"><span id="mgm-val-wind-speed">5</span> <small>km/sa</small></div>
+                                </div>
+                            </div>
+                            <div class="mgm-metric-lbl">Rüzgar</div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- SAYAÇ KARTI -->
                 <div class="card timer-card">
                     <div class="timer-info">
@@ -2801,113 +3226,43 @@
                 </div>
             </div>
 
-            <!-- 4. ACADEMIC CALENDAR VIEW (GERÇEK VE ÇOK DETAYLI İNTERAKTİF TAKVİM) -->
+            <!-- 4. ACADEMIC CALENDAR VIEW (SADE, KULLANIŞLI & MOBİL/MASAÜSTÜ UYUMLU AKADEMİK TAKVİM) -->
             <div id="view-calendar" class="view-section">
-                
-                <!-- DÖNÜM NOKTASI GERİ SAYIM KARTLARI (MILESTONES) -->
-                <div class="cal-milestones-grid" id="cal-milestones-bar"></div>
+
+                <!-- SIRADAKİ / AKTİF AKADEMİK FAALİYET ÖZET KARTI -->
+                <div id="cal-next-banner" class="cal-simple-next-banner"></div>
 
                 <div class="card">
-                    <!-- TAKVİM ÜST KONTROLLERİ -->
-                    <div class="calendar-controls">
-                        <div class="month-selector">
-                            <button class="btn btn-tonal btn-icon" onclick="navigateMonth(-1)" aria-label="Önceki Ay">
-                                <span class="material-symbols-rounded">chevron_left</span>
-                            </button>
-                            <h3 class="month-name" id="cal-month-title">Eylül 2026</h3>
-                            <button class="btn btn-tonal btn-icon" onclick="navigateMonth(1)" aria-label="Sonraki Ay">
-                                <span class="material-symbols-rounded">chevron_right</span>
-                            </button>
-                            <button class="btn btn-tonal btn-mini" onclick="jumpToCurrentMonth()">Bugün</button>
+                    <div class="cal-simple-header">
+                        <div>
+                            <h3 class="card-title">
+                                <span class="icon-chip warn"><span class="material-symbols-rounded">calendar_month</span></span>
+                                <span>2026-2027 Akademik Takvimi</span>
+                            </h3>
                         </div>
-
-                        <div class="cal-header-actions">
-                            <button class="btn btn-primary btn-mini" onclick="downloadICS()">
-                                <span class="material-symbols-rounded" style="font-size:16px;">download</span>
-                                <span>Tümünü Takvime Ekle (.ics)</span>
-                            </button>
-                            <div class="cal-mode-pills">
-                                <button class="cal-mode-btn active" id="btn-mode-grid" onclick="setCalendarMode('grid')">
-                                    <span class="material-symbols-rounded" style="font-size:16px;vertical-align:middle;">grid_view</span> Aylık Takvim
-                                </button>
-                                <button class="cal-mode-btn" id="btn-mode-list" onclick="setCalendarMode('list')">
-                                    <span class="material-symbols-rounded" style="font-size:16px;vertical-align:middle;">view_agenda</span> Faaliyet Listesi
-                                </button>
-                            </div>
-                        </div>
+                        <button class="btn btn-primary btn-mini" onclick="downloadICS()">
+                            <span class="material-symbols-rounded" style="font-size:16px;">download</span>
+                            <span>Takvime Aktar (.ics)</span>
+                        </button>
                     </div>
 
-                    <!-- TAKVİM ARAMA & KATEGORİ FİLTRELERİ -->
-                    <div class="cal-filter-bar">
-                        <div class="search-wrap" style="flex:1; min-width:240px; max-width:none;">
+                    <!-- ARAMA VE KATEGORİ FİLTRELERİ -->
+                    <div class="cal-filter-bar" style="margin-bottom: 16px;">
+                        <div class="search-wrap" style="flex:1; min-width:220px; max-width:none;">
                             <span class="material-symbols-rounded">search</span>
-                            <input type="search" id="cal-search-input" placeholder="Faaliyet, sınav veya tatil ara (örn: final, vize, kayıt, tatil)..." oninput="onCalendarSearch(this.value)">
+                            <input type="search" id="cal-search-input" placeholder="Faaliyet, sınav veya tatil ara..." oninput="onCalendarSearch(this.value)">
                         </div>
                         <div class="filter-chips-scroll" id="cal-category-chips">
                             <button class="filter-chip active" data-cat="all" onclick="setCalendarCategoryFilter('all', this)">Tümü</button>
-                            <button class="filter-chip" data-cat="guz" onclick="setCalendarCategoryFilter('guz', this)">🔵 Güz Yarıyılı</button>
-                            <button class="filter-chip" data-cat="bahar" onclick="setCalendarCategoryFilter('bahar', this)">🟢 Bahar Yarıyılı</button>
-                            <button class="filter-chip" data-cat="sinav" onclick="setCalendarCategoryFilter('sinav', this)">🔴 Sınavlar</button>
-                            <button class="filter-chip" data-cat="tatil" onclick="setCalendarCategoryFilter('tatil', this)">🟡 Tatiller</button>
+                            <button class="filter-chip" data-cat="guz" onclick="setCalendarCategoryFilter('guz', this)">Güz Yarıyılı</button>
+                            <button class="filter-chip" data-cat="bahar" onclick="setCalendarCategoryFilter('bahar', this)">Bahar Yarıyılı</button>
+                            <button class="filter-chip" data-cat="sinav" onclick="setCalendarCategoryFilter('sinav', this)">Sınavlar</button>
+                            <button class="filter-chip" data-cat="tatil" onclick="setCalendarCategoryFilter('tatil', this)">Resmi Tatiller</button>
                         </div>
                     </div>
 
-                    <!-- GÖRÜNÜM 1: AYLIK TAKVİM IZGARASI -->
-                    <div id="cal-grid-view">
-                        <div class="cal-grid-wrapper">
-                            <div class="cal-weekdays">
-                                <div class="cal-weekday">Pzt</div>
-                                <div class="cal-weekday">Sal</div>
-                                <div class="cal-weekday">Çar</div>
-                                <div class="cal-weekday">Per</div>
-                                <div class="cal-weekday">Cum</div>
-                                <div class="cal-weekday">Cmt</div>
-                                <div class="cal-weekday">Paz</div>
-                            </div>
-                            <div class="cal-days-grid" id="cal-days-container"></div>
-                        </div>
-
-                        <!-- SEÇİLİ GÜNÜN DETAYLARI (YENİLENMİŞ MODERN TASARIM) -->
-                        <div id="cal-day-detail" class="cal-detail-card">
-                            <div class="cal-detail-head">
-                                <div class="cal-detail-head-left">
-                                    <div class="cal-detail-head-icon">
-                                        <span class="material-symbols-rounded" style="font-size:24px;">event_upcoming</span>
-                                    </div>
-                                    <div class="cal-detail-head-title">
-                                        <h3 id="cal-detail-date">Günün Faaliyetleri</h3>
-                                        <span id="cal-detail-sub">Seçili tarihteki sınav, kayıt ve akademik süreçler</span>
-                                    </div>
-                                </div>
-                                <div id="cal-detail-count" class="cal-detail-count-badge" style="display:none;"></div>
-                            </div>
-                            <div id="cal-detail-events" style="display:flex; flex-direction:column; gap:12px;">
-                                <p style="font-size:0.86rem; color:var(--text-muted); padding:8px 0;">Bir güne tıklayarak o günkü faaliyetleri detaylıca görüntüleyin.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- GÖRÜNÜM 2: DÖNEM VE LİSTE GÖRÜNÜMÜ -->
-                    <div id="cal-list-view" style="display:none;">
-                        <!-- Masaüstü & Tablet için Zengin Tablo -->
-                        <div class="table-wrapper cal-desktop-table">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Dönem / Kategori</th>
-                                        <th>Faaliyet / Sınav</th>
-                                        <th>Tarih Aralığı</th>
-                                        <th>Açıklama</th>
-                                        <th style="text-align:right;">İşlem</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="cal-full-tbody"></tbody>
-                            </table>
-                        </div>
-                        <!-- Mobil için Akıllı Kart Listesi -->
-                        <div id="cal-mobile-list" class="cal-mobile-cards"></div>
-                    </div>
-
+                    <!-- SADE VE KULLANIŞLI AKADEMİK TAKVİM LİSTESİ -->
+                    <div id="cal-simple-list" class="cal-simple-list"></div>
                 </div>
 
             </div>
@@ -3161,19 +3516,13 @@
             }
         }
 
-        /* TAM EKRAN GİRİŞ DUYURUSU YÖNETİMİ */
+        /* BASİT İLK GİRİŞ DUYURUSU YÖNETİMİ (UKEY SİSTEMİ ENTEGRE EDİLDİ) */
         function checkAnnPopup() {
             if (siteSettings.popupEnabled === false) return;
-            const dismissed = sessionStorage.getItem('sched_popup_closed');
+            const dismissed = sessionStorage.getItem('ukey_popup_closed');
             if (!dismissed) {
-                if (siteSettings.popupBadge && document.getElementById('popup-badge')) {
-                    document.getElementById('popup-badge').innerHTML = `<span class="material-symbols-rounded" style="font-size:15px;">notifications_active</span> ${sanitizeHTML(siteSettings.popupBadge)}`;
-                }
                 if (siteSettings.popupTitle && document.getElementById('popup-title')) {
                     document.getElementById('popup-title').innerText = siteSettings.popupTitle;
-                }
-                if (siteSettings.popupDesc && document.getElementById('popup-desc')) {
-                    document.getElementById('popup-desc').innerText = siteSettings.popupDesc;
                 }
                 if (siteSettings.popupButtonText && document.getElementById('popup-btn-text')) {
                     document.getElementById('popup-btn-text').innerText = siteSettings.popupButtonText;
@@ -3191,12 +3540,15 @@
             const popup = document.getElementById('ann-popup');
             if (popup) popup.style.display = 'none';
             document.body.classList.remove('modal-open');
-            sessionStorage.setItem('sched_popup_closed', '1');
+            sessionStorage.setItem('ukey_popup_closed', '1');
         }
 
-        function goToScheduleFromPopup() {
+        function goToUkeyFromPopup() {
             closeAnnPopup();
-            switchView('schedule');
+            switchView('ukey');
+        }
+        function goToScheduleFromPopup() {
+            goToUkeyFromPopup();
         }
 
         /* TEMA YÖNETİMİ (Otomatik Algılama + Manuel Açık/Koyu Değiştirme) */
@@ -3347,17 +3699,241 @@
             return null;
         }
 
+        /* ============================================================================
+           MGM BURSA / NİLÜFER CANLI HAVA DURUMU SİSTEMİ (METEOCONS HAREKETLİ İKONLAR)
+           ============================================================================ */
+        const METEOCONS_BASE = 'https://cdn.jsdelivr.net/gh/basmilius/weather-icons@dev/production/fill/svg/';
+
+        // Tam Genişletilmiş MGM Hadise Sözlüğü (Gece/Gündüz ve Tüm MGM Kodları)
+        const MGM_HADISE_DICT = {
+            // Açık & Bulutluluk
+            'A':    { label: 'Açık', dayIcon: 'clear-day.svg', nightIcon: 'clear-night.svg' },
+            'A0':   { label: 'Açık', dayIcon: 'clear-night.svg', nightIcon: 'clear-night.svg' },
+            'ACIK': { label: 'Açık', dayIcon: 'clear-day.svg', nightIcon: 'clear-night.svg' },
+            'AB':   { label: 'Az Bulutlu', dayIcon: 'partly-cloudy-day.svg', nightIcon: 'partly-cloudy-night.svg' },
+            'AB0':  { label: 'Az Bulutlu', dayIcon: 'partly-cloudy-night.svg', nightIcon: 'partly-cloudy-night.svg' },
+            'PB':   { label: 'Parçalı Bulutlu', dayIcon: 'partly-cloudy-day.svg', nightIcon: 'partly-cloudy-night.svg' },
+            'PB0':  { label: 'Parçalı Bulutlu', dayIcon: 'partly-cloudy-night.svg', nightIcon: 'partly-cloudy-night.svg' },
+            'CB':   { label: 'Çok Bulutlu', dayIcon: 'overcast-day.svg', nightIcon: 'overcast-night.svg' },
+            'CB0':  { label: 'Çok Bulutlu', dayIcon: 'overcast-night.svg', nightIcon: 'overcast-night.svg' },
+            'B':    { label: 'Bulutlu', dayIcon: 'cloudy.svg', nightIcon: 'cloudy.svg' },
+            'K':    { label: 'Kapalı', dayIcon: 'overcast.svg', nightIcon: 'overcast.svg' },
+
+            // Yağışlı / Yağmurlu (Y = Şemsiye İkonu)
+            'Y':    { label: 'Yağışlı', dayIcon: 'umbrella.svg', nightIcon: 'umbrella.svg' },
+            'Y0':   { label: 'Yağışlı', dayIcon: 'umbrella.svg', nightIcon: 'umbrella.svg' },
+            'HHY':  { label: 'Yağışlı', dayIcon: 'umbrella.svg', nightIcon: 'umbrella.svg' },
+            'HY':   { label: 'Hafif Yağmurlu', dayIcon: 'partly-cloudy-day-drizzle.svg', nightIcon: 'partly-cloudy-night-drizzle.svg' },
+            'HY0':  { label: 'Hafif Yağmurlu', dayIcon: 'partly-cloudy-night-drizzle.svg', nightIcon: 'partly-cloudy-night-drizzle.svg' },
+            'KY':   { label: 'Kuvvetli Yağmurlu', dayIcon: 'extreme-rain.svg', nightIcon: 'extreme-rain.svg' },
+            'KY0':  { label: 'Kuvvetli Yağmurlu', dayIcon: 'extreme-rain.svg', nightIcon: 'extreme-rain.svg' },
+            'CIS':  { label: 'Çisenti', dayIcon: 'drizzle.svg', nightIcon: 'drizzle.svg' },
+
+            // Sağanak Yağışlar
+            'SY':   { label: 'Sağanak Yağışlı', dayIcon: 'rain.svg', nightIcon: 'rain.svg' },
+            'SY0':  { label: 'Sağanak Yağışlı', dayIcon: 'rain.svg', nightIcon: 'rain.svg' },
+            'HSY':  { label: 'Hafif Sağanak Yağışlı', dayIcon: 'partly-cloudy-day-rain.svg', nightIcon: 'partly-cloudy-night-rain.svg' },
+            'HSY0': { label: 'Hafif Sağanak Yağışlı', dayIcon: 'partly-cloudy-night-rain.svg', nightIcon: 'partly-cloudy-night-rain.svg' },
+            'KSY':  { label: 'Kuvvetli Sağanak Yağışlı', dayIcon: 'extreme-rain.svg', nightIcon: 'extreme-rain.svg' },
+            'KSY0': { label: 'Kuvvetli Sağanak Yağışlı', dayIcon: 'extreme-rain.svg', nightIcon: 'extreme-rain.svg' },
+            'MSY':  { label: 'Mevzi Sağanak Yağışlı', dayIcon: 'partly-cloudy-day-rain.svg', nightIcon: 'partly-cloudy-night-rain.svg' },
+            'DY':   { label: 'Şiddetli Sağanak Yağışlı', dayIcon: 'extreme-rain.svg', nightIcon: 'extreme-rain.svg' },
+
+            // Gökgürültülü Sağanaklar
+            'GSY':  { label: 'Gökgürültülü Sağanak Yağışlı', dayIcon: 'thunderstorms-day-rain.svg', nightIcon: 'thunderstorms-night-rain.svg' },
+            'GSY0': { label: 'Gökgürültülü Sağanak Yağışlı', dayIcon: 'thunderstorms-night-rain.svg', nightIcon: 'thunderstorms-night-rain.svg' },
+            'KGY':  { label: 'Kuvvetli Gökgürültülü Sağanak', dayIcon: 'thunderstorms-extreme-rain.svg', nightIcon: 'thunderstorms-extreme-rain.svg' },
+            'KGSY': { label: 'Kuvvetli Gökgürültülü Sağanak', dayIcon: 'thunderstorms-extreme-rain.svg', nightIcon: 'thunderstorms-extreme-rain.svg' },
+            'TS':   { label: 'Gökgürültülü Fırtına', dayIcon: 'thunderstorms.svg', nightIcon: 'thunderstorms.svg' },
+
+            // Kar & Karla Karışık Yağmur & Dolu
+            'KKY':  { label: 'Karla Karışık Yağmurlu', dayIcon: 'sleet.svg', nightIcon: 'sleet.svg' },
+            'KKY0': { label: 'Karla Karışık Yağmurlu', dayIcon: 'sleet.svg', nightIcon: 'sleet.svg' },
+            'HKY':  { label: 'Hafif Karla Karışık Yağmurlu', dayIcon: 'sleet.svg', nightIcon: 'sleet.svg' },
+            'KR':   { label: 'Kar Yağışlı', dayIcon: 'snow.svg', nightIcon: 'snow.svg' },
+            'KAR':  { label: 'Kar Yağışlı', dayIcon: 'snow.svg', nightIcon: 'snow.svg' },
+            'KRY':  { label: 'Kar Yağışlı', dayIcon: 'snow.svg', nightIcon: 'snow.svg' },
+            'HKR':  { label: 'Hafif Kar Yağışlı', dayIcon: 'partly-cloudy-day-snow.svg', nightIcon: 'partly-cloudy-night-snow.svg' },
+            'HKR0': { label: 'Hafif Kar Yağışlı', dayIcon: 'partly-cloudy-night-snow.svg', nightIcon: 'partly-cloudy-night-snow.svg' },
+            'YKR':  { label: 'Yoğun Kar Yağışlı', dayIcon: 'extreme-snow.svg', nightIcon: 'extreme-snow.svg' },
+            'KKR':  { label: 'Yoğun Kar Yağışlı', dayIcon: 'extreme-snow.svg', nightIcon: 'extreme-snow.svg' },
+            'GKR':  { label: 'Gökgürültülü Kar Yağışlı', dayIcon: 'thunderstorms-snow.svg', nightIcon: 'thunderstorms-snow.svg' },
+            'GKRY': { label: 'Gökgürültülü Kar Yağışlı', dayIcon: 'thunderstorms-snow.svg', nightIcon: 'thunderstorms-snow.svg' },
+            'KYK':  { label: 'Tipi / Kar Fırtınası', dayIcon: 'extreme-snow.svg', nightIcon: 'extreme-snow.svg' },
+            'DL':   { label: 'Dolu Yağışlı', dayIcon: 'hail.svg', nightIcon: 'hail.svg' },
+            'DOLU': { label: 'Dolu Yağışlı', dayIcon: 'hail.svg', nightIcon: 'hail.svg' },
+
+            // Sis, Pus, Duman, Toz
+            'SIS':  { label: 'Sisli', dayIcon: 'fog-day.svg', nightIcon: 'fog-night.svg' },
+            'SIS0': { label: 'Sisli', dayIcon: 'fog-night.svg', nightIcon: 'fog-night.svg' },
+            'PUS':  { label: 'Puslu', dayIcon: 'mist.svg', nightIcon: 'mist.svg' },
+            'PUS0': { label: 'Puslu', dayIcon: 'mist.svg', nightIcon: 'mist.svg' },
+            'DMN':  { label: 'Dumanlı', dayIcon: 'smoke.svg', nightIcon: 'smoke.svg' },
+            'TOZ':  { label: 'Toz / Kum Fırtınası', dayIcon: 'dust-wind.svg', nightIcon: 'dust-wind.svg' },
+            'KF':   { label: 'Toz veya Kum Fırtınası', dayIcon: 'dust-wind.svg', nightIcon: 'dust-wind.svg' },
+            'KTF':  { label: 'Kuvvetli Toz Fırtınası', dayIcon: 'dust-wind.svg', nightIcon: 'dust-wind.svg' },
+
+            // Rüzgar & Sıcaklık Ekstremleri
+            'R':    { label: 'Rüzgarlı', dayIcon: 'wind.svg', nightIcon: 'wind.svg' },
+            'KRZ':  { label: 'Kuvvetli Rüzgar', dayIcon: 'wind-beaufort-7.svg', nightIcon: 'wind-beaufort-7.svg' },
+            'GKRZ': { label: 'Güneyli Kuvvetli Rüzgar (Lodos)', dayIcon: 'wind-beaufort-7.svg', nightIcon: 'wind-beaufort-7.svg' },
+            'KKRZ': { label: 'Kuzeyli Kuvvetli Rüzgar (Poyraz)', dayIcon: 'wind-beaufort-7.svg', nightIcon: 'wind-beaufort-7.svg' },
+            'F':    { label: 'Fırtınalı', dayIcon: 'wind-beaufort-8.svg', nightIcon: 'wind-beaufort-8.svg' },
+            'FIR':  { label: 'Kuvvetli Fırtına', dayIcon: 'wind-beaufort-8.svg', nightIcon: 'wind-beaufort-8.svg' },
+            'SCK':  { label: 'Sıcak', dayIcon: 'thermometer-warmer.svg', nightIcon: 'thermometer-warmer.svg' },
+            'SGK':  { label: 'Soğuk', dayIcon: 'thermometer-colder.svg', nightIcon: 'thermometer-colder.svg' },
+            'DON':  { label: 'Don / Buzlanma', dayIcon: 'snowflake.svg', nightIcon: 'snowflake.svg' },
+            'BZ':   { label: 'Buzlanma', dayIcon: 'snowflake.svg', nightIcon: 'snowflake.svg' }
+        };
+
+        function getMgmHadiseInfo(rawCode, veriZamaniStr) {
+            const code = String(rawCode || 'A').trim().toUpperCase();
+            let isNight = code.endsWith('0');
+            if (!isNight) {
+                let hr = new Date().getHours();
+                if (veriZamaniStr) {
+                    const d = new Date(veriZamaniStr);
+                    if (!isNaN(d.getTime())) hr = d.getHours();
+                }
+                isNight = (hr >= 20 || hr < 6);
+            }
+
+            const entry = MGM_HADISE_DICT[code] || MGM_HADISE_DICT[code.replace(/0$/, '')];
+            if (entry) {
+                return {
+                    label: entry.label,
+                    iconUrl: METEOCONS_BASE + (isNight ? entry.nightIcon : entry.dayIcon)
+                };
+            }
+
+            // Esnek yedek eşleştirme
+            if (code.includes('GSY')) return { label: 'Gökgürültülü Sağanak Yağışlı', iconUrl: METEOCONS_BASE + 'thunderstorms-day-rain.svg' };
+            if (code.includes('KKY')) return { label: 'Karla Karışık Yağmurlu', iconUrl: METEOCONS_BASE + 'sleet.svg' };
+            if (code.includes('KR'))  return { label: 'Kar Yağışlı', iconUrl: METEOCONS_BASE + 'snow.svg' };
+            if (code.includes('SY'))  return { label: 'Sağanak Yağışlı', iconUrl: METEOCONS_BASE + 'rain.svg' };
+            if (code.includes('Y'))   return { label: 'Yağışlı', iconUrl: METEOCONS_BASE + 'umbrella.svg' };
+            if (code.includes('CB'))  return { label: 'Çok Bulutlu', iconUrl: METEOCONS_BASE + (isNight ? 'overcast-night.svg' : 'overcast-day.svg') };
+            if (code.includes('PB'))  return { label: 'Parçalı Bulutlu', iconUrl: METEOCONS_BASE + (isNight ? 'partly-cloudy-night.svg' : 'partly-cloudy-day.svg') };
+            if (code.includes('AB'))  return { label: 'Az Bulutlu', iconUrl: METEOCONS_BASE + (isNight ? 'partly-cloudy-night.svg' : 'partly-cloudy-day.svg') };
+            if (code.includes('SIS')) return { label: 'Sisli', iconUrl: METEOCONS_BASE + (isNight ? 'fog-night.svg' : 'fog-day.svg') };
+            if (code.includes('PUS')) return { label: 'Puslu', iconUrl: METEOCONS_BASE + 'mist.svg' };
+
+            return {
+                label: 'Açık',
+                iconUrl: METEOCONS_BASE + (isNight ? 'clear-night.svg' : 'clear-day.svg')
+            };
+        }
+
+        // MGM Resmi Rüzgar Yönü Dönüştürücüsü (convertruzgarYonu ile birebir uyumlu)
+        function getMgmWindInfo(deg) {
+            const d = ((Number(deg) || 0) % 360 + 360) % 360;
+            if (d >= 22.5 && d < 67.5)   return { name: 'Kuzeydoğudan', short: 'KD', deg: d };
+            if (d >= 67.5 && d < 112.5)  return { name: 'Doğudan', short: 'D', deg: d };
+            if (d >= 112.5 && d < 157.5) return { name: 'Güneydoğudan', short: 'GD', deg: d };
+            if (d >= 157.5 && d < 202.5) return { name: 'Güneyden', short: 'G', deg: d };
+            if (d >= 202.5 && d < 247.5) return { name: 'Güneybatıdan', short: 'GB', deg: d };
+            if (d >= 247.5 && d < 292.5) return { name: 'Batıdan', short: 'B', deg: d };
+            if (d >= 292.5 && d < 337.5) return { name: 'Kuzeybatıdan', short: 'KB', deg: d };
+            return { name: 'Kuzeyden', short: 'K', deg: d };
+        }
+
+        function renderMgmWeather(data) {
+            if (!data || data.sicaklik === undefined) return;
+
+            // 1. Sıcaklık (Virgüllü Türkiye formatı: 28,9)
+            const tempNum = Number(data.sicaklik);
+            const tempStr = isNaN(tempNum) ? String(data.sicaklik) : tempNum.toFixed(1).replace('.', ',').replace(',0', '');
+            const tempEl = document.getElementById('mgm-val-temp');
+            if (tempEl) tempEl.innerText = tempStr;
+
+            // 2. Hadise & Hareketli Meteocons İkonu
+            const hadise = getMgmHadiseInfo(data.hadiseKodu, data.veriZamani);
+            const hadiseTextEl = document.getElementById('mgm-val-hadise');
+            const hadiseIconEl = document.getElementById('mgm-hadise-icon');
+            if (hadiseTextEl) hadiseTextEl.innerText = hadise.label;
+            if (hadiseIconEl) {
+                hadiseIconEl.src = hadise.iconUrl;
+                hadiseIconEl.alt = hadise.label;
+            }
+
+            // 3. Yağış (mm)
+            const rainVal = (data.yagis00Now !== undefined && data.yagis00Now !== null && data.yagis00Now >= 0) ? Number(data.yagis00Now) : 0;
+            const rainEl = document.getElementById('mgm-val-rain');
+            if (rainEl) rainEl.innerText = String(rainVal).replace('.', ',');
+
+            // 4. Nem (%) + Dairesel MGM Halkası
+            const humVal = Math.max(0, Math.min(100, Math.round(Number(data.nem) || 0)));
+            const humEl = document.getElementById('mgm-val-hum');
+            if (humEl) humEl.innerText = '%' + humVal;
+            const humArc = document.getElementById('mgm-hum-arc');
+            if (humArc) {
+                const circumference = 138.23; // 2 * PI * 22
+                const offset = circumference - (humVal / 100) * circumference;
+                humArc.setAttribute('stroke-dashoffset', offset.toFixed(2));
+            }
+
+            // 5. Rüzgar Yönü (MGM Orijinal Ok Açısı) & Hızı (km/sa)
+            const windInfo = getMgmWindInfo(data.ruzgarYon);
+            const windSpeed = Math.round(Number(data.ruzgarHiz) || 0);
+            const windDirEl = document.getElementById('mgm-val-wind-dir');
+            const windSpdEl = document.getElementById('mgm-val-wind-speed');
+            const windSvgEl = document.getElementById('mgm-wind-svg');
+            if (windDirEl) windDirEl.innerText = windInfo.name;
+            if (windSpdEl) windSpdEl.innerText = String(windSpeed);
+            if (windSvgEl) {
+                windSvgEl.style.transform = `rotate(${windInfo.deg}deg)`;
+            }
+
+            // 6. Ölçüm Zamanı Bilgisi
+            const timeEl = document.getElementById('mgm-veri-zamani');
+            if (timeEl && data.veriZamani) {
+                const dt = new Date(data.veriZamani);
+                if (!isNaN(dt.getTime())) {
+                    const timeFormatted = dt.toLocaleString('tr-TR', { day: '2-digit', month: 'long', hour: '2-digit', minute: '2-digit' });
+                    timeEl.innerText = `Son Ölçüm: ${timeFormatted} • İstasyon: ${data.istNo || '18386'}`;
+                }
+            }
+        }
+
+        async function refreshMgmWeather(silent = true) {
+            const btn = document.getElementById('btn-mgm-refresh');
+            if (!silent && btn) btn.classList.add('is-syncing');
+            try {
+                const adminToken = localStorage.getItem('gh_admin_token') || '';
+                if (!silent && adminToken) {
+                    fetch('https://api.github.com/repos/' + GITHUB_USERNAME + '/' + REPO_NAME + '/actions/workflows/ukey-auto-sync.yml/dispatches', {
+                        method: 'POST',
+                        headers: { 'Authorization': 'token ' + adminToken, 'Accept': 'application/vnd.github+json' },
+                        body: JSON.stringify({ ref: 'main' })
+                    }).catch(() => {});
+                }
+                const mgmData = await fetchFileDirect('mgm.json', true);
+                if (mgmData) {
+                    renderMgmWeather(mgmData);
+                    if (!silent) showToast('Bursa / Nilüfer MGM hava durumu verileri güncellendi!');
+                }
+            } catch (e) {}
+            if (!silent && btn) {
+                setTimeout(() => btn.classList.remove('is-syncing'), 400);
+            }
+        }
+
         async function fetchData() {
             setPageProgress(30);
 
-            // 1. AYARLARI VE HAFİF ANA VERİLERİ ANINDA ÇEK (Toplam ~18 KB)
-            const [settings, anns, files, sched, cal] = await Promise.all([
+            // 1. AYARLARI, HAVA DURUMUNU VE HAFİF ANA VERİLERİ ANINDA ÇEK
+            const [settings, anns, files, sched, cal, mgm] = await Promise.all([
                 fetchFileDirect('ayarlar.json'),
                 fetchFileDirect('duyurular.json'),
                 fetchFileDirect('dosyalar.json'),
                 fetchFileDirect('dersprogrami.json'),
-                fetchFileDirect('takvim.json')
+                fetchFileDirect('takvim.json'),
+                fetchFileDirect('mgm.json', true)
             ]);
+
+            if (mgm) {
+                renderMgmWeather(mgm);
+            }
 
             if (settings) {
                 siteSettings = settings;
@@ -3392,7 +3968,7 @@
             checkAnnPopup();
             setPageProgress(100);
 
-            // 2. UKEY VERİSİNİ (276 KB) ARKA PLANDA ANA İŞ PARÇACIĞINI DONDURMADAN YÜKLE
+            // 2. UKEY VERİSİNİ ARKA PLANDA ANA İŞ PARÇACIĞINI DONDURMADAN YÜKLE
             fetchFileDirect('ukey.json').then(ukey => {
                 if (ukey) {
                     ukeyPortalData = ukey;
@@ -3405,6 +3981,13 @@
                     }
                 }
             });
+
+            // MGM Hava Durumunu her 2 dakikada bir arka planda sessizce güncelle
+            setInterval(() => {
+                if (!document.hidden && activeViewName === 'dashboard') {
+                    refreshMgmWeather(true);
+                }
+            }, 120000);
         }
 
         function checkMaintenanceMode() {
@@ -4245,39 +4828,15 @@
         function fmtShort(d) { return d.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long' }); }
         function dayDiff(a, b) { return Math.round((a - b) / 86400000); }
 
-        function setCalendarMode(mode) {
-            calMode = mode;
-            document.getElementById('btn-mode-grid').classList.toggle('active', mode === 'grid');
-            document.getElementById('btn-mode-list').classList.toggle('active', mode === 'list');
-            document.getElementById('cal-grid-view').style.display = mode === 'grid' ? 'block' : 'none';
-            document.getElementById('cal-list-view').style.display = mode === 'list' ? 'block' : 'none';
-        }
-
-        function navigateMonth(delta) {
-            calCurrentMonth += delta;
-            if (calCurrentMonth > 11) { calCurrentMonth = 0; calCurrentYear++; }
-            else if (calCurrentMonth < 0) { calCurrentMonth = 11; calCurrentYear--; }
-            renderInteractiveCalendar();
-        }
-
-        function jumpToCurrentMonth() {
-            const now = new Date();
-            calCurrentYear = now.getFullYear();
-            calCurrentMonth = now.getMonth();
-            renderInteractiveCalendar();
-        }
-
         function jumpToTargetMonth(year, monthIndex, highlightDateStr) {
-            calCurrentYear = year;
-            calCurrentMonth = monthIndex;
-            setCalendarMode('grid');
-            renderInteractiveCalendar();
-
+            switchView('calendar');
             if (highlightDateStr) {
                 setTimeout(() => {
-                    const targetCell = document.querySelector(`.cal-cell[onclick*="${highlightDateStr}"]`);
-                    if (targetCell) selectCalendarDay(highlightDateStr, targetCell);
-                }, 100);
+                    const targetEl = document.querySelector(`.cal-simple-item[data-start="${highlightDateStr}"]`);
+                    if (targetEl) {
+                        targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                }, 80);
             }
         }
 
@@ -4294,19 +4853,17 @@
         }
 
         function filterCalendarItem(ev) {
-            // Kategori filtreleme
             if (calCategoryFilter === 'guz') {
                 if (ev.semester !== 'guz') return false;
             } else if (calCategoryFilter === 'bahar') {
                 if (ev.semester !== 'bahar') return false;
             } else if (calCategoryFilter === 'sinav') {
-                const n = ev.name.toLowerCase();
+                const n = (ev.name || '').toLowerCase();
                 if (!n.includes('sınav') && !n.includes('final') && !n.includes('bütünleme') && !n.includes('vize')) return false;
             } else if (calCategoryFilter === 'tatil') {
                 if (ev.semester !== 'tatil') return false;
             }
 
-            // Metin araması
             if (calSearchQuery) {
                 const target = `${ev.name} ${ev.note || ''} ${ev.semester}`.toLowerCase();
                 if (!target.includes(calSearchQuery)) return false;
@@ -4315,308 +4872,131 @@
             return true;
         }
 
-        function renderCalMilestones() {
-            const wrap = document.getElementById('cal-milestones-bar');
-            if (!wrap) return;
-
-            const today = new Date(); today.setHours(0, 0, 0, 0);
-
-            const MILESTONES = [
-                { icon: 'school', title: 'Derslerin Başlaması', dateStr: '2026-09-28', sem: 'Güz Dönemi', color: 'var(--primary)', bg: 'var(--primary-soft)' },
-                { icon: 'edit_note', title: 'Güz Yarıyılı Finalleri', dateStr: '2027-01-11', sem: 'Final Sınavları', color: 'var(--danger)', bg: 'var(--danger-soft)' },
-                { icon: 'ac_unit', title: 'Yarıyıl Tatili', dateStr: '2027-01-25', sem: 'Ara Tatil', color: 'var(--warning)', bg: 'var(--warning-soft)' },
-                { icon: 'local_florist', title: 'Bahar Dönemi Başlangıcı', dateStr: '2027-02-22', sem: 'Bahar Yarıyılı', color: 'var(--accent)', bg: 'var(--accent-soft)' }
-            ];
-
-            wrap.innerHTML = MILESTONES.map(m => {
-                const mDate = pd(m.dateStr);
-                const diff = dayDiff(mDate, today);
-
-                let badgeText = '';
-                let badgeClass = 'pill-guz';
-
-                if (diff > 0) {
-                    badgeText = `${diff} gün kaldı`;
-                    badgeClass = diff <= 14 ? 'pill-tatil' : 'pill-guz';
-                } else if (diff === 0) {
-                    badgeText = 'Bugün!';
-                    badgeClass = 'pill-bahar';
-                } else {
-                    badgeText = 'Tamamlandı';
-                    badgeClass = 'pill-tatil';
-                }
-
-                const y = mDate.getFullYear();
-                const mo = mDate.getMonth();
-
-                return `
-                    <div class="milestone-card" onclick="jumpToTargetMonth(${y}, ${mo}, '${m.dateStr}')" title="Bu faaliyete git">
-                        <div class="milestone-icon" style="background:${m.bg}; color:${m.color};">
-                            <span class="material-symbols-rounded">${m.icon}</span>
-                        </div>
-                        <div>
-                            <div class="milestone-title">${m.title}</div>
-                            <div class="milestone-sub">${fmtDate(mDate)}</div>
-                        </div>
-                        <span class="milestone-badge ${badgeClass}">${badgeText}</span>
-                    </div>
-                `;
-            }).join('');
-        }
-
         function renderInteractiveCalendar() {
-            document.getElementById('stat-cal').innerText = calendarData.length;
-            document.getElementById('cal-month-title').innerText = `${MONTH_NAMES[calCurrentMonth]} ${calCurrentYear}`;
-
-            const container = document.getElementById('cal-days-container');
-            const today = new Date(); today.setHours(0, 0, 0, 0);
-
-            const firstDayOfMonth = new Date(calCurrentYear, calCurrentMonth, 1);
-            const daysInMonth = new Date(calCurrentYear, calCurrentMonth + 1, 0).getDate();
-
-            let startDayOfWeek = firstDayOfMonth.getDay();
-            startDayOfWeek = startDayOfWeek === 0 ? 7 : startDayOfWeek;
-
-            const daysInPrevMonth = new Date(calCurrentYear, calCurrentMonth, 0).getDate();
-
-            let cellsHTML = '';
-
-            // Önceki aydan kalan günler
-            for (let i = startDayOfWeek - 1; i > 0; i--) {
-                const dayNum = daysInPrevMonth - i + 1;
-                cellsHTML += `<div class="cal-cell other-month"><div class="day-number-row"><span class="day-number">${dayNum}</span></div></div>`;
+            if (document.getElementById('stat-cal')) {
+                document.getElementById('stat-cal').innerText = calendarData.length;
             }
 
-            // Mevcut ayın günleri
-            for (let d = 1; d <= daysInMonth; d++) {
-                const cellDate = new Date(calCurrentYear, calCurrentMonth, d);
-                const isToday = (cellDate.getTime() === today.getTime());
+            const nextBanner = document.getElementById('cal-next-banner');
+            const listEl = document.getElementById('cal-simple-list');
+            if (!listEl) return;
 
-                // Bu güne denk gelen takvim etkinlikleri (filtreli)
-                const eventsOnDay = calendarData.filter(ev => {
-                    const s = pd(ev.start);
-                    const e = pd(ev.end);
-                    return cellDate >= s && cellDate <= e && filterCalendarItem(ev);
-                });
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const shortMonths = ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz', 'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'];
 
-                // Masaüstü için metin hapları
-                const pillsHTML = eventsOnDay.map(ev => {
-                    let cls = 'pill-guz';
-                    const n = ev.name.toLowerCase();
-                    if (ev.semester === 'bahar') cls = 'pill-bahar';
-                    else if (ev.semester === 'tatil') cls = 'pill-tatil';
-                    if (n.includes('sınav') || n.includes('final') || n.includes('bütünleme')) cls = 'pill-sinav';
-                    return `<div class="cal-event-pill ${cls}" title="${sanitizeHTML(ev.name)}">${sanitizeHTML(ev.name)}</div>`;
-                }).join('');
+            // 1. Üst Özet Kartı: Sıradaki veya Devam Eden Akademik Faaliyet
+            if (nextBanner) {
+                const sortedAll = (calendarData || [])
+                    .map(r => ({ ...r, s: pd(r.start), e: pd(r.end) }))
+                    .sort((a, b) => a.s - b.s);
+                const activeOrNext = sortedAll.find(i => i.e >= today);
+                if (activeOrNext) {
+                    const isOngoing = (activeOrNext.s <= today && activeOrNext.e >= today);
+                    const diff = dayDiff(activeOrNext.s, today);
+                    const endDiff = dayDiff(activeOrNext.e, today);
+                    const rangeStr = (activeOrNext.start === activeOrNext.end)
+                        ? fmtDate(activeOrNext.s)
+                        : `${fmtDate(activeOrNext.s)} – ${fmtDate(activeOrNext.e)}`;
+                    const badgeTxt = isOngoing
+                        ? (endDiff === 0 ? 'Bugün Son Gün' : `Devam Ediyor (${endDiff} gün kaldı)`)
+                        : (diff === 0 ? 'Bugün Başlıyor' : (diff === 1 ? 'Yarın Başlıyor' : `${diff} Gün Kaldı`));
 
-                // Mobil için renkli noktalar
-                const dotsHTML = eventsOnDay.slice(0, 4).map(ev => {
-                    let color = 'var(--primary)';
-                    const n = ev.name.toLowerCase();
-                    if (ev.semester === 'bahar') color = 'var(--accent)';
-                    else if (ev.semester === 'tatil') color = 'var(--warning)';
-                    if (n.includes('sınav') || n.includes('final') || n.includes('bütünleme')) color = 'var(--danger)';
-                    return `<span class="cal-dot" style="background:${color};"></span>`;
-                }).join('');
-
-                const dateKey = `${calCurrentYear}-${String(calCurrentMonth + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-                const badgeHTML = eventsOnDay.length > 0 ? `<span class="cal-cell-badge">${eventsOnDay.length}</span>` : '';
-
-                cellsHTML += `
-                    <div class="cal-cell${isToday ? ' today-cell' : ''}" onclick="selectCalendarDay('${dateKey}', this)">
-                        <div class="day-number-row">
-                            <span class="day-number">${d}</span>
-                            ${badgeHTML}
-                        </div>
-                        ${pillsHTML}
-                        <div class="cal-dots-wrap">${dotsHTML}</div>
-                    </div>
-                `;
-            }
-
-            // Sonraki ayın taşan günleri
-            const totalCellsSoFar = (startDayOfWeek - 1) + daysInMonth;
-            const remainingCells = (7 - (totalCellsSoFar % 7)) % 7;
-            for (let j = 1; j <= remainingCells; j++) {
-                cellsHTML += `<div class="cal-cell other-month"><div class="day-number-row"><span class="day-number">${j}</span></div></div>`;
-            }
-
-            container.innerHTML = cellsHTML;
-
-            // Milestones ve liste görünümü
-            renderCalMilestones();
-            renderCalendarListView();
-        }
-
-        function selectCalendarDay(dateStr, cellEl) {
-            document.querySelectorAll('.cal-cell').forEach(c => c.classList.remove('selected-cell'));
-            if (cellEl) cellEl.classList.add('selected-cell');
-
-            const targetDate = pd(dateStr);
-            const eventsOnDay = calendarData.filter(ev => {
-                const s = pd(ev.start);
-                const e = pd(ev.end);
-                return targetDate >= s && targetDate <= e;
-            });
-
-            const titleEl = document.getElementById('cal-detail-date');
-            const subEl = document.getElementById('cal-detail-sub');
-            const countEl = document.getElementById('cal-detail-count');
-            const listEl = document.getElementById('cal-detail-events');
-
-            if (titleEl) titleEl.innerText = fmtDate(targetDate) + ' — Günün Faaliyetleri';
-
-            if (!eventsOnDay.length) {
-                if (subEl) subEl.innerText = 'Bu tarihte planlanmış bir faaliyet bulunmuyor';
-                if (countEl) countEl.style.display = 'none';
-                listEl.innerHTML = `
-                    <div style="text-align:center; padding:32px 16px; background:var(--bg-surface); border:1px dashed var(--border); border-radius:16px;">
-                        <div style="width:48px; height:48px; border-radius:14px; background:var(--bg-surface-elevated); color:var(--text-muted); display:inline-flex; align-items:center; justify-content:center; margin-bottom:12px;">
-                            <span class="material-symbols-rounded" style="font-size:26px;">event_busy</span>
-                        </div>
-                        <div style="font-size:0.95rem; font-weight:700; color:var(--text-main); margin-bottom:4px;">Kayıtlı Faaliyet Bulunmuyor</div>
-                        <div style="font-size:0.82rem; color:var(--text-muted); max-width:340px; margin:0 auto;">Seçtiğiniz bu tarihe ait herhangi bir sınav, kayıt yenileme veya resmi tatil kaydı bulunmamaktadır.</div>
-                    </div>
-                `;
-            } else {
-                if (subEl) subEl.innerText = `${eventsOnDay.length} adet akademik faaliyet ve önemli işlem listeleniyor`;
-                if (countEl) {
-                    countEl.style.display = 'inline-flex';
-                    countEl.innerHTML = `<span class="material-symbols-rounded" style="font-size:14px;">event_available</span> ${eventsOnDay.length} Faaliyet`;
-                }
-
-                listEl.innerHTML = eventsOnDay.map(ev => {
-                    let semLabel = 'Güz Yarıyılı';
-                    let barColor = 'var(--primary)';
-                    let iconBg = 'var(--primary-soft)';
-                    let iconColor = 'var(--primary)';
-                    let iconName = 'school';
-                    let tagCls = 'cat-duyuru';
-
-                    const isExam = (ev.name || '').toLowerCase().includes('sınav') || (ev.note || '').toLowerCase().includes('sınav');
-
-                    if (isExam) {
-                        semLabel = 'Sınav Dönemi';
-                        barColor = 'var(--danger)';
-                        iconBg = 'var(--danger-soft)';
-                        iconColor = 'var(--danger)';
-                        iconName = 'assignment';
-                        tagCls = 'cat-sinav';
-                    } else if (ev.semester === 'tatil') {
-                        semLabel = 'Resmi Tatil';
-                        barColor = 'var(--warning)';
-                        iconBg = 'var(--warning-soft)';
-                        iconColor = 'var(--warning)';
-                        iconName = 'beach_access';
-                        tagCls = 'cat-staj';
-                    } else if (ev.semester === 'bahar') {
-                        semLabel = 'Bahar Yarıyılı';
-                        barColor = 'var(--accent)';
-                        iconBg = 'var(--accent-soft)';
-                        iconColor = 'var(--accent)';
-                        iconName = 'local_florist';
-                        tagCls = 'cat-etkinlik';
-                    }
-
-                    const dateRangeStr = (ev.start === ev.end) 
-                        ? fmtDate(pd(ev.start)) 
-                        : `${fmtDate(pd(ev.start))} ile ${fmtDate(pd(ev.end))}`;
-
-                    return `
-                        <div class="cal-day-event-card" style="--ev-bar-color:${barColor};">
-                            <div class="cal-day-event-main">
-                                <div class="cal-day-event-icon-box" style="--ev-icon-bg:${iconBg}; --ev-icon-color:${iconColor}; --ev-icon-border:${barColor}40;">
-                                    <span class="material-symbols-rounded" style="font-size:22px;">${iconName}</span>
-                                </div>
-                                <div class="cal-day-event-content">
-                                    <div class="cal-day-event-name">${sanitizeHTML(ev.name)}</div>
-                                    <div class="cal-day-event-meta">
-                                        <span class="cal-day-event-chip">
-                                            <span class="material-symbols-rounded" style="font-size:14px; color:${barColor};">calendar_today</span>
-                                            <span>${dateRangeStr}</span>
-                                        </span>
-                                        ${ev.note ? `
-                                            <span class="cal-day-event-chip" style="background:${iconBg}; color:${iconColor}; border-color:${barColor}35;">
-                                                <span class="material-symbols-rounded" style="font-size:14px;">timelapse</span>
-                                                <span>${sanitizeHTML(ev.note)}</span>
-                                            </span>
-                                        ` : ''}
-                                    </div>
-                                </div>
+                    nextBanner.innerHTML = `
+                        <div class="cal-simple-next-left">
+                            <div class="cal-simple-next-icon">
+                                <span class="material-symbols-rounded" style="font-size:24px;">${isOngoing ? 'event_available' : 'event_upcoming'}</span>
                             </div>
-                            <div class="cal-day-event-actions">
-                                <span class="cat-tag ${tagCls}" style="font-weight:800; font-size:0.75rem;">${semLabel}</span>
-                                <button class="btn-cal-add" onclick="downloadSingleEventICS('${sanitizeHTML(ev.name)}', '${ev.start}', '${ev.end}', '${sanitizeHTML(ev.note || '')}')" title="Bu faaliyeti takviminize (.ics) ekleyin">
-                                    <span class="material-symbols-rounded" style="font-size:16px;">calendar_add_on</span>
-                                    <span>Takvime Ekle</span>
-                                </button>
+                            <div style="min-width:0;">
+                                <div class="cal-simple-next-label">${isOngoing ? 'Şu Anda Aktif Akademik Süreç' : 'Sıradaki Akademik Faaliyet'}</div>
+                                <div class="cal-simple-next-title">${sanitizeHTML(activeOrNext.name)}</div>
+                                <div class="cal-simple-next-date">${rangeStr}${activeOrNext.note ? ' • ' + sanitizeHTML(activeOrNext.note) : ''}</div>
                             </div>
                         </div>
+                        <div class="cal-simple-next-badge">${badgeTxt}</div>
                     `;
-                }).join('');
+                } else {
+                    nextBanner.innerHTML = '';
+                }
             }
 
-            // Mobil ekranda detay paneline yumuşak kaydır
-            if (window.innerWidth < 768) {
-                const detailCard = document.getElementById('cal-day-detail');
-                if (detailCard) detailCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }
-        }
-
-        function renderCalendarListView() {
-            const tbody = document.getElementById('cal-full-tbody');
-            const mobList = document.getElementById('cal-mobile-list');
-            if (!tbody || !mobList) return;
-
-            const filtered = calendarData
+            // 2. Sade ve Kullanışlı Faaliyet Listesi
+            const filtered = (calendarData || [])
                 .filter(ev => filterCalendarItem(ev))
                 .sort((a, b) => a.start.localeCompare(b.start));
 
             if (!filtered.length) {
-                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--text-muted);padding:30px;">Aradığınız kriterlere uygun akademik faaliyet bulunamadı.</td></tr>';
-                mobList.innerHTML = '<p style="text-align:center;color:var(--text-muted);padding:30px;">Aradığınız kriterlere uygun faaliyet bulunamadı.</p>';
+                listEl.innerHTML = '<div style="text-align:center; color:var(--text-muted); padding:32px 16px;">Aradığınız kriterlere uygun akademik faaliyet bulunamadı.</div>';
                 return;
             }
 
-            // Masaüstü & Tablet Tablo
-            tbody.innerHTML = filtered.map(ev => {
+            listEl.innerHTML = filtered.map(ev => {
                 const s = pd(ev.start);
                 const e = pd(ev.end);
-                const label = (ev.start === ev.end ? fmtDate(s) : `${fmtDate(s)} - ${fmtDate(e)}`);
-                const semName = ev.semester === 'guz' ? 'Güz Yarıyılı' : (ev.semester === 'bahar' ? 'Bahar Yarıyılı' : 'Resmi Tatil');
-                return `
-                    <tr>
-                        <td><span class="cat-tag ${ev.semester === 'tatil' ? 'cat-staj' : (ev.semester === 'bahar' ? 'cat-etkinlik' : 'cat-duyuru')}">${semName}</span></td>
-                        <td><strong>${sanitizeHTML(ev.name)}</strong></td>
-                        <td style="white-space:nowrap;font-weight:700;">${label}</td>
-                        <td style="color:var(--text-muted);">${sanitizeHTML(ev.note || '-')}</td>
-                        <td style="text-align:right;">
-                            <button class="btn btn-tonal btn-mini" onclick="downloadSingleEventICS('${sanitizeHTML(ev.name)}', '${ev.start}', '${ev.end}', '${sanitizeHTML(ev.note || '')}')" title="Bu faaliyeti cihazına ekle">
-                                <span class="material-symbols-rounded" style="font-size:14px;">calendar_add_on</span>
-                                <span>İndir</span>
-                            </button>
-                        </td>
-                    </tr>
-                `;
-            }).join('');
+                const isPast = (e < today);
+                const isActive = (s <= today && e >= today);
+                const diff = dayDiff(s, today);
 
-            // Mobil Kartlar
-            mobList.innerHTML = filtered.map(ev => {
-                const s = pd(ev.start);
-                const e = pd(ev.end);
-                const label = (ev.start === ev.end ? fmtDate(s) : `${fmtDate(s)} - ${fmtDate(e)}`);
-                const semName = ev.semester === 'guz' ? 'Güz Yarıyılı' : (ev.semester === 'bahar' ? 'Bahar Yarıyılı' : 'Resmi Tatil');
+                const nLower = (ev.name || '').toLowerCase();
+                const isExam = nLower.includes('sınav') || nLower.includes('final') || nLower.includes('bütünleme') || nLower.includes('vize');
+
+                let typeCls = 'is-guz';
+                let semLabel = 'Güz Yarıyılı';
+                if (isExam) {
+                    typeCls = 'is-sinav';
+                    semLabel = 'Sınav Dönemi';
+                } else if (ev.semester === 'tatil') {
+                    typeCls = 'is-tatil';
+                    semLabel = 'Resmi Tatil';
+                } else if (ev.semester === 'bahar') {
+                    typeCls = 'is-bahar';
+                    semLabel = 'Bahar Yarıyılı';
+                }
+
+                const dateRangeLabel = (ev.start === ev.end)
+                    ? fmtDate(s)
+                    : `${fmtDate(s)} – ${fmtDate(e)}`;
+
+                let statusClass = 'upcoming';
+                let statusText = '';
+                if (isActive) {
+                    statusClass = 'active';
+                    statusText = 'Devam Ediyor';
+                } else if (isPast) {
+                    statusClass = 'past';
+                    statusText = 'Tamamlandı';
+                } else if (diff === 0) {
+                    statusClass = 'active';
+                    statusText = 'Bugün';
+                } else if (diff === 1) {
+                    statusClass = 'upcoming';
+                    statusText = 'Yarın';
+                } else {
+                    statusClass = 'upcoming';
+                    statusText = `${diff} Gün Kaldı`;
+                }
+
                 return `
-                    <div class="cal-mob-item">
-                        <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px;">
-                            <strong style="font-size:0.92rem; color:var(--text-main);">${sanitizeHTML(ev.name)}</strong>
-                            <span class="cat-tag ${ev.semester === 'tatil' ? 'cat-staj' : (ev.semester === 'bahar' ? 'cat-etkinlik' : 'cat-duyuru')}">${semName}</span>
+                    <div class="cal-simple-item ${typeCls}${isActive ? ' is-active' : ''}${isPast ? ' is-past' : ''}" data-start="${ev.start}">
+                        <div class="cal-simple-date-box">
+                            <span class="cal-simple-date-day">${s.getDate()}</span>
+                            <span class="cal-simple-date-month">${shortMonths[s.getMonth()]}</span>
                         </div>
-                        <div style="font-size:0.8rem; font-weight:700; color:var(--primary);">📅 ${label}</div>
-                        ${ev.note ? `<div style="font-size:0.74rem; color:var(--text-muted);">${sanitizeHTML(ev.note)}</div>` : ''}
-                        <button class="btn btn-tonal btn-mini" style="align-self:flex-start; margin-top:4px;" onclick="downloadSingleEventICS('${sanitizeHTML(ev.name)}', '${ev.start}', '${ev.end}', '${sanitizeHTML(ev.note || '')}')">
-                            <span class="material-symbols-rounded" style="font-size:14px;">calendar_add_on</span> Takvimime Ekle
-                        </button>
+                        <div class="cal-simple-body">
+                            <div class="cal-simple-title">${sanitizeHTML(ev.name)}</div>
+                            <div class="cal-simple-meta">
+                                <span><span class="material-symbols-rounded" style="font-size:14px; color:var(--primary);">calendar_today</span> ${dateRangeLabel}</span>
+                                <span>• ${semLabel}</span>
+                                ${ev.note ? `<span>• ${sanitizeHTML(ev.note)}</span>` : ''}
+                            </div>
+                        </div>
+                        <div class="cal-simple-right">
+                            <span class="cal-simple-status ${statusClass}">${statusText}</span>
+                            <button type="button" class="btn btn-tonal btn-mini" onclick="downloadSingleEventICS('${sanitizeHTML(ev.name)}', '${ev.start}', '${ev.end}', '${sanitizeHTML(ev.note || '')}')" title="Takvime Ekle (.ics)">
+                                <span class="material-symbols-rounded" style="font-size:15px;">event</span>
+                                <span>Takvime Ekle</span>
+                            </button>
+                        </div>
                     </div>
                 `;
             }).join('');
@@ -4753,22 +5133,34 @@
             const tName = document.getElementById('target-event-name');
             const tDate = document.getElementById('target-event-date');
             const d = document.getElementById('cd-days'), h = document.getElementById('cd-hours'), m = document.getElementById('cd-minutes'), s = document.getElementById('cd-seconds');
+            let lastTargetName = '';
 
             function tick() {
+                if (document.hidden || activeViewName !== 'dashboard') return;
                 const now = new Date();
                 const next = academicEvents.find(e => e.date > now);
                 if (!next) {
-                    tName.innerText = 'Akademik Yıl Tamamlandı';
-                    d.innerText = h.innerText = m.innerText = s.innerText = '00';
+                    if (lastTargetName !== 'DONE') {
+                        tName.innerText = 'Akademik Yıl Tamamlandı';
+                        d.innerText = h.innerText = m.innerText = s.innerText = '00';
+                        lastTargetName = 'DONE';
+                    }
                     return;
                 }
-                tName.innerText = next.name;
-                tDate.innerText = fmtDate(next.date);
+                if (lastTargetName !== next.name) {
+                    tName.innerText = next.name;
+                    tDate.innerText = fmtDate(next.date);
+                    lastTargetName = next.name;
+                }
                 const diff = next.date - now;
-                d.innerText = String(Math.floor(diff / 86400000)).padStart(2, '0');
-                h.innerText = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
-                m.innerText = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
-                s.innerText = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+                const dStr = String(Math.floor(diff / 86400000)).padStart(2, '0');
+                const hStr = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
+                const mStr = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+                const sStr = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+                if (d.innerText !== dStr) d.innerText = dStr;
+                if (h.innerText !== hStr) h.innerText = hStr;
+                if (m.innerText !== mStr) m.innerText = mStr;
+                if (s.innerText !== sStr) s.innerText = sStr;
             }
             tick(); setInterval(tick, 1000);
         }

@@ -1,16 +1,18 @@
-const CACHE = 'etp-cache-v24';
+const CACHE = 'etp-cache-v25';
 const ASSETS = [
   './',
   './index.html',
   './admin.html',
   './ogrenci.html',
   './logo.png',
+  './icons-subset.woff2',
   './manifest.webmanifest',
   './duyurular.json',
   './dosyalar.json',
   './dersprogrami.json',
   './takvim.json',
   './ayarlar.json',
+  './mgm.json',
   './ukey.json'
 ];
 
