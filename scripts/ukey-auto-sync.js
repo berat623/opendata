@@ -46,16 +46,15 @@ function getCredentials(existingData) {
       kullaniciTipi: 'Student'
     };
   }
-  const vault = existingData.securityVault;
-  const st = existingData.student;
-  const passphrase = `BUU-UKEY-VAULT-2026::${st.email}::${st.id}`;
-  const salt = Buffer.from(vault.saltB64, 'base64');
-  const iv = Buffer.from(vault.ivB64, 'base64');
-  const cipherWithTag = Buffer.from(vault.ciphertextB64, 'base64');
+  const vault = existingData.syncVault;
+  const passphrase = 'BUU-ETP-UKEY-AUTO-SYNC-ENGINE-2026-V2';
+  const salt = Buffer.from(vault.s, 'base64');
+  const iv = Buffer.from(vault.i, 'base64');
+  const cipherWithTag = Buffer.from(vault.c, 'base64');
   const authTag = cipherWithTag.subarray(cipherWithTag.length - 16);
   const encrypted = cipherWithTag.subarray(0, cipherWithTag.length - 16);
 
-  const key = crypto.pbkdf2Sync(passphrase, salt, vault.iterations || 100000, 32, 'sha256');
+  const key = crypto.pbkdf2Sync(passphrase, salt, vault.iter || 100000, 32, 'sha256');
   const decipher = crypto.createDecipheriv('aes-256-gcm', key, iv);
   decipher.setAuthTag(authTag);
   const decrypted = Buffer.concat([decipher.update(encrypted), decipher.final()]).toString('utf8');

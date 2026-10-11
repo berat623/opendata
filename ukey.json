@@ -1,29 +1,6 @@
 {
-  "lastSyncedAt": "2026-10-11T11:33:10.912Z",
+  "lastSyncedAt": "2026-10-11T11:44:27.842Z",
   "portalUrl": "https://ukey.uludag.edu.tr/Home",
-  "student": {
-    "id": 279889,
-    "studentNo": "222604023",
-    "fullName": "BERAT TORUN",
-    "email": "222604023@ogr.uludag.edu.tr",
-    "userType": "Student",
-    "faculty": "Teknik Bilimler Meslek Yüksekokulu",
-    "department": "Elektronik ve Otomasyon Bölümü",
-    "program": "Elektronik Teknolojisi Programı",
-    "semester": "2026-2027 Güz Dönemi (1. Sınıf)",
-    "notificationPreference": "TUM",
-    "notificationPreferenceLabel": "Tüm güncellemelerden e-posta ile haberdar olmak istiyorum",
-    "language": "tr-TR"
-  },
-  "securityVault": {
-    "algorithm": "AES-256-GCM",
-    "kdf": "PBKDF2-SHA256",
-    "iterations": 100000,
-    "saltB64": "/x/2utL7CJTOjqdMd/JSsQ==",
-    "ivB64": "GH29dG5GLGDCXovz",
-    "ciphertextB64": "fxDEe21xIuxMcTjvdzR2eXjClVEJOjjO1L0iwm998hPcllTkG2eH75nOF2w9qhFKEji0eHf+nlD8go3+SZOSuYL/z2IJ6F+1c3JPWDY5bMvSeEdrTTLVxyz92zoPSRBzxRhmSMlzmga//f95OK/Md8MHW0Yz0t+66VOEBcPFkfKF60GMLm9Ha/Yc/FkzkTbFBFHqAzij/tSxmnYSfiu6Va0=",
-    "keyDerivationHint": "BUU-UKEY-VAULT-2026::<email>::<studentId>"
-  },
   "urgentNotifications": [
     {
       "id": "notif-65235",
@@ -214,7 +191,7 @@
           "code": "MY-APPS",
           "title": "Erasmus Başvuru İşlemleri (Başvurularım)",
           "status": "Kayıtlı Başvuru Bulunmamaktadır",
-          "description": "222604023 numaralı öğrenci kaydınıza ait geçmiş veya aktif Erasmus+ başvurularınızın listesi."
+          "description": "Öğrenci kaydınıza ait geçmiş veya aktif Erasmus+ başvurularınızın listesi."
         }
       ]
     }
@@ -223,7 +200,7 @@
     {
       "title": "Öğrenciler için UKEY Kılavuzu",
       "type": "Resmi PDF Kılavuz",
-      "url": "https://ukey.uludag.edu.tr/Content/ Kilavuzlar/Ogrenci_UKEY_Kilavuzu.pdf",
+      "url": "ukey_dosyalar/22YAD105-1_6.pdf",
       "localFallback": "ukey_dosyalar/22YAD105-1_6.pdf",
       "description": "UKEY sistemi üzerinden ders içerikleri, ödev yükleme, e-sınav ve sanal toplantı adımları."
     },
@@ -1806,5 +1783,20 @@
       "groups": [],
       "meetings": []
     }
-  ]
+  ],
+  "programInfo": {
+    "university": "Bursa Uludağ Üniversitesi",
+    "faculty": "Teknik Bilimler Meslek Yüksekokulu",
+    "department": "Elektronik ve Otomasyon Bölümü",
+    "program": "Elektronik Teknolojisi Programı",
+    "semester": "2026-2027 Güz Dönemi"
+  },
+  "syncVault": {
+    "alg": "AES-256-GCM",
+    "kdf": "PBKDF2-SHA256",
+    "iter": 100000,
+    "s": "XpoKuNgwjNjwEZmuRWpdbw==",
+    "i": "S/d/32GLvWQhn9xh",
+    "c": "rfov+UN6Gp7RJmW2RMhJQM58Vogx6gGYLHmDa/QWe1sYaPFCsU/+LQBb0PddHS3Wxtg6J5qZLA/mZysz5j52P082RVNV3rpJTOZs6cGtkEyQl0/GA5u8qw0gO7bszI9vEgbUSSTT/7WXmm8oJtnZK1qvtXI="
+  }
 }
