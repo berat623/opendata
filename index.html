@@ -22,7 +22,7 @@
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght,ROND@6..144,600,100&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet" />
 
     <style>
@@ -103,7 +103,8 @@
             --timer-bar-fill: #059669;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Parkinsans', sans-serif; -webkit-tap-highlight-color: transparent; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Google Sans Flex', sans-serif; font-optical-sizing: auto; -webkit-tap-highlight-color: transparent; }
+        *:not(.material-symbols-rounded) { font-variation-settings: "ROND" 100; }
         body {
             background-color: var(--bg-body);
             background-image: 
@@ -1438,7 +1439,7 @@
                 page-break-inside: avoid !important;
                 page-break-after: avoid !important;
                 page-break-before: avoid !important;
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+                font-family: 'Google Sans Flex', sans-serif !important;
             }
             .print-full-sched-header {
                 display: flex;
@@ -1872,6 +1873,360 @@
         .ukey-mat-item:hover {
             border-color: var(--primary-border);
         }
+
+        /* YÜKSEK GÖRÜNÜRLÜKLÜ TEKİL UKEY YAN MENÜ BUTONU */
+        .nav-item-ukey {
+            margin-top: 6px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.20) 0%, rgba(37, 99, 235, 0.18) 100%);
+            border: 1.5px solid rgba(16, 185, 129, 0.55);
+            color: var(--text-main) !important;
+            font-weight: 800;
+            box-shadow: 0 6px 16px -4px rgba(16, 185, 129, 0.28);
+        }
+        .nav-item-ukey .ukey-nav-icon {
+            color: #10b981;
+            font-size: 22px;
+        }
+        html.light-mode .nav-item-ukey {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.16) 0%, rgba(37, 99, 235, 0.14) 100%);
+            border-color: rgba(5, 150, 105, 0.55);
+            color: #0f172a !important;
+        }
+        html.light-mode .nav-item-ukey .ukey-nav-icon {
+            color: #059669;
+        }
+        .nav-item-ukey .ukey-nav-pill {
+            display: inline-flex !important;
+            background: #059669;
+            color: #ffffff !important;
+            font-weight: 800;
+            font-size: 0.72rem;
+            padding: 3px 9px;
+            border-radius: 999px;
+            letter-spacing: 0.2px;
+            box-shadow: 0 2px 6px rgba(5, 150, 105, 0.35);
+        }
+        .nav-item-ukey:hover {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.30) 0%, rgba(37, 99, 235, 0.26) 100%);
+            border-color: #10b981;
+            transform: translateX(4px);
+        }
+        .nav-item-ukey.active {
+            background: linear-gradient(135deg, #2563eb 0%, #059669 100%) !important;
+            border-color: rgba(255, 255, 255, 0.4) !important;
+            color: #ffffff !important;
+            box-shadow: 0 8px 22px -4px rgba(37, 99, 235, 0.55) !important;
+            transform: none;
+        }
+        .nav-item-ukey.active .ukey-nav-icon,
+        .nav-item-ukey.active .nav-label {
+            color: #ffffff !important;
+        }
+        .nav-item-ukey.active .ukey-nav-pill {
+            background: rgba(255, 255, 255, 0.24) !important;
+            color: #ffffff !important;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: none;
+        }
+
+        /* SADELEŞTİRİLMİŞ DERS PROGRAMI TASARIMI (MASAÜSTÜ & TELEFON UYUMLU) */
+        .sched-top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding-bottom: 14px;
+            margin-bottom: 18px;
+            border-bottom: 1px solid var(--border);
+        }
+        .sched-top-bar .day-tabs-bar {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding: 0;
+            flex: 1;
+            min-width: 260px;
+        }
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+            gap: 16px;
+        }
+        .schedule-grid.single-day-mode {
+            grid-template-columns: 1fr;
+            max-width: 760px;
+        }
+        .day-card {
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .day-title {
+            margin-bottom: 4px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+            font-size: 1rem;
+        }
+        .lesson-card-simple {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 14px;
+            border-radius: 14px;
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border);
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .lesson-card-simple:hover {
+            border-color: var(--primary-border);
+            transform: translateY(-1px);
+        }
+        .lesson-card-simple.live-now {
+            border-color: var(--accent);
+            background: var(--accent-soft);
+        }
+        .lesson-time-pill {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 68px;
+            padding: 8px 10px;
+            border-radius: 12px;
+            background: var(--primary-soft);
+            color: var(--primary);
+            border: 1px solid var(--primary-border);
+            font-weight: 800;
+            font-size: 0.8rem;
+            line-height: 1.25;
+            flex-shrink: 0;
+            text-align: center;
+        }
+        .lesson-card-simple.live-now .lesson-time-pill {
+            background: var(--accent);
+            color: #fff;
+            border-color: transparent;
+        }
+        .lesson-hours-tag {
+            font-size: 0.66rem;
+            opacity: 0.85;
+            margin-top: 3px;
+            font-weight: 700;
+        }
+        .lesson-body-simple {
+            flex: 1;
+            min-width: 0;
+        }
+        .lesson-top-badges {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 4px;
+        }
+        .lesson-code-badge {
+            font-size: 0.72rem;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 6px;
+            background: var(--primary-soft);
+            color: var(--primary);
+        }
+        .lesson-type-badge {
+            font-size: 0.68rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 6px;
+            background: var(--bg-surface);
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+        }
+        .lesson-type-badge.is-lab {
+            color: var(--warning);
+            background: var(--warning-soft);
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+        .lesson-type-badge.is-online {
+            color: var(--accent);
+            background: var(--accent-soft);
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+        .lesson-title-simple {
+            font-size: 0.94rem;
+            font-weight: 800;
+            color: var(--text-main);
+            line-height: 1.3;
+            margin-bottom: 4px;
+            word-break: break-word;
+        }
+        .lesson-meta-simple {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            font-size: 0.76rem;
+            color: var(--text-muted);
+        }
+        .lesson-meta-simple span {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* UKEY VE DERS PROGRAMI TAM MOBİL (TELEFON) UYUMLULUK KURALLARI */
+        .ukey-nav-tabs::-webkit-scrollbar,
+        .ukey-subtabs::-webkit-scrollbar {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .sched-top-bar {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+            .sched-top-bar .day-tabs-bar {
+                min-width: 0;
+                width: 100%;
+                padding-bottom: 4px;
+            }
+            .sched-actions {
+                width: 100%;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+            .sched-view-pills {
+                grid-column: 1 / -1;
+                width: 100%;
+            }
+            .lesson-card-simple {
+                padding: 10px 12px;
+                gap: 10px;
+            }
+            .lesson-time-pill {
+                min-width: 58px;
+                padding: 6px 8px;
+                font-size: 0.74rem;
+            }
+            .lesson-title-simple {
+                font-size: 0.88rem;
+            }
+            .lesson-meta-simple {
+                font-size: 0.72rem;
+                gap: 8px;
+            }
+
+            /* UKEY MOBİL OPTİMİZASYONU */
+            .ukey-hero-bar {
+                padding: 10px 12px !important;
+                margin-bottom: 12px;
+                border-radius: 14px;
+            }
+            .ukey-top-actions {
+                width: 100%;
+                justify-content: stretch;
+            }
+            .ukey-top-actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .ukey-nav-tabs {
+                gap: 6px;
+                margin-bottom: 14px;
+                padding-bottom: 4px;
+                scrollbar-width: none;
+                -webkit-overflow-scrolling: touch;
+            }
+            .ukey-nav-tab {
+                padding: 8px 12px;
+                font-size: 0.78rem;
+                border-radius: 11px;
+                gap: 6px;
+            }
+            .ukey-urgent-banner {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 14px;
+                gap: 12px;
+            }
+            .ukey-urgent-actions {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+            .ukey-urgent-actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .ukey-courses-grid {
+                grid-template-columns: 1fr !important;
+                gap: 12px;
+            }
+            .ukey-course-card {
+                padding: 14px;
+                gap: 12px;
+            }
+            .ukey-subtabs {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                gap: 6px;
+                margin: 12px 0 14px 0;
+                padding-bottom: 6px;
+            }
+            .ukey-subtab-btn {
+                flex-shrink: 0;
+                white-space: nowrap;
+                padding: 8px 12px;
+                font-size: 0.78rem;
+            }
+            .ukey-info-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+            .ukey-info-box {
+                padding: 10px 12px;
+            }
+            .ukey-info-box strong {
+                font-size: 0.84rem;
+                word-break: break-word;
+            }
+            .ukey-mat-item {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 12px;
+                gap: 10px;
+            }
+            .ukey-mat-item > div {
+                min-width: 0 !important;
+                width: 100%;
+            }
+            .ukey-mat-item .btn,
+            .ukey-mat-item a.btn {
+                width: 100%;
+                justify-content: center;
+            }
+            #ukey-hw-modal {
+                padding: 8px;
+                align-items: flex-end;
+            }
+            #ukey-hw-modal .ann-modal {
+                padding: 18px 14px !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                max-height: 90dvh !important;
+                border-radius: 18px;
+            }
+        }
+        @media (max-width: 400px) {
+            .ukey-info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
     </style>
 
     <script>
@@ -2167,15 +2522,13 @@
             <div class="nav-item" data-view="files" onclick="switchView('files')">
                 <span class="material-symbols-rounded">folder_open</span><span class="nav-label">Dosyalar</span>
             </div>
-            <div class="nav-item" data-view="ukey" onclick="switchView('ukey')">
-                <span class="material-symbols-rounded" style="color:var(--accent);">school</span><span class="nav-label">UKEY</span>
-                <span class="nav-badge" id="ukey-nav-badge-m" style="display:inline-flex; background:var(--accent); color:#fff;">9 Ders</span>
+            <div class="nav-item nav-item-ukey" data-view="ukey" onclick="switchView('ukey')">
+                <span class="material-symbols-rounded ukey-nav-icon">school</span>
+                <span class="nav-label">UKEY</span>
+                <span class="nav-badge ukey-nav-pill" id="ukey-nav-badge-m">9 Ders</span>
             </div>
         </div>
         <div class="drawer-footer">
-            <div class="nav-item" data-view="ukey" onclick="switchView('ukey')" style="color:var(--accent); cursor:pointer;">
-                <span class="material-symbols-rounded">verified_user</span><span class="nav-label">UKEY</span>
-            </div>
             <a href="admin.html" class="nav-item" style="color:var(--primary);">
                 <span class="material-symbols-rounded">shield_person</span><span class="nav-label">Yönetici Girişi</span>
             </a>
@@ -2211,15 +2564,13 @@
                 <div class="nav-item" data-view="files" onclick="switchView('files')">
                     <span class="material-symbols-rounded">folder_open</span><span class="nav-label">Dosyalar</span>
                 </div>
-                <div class="nav-item" data-view="ukey" onclick="switchView('ukey')">
-                    <span class="material-symbols-rounded" style="color:var(--accent);">school</span><span class="nav-label">UKEY</span>
-                    <span class="nav-badge" id="ukey-nav-badge-d" style="display:inline-flex; background:var(--accent); color:#fff;">9 Ders</span>
+                <div class="nav-item nav-item-ukey" data-view="ukey" onclick="switchView('ukey')">
+                    <span class="material-symbols-rounded ukey-nav-icon">school</span>
+                    <span class="nav-label">UKEY</span>
+                    <span class="nav-badge ukey-nav-pill" id="ukey-nav-badge-d">9 Ders</span>
                 </div>
             </div>
             <div class="sidebar-footer">
-                <div class="nav-item" data-view="ukey" onclick="switchView('ukey')" style="color:var(--accent); cursor:pointer;">
-                    <span class="material-symbols-rounded">verified_user</span><span class="nav-label">UKEY</span>
-                </div>
                 <a href="admin.html" class="nav-item" style="color:var(--primary);">
                     <span class="material-symbols-rounded">shield_person</span><span class="nav-label">Yönetici Girişi</span>
                 </a>
@@ -2239,10 +2590,7 @@
                     </div>
                 </div>
                 <div class="header-actions">
-                    <button class="btn btn-tonal btn-mini" style="gap:6px; border-color:rgba(16,185,129,0.35); color:var(--accent);" onclick="switchView('ukey')" title="UKEY Eğitim ve Ders Portalı">
-                        <span class="material-symbols-rounded" style="font-size:18px;">school</span>
-                        <span>UKEY</span>
-                    </button>
+
                     <button id="btn-pwa-install" class="btn btn-tonal btn-mini" style="display:none; gap:6px;" onclick="promptPWAInstall()" aria-label="Uygulamayı Yükle">
                         <span class="material-symbols-rounded" style="font-size:18px; color:var(--accent);">install_mobile</span>
                         <span class="pwa-btn-text">Uygulamayı Yükle</span>
@@ -2346,72 +2694,52 @@
                 </div>
             </div>
 
-            <!-- 3. SCHEDULE VIEW (GELİŞMİŞ VE TÜM CİHAZLARLA UYUMLU DERS PROGRAMI) -->
+            <!-- 3. SCHEDULE VIEW (SADELEŞTİRİLMİŞ, MASAÜSTÜ VE MOBİL TAM UYUMLU DERS PROGRAMI) -->
             <div id="view-schedule" class="view-section">
                 
                 <!-- CANLI DURUM & SIRADAKİ DERS BİLGİ KARTI -->
                 <div id="sched-live-banner" class="sched-live-card">
                     <div class="live-pulse-dot"></div>
-                    <div>
+                    <div style="min-width:0; flex:1;">
                         <div class="sched-live-title" id="sched-live-title">Ders durumu yükleniyor...</div>
                         <div class="sched-live-meta" id="sched-live-meta">Lütfen bekleyiniz...</div>
                     </div>
                 </div>
 
                 <div class="card">
-                    <div class="card-header" style="flex-wrap:wrap; gap:14px; margin-bottom:12px;">
-                        <div>
-                            <h3 class="card-title"><span class="icon-chip accent"><span class="material-symbols-rounded">calendar_month</span></span> Haftalık Ders Programı</h3>
-                        </div>
-                        
-                        <!-- AKSİYON BUTONLARI VE GÖRÜNÜM SEÇİCİ -->
+                    <div class="sched-top-bar">
+                        <div id="sched-day-tabs" class="day-tabs-bar"></div>
                         <div class="sched-actions">
+                            <div class="sched-view-pills">
+                                <button class="sched-mode-btn active" id="btn-sched-cards" onclick="setScheduleViewMode('cards')">
+                                    <span class="material-symbols-rounded" style="font-size:16px;">view_agenda</span>
+                                    <span>Günlük Kartlar</span>
+                                </button>
+                                <button class="sched-mode-btn" id="btn-sched-matrix" onclick="setScheduleViewMode('matrix')">
+                                    <span class="material-symbols-rounded" style="font-size:16px;">table_chart</span>
+                                    <span>Tablo</span>
+                                </button>
+                            </div>
                             <button class="btn btn-tonal btn-mini" onclick="printSchedule()" title="Programı yazdır veya PDF olarak kaydet">
                                 <span class="material-symbols-rounded" style="font-size:16px;">print</span>
-                                <span>Yazdır / PDF</span>
+                                <span>PDF / Yazdır</span>
                             </button>
                             <button class="btn btn-tonal btn-mini" onclick="downloadAllScheduleICS()" title="Tüm haftalık dersleri telefon/bilgisayar takvimine aktar">
                                 <span class="material-symbols-rounded" style="font-size:16px;">event</span>
-                                <span>Takvime Ekle (.ics)</span>
+                                <span>Takvime Ekle</span>
                             </button>
-                            <div class="sched-view-pills">
-                                <button class="sched-mode-btn active" id="btn-sched-cards" onclick="setScheduleViewMode('cards')">
-                                    <span class="material-symbols-rounded" style="font-size:16px;">view_agenda</span> Kart Akışı
-                                </button>
-                                <button class="sched-mode-btn" id="btn-sched-matrix" onclick="setScheduleViewMode('matrix')">
-                                    <span class="material-symbols-rounded" style="font-size:16px;">grid_on</span> Haftalık Tablo
-                                </button>
-                            </div>
                         </div>
                     </div>
 
-                    <!-- ARAMA VE HIZLI FİLTRELER -->
-                    <div class="sched-filter-bar">
-                        <div class="search-wrap" style="flex:1; min-width:240px; max-width:none;">
-                            <span class="material-symbols-rounded">search</span>
-                            <input type="search" id="sched-search-input" placeholder="Ders adı, kodu, hoca veya derslik ara (örn: Sayısal, UKEY, D-8)..." oninput="onScheduleFilterChange()">
-                        </div>
-                        <div class="filter-chips-scroll">
-                            <button class="filter-chip active" data-filter="all" onclick="setScheduleQuickFilter('all', this)">Tümü</button>
-                            <button class="filter-chip" data-filter="today" onclick="setScheduleQuickFilter('today', this)">Bugünün Dersleri</button>
-                            <button class="filter-chip" data-filter="room-d8" onclick="setScheduleQuickFilter('room-d8', this)">D-8 Dersliği</button>
-                            <button class="filter-chip" data-filter="room-ukey" onclick="setScheduleQuickFilter('room-ukey', this)">UKEY (Online)</button>
-                        </div>
-                    </div>
-
-                    <!-- GÜN SEKMELERİ (KART MODUNDA KULLANILIR, MOBİLDE YATAY KAYDIRILABİLİR) -->
-                    <div id="sched-day-tabs" class="day-tabs-bar"></div>
-
-                    <!-- GÖRÜNÜM A: GÜNLÜK KART AKIŞI -->
+                    <!-- GÖRÜNÜM A: SADELEŞTİRİLMİŞ GÜNLÜK DERS KARTLARI -->
                     <div id="sched-cards-container" class="schedule-grid"></div>
 
-                    <!-- GÖRÜNÜM B: HAFTALIK MATRİS TABLOSU (TABLET & LAPTOP İÇİN OPTİMİZE) -->
+                    <!-- GÖRÜNÜM B: HAFTALIK MATRİS TABLOSU -->
                     <div id="sched-matrix-container" style="display:none;">
                         <div class="matrix-wrapper">
                             <table class="sched-matrix-table" id="sched-matrix-table"></table>
                         </div>
                     </div>
-
                 </div>
             </div>
 
@@ -3242,17 +3570,56 @@
             `).join('');
         }
 
-        /* DERS PROGRAMI (GELİŞMİŞ, CANLI DURUMLU VE ÇOKLU CİHAZ UYUMLU) */
-        let activeScheduleDay = 0; // 0 = Tümü, 1 = Pzt, 2 = Sal, 3 = Çar, 4 = Per, 5 = Cum
-        let scheduleSearchQuery = '';
-        let scheduleQuickFilter = 'all'; // 'all', 'today', 'room-d8', 'room-ukey'
-        let scheduleViewMode = localStorage.getItem('schedule_view_mode') || 'cards'; // 'cards' | 'matrix'
+        /* DERS PROGRAMI (SADE, GRUPLANDIRILMIŞ VE TÜM CİHAZLARLA TAM UYUMLU) */
+        let activeScheduleDay = 0; // 0 = Tüm Hafta, 1..5 = Pzt..Cum
+        let scheduleViewMode = localStorage.getItem('schedule_view_mode') || 'cards';
 
-        // İlk yüklemede bugünün gününü belirle
-        (function initScheduleDay() {
-            const td = new Date().getDay();
-            activeScheduleDay = (td >= 1 && td <= 5) ? td : 1;
-        })();
+        const COURSE_META_MAP = {
+            'ELNZ101': { name: 'Elektronik Meslek Bilgisi ve Güvenliği', instructor: 'Öğr. Gör. Dr. H. H. ÇELİK' },
+            '22YAD105': { name: 'Yabancı Dil I (İngilizce)', instructor: 'Öğr. Gör. T. ÇETİN' },
+            'ELNZ107': { name: 'Sayısal Elektronik', instructor: 'Öğr. Gör. M. D. KAYA' },
+            'OTPZ101': { name: 'Mesleki Matematik', instructor: 'Öğr. Gör. H. S. YENİGÜN' },
+            '22HRTZ115': { name: 'Kariyer Planlama', instructor: 'Öğr. Gör. B. YILDIRIM' },
+            'ELNZ103': { name: 'Ölçme Tekniği', instructor: 'Öğr. Gör. H. S. YENİGÜN' },
+            'ELNZ105': { name: 'Doğru Akım Devre Analizi', instructor: 'Öğr. Gör. Dr. H. H. ÇELİK' },
+            'OTPZ010': { name: 'Bilgi ve İletişim Teknolojisi', instructor: 'Öğr. Gör. M. D. KAYA' },
+            'OTPZ001': { name: 'İş Sağlığı ve Güvenliği', instructor: 'Öğr. Gör. Dr. H. H. ÇELİK' }
+        };
+
+        function parseLessonInfo(l) {
+            const raw = (l.course || '').trim();
+            const codeMatch = raw.match(/^([A-Z0-9]+)/i);
+            const code = codeMatch ? codeMatch[1].toUpperCase() : raw;
+            const meta = COURSE_META_MAP[code] || {};
+            const isLab = /\(L\)|Laboratuvar/i.test(raw) || /LAB/i.test(l.room || '');
+            const isOnline = /UKEY|Online/i.test(l.room || '') || /UKEY|Online/i.test(l.instructor || '');
+            const title = meta.name || raw.replace(/^([A-Z0-9]+)\s*-?\s*/i, '').replace(/\([TLU]\)/gi, '').trim() || raw;
+            const instructor = meta.instructor || l.instructor || '-';
+            const typeLabel = isOnline ? 'Online (UKEY)' : (isLab ? 'Laboratuvar' : 'Teorik');
+            const typeClass = isOnline ? 'is-online' : (isLab ? 'is-lab' : '');
+            return { code, title, instructor, room: l.room || '-', typeLabel, typeClass };
+        }
+
+        function getGroupedDayLessons(dayNum) {
+            const rawList = (scheduleData || [])
+                .filter(l => +l.day === +dayNum)
+                .sort((a, b) => a.start.localeCompare(b.start));
+            const groups = [];
+            for (const item of rawList) {
+                const prev = groups[groups.length - 1];
+                if (prev && prev.course === item.course && prev.room === item.room) {
+                    prev.end = item.end;
+                    prev.hoursCount += 1;
+                } else {
+                    groups.push({
+                        ...item,
+                        hoursCount: 1,
+                        parsed: parseLessonInfo(item)
+                    });
+                }
+            }
+            return groups;
+        }
 
         function diffMinutes(hm1, hm2) {
             if (!hm1 || !hm2) return 0;
@@ -3273,8 +3640,6 @@
             renderScheduleDayTabs();
             renderScheduleCards();
             renderScheduleMatrix();
-
-            // Görünüm modu seçimi
             setScheduleViewMode(scheduleViewMode, false);
         }
 
@@ -3310,52 +3675,45 @@
             if (!banner || !titleEl || !metaEl) return;
 
             const now = new Date();
-            const currentDay = now.getDay(); // 0 = Pazar, 1 = Pzt, ..., 6 = Cmt
+            const currentDay = now.getDay();
             const currentHM = String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0');
 
             banner.className = 'sched-live-card';
 
             if (currentDay >= 1 && currentDay <= 5) {
-                const todayLessons = scheduleData.filter(l => +l.day === currentDay).sort((a,b) => a.start.localeCompare(b.start));
-                
-                // Devam eden aktif ders var mı?
-                const activeLesson = todayLessons.find(l => currentHM >= l.start && currentHM < l.end);
-                
+                const todayGroups = getGroupedDayLessons(currentDay);
+                const activeLesson = todayGroups.find(l => currentHM >= l.start && currentHM < l.end);
+
                 if (activeLesson) {
                     banner.classList.add('is-active');
                     const remMin = diffMinutes(currentHM, activeLesson.end);
-                    titleEl.innerHTML = `<span>Şu An Devam Eden Ders:</span> <strong style="color:var(--accent);">${sanitizeHTML(activeLesson.course)}</strong>`;
+                    titleEl.innerHTML = `<span>Şu An Devam Eden Ders:</span> <strong style="color:var(--accent);">${sanitizeHTML(activeLesson.parsed.code)} • ${sanitizeHTML(activeLesson.parsed.title)}</strong>`;
                     metaEl.innerHTML = `
-                        <span><span class="material-symbols-rounded" style="font-size:15px;vertical-align:middle;">meeting_room</span> ${sanitizeHTML(activeLesson.room || '-')}</span>
+                        <span><span class="material-symbols-rounded" style="font-size:15px;vertical-align:middle;">meeting_room</span> ${sanitizeHTML(activeLesson.parsed.room)}</span>
                         <span><span class="material-symbols-rounded" style="font-size:15px;vertical-align:middle;">schedule</span> ${activeLesson.start} - ${activeLesson.end}</span>
-                        <span><span class="material-symbols-rounded" style="font-size:15px;vertical-align:middle;">person</span> ${sanitizeHTML(activeLesson.instructor || '-')}</span>
                         <span class="sched-live-badge">⏳ ${remMin} dk kaldı</span>
                     `;
                     return;
                 }
 
-                // Sıradaki ders var mı?
-                const nextLesson = todayLessons.find(l => currentHM < l.start);
+                const nextLesson = todayGroups.find(l => currentHM < l.start);
                 if (nextLesson) {
                     banner.classList.add('is-upcoming');
                     const waitMin = diffMinutes(currentHM, nextLesson.start);
-                    titleEl.innerHTML = `<span>Sıradaki Ders:</span> <strong style="color:var(--primary);">${sanitizeHTML(nextLesson.course)}</strong>`;
+                    titleEl.innerHTML = `<span>Sıradaki Ders:</span> <strong style="color:var(--primary);">${sanitizeHTML(nextLesson.parsed.code)} • ${sanitizeHTML(nextLesson.parsed.title)}</strong>`;
                     metaEl.innerHTML = `
-                        <span><span class="material-symbols-rounded" style="font-size:15px;vertical-align:middle;">meeting_room</span> ${sanitizeHTML(nextLesson.room || '-')}</span>
+                        <span><span class="material-symbols-rounded" style="font-size:15px;vertical-align:middle;">meeting_room</span> ${sanitizeHTML(nextLesson.parsed.room)}</span>
                         <span><span class="material-symbols-rounded" style="font-size:15px;vertical-align:middle;">schedule</span> ${nextLesson.start} - ${nextLesson.end}</span>
-                        <span><span class="material-symbols-rounded" style="font-size:15px;vertical-align:middle;">person</span> ${sanitizeHTML(nextLesson.instructor || '-')}</span>
-                        <span class="sched-live-badge wait">⏱️ ${waitMin} dakika sonra başlıyor</span>
+                        <span class="sched-live-badge wait">⏱️ ${waitMin} dk sonra</span>
                     `;
                     return;
                 }
 
-                // Bugünün tüm dersleri bitti
-                titleEl.innerHTML = `<span>✅ Bugünün Dersleri Tamamlandı</span>`;
-                metaEl.innerHTML = `İyi dinlenmeler! Gün sekmelerinden diğer günlerin programını inceleyebilirsiniz.`;
+                titleEl.innerHTML = `<span>Bugünün Dersleri Tamamlandı</span>`;
+                metaEl.innerHTML = `Haftalık programdan diğer günlerin derslerini inceleyebilirsiniz.`;
             } else {
-                // Hafta Sonu
-                titleEl.innerHTML = `<span>🏖️ Hafta Sonu • İyi Dinlenmeler</span>`;
-                metaEl.innerHTML = `Haftanın ilk dersi: <strong>Pazartesi 10:30 • ELNZ101 (D-8)</strong>`;
+                titleEl.innerHTML = `<span>Hafta Sonu • İyi Dinlenmeler</span>`;
+                metaEl.innerHTML = `Pazartesi 10:30 • <strong>ELNZ101 - Elektronik Meslek Bilgisi ve Güvenliği (D-8)</strong>`;
             }
         }
 
@@ -3364,26 +3722,22 @@
             if (!tabsWrap) return;
 
             const todayDay = new Date().getDay();
-            const totalCount = scheduleData.length;
 
             let html = `
                 <button class="day-tab-btn${activeScheduleDay === 0 ? ' active' : ''}" onclick="selectScheduleDayTab(0, this)">
                     <span class="material-symbols-rounded" style="font-size:16px;">calendar_view_week</span>
                     <span>Tüm Hafta</span>
-                    <span class="day-tab-badge">${totalCount}</span>
                 </button>
             `;
 
             DAYS.forEach((dName, idx) => {
                 const dNum = idx + 1;
-                const dCount = scheduleData.filter(l => +l.day === dNum).length;
                 const isToday = (dNum === todayDay);
                 const isActive = (activeScheduleDay === dNum);
 
                 html += `
                     <button class="day-tab-btn${isActive ? ' active' : ''}" onclick="selectScheduleDayTab(${dNum}, this)">
                         <span>${dName}</span>
-                        <span class="day-tab-badge">${dCount}</span>
                         ${isToday ? '<span class="day-tab-today">Bugün</span>' : ''}
                     </button>
                 `;
@@ -3399,44 +3753,11 @@
             renderScheduleCards();
         }
 
-        function setScheduleQuickFilter(filterKey, btn) {
-            scheduleQuickFilter = filterKey;
-            document.querySelectorAll('.sched-filter-bar .filter-chip').forEach(b => b.classList.remove('active'));
-            if (btn) btn.classList.add('active');
-            renderScheduleCards();
-            renderScheduleMatrix();
-        }
-
-        function onScheduleFilterChange() {
-            const inp = document.getElementById('sched-search-input');
-            scheduleSearchQuery = (inp.value || '').trim().toLowerCase();
-            renderScheduleCards();
-            renderScheduleMatrix();
-        }
-
-        function filterLessonItem(l) {
-            // Hızlı filtre
-            if (scheduleQuickFilter === 'today') {
-                const td = new Date().getDay() || 1;
-                if (+l.day !== td) return false;
-            } else if (scheduleQuickFilter === 'room-d8') {
-                if (!l.room || !l.room.includes('D-8')) return false;
-            } else if (scheduleQuickFilter === 'room-ukey') {
-                if (!l.room || !l.room.toLowerCase().includes('ukey')) return false;
-            }
-
-            // Metin araması
-            if (scheduleSearchQuery) {
-                const target = `${l.course} ${l.room} ${l.instructor} ${l.start} ${l.end}`.toLowerCase();
-                if (!target.includes(scheduleSearchQuery)) return false;
-            }
-
-            return true;
-        }
-
         function renderScheduleCards() {
             const container = document.getElementById('sched-cards-container');
             if (!container) return;
+
+            container.classList.toggle('single-day-mode', activeScheduleDay !== 0);
 
             const todayDay = new Date().getDay();
             const daysToRender = activeScheduleDay === 0 ? [1, 2, 3, 4, 5] : [activeScheduleDay];
@@ -3446,68 +3767,40 @@
             daysToRender.forEach(dayNum => {
                 const dayName = DAYS[dayNum - 1];
                 const isToday = (dayNum === todayDay);
-                const dayLessons = scheduleData
-                    .filter(l => +l.day === dayNum && filterLessonItem(l))
-                    .sort((a, b) => a.start.localeCompare(b.start));
+                const groupedLessons = getGroupedDayLessons(dayNum);
+                const totalHours = groupedLessons.reduce((sum, g) => sum + g.hoursCount, 0);
 
-                if (!dayLessons.length) {
-                    if (activeScheduleDay !== 0 || scheduleSearchQuery || scheduleQuickFilter !== 'all') {
-                        html += `
-                            <div class="card day-card${isToday ? ' today' : ''}">
-                                <div class="day-title">
-                                    <span>${dayName}</span>
-                                    ${isToday ? '<span class="cat-tag cat-etkinlik">Bugün</span>' : ''}
-                                </div>
-                                <p style="font-size:0.85rem; color:var(--text-muted); padding:10px 0;">Bu gün veya filtreleme kriterlerine uygun ders bulunmuyor.</p>
-                            </div>
-                        `;
-                    }
-                    return;
-                }
+                if (!groupedLessons.length) return;
 
                 html += `
-                    <div class="card day-card${isToday ? ' today' : ''}">
+                    <div class="card day-card${isToday ? ' today' : ''}" style="margin-bottom:0;">
                         <div class="day-title">
-                            <span>${dayName} <span style="font-size:0.8rem; font-weight:600; color:var(--text-muted);">(${dayLessons.length} Ders Saati)</span></span>
+                            <span>${dayName} <span style="font-size:0.78rem; font-weight:600; color:var(--text-muted);">(${groupedLessons.length} Ders • ${totalHours} Saat)</span></span>
                             ${isToday ? '<span class="cat-tag cat-etkinlik">Bugün</span>' : ''}
                         </div>
-                        ${dayLessons.map(l => {
-                            const dur = diffMinutes(l.start, l.end);
-                            const durText = dur > 0 ? `${dur} dk` : '';
-                            return `
-                                <div class="lesson-card" data-day="${l.day}" data-start="${l.start}" data-end="${l.end}">
-                                    <div class="lesson-time">
-                                        ${l.start}<br>${l.end}
-                                        ${durText ? `<div style="font-size:0.65rem; opacity:0.8; margin-top:2px;">${durText}</div>` : ''}
-                                    </div>
-                                    <div class="lesson-content">
-                                        <div class="lesson-name">${sanitizeHTML(l.course)}</div>
-                                        <div class="lesson-details">
-                                            <span><span class="material-symbols-rounded" style="font-size:14px;vertical-align:middle;">meeting_room</span> ${sanitizeHTML(l.room || '-')}</span>
-                                            <span><span class="material-symbols-rounded" style="font-size:14px;vertical-align:middle;">person</span> ${sanitizeHTML(l.instructor || '-')}</span>
-                                        </div>
-                                        <div class="lesson-actions-bar">
-                                            <button class="btn-mini-action" onclick="copyLessonInfo('${sanitizeHTML(l.course)}', '${l.start}-${l.end}', '${sanitizeHTML(l.room || '-')}', '${sanitizeHTML(l.instructor || '-')}')" title="Ders bilgilerini kopyala">
-                                                <span class="material-symbols-rounded" style="font-size:13px;">content_copy</span>
-                                                <span>Kopyala</span>
-                                            </button>
-                                            <button class="btn-mini-action" onclick="downloadSingleLessonICS('${sanitizeHTML(l.course)}', ${l.day}, '${l.start}', '${l.end}', '${sanitizeHTML(l.room || '-')}', '${sanitizeHTML(l.instructor || '-')}')" title="Bu dersi telefon takvimine ekle">
-                                                <span class="material-symbols-rounded" style="font-size:13px;">calendar_add_on</span>
-                                                <span>Takvime Ekle</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <span class="live-tag" style="display:none;"><span class="live-pulse-dot" style="width:6px;height:6px;"></span> ŞU AN</span>
+                        ${groupedLessons.map(l => `
+                            <div class="lesson-card-simple lesson-card" data-day="${l.day}" data-start="${l.start}" data-end="${l.end}">
+                                <div class="lesson-time-pill">
+                                    <span>${l.start}</span>
+                                    <span style="opacity:0.65; font-size:0.68rem;">${l.end}</span>
+                                    <span class="lesson-hours-tag">${l.hoursCount} Saat</span>
                                 </div>
-                            `;
-                        }).join('')}
+                                <div class="lesson-body-simple">
+                                    <div class="lesson-top-badges">
+                                        <span class="lesson-code-badge">${sanitizeHTML(l.parsed.code)}</span>
+                                        <span class="lesson-type-badge ${l.parsed.typeClass}">${sanitizeHTML(l.parsed.typeLabel)}</span>
+                                    </div>
+                                    <div class="lesson-title-simple">${sanitizeHTML(l.parsed.title)}</div>
+                                    <div class="lesson-meta-simple">
+                                        <span><span class="material-symbols-rounded" style="font-size:14px;">meeting_room</span> ${sanitizeHTML(l.parsed.room)}</span>
+                                        <span><span class="material-symbols-rounded" style="font-size:14px;">person</span> ${sanitizeHTML(l.parsed.instructor)}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
                     </div>
                 `;
             });
-
-            if (!html) {
-                html = '<p style="grid-column:1/-1;text-align:center;color:var(--text-muted);padding:40px;">Aradığınız kriterlere uygun ders bulunamadı.</p>';
-            }
 
             container.innerHTML = html;
             updateScheduleLive();
@@ -3522,7 +3815,7 @@
                 { s: '09:40', e: '10:25', label: '09:40 - 10:25' },
                 { s: '10:30', e: '11:15', label: '10:30 - 11:15' },
                 { s: '11:15', e: '12:00', label: '11:15 - 12:00' },
-                { isBreak: true, label: '12:00 - 13:00 • ÖĞLE DİNLENMESİ' },
+                { isBreak: true, label: '12:00 - 13:00 • ÖĞLE ARASI' },
                 { s: '13:00', e: '13:45', label: '13:00 - 13:45' },
                 { s: '13:50', e: '14:35', label: '13:50 - 14:35' },
                 { s: '14:40', e: '15:25', label: '14:40 - 15:25' },
@@ -3534,7 +3827,7 @@
             const now = new Date();
             const currentHM = String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0');
 
-            let headerHTML = '<thead><tr><th class="matrix-time-col">Saat / Periyot</th>';
+            let headerHTML = '<thead><tr><th class="matrix-time-col">Saat</th>';
             DAYS.forEach((dName, idx) => {
                 const dNum = idx + 1;
                 const isToday = (dNum === todayDay);
@@ -3553,19 +3846,19 @@
                 bodyHTML += `<tr><td class="matrix-time-col">${tp.label}</td>`;
 
                 for (let d = 1; d <= 5; d++) {
-                    const lessons = scheduleData.filter(l => +l.day === d && l.start === tp.s && filterLessonItem(l));
+                    const lessons = scheduleData.filter(l => +l.day === d && l.start === tp.s);
 
                     if (!lessons.length) {
                         bodyHTML += '<td style="background:rgba(0,0,0,0.01);"></td>';
                     } else {
                         const cellContent = lessons.map(l => {
+                            const p = parseLessonInfo(l);
                             const isLive = (+l.day === todayDay && currentHM >= l.start && currentHM < l.end);
                             return `
-                                <div class="matrix-lesson-pill${isLive ? ' live' : ''}" title="${sanitizeHTML(l.course)}">
-                                    <div class="matrix-lesson-title">${sanitizeHTML(l.course)}</div>
+                                <div class="matrix-lesson-pill${isLive ? ' live' : ''}">
+                                    <div class="matrix-lesson-title">${sanitizeHTML(p.code)} • ${sanitizeHTML(p.title)}</div>
                                     <div class="matrix-lesson-sub">
-                                        <span>📍 ${sanitizeHTML(l.room || '-')}</span>
-                                        <span style="margin-left:6px;">👤 ${sanitizeHTML(l.instructor || '-')}</span>
+                                        <span>📍 ${sanitizeHTML(p.room)}</span>
                                     </div>
                                 </div>
                             `;
@@ -3592,10 +3885,7 @@
                 const s = el.dataset.start;
                 const e = el.dataset.end;
                 const isLive = (day === currentDay && currentHM >= s && currentHM < e);
-
                 el.classList.toggle('live-now', isLive);
-                const tag = el.querySelector('.live-tag');
-                if (tag) tag.style.display = isLive ? 'inline-flex' : 'none';
             });
         }
 
@@ -4469,7 +4759,7 @@
             if (urgentList.length > 0) {
                 urgentHtml = urgentList.map(u => `
                     <div class="ukey-urgent-banner">
-                        <div style="display:flex; align-items:flex-start; gap:14px; flex:1; min-width:260px;">
+                        <div style="display:flex; align-items:flex-start; gap:14px; flex:1; min-width:0;">
                             <div style="width:46px; height:46px; border-radius:14px; background:rgba(239,68,68,0.2); color:var(--danger); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
                                 <span class="material-symbols-rounded" style="font-size:26px;">notification_important</span>
                             </div>
@@ -4847,7 +5137,7 @@
 
             return `
                 <div class="ukey-mat-item">
-                    <div style="display:flex; align-items:center; gap:12px; min-width:240px; flex:1;">
+                    <div style="display:flex; align-items:center; gap:12px; min-width:0; flex:1;">
                         <span class="icon-chip ${m.externalUrl ? 'accent' : ''}"><span class="material-symbols-rounded">${m.externalUrl ? 'smart_display' : 'description'}</span></span>
                         <div>
                             <div style="display:flex; align-items:center; flex-wrap:wrap; gap:6px; margin-bottom:3px;">
@@ -4935,7 +5225,7 @@
                     <div style="margin-top:14px;">
                         ${allHws.map(({ course, hw, idx }) => `
                             <div class="ukey-mat-item">
-                                <div style="flex:1; min-width:250px;">
+                                <div style="flex:1; min-width:0;">
                                     <div style="display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:4px;">
                                         <span class="ukey-course-code">${sanitizeHTML(course.code)} - ${sanitizeHTML(course.name)}</span>
                                         <span class="ukey-mini-chip has-hw">${sanitizeHTML(hw.type || 'Ödev')}</span>
