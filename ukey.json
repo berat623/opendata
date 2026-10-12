@@ -1,5 +1,5 @@
 {
-  "lastSyncedAt": "2026-10-12T01:55:14.415Z",
+  "lastSyncedAt": "2026-10-12T08:17:29.695Z",
   "portalUrl": "https://ukey.uludag.edu.tr/Home",
   "urgentNotifications": [
     {
@@ -60,8 +60,8 @@
       "courseCode": "ELNZ101",
       "category": "Ödev Teslimi",
       "displayRange": "5.10.2026 10:34:00 – 12.10.2026 10:30:00",
-      "color": "#ef4444",
-      "status": "Aktif Ödev"
+      "color": "#64748b",
+      "status": "Süresi Doldu"
     },
     {
       "id": "ag-hw-ELNZ103-04-0",
@@ -809,7 +809,7 @@
           "fileCountLimit": 1,
           "allowedFileTypes": "power point",
           "maxFileSizeMB": 20,
-          "submissionStatus": "Aktif (UKEY Üzerinden Teslim Bekleniyor)",
+          "submissionStatus": "Ödev Teslimi Sona Ermiştir",
           "attachedMaterials": []
         }
       ],
