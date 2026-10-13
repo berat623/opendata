@@ -1,22 +1,7 @@
 {
-  "lastSyncedAt": "2026-10-12T18:05:25.530Z",
+  "lastSyncedAt": "2026-10-13T00:53:09.632Z",
   "portalUrl": "https://ukey.uludag.edu.tr/Home",
-  "urgentNotifications": [
-    {
-      "id": "notif-65235",
-      "type": "odev",
-      "courseCode": "ELNZ101",
-      "courseName": "ELEKTRONİK MESLEK BİLGİSİ ve GÜVENLİĞİ",
-      "instructor": "Öğr.Gör. BASRİ KUL (Dersin Yürütücüsü)",
-      "title": "ödev 1- Elektronik Komponentlerin çalışma prensipleri",
-      "description": "Elektronik Komponentlerin çalışma prensipleri\r\nDirenç, kondansator, bobin, transistör, mosfet",
-      "start": "5.10.2026 10:34:00",
-      "end": "12.10.2026 10:30:00",
-      "badgeText": "7 Gün İçindeki Görev Bildirimi (Bugün)",
-      "allowedFormat": "power point",
-      "maxSizeMB": 20
-    }
-  ],
+  "urgentNotifications": [],
   "agendaEvents": [
     {
       "id": "ag-hw-22HRTZ115-04-0",
