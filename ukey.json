@@ -1,5 +1,5 @@
 {
-  "lastSyncedAt": "2026-10-13T07:13:40.431Z",
+  "lastSyncedAt": "2026-10-13T15:11:04.979Z",
   "portalUrl": "https://ukey.uludag.edu.tr/Home",
   "urgentNotifications": [],
   "agendaEvents": [
@@ -83,6 +83,69 @@
       "displayRange": "7.10.2026 14:00:00 – 23.12.2026 13:00:00",
       "color": "#ef4444",
       "status": "Aktif Ödev"
+    },
+    {
+      "id": "ag-hw-ELNZ107-04-0",
+      "title": "ELNZ107-04 - 2025 ve ÖNCESİ GİRİŞLİLER İÇİN UYGULAMA ÖDEV KONULARI",
+      "courseCode": "ELNZ107-04",
+      "category": "Ödev Teslimi",
+      "displayRange": "9.12.2025 21:52:00 – 18.01.2026 23:55:00",
+      "color": "#64748b",
+      "status": "Süresi Doldu"
+    },
+    {
+      "id": "ag-hw-ELNZ107-04-1",
+      "title": "ELNZ107-04 - UYGULAMA 1 TEMEL MANTIK KAPILARI",
+      "courseCode": "ELNZ107-04",
+      "category": "Ödev Teslimi",
+      "displayRange": "9.12.2025 21:53:00 – 18.01.2026 23:55:00",
+      "color": "#64748b",
+      "status": "Süresi Doldu"
+    },
+    {
+      "id": "ag-hw-ELNZ107-04-2",
+      "title": "ELNZ107-04 - UYGULAMA 2 EXOR VE EXNOR KAPI UYGULAMALARI",
+      "courseCode": "ELNZ107-04",
+      "category": "Ödev Teslimi",
+      "displayRange": "9.12.2025 21:53:00 – 18.01.2026 23:55:00",
+      "color": "#64748b",
+      "status": "Süresi Doldu"
+    },
+    {
+      "id": "ag-hw-ELNZ107-04-3",
+      "title": "ELNZ107-04 - UYGULAMA 3 İŞLEM BASİTLEŞTİRME UYGULAMASI",
+      "courseCode": "ELNZ107-04",
+      "category": "Ödev Teslimi",
+      "displayRange": "9.12.2025 21:54:00 – 18.01.2026 23:55:00",
+      "color": "#64748b",
+      "status": "Süresi Doldu"
+    },
+    {
+      "id": "ag-hw-ELNZ107-04-4",
+      "title": "ELNZ107-04 - UYGULAMA 4 OYLAMA DEVRESİ",
+      "courseCode": "ELNZ107-04",
+      "category": "Ödev Teslimi",
+      "displayRange": "9.12.2025 21:54:00 – 18.01.2026 23:55:00",
+      "color": "#64748b",
+      "status": "Süresi Doldu"
+    },
+    {
+      "id": "ag-hw-ELNZ107-04-5",
+      "title": "ELNZ107-04 - UYGULAMA  5 ÇAY KAHVE OTOMATI",
+      "courseCode": "ELNZ107-04",
+      "category": "Ödev Teslimi",
+      "displayRange": "9.12.2025 21:54:00 – 5.01.2026 23:55:00",
+      "color": "#64748b",
+      "status": "Süresi Doldu"
+    },
+    {
+      "id": "ag-hw-ELNZ107-04-6",
+      "title": "ELNZ107-04 - UYGULAMA 6 DECODER (KOD ÇÖZÜCÜ) DEVRESİ",
+      "courseCode": "ELNZ107-04",
+      "category": "Ödev Teslimi",
+      "displayRange": "9.12.2025 21:55:00 – 18.01.2026 23:55:00",
+      "color": "#64748b",
+      "status": "Süresi Doldu"
     }
   ],
   "meetingsSummary": {
@@ -1334,78 +1397,290 @@
       "weeks": [
         {
           "week": 1,
-          "teorik": "",
-          "uygulama": ""
+          "teorik": "Sayısal dalgalar ile ilgili kavramlar. İkilik ve onaltılık sayı sistemleri ve sayı dönüşümleri. İşaretli sayıların gösterimi.",
+          "uygulama": "Laboratuvar kurallarının açıklanması. Problem çözümü"
         },
         {
           "week": 2,
-          "teorik": "",
-          "uygulama": ""
+          "teorik": "BCD kodun ikilik ve onaltılık taban ile ilişkisi. Gray kodu ve enstrümantasyonda kullanım alanı.",
+          "uygulama": "Problem çözümü"
         },
         {
           "week": 3,
-          "teorik": "",
-          "uygulama": ""
+          "teorik": "Temel mantık işlemlerinin sembolleri ve doğruluk tabloları. Dalga şekilleri çizimleri.",
+          "uygulama": "Problem çözümü"
         },
         {
           "week": 4,
-          "teorik": "",
-          "uygulama": ""
+          "teorik": "Boolean kural ve kanunları ile mantık ifadelerinin basite indirgenmesi ve devrelerinin çizilmesi.",
+          "uygulama": "Mantık işlemleri laboratuvar uygulaması"
         },
         {
           "week": 5,
-          "teorik": "",
-          "uygulama": ""
+          "teorik": "Çarpımların toplamı ve toplamların çarpımı ifadelerinin yazılması. Mantık ifadelerinin doğruluk tablolarının yazılması.",
+          "uygulama": "Boolean kural ve kanunları ile ilgili laboratuvar uygulaması"
         },
         {
           "week": 6,
-          "teorik": "",
-          "uygulama": ""
+          "teorik": "Karnaugh haritası ile mantık ifadelerinin basite indirgenmesi. Tasarlanan devrelerin VED mantığı ile çizilmesi.",
+          "uygulama": "Karnaugh haritası ile tasarlanan devrelerin çalıştırılması."
         },
         {
           "week": 7,
-          "teorik": "",
-          "uygulama": ""
+          "teorik": "İşaretli sayılarla ve BCD sayılarla aritmetik işlemler.",
+          "uygulama": "Tasarlanan devrelerin çalıştırılması."
         },
         {
           "week": 8,
-          "teorik": "",
-          "uygulama": ""
+          "teorik": "Ara Sınav, konu tekrarı.",
+          "uygulama": "Telafi"
         },
         {
           "week": 9,
-          "teorik": "",
-          "uygulama": ""
+          "teorik": "Toplayıcıların çalışma ilkeleri ve devre tasarımlarının yapılması.",
+          "uygulama": "Toplayıcılarla aritmetik işlemler deneyleri."
         },
         {
           "week": 10,
-          "teorik": "",
-          "uygulama": ""
+          "teorik": "Toplayıcıların çıkarıcı, kod çevirici ve BCD toplayıcı olarak kullanılması.",
+          "uygulama": "Toplayıcılarla aritmetik işlemler deneyleri."
         },
         {
           "week": 11,
-          "teorik": "",
-          "uygulama": ""
+          "teorik": "Karşılaştırıcıların çalışma ilkeleri ve devre tasarımlarının yapılması.",
+          "uygulama": "Karşılaştırıcı deneyleri."
         },
         {
           "week": 12,
-          "teorik": "",
-          "uygulama": ""
+          "teorik": "Kod çözücülerin çalışma ilkeleri ve devre tasarımlarının yapılması.",
+          "uygulama": "Kod çözücü deneyleri."
         },
         {
           "week": 13,
-          "teorik": "",
-          "uygulama": ""
+          "teorik": "Kodlayıcının çalışma ilkeleri, uygulama alanlarına ilişkin örnekler ve devre tasarımı",
+          "uygulama": "Kodlayıcı deneyleri."
         },
         {
           "week": 14,
-          "teorik": "",
-          "uygulama": ""
+          "teorik": "Veri seçici ve çoğullayıcı çalışma ilkeleri, uygulama alanlarına ilişkin örnekler ve devre tasarımı.",
+          "uygulama": "Veri seçici ve çoğullayıcı deneyleri."
         }
       ],
-      "homeworks": [],
+      "homeworks": [
+        {
+          "id": 65453,
+          "courseCode": "ELNZ107-04",
+          "courseName": "SAYISAL ELEKTRONİK",
+          "instructor": "Öğr. Gör. ÖZCAN TEMEL (Dersin Yürütücüsü)",
+          "title": "2025 ve ÖNCESİ GİRİŞLİLER İÇİN UYGULAMA ÖDEV KONULARI",
+          "description": "Ödev dersi tekrar alıp uygulamadan muaf olanlar için ve 2023 ve öncesi girişliler içindir. Ekli dosyada örnek olarak verilen yada sizin belirleyeceğiniz bir konuda (Konuda bağımsızsınız, ders içeriğinde olan&olmayan ) en az 20, en fazla 30 A4 sayfası (12 punto) rapor hazırlayarak (Ödev başlık sayfası, raporun başında index, sonunda kaynaklar kısmı mutlaka olmalı) son teslim tarihine kadar sisteme yüklemelisiniz.  Konular tesadüfen aynı denk gelebilir, fakat içerik olarak aynı olan ödevler değerlendirme dışında bırakılır. Başarılar dilerim.\r\n\r\nÖrnek Konular ekli dosyada verilmiştir.",
+          "type": "Diğer",
+          "start": "9.12.2025 21:52:00",
+          "end": "18.01.2026 23:55:00",
+          "week": "Dönemlik / Genel",
+          "fileCountLimit": 1,
+          "allowedFileTypes": "PDF,MS WORD",
+          "maxFileSizeMB": 20,
+          "submissionStatus": "Ödev Teslimi Sona Ermiştir",
+          "attachedMaterials": [
+            {
+              "title": "2025 ve öncesi girişliler için Ödev Konuları",
+              "origName": "1. Sınıf Uygulama Ödev konuları.xlsx",
+              "localPath": "ukey_dosyalar/ELNZ107-04_5.xlsx",
+              "sizeBytes": 75768
+            },
+            {
+              "title": "ÖDEV KAPAK SAYFASI",
+              "origName": "1. Sınıf Uygulama Ödev konuları.xlsx",
+              "localPath": "ukey_dosyalar/ELNZ107-04_5.xlsx",
+              "sizeBytes": 75768
+            }
+          ]
+        },
+        {
+          "id": 65454,
+          "courseCode": "ELNZ107-04",
+          "courseName": "SAYISAL ELEKTRONİK",
+          "instructor": "Öğr. Gör. ÖZCAN TEMEL (Dersin Yürütücüsü)",
+          "title": "UYGULAMA 1 TEMEL MANTIK KAPILARI",
+          "description": "UYGULAMA NO : 1 \r\nUYGULAMA ADI : TEMEL MANTIK KAPILARI (AND, OR, NAND, NOR, NOT) TESTLERİ. (SEMBOL, ÇIKIŞ İFADELERİ VE DOĞRULUK TABLOLARI)",
+          "type": "Diğer",
+          "start": "9.12.2025 21:53:00",
+          "end": "18.01.2026 23:55:00",
+          "week": "Dönemlik / Genel",
+          "fileCountLimit": 1,
+          "allowedFileTypes": "Microsoft Word ve ya",
+          "maxFileSizeMB": 20,
+          "submissionStatus": "Ödev Teslimi Sona Ermiştir",
+          "attachedMaterials": []
+        },
+        {
+          "id": 65455,
+          "courseCode": "ELNZ107-04",
+          "courseName": "SAYISAL ELEKTRONİK",
+          "instructor": "Öğr. Gör. ÖZCAN TEMEL (Dersin Yürütücüsü)",
+          "title": "UYGULAMA 2 EXOR VE EXNOR KAPI UYGULAMALARI",
+          "description": "UYGULAMA NO : 2\r\nUYGULAMA ADI : EXOR VE EXNOR KAPI UYGULAMALARI (SEMBOL, EŞDEĞER DEVRE, ÇIKIŞ İFADELERİ VE DOĞRULUK TABLOLARI)",
+          "type": "Diğer",
+          "start": "9.12.2025 21:53:00",
+          "end": "18.01.2026 23:55:00",
+          "week": "Dönemlik / Genel",
+          "fileCountLimit": 1,
+          "allowedFileTypes": "Microsoft Word ve ya",
+          "maxFileSizeMB": 20,
+          "submissionStatus": "Ödev Teslimi Sona Ermiştir",
+          "attachedMaterials": []
+        },
+        {
+          "id": 65456,
+          "courseCode": "ELNZ107-04",
+          "courseName": "SAYISAL ELEKTRONİK",
+          "instructor": "Öğr. Gör. ÖZCAN TEMEL (Dersin Yürütücüsü)",
+          "title": "UYGULAMA 3 İŞLEM BASİTLEŞTİRME UYGULAMASI",
+          "description": "UYGULAMA 3 İŞLEM BASİTLEŞTİRME UYGULAMASI",
+          "type": "Diğer",
+          "start": "9.12.2025 21:54:00",
+          "end": "18.01.2026 23:55:00",
+          "week": "Dönemlik / Genel",
+          "fileCountLimit": 1,
+          "allowedFileTypes": "Microsoft Word ve ya",
+          "maxFileSizeMB": 20,
+          "submissionStatus": "Ödev Teslimi Sona Ermiştir",
+          "attachedMaterials": []
+        },
+        {
+          "id": 65457,
+          "courseCode": "ELNZ107-04",
+          "courseName": "SAYISAL ELEKTRONİK",
+          "instructor": "Öğr. Gör. ÖZCAN TEMEL (Dersin Yürütücüsü)",
+          "title": "UYGULAMA 4 OYLAMA DEVRESİ",
+          "description": "BİR ŞİRKETTE SIRASI İLE %20, %30 ve %50 HİSSEYE SAHİP YÖNETİM KURULU ÜYELERİNİN OYLAMA SONUCUNU GÖSTEREN UYGULAMA",
+          "type": "Diğer",
+          "start": "9.12.2025 21:54:00",
+          "end": "18.01.2026 23:55:00",
+          "week": "Dönemlik / Genel",
+          "fileCountLimit": 1,
+          "allowedFileTypes": "Microsoft Word ve ya",
+          "maxFileSizeMB": 20,
+          "submissionStatus": "Ödev Teslimi Sona Ermiştir",
+          "attachedMaterials": []
+        },
+        {
+          "id": 65458,
+          "courseCode": "ELNZ107-04",
+          "courseName": "SAYISAL ELEKTRONİK",
+          "instructor": "Öğr. Gör. ÖZCAN TEMEL (Dersin Yürütücüsü)",
+          "title": "UYGULAMA  5 ÇAY KAHVE OTOMATI",
+          "description": "ÇAY KAHVE OTOMATI",
+          "type": "Diğer",
+          "start": "9.12.2025 21:54:00",
+          "end": "5.01.2026 23:55:00",
+          "week": "Dönemlik / Genel",
+          "fileCountLimit": 1,
+          "allowedFileTypes": "Microsoft Word ve ya",
+          "maxFileSizeMB": 20,
+          "submissionStatus": "Ödev Teslimi Sona Ermiştir",
+          "attachedMaterials": []
+        },
+        {
+          "id": 65459,
+          "courseCode": "ELNZ107-04",
+          "courseName": "SAYISAL ELEKTRONİK",
+          "instructor": "Öğr. Gör. ÖZCAN TEMEL (Dersin Yürütücüsü)",
+          "title": "UYGULAMA 6 DECODER (KOD ÇÖZÜCÜ) DEVRESİ",
+          "description": "UYGULAMA 6 DECODER (KOD ÇÖZÜCÜ) DEVRESİ",
+          "type": "Diğer",
+          "start": "9.12.2025 21:55:00",
+          "end": "18.01.2026 23:55:00",
+          "week": "Dönemlik / Genel",
+          "fileCountLimit": 1,
+          "allowedFileTypes": "Belirtilmemiş",
+          "maxFileSizeMB": 20,
+          "submissionStatus": "Ödev Teslimi Sona Ermiştir",
+          "attachedMaterials": []
+        }
+      ],
       "exams": [],
-      "materials": [],
+      "materials": [
+        {
+          "title": "Ders Notu 1",
+          "category": "Ders Kitabı - Notu",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/ELNZ107-04_1.pdf",
+          "origName": "Sayısal Elektronik (Yeni).pdf",
+          "sizeBytes": 2079331,
+          "contentType": "application/pdf",
+          "externalUrl": ""
+        },
+        {
+          "title": "Ders Notu 2",
+          "category": "Ders Kitabı - Notu",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/ELNZ107-04_2.rar",
+          "origName": "SAYISAL (M.Ü.).rar",
+          "sizeBytes": 6782627,
+          "contentType": "application/octet-stream",
+          "externalUrl": ""
+        },
+        {
+          "title": "Ders Notu 3",
+          "category": "Ders Kitabı - Notu",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/ELNZ107-04_3.pdf",
+          "origName": "lojik devreler (megep).pdf",
+          "sizeBytes": 1101840,
+          "contentType": "application/pdf",
+          "externalUrl": ""
+        },
+        {
+          "title": "UYGULAMA RAPORLARI İÇİN KAPAK",
+          "category": "Diğer",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/ELNZ107-04_4.docx",
+          "origName": "ÖÖUYGKAPAK.docx",
+          "sizeBytes": 21256,
+          "contentType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "externalUrl": ""
+        },
+        {
+          "title": "2025 ve öncesi girişliler için Ödev Konuları",
+          "category": "Ödev Yardımcı Dokümanı",
+          "week": 0,
+          "homework": "2025 ve ÖNCESİ GİRİŞLİLER İÇİN UYGULAMA ÖDEV KONULARI",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/ELNZ107-04_5.xlsx",
+          "origName": "1. Sınıf Uygulama Ödev konuları.xlsx",
+          "sizeBytes": 75768,
+          "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "externalUrl": ""
+        },
+        {
+          "title": "ÖDEV KAPAK SAYFASI",
+          "category": "Ödev Yardımcı Dokümanı",
+          "week": 0,
+          "homework": "2025 ve ÖNCESİ GİRİŞLİLER İÇİN UYGULAMA ÖDEV KONULARI",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/ELNZ107-04_6.docx",
+          "origName": "ÖÖODVKAPAK.docx",
+          "sizeBytes": 19351,
+          "contentType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "externalUrl": ""
+        }
+      ],
       "forumCategories": [
         {
           "id": "ELNZ107-04-forum-1",
