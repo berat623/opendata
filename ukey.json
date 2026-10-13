@@ -1,5 +1,5 @@
 {
-  "lastSyncedAt": "2026-10-13T00:53:09.632Z",
+  "lastSyncedAt": "2026-10-13T07:13:40.431Z",
   "portalUrl": "https://ukey.uludag.edu.tr/Home",
   "urgentNotifications": [],
   "agendaEvents": [
@@ -36,6 +36,15 @@
       "courseCode": "22YAD105-1",
       "category": "Sanal Toplantı / Kayıt",
       "displayRange": "2. Hafta",
+      "color": "#3b82f6",
+      "status": "Kayıt Yüklendi"
+    },
+    {
+      "id": "ag-rec-22YAD105-1-9",
+      "title": "22YAD105-1 - 3. HAFTA DERS KAYDI",
+      "courseCode": "22YAD105-1",
+      "category": "Sanal Toplantı / Kayıt",
+      "displayRange": "3. Hafta",
       "color": "#3b82f6",
       "status": "Kayıt Yüklendi"
     },
@@ -122,6 +131,14 @@
         "week": 2,
         "title": "2. HAFTA DERS KAYDI",
         "url": "https://uludagedutr-my.sharepoint.com/:v:/g/personal/surkmez_uludag_edu_tr/IQAXNjQ1kOVGRJsySmCtCaQsAcIV9P2AE5YIXyg3tdfOY8g?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=0c63eY"
+      },
+      {
+        "courseCode": "22YAD105-1",
+        "courseName": "YABANCI DİL (İNGİLİZCE)",
+        "instructor": "Öğr. Gör. SİNEM ÜRKMEZ (Dersin Yürütücüsü)",
+        "week": 3,
+        "title": "3. HAFTA DERS KAYDI",
+        "url": "https://uludagedutr-my.sharepoint.com/:v:/g/personal/surkmez_uludag_edu_tr/IQBDpPqUKh2CSaIem9HYpAnAARJf9Lwjryt4inJQLX2hOk4?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=uJr28c"
       }
     ]
   },
@@ -652,6 +669,19 @@
           "sizeBytes": 0,
           "contentType": "",
           "externalUrl": "https://uludagedutr-my.sharepoint.com/:v:/g/personal/surkmez_uludag_edu_tr/IQAXNjQ1kOVGRJsySmCtCaQsAcIV9P2AE5YIXyg3tdfOY8g?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=0c63eY"
+        },
+        {
+          "title": "3. HAFTA DERS KAYDI",
+          "category": "Haftalık Ders Notu",
+          "week": 3,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": false,
+          "localPath": "",
+          "origName": "",
+          "sizeBytes": 0,
+          "contentType": "",
+          "externalUrl": "https://uludagedutr-my.sharepoint.com/:v:/g/personal/surkmez_uludag_edu_tr/IQBDpPqUKh2CSaIem9HYpAnAARJf9Lwjryt4inJQLX2hOk4?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=uJr28c"
         }
       ],
       "forumCategories": [
