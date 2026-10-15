@@ -1,5 +1,5 @@
 {
-  "lastSyncedAt": "2026-10-15T06:03:31.382Z",
+  "lastSyncedAt": "2026-10-15T11:49:49.926Z",
   "portalUrl": "https://ukey.uludag.edu.tr/Home",
   "urgentNotifications": [],
   "agendaEvents": [
@@ -20,33 +20,6 @@
       "displayRange": "1.02.2026 04:05:00 – 6.02.2026 23:55:00",
       "color": "#64748b",
       "status": "Süresi Doldu"
-    },
-    {
-      "id": "ag-rec-22YAD105-1-7",
-      "title": "22YAD105-1 - 1. HAFTA DERS KAYDI (INTRODUCTION)",
-      "courseCode": "22YAD105-1",
-      "category": "Sanal Toplantı / Kayıt",
-      "displayRange": "1. Hafta",
-      "color": "#3b82f6",
-      "status": "Kayıt Yüklendi"
-    },
-    {
-      "id": "ag-rec-22YAD105-1-8",
-      "title": "22YAD105-1 - 2. HAFTA DERS KAYDI",
-      "courseCode": "22YAD105-1",
-      "category": "Sanal Toplantı / Kayıt",
-      "displayRange": "2. Hafta",
-      "color": "#3b82f6",
-      "status": "Kayıt Yüklendi"
-    },
-    {
-      "id": "ag-rec-22YAD105-1-9",
-      "title": "22YAD105-1 - 3. HAFTA DERS KAYDI",
-      "courseCode": "22YAD105-1",
-      "category": "Sanal Toplantı / Kayıt",
-      "displayRange": "3. Hafta",
-      "color": "#3b82f6",
-      "status": "Kayıt Yüklendi"
     },
     {
       "id": "ag-hw-ELNZ101-0",
@@ -149,61 +122,10 @@
     }
   ],
   "meetingsSummary": {
-    "upcoming": [
-      {
-        "courseCode": "22YAD105-1",
-        "courseName": "YABANCI DİL (İNGİLİZCE)",
-        "instructor": "Öğr. Gör. SİNEM ÜRKMEZ (Dersin Yürütücüsü)",
-        "title": "22YAD105-1 - DERS ERİŞİM LİNKİ (Microsoft Teams)",
-        "schedule": "Aktif Dönem Boyunca • Microsoft Teams",
-        "url": "https://teams.microsoft.com/meet/34352499825333?p=hHP20rGggHjgJAU5sq"
-      }
-    ],
-    "registered": [
-      {
-        "courseCode": "22YAD105-1",
-        "courseName": "YABANCI DİL (İNGİLİZCE)",
-        "instructor": "Öğr. Gör. SİNEM ÜRKMEZ (Dersin Yürütücüsü)",
-        "title": "22YAD105-1 - DERS ERİŞİM LİNKİ (Microsoft Teams)",
-        "schedule": "Aktif Dönem Boyunca • Microsoft Teams",
-        "url": "https://teams.microsoft.com/meet/34352499825333?p=hHP20rGggHjgJAU5sq"
-      }
-    ],
+    "upcoming": [],
+    "registered": [],
     "publicMeetings": [],
-    "recordedStreams": [
-      {
-        "courseCode": "22YAD105-1",
-        "courseName": "YABANCI DİL (İNGİLİZCE)",
-        "instructor": "Öğr. Gör. SİNEM ÜRKMEZ (Dersin Yürütücüsü)",
-        "week": 0,
-        "title": "DERS ERİŞİM LİNKİ",
-        "url": "https://teams.microsoft.com/meet/34352499825333?p=hHP20rGggHjgJAU5sq"
-      },
-      {
-        "courseCode": "22YAD105-1",
-        "courseName": "YABANCI DİL (İNGİLİZCE)",
-        "instructor": "Öğr. Gör. SİNEM ÜRKMEZ (Dersin Yürütücüsü)",
-        "week": 1,
-        "title": "1. HAFTA DERS KAYDI (INTRODUCTION)",
-        "url": "https://uludagedutr-my.sharepoint.com/:v:/g/personal/surkmez_uludag_edu_tr/IQDOYiS1UsNrQYlRx6ZsDx5yAa2EIcIJoTVV3jS7NdVzg6M?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=510p57"
-      },
-      {
-        "courseCode": "22YAD105-1",
-        "courseName": "YABANCI DİL (İNGİLİZCE)",
-        "instructor": "Öğr. Gör. SİNEM ÜRKMEZ (Dersin Yürütücüsü)",
-        "week": 2,
-        "title": "2. HAFTA DERS KAYDI",
-        "url": "https://uludagedutr-my.sharepoint.com/:v:/g/personal/surkmez_uludag_edu_tr/IQAXNjQ1kOVGRJsySmCtCaQsAcIV9P2AE5YIXyg3tdfOY8g?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=0c63eY"
-      },
-      {
-        "courseCode": "22YAD105-1",
-        "courseName": "YABANCI DİL (İNGİLİZCE)",
-        "instructor": "Öğr. Gör. SİNEM ÜRKMEZ (Dersin Yürütücüsü)",
-        "week": 3,
-        "title": "3. HAFTA DERS KAYDI",
-        "url": "https://uludagedutr-my.sharepoint.com/:v:/g/personal/surkmez_uludag_edu_tr/IQBDpPqUKh2CSaIem9HYpAnAARJf9Lwjryt4inJQLX2hOk4?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=uJr28c"
-      }
-    ]
+    "recordedStreams": []
   },
   "erasmusMenu": [
     {
@@ -506,278 +428,6 @@
         },
         {
           "id": "22HRTZ115-04-forum-5",
-          "title": "Dersi veren öğretim elemanına sorular",
-          "topicCount": 0,
-          "messageCount": 0,
-          "lastActivity": "Henüz konu eklenmemiş"
-        }
-      ],
-      "groups": [],
-      "meetings": []
-    },
-    {
-      "code": "22YAD105-1",
-      "name": "YABANCI DİL (İNGİLİZCE)",
-      "fullTitle": "22YAD105-1 - YABANCI DİL (İNGİLİZCE)",
-      "ects": 4,
-      "akts": 4,
-      "teori": 4,
-      "uygulama": 0,
-      "lab": 0,
-      "kredi": 4,
-      "instructor": "Öğr. Gör. SİNEM ÜRKMEZ (Dersin Yürütücüsü)",
-      "purpose": "",
-      "references": "",
-      "weeks": [
-        {
-          "week": 1,
-          "teorik": "",
-          "uygulama": ""
-        },
-        {
-          "week": 2,
-          "teorik": "",
-          "uygulama": ""
-        },
-        {
-          "week": 3,
-          "teorik": "",
-          "uygulama": ""
-        },
-        {
-          "week": 4,
-          "teorik": "",
-          "uygulama": ""
-        },
-        {
-          "week": 5,
-          "teorik": "",
-          "uygulama": ""
-        },
-        {
-          "week": 6,
-          "teorik": "",
-          "uygulama": ""
-        },
-        {
-          "week": 7,
-          "teorik": "",
-          "uygulama": ""
-        },
-        {
-          "week": 8,
-          "teorik": "",
-          "uygulama": ""
-        },
-        {
-          "week": 9,
-          "teorik": "",
-          "uygulama": ""
-        },
-        {
-          "week": 10,
-          "teorik": "",
-          "uygulama": ""
-        },
-        {
-          "week": 11,
-          "teorik": "",
-          "uygulama": ""
-        },
-        {
-          "week": 12,
-          "teorik": "",
-          "uygulama": ""
-        },
-        {
-          "week": 13,
-          "teorik": "",
-          "uygulama": ""
-        },
-        {
-          "week": 14,
-          "teorik": "",
-          "uygulama": ""
-        }
-      ],
-      "homeworks": [],
-      "exams": [
-        {
-          "name": "YAD101-YAD102  MUAFİYET SINAVI MYO",
-          "start": "3.10.2026 14:00:00",
-          "lastLogin": "3.10.2026 14:05:00",
-          "durationMin": "50"
-        },
-        {
-          "name": "YAD101-YAD102  MUAFİYET SINAVI MYO",
-          "start": "10.10.2026 14:00:00",
-          "lastLogin": "10.10.2026 14:05:00",
-          "durationMin": "50"
-        }
-      ],
-      "materials": [
-        {
-          "title": "MUAFİYET YÖNERGESİ",
-          "category": "Referans",
-          "week": 0,
-          "homework": "",
-          "type": "Dosya",
-          "hasFile": true,
-          "localPath": "ukey_dosyalar/22YAD105-1_1.pdf",
-          "origName": "Yabancı Dil Dersi Muafiyet Sınavı Yönergesi_25_26.pdf",
-          "sizeBytes": 768383,
-          "contentType": "application/pdf",
-          "externalUrl": ""
-        },
-        {
-          "title": "DERS AÇIKLAMALARI",
-          "category": "Referans",
-          "week": 0,
-          "homework": "",
-          "type": "Dosya",
-          "hasFile": true,
-          "localPath": "ukey_dosyalar/22YAD105-1_2.pdf",
-          "origName": "YabancDil-I-II-Ders Aciklamalar i_ve_Sınav_Takvimi_2026-2027.pdf",
-          "sizeBytes": 341243,
-          "contentType": "application/pdf",
-          "externalUrl": ""
-        },
-        {
-          "title": "HAFTALIK ÇALIŞMA PLANI",
-          "category": "Referans",
-          "week": 0,
-          "homework": "",
-          "type": "Dosya",
-          "hasFile": true,
-          "localPath": "ukey_dosyalar/22YAD105-1_3.pdf",
-          "origName": "2026-27 YAD105 Haftalık Çalışma Planı.pdf",
-          "sizeBytes": 78313,
-          "contentType": "application/pdf",
-          "externalUrl": ""
-        },
-        {
-          "title": "ORYANTASYON SUNUMU",
-          "category": "Referans",
-          "week": 0,
-          "homework": "",
-          "type": "Dosya",
-          "hasFile": true,
-          "localPath": "ukey_dosyalar/22YAD105-1_4.pptx",
-          "origName": "2026-27 5i YAD105 Oryantasyon.pptx",
-          "sizeBytes": 3500591,
-          "contentType": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
-          "externalUrl": ""
-        },
-        {
-          "title": "MICROSOFT OFFICE 365 KULLANIM KLAVUZU",
-          "category": "Referans",
-          "week": 0,
-          "homework": "",
-          "type": "Dosya",
-          "hasFile": true,
-          "localPath": "ukey_dosyalar/22YAD105-1_5.pdf",
-          "origName": "MICROSOFT OFFICE 365 HESABI OLUSTURMA.pdf",
-          "sizeBytes": 264267,
-          "contentType": "application/pdf",
-          "externalUrl": ""
-        },
-        {
-          "title": "TEAMS ÖĞRENCİ KLAVUZU",
-          "category": "Referans",
-          "week": 0,
-          "homework": "",
-          "type": "Dosya",
-          "hasFile": true,
-          "localPath": "ukey_dosyalar/22YAD105-1_6.pdf",
-          "origName": "ogrenci_kilavuzu_teamse_baslarken.pdf",
-          "sizeBytes": 1462622,
-          "contentType": "application/pdf",
-          "externalUrl": ""
-        },
-        {
-          "title": "DERS ERİŞİM LİNKİ",
-          "category": "Referans",
-          "week": 0,
-          "homework": "",
-          "type": "Dosya",
-          "hasFile": false,
-          "localPath": "",
-          "origName": "",
-          "sizeBytes": 0,
-          "contentType": "",
-          "externalUrl": "https://teams.microsoft.com/meet/34352499825333?p=hHP20rGggHjgJAU5sq"
-        },
-        {
-          "title": "1. HAFTA DERS KAYDI (INTRODUCTION)",
-          "category": "Haftalık Ders Notu",
-          "week": 1,
-          "homework": "",
-          "type": "Dosya",
-          "hasFile": false,
-          "localPath": "",
-          "origName": "",
-          "sizeBytes": 0,
-          "contentType": "",
-          "externalUrl": "https://uludagedutr-my.sharepoint.com/:v:/g/personal/surkmez_uludag_edu_tr/IQDOYiS1UsNrQYlRx6ZsDx5yAa2EIcIJoTVV3jS7NdVzg6M?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=510p57"
-        },
-        {
-          "title": "2. HAFTA DERS KAYDI",
-          "category": "Haftalık Ders Notu",
-          "week": 2,
-          "homework": "",
-          "type": "Dosya",
-          "hasFile": false,
-          "localPath": "",
-          "origName": "",
-          "sizeBytes": 0,
-          "contentType": "",
-          "externalUrl": "https://uludagedutr-my.sharepoint.com/:v:/g/personal/surkmez_uludag_edu_tr/IQAXNjQ1kOVGRJsySmCtCaQsAcIV9P2AE5YIXyg3tdfOY8g?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=0c63eY"
-        },
-        {
-          "title": "3. HAFTA DERS KAYDI",
-          "category": "Haftalık Ders Notu",
-          "week": 3,
-          "homework": "",
-          "type": "Dosya",
-          "hasFile": false,
-          "localPath": "",
-          "origName": "",
-          "sizeBytes": 0,
-          "contentType": "",
-          "externalUrl": "https://uludagedutr-my.sharepoint.com/:v:/g/personal/surkmez_uludag_edu_tr/IQBDpPqUKh2CSaIem9HYpAnAARJf9Lwjryt4inJQLX2hOk4?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=uJr28c"
-        }
-      ],
-      "forumCategories": [
-        {
-          "id": "22YAD105-1-forum-1",
-          "title": "Duyurular",
-          "topicCount": 0,
-          "messageCount": 0,
-          "lastActivity": "Henüz konu eklenmemiş"
-        },
-        {
-          "id": "22YAD105-1-forum-2",
-          "title": "Ders içeriği ile ilgili tartışma alanı",
-          "topicCount": 0,
-          "messageCount": 0,
-          "lastActivity": "Henüz konu eklenmemiş"
-        },
-        {
-          "id": "22YAD105-1-forum-3",
-          "title": "Ödevlerle ilgili tartışma alanı",
-          "topicCount": 0,
-          "messageCount": 0,
-          "lastActivity": "Henüz konu eklenmemiş"
-        },
-        {
-          "id": "22YAD105-1-forum-4",
-          "title": "Genel konular",
-          "topicCount": 0,
-          "messageCount": 0,
-          "lastActivity": "Henüz konu eklenmemiş"
-        },
-        {
-          "id": "22YAD105-1-forum-5",
           "title": "Dersi veren öğretim elemanına sorular",
           "topicCount": 0,
           "messageCount": 0,
@@ -1810,7 +1460,7 @@
       "exams": [],
       "materials": [
         {
-          "title": "İŞ SAĞLIĞI ve GÜVENLİĞİ ders notları-1",
+          "title": "İş Sağlığı ve Güvenliği d.n. 1",
           "category": "Ders Kitabı - Notu",
           "week": 0,
           "homework": "",
@@ -1818,12 +1468,12 @@
           "hasFile": true,
           "localPath": "ukey_dosyalar/OTPZ001-04_1.pdf",
           "origName": "İŞ SAĞLIĞI VE GÜVENLİĞİ dn.1 - 2026.pdf",
-          "sizeBytes": 18108509,
+          "sizeBytes": 18263662,
           "contentType": "application/pdf",
           "externalUrl": ""
         },
         {
-          "title": "İŞ SAĞLIĞI ve GÜVENLİĞİ ders notları-2",
+          "title": "İş Sağlığı ve Güvenliği d.n. 2",
           "category": "Ders Kitabı - Notu",
           "week": 0,
           "homework": "",
@@ -1831,7 +1481,7 @@
           "hasFile": true,
           "localPath": "ukey_dosyalar/OTPZ001-04_2.pdf",
           "origName": "İŞ SAĞLIĞI VE GÜVENLİĞİ dn.2 - 2026.pdf",
-          "sizeBytes": 17281488,
+          "sizeBytes": 16708787,
           "contentType": "application/pdf",
           "externalUrl": ""
         }
