@@ -1,5 +1,5 @@
 {
-  "lastSyncedAt": "2026-10-16T05:17:21.179Z",
+  "lastSyncedAt": "2026-10-16T14:39:30.230Z",
   "portalUrl": "https://ukey.uludag.edu.tr/Home",
   "urgentNotifications": [],
   "agendaEvents": [
@@ -1638,6 +1638,19 @@
           "origName": "Bilgi iletişim.zip",
           "sizeBytes": 12397171,
           "contentType": "application/x-zip-compressed",
+          "externalUrl": ""
+        },
+        {
+          "title": "Ders Kaynakları 2",
+          "category": "Ders Kitabı - Notu",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": false,
+          "localPath": "",
+          "origName": "",
+          "sizeBytes": 0,
+          "contentType": "",
           "externalUrl": ""
         }
       ],
