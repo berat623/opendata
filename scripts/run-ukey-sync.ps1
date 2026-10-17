@@ -25,7 +25,9 @@ Log-Message "UKEY Arka Plan Senkronizasyonu Başlatıldı..."
 
 try {
     # 1. Uzak depodaki en son değişiklikleri çek
-    git pull --rebase --autostash origin main 2>&1 | Out-Null
+    git fetch origin main 2>&1 | Out-Null
+    git rebase --strategy-option=theirs origin/main 2>&1 | Out-Null
+    if ($LASTEXITCODE -ne 0) { git rebase --abort 2>&1 | Out-Null }
 
     # 2. Canlı UKEY senkronizasyon motorunu çalıştır ve varsa değişiklikleri push et
     $nodeOutput = & node "$ProjectDir\scripts\ukey-auto-sync.js" --push 2>&1

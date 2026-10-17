@@ -2,7 +2,7 @@ name: UKEY Otomatik Veri ve Dosya Senkronizasyonu
 
 on:
   schedule:
-    # 24/7 her 20 dakikada bir otomatik UKEY verilerini çeker
+    # 24/7 her 20 dakikada bir UKEY verilerini otomatik kontrol eder
     - cron: '*/20 * * * *'
   workflow_dispatch:
   repository_dispatch:
@@ -12,6 +12,11 @@ on:
       - main
     paths:
       - 'scripts/ukey-auto-sync.js'
+
+# Eşzamanlı çakışmaları tamamen engelleyen tekil işlem grubu
+concurrency:
+  group: ukey-auto-sync-group
+  cancel-in-progress: true
 
 permissions:
   contents: write
@@ -32,17 +37,30 @@ jobs:
 
       - name: UKEY Otomatik Senkronizasyon Motorunu Çalıştır
         run: node scripts/ukey-auto-sync.js
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Güncellenen UKEY Verilerini Kaydet (Commit & Push)
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "UKEY Auto-Sync Bot"
-          git add ukey.json ukey_dosyalar/
-          if git diff --staged --quiet; then
-            echo "Verilerde yeni bir değişiklik yok."
-          else
-            git commit -m "chore(ukey): otomatik UKEY senkronizasyonu [skip ci]"
-            git pull --rebase origin main
-            git push
-          fi
+
+          # Maksimum 3 deneme ile çakışmasız güvenli senkronizasyon ve push
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git rebase --strategy-option=theirs origin/main || git rebase --abort 2>/dev/null || true
+
+            git add ukey.json ukey_dosyalar/
+            if git diff --staged --quiet; then
+              echo "UKEY verilerinde yeni bir değişiklik yok, depo zaten güncel."
+              exit 0
+            fi
+
+            git commit -m "chore(ukey): otomatik UKEY senkronizasyonu [skip ci]" || true
+            if git push origin main; then
+              echo "UKEY verileri başarıyla GitHub'a gönderildi."
+              exit 0
+            fi
+
+            echo "Eşzamanlı commit tespit edildi, tekrar deneniyor (Deneme $attempt/3)..."
+            sleep 3
+          done

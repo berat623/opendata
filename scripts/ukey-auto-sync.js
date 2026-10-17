@@ -579,6 +579,15 @@ async function syncUkey() {
     agendaEvents: existingData.agendaEvents || []
   });
 
+  const prevSyncMs = existingData.lastSyncedAt ? new Date(existingData.lastSyncedAt).getTime() : 0;
+  const nowMs = Date.now();
+  const shouldHeartbeat = (nowMs - prevSyncMs) > (3 * 3600 * 1000); // 3 saatte bir rutin canlılık güncellemesi
+
+  if (!hasDataChanged && !shouldHeartbeat) {
+    console.log(`[UKEY-SYNC] UKEY taraması tamamlandı: ${updatedCourses.length} ders, ${allHomeworksFlat.length} ödev kontrol edildi. Yeni veri veya dosya değişikliği yok, sistem zaten güncel.`);
+    return;
+  }
+
   const finalData = {
     ...existingData,
     lastSyncedAt: new Date().toISOString(),
@@ -605,7 +614,11 @@ async function syncUkey() {
       const status = execSync('git status --porcelain', { cwd: ROOT_DIR, encoding: 'utf8' });
       if (status.includes('ukey.json') || status.includes('ukey_dosyalar')) {
         execSync('git commit -m "chore(ukey): otomatik UKEY veri senkronizasyonu [skip ci]"', { cwd: ROOT_DIR, stdio: 'inherit' });
-        execSync('git pull --rebase --autostash origin main', { cwd: ROOT_DIR, stdio: 'inherit' });
+        try {
+          execSync('git fetch origin main && git rebase --strategy-option=theirs origin/main', { cwd: ROOT_DIR, stdio: 'inherit' });
+        } catch (rbErr) {
+          try { execSync('git rebase --abort', { cwd: ROOT_DIR, stdio: 'ignore' }); } catch (e) {}
+        }
         execSync('git push origin main', { cwd: ROOT_DIR, stdio: 'inherit' });
         console.log('[UKEY-SYNC] Değişiklikler başarıyla GitHub deposuna gönderildi (pushed).');
       } else {

@@ -4804,6 +4804,7 @@
         }
         setInterval(updateUkeySyncStatusBadge, 30000);
 
+        let lastUkeyDispatchMs = 0;
         async function refreshUkeyData(silent = false) {
             const btn = document.getElementById('btn-ukey-refresh');
             const icon = document.getElementById('ukey-refresh-icon');
@@ -4815,7 +4816,9 @@
                 showToast('UKEY ders, materyal ve kayıt verileri yenileniyor...');
             }
             const adminToken = localStorage.getItem('gh_admin_token') || '';
-            if (!silent && adminToken) {
+            const now = Date.now();
+            if (!silent && adminToken && (now - lastUkeyDispatchMs > 60000)) {
+                lastUkeyDispatchMs = now;
                 fetch('https://api.github.com/repos/' + GITHUB_USERNAME + '/' + REPO_NAME + '/actions/workflows/ukey-auto-sync.yml/dispatches', {
                     method: 'POST',
                     headers: { 'Authorization': 'token ' + adminToken, 'Accept': 'application/vnd.github+json' },
