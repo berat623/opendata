@@ -1,7 +1,50 @@
 {
-  "lastSyncedAt": "2026-10-17T13:43:04.115Z",
+  "lastSyncedAt": "2026-10-17T13:55:47.519Z",
   "portalUrl": "https://ukey.uludag.edu.tr/Home",
-  "urgentNotifications": [],
+  "urgentNotifications": [
+    {
+      "id": "notif-65388",
+      "type": "odev",
+      "courseCode": "ELNZ103-04",
+      "courseName": "ÖLÇME TEKNİĞİ",
+      "instructor": "Öğr.Gör. ERCAN YAVUZ (Dersin Yürütücüsü)",
+      "title": "(sinüs, kare,üçgen) OSİLATÖR PROJESİ",
+      "description": "OSİLATÖR ÖDEVİ\r\n-üçgen,Sinüs ve Kare (veya 4. dalga olarak da testere dişi) dalga üreten bir osilatör devresi yapılacaktır\r\n*Devreyi board üzerine, delikli pertinax üzerine yada baskı devre bilenler baskı devre ile yapabilir\r\n- Hazır kit halinde satın alınan devreler geçerli değildir\r\n-Devreyi yaparken 555 TİMER veya 741 OPAMP entegresi kullanabilirsiniz\r\n-Tek BİR 555 ile üç dalgayı birlikte veren bir devre bulabilirsiniz. (tercih edilen budur) bulamazsanız 3 ayrı devre şeklinde yapabilirsiniz\r\n-Devre şemasını İNTERNETTEN yada herhangi bir kaynaktan bulabilirsiniz.\r\n-Devre teslimine DEVRE ŞEMASININ ÇIKTISIYLA GELİNİZ\r\n- Devreyi yaparken her türlü yardım alabilirsiniz. ancak teslimat sırasında gerekli bilgileri de edinmiş olmalısınız. \r\n(mesela; besleme neresidir, kaç voltla beslenir, çıkış uçları hangileridir, hangi çıkış hangi dalgayı verir gibi)\r\n-Derste 555 - 741 ve konuyla ilgili bilgilendirmeler yapılmıştır\r\nOSİLATÖR DEVRESİNİN 2.VİZEYE (uygulama vizesi) KATKISI %30 OLACAKTIR",
+      "start": "7.10.2026 16:00:00",
+      "end": "28.10.2026 13:00:00",
+      "badgeText": "Aktif Ödev Teslimi",
+      "allowedFormat": "Belirtilmemiş",
+      "maxSizeMB": 20
+    },
+    {
+      "id": "notif-65390",
+      "type": "odev",
+      "courseCode": "ELNZ103-04",
+      "courseName": "ÖLÇME TEKNİĞİ",
+      "instructor": "Öğr.Gör. ERCAN YAVUZ (Dersin Yürütücüsü)",
+      "title": "DİRENÇ SINAVI",
+      "description": "DİRENÇ SINAVI   2 AŞAMALI OLACAKTIR.\r\n---------------------------------------------------------------------\r\n1.AŞAMA: DİRENÇ OKUMA\r\nBu aşamada size verilen dirençin değerini RENK KODLARINI 1 dak içinde okuyup  söyleyeceksiniz\r\n2. AŞAMA: \r\nBu aşamada verilen 5 direnç değerini, ortaya dökülen direnç öbeği içinden 2 dak içinde bulacaksınız\r\nNOT:  vize tarihlerine, akademik takvim durumuna veya diğer şartlara bağlı olarak Direnç sınavının TARİHİ DEĞİŞTİRİLEBİLECEKTİR\r\nDİRENÇ SINAVININ UYGULAMA SINAVINA KATKISI %20 OLACAKTIR",
+      "start": "7.10.2026 16:00:00",
+      "end": "4.11.2026 13:00:00",
+      "badgeText": "Aktif Ödev Teslimi",
+      "allowedFormat": "Belirtilmemiş",
+      "maxSizeMB": 20
+    },
+    {
+      "id": "notif-65391",
+      "type": "odev",
+      "courseCode": "ELNZ103-04",
+      "courseName": "ÖLÇME TEKNİĞİ",
+      "instructor": "Öğr.Gör. ERCAN YAVUZ (Dersin Yürütücüsü)",
+      "title": "OSİLOSKOP  SINAVI",
+      "description": "OSİLOSKOP SINAVI HAKKINDA\r\nOsiloskopda verilen görevi 5 dak içerisinde yapmak\r\n- osiloskopda ışığı bulmak (yatay çizgi diyebiliriz)\r\n- genlik kalibresini yapmak\r\n- Frekans kalibresini yapmak\r\n- istenen frekans ve genlikteki işareti ayarlayarak osiloskopda göstemek\r\n- Diğer ayarlar\r\nNOT:  vize tarihlerine, akademik takvim durumuna veya diğer şartlara bağlı olarak Osiloskop sınavının TARİHİ DEĞİŞTİRİLEBİLECEKTİR\r\nDEĞERLENDİRME;\r\nOSİLOSKOP SINAVININ 2.VİZEYE (uygulama vizesi) KATKISI %50 OLACAKTIR",
+      "start": "7.10.2026 14:00:00",
+      "end": "23.12.2026 13:00:00",
+      "badgeText": "Aktif Ödev Teslimi",
+      "allowedFormat": "Belirtilmemiş",
+      "maxSizeMB": 20
+    }
+  ],
   "agendaEvents": [
     {
       "id": "ag-hw-22HRTZ115-04-0",
@@ -1851,5 +1894,6 @@
     "s": "XpoKuNgwjNjwEZmuRWpdbw==",
     "i": "S/d/32GLvWQhn9xh",
     "c": "rfov+UN6Gp7RJmW2RMhJQM58Vogx6gGYLHmDa/QWe1sYaPFCsU/+LQBb0PddHS3Wxtg6J5qZLA/mZysz5j52P082RVNV3rpJTOZs6cGtkEyQl0/GA5u8qw0gO7bszI9vEgbUSSTT/7WXmm8oJtnZK1qvtXI="
-  }
+  },
+  "lastDataChangeAt": "2026-10-17T13:55:47.522Z"
 }
