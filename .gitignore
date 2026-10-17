@@ -1,0 +1,11 @@
+# Local sync logs
+scripts/sync.log
+
+# Operating System files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Temporary files
+*.tmp
+*.log

@@ -2,9 +2,11 @@ name: UKEY Otomatik Veri ve Dosya Senkronizasyonu
 
 on:
   schedule:
-    # Her 30 dakikada bir UKEY verilerini otomatik çeker
-    - cron: '*/30 * * * *'
+    # 24/7 her 20 dakikada bir otomatik UKEY verilerini çeker
+    - cron: '*/20 * * * *'
   workflow_dispatch:
+  repository_dispatch:
+    types: [ukey-sync]
   push:
     branches:
       - main
@@ -20,6 +22,8 @@ jobs:
     steps:
       - name: Depoyu Çek (Checkout)
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 10
 
       - name: Node.js 22 Kurulumu
         uses: actions/setup-node@v4

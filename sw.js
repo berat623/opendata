@@ -1,4 +1,4 @@
-const CACHE = 'etp-cache-v26';
+const CACHE = 'etp-cache-v27';
 const ASSETS = [
   './',
   './index.html',
@@ -36,7 +36,7 @@ self.addEventListener('fetch', e => {
   // 1. JSON veri dosyaları: Network-first (Her zaman en güncel UKEY ve duyuru verisini getir, çevrimdışıysa önbellekten dön)
   if (url.origin === location.origin && url.pathname.endsWith('.json')) {
     e.respondWith(
-      fetch(e.request, { cache: 'no-cache' }).then(res => {
+      fetch(e.request, { cache: 'no-store' }).then(res => {
         if (res && res.ok) {
           const clone = res.clone();
           caches.open(CACHE).then(c => c.put(url.pathname, clone));

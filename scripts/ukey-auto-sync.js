@@ -171,6 +171,7 @@ async function syncUkey() {
     const sinavHtml = await getPage('/Ogrenci/ESinavlar/');
     const matHtml = await getPage('/Ogrenci/DersMateryalleri');
     const forumHtml = await getPage('/Ogrenci/Forum');
+    const topHtml = await getPage('/Ogrenci/Toplantilar');
 
     const getField = (label) => {
       const re = new RegExp(`<div class="display-label">\\s*${label}\\s*<\\/div>\\s*<div class="display-field">([\\s\\S]*?)<\\/div>`, 'i');
@@ -440,6 +441,31 @@ async function syncUkey() {
         }))
     );
 
+    // Parse Virtual Meetings (Toplantilar)
+    const meetingRows = [...topHtml.matchAll(/<tr>\s*<td>([\s\S]*?)<\/td>\s*<td>([\s\S]*?)<\/td>\s*<td>([\s\S]*?)<\/td>\s*<td>([\s\S]*?)<\/td>\s*<td>([\s\S]*?)<\/td>\s*<\/tr>/gi)];
+    const meetings = [];
+    for (const mr of meetingRows) {
+      const topTitle = stripTags(mr[1]);
+      const topDate = stripTags(mr[2]);
+      const topLinkMatch = mr[0].match(/href="([^"]+)"/i);
+      if (topTitle && !topTitle.includes('Başlık') && !topTitle.includes('Kayıt bulunamadı')) {
+        const mObj = {
+          title: topTitle,
+          date: topDate,
+          url: topLinkMatch ? decodeHtml(topLinkMatch[1]) : ''
+        };
+        meetings.push(mObj);
+        allUpcomingMeetings.push({
+          courseCode: code,
+          courseName: name,
+          instructor: hoca,
+          title: `${code} - ${topTitle}`,
+          schedule: topDate,
+          url: mObj.url
+        });
+      }
+    }
+
     updatedCourses.push({
       code,
       name,
@@ -459,7 +485,7 @@ async function syncUkey() {
       materials,
       forumCategories,
       groups: [],
-      meetings: []
+      meetings
     });
   }
 
@@ -496,6 +522,27 @@ async function syncUkey() {
     }
   }
 
+  // Fallback: If no urgent tasks returned from UKEY dashboard header, populate with all active course homeworks
+  const activeHomeworks = allHomeworksFlat.filter(hw => !hw.submissionStatus.includes('Sona Ermiştir'));
+  for (const hw of activeHomeworks) {
+    if (!dynamicUrgentNotifications.some(n => n.id === `notif-${hw.id}`)) {
+      dynamicUrgentNotifications.push({
+        id: `notif-${hw.id}`,
+        type: 'odev',
+        courseCode: hw.courseCode,
+        courseName: hw.courseName,
+        instructor: hw.instructor,
+        title: hw.title,
+        description: hw.description,
+        start: hw.start,
+        end: hw.end,
+        badgeText: 'Aktif Ödev Teslimi',
+        allowedFormat: hw.allowedFileTypes,
+        maxSizeMB: hw.maxFileSizeMB
+      });
+    }
+  }
+
   const officialGuides = [
     {
       title: 'Öğrenciler için UKEY Kullanma Kılavuzu',
@@ -522,9 +569,20 @@ async function syncUkey() {
     }
   ];
 
+  const hasDataChanged = JSON.stringify({
+    courses: updatedCourses,
+    urgentNotifications: dynamicUrgentNotifications,
+    agendaEvents: newAgendaEvents
+  }) !== JSON.stringify({
+    courses: existingData.courses || [],
+    urgentNotifications: existingData.urgentNotifications || [],
+    agendaEvents: existingData.agendaEvents || []
+  });
+
   const finalData = {
     ...existingData,
     lastSyncedAt: new Date().toISOString(),
+    lastDataChangeAt: hasDataChanged ? new Date().toISOString() : (existingData.lastDataChangeAt || existingData.lastSyncedAt || new Date().toISOString()),
     urgentNotifications: dynamicUrgentNotifications,
     guides: officialGuides,
     agendaEvents: newAgendaEvents,
@@ -538,10 +596,29 @@ async function syncUkey() {
   };
 
   fs.writeFileSync(UKEY_JSON_PATH, JSON.stringify(finalData, null, 2), 'utf8');
-  console.log(`[UKEY-SYNC] Başarıyla tamamlandı! ${updatedCourses.length} ders, ${allHomeworksFlat.length} ödev, ${dynamicUrgentNotifications.length} acil bildirim ve ${allRecordedStreams.length} canlı ders/kayıt linki güncellendi.`);
+  console.log(`[UKEY-SYNC] Başarıyla tamamlandı! ${updatedCourses.length} ders, ${allHomeworksFlat.length} ödev, ${dynamicUrgentNotifications.length} aktif bildirim ve ${allRecordedStreams.length} canlı ders/kayıt linki güncellendi.`);
+
+  if (process.argv.includes('--push')) {
+    const { execSync } = require('child_process');
+    try {
+      execSync('git add ukey.json ukey_dosyalar/', { cwd: ROOT_DIR, stdio: 'inherit' });
+      const status = execSync('git status --porcelain', { cwd: ROOT_DIR, encoding: 'utf8' });
+      if (status.includes('ukey.json') || status.includes('ukey_dosyalar')) {
+        execSync('git commit -m "chore(ukey): otomatik UKEY veri senkronizasyonu [skip ci]"', { cwd: ROOT_DIR, stdio: 'inherit' });
+        execSync('git pull --rebase --autostash origin main', { cwd: ROOT_DIR, stdio: 'inherit' });
+        execSync('git push origin main', { cwd: ROOT_DIR, stdio: 'inherit' });
+        console.log('[UKEY-SYNC] Değişiklikler başarıyla GitHub deposuna gönderildi (pushed).');
+      } else {
+        console.log('[UKEY-SYNC] Git için yeni değişiklik tespit edilmedi.');
+      }
+    } catch (gitErr) {
+      console.warn('[UKEY-SYNC] Git commit/push uyarısı:', gitErr.message);
+    }
+  }
 }
 
 syncUkey().catch(err => {
   console.error('[UKEY-SYNC] Hata:', err.message);
   process.exit(1);
 });
+

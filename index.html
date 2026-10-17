@@ -1608,6 +1608,63 @@
         /* =========================================================
            UKEY PORTAL ENTEGRASYON STİLLERİ (GLASSMORPHIC NATIVE UI)
            ========================================================= */
+        /* UKEY CANLI SENKRONİZASYON DURUM BARI */
+        .ukey-sync-banner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 10px 14px;
+            margin-bottom: 12px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(59, 130, 246, 0.06) 100%);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            box-shadow: var(--shadow-sm);
+        }
+        .ukey-sync-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .ukey-sync-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #10b981;
+            box-shadow: 0 0 10px #10b981;
+            animation: ukeyPulse 2s infinite ease-in-out;
+            flex-shrink: 0;
+        }
+        .ukey-sync-dot.warn {
+            background: #f59e0b;
+            box-shadow: 0 0 10px #f59e0b;
+        }
+        @keyframes ukeyPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.3); opacity: 0.6; }
+        }
+        .ukey-sync-texts {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .ukey-sync-title {
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: -0.01em;
+        }
+        .ukey-sync-sub {
+            font-size: 0.76rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+        .ukey-sync-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
         .ukey-toolbar {
             display: flex;
             align-items: center;
@@ -3033,7 +3090,24 @@
             <!-- 6. UKEY TAM ENTEGRE EĞİTİM VE DERS PORTALI VIEW -->
             <div id="view-ukey" class="view-section">
 
-                <!-- UKEY TÜM SEÇENEKLER / MODÜLLER MENÜSÜ VE VERİ YENİLEME ŞERİDİ -->
+                <!-- UKEY CANLI SENKRONİZASYON DURUM BARI -->
+                <div class="ukey-sync-banner" id="ukey-sync-banner">
+                    <div class="ukey-sync-info">
+                        <span class="ukey-sync-dot" id="ukey-sync-dot"></span>
+                        <div class="ukey-sync-texts">
+                            <span class="ukey-sync-title" id="ukey-sync-title">Canlı UKEY Senkronizasyonu Aktif</span>
+                            <span class="ukey-sync-sub" id="ukey-sync-sub">Son senkronizasyon zamanı yükleniyor...</span>
+                        </div>
+                    </div>
+                    <div class="ukey-sync-actions">
+                        <button id="btn-ukey-refresh" class="ukey-refresh-btn" onclick="refreshUkeyData()" title="UKEY verilerini ve dosyaları şimdi yenile">
+                            <span class="material-symbols-rounded ukey-refresh-icon" id="ukey-refresh-icon" style="font-size:18px;">sync</span>
+                            <span id="ukey-refresh-text">Verileri Yenile</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- UKEY TÜM SEÇENEKLER / MODÜLLER MENÜSÜ -->
                 <div class="ukey-toolbar">
                     <div class="ukey-nav-tabs" id="ukey-main-tabs">
                         <button class="ukey-nav-tab active" data-utab="overview" onclick="switchUkeyMainTab('overview')">
@@ -3070,10 +3144,6 @@
                             <span class="ukey-tab-badge">10</span>
                         </button>
                     </div>
-                    <button id="btn-ukey-refresh" class="ukey-refresh-btn" onclick="refreshUkeyData()" title="UKEY verilerini ve dosyaları şimdi yenile">
-                        <span class="material-symbols-rounded ukey-refresh-icon" id="ukey-refresh-icon" style="font-size:18px;">sync</span>
-                        <span id="ukey-refresh-text">Verileri Yenile</span>
-                    </button>
                 </div>
 
                 <!-- UKEY DİNAMİK İÇERİK ALANI -->
@@ -3421,13 +3491,8 @@
         async function fetchFileDirect(filename, forceBust = false) {
             const qs = forceBust ? ('?t=' + Date.now()) : '';
             const fetchOpts = forceBust ? { cache: 'no-store' } : { cache: 'default' };
-            if (forceBust) {
-                try {
-                    const ghRaw = await fetch('https://raw.githubusercontent.com/' + GITHUB_USERNAME + '/' + REPO_NAME + '/main/' + filename + qs, fetchOpts);
-                    if (ghRaw.ok) return await ghRaw.json();
-                } catch (e) {}
-            }
-            // 1. Doğrudan yerel / GitHub Pages kaynağından çek (anında önbellek & ETag destekli)
+
+            // 1. Doğrudan yerel / GitHub Pages kaynağından çek (anında & ETag destekli)
             try {
                 const raw = await fetch('./' + filename + qs, fetchOpts);
                 if (raw.ok) return await raw.json();
@@ -3493,10 +3558,11 @@
             checkAnnPopup();
             setPageProgress(100);
 
-            // 2. UKEY VERİSİNİ ARKA PLANDA ANA İŞ PARÇACIĞINI DONDURMADAN YÜKLE
-            fetchFileDirect('ukey.json').then(ukey => {
+            // 2. UKEY VERİSİNİ ARKA PLANDA HER ZAMAN GÜNCEL ÇEK (CACHE BUSTING)
+            fetchFileDirect('ukey.json', true).then(ukey => {
                 if (ukey) {
                     ukeyPortalData = ukey;
+                    updateUkeySyncStatusBadge();
                     if (ukey.courses && document.getElementById('stat-ukey')) {
                         document.getElementById('stat-ukey').innerText = ukey.courses.length;
                     }
@@ -4700,6 +4766,44 @@
             return (bytes / 1048576).toFixed(2) + ' MB';
         }
 
+        function updateUkeySyncStatusBadge() {
+            const dot = document.getElementById('ukey-sync-dot');
+            const titleEl = document.getElementById('ukey-sync-title');
+            const subEl = document.getElementById('ukey-sync-sub');
+            if (!dot || !subEl) return;
+
+            if (!ukeyPortalData || !ukeyPortalData.lastSyncedAt) {
+                subEl.innerText = 'Canlı UKEY senkronizasyon verisi bekleniyor...';
+                return;
+            }
+
+            const syncDate = new Date(ukeyPortalData.lastSyncedAt);
+            const now = new Date();
+            const diffMs = now - syncDate;
+            const diffMin = Math.floor(diffMs / 60000);
+            const diffHours = Math.floor(diffMin / 60);
+
+            const timeStr = syncDate.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });
+            const dateStr = syncDate.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+
+            let relText = '';
+            if (diffMin < 2) relText = 'Az önce güncellendi';
+            else if (diffMin < 60) relText = `${diffMin} dakika önce güncellendi`;
+            else if (diffHours < 24) relText = `${diffHours} saat önce güncellendi`;
+            else relText = `${Math.floor(diffHours / 24)} gün önce güncellendi`;
+
+            if (diffMin < 180) {
+                dot.className = 'ukey-sync-dot';
+                if (titleEl) titleEl.innerText = '🟢 Canlı UKEY Senkronizasyonu Aktif';
+            } else {
+                dot.className = 'ukey-sync-dot warn';
+                if (titleEl) titleEl.innerText = '🟡 UKEY Senkronizasyonu (Beklemede)';
+            }
+
+            subEl.innerText = `Son Başarılı Senkronizasyon: ${dateStr}, ${timeStr} • ${relText}`;
+        }
+        setInterval(updateUkeySyncStatusBadge, 30000);
+
         async function refreshUkeyData(silent = false) {
             const btn = document.getElementById('btn-ukey-refresh');
             const icon = document.getElementById('ukey-refresh-icon');
@@ -4721,6 +4825,7 @@
             const fresh = await fetchFileDirect('ukey.json', true);
             if (fresh) {
                 ukeyPortalData = fresh;
+                updateUkeySyncStatusBadge();
                 renderUkeyPortal();
                 if (!silent) showToast('UKEY ders içerikleri, dosyalar ve Teams bağlantıları güncellendi!');
             } else if (!silent) {
@@ -4758,6 +4863,7 @@
         }
 
         function renderUkeyPortal() {
+            updateUkeySyncStatusBadge();
             const container = document.getElementById('ukey-dynamic-body');
             if (!container) return;
 
