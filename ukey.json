@@ -1,5 +1,5 @@
 {
-  "lastSyncedAt": "2026-10-19T12:23:18.860Z",
+  "lastSyncedAt": "2026-10-19T20:08:18.540Z",
   "portalUrl": "https://ukey.uludag.edu.tr/Home",
   "urgentNotifications": [
     {
@@ -1695,6 +1695,19 @@
           "sizeBytes": 0,
           "contentType": "",
           "externalUrl": ""
+        },
+        {
+          "title": "Örnek Projeler",
+          "category": "Diğer",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/OTPZ010-04_4.xlsx",
+          "origName": "08_Tum_300_Proje_Katalogu.xlsx",
+          "sizeBytes": 68373,
+          "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "externalUrl": ""
         }
       ],
       "forumCategories": [
@@ -1895,5 +1908,5 @@
     "i": "S/d/32GLvWQhn9xh",
     "c": "rfov+UN6Gp7RJmW2RMhJQM58Vogx6gGYLHmDa/QWe1sYaPFCsU/+LQBb0PddHS3Wxtg6J5qZLA/mZysz5j52P082RVNV3rpJTOZs6cGtkEyQl0/GA5u8qw0gO7bszI9vEgbUSSTT/7WXmm8oJtnZK1qvtXI="
   },
-  "lastDataChangeAt": "2026-10-17T13:55:47.522Z"
+  "lastDataChangeAt": "2026-10-19T20:08:18.543Z"
 }
