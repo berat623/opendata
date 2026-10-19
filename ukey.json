@@ -1,5 +1,5 @@
 {
-  "lastSyncedAt": "2026-10-19T20:08:18.540Z",
+  "lastSyncedAt": "2026-10-19T20:33:10.164Z",
   "portalUrl": "https://ukey.uludag.edu.tr/Home",
   "urgentNotifications": [
     {
@@ -1708,6 +1708,32 @@
           "sizeBytes": 68373,
           "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
           "externalUrl": ""
+        },
+        {
+          "title": "Ders Kaynakları",
+          "category": "Ders Kitabı - Notu",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/OTPZ010-04_5.zip",
+          "origName": "Kaynak 2 - Açık Ders.zip",
+          "sizeBytes": 12838846,
+          "contentType": "application/x-zip-compressed",
+          "externalUrl": ""
+        },
+        {
+          "title": "Ders Sunumu ilk 2 Hafta",
+          "category": "Diğer",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/OTPZ010-04_6.pptx",
+          "origName": "BIT_Ilk_2_Hafta_70_Slayt_MÇ.pptx",
+          "sizeBytes": 456307,
+          "contentType": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+          "externalUrl": ""
         }
       ],
       "forumCategories": [
@@ -1908,5 +1934,5 @@
     "i": "S/d/32GLvWQhn9xh",
     "c": "rfov+UN6Gp7RJmW2RMhJQM58Vogx6gGYLHmDa/QWe1sYaPFCsU/+LQBb0PddHS3Wxtg6J5qZLA/mZysz5j52P082RVNV3rpJTOZs6cGtkEyQl0/GA5u8qw0gO7bszI9vEgbUSSTT/7WXmm8oJtnZK1qvtXI="
   },
-  "lastDataChangeAt": "2026-10-19T20:08:18.543Z"
+  "lastDataChangeAt": "2026-10-19T20:33:10.165Z"
 }
