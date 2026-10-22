@@ -8,8 +8,8 @@
   "display": "standalone",
   "display_override": ["standalone", "minimal-ui", "window-controls-overlay"],
   "orientation": "any",
-  "background_color": "#080d1a",
-  "theme_color": "#080d1a",
+  "background_color": "#f5f7fb",
+  "theme_color": "#f5f7fb",
   "lang": "tr",
   "categories": ["education", "productivity"],
   "icons": [
@@ -51,13 +51,6 @@
       "short_name": "Program",
       "description": "Haftalık ders programı ve derslikler",
       "url": "./#schedule",
-      "icons": [{ "src": "logo.png", "sizes": "192x192" }]
-    },
-    {
-      "name": "Duyurular",
-      "short_name": "Duyurular",
-      "description": "Güncel bölüm duyuruları ve sınav ilanları",
-      "url": "./#announcements",
       "icons": [{ "src": "logo.png", "sizes": "192x192" }]
     },
     {

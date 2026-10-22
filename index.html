@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https://cdn.jsdelivr.net https://avatars.githubusercontent.com; connect-src 'self' https://api.github.com https://raw.githubusercontent.com; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://ukey.uludag.edu.tr">
     <meta name="referrer" content="no-referrer">
-    <meta name="theme-color" content="#080d1a">
+    <meta name="theme-color" content="#f5f7fb">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="ETP Bilgi">
     <meta name="format-detection" content="telephone=no">
     <link rel="apple-touch-icon" href="logo.png">
@@ -19,10 +19,10 @@
     <title>ETP Bilgi Sistemi | Bursa Uludağ Üniversitesi</title>
     <link rel="icon" type="image/png" href="logo.png">
 
-    <!-- Fonts & Icons -->
+    <!-- Fonts & Icons (Poppins Tam Uyarlama) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght,ROND@6..144,800,100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         /* İKONLARIN YAZI OLARAK GÖRÜNMESİNİ ENGELLEYEN ANINDA YÜKLEME (0ms YEREL WOFF2) */
@@ -59,98 +59,109 @@
         }
 
         :root {
-            --bg-body: #080d1a;
-            --bg-surface: #0f172a;
-            --bg-surface-elevated: #17233b;
-            --bg-surface-hover: #1e2d4a;
-            --text-main: #f8fafc;
+            --bg-body: #111625;
+            --bg-surface: #181f32;
+            --bg-surface-elevated: #202940;
+            --bg-surface-hover: #28334f;
+            --text-main: #f1f5f9;
             --text-muted: #94a3b8;
-            --primary: #3b82f6;
-            --primary-soft: rgba(59, 130, 246, 0.16);
-            --primary-border: rgba(59, 130, 246, 0.35);
-            --accent: #10b981;
-            --accent-soft: rgba(16, 185, 129, 0.16);
-            --warning: #f59e0b;
-            --warning-soft: rgba(245, 158, 11, 0.16);
-            --danger: #ef4444;
-            --danger-soft: rgba(239, 68, 68, 0.16);
-            --border: rgba(255, 255, 255, 0.11);
-            --border-hover: rgba(255, 255, 255, 0.25);
-            --nav-width: 270px;
+            --primary: #7c8bf8;
+            --primary-soft: rgba(124, 139, 248, 0.15);
+            --primary-border: rgba(124, 139, 248, 0.30);
+            --accent: #4ec9a6;
+            --accent-soft: rgba(78, 201, 166, 0.15);
+            --warning: #f2a65a;
+            --warning-soft: rgba(242, 166, 90, 0.15);
+            --danger: #f0788c;
+            --danger-soft: rgba(240, 120, 140, 0.15);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(255, 255, 255, 0.17);
+            --nav-width: 264px;
             --banner-h: 0px;
-            --radius-lg: 20px;
-            --radius-md: 15px;
-            --radius-sm: 10px;
-            --shadow: 0 10px 28px -8px rgba(0, 0, 0, 0.48);
-            --shadow-sm: 0 4px 14px -4px rgba(0, 0, 0, 0.34);
+            --radius-lg: 22px;
+            --radius-md: 16px;
+            --radius-sm: 11px;
+            --shadow: 0 12px 32px -10px rgba(0, 0, 0, 0.38);
+            --shadow-sm: 0 4px 14px -4px rgba(0, 0, 0, 0.24);
             --glass-blur: none;
-            --glass-reflection: inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+            --glass-reflection: inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
             
-            /* TEMA KARTLARI - DARK */
-            --timer-bg: linear-gradient(135deg, #063e31 0%, #0f172a 100%);
-            --timer-border: rgba(16, 185, 129, 0.40);
-            --timer-text: #ffffff;
-            --timer-sub: rgba(255, 255, 255, 0.85);
-            --timer-chip: rgba(16, 185, 129, 0.25);
-            --timer-chip-color: #34d399;
-            --timer-box-bg: rgba(255, 255, 255, 0.07);
-            --timer-box-border: rgba(255, 255, 255, 0.15);
-            --timer-bar-track: rgba(255, 255, 255, 0.12);
-            --timer-bar-fill: #10b981;
+            /* TEMA KARTLARI - PASTEL DARK */
+            --timer-bg: linear-gradient(135deg, #1b243b 0%, #162a2d 100%);
+            --timer-border: rgba(124, 139, 248, 0.25);
+            --timer-text: #f8fafc;
+            --timer-sub: rgba(241, 245, 249, 0.78);
+            --timer-chip: rgba(124, 139, 248, 0.18);
+            --timer-chip-color: #9ba7fb;
+            --timer-box-bg: rgba(255, 255, 255, 0.05);
+            --timer-box-border: rgba(255, 255, 255, 0.10);
+            --timer-bar-track: rgba(255, 255, 255, 0.10);
+            --timer-bar-fill: linear-gradient(90deg, #7c8bf8 0%, #4ec9a6 100%);
         }
 
         html.light-mode {
-            --bg-body: #ecf1f7;
+            --bg-body: #f5f7fb;
             --bg-surface: #ffffff;
-            --bg-surface-elevated: #f4f7fb;
-            --bg-surface-hover: #eaeff7;
-            --text-main: #0f172a;
-            --text-muted: #475569;
-            --primary: #2563eb;
-            --primary-soft: rgba(37, 98, 235, 0.12);
-            --primary-border: rgba(37, 98, 235, 0.25);
-            --accent: #059669;
-            --accent-soft: rgba(5, 150, 105, 0.12);
-            --warning: #d97706;
-            --warning-soft: rgba(217, 119, 6, 0.12);
-            --danger: #dc2626;
-            --danger-soft: rgba(220, 38, 38, 0.12);
-            --border: rgba(15, 23, 42, 0.09);
-            --border-hover: rgba(15, 23, 42, 0.22);
-            --shadow: 0 10px 26px -8px rgba(15, 23, 42, 0.07);
-            --shadow-sm: 0 4px 14px -4px rgba(15, 23, 42, 0.04);
+            --bg-surface-elevated: #f8faff;
+            --bg-surface-hover: #eff3fb;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --primary: #5b6af0;
+            --primary-soft: #eef0ff;
+            --primary-border: #d5dcfe;
+            --accent: #2ea885;
+            --accent-soft: #eaf8f3;
+            --warning: #e08b3e;
+            --warning-soft: #fef4ea;
+            --danger: #e25c6d;
+            --danger-soft: #fdeef0;
+            --border: #e7edf6;
+            --border-hover: #cbd6e8;
+            --shadow: 0 10px 30px -10px rgba(30, 41, 59, 0.05), 0 2px 8px -2px rgba(30, 41, 59, 0.03);
+            --shadow-sm: 0 4px 14px -4px rgba(30, 41, 59, 0.04);
             --glass-blur: none;
-            --glass-reflection: inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
+            --glass-reflection: inset 0 1px 0 0 rgba(255, 255, 255, 0.95);
 
-            /* TEMA KARTLARI - LIGHT */
-            --timer-bg: linear-gradient(135deg, #ecfdf5 0%, #ffffff 100%);
-            --timer-border: rgba(16, 185, 129, 0.42);
-            --timer-text: #064e3b;
-            --timer-sub: #047857;
-            --timer-chip: rgba(5, 150, 105, 0.14);
-            --timer-chip-color: #059669;
+            /* TEMA KARTLARI - PASTEL LIGHT */
+            --timer-bg: linear-gradient(135deg, #f1f4ff 0%, #edfaf6 58%, #ffffff 100%);
+            --timer-border: #d9e3f8;
+            --timer-text: #1e293b;
+            --timer-sub: #526077;
+            --timer-chip: #e2e7ff;
+            --timer-chip-color: #5b6af0;
             --timer-box-bg: #ffffff;
-            --timer-box-border: rgba(5, 150, 105, 0.28);
-            --timer-bar-track: rgba(5, 150, 105, 0.15);
-            --timer-bar-fill: #059669;
+            --timer-box-border: #e1e8f5;
+            --timer-bar-track: #dfe7f5;
+            --timer-bar-fill: linear-gradient(90deg, #5b6af0 0%, #34b38f 100%);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body, button, input, select, textarea { font-family: 'Google Sans Flex', sans-serif; font-optical-sizing: auto; font-weight: 800; font-style: normal; font-variation-settings: "ROND" 100; }
+        body, button, input, select, textarea {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            letter-spacing: -0.01em;
+        }
+        h1, h2, h3, h4, h5, h6, strong, b {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 600;
+        }
         body {
             background-color: var(--bg-body);
             background-image:
-                radial-gradient(at 10% 10%, rgba(59, 130, 246, 0.16) 0px, transparent 50%),
-                radial-gradient(at 90% 15%, rgba(16, 185, 129, 0.14) 0px, transparent 50%);
+                radial-gradient(at 8% 8%, rgba(124, 139, 248, 0.12) 0px, transparent 48%),
+                radial-gradient(at 92% 12%, rgba(78, 201, 166, 0.10) 0px, transparent 48%);
             color: var(--text-main);
             overflow-x: hidden;
             min-height: 100vh;
             -webkit-font-smoothing: antialiased;
+            line-height: 1.5;
         }
         html.light-mode body {
             background-image:
-                radial-gradient(at 10% 10%, rgba(59, 130, 246, 0.10) 0px, transparent 50%),
-                radial-gradient(at 90% 15%, rgba(16, 185, 129, 0.08) 0px, transparent 50%);
+                radial-gradient(at 8% 8%, rgba(91, 106, 240, 0.07) 0px, transparent 48%),
+                radial-gradient(at 92% 12%, rgba(46, 168, 133, 0.06) 0px, transparent 48%),
+                radial-gradient(at 50% 95%, rgba(224, 139, 62, 0.04) 0px, transparent 50%);
         }
         body.modal-open, body.drawer-open { overflow: hidden; }
 
@@ -195,13 +206,13 @@
         .admin-bar-actions { display: flex; align-items: center; gap: 8px; }
         .btn-admin-bar-off {
             background: #fff; color: #991b1b; border: none; padding: 6px 14px; border-radius: 50px;
-            font-size: 0.8rem; font-weight: 800; cursor: pointer; transition: all 0.2s;
+            font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
             display: inline-flex; align-items: center; gap: 5px;
         }
         .btn-admin-bar-off:hover { transform: scale(1.04); background: #fef2f2; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
         .btn-admin-bar-link {
             background: rgba(255, 255, 255, 0.2); color: #fff; text-decoration: none; padding: 6px 14px;
-            border-radius: 50px; font-size: 0.8rem; font-weight: 800; transition: all 0.2s;
+            border-radius: 50px; font-size: 0.8rem; font-weight: 600; transition: all 0.2s;
             border: 1px solid rgba(255, 255, 255, 0.35); display: inline-flex; align-items: center; gap: 5px;
         }
         .btn-admin-bar-link:hover { background: rgba(255, 255, 255, 0.35); }
@@ -234,7 +245,7 @@
             width: 48px; height: 48px; border-radius: 14px; object-fit: contain; background: #fff;
             padding: 3px; border: 1px solid var(--border); box-shadow: var(--shadow-sm);
         }
-        .maint-brand-text strong { display: block; font-size: 1.05rem; font-weight: 800; color: var(--text-main); }
+        .maint-brand-text strong { display: block; font-size: 1.05rem; font-weight: 600; color: var(--text-main); }
         .maint-brand-text span { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; }
         .maint-admin-btn {
             background: var(--bg-surface-elevated); border: 1px solid var(--border); color: var(--text-main);
@@ -285,7 +296,7 @@
         .maint-badge {
             display: inline-flex; align-items: center; gap: 8px;
             background: rgba(239, 68, 68, 0.16); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.32);
-            border-radius: 50px; padding: 6px 16px; font-size: 0.82rem; font-weight: 800; margin-bottom: 20px;
+            border-radius: 50px; padding: 6px 16px; font-size: 0.82rem; font-weight: 600; margin-bottom: 20px;
         }
         .maint-dot {
             width: 8px; height: 8px; border-radius: 50%; background: #ef4444;
@@ -293,7 +304,7 @@
         }
         @keyframes dotBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
         .maint-title {
-            font-size: 2.1rem; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 12px;
+            font-size: 2.1rem; font-weight: 600; letter-spacing: -0.5px; margin-bottom: 12px;
             color: var(--text-main); line-height: 1.25;
         }
         .maint-desc {
@@ -415,77 +426,84 @@
         /* ANA YERLEŞİM */
         .app-container { display: flex; align-items: stretch; min-height: calc(100vh - var(--banner-h)); }
 
-        /* YAN MENÜ (SIDEBAR) */
+        /* YAN MENÜ (SIDEBAR - MİNİMALİST & PASTEL) */
         .sidebar {
             width: var(--nav-width); flex-shrink: 0; background: var(--bg-surface);
-            border-right: 1px solid var(--border); padding: 26px 16px; display: flex; flex-direction: column;
+            border-right: 1px solid var(--border); padding: 28px 18px; display: flex; flex-direction: column;
             position: sticky; top: var(--banner-h); height: calc(100vh - var(--banner-h)); overflow-y: auto; z-index: 50;
-            backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
-            box-shadow: var(--glass-reflection);
+            box-shadow: 2px 0 24px -12px rgba(15, 23, 42, 0.04);
         }
-        .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; padding: 0 8px; }
-        .brand-logo { width: 44px; height: 44px; border-radius: 14px; object-fit: contain; background: #fff; border: 1px solid var(--border); padding: 3px; }
-        .brand-text h1 { font-size: 1.05rem; font-weight: 800; line-height: 1.25; }
-        .brand-text p { font-size: 0.74rem; color: var(--text-muted); font-weight: 600; }
+        .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; padding: 0 6px; }
+        .brand-logo { width: 44px; height: 44px; border-radius: 14px; object-fit: contain; background: #fff; border: 1px solid var(--border); padding: 4px; box-shadow: var(--shadow-sm); }
+        .brand-text h1 { font-size: 1rem; font-weight: 700; line-height: 1.25; letter-spacing: -0.02em; color: var(--text-main); }
+        .brand-text p { font-size: 0.73rem; color: var(--text-muted); font-weight: 500; margin-top: 1px; }
 
-        .nav-links { display: flex; flex-direction: column; gap: 6px; flex: 1; }
+        .nav-links { display: flex; flex-direction: column; gap: 8px; flex: 1; }
         .nav-item {
             display: flex; align-items: center; gap: 12px; padding: 12px 16px; min-height: 46px;
-            border-radius: var(--radius-md); color: var(--text-muted); font-weight: 600; font-size: 0.92rem;
-            transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 14px; color: var(--text-muted); font-weight: 500; font-size: 0.9rem;
+            border: 1px solid transparent;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .nav-item:hover { background: var(--bg-surface-hover); color: var(--text-main); transform: translateX(3px); }
-        .nav-item.active { background: var(--primary); color: #fff; box-shadow: 0 4px 14px -3px var(--primary); transform: none; }
+        .nav-item:hover { background: var(--bg-surface-hover); color: var(--text-main); transform: translateX(2px); }
+        .nav-item.active {
+            background: var(--primary-soft);
+            color: var(--primary);
+            border-color: var(--primary-border);
+            font-weight: 600;
+            box-shadow: 0 4px 14px -6px rgba(91, 106, 240, 0.18);
+            transform: none;
+        }
         .nav-badge {
             margin-left: auto; background: var(--danger); color: #fff; border-radius: 20px;
-            font-size: 0.68rem; font-weight: 800; padding: 2px 8px; min-width: 20px; display: none; align-items: center; justify-content: center;
+            font-size: 0.68rem; font-weight: 600; padding: 2px 8px; min-width: 20px; display: none; align-items: center; justify-content: center;
         }
         .sidebar-footer { padding-top: 16px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 6px; }
 
         /* MOBİL MENÜ ÇEKMECESİ */
         .drawer {
-            position: fixed; top: 0; left: 0; bottom: 0; width: min(300px, 85vw);
+            position: fixed; top: 0; left: 0; bottom: 0; width: min(290px, 84vw);
             background: var(--bg-surface); z-index: 1300; transform: translateX(-105%);
-            display: flex; flex-direction: column; padding: 20px 16px; overflow-y: auto;
+            display: flex; flex-direction: column; padding: 22px 16px; overflow-y: auto;
             box-shadow: var(--shadow); border-right: 1px solid var(--border);
-            backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
-            transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .drawer.open { transform: none; }
-        .drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: 1250; display: none; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+        .drawer-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.45); z-index: 1250; display: none; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
         .drawer-overlay.show { display: block; }
-        .drawer-head { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+        .drawer-head { display: flex; align-items: center; gap: 10px; margin-bottom: 24px; }
         .drawer-footer { border-top: 1px solid var(--border); padding-top: 14px; display: flex; flex-direction: column; gap: 6px; }
 
-        /* ANA İÇERİK */
-        .main-content { flex: 1; min-width: 0; max-width: 1200px; margin: 0 auto; padding: 28px 36px; }
+        /* ANA İÇERİK (MASAÜSTÜ GENİŞ EKRAN OPTİMİZASYONU) */
+        .main-content { flex: 1; min-width: 0; max-width: 1320px; width: 100%; margin: 0 auto; padding: 30px 40px 48px; }
 
         /* ÜST BAŞLIK */
         .top-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 26px; }
         .header-left { display: flex; align-items: center; gap: 14px; min-width: 0; }
         .menu-btn { display: none; }
-        .page-title { font-size: clamp(1.4rem, 1rem + 1.8vw, 1.95rem); font-weight: 800; letter-spacing: -0.5px; }
-        .header-date { color: var(--text-muted); font-size: 0.88rem; font-weight: 600; margin-top: 2px; }
+        .page-title { font-size: clamp(1.35rem, 1rem + 1.5vw, 1.8rem); font-weight: 700; letter-spacing: -0.025em; color: var(--text-main); }
+        .header-date { color: var(--text-muted); font-size: 0.84rem; font-weight: 500; margin-top: 2px; }
         .header-actions { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
 
         .view-section { display: none; }
         .view-section.active { display: block; animation: viewSmoothEnter 0.22s ease-out; }
         @keyframes viewSmoothEnter {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+            0% { opacity: 0; transform: translateY(4px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
         /* KARTLAR */
         .card {
             background: var(--bg-surface); border: 1px solid var(--border);
-            border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow), var(--glass-reflection);
-            margin-bottom: 22px; backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
-            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+            border-radius: var(--radius-lg); padding: 24px 26px; box-shadow: var(--shadow), var(--glass-reflection);
+            margin-bottom: 22px;
+            transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.22s ease;
         }
-        .card-header { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
-        .card-title { font-size: 1.15rem; font-weight: 800; display: flex; align-items: center; gap: 10px; }
+        .card-header { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 18px; flex-wrap: wrap; }
+        .card-title { font-size: 1.08rem; font-weight: 700; display: flex; align-items: center; gap: 10px; letter-spacing: -0.015em; }
+        .card-subtitle { font-size: 0.78rem; color: var(--text-muted); font-weight: 500; margin-top: 2px; }
         .icon-chip {
-            width: 40px; height: 40px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center;
+            width: 38px; height: 38px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center;
             background: var(--primary-soft); color: var(--primary); flex-shrink: 0;
         }
         .icon-chip.accent { background: var(--accent-soft); color: var(--accent); }
@@ -495,9 +513,8 @@
         .timer-card {
             background: var(--timer-bg); border: 1px solid var(--timer-border); color: var(--timer-text);
             display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-bottom: 22px;
-            backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
             box-shadow: var(--shadow), var(--glass-reflection); border-radius: var(--radius-lg);
-            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 22px 26px;
         }
         .timer-info { display: flex; align-items: center; gap: 16px; min-width: 0; }
         .timer-chip-btn {
@@ -505,40 +522,38 @@
             background: var(--timer-chip); color: var(--timer-chip-color);
             display: flex; align-items: center; justify-content: center; flex-shrink: 0;
         }
-        .timer-title { font-size: 1.12rem; font-weight: 800; line-height: 1.35; color: var(--timer-text); }
-        .timer-sub { font-size: 0.82rem; color: var(--timer-sub); font-weight: 600; margin-top: 3px; }
-        .timer-boxes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; flex: 1; min-width: 280px; max-width: 500px; }
+        .timer-title { font-size: 1.08rem; font-weight: 700; line-height: 1.35; color: var(--timer-text); letter-spacing: -0.01em; }
+        .timer-sub { font-size: 0.82rem; color: var(--timer-sub); font-weight: 500; margin-top: 2px; }
+        .timer-boxes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; flex: 1; min-width: 280px; max-width: 460px; }
         .t-box {
-            background: var(--timer-box-bg); border: 1px solid var(--timer-box-border); border-radius: var(--radius-md);
-            padding: 12px 6px; text-align: center;
-            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            background: var(--timer-box-bg); border: 1px solid var(--timer-box-border); border-radius: 14px;
+            padding: 10px 6px; text-align: center;
+            box-shadow: var(--shadow-sm);
             transition: transform 0.2s ease;
         }
         .t-box:hover { transform: translateY(-2px); }
-        .t-val { font-size: clamp(1.4rem, 1.1rem + 1.5vw, 2rem); font-weight: 800; font-variant-numeric: tabular-nums; color: var(--timer-text); }
-        .t-lbl { font-size: 0.68rem; text-transform: uppercase; font-weight: 800; letter-spacing: 0.5px; opacity: 0.85; margin-top: 3px; }
-        .timer-bar-wrap { flex-basis: 100%; margin-top: 6px; }
-        .timer-bar-head { display: flex; justify-content: space-between; font-size: 0.78rem; font-weight: 700; color: var(--timer-text); opacity: 0.9; margin-bottom: 6px; }
-        .timer-bar { height: 8px; border-radius: 999px; background: var(--timer-bar-track); overflow: hidden; }
+        .t-val { font-size: clamp(1.3rem, 1rem + 1.3vw, 1.75rem); font-weight: 700; font-variant-numeric: tabular-nums; color: var(--timer-text); line-height: 1.15; }
+        .t-lbl { font-size: 0.66rem; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; color: var(--timer-sub); margin-top: 3px; }
+        .timer-bar-wrap { flex-basis: 100%; margin-top: 4px; }
+        .timer-bar-head { display: flex; justify-content: space-between; font-size: 0.76rem; font-weight: 600; color: var(--timer-sub); margin-bottom: 6px; }
+        .timer-bar { height: 7px; border-radius: 999px; background: var(--timer-bar-track); overflow: hidden; }
         .timer-fill { height: 100%; width: 0; border-radius: inherit; background: var(--timer-bar-fill); transition: width 0.4s; }
 
-        /* İSTATİSTİK ŞERİDİ */
-        .stats-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin-bottom: 22px; }
+        /* İSTATİSTİK ŞERİDİ (4 KART DENGELİ PASTEL DÜZEN) */
+        .stats-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-bottom: 22px; }
         .stat-card {
             background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md);
-            padding: 16px; display: flex; align-items: center; gap: 14px; box-shadow: var(--shadow-sm), var(--glass-reflection);
-            backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
-            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+            padding: 16px 18px; display: flex; align-items: center; gap: 14px; box-shadow: var(--shadow-sm), var(--glass-reflection);
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
             cursor: pointer;
         }
-        .stat-card:hover { transform: translateY(-3px) scale(1.01); border-color: var(--border-hover); box-shadow: var(--shadow), var(--glass-reflection); }
-        .stat-card:active { transform: translateY(0) scale(0.98); }
-        .stat-num { font-size: 1.35rem; font-weight: 800; line-height: 1.2; font-variant-numeric: tabular-nums; }
-        .stat-name { font-size: 0.72rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 0.5px; }
+        .stat-card:hover { transform: translateY(-2px); border-color: var(--primary-border); box-shadow: var(--shadow); }
+        .stat-card:active { transform: translateY(0) scale(0.99); }
+        .stat-num { font-size: 1.35rem; font-weight: 700; line-height: 1.15; font-variant-numeric: tabular-nums; color: var(--text-main); }
+        .stat-name { font-size: 0.72rem; text-transform: uppercase; color: var(--text-muted); font-weight: 600; letter-spacing: 0.4px; margin-top: 2px; }
 
-        /* ALT TABLO DÜZENİ */
-        .lower-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 22px; }
+        /* ALT TABLO DÜZENİ (SOLDA UKEY ÖZETİ, SAĞDA YAKLAŞAN TARİHLER) */
+        .lower-grid { display: grid; grid-template-columns: 1.32fr 1fr; gap: 22px; align-items: start; }
 
         /* DUYURU LİSTESİ VE GELİŞMİŞ KARTLAR */
         .data-list { display: flex; flex-direction: column; gap: 14px; }
@@ -558,17 +573,17 @@
         .ann-pinned-ribbon {
             display: inline-flex; align-items: center; gap: 6px;
             background: var(--warning-soft); color: var(--warning); border: 1px solid rgba(245, 158, 11, 0.3);
-            border-radius: 50px; padding: 3px 12px; font-size: 0.72rem; font-weight: 800; width: fit-content;
+            border-radius: 50px; padding: 3px 12px; font-size: 0.72rem; font-weight: 600; width: fit-content;
         }
         .ann-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; }
-        .ann-title-text { font-size: 1.15rem; font-weight: 800; color: var(--primary); line-height: 1.35; }
+        .ann-title-text { font-size: 1.15rem; font-weight: 600; color: var(--primary); line-height: 1.35; }
         .ann-meta-row { display: flex; align-items: center; gap: 10px; font-size: 0.78rem; color: var(--text-muted); font-weight: 600; flex-wrap: wrap; }
         .ann-body { font-size: 0.94rem; line-height: 1.7; color: var(--text-main); white-space: pre-wrap; word-break: break-word; }
         .ann-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 12px; margin-top: 4px; }
 
         .cat-tag {
             display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px;
-            border-radius: 20px; font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.3px;
+            border-radius: 20px; font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px;
         }
         .cat-tag .material-symbols-rounded { font-size: 14px; }
         .cat-duyuru { background: var(--primary-soft); color: var(--primary); }
@@ -644,11 +659,11 @@
         }
         .up-date-day {
             font-size: 1.15rem;
-            font-weight: 800;
+            font-weight: 600;
         }
         .up-date-month {
             font-size: 0.62rem;
-            font-weight: 800;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-top: 2px;
@@ -680,7 +695,7 @@
             align-items: center;
             gap: 4px;
             font-size: 0.70rem;
-            font-weight: 800;
+            font-weight: 600;
             padding: 3px 8px;
             border-radius: 50px;
             white-space: nowrap;
@@ -729,11 +744,11 @@
             0%, 100% { transform: scale(0.92); opacity: 0.75; }
             50% { transform: scale(1.12); opacity: 1; }
         }
-        .sched-live-title { font-size: 0.95rem; font-weight: 800; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .sched-live-title { font-size: 0.95rem; font-weight: 600; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
         .sched-live-meta { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; font-weight: 600; }
         .sched-live-badge {
             display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 20px;
-            font-size: 0.72rem; font-weight: 800; background: var(--accent); color: #fff;
+            font-size: 0.72rem; font-weight: 600; background: var(--accent); color: #fff;
         }
         .sched-live-badge.wait { background: var(--primary); color: #fff; }
 
@@ -784,7 +799,7 @@
         }
         .day-tab-btn.active .day-tab-badge { background: rgba(255,255,255,0.25); color: #fff; }
         .day-tab-today {
-            background: var(--accent); color: #fff; padding: 1px 6px; border-radius: 10px; font-size: 0.65rem; font-weight: 800;
+            background: var(--accent); color: #fff; padding: 1px 6px; border-radius: 10px; font-size: 0.65rem; font-weight: 600;
         }
 
         /* DERS KARTLARI (GÜNLÜK AKIŞ) */
@@ -798,7 +813,7 @@
         }
         .day-card.today { border-color: var(--primary); box-shadow: 0 0 24px -4px var(--primary-soft), var(--glass-reflection); }
         .day-title {
-            font-weight: 800; font-size: 1.05rem; margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between;
+            font-weight: 600; font-size: 1.05rem; margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between;
         }
         .lesson-card {
             background: var(--bg-surface-elevated); border: 1px solid var(--border); border-radius: var(--radius-md);
@@ -815,11 +830,11 @@
         }
         .lesson-time {
             background: var(--primary-soft); color: var(--primary); border-radius: 10px;
-            padding: 6px 10px; font-weight: 800; font-size: 0.76rem; text-align: center; line-height: 1.4; flex-shrink: 0; min-width: 58px;
+            padding: 6px 10px; font-weight: 600; font-size: 0.76rem; text-align: center; line-height: 1.4; flex-shrink: 0; min-width: 58px;
         }
         .lesson-card.live-now .lesson-time { background: var(--accent); color: #fff; }
         .lesson-content { flex: 1; min-width: 0; }
-        .lesson-name { font-weight: 800; font-size: 0.92rem; line-height: 1.35; }
+        .lesson-name { font-weight: 600; font-size: 0.92rem; line-height: 1.35; }
         .lesson-details { font-size: 0.76rem; color: var(--text-muted); margin-top: 5px; display: flex; flex-wrap: wrap; gap: 8px; font-weight: 600; }
         .lesson-actions-bar {
             display: flex; gap: 6px; margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--border);
@@ -845,7 +860,7 @@
             border-bottom: 1px solid var(--border); padding: 12px 14px; vertical-align: middle;
         }
         .table-wrapper th {
-            background: var(--bg-surface-elevated); font-weight: 800; color: var(--text-main); white-space: nowrap;
+            background: var(--bg-surface-elevated); font-weight: 600; color: var(--text-main); white-space: nowrap;
         }
         .table-wrapper tr:last-child td { border-bottom: none; }
         .table-wrapper tr:hover td { background: var(--bg-surface-hover); }
@@ -864,13 +879,13 @@
             border: 1px solid var(--border); padding: 10px 12px; vertical-align: top;
         }
         .sched-matrix-table th {
-            background: var(--bg-surface-elevated); font-weight: 800; color: var(--text-main); text-align: center;
+            background: var(--bg-surface-elevated); font-weight: 600; color: var(--text-main); text-align: center;
         }
         .matrix-time-col {
-            width: 110px; font-weight: 800; color: var(--primary); text-align: center; white-space: nowrap; background: var(--bg-surface-elevated);
+            width: 110px; font-weight: 600; color: var(--primary); text-align: center; white-space: nowrap; background: var(--bg-surface-elevated);
         }
         .matrix-break-row {
-            background: rgba(245, 158, 11, 0.08); text-align: center; font-weight: 800; color: var(--warning);
+            background: rgba(245, 158, 11, 0.08); text-align: center; font-weight: 600; color: var(--warning);
             padding: 8px !important; letter-spacing: 0.5px;
         }
         .matrix-lesson-pill {
@@ -879,7 +894,7 @@
         }
         .matrix-lesson-pill:last-child { margin-bottom: 0; }
         .matrix-lesson-pill.live { border-left-color: var(--accent); background: var(--accent-soft); }
-        .matrix-lesson-title { font-weight: 800; font-size: 0.82rem; line-height: 1.3; }
+        .matrix-lesson-title { font-weight: 600; font-size: 0.82rem; line-height: 1.3; }
         .matrix-lesson-sub { font-size: 0.72rem; color: var(--text-muted); margin-top: 3px; }
 
         /* AKADEMİK TAKVİM DÖNÜM NOKTALARI (MILESTONES) */
@@ -898,10 +913,10 @@
             width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center;
             font-size: 22px; flex-shrink: 0;
         }
-        .milestone-title { font-size: 0.85rem; font-weight: 800; line-height: 1.25; }
+        .milestone-title { font-size: 0.85rem; font-weight: 600; line-height: 1.25; }
         .milestone-sub { font-size: 0.72rem; color: var(--text-muted); margin-top: 2px; }
         .milestone-badge {
-            margin-left: auto; font-size: 0.74rem; font-weight: 800; padding: 3px 8px; border-radius: 20px;
+            margin-left: auto; font-size: 0.74rem; font-weight: 600; padding: 3px 8px; border-radius: 20px;
             white-space: nowrap;
         }
 
@@ -911,7 +926,7 @@
             margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--border);
         }
         .month-selector { display: flex; align-items: center; gap: 10px; }
-        .month-name { font-size: 1.25rem; font-weight: 800; min-width: 170px; text-align: center; }
+        .month-name { font-size: 1.25rem; font-weight: 600; min-width: 170px; text-align: center; }
         .cal-header-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
         .cal-mode-pills { display: flex; gap: 4px; background: var(--bg-surface-elevated); padding: 4px; border-radius: 50px; border: 1px solid var(--border); }
         .cal-mode-btn { padding: 6px 14px; border-radius: 50px; font-size: 0.8rem; font-weight: 700; border: none; background: transparent; color: var(--text-muted); cursor: pointer; }
@@ -927,7 +942,7 @@
         }
         .cal-weekdays {
             display: grid; grid-template-columns: repeat(7, 1fr); background: var(--bg-surface-elevated);
-            border-bottom: 1px solid var(--border); text-align: center; font-size: 0.78rem; font-weight: 800; color: var(--primary);
+            border-bottom: 1px solid var(--border); text-align: center; font-size: 0.78rem; font-weight: 600; color: var(--primary);
         }
         .cal-weekday { padding: 12px 6px; }
         .cal-days-grid {
@@ -942,13 +957,13 @@
         .cal-cell:hover { background: var(--bg-surface-hover); }
         .cal-cell.other-month { opacity: 0.35; background: rgba(0,0,0,0.02); }
         .cal-cell.today-cell { background: var(--primary-soft); }
-        .cal-cell.today-cell .day-number { color: var(--primary); font-weight: 800; }
+        .cal-cell.today-cell .day-number { color: var(--primary); font-weight: 600; }
         .cal-cell.selected-cell { outline: 2px solid var(--primary); outline-offset: -2px; }
 
         .day-number-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px; }
         .day-number { font-size: 0.86rem; font-weight: 700; }
         .cal-cell-badge {
-            display: none; background: var(--primary); color: #fff; font-size: 0.65rem; font-weight: 800;
+            display: none; background: var(--primary); color: #fff; font-size: 0.65rem; font-weight: 600;
             padding: 1px 5px; border-radius: 10px;
         }
         .cal-dots-wrap { display: none; gap: 3px; align-items: center; justify-content: center; margin-top: 4px; }
@@ -987,14 +1002,14 @@
             flex-shrink: 0;
         }
         .cal-detail-head-title h3 {
-            font-size: 1.15rem; font-weight: 800; color: var(--text-main); line-height: 1.25; margin: 0;
+            font-size: 1.15rem; font-weight: 600; color: var(--text-main); line-height: 1.25; margin: 0;
         }
         .cal-detail-head-title span {
             font-size: 0.78rem; color: var(--text-muted); font-weight: 600; display: block; margin-top: 2px;
         }
         .cal-detail-count-badge {
             background: var(--primary-soft); color: var(--primary); border: 1px solid var(--primary-border);
-            border-radius: 50px; padding: 5px 14px; font-size: 0.78rem; font-weight: 800;
+            border-radius: 50px; padding: 5px 14px; font-size: 0.78rem; font-weight: 600;
             display: inline-flex; align-items: center; gap: 6px;
         }
 
@@ -1028,7 +1043,7 @@
         }
         .cal-day-event-content { flex: 1; }
         .cal-day-event-name {
-            font-size: 1.02rem; font-weight: 800; color: var(--text-main); margin-bottom: 6px; line-height: 1.35;
+            font-size: 1.02rem; font-weight: 600; color: var(--text-main); margin-bottom: 6px; line-height: 1.35;
         }
         .cal-day-event-meta {
             display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 0.8rem; color: var(--text-muted); font-weight: 600;
@@ -1137,7 +1152,7 @@
             display: flex; flex-direction: column; text-align: left;
         }
         .ann-fs-brand-text strong {
-            font-size: 0.88rem; font-weight: 800; color: var(--text-main); line-height: 1.2;
+            font-size: 0.88rem; font-weight: 600; color: var(--text-main); line-height: 1.2;
         }
         .ann-fs-brand-text span {
             font-size: 0.74rem; font-weight: 600; color: var(--text-muted);
@@ -1179,12 +1194,12 @@
             background: var(--accent-soft); color: var(--accent);
             border: 1px solid rgba(16, 185, 129, 0.35);
             padding: 6px 18px; border-radius: 50px;
-            font-size: 0.82rem; font-weight: 800; letter-spacing: 0.3px;
+            font-size: 0.82rem; font-weight: 600; letter-spacing: 0.3px;
             margin-bottom: 16px;
         }
         .ann-fs-title {
             font-size: clamp(1.85rem, 5vw, 2.75rem);
-            font-weight: 800; letter-spacing: -0.8px;
+            font-weight: 600; letter-spacing: -0.8px;
             line-height: 1.15; margin-bottom: 12px;
             color: var(--text-main);
         }
@@ -1216,7 +1231,7 @@
         }
         .ann-fs-card-icon .material-symbols-rounded { font-size: 22px; }
         .ann-fs-card h4 {
-            font-size: 0.94rem; font-weight: 800; color: var(--text-main); margin-bottom: 4px;
+            font-size: 0.94rem; font-weight: 600; color: var(--text-main); margin-bottom: 4px;
         }
         .ann-fs-card p {
             font-size: 0.80rem; color: var(--text-muted); line-height: 1.45;
@@ -1227,7 +1242,7 @@
             align-items: center;
         }
         .ann-fs-btn-main {
-            width: 100%; min-height: 52px; font-size: 1.02rem; font-weight: 800;
+            width: 100%; min-height: 52px; font-size: 1.02rem; font-weight: 600;
             border-radius: 50px; background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
             color: #fff; border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 10px 28px -6px rgba(37, 99, 235, 0.55);
@@ -1467,7 +1482,7 @@
                 page-break-inside: avoid !important;
                 page-break-after: avoid !important;
                 page-break-before: avoid !important;
-                font-family: 'Google Sans Flex', sans-serif !important;
+                font-family: 'Poppins', sans-serif !important;
             }
             .print-full-sched-header {
                 display: flex;
@@ -1481,7 +1496,7 @@
             .print-full-sched-title h2 {
                 margin: 0;
                 font-size: 11pt;
-                font-weight: 800;
+                font-weight: 600;
                 color: #0f172a;
                 letter-spacing: 0.3px;
                 line-height: 1.15;
@@ -1516,7 +1531,7 @@
             .print-matrix-table th {
                 background: #f1f5f9 !important;
                 color: #0f172a !important;
-                font-weight: 800 !important;
+                font-weight: 600 !important;
                 text-align: center;
                 padding: 2.5px !important;
             }
@@ -1548,7 +1563,7 @@
                 margin-bottom: 1px;
             }
             .print-lesson-title {
-                font-weight: 800;
+                font-weight: 600;
                 color: #0f172a;
                 font-size: 7.2pt;
                 line-height: 1.1;
@@ -1650,7 +1665,7 @@
         }
         .ukey-sync-title {
             font-size: 0.88rem;
-            font-weight: 800;
+            font-weight: 600;
             color: var(--text-main);
             letter-spacing: -0.01em;
         }
@@ -1710,24 +1725,25 @@
             background: var(--bg-surface-hover);
         }
         .ukey-nav-tab.active {
-            color: #ffffff !important;
-            background: linear-gradient(135deg, var(--primary), #2563eb);
-            border-color: rgba(59, 130, 246, 0.55);
-            box-shadow: 0 6px 16px -4px rgba(59, 130, 246, 0.5);
+            color: var(--primary) !important;
+            background: var(--primary-soft);
+            border-color: var(--primary-border);
+            font-weight: 600;
+            box-shadow: var(--shadow-sm);
         }
         .ukey-nav-tab.active span {
-            color: #ffffff !important;
+            color: var(--primary) !important;
         }
         .ukey-tab-badge {
             padding: 2px 7px;
             border-radius: 999px;
             font-size: 0.69rem;
-            font-weight: 800;
-            background: rgba(148, 163, 184, 0.18);
+            font-weight: 600;
+            background: rgba(148, 163, 184, 0.16);
             color: inherit;
         }
         .ukey-nav-tab.active .ukey-tab-badge {
-            background: rgba(255, 255, 255, 0.22);
+            background: var(--primary);
             color: #ffffff !important;
         }
         .ukey-refresh-btn {
@@ -1735,15 +1751,15 @@
             align-items: center;
             justify-content: center;
             gap: 7px;
-            padding: 9px 15px;
+            padding: 8px 15px;
             min-height: 38px;
             border-radius: 11px;
-            font-size: 0.82rem;
-            font-weight: 800;
+            font-size: 0.81rem;
+            font-weight: 600;
             color: #ffffff !important;
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            border: 1px solid rgba(255, 255, 255, 0.24);
-            box-shadow: 0 5px 14px -3px rgba(16, 185, 129, 0.45);
+            background: var(--accent);
+            border: 1px solid transparent;
+            box-shadow: 0 4px 12px -3px rgba(46, 168, 133, 0.35);
             cursor: pointer;
             white-space: nowrap;
             flex-shrink: 0;
@@ -1820,14 +1836,14 @@
             padding: 4px 10px;
             border-radius: 8px;
             font-size: 0.76rem;
-            font-weight: 800;
+            font-weight: 600;
             background: var(--primary-soft);
             color: var(--primary);
             border: 1px solid var(--primary-border);
         }
         .ukey-course-title {
             font-size: 1rem;
-            font-weight: 800;
+            font-weight: 600;
             margin: 8px 0 4px 0;
             line-height: 1.35;
             color: var(--text-main);
@@ -1918,7 +1934,7 @@
         .ukey-info-box > strong {
             font-size: 0.92rem;
             color: var(--text-main);
-            font-weight: 800;
+            font-weight: 600;
         }
         .ukey-week-row {
             display: grid;
@@ -1954,48 +1970,38 @@
             border-color: var(--primary-border);
         }
 
-        /* YÜKSEK GÖRÜNÜRLÜKLÜ TEKİL UKEY YAN MENÜ BUTONU */
+        /* PASTEL & MODERN UKEY YAN MENÜ BUTONU */
         .nav-item-ukey {
             margin-top: 6px;
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.20) 0%, rgba(37, 99, 235, 0.18) 100%);
-            border: 1.5px solid rgba(16, 185, 129, 0.55);
+            background: linear-gradient(135deg, var(--accent-soft) 0%, var(--primary-soft) 100%);
+            border: 1px solid rgba(46, 168, 133, 0.32);
             color: var(--text-main) !important;
-            font-weight: 800;
-            box-shadow: 0 6px 16px -4px rgba(16, 185, 129, 0.28);
+            font-weight: 600;
+            box-shadow: var(--shadow-sm);
         }
         .nav-item-ukey .ukey-nav-icon {
-            color: #10b981;
+            color: var(--accent);
             font-size: 22px;
-        }
-        html.light-mode .nav-item-ukey {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.16) 0%, rgba(37, 99, 235, 0.14) 100%);
-            border-color: rgba(5, 150, 105, 0.55);
-            color: #0f172a !important;
-        }
-        html.light-mode .nav-item-ukey .ukey-nav-icon {
-            color: #059669;
         }
         .nav-item-ukey .ukey-nav-pill {
             display: inline-flex !important;
-            background: #059669;
+            background: var(--accent);
             color: #ffffff !important;
-            font-weight: 800;
-            font-size: 0.72rem;
-            padding: 3px 9px;
+            font-weight: 600;
+            font-size: 0.7rem;
+            padding: 2px 9px;
             border-radius: 999px;
-            letter-spacing: 0.2px;
-            box-shadow: 0 2px 6px rgba(5, 150, 105, 0.35);
+            letter-spacing: 0.1px;
         }
         .nav-item-ukey:hover {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.30) 0%, rgba(37, 99, 235, 0.26) 100%);
-            border-color: #10b981;
-            transform: translateX(4px);
+            border-color: var(--accent);
+            transform: translateX(3px);
         }
         .nav-item-ukey.active {
-            background: linear-gradient(135deg, #2563eb 0%, #059669 100%) !important;
-            border-color: rgba(255, 255, 255, 0.4) !important;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%) !important;
+            border-color: transparent !important;
             color: #ffffff !important;
-            box-shadow: 0 8px 22px -4px rgba(37, 99, 235, 0.55) !important;
+            box-shadow: 0 8px 20px -6px rgba(91, 106, 240, 0.45) !important;
             transform: none;
         }
         .nav-item-ukey.active .ukey-nav-icon,
@@ -2003,9 +2009,9 @@
             color: #ffffff !important;
         }
         .nav-item-ukey.active .ukey-nav-pill {
-            background: rgba(255, 255, 255, 0.24) !important;
+            background: rgba(255, 255, 255, 0.22) !important;
             color: #ffffff !important;
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             box-shadow: none;
         }
 
@@ -2077,7 +2083,7 @@
             background: var(--primary-soft);
             color: var(--primary);
             border: 1px solid var(--primary-border);
-            font-weight: 800;
+            font-weight: 600;
             font-size: 0.8rem;
             line-height: 1.25;
             flex-shrink: 0;
@@ -2107,7 +2113,7 @@
         }
         .lesson-code-badge {
             font-size: 0.72rem;
-            font-weight: 800;
+            font-weight: 600;
             padding: 2px 8px;
             border-radius: 6px;
             background: var(--primary-soft);
@@ -2134,7 +2140,7 @@
         }
         .lesson-title-simple {
             font-size: 0.94rem;
-            font-weight: 800;
+            font-weight: 600;
             color: var(--text-main);
             line-height: 1.3;
             margin-bottom: 4px;
@@ -2401,7 +2407,7 @@
         }
         .ukey-simple-popup-title {
             font-size: 1.32rem;
-            font-weight: 800;
+            font-weight: 600;
             color: var(--text-main);
             margin-bottom: 20px;
             line-height: 1.3;
@@ -2415,7 +2421,7 @@
             padding: 13px 20px;
             border-radius: 14px;
             font-size: 0.94rem;
-            font-weight: 800;
+            font-weight: 600;
             color: #ffffff !important;
             background: linear-gradient(135deg, #2563eb 0%, #10b981 100%);
             border: none;
@@ -2432,19 +2438,225 @@
         }
 
         /* =========================================================
+           ANA SAYFA UKEY ÖZET KARTI (SON DUYURULAR YERİNE TAM ENTEGRE)
+           ========================================================= */
+        .dash-ukey-body {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .dash-ukey-alert {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 12px 14px;
+            border-radius: 14px;
+            background: var(--warning-soft);
+            border: 1px solid rgba(224, 139, 62, 0.28);
+        }
+        .dash-ukey-alert-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 0;
+            flex: 1;
+        }
+        .dash-ukey-alert-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: rgba(224, 139, 62, 0.16);
+            color: var(--warning);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .dash-ukey-alert-title {
+            font-size: 0.84rem;
+            font-weight: 600;
+            color: var(--text-main);
+            line-height: 1.3;
+        }
+        .dash-ukey-alert-sub {
+            font-size: 0.74rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+        .dash-ukey-quick-pills {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 8px;
+        }
+        .dash-ukey-pill {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 3px;
+            padding: 10px 8px;
+            border-radius: 12px;
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: all 0.18s ease;
+            text-align: center;
+        }
+        .dash-ukey-pill:hover {
+            border-color: var(--primary-border);
+            background: var(--primary-soft);
+            transform: translateY(-1px);
+        }
+        .dash-ukey-pill strong {
+            font-size: 0.96rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.1;
+        }
+        .dash-ukey-pill span {
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+        .dash-ukey-course-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .dash-ukey-course-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 11px 14px;
+            border-radius: 14px;
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: all 0.18s ease;
+        }
+        .dash-ukey-course-row:hover {
+            border-color: var(--primary-border);
+            background: var(--bg-surface-hover);
+            transform: translateX(2px);
+        }
+        .dash-ukey-course-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 0;
+            flex: 1;
+        }
+        .dash-ukey-code-badge {
+            min-width: 74px;
+            padding: 6px 8px;
+            border-radius: 10px;
+            background: var(--primary-soft);
+            color: var(--primary);
+            border: 1px solid var(--primary-border);
+            font-size: 0.73rem;
+            font-weight: 700;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .dash-ukey-course-info {
+            min-width: 0;
+            flex: 1;
+        }
+        .dash-ukey-course-name {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-main);
+            line-height: 1.3;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .dash-ukey-course-inst {
+            font-size: 0.74rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .dash-ukey-course-chips {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+
+        /* =========================================================
            SADE VE KULLANIŞLI AKADEMİK TAKVİM TASARIMI
            ========================================================= */
+        .cal-simple-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
         .cal-simple-next-banner {
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 14px;
             flex-wrap: wrap;
-            padding: 16px 20px;
+            padding: 18px 22px;
             border-radius: var(--radius-md);
             background: linear-gradient(135deg, var(--primary-soft) 0%, var(--accent-soft) 100%);
             border: 1px solid var(--primary-border);
             margin-bottom: 18px;
+        }
+        .cal-simple-next-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            min-width: 0;
+            flex: 1;
+        }
+        .cal-simple-next-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+            background: var(--bg-surface);
+            color: var(--primary);
+            border: 1px solid var(--primary-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .cal-simple-next-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            color: var(--primary);
+        }
+        .cal-simple-next-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-main);
+            line-height: 1.3;
+            margin-top: 2px;
+        }
+        .cal-simple-next-date {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+        .cal-simple-next-badge {
+            padding: 6px 14px;
+            border-radius: 999px;
+            background: var(--primary);
+            color: #ffffff;
+            font-size: 0.76rem;
+            font-weight: 600;
+            white-space: nowrap;
         }
         .cal-simple-list {
             display: flex;
@@ -2456,50 +2668,53 @@
             align-items: center;
             justify-content: space-between;
             gap: 14px;
-            padding: 14px 16px;
+            padding: 13px 16px;
             border-radius: 14px;
             background: var(--bg-surface-elevated);
             border: 1px solid var(--border);
             border-left: 4px solid var(--primary);
+            transition: border-color 0.18s ease, background 0.18s ease;
         }
-        .cal-simple-item.sem-bahar { border-left-color: var(--accent); }
-        .cal-simple-item.sem-tatil { border-left-color: var(--warning); }
-        .cal-simple-item.sem-sinav { border-left-color: var(--danger); }
-        .cal-simple-item.is-past { opacity: 0.62; }
-        .cal-simple-left {
+        .cal-simple-item:hover {
+            border-color: var(--primary-border);
+            background: var(--bg-surface-hover);
+        }
+        .cal-simple-item.is-bahar, .cal-simple-item.sem-bahar { border-left-color: var(--accent); }
+        .cal-simple-item.is-tatil, .cal-simple-item.sem-tatil { border-left-color: var(--warning); }
+        .cal-simple-item.is-sinav, .cal-simple-item.sem-sinav { border-left-color: var(--danger); }
+        .cal-simple-item.is-past { opacity: 0.58; }
+        .cal-simple-date-box {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 14px;
-            min-width: 0;
-            flex: 1;
-        }
-        .cal-simple-date-pill {
-            min-width: 135px;
-            padding: 8px 12px;
-            border-radius: 10px;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
             background: var(--bg-surface);
             border: 1px solid var(--border);
-            text-align: center;
             flex-shrink: 0;
+            line-height: 1.1;
         }
-        .cal-simple-date-main {
-            font-size: 0.82rem;
-            font-weight: 800;
+        .cal-simple-date-day {
+            font-size: 1.1rem;
+            font-weight: 700;
             color: var(--primary);
-            line-height: 1.25;
         }
-        .cal-simple-date-sub {
-            font-size: 0.69rem;
+        .cal-simple-date-month {
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
             color: var(--text-muted);
             margin-top: 2px;
         }
-        .cal-simple-info {
+        .cal-simple-body {
             min-width: 0;
             flex: 1;
         }
         .cal-simple-title {
-            font-size: 0.94rem;
-            font-weight: 800;
+            font-size: 0.92rem;
+            font-weight: 600;
             color: var(--text-main);
             line-height: 1.35;
         }
@@ -2508,7 +2723,9 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 6px;
-            margin-top: 5px;
+            margin-top: 4px;
+            font-size: 0.76rem;
+            color: var(--text-muted);
         }
         .cal-simple-right {
             display: flex;
@@ -2516,22 +2733,101 @@
             gap: 8px;
             flex-shrink: 0;
         }
-        .cal-countdown-chip {
+        .cal-simple-status {
             padding: 4px 10px;
             border-radius: 999px;
-            font-size: 0.74rem;
-            font-weight: 800;
+            font-size: 0.72rem;
+            font-weight: 600;
             background: var(--primary-soft);
             color: var(--primary);
             white-space: nowrap;
         }
-        .cal-countdown-chip.active-now {
+        .cal-simple-status.active {
             background: var(--accent-soft);
             color: var(--accent);
         }
-        .cal-countdown-chip.done {
+        .cal-simple-status.past {
             background: rgba(148, 163, 184, 0.14);
             color: var(--text-muted);
+        }
+
+        /* MOBİL ALT GEZİNME ÇUBUĞU (TELEFONLAR İÇİN UYGULAMA DENEYİMİ) */
+        .mobile-bottom-nav {
+            display: none;
+        }
+
+        @media (max-width: 767px) {
+            .mobile-bottom-nav {
+                position: fixed;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 1100;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 4px;
+                padding: 6px 10px calc(6px + env(safe-area-inset-bottom));
+                background: var(--bg-surface);
+                border-top: 1px solid var(--border);
+                box-shadow: 0 -6px 24px -8px rgba(15, 23, 42, 0.10);
+            }
+            .mob-nav-btn {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2px;
+                padding: 6px 4px;
+                border-radius: 12px;
+                border: none;
+                background: transparent;
+                color: var(--text-muted);
+                font-size: 0.68rem;
+                font-weight: 500;
+                cursor: pointer;
+                transition: all 0.15s ease;
+            }
+            .mob-nav-btn .material-symbols-rounded {
+                font-size: 21px;
+            }
+            .mob-nav-btn.active {
+                color: var(--primary);
+                background: var(--primary-soft);
+                font-weight: 600;
+            }
+            .main-content {
+                padding: 14px 12px calc(84px + env(safe-area-inset-bottom)) !important;
+            }
+            .to-top {
+                bottom: calc(76px + env(safe-area-inset-bottom));
+                right: 14px;
+                width: 40px;
+                height: 40px;
+            }
+            .dash-ukey-quick-pills {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .dash-ukey-course-row {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+                padding: 11px 12px;
+            }
+            .dash-ukey-course-name,
+            .dash-ukey-course-inst {
+                white-space: normal;
+            }
+            .dash-ukey-course-chips {
+                justify-content: flex-end;
+            }
+            .dash-ukey-alert {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .dash-ukey-alert .btn {
+                width: 100%;
+                justify-content: center;
+            }
         }
 
         @media (max-width: 640px) {
@@ -2540,19 +2836,6 @@
                 align-items: stretch;
                 gap: 10px;
                 padding: 12px 14px;
-            }
-            .cal-simple-left {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 8px;
-            }
-            .cal-simple-date-pill {
-                min-width: 0;
-                width: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 6px 10px;
             }
             .cal-simple-right {
                 width: 100%;
@@ -2592,11 +2875,11 @@
                 if (isLight) {
                     document.documentElement.classList.add('light-mode');
                     var m = document.querySelector('meta[name="theme-color"]');
-                    if (m) m.setAttribute('content', '#eef2f6');
+                    if (m) m.setAttribute('content', '#f5f7fb');
                 } else {
                     document.documentElement.classList.remove('light-mode');
                     var m = document.querySelector('meta[name="theme-color"]');
-                    if (m) m.setAttribute('content', '#080d1a');
+                    if (m) m.setAttribute('content', '#111625');
                 }
 
                 // Bakım modu anlık kontrolü (Sıfır gecikmeyle tak diye gelmesi için)
@@ -2699,7 +2982,7 @@
                     <span class="material-symbols-rounded" style="font-size:28px;">shield_person</span>
                 </div>
                 <div>
-                    <h3 style="font-size:1.15rem; font-weight:800; margin:0;">Yönetici Girişi</h3>
+                    <h3 style="font-size:1.15rem; font-weight: 600; margin:0;">Yönetici Girişi</h3>
                 </div>
             </div>
 
@@ -2751,21 +3034,21 @@
             <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
                 <img src="logo.png" alt="BUÜ Logo" style="width:48px; height:48px; border-radius:12px; object-fit:contain;">
                 <div>
-                    <h3 style="font-size:1.1rem; font-weight:800; line-height:1.2;">ETP Bilgi Sistemi</h3>
+                    <h3 style="font-size:1.1rem; font-weight: 600; line-height:1.2;">ETP Bilgi Sistemi</h3>
                     <p style="font-size:0.8rem; color:var(--text-muted);">Cihaza Kurulum Rehberi</p>
                 </div>
             </div>
             <div style="display:flex; flex-direction:column; gap:14px; margin:20px 0; font-size:0.88rem; line-height:1.5;">
                 <div style="display:flex; align-items:flex-start; gap:12px;">
-                    <div style="width:28px; height:28px; border-radius:50%; background:var(--primary-soft); color:var(--primary); display:flex; align-items:center; justify-content:center; font-weight:800; flex-shrink:0;">1</div>
+                    <div style="width:28px; height:28px; border-radius:50%; background:var(--primary-soft); color:var(--primary); display:flex; align-items:center; justify-content:center; font-weight: 600; flex-shrink:0;">1</div>
                     <div>Safari veya tarayıcınızın menüsündeki <strong style="color:var(--text-main);">Paylaş</strong> simgesine (<span class="material-symbols-rounded" style="font-size:16px; vertical-align:middle;">ios_share</span>) dokunun.</div>
                 </div>
                 <div style="display:flex; align-items:flex-start; gap:12px;">
-                    <div style="width:28px; height:28px; border-radius:50%; background:var(--primary-soft); color:var(--primary); display:flex; align-items:center; justify-content:center; font-weight:800; flex-shrink:0;">2</div>
+                    <div style="width:28px; height:28px; border-radius:50%; background:var(--primary-soft); color:var(--primary); display:flex; align-items:center; justify-content:center; font-weight: 600; flex-shrink:0;">2</div>
                     <div>Aşağı kaydırıp <strong style="color:var(--text-main);">"Ana Ekrana Ekle"</strong> seçeneğine tıklayın.</div>
                 </div>
                 <div style="display:flex; align-items:flex-start; gap:12px;">
-                    <div style="width:28px; height:28px; border-radius:50%; background:var(--primary-soft); color:var(--primary); display:flex; align-items:center; justify-content:center; font-weight:800; flex-shrink:0;">3</div>
+                    <div style="width:28px; height:28px; border-radius:50%; background:var(--primary-soft); color:var(--primary); display:flex; align-items:center; justify-content:center; font-weight: 600; flex-shrink:0;">3</div>
                     <div>Sağ üstteki <strong style="color:var(--text-main);">"Ekle"</strong> butonuna basarak uygulamayı telefonunuza yükleyin.</div>
                 </div>
             </div>
@@ -2796,25 +3079,18 @@
         </div>
         <div class="nav-links">
             <div class="nav-item active" data-view="dashboard" onclick="switchView('dashboard')">
-                <span class="material-symbols-rounded">dashboard</span><span class="nav-label">Ana Sayfa</span>
-            </div>
-            <div class="nav-item" data-view="announcements" onclick="switchView('announcements')">
-                <span class="material-symbols-rounded">campaign</span><span class="nav-label">Duyurular</span>
-                <span class="nav-badge ann-badge"></span>
+                <span class="material-symbols-rounded">space_dashboard</span><span class="nav-label">Ana Sayfa</span>
             </div>
             <div class="nav-item" data-view="schedule" onclick="switchView('schedule')">
-                <span class="material-symbols-rounded">schedule</span><span class="nav-label">Ders Programı</span>
+                <span class="material-symbols-rounded">calendar_view_week</span><span class="nav-label">Ders Programı</span>
             </div>
             <div class="nav-item" data-view="calendar" onclick="switchView('calendar')">
                 <span class="material-symbols-rounded">calendar_month</span><span class="nav-label">Akademik Takvim</span>
             </div>
-            <div class="nav-item" data-view="files" onclick="switchView('files')">
-                <span class="material-symbols-rounded">folder_open</span><span class="nav-label">Dosyalar</span>
-            </div>
             <div class="nav-item nav-item-ukey" data-view="ukey" onclick="switchView('ukey')">
                 <span class="material-symbols-rounded ukey-nav-icon">school</span>
                 <span class="nav-label">UKEY</span>
-                <span class="nav-badge ukey-nav-pill" id="ukey-nav-badge-m">9 Ders</span>
+                <span class="nav-badge ukey-nav-pill" id="ukey-nav-badge-m">8 Ders</span>
             </div>
         </div>
         <div class="drawer-footer">
@@ -2838,25 +3114,18 @@
             </div>
             <div class="nav-links">
                 <div class="nav-item active" data-view="dashboard" onclick="switchView('dashboard')">
-                    <span class="material-symbols-rounded">dashboard</span><span class="nav-label">Ana Sayfa</span>
-                </div>
-                <div class="nav-item" data-view="announcements" onclick="switchView('announcements')">
-                    <span class="material-symbols-rounded">campaign</span><span class="nav-label">Duyurular</span>
-                    <span class="nav-badge ann-badge"></span>
+                    <span class="material-symbols-rounded">space_dashboard</span><span class="nav-label">Ana Sayfa</span>
                 </div>
                 <div class="nav-item" data-view="schedule" onclick="switchView('schedule')">
-                    <span class="material-symbols-rounded">schedule</span><span class="nav-label">Ders Programı</span>
+                    <span class="material-symbols-rounded">calendar_view_week</span><span class="nav-label">Ders Programı</span>
                 </div>
                 <div class="nav-item" data-view="calendar" onclick="switchView('calendar')">
                     <span class="material-symbols-rounded">calendar_month</span><span class="nav-label">Akademik Takvim</span>
                 </div>
-                <div class="nav-item" data-view="files" onclick="switchView('files')">
-                    <span class="material-symbols-rounded">folder_open</span><span class="nav-label">Dosyalar</span>
-                </div>
                 <div class="nav-item nav-item-ukey" data-view="ukey" onclick="switchView('ukey')">
                     <span class="material-symbols-rounded ukey-nav-icon">school</span>
                     <span class="nav-label">UKEY</span>
-                    <span class="nav-badge ukey-nav-pill" id="ukey-nav-badge-d">9 Ders</span>
+                    <span class="nav-badge ukey-nav-pill" id="ukey-nav-badge-d">8 Ders</span>
                 </div>
             </div>
             <div class="sidebar-footer">
@@ -2893,27 +3162,23 @@
             <!-- 1. DASHBOARD VIEW -->
             <div id="view-dashboard" class="view-section active">
 
-                <!-- İSTATİSTİK ŞERİDİ -->
+                <!-- İSTATİSTİK ŞERİDİ (MİNİMALİST 4'LÜ PASTEL KART) -->
                 <div class="stats-strip">
-                    <div class="stat-card" onclick="switchView('announcements')">
-                        <span class="icon-chip"><span class="material-symbols-rounded">campaign</span></span>
-                        <div><div class="stat-num" id="stat-ann">0</div><div class="stat-name">Duyuru</div></div>
-                    </div>
                     <div class="stat-card" onclick="switchView('schedule')">
-                        <span class="icon-chip accent"><span class="material-symbols-rounded">calendar_view_week</span></span>
-                        <div><div class="stat-num" id="stat-sched">0</div><div class="stat-name">Ders Saati</div></div>
+                        <span class="icon-chip"><span class="material-symbols-rounded">calendar_view_week</span></span>
+                        <div><div class="stat-num" id="stat-sched">29</div><div class="stat-name">Ders Saati</div></div>
                     </div>
                     <div class="stat-card" onclick="switchView('calendar')">
                         <span class="icon-chip warn"><span class="material-symbols-rounded">event</span></span>
-                        <div><div class="stat-num" id="stat-cal">0</div><div class="stat-name">Takvim Faaliyeti</div></div>
+                        <div><div class="stat-num" id="stat-cal">31</div><div class="stat-name">Takvim Faaliyeti</div></div>
                     </div>
-                    <div class="stat-card" onclick="switchView('files')">
-                        <span class="icon-chip"><span class="material-symbols-rounded">folder_open</span></span>
-                        <div><div class="stat-num" id="stat-file">0</div><div class="stat-name">Dosya</div></div>
-                    </div>
-                    <div class="stat-card" onclick="switchView('ukey')" style="border-color:rgba(16,185,129,0.35);">
+                    <div class="stat-card" onclick="switchView('ukey')">
                         <span class="icon-chip accent"><span class="material-symbols-rounded">school</span></span>
-                        <div><div class="stat-num" id="stat-ukey">9</div><div class="stat-name">UKEY Derslerim</div></div>
+                        <div><div class="stat-num" id="stat-ukey">8</div><div class="stat-name">UKEY Derslerim</div></div>
+                    </div>
+                    <div class="stat-card" onclick="switchView('ukey'); switchUkeyMainTab('materials');">
+                        <span class="icon-chip"><span class="material-symbols-rounded">folder_special</span></span>
+                        <div><div class="stat-num" id="stat-ukey-mat">38</div><div class="stat-name">Materyal &amp; Ödev</div></div>
                     </div>
                 </div>
 
@@ -2943,20 +3208,32 @@
                     </div>
                 </div>
 
-                <!-- ALT DÜZEN -->
+                <!-- ALT DÜZEN (SOLDA UKEY PORTALI ÖZETİ, SAĞDA YAKLAŞAN TARİHLER) -->
                 <div class="lower-grid">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title"><span class="icon-chip"><span class="material-symbols-rounded">notifications_active</span></span> Son Duyurular</h3>
-                            <button class="btn btn-tonal btn-mini" onclick="switchView('announcements')">Tümünü Gör</button>
+                            <div>
+                                <h3 class="card-title">
+                                    <span class="icon-chip accent"><span class="material-symbols-rounded">school</span></span>
+                                    <span>UKEY Ders &amp; Ödev Merkezi</span>
+                                </h3>
+                                <p class="card-subtitle" id="dash-ukey-sync-sub">Canlı senkronize ders materyalleri ve aktif ödevler</p>
+                            </div>
+                            <button class="btn btn-primary btn-mini" onclick="switchView('ukey')">
+                                <span>UKEY'i Aç</span>
+                                <span class="material-symbols-rounded" style="font-size:15px;">arrow_forward</span>
+                            </button>
                         </div>
-                        <div id="dashboard-recent-ann" class="data-list">
-                            <p style="color:var(--text-muted);font-size:0.85rem;">Yükleniyor...</p>
+                        <div id="dashboard-ukey-summary" class="dash-ukey-body">
+                            <p style="color:var(--text-muted);font-size:0.85rem;">UKEY verileri yükleniyor...</p>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title"><span class="icon-chip warn"><span class="material-symbols-rounded">event</span></span> Yaklaşan Tarihler</h3>
+                            <div>
+                                <h3 class="card-title"><span class="icon-chip warn"><span class="material-symbols-rounded">event</span></span> Yaklaşan Tarihler</h3>
+                                <p class="card-subtitle">2026-2027 Akademik Takvim</p>
+                            </div>
                             <button class="btn btn-tonal btn-mini" onclick="switchView('calendar')">Takvimi Aç</button>
                         </div>
                         <div id="upcoming-list" class="data-list">
@@ -3117,7 +3394,7 @@
                         <button class="ukey-nav-tab" data-utab="courses" onclick="switchUkeyMainTab('courses')">
                             <span class="material-symbols-rounded" style="font-size:18px;">menu_book</span>
                             <span>Derslerim &amp; İçerikler</span>
-                            <span class="ukey-tab-badge" id="utab-badge-courses">9</span>
+                            <span class="ukey-tab-badge" id="utab-badge-courses">8</span>
                         </button>
                         <button class="ukey-nav-tab" data-utab="materials" onclick="switchUkeyMainTab('materials')">
                             <span class="material-symbols-rounded" style="font-size:18px;">folder_zip</span>
@@ -3166,6 +3443,26 @@
         <button id="to-top" class="to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Yukarı Çık">
             <span class="material-symbols-rounded">arrow_upward</span>
         </button>
+
+        <!-- MOBİL ALT GEZİNME ÇUBUĞU (TELEFONLAR İÇİN HIZLI ERİŞİM) -->
+        <nav class="mobile-bottom-nav" aria-label="Mobil Alt Menü">
+            <button type="button" class="mob-nav-btn active" data-view="dashboard" onclick="switchView('dashboard')">
+                <span class="material-symbols-rounded">space_dashboard</span>
+                <span>Ana Sayfa</span>
+            </button>
+            <button type="button" class="mob-nav-btn" data-view="schedule" onclick="switchView('schedule')">
+                <span class="material-symbols-rounded">calendar_view_week</span>
+                <span>Program</span>
+            </button>
+            <button type="button" class="mob-nav-btn" data-view="calendar" onclick="switchView('calendar')">
+                <span class="material-symbols-rounded">calendar_month</span>
+                <span>Takvim</span>
+            </button>
+            <button type="button" class="mob-nav-btn" data-view="ukey" onclick="switchView('ukey')">
+                <span class="material-symbols-rounded">school</span>
+                <span>UKEY</span>
+            </button>
+        </nav>
 
     </div>
 
@@ -3379,7 +3676,7 @@
                 if (icon) icon.innerText = isLight ? 'dark_mode' : 'light_mode';
             });
             const meta = document.querySelector('meta[name="theme-color"]');
-            if (meta) meta.setAttribute('content', isLight ? '#edf2f7' : '#080d1a');
+            if (meta) meta.setAttribute('content', isLight ? '#edf2f7' : '#111625');
         }
 
         function toggleTheme() {
@@ -3423,13 +3720,11 @@
         };
 
         function ensureViewRendered(viewName) {
-            if (viewName === 'dashboard' || viewName === 'announcements' || viewName === 'files') {
-                if (!renderedViews.dashboard && (announcementsData.length || filesData.length || calendarData.length)) {
-                    renderData();
-                    renderUpcoming();
+            if (viewName === 'dashboard') {
+                if (!renderedViews.dashboard) {
+                    if (calendarData.length) renderUpcoming();
+                    if (ukeyPortalData) renderDashboardUkey();
                     renderedViews.dashboard = true;
-                    renderedViews.announcements = true;
-                    renderedViews.files = true;
                 }
             } else if (viewName === 'schedule') {
                 if (!renderedViews.schedule && scheduleData.length) {
@@ -3450,6 +3745,9 @@
         }
 
         function switchView(viewName, updateHash = true) {
+            if (viewName === 'announcements' || viewName === 'files') {
+                viewName = 'dashboard';
+            }
             activeViewName = viewName;
             closeDrawer();
             triggerPageProgress();
@@ -3458,15 +3756,11 @@
             document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
             const targetEl = document.getElementById('view-' + viewName);
             if (targetEl) targetEl.classList.add('active');
-            const titles = { dashboard: 'Ana Sayfa', announcements: 'Duyurular', schedule: 'Ders Programı', calendar: 'Akademik Takvim', files: 'Dosyalar', ukey: 'UKEY Öğrenci Portalı' };
+            const titles = { dashboard: 'Ana Sayfa', schedule: 'Ders Programı', calendar: 'Akademik Takvim', ukey: 'UKEY Öğrenci Portalı' };
             if (document.getElementById('page-title-text')) {
                 document.getElementById('page-title-text').innerText = titles[viewName] || 'Bilgi Portalı';
             }
-            document.querySelectorAll('.nav-item').forEach(el => el.classList.toggle('active', el.dataset.view === viewName));
-            if (viewName === 'announcements') {
-                localStorage.setItem('lastVisitAnn', String(Date.now()));
-                updateAnnBadge();
-            }
+            document.querySelectorAll('.nav-item, .mob-nav-btn').forEach(el => el.classList.toggle('active', el.dataset.view === viewName));
             if (updateHash && window.location.hash.replace('#', '') !== viewName) {
                 try { history.replaceState(null, null, '#' + viewName); } catch (e) {}
             }
@@ -3563,9 +3857,7 @@
                 if (ukey) {
                     ukeyPortalData = ukey;
                     updateUkeySyncStatusBadge();
-                    if (ukey.courses && document.getElementById('stat-ukey')) {
-                        document.getElementById('stat-ukey').innerText = ukey.courses.length;
-                    }
+                    renderDashboardUkey();
                     renderedViews.ukey = false;
                     if (activeViewName === 'ukey') {
                         ensureViewRendered('ukey');
@@ -3786,8 +4078,9 @@
             const dashAnn = document.getElementById('dashboard-recent-ann');
             const fileList = document.getElementById('file-list');
 
-            document.getElementById('stat-ann').innerText = announcementsData.length;
-            document.getElementById('stat-file').innerText = filesData.length;
+            if (document.getElementById('stat-ann')) document.getElementById('stat-ann').innerText = announcementsData.length;
+            if (document.getElementById('stat-file')) document.getElementById('stat-file').innerText = filesData.length;
+            if (!annList || !dashAnn || !fileList) return;
 
             const counts = { all: announcementsData.length, duyuru: 0, sinav: 0, staj: 0, etkinlik: 0 };
             announcementsData.forEach(i => { const c = i.category || 'duyuru'; if (counts[c] !== undefined) counts[c]++; });
@@ -3826,7 +4119,7 @@
                 dashAnn.innerHTML = sortAnns(announcementsData).slice(0, 3).map(item => `
                     <div class="ann-card${item.pinned ? ' pinned' : ''}" style="padding:14px 16px; margin-bottom:10px;">
                         <div style="flex:1;min-width:0;">
-                            <div style="font-size:0.96rem; font-weight:800; color:var(--primary); margin-bottom:4px;">${item.pinned ? '★ ' : ''}${sanitizeHTML(item.title)}</div>
+                            <div style="font-size:0.96rem; font-weight: 600; color:var(--primary); margin-bottom:4px;">${item.pinned ? '★ ' : ''}${sanitizeHTML(item.title)}</div>
                             <div class="ann-meta-row" style="margin:0;">${catTag(item)}<span>${new Date(item.date).toLocaleDateString('tr-TR')}</span></div>
                         </div>
                     </div>
@@ -3843,7 +4136,7 @@
                     <div style="flex:1;min-width:0;display:flex;gap:14px;align-items:center;">
                         <span class="icon-chip"><span class="material-symbols-rounded">description</span></span>
                         <div>
-                            <div style="font-weight:800; font-size:1rem; margin-bottom:3px;">${sanitizeHTML(item.title)}</div>
+                            <div style="font-weight: 600; font-size:1rem; margin-bottom:3px;">${sanitizeHTML(item.title)}</div>
                             <span style="font-size:0.76rem;color:var(--text-muted);">Resmi Belge / Form Şablonu</span>
                         </div>
                     </div>
@@ -4353,7 +4646,7 @@
                         <div class="print-full-sched-title">
                             <h2>BURSA ULUDAĞ ÜNİVERSİTESİ</h2>
                             <p>TEKNİK BİLİMLER MYO • ELEKTRONİK VE OTOMASYON BÖLÜMÜ • ELEKTRONİK TEKNOLOJİSİ PROGRAMI</p>
-                            <div style="font-size:8pt; font-weight:800; color:#0284c7;">2026-2027 GÜZ YARIYILI RESMİ HAFTALIK DERS PROGRAMI (TÜMÜ)</div>
+                            <div style="font-size:8pt; font-weight: 600; color:#0284c7;">2026-2027 GÜZ YARIYILI RESMİ HAFTALIK DERS PROGRAMI (TÜMÜ)</div>
                         </div>
                     </div>
                     <div class="print-full-sched-meta">
@@ -4829,6 +5122,7 @@
             if (fresh) {
                 ukeyPortalData = fresh;
                 updateUkeySyncStatusBadge();
+                renderDashboardUkey();
                 renderUkeyPortal();
                 if (!silent) showToast('UKEY ders içerikleri, dosyalar ve Teams bağlantıları güncellendi!');
             } else if (!silent) {
@@ -4863,6 +5157,111 @@
         function switchUkeyCourseSubTab(subTab) {
             ukeySelectedCourseSubTab = subTab;
             renderUkeyPortal();
+        }
+
+        function openUkeyFromDashboard(tabName, courseCode, subTab) {
+            switchView('ukey');
+            if (courseCode) {
+                openUkeyCourse(courseCode, subTab || 'icerik');
+            } else if (tabName) {
+                switchUkeyMainTab(tabName);
+            }
+        }
+
+        function renderDashboardUkey() {
+            const wrap = document.getElementById('dashboard-ukey-summary');
+            if (!wrap) return;
+            if (!ukeyPortalData || !ukeyPortalData.courses) {
+                wrap.innerHTML = '<p style="color:var(--text-muted);font-size:0.85rem;">UKEY verileri yükleniyor...</p>';
+                return;
+            }
+
+            const courses = ukeyPortalData.courses || [];
+            const totalMaterials = courses.reduce((acc, c) => acc + (c.materials ? c.materials.length : 0), 0);
+            const totalHomeworks = courses.reduce((acc, c) => acc + (c.homeworks ? c.homeworks.length : 0), 0);
+            const totalStreams = (ukeyPortalData.meetingsSummary && ukeyPortalData.meetingsSummary.recordedStreams)
+                ? ukeyPortalData.meetingsSummary.recordedStreams.length
+                : 0;
+            const urgentList = ukeyPortalData.urgentNotifications || [];
+
+            if (document.getElementById('stat-ukey')) document.getElementById('stat-ukey').innerText = courses.length;
+            if (document.getElementById('stat-ukey-mat')) document.getElementById('stat-ukey-mat').innerText = totalMaterials + totalHomeworks;
+            if (document.getElementById('ukey-nav-badge-d')) document.getElementById('ukey-nav-badge-d').innerText = courses.length + ' Ders';
+            if (document.getElementById('ukey-nav-badge-m')) document.getElementById('ukey-nav-badge-m').innerText = courses.length + ' Ders';
+
+            const subEl = document.getElementById('dash-ukey-sync-sub');
+            if (subEl && ukeyPortalData.lastSyncedAt) {
+                const sd = new Date(ukeyPortalData.lastSyncedAt);
+                const tStr = sd.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });
+                subEl.innerText = 'Son otomatik senkronizasyon: Bugün ' + tStr + ' • ' + courses.length + ' aktif ders';
+            }
+
+            let alertHtml = '';
+            if (urgentList.length > 0) {
+                const topUrgent = urgentList[0];
+                alertHtml = `
+                    <div class="dash-ukey-alert">
+                        <div class="dash-ukey-alert-left">
+                            <div class="dash-ukey-alert-icon">
+                                <span class="material-symbols-rounded" style="font-size:20px;">assignment_late</span>
+                            </div>
+                            <div style="min-width:0;">
+                                <div class="dash-ukey-alert-title">${sanitizeHTML(topUrgent.courseCode)} • ${sanitizeHTML(topUrgent.title)}</div>
+                                <div class="dash-ukey-alert-sub">Son Teslim: ${sanitizeHTML(topUrgent.end)} ${urgentList.length > 1 ? '• +' + (urgentList.length - 1) + ' aktif ödev daha' : ''}</div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-tonal btn-mini" onclick="openUkeyFromDashboard('homeworks')">
+                            <span>Ödevleri Gör (${urgentList.length})</span>
+                        </button>
+                    </div>
+                `;
+            }
+
+            const coursesHtml = courses.map(c => {
+                const matCount = c.materials ? c.materials.length : 0;
+                const hwCount = c.homeworks ? c.homeworks.length : 0;
+                return `
+                    <div class="dash-ukey-course-row" onclick="openUkeyFromDashboard('courses', '${c.code}', 'icerik')">
+                        <div class="dash-ukey-course-left">
+                            <span class="dash-ukey-code-badge">${sanitizeHTML(c.code)}</span>
+                            <div class="dash-ukey-course-info">
+                                <div class="dash-ukey-course-name">${sanitizeHTML(c.name)}</div>
+                                <div class="dash-ukey-course-inst">${sanitizeHTML(c.instructor || 'Öğretim Elemanı')} • ${c.akts} AKTS</div>
+                            </div>
+                        </div>
+                        <div class="dash-ukey-course-chips">
+                            <span class="ukey-mini-chip ${matCount > 0 ? 'has-data' : ''}">${matCount} Materyal</span>
+                            ${hwCount > 0 ? `<span class="ukey-mini-chip has-hw">${hwCount} Ödev</span>` : ''}
+                            <span class="material-symbols-rounded up-chevron">chevron_right</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            wrap.innerHTML = `
+                ${alertHtml}
+                <div class="dash-ukey-quick-pills">
+                    <div class="dash-ukey-pill" onclick="openUkeyFromDashboard('courses')">
+                        <strong>${courses.length}</strong>
+                        <span>Kayıtlı Ders</span>
+                    </div>
+                    <div class="dash-ukey-pill" onclick="openUkeyFromDashboard('materials')">
+                        <strong>${totalMaterials}</strong>
+                        <span>Materyal</span>
+                    </div>
+                    <div class="dash-ukey-pill" onclick="openUkeyFromDashboard('homeworks')">
+                        <strong>${totalHomeworks}</strong>
+                        <span>Ödev &amp; Proje</span>
+                    </div>
+                    <div class="dash-ukey-pill" onclick="openUkeyFromDashboard('meetings')">
+                        <strong>${totalStreams}</strong>
+                        <span>Canlı Kayıt</span>
+                    </div>
+                </div>
+                <div class="dash-ukey-course-list">
+                    ${coursesHtml}
+                </div>
+            `;
         }
 
         function renderUkeyPortal() {
@@ -4919,10 +5318,10 @@
                             </div>
                             <div>
                                 <div style="display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:4px;">
-                                    <span style="padding:3px 9px; border-radius:999px; font-size:0.72rem; font-weight:800; background:rgba(239,68,68,0.22); color:var(--danger);">${sanitizeHTML(u.badgeText || '7 Gün İçindeki Görev Bildirimi')}</span>
-                                    <span style="font-size:0.78rem; font-weight:800; color:var(--warning);">Son Teslim: ${sanitizeHTML(u.end)}</span>
+                                    <span style="padding:3px 9px; border-radius:999px; font-size:0.72rem; font-weight: 600; background:rgba(239,68,68,0.22); color:var(--danger);">${sanitizeHTML(u.badgeText || '7 Gün İçindeki Görev Bildirimi')}</span>
+                                    <span style="font-size:0.78rem; font-weight: 600; color:var(--warning);">Son Teslim: ${sanitizeHTML(u.end)}</span>
                                 </div>
-                                <h4 style="font-size:1rem; font-weight:800; margin:0 0 4px 0;">${sanitizeHTML(u.courseCode)} - ${sanitizeHTML(u.courseName)} • ${sanitizeHTML(u.title)}</h4>
+                                <h4 style="font-size:1rem; font-weight: 600; margin:0 0 4px 0;">${sanitizeHTML(u.courseCode)} - ${sanitizeHTML(u.courseName)} • ${sanitizeHTML(u.title)}</h4>
                                 <p style="font-size:0.84rem; color:var(--text-muted); margin:0;">${sanitizeHTML(u.description)} (${sanitizeHTML(u.instructor)})</p>
                             </div>
                         </div>
@@ -4944,7 +5343,7 @@
                     <div style="display:flex; align-items:center; gap:12px;">
                         <span class="icon-chip"><span class="material-symbols-rounded">menu_book</span></span>
                         <div>
-                            <div style="font-weight:800; font-size:0.9rem;">${sanitizeHTML(g.title)}</div>
+                            <div style="font-weight: 600; font-size:0.9rem;">${sanitizeHTML(g.title)}</div>
                             <div style="font-size:0.78rem; color:var(--text-muted);">${sanitizeHTML(g.description)}</div>
                         </div>
                     </div>
@@ -5093,7 +5492,7 @@
                             <div style="font-size:0.84rem; color:var(--text-muted); white-space:pre-line;">${sanitizeHTML(course.references)}</div>
                         </div>
                     ` : ''}
-                    <h4 style="font-size:0.96rem; font-weight:800; margin:16px 0 10px 0; display:flex; align-items:center; gap:8px;">
+                    <h4 style="font-size:0.96rem; font-weight: 600; margin:16px 0 10px 0; display:flex; align-items:center; gap:8px;">
                         <span class="material-symbols-rounded" style="color:var(--primary); font-size:20px;">view_timeline</span>
                         <span>14 Haftalık Ders Planı (UKEY Ders İçeriği)</span>
                     </h4>
@@ -5137,7 +5536,7 @@
                                     <span class="ukey-mini-chip ${isEnded ? '' : 'has-hw'}">${isEnded ? 'Teslim Süresi Sona Erdi' : 'Aktif Ödev'}</span>
                                     <span style="font-size:0.78rem; color:var(--warning); font-weight:700;">${sanitizeHTML(hw.start)} – ${sanitizeHTML(hw.end)}</span>
                                 </div>
-                                <div style="font-weight:800; font-size:0.95rem; margin-bottom:3px;">${sanitizeHTML(hw.title)}</div>
+                                <div style="font-weight: 600; font-size:0.95rem; margin-bottom:3px;">${sanitizeHTML(hw.title)}</div>
                                 <div style="font-size:0.83rem; color:var(--text-muted); white-space:pre-line;">${sanitizeHTML(hw.description)}</div>
                             </div>
                             <div style="display:flex; gap:8px; flex-wrap:wrap;">
@@ -5157,7 +5556,7 @@
                     subContentHtml = exs.map((ex, eIdx) => `
                         <div class="ukey-mat-item">
                             <div>
-                                <div style="font-weight:800; font-size:0.95rem; margin-bottom:4px;">${sanitizeHTML(ex.name)}</div>
+                                <div style="font-weight: 600; font-size:0.95rem; margin-bottom:4px;">${sanitizeHTML(ex.name)}</div>
                                 <div style="font-size:0.82rem; color:var(--text-muted);">
                                     Başlama: <strong>${sanitizeHTML(ex.start)}</strong> • Son Giriş: <strong>${sanitizeHTML(ex.lastLogin)}</strong> • Süre: <strong>${sanitizeHTML(ex.durationMin)} Dakika</strong>
                                 </div>
@@ -5180,7 +5579,7 @@
                             <div style="display:flex; align-items:center; gap:12px;">
                                 <span class="icon-chip"><span class="material-symbols-rounded">forum</span></span>
                                 <div>
-                                    <div style="font-weight:800; font-size:0.92rem;">${sanitizeHTML(fc.title)}</div>
+                                    <div style="font-weight: 600; font-size:0.92rem;">${sanitizeHTML(fc.title)}</div>
                                     <div style="font-size:0.78rem; color:var(--text-muted);">${fc.topicCount || 0} Konu • ${fc.messageCount || 0} Mesaj • ${sanitizeHTML(fc.lastActivity || 'Henüz konu eklenmemiş')}</div>
                                 </div>
                             </div>
@@ -5195,7 +5594,7 @@
                 subContentHtml = `
                     <div class="ukey-info-box" style="text-align:center; padding:28px;">
                         <span class="material-symbols-rounded" style="font-size:36px; color:var(--text-muted); margin-bottom:8px;">groups</span>
-                        <div style="font-weight:800; font-size:0.95rem; margin-bottom:4px;">Bu derste kayıtlı çalışma grubu bulunmamaktadır</div>
+                        <div style="font-weight: 600; font-size:0.95rem; margin-bottom:4px;">Bu derste kayıtlı çalışma grubu bulunmamaktadır</div>
                         <div style="font-size:0.82rem; color:var(--text-muted);">Öğretim elemanı tarafından proje veya laboratuvar grubu oluşturulduğunda otomatik olarak burada listelenir.</div>
                     </div>
                 `;
@@ -5205,7 +5604,7 @@
                     subContentHtml = `
                         <div class="ukey-info-box" style="text-align:center; padding:28px;">
                             <span class="material-symbols-rounded" style="font-size:36px; color:var(--text-muted); margin-bottom:8px;">videocam_off</span>
-                            <div style="font-weight:800; font-size:0.95rem; margin-bottom:4px;">Aktif Sanal Toplantı Bulunamadı</div>
+                            <div style="font-weight: 600; font-size:0.95rem; margin-bottom:4px;">Aktif Sanal Toplantı Bulunamadı</div>
                             <div style="font-size:0.82rem; color:var(--text-muted);">Bu ders için yeni bir canlı toplantı veya kayıt eklendiğinde otomatik olarak burada yer alır.</div>
                         </div>
                     `;
@@ -5215,7 +5614,7 @@
                             <div style="display:flex; align-items:center; gap:12px;">
                                 <span class="icon-chip accent"><span class="material-symbols-rounded">smart_display</span></span>
                                 <div>
-                                    <div style="font-weight:800; font-size:0.92rem;">${sanitizeHTML(s.title)}</div>
+                                    <div style="font-weight: 600; font-size:0.92rem;">${sanitizeHTML(s.title)}</div>
                                     <div style="font-size:0.78rem; color:var(--text-muted);">${sanitizeHTML(s.courseCode)} • ${sanitizeHTML(s.instructor)}</div>
                                 </div>
                             </div>
@@ -5230,7 +5629,7 @@
 
             container.innerHTML = `
                 <div class="card">
-                    <div style="margin-bottom:10px; font-size:0.8rem; font-weight:700; color:var(--text-muted);">DERS SEÇİMİ (9 DERS)</div>
+                    <div style="margin-bottom:10px; font-size:0.8rem; font-weight:700; color:var(--text-muted);">DERS SEÇİMİ (${courses.length} DERS)</div>
                     <div class="filter-chips-scroll" style="padding-bottom:8px;">
                         ${coursePills}
                     </div>
@@ -5238,7 +5637,7 @@
                     <div style="margin-top:16px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
                         <div>
                             <span class="ukey-course-code">${sanitizeHTML(course.code)}</span>
-                            <h3 style="font-size:1.2rem; font-weight:800; margin:6px 0 2px 0;">${sanitizeHTML(course.name)}</h3>
+                            <h3 style="font-size:1.2rem; font-weight: 600; margin:6px 0 2px 0;">${sanitizeHTML(course.name)}</h3>
                             <p style="font-size:0.83rem; color:var(--text-muted); margin:0;">${sanitizeHTML(course.instructor)}</p>
                         </div>
                         <span class="ukey-mini-chip has-data">${course.akts} AKTS • ${course.kredi} Kredi</span>
@@ -5298,7 +5697,7 @@
                                 <span class="ukey-course-code">${sanitizeHTML(course.code)}</span>
                                 <span style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">${sanitizeHTML(m.category || 'Materyal')}${m.week ? ' • ' + m.week + '. Hafta' : ''}</span>
                             </div>
-                            <div style="font-weight:800; font-size:0.93rem;">${sanitizeHTML(m.title)}</div>
+                            <div style="font-weight: 600; font-size:0.93rem;">${sanitizeHTML(m.title)}</div>
                             ${(fallbackFile && fallbackFile.origName) ? `<div style="font-size:0.77rem; color:var(--text-muted);">Dosya: ${sanitizeHTML(fallbackFile.origName)} ${sizeStr ? '• ' + sizeStr : ''}</div>` : ''}
                         </div>
                     </div>
@@ -5387,7 +5786,7 @@
                                         <span class="ukey-mini-chip ${isEnded ? '' : 'has-hw'}">${sanitizeHTML(hw.type || 'Ödev')} • ${isEnded ? 'Teslim Süresi Doldu' : 'Aktif Ödev'}</span>
                                         <span style="font-size:0.78rem; font-weight:700; color:var(--warning);">Teslim: ${sanitizeHTML(hw.start)} – ${sanitizeHTML(hw.end)}</span>
                                     </div>
-                                    <div style="font-weight:800; font-size:0.98rem; margin-bottom:4px;">${sanitizeHTML(hw.title)}</div>
+                                    <div style="font-weight: 600; font-size:0.98rem; margin-bottom:4px;">${sanitizeHTML(hw.title)}</div>
                                     <div style="font-size:0.84rem; color:var(--text-muted); white-space:pre-line;">${sanitizeHTML(hw.description)}</div>
                                 </div>
                                 <div style="display:flex; gap:8px; flex-wrap:wrap;">
@@ -5413,7 +5812,7 @@
                             <div class="ukey-mat-item">
                                 <div>
                                     <span class="ukey-course-code" style="margin-bottom:4px;">${sanitizeHTML(course.code)} - ${sanitizeHTML(course.name)}</span>
-                                    <div style="font-weight:800; font-size:0.95rem; margin-bottom:3px;">${sanitizeHTML(ex.name)}</div>
+                                    <div style="font-weight: 600; font-size:0.95rem; margin-bottom:3px;">${sanitizeHTML(ex.name)}</div>
                                     <div style="font-size:0.82rem; color:var(--text-muted);">Başlama: ${sanitizeHTML(ex.start)} • Son Giriş: ${sanitizeHTML(ex.lastLogin)} • Süre: ${sanitizeHTML(ex.durationMin)} dk</div>
                                 </div>
                                 <button class="btn btn-tonal btn-mini" onclick="openUkeyExamDetailModal('${course.code}', ${eIdx})">
@@ -5444,13 +5843,13 @@
                     <div style="display:flex; align-items:flex-start; gap:12px;">
                         <span class="material-symbols-rounded" style="color:var(--warning); font-size:24px; flex-shrink:0; margin:0;">info</span>
                         <div style="flex:1;">
-                            <div style="font-weight:800; font-size:0.94rem; color:var(--text-main); margin-bottom:6px;">Kendi UKEY Sisteminize Giriş Yapıp Dosyanızı Yüklemelisiniz</div>
+                            <div style="font-weight: 600; font-size:0.94rem; color:var(--text-main); margin-bottom:6px;">Kendi UKEY Sisteminize Giriş Yapıp Dosyanızı Yüklemelisiniz</div>
                             <div style="font-size:0.85rem; color:var(--text-muted); line-height:1.55; margin-bottom:12px;">
                                 Bu portal üzerinden ödev dosyası yükleme işlemi yapılmamaktadır. Hazırladığınız ödev dosyasını teslim etmek için kendi öğrenci bilgilerinizle resmi <strong style="color:var(--text-main);">UKEY (ukey.uludag.edu.tr)</strong> sistemine giriş yaparak dosyanızı yüklemelisiniz.
                             </div>
-                            <a href="https://ukey.uludag.edu.tr/Home" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="text-decoration:none; display:inline-flex; align-items:center; gap:8px; padding:10px 18px; min-height:40px; border-radius:10px; font-size:0.86rem; font-weight:800; background:linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); color:#ffffff !important; border:1px solid rgba(255,255,255,0.28); box-shadow:0 6px 16px -3px rgba(37, 99, 235, 0.55);">
+                            <a href="https://ukey.uludag.edu.tr/Home" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="text-decoration:none; display:inline-flex; align-items:center; gap:8px; padding:10px 18px; min-height:40px; border-radius:10px; font-size:0.86rem; font-weight: 600; background:linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); color:#ffffff !important; border:1px solid rgba(255,255,255,0.28); box-shadow:0 6px 16px -3px rgba(37, 99, 235, 0.55);">
                                 <span class="material-symbols-rounded" style="font-size:18px; color:#ffffff !important; margin:0; display:inline-block;">open_in_new</span>
-                                <span style="color:#ffffff !important; font-size:0.86rem; font-weight:800; margin:0; display:inline-block;">Kendi UKEY Sisteminize Giriş Yapın</span>
+                                <span style="color:#ffffff !important; font-size:0.86rem; font-weight: 600; margin:0; display:inline-block;">Kendi UKEY Sisteminize Giriş Yapın</span>
                             </a>
                         </div>
                     </div>
@@ -5487,7 +5886,7 @@
                     tabBody = mats.map(m => `
                         <div class="ukey-mat-item">
                             <div>
-                                <div style="font-weight:800;">${sanitizeHTML(m.title)}</div>
+                                <div style="font-weight: 600;">${sanitizeHTML(m.title)}</div>
                                 <div style="font-size:0.78rem; color:var(--text-muted);">${sanitizeHTML(m.origName)} (${formatBytesToSize(m.sizeBytes)})</div>
                             </div>
                             <a href="${sanitizeHTML(m.localPath)}" download="${sanitizeHTML(m.origName)}" class="btn btn-primary btn-mini" style="text-decoration:none;">
@@ -5502,7 +5901,7 @@
             content.innerHTML = `
                 <div style="margin-bottom:12px;">
                     <span class="ukey-course-code">${sanitizeHTML(course.code)} - ${sanitizeHTML(course.name)}</span>
-                    <h3 style="font-size:1.15rem; font-weight:800; margin:6px 0 2px 0;">${sanitizeHTML(hw.title)}</h3>
+                    <h3 style="font-size:1.15rem; font-weight: 600; margin:6px 0 2px 0;">${sanitizeHTML(hw.title)}</h3>
                     <p style="font-size:0.8rem; color:var(--text-muted); margin:0;">${sanitizeHTML(course.instructor)}</p>
                 </div>
                 <div class="ukey-subtabs">
@@ -5527,7 +5926,7 @@
             content.innerHTML = `
                 <div style="margin-bottom:14px;">
                     <span class="ukey-course-code">${sanitizeHTML(course.code)} - ${sanitizeHTML(course.name)}</span>
-                    <h3 style="font-size:1.15rem; font-weight:800; margin:6px 0 2px 0;">${sanitizeHTML(ex.name)}</h3>
+                    <h3 style="font-size:1.15rem; font-weight: 600; margin:6px 0 2px 0;">${sanitizeHTML(ex.name)}</h3>
                     <p style="font-size:0.8rem; color:var(--text-muted); margin:0;">${sanitizeHTML(course.instructor)}</p>
                 </div>
                 <div class="ukey-info-grid">
@@ -5559,7 +5958,7 @@
             content.innerHTML = `
                 <div style="margin-bottom:14px;">
                     <span class="ukey-course-code">${sanitizeHTML(course.code)} • Ders Forumu</span>
-                    <h3 style="font-size:1.15rem; font-weight:800; margin:6px 0 2px 0;">${sanitizeHTML(fc.title)}</h3>
+                    <h3 style="font-size:1.15rem; font-weight: 600; margin:6px 0 2px 0;">${sanitizeHTML(fc.title)}</h3>
                     <p style="font-size:0.8rem; color:var(--text-muted); margin:0;">${sanitizeHTML(course.instructor)}</p>
                 </div>
                 <div class="ukey-info-box" style="text-align:center; padding:20px; color:var(--text-muted); margin-bottom:14px;">
@@ -5568,7 +5967,7 @@
                 <div class="ukey-info-box" style="border:1px solid var(--primary-border); background:var(--primary-soft);">
                     <span>Forum Bilgilendirmesi</span>
                     <div style="font-size:0.84rem; color:var(--text-muted); line-height:1.55; margin-top:4px;">
-                        Ders forumuna soru veya konu eklemek için kendi öğrenci bilgilerinizle resmi <a href="https://ukey.uludag.edu.tr/Home" target="_blank" rel="noopener noreferrer" style="color:var(--primary); font-weight:800;">UKEY sistemine (ukey.uludag.edu.tr)</a> giriş yapabilirsiniz.
+                        Ders forumuna soru veya konu eklemek için kendi öğrenci bilgilerinizle resmi <a href="https://ukey.uludag.edu.tr/Home" target="_blank" rel="noopener noreferrer" style="color:var(--primary); font-weight: 600;">UKEY sistemine (ukey.uludag.edu.tr)</a> giriş yapabilirsiniz.
                     </div>
                 </div>
             `;
@@ -5603,7 +6002,7 @@
                                     <span class="icon-chip accent"><span class="material-symbols-rounded">groups</span></span>
                                     <div>
                                         <span class="ukey-course-code">${sanitizeHTML(u.courseCode)} - ${sanitizeHTML(u.courseName)}</span>
-                                        <div style="font-weight:800; font-size:0.95rem; margin-top:4px;">${sanitizeHTML(u.title)}</div>
+                                        <div style="font-weight: 600; font-size:0.95rem; margin-top:4px;">${sanitizeHTML(u.title)}</div>
                                         <div style="font-size:0.8rem; color:var(--text-muted);">${sanitizeHTML(u.instructor)} • ${sanitizeHTML(u.schedule)}</div>
                                     </div>
                                 </div>
@@ -5630,7 +6029,7 @@
                                     <span class="icon-chip"><span class="material-symbols-rounded">play_circle</span></span>
                                     <div>
                                         <span class="ukey-course-code">${sanitizeHTML(s.courseCode)} • ${s.week ? s.week + '. Hafta' : 'Genel'}</span>
-                                        <div style="font-weight:800; font-size:0.94rem; margin-top:3px;">${sanitizeHTML(s.title)}</div>
+                                        <div style="font-weight: 600; font-size:0.94rem; margin-top:3px;">${sanitizeHTML(s.title)}</div>
                                         <div style="font-size:0.8rem; color:var(--text-muted);">${sanitizeHTML(s.instructor)}</div>
                                     </div>
                                 </div>
@@ -5665,7 +6064,7 @@
                                         <span class="ukey-course-code">${sanitizeHTML(ev.courseCode || 'AJANDA')}</span>
                                         <span style="font-size:0.76rem; font-weight:700; color:var(--text-muted);">${sanitizeHTML(ev.category || 'Görev')}</span>
                                     </div>
-                                    <div style="font-weight:800; font-size:0.95rem; margin-bottom:3px;">${sanitizeHTML(ev.title)}</div>
+                                    <div style="font-weight: 600; font-size:0.95rem; margin-bottom:3px;">${sanitizeHTML(ev.title)}</div>
                                     <div style="font-size:0.82rem; color:var(--text-muted);">Tarih: ${sanitizeHTML(ev.displayRange)}</div>
                                 </div>
                                 <span class="ukey-mini-chip has-data">${sanitizeHTML(ev.status || 'Aktif')}</span>
@@ -5693,11 +6092,11 @@
                     <div style="margin-top:16px; display:flex; flex-direction:column; gap:18px;">
                         ${groups.map((g, gIdx) => `
                             <div>
-                                <h4 style="font-size:0.9rem; font-weight:800; color:var(--primary); margin:0 0 10px 0;">${sanitizeHTML(g.group)}</h4>
+                                <h4 style="font-size:0.9rem; font-weight: 600; color:var(--primary); margin:0 0 10px 0;">${sanitizeHTML(g.group)}</h4>
                                 ${(g.items || []).map((it, iIdx) => `
                                     <div class="ukey-mat-item">
                                         <div>
-                                            <div style="font-weight:800; font-size:0.93rem; margin-bottom:3px;">${sanitizeHTML(it.title)}</div>
+                                            <div style="font-weight: 600; font-size:0.93rem; margin-bottom:3px;">${sanitizeHTML(it.title)}</div>
                                             <div style="font-size:0.8rem; color:var(--text-muted);">${sanitizeHTML(it.description)}</div>
                                         </div>
                                         <div style="display:flex; align-items:center; gap:8px;">
@@ -5724,7 +6123,7 @@
             content.innerHTML = `
                 <div style="margin-bottom:14px;">
                     <span class="ukey-course-code">${sanitizeHTML(grp.group)}</span>
-                    <h3 style="font-size:1.15rem; font-weight:800; margin:6px 0 2px 0;">${sanitizeHTML(item.title)}</h3>
+                    <h3 style="font-size:1.15rem; font-weight: 600; margin:6px 0 2px 0;">${sanitizeHTML(item.title)}</h3>
                 </div>
                 <div class="ukey-info-grid">
                     <div class="ukey-info-box"><span>Modül Kodu</span><strong>${sanitizeHTML(item.code)}</strong></div>
