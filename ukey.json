@@ -1,5 +1,5 @@
 {
-  "lastSyncedAt": "2026-10-22T07:25:24.485Z",
+  "lastSyncedAt": "2026-10-22T13:12:30.204Z",
   "portalUrl": "https://ukey.uludag.edu.tr/Home",
   "urgentNotifications": [
     {
@@ -1032,6 +1032,32 @@
           "sizeBytes": 1303782,
           "contentType": "application/pdf",
           "externalUrl": ""
+        },
+        {
+          "title": "Ders notu 3",
+          "category": "Diğer",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/ELNZ105-04_3.pdf",
+          "origName": "H3-Kirchhoff kanunları.pdf",
+          "sizeBytes": 1132358,
+          "contentType": "application/pdf",
+          "externalUrl": ""
+        },
+        {
+          "title": "Ders notu 4",
+          "category": "Diğer",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/ELNZ105-04_4.pdf",
+          "origName": "H4-Düğüm gerilimleri yöntemi.pdf",
+          "sizeBytes": 1331344,
+          "contentType": "application/pdf",
+          "externalUrl": ""
         }
       ],
       "forumCategories": [
@@ -1934,5 +1960,5 @@
     "i": "S/d/32GLvWQhn9xh",
     "c": "rfov+UN6Gp7RJmW2RMhJQM58Vogx6gGYLHmDa/QWe1sYaPFCsU/+LQBb0PddHS3Wxtg6J5qZLA/mZysz5j52P082RVNV3rpJTOZs6cGtkEyQl0/GA5u8qw0gO7bszI9vEgbUSSTT/7WXmm8oJtnZK1qvtXI="
   },
-  "lastDataChangeAt": "2026-10-21T23:28:11.195Z"
+  "lastDataChangeAt": "2026-10-22T13:12:30.204Z"
 }
