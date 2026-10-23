@@ -26,17 +26,12 @@ jobs:
   sync-ukey:
     runs-on: ubuntu-latest
     steps:
-      - name: Depoyu Çek (Checkout)
+      - name: Depoyu Çek (Hızlı Checkout)
         uses: actions/checkout@v4
         with:
-          fetch-depth: 5
+          fetch-depth: 1
 
-      - name: Node.js 22 Kurulumu
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-
-      - name: UKEY Otomatik Senkronizasyon Motorunu Çalıştır
+      - name: UKEY Hızlı Delta Senkronizasyon Motorunu Çalıştır
         run: node scripts/ukey-auto-sync.js
         continue-on-error: false
 
@@ -45,22 +40,27 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "UKEY Auto-Sync Cloud"
 
+          git add ukey.json ukey_dosyalar/
+          if git diff --staged --quiet; then
+            echo "UKEY verilerinde değişiklik yok."
+            exit 0
+          fi
+
+          git commit -m "chore(ukey): canli UKEY bulut senkronizasyonu" || true
+          if git push origin main; then
+            echo "UKEY verileri tek seferde başarıyla GitHub'a gönderildi."
+            exit 0
+          fi
+
           for attempt in 1 2 3; do
-            git fetch origin main
+            echo "Eşzamanlı commit tespit edildi, senkronize edilip tekrar deneniyor ($attempt/3)..."
+            git fetch origin main --depth=5
             git rebase --strategy-option=theirs origin/main || git rebase --abort 2>/dev/null || true
-
             git add ukey.json ukey_dosyalar/
-            if git diff --staged --quiet; then
-              echo "UKEY verilerinde değişiklik yok."
-              exit 0
-            fi
-
-            git commit -m "chore(ukey): canli UKEY bulut senkronizasyonu" || true
+            git commit -m "chore(ukey): canli UKEY bulut senkronizasyonu" 2>/dev/null || true
             if git push origin main; then
               echo "UKEY verileri başarıyla GitHub'a gönderildi."
               exit 0
             fi
-
-            echo "Eşzamanlı commit tespit edildi, tekrar deneniyor (Deneme $attempt/3)..."
-            sleep 2
+            sleep 1
           done

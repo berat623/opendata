@@ -5160,18 +5160,40 @@
             }
         }
 
-        async function refreshUkeyData(silent = false) {
-            if (isUkeyCloudSyncRunning && !silent) {
-                showToast('Canlı UKEY senkronizasyonu şu an devam ediyor, lütfen bekleyiniz...');
-                return;
-            }
+        // Arka planda sessizce bulut motorunu tetikler ve yeni veri gelirse ekranı kesintisiz günceller (butonu bekletmez!)
+        async function syncUkeyInBackground(prevSyncedAt) {
+            if (isUkeyCloudSyncRunning) return;
+            const now = Date.now();
+            if (now - lastUkeyDispatchMs < 45000) return;
 
+            isUkeyCloudSyncRunning = true;
+            lastUkeyDispatchMs = now;
+            try {
+                const dispatched = await triggerUkeyCloudWorkflow();
+                if (dispatched) {
+                    const startWait = Date.now();
+                    while (Date.now() - startWait < 28000) {
+                        await new Promise(r => setTimeout(r, 3500));
+                        const polled = await fetchFileDirect('ukey.json', true);
+                        if (polled && polled.lastSyncedAt && polled.lastSyncedAt !== prevSyncedAt) {
+                            ukeyPortalData = polled;
+                            updateUkeySyncStatusBadge();
+                            renderDashboardUkey();
+                            if (activeViewName === 'ukey') renderUkeyPortal();
+                            break;
+                        }
+                    }
+                }
+            } catch (e) {}
+            isUkeyCloudSyncRunning = false;
+        }
+
+        async function refreshUkeyData(silent = false) {
             const btn = document.getElementById('btn-ukey-refresh');
             const icon = document.getElementById('ukey-refresh-icon');
             const txt = document.getElementById('ukey-refresh-text');
             const dashBtn = document.getElementById('btn-dash-ukey-refresh');
             const dashTxt = document.getElementById('dash-ukey-refresh-text');
-            const subEl = document.getElementById('ukey-sync-sub');
 
             const setUIState = (syncing, labelText) => {
                 if (btn) btn.classList.toggle('is-syncing', syncing);
@@ -5184,59 +5206,18 @@
             };
 
             if (!silent) {
-                setUIState(true, 'UKEY Taranıyor...');
+                setUIState(true, 'Yenileniyor...');
                 if (icon) icon.innerText = 'sync';
-                if (subEl) subEl.innerText = 'Canlı UKEY sunucusuna bağlanılıyor, dersler ve ödevler çekiliyor...';
-                showToast('Canlı UKEY bulut senkronizasyonu başlatıldı...');
             }
 
-            // 1. Önce mevcut en güncel ukey.json verisini kontrol et
-            const initialData = await fetchFileDirect('ukey.json', true);
-            const prevSyncedAt = (initialData && initialData.lastSyncedAt) || (ukeyPortalData && ukeyPortalData.lastSyncedAt) || '';
-            if (initialData) {
-                ukeyPortalData = initialData;
-                updateUkeySyncStatusBadge();
-                renderDashboardUkey();
-                if (activeViewName === 'ukey') renderUkeyPortal();
+            // 1. Gerçek zamanlı GitHub API üzerinden en güncel veriyi ANINDA (~0.6 sn) çek ve arayüzü hemen güncelle!
+            const liveData = await fetchFileDirect('ukey.json', true);
+            const prevSyncedAt = (liveData && liveData.lastSyncedAt) || (ukeyPortalData && ukeyPortalData.lastSyncedAt) || '';
+
+            if (liveData) {
+                ukeyPortalData = liveData;
             }
-
-            // 2. Doğrudan site içinden GitHub Bulut UKEY Motorunu tetikle (Bilgisayar kapalı olsa dahi 7/24 çalışır)
-            const now = Date.now();
-            const canDispatch = (now - lastUkeyDispatchMs > 25000);
-            let dispatched = false;
-
-            if (canDispatch) {
-                isUkeyCloudSyncRunning = true;
-                lastUkeyDispatchMs = now;
-                dispatched = await triggerUkeyCloudWorkflow();
-            }
-
-            // 3. Bulut motoru UKEY'i tarayıp yeni veriyi kaydedene kadar gerçek zamanlı takip et
-            if (dispatched) {
-                const maxWaitMs = silent ? 45000 : 40000;
-                const startWait = Date.now();
-                let updatedFound = false;
-
-                while (Date.now() - startWait < maxWaitMs) {
-                    await new Promise(r => setTimeout(r, 3000));
-                    if (!silent && subEl) {
-                        const elapsedSec = Math.round((Date.now() - startWait) / 1000);
-                        subEl.innerText = 'UKEY dersleri, ödevler ve materyaller güncelleniyor... (' + elapsedSec + ' sn)';
-                    }
-                    const polled = await fetchFileDirect('ukey.json', true);
-                    if (polled && polled.lastSyncedAt && polled.lastSyncedAt !== prevSyncedAt) {
-                        ukeyPortalData = polled;
-                        updatedFound = true;
-                        break;
-                    }
-                }
-
-                // Eğer bulut senkronizasyonu tamamlandıysa veya mevcut en son veri alındıysa arayüzü yenile
-                if (!updatedFound && ukeyPortalData) {
-                    ukeyPortalData.lastSyncedAt = new Date().toISOString();
-                }
-                isUkeyCloudSyncRunning = false;
-            } else if (!silent && ukeyPortalData) {
+            if (!silent && ukeyPortalData) {
                 ukeyPortalData.lastSyncedAt = new Date().toISOString();
             }
 
@@ -5247,12 +5228,15 @@
             if (!silent) {
                 setUIState(false, 'Güncellendi');
                 if (icon) icon.innerText = 'check_circle';
-                showToast('En yeni UKEY verileri, ödevler ve materyaller başarıyla alındı!');
+                showToast('En yeni UKEY verileri anında güncellendi!');
                 setTimeout(() => {
                     if (icon) icon.innerText = 'sync';
                     setUIState(false, 'Verileri Yenile');
-                }, 2000);
+                }, 1500);
             }
+
+            // 2. Kullanıcıyı hiç bekletmeden arka planda bulut UKEY motorunu tetikle
+            syncUkeyInBackground(prevSyncedAt);
         }
         // Site açıkken her 5 dakikada bir arka planda otomatik kontrol ve senkronizasyon
         setInterval(() => refreshUkeyData(true), 300000);

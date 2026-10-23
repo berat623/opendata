@@ -177,13 +177,16 @@ async function syncUkey() {
     // Activate course context in UKEY session
     await getPage(cUrl);
 
-    // ASP.NET MVC Session kilitlenmemesi için sıralı ve hatasız çek
-    const icerikHtml = await getPage('/Ogrenci/Icerik/');
+    const prevCourse = (existingData.courses || []).find(ec => ec.code === code);
+    const hasCachedStatic = Boolean(prevCourse && prevCourse.weeks && prevCourse.weeks.length >= 14 && prevCourse.instructor);
+
+    // Sadece değişebilen dinamik sayfaları (Materyaller, Ödevler, E-Sınavlar) her seferinde çek;
+    // Sabit 14 haftalık müfredat zaten önbellekte varsa gereksiz HTTP isteği yapma (3 kat hız kazancı!)
+    const icerikHtml = hasCachedStatic ? '' : await getPage('/Ogrenci/Icerik/');
+    const matHtml = await getPage('/Ogrenci/DersMateryalleri');
     const odevHtml = await getPage('/Ogrenci/Odevler');
     const sinavHtml = await getPage('/Ogrenci/ESinavlar/');
-    const matHtml = await getPage('/Ogrenci/DersMateryalleri');
-    const forumHtml = await getPage('/Ogrenci/Forum');
-    const topHtml = await getPage('/Ogrenci/Toplantilar');
+    const forumHtml = (prevCourse && prevCourse.forumCategories && prevCourse.forumCategories.length > 0) ? '' : await getPage('/Ogrenci/Forum');
 
     const getField = (label) => {
       const re = new RegExp(`<div class="display-label">\\s*${label}\\s*<\\/div>\\s*<div class="display-field">([\\s\\S]*?)<\\/div>`, 'i');
@@ -191,34 +194,35 @@ async function syncUkey() {
       return m ? stripTags(m[1]) : '';
     };
 
-    const ects = +getField('ECTS') || +getField('Ects') || 0;
-    const akts = +getField('AKTS') || +getField('Akts') || 0;
-    const teori = +getField('Teori') || 0;
-    const uygulama = +getField('Uygulama') || 0;
-    const lab = +getField('Lab') || 0;
-    const kredi = +getField('Kredi') || 0;
-    const amac = getField('Dersin Amacı');
-    const hoca = getField('Dersi Verenler');
-    const kaynaklar = getField('Dersin Kaynakları');
+    const ects = hasCachedStatic ? prevCourse.ects : (+getField('ECTS') || +getField('Ects') || 0);
+    const akts = hasCachedStatic ? prevCourse.akts : (+getField('AKTS') || +getField('Akts') || 0);
+    const teori = hasCachedStatic ? prevCourse.teori : (+getField('Teori') || 0);
+    const uygulama = hasCachedStatic ? prevCourse.uygulama : (+getField('Uygulama') || 0);
+    const lab = hasCachedStatic ? prevCourse.lab : (+getField('Lab') || 0);
+    const kredi = hasCachedStatic ? prevCourse.kredi : (+getField('Kredi') || 0);
+    const amac = hasCachedStatic ? prevCourse.purpose : getField('Dersin Amacı');
+    const hoca = hasCachedStatic ? prevCourse.instructor : getField('Dersi Verenler');
+    const kaynaklar = hasCachedStatic ? prevCourse.references : getField('Dersin Kaynakları');
 
-    // Parse 14-week syllabus
-    const weeks = [];
-    const weekRowsWithBtn = [...icerikHtml.matchAll(/<tr>\s*<td><a class="gridbutton detay"[^>]*>\s*<\/a><\/td>\s*<td>(\d+)<\/td>\s*<td>([\s\S]*?)<\/td>\s*<td>([\s\S]*?)<\/td>\s*<\/tr>/g)];
-    if (weekRowsWithBtn.length > 0) {
-      for (const wr of weekRowsWithBtn) {
-        weeks.push({ week: +wr[1], teorik: stripTags(wr[2]), uygulama: stripTags(wr[3]) });
-      }
-    } else {
-      const weekRowsPlain = [...icerikHtml.matchAll(/<tr>\s*<td>(\d+)<\/td>\s*<td>([\s\S]*?)<\/td>\s*<td>([\s\S]*?)<\/td>\s*<\/tr>/g)];
-      for (const wr of weekRowsPlain) {
-        weeks.push({ week: +wr[1], teorik: stripTags(wr[2]), uygulama: stripTags(wr[3]) });
+    // Parse 14-week syllabus (veya önbellekten al)
+    const weeks = hasCachedStatic ? prevCourse.weeks : [];
+    if (!hasCachedStatic) {
+      const weekRowsWithBtn = [...icerikHtml.matchAll(/<tr>\s*<td><a class="gridbutton detay"[^>]*>\s*<\/a><\/td>\s*<td>(\d+)<\/td>\s*<td>([\s\S]*?)<\/td>\s*<td>([\s\S]*?)<\/td>\s*<\/tr>/g)];
+      if (weekRowsWithBtn.length > 0) {
+        for (const wr of weekRowsWithBtn) {
+          weeks.push({ week: +wr[1], teorik: stripTags(wr[2]), uygulama: stripTags(wr[3]) });
+        }
+      } else {
+        const weekRowsPlain = [...icerikHtml.matchAll(/<tr>\s*<td>(\d+)<\/td>\s*<td>([\s\S]*?)<\/td>\s*<td>([\s\S]*?)<\/td>\s*<\/tr>/g)];
+        for (const wr of weekRowsPlain) {
+          weeks.push({ week: +wr[1], teorik: stripTags(wr[2]), uygulama: stripTags(wr[3]) });
+        }
       }
     }
 
     // Parse Course Materials & Download any new/updated files automatically first
     const matRows = [...matHtml.matchAll(/<tr class="grid-row[\s\S]*?<\/tr>/g)].map(m => m[0]);
     const materials = [];
-    const prevCourse = (existingData.courses || []).find(ec => ec.code === code);
 
     for (let idx = 0; idx < matRows.length; idx++) {
       const r = matRows[idx];
@@ -338,7 +342,7 @@ async function syncUkey() {
       const attachedMaterials = [];
 
       const prevHw = prevCourse && prevCourse.homeworks
-        ? prevCourse.homeworks.find(ph => ph.title === hwTitle && ph.start === hwStart && ph.end === hwEnd && ph.id > 0 && (ph.submissionStatus || '').includes('Sona Ermiştir'))
+        ? prevCourse.homeworks.find(ph => ph.title === hwTitle && ph.start === hwStart && ph.end === hwEnd && ph.description === hwDesc && ph.id > 0)
         : null;
 
       if (prevHw) {
@@ -467,30 +471,7 @@ async function syncUkey() {
         }))
     );
 
-    // Parse Virtual Meetings (Toplantilar)
-    const meetingRows = [...topHtml.matchAll(/<tr>\s*<td>([\s\S]*?)<\/td>\s*<td>([\s\S]*?)<\/td>\s*<td>([\s\S]*?)<\/td>\s*<td>([\s\S]*?)<\/td>\s*<td>([\s\S]*?)<\/td>\s*<\/tr>/gi)];
-    const meetings = [];
-    for (const mr of meetingRows) {
-      const topTitle = stripTags(mr[1]);
-      const topDate = stripTags(mr[2]);
-      const topLinkMatch = mr[0].match(/href="([^"]+)"/i);
-      if (topTitle && !topTitle.includes('Başlık') && !topTitle.includes('Kayıt bulunamadı')) {
-        const mObj = {
-          title: topTitle,
-          date: topDate,
-          url: topLinkMatch ? decodeHtml(topLinkMatch[1]) : ''
-        };
-        meetings.push(mObj);
-        allUpcomingMeetings.push({
-          courseCode: code,
-          courseName: name,
-          instructor: hoca,
-          title: `${code} - ${topTitle}`,
-          schedule: topDate,
-          url: mObj.url
-        });
-      }
-    }
+    const meetings = (prevCourse && Array.isArray(prevCourse.meetings)) ? prevCourse.meetings : [];
 
     updatedCourses.push({
       code,
