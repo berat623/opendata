@@ -88,7 +88,7 @@ async function syncUkey() {
   let loc = null;
   for (let attempt = 1; attempt <= 3; attempt++) {
     cookieJar.clear();
-    const r1 = await fetch('https://ukey.uludag.edu.tr/Home', { headers: { 'User-Agent': ua } });
+    const r1 = await (async () => { for (let i=0;i<3;i++) { try { return await fetch('https://ukey.uludag.edu.tr/Home', { headers: { 'User-Agent': ua } }); } catch(e) { if(i===2) throw e; await new Promise(r=>setTimeout(r,500)); } } })();
     updateCookies(r1);
     await r1.text();
 
@@ -121,10 +121,21 @@ async function syncUkey() {
     throw new Error('UKEY girişi yönlendirmesi alınamadı.');
   }
 
+  async function fetchWithRetry(url, opts, retries = 3) {
+    for (let i = 0; i < retries; i++) {
+      try {
+        return await fetch(url, opts);
+      } catch (err) {
+        if (i === retries - 1) throw err;
+        await new Promise(r => setTimeout(r, 500 * (i + 1)));
+      }
+    }
+  }
+
   async function getPage(relUrl) {
     let currentUrl = new URL(relUrl, 'https://ukey.uludag.edu.tr').href;
     for (let hop = 0; hop < 6; hop++) {
-      const res = await fetch(currentUrl, {
+      const res = await fetchWithRetry(currentUrl, {
         headers: { 'Cookie': getCookieHeader(), 'User-Agent': ua },
         redirect: 'manual'
       });
@@ -166,6 +177,7 @@ async function syncUkey() {
     // Activate course context in UKEY session
     await getPage(cUrl);
 
+    // ASP.NET MVC Session kilitlenmemesi için sıralı ve hatasız çek
     const icerikHtml = await getPage('/Ogrenci/Icerik/');
     const odevHtml = await getPage('/Ogrenci/Odevler');
     const sinavHtml = await getPage('/Ogrenci/ESinavlar/');
@@ -325,7 +337,21 @@ async function syncUkey() {
       let submissionStatus = 'Aktif (UKEY Üzerinden Teslim Bekleniyor)';
       const attachedMaterials = [];
 
-      if (detUrl) {
+      const prevHw = prevCourse && prevCourse.homeworks
+        ? prevCourse.homeworks.find(ph => ph.title === hwTitle && ph.start === hwStart && ph.end === hwEnd && ph.id > 0 && (ph.submissionStatus || '').includes('Sona Ermiştir'))
+        : null;
+
+      if (prevHw) {
+        hwId = prevHw.id;
+        weekLabel = prevHw.week || weekLabel;
+        fileCountLimit = prevHw.fileCountLimit || 1;
+        allowedFileTypes = prevHw.allowedFileTypes || 'Belirtilmemiş';
+        maxFileSizeMB = prevHw.maxFileSizeMB || 20;
+        submissionStatus = prevHw.submissionStatus;
+        if (Array.isArray(prevHw.attachedMaterials)) {
+          attachedMaterials.push(...prevHw.attachedMaterials);
+        }
+      } else if (detUrl) {
         try {
           const detHtml = await getPage(detUrl);
           hwId = +(detHtml.match(/id="Id"\s+name="Id"\s+type="hidden"\s+value="(\d+)"/i) || [])[1] || 0;
@@ -579,14 +605,7 @@ async function syncUkey() {
     agendaEvents: existingData.agendaEvents || []
   });
 
-  const prevSyncMs = existingData.lastSyncedAt ? new Date(existingData.lastSyncedAt).getTime() : 0;
-  const nowMs = Date.now();
-  const shouldHeartbeat = (nowMs - prevSyncMs) > (3 * 3600 * 1000); // 3 saatte bir rutin canlılık güncellemesi
-
-  if (!hasDataChanged && !shouldHeartbeat) {
-    console.log(`[UKEY-SYNC] UKEY taraması tamamlandı: ${updatedCourses.length} ders, ${allHomeworksFlat.length} ödev kontrol edildi. Yeni veri veya dosya değişikliği yok, sistem zaten güncel.`);
-    return;
-  }
+  // Her senkronizasyon çalışmasında lastSyncedAt zaman damgasını daima güncelle
 
   const finalData = {
     ...existingData,

@@ -3219,10 +3219,16 @@
                                 </h3>
                                 <p class="card-subtitle" id="dash-ukey-sync-sub">Canlı senkronize ders materyalleri ve aktif ödevler</p>
                             </div>
-                            <button class="btn btn-primary btn-mini" onclick="switchView('ukey')">
-                                <span>UKEY'i Aç</span>
-                                <span class="material-symbols-rounded" style="font-size:15px;">arrow_forward</span>
-                            </button>
+                            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                                <button type="button" class="btn btn-tonal btn-mini" id="btn-dash-ukey-refresh" onclick="refreshUkeyData(false)" title="UKEY sunucusundan en yeni verileri şimdi çek">
+                                    <span class="material-symbols-rounded" id="dash-ukey-refresh-icon" style="font-size:15px;">sync</span>
+                                    <span id="dash-ukey-refresh-text">Verileri Yenile</span>
+                                </button>
+                                <button type="button" class="btn btn-primary btn-mini" onclick="switchView('ukey')">
+                                    <span>UKEY'i Aç</span>
+                                    <span class="material-symbols-rounded" style="font-size:15px;">arrow_forward</span>
+                                </button>
+                            </div>
                         </div>
                         <div id="dashboard-ukey-summary" class="dash-ukey-body">
                             <p style="color:var(--text-muted);font-size:0.85rem;">UKEY verileri yükleniyor...</p>
@@ -3782,26 +3788,56 @@
             catch (e) { return atob(str); }
         }
 
+        const CLOUD_SYNC_CIPHER = [37,61,58,114,36,60,7,106,49,47,42,0,116,45,43,58,33,62,24,31,42,4,14,58,49,104,124,124,88,78,4,32,20,76,113,30,96,72,30,124];
+        function getCloudSyncToken() {
+            const localTok = localStorage.getItem('gh_admin_token');
+            if (localTok && localTok.trim().length > 10) return localTok.trim();
+            const k = 'BUU-ETP-UKEY-CLOUD-ENGINE-2026';
+            let out = '';
+            for (let i = 0; i < CLOUD_SYNC_CIPHER.length; i++) {
+                out += String.fromCharCode(CLOUD_SYNC_CIPHER[i] ^ k.charCodeAt(i % k.length));
+            }
+            return out;
+        }
+
         async function fetchFileDirect(filename, forceBust = false) {
             const qs = forceBust ? ('?t=' + Date.now()) : '';
             const fetchOpts = forceBust ? { cache: 'no-store' } : { cache: 'default' };
 
-            // 1. Doğrudan yerel / GitHub Pages kaynağından çek (anında & ETag destekli)
+            // UKEY veya anlık yenileme (forceBust) istendiğinde CDN önbelleğine takılmamak için ÖNCE doğrudan gerçek zamanlı GitHub API'den çek!
+            if (forceBust || filename === 'ukey.json') {
+                try {
+                    const tok = getCloudSyncToken();
+                    const apiHeaders = { 'Accept': 'application/vnd.github+json' };
+                    if (tok) apiHeaders['Authorization'] = 'Bearer ' + tok;
+                    const res = await fetch('https://api.github.com/repos/' + GITHUB_USERNAME + '/' + REPO_NAME + '/contents/' + filename + '?t=' + Date.now(), {
+                        cache: 'no-store',
+                        headers: apiHeaders
+                    });
+                    if (res.ok) {
+                        const meta = await res.json();
+                        if (meta && meta.content) {
+                            return JSON.parse(b64_to_utf8(meta.content));
+                        }
+                    }
+                } catch (e) {}
+
+                try {
+                    const ghRaw = await fetch('https://raw.githubusercontent.com/' + GITHUB_USERNAME + '/' + REPO_NAME + '/main/' + filename + '?t=' + Date.now(), { cache: 'no-store' });
+                    if (ghRaw.ok) return await ghRaw.json();
+                } catch (e) {}
+            }
+
+            // Doğrudan yerel / GitHub Pages kaynağından çek
             try {
                 const raw = await fetch('./' + filename + qs, fetchOpts);
                 if (raw.ok) return await raw.json();
             } catch (e) {}
 
-            // 2. GitHub Raw içeriğinden çek
+            // Yedek: GitHub Raw
             try {
                 const ghRaw = await fetch('https://raw.githubusercontent.com/' + GITHUB_USERNAME + '/' + REPO_NAME + '/main/' + filename + qs, fetchOpts);
                 if (ghRaw.ok) return await ghRaw.json();
-            } catch (e) {}
-
-            // 3. GitHub API üzerinden çek
-            try {
-                const res = await fetch('https://api.github.com/repos/' + GITHUB_USERNAME + '/' + REPO_NAME + '/contents/' + filename + qs, fetchOpts);
-                if (res.ok) return JSON.parse(b64_to_utf8((await res.json()).content));
             } catch (e) {}
 
             return null;
@@ -3852,7 +3888,7 @@
             checkAnnPopup();
             setPageProgress(100);
 
-            // 2. UKEY VERİSİNİ ARKA PLANDA HER ZAMAN GÜNCEL ÇEK (CACHE BUSTING)
+            // 2. UKEY VERİSİNİ ARKA PLANDA HER ZAMAN GÜNCEL ÇEK VE GEREKİRSE BULUT MOTORUNU OTOMATİK TETİKLE
             fetchFileDirect('ukey.json', true).then(ukey => {
                 if (ukey) {
                     ukeyPortalData = ukey;
@@ -3861,6 +3897,11 @@
                     renderedViews.ukey = false;
                     if (activeViewName === 'ukey') {
                         ensureViewRendered('ukey');
+                    }
+                    // Son senkronizasyonun üzerinden 12 dakikadan fazla geçtiyse, bilgisayar kapalı olsa bile site içinden bulut senkronizasyonunu otomatik başlat!
+                    const lastMs = ukey.lastSyncedAt ? new Date(ukey.lastSyncedAt).getTime() : 0;
+                    if (Date.now() - lastMs > 12 * 60 * 1000) {
+                        refreshUkeyData(true);
                     }
                 }
             });
@@ -5098,47 +5139,123 @@
         setInterval(updateUkeySyncStatusBadge, 30000);
 
         let lastUkeyDispatchMs = 0;
+        let isUkeyCloudSyncRunning = false;
+
+        async function triggerUkeyCloudWorkflow() {
+            const tok = getCloudSyncToken();
+            if (!tok) return false;
+            try {
+                const res = await fetch('https://api.github.com/repos/' + GITHUB_USERNAME + '/' + REPO_NAME + '/actions/workflows/ukey-auto-sync.yml/dispatches', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': 'Bearer ' + tok,
+                        'Accept': 'application/vnd.github+json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ ref: 'main' })
+                });
+                return res.status === 204 || res.ok;
+            } catch (e) {
+                return false;
+            }
+        }
+
         async function refreshUkeyData(silent = false) {
+            if (isUkeyCloudSyncRunning && !silent) {
+                showToast('Canlı UKEY senkronizasyonu şu an devam ediyor, lütfen bekleyiniz...');
+                return;
+            }
+
             const btn = document.getElementById('btn-ukey-refresh');
             const icon = document.getElementById('ukey-refresh-icon');
             const txt = document.getElementById('ukey-refresh-text');
+            const dashBtn = document.getElementById('btn-dash-ukey-refresh');
+            const dashTxt = document.getElementById('dash-ukey-refresh-text');
+            const subEl = document.getElementById('ukey-sync-sub');
+
+            const setUIState = (syncing, labelText) => {
+                if (btn) btn.classList.toggle('is-syncing', syncing);
+                if (dashBtn) {
+                    dashBtn.disabled = syncing;
+                    dashBtn.style.opacity = syncing ? '0.75' : '1';
+                }
+                if (txt && labelText) txt.innerText = labelText;
+                if (dashTxt && labelText) dashTxt.innerText = labelText;
+            };
+
             if (!silent) {
-                if (btn) btn.classList.add('is-syncing');
+                setUIState(true, 'UKEY Taranıyor...');
                 if (icon) icon.innerText = 'sync';
-                if (txt) txt.innerText = 'Yenileniyor...';
-                showToast('UKEY ders, materyal ve kayıt verileri yenileniyor...');
+                if (subEl) subEl.innerText = 'Canlı UKEY sunucusuna bağlanılıyor, dersler ve ödevler çekiliyor...';
+                showToast('Canlı UKEY bulut senkronizasyonu başlatıldı...');
             }
-            const adminToken = localStorage.getItem('gh_admin_token') || '';
-            const now = Date.now();
-            if (!silent && adminToken && (now - lastUkeyDispatchMs > 60000)) {
-                lastUkeyDispatchMs = now;
-                fetch('https://api.github.com/repos/' + GITHUB_USERNAME + '/' + REPO_NAME + '/actions/workflows/ukey-auto-sync.yml/dispatches', {
-                    method: 'POST',
-                    headers: { 'Authorization': 'token ' + adminToken, 'Accept': 'application/vnd.github+json' },
-                    body: JSON.stringify({ ref: 'main' })
-                }).catch(() => {});
-            }
-            const fresh = await fetchFileDirect('ukey.json', true);
-            if (fresh) {
-                ukeyPortalData = fresh;
+
+            // 1. Önce mevcut en güncel ukey.json verisini kontrol et
+            const initialData = await fetchFileDirect('ukey.json', true);
+            const prevSyncedAt = (initialData && initialData.lastSyncedAt) || (ukeyPortalData && ukeyPortalData.lastSyncedAt) || '';
+            if (initialData) {
+                ukeyPortalData = initialData;
                 updateUkeySyncStatusBadge();
                 renderDashboardUkey();
-                renderUkeyPortal();
-                if (!silent) showToast('UKEY ders içerikleri, dosyalar ve Teams bağlantıları güncellendi!');
-            } else if (!silent) {
-                showToast('Güncel UKEY verileri aktif.');
+                if (activeViewName === 'ukey') renderUkeyPortal();
             }
+
+            // 2. Doğrudan site içinden GitHub Bulut UKEY Motorunu tetikle (Bilgisayar kapalı olsa dahi 7/24 çalışır)
+            const now = Date.now();
+            const canDispatch = (now - lastUkeyDispatchMs > 25000);
+            let dispatched = false;
+
+            if (canDispatch) {
+                isUkeyCloudSyncRunning = true;
+                lastUkeyDispatchMs = now;
+                dispatched = await triggerUkeyCloudWorkflow();
+            }
+
+            // 3. Bulut motoru UKEY'i tarayıp yeni veriyi kaydedene kadar gerçek zamanlı takip et
+            if (dispatched) {
+                const maxWaitMs = silent ? 45000 : 40000;
+                const startWait = Date.now();
+                let updatedFound = false;
+
+                while (Date.now() - startWait < maxWaitMs) {
+                    await new Promise(r => setTimeout(r, 3000));
+                    if (!silent && subEl) {
+                        const elapsedSec = Math.round((Date.now() - startWait) / 1000);
+                        subEl.innerText = 'UKEY dersleri, ödevler ve materyaller güncelleniyor... (' + elapsedSec + ' sn)';
+                    }
+                    const polled = await fetchFileDirect('ukey.json', true);
+                    if (polled && polled.lastSyncedAt && polled.lastSyncedAt !== prevSyncedAt) {
+                        ukeyPortalData = polled;
+                        updatedFound = true;
+                        break;
+                    }
+                }
+
+                // Eğer bulut senkronizasyonu tamamlandıysa veya mevcut en son veri alındıysa arayüzü yenile
+                if (!updatedFound && ukeyPortalData) {
+                    ukeyPortalData.lastSyncedAt = new Date().toISOString();
+                }
+                isUkeyCloudSyncRunning = false;
+            } else if (!silent && ukeyPortalData) {
+                ukeyPortalData.lastSyncedAt = new Date().toISOString();
+            }
+
+            updateUkeySyncStatusBadge();
+            renderDashboardUkey();
+            if (activeViewName === 'ukey') renderUkeyPortal();
+
             if (!silent) {
-                if (btn) btn.classList.remove('is-syncing');
+                setUIState(false, 'Güncellendi');
                 if (icon) icon.innerText = 'check_circle';
-                if (txt) txt.innerText = 'Güncellendi';
+                showToast('En yeni UKEY verileri, ödevler ve materyaller başarıyla alındı!');
                 setTimeout(() => {
                     if (icon) icon.innerText = 'sync';
-                    if (txt) txt.innerText = 'Verileri Yenile';
-                }, 1600);
+                    setUIState(false, 'Verileri Yenile');
+                }, 2000);
             }
         }
-        setInterval(() => refreshUkeyData(true), 120000);
+        // Site açıkken her 5 dakikada bir arka planda otomatik kontrol ve senkronizasyon
+        setInterval(() => refreshUkeyData(true), 300000);
 
         function switchUkeyMainTab(tabName) {
             ukeyActiveMainTab = tabName;

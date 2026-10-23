@@ -2,8 +2,9 @@ name: UKEY Otomatik Veri ve Dosya Senkronizasyonu
 
 on:
   schedule:
-    # 24/7 her 20 dakikada bir UKEY verilerini otomatik kontrol eder
-    - cron: '*/20 * * * *'
+    # 7/24 Bulut Üzerinden Çoklu Zamanlayıcı ile Kesintisiz Otomatik UKEY Kontrolü
+    - cron: '*/15 * * * *'
+    - cron: '7,22,37,52 * * * *'
   workflow_dispatch:
   repository_dispatch:
     types: [ukey-sync]
@@ -28,7 +29,7 @@ jobs:
       - name: Depoyu Çek (Checkout)
         uses: actions/checkout@v4
         with:
-          fetch-depth: 10
+          fetch-depth: 5
 
       - name: Node.js 22 Kurulumu
         uses: actions/setup-node@v4
@@ -39,28 +40,27 @@ jobs:
         run: node scripts/ukey-auto-sync.js
         continue-on-error: false
 
-      - name: Güncellenen UKEY Verilerini Kaydet (Commit & Push)
+      - name: Güncellenen UKEY Verilerini Kaydet ve Yayınla (Commit & Push)
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "UKEY Auto-Sync Bot"
+          git config --local user.name "UKEY Auto-Sync Cloud"
 
-          # Maksimum 3 deneme ile çakışmasız güvenli senkronizasyon ve push
           for attempt in 1 2 3; do
             git fetch origin main
             git rebase --strategy-option=theirs origin/main || git rebase --abort 2>/dev/null || true
 
             git add ukey.json ukey_dosyalar/
             if git diff --staged --quiet; then
-              echo "UKEY verilerinde yeni bir değişiklik yok, depo zaten güncel."
+              echo "UKEY verilerinde değişiklik yok."
               exit 0
             fi
 
-            git commit -m "chore(ukey): otomatik UKEY senkronizasyonu [skip ci]" || true
+            git commit -m "chore(ukey): canli UKEY bulut senkronizasyonu" || true
             if git push origin main; then
               echo "UKEY verileri başarıyla GitHub'a gönderildi."
               exit 0
             fi
 
             echo "Eşzamanlı commit tespit edildi, tekrar deneniyor (Deneme $attempt/3)..."
-            sleep 3
+            sleep 2
           done
