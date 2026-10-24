@@ -1,5 +1,5 @@
 {
-  "lastSyncedAt": "2026-10-24T13:20:09.889Z",
+  "lastSyncedAt": "2026-10-24T16:42:49.807Z",
   "portalUrl": "https://ukey.uludag.edu.tr/Home",
   "urgentNotifications": [
     {
@@ -162,13 +162,31 @@
       "displayRange": "9.12.2025 21:55:00 – 18.01.2026 23:55:00",
       "color": "#64748b",
       "status": "Süresi Doldu"
+    },
+    {
+      "id": "ag-rec-OTPZ010-04-6",
+      "title": "OTPZ010-04 - Resmi Word Eğitim Dokümanı",
+      "courseCode": "OTPZ010-04",
+      "category": "Sanal Toplantı / Kayıt",
+      "displayRange": "0. Hafta",
+      "color": "#3b82f6",
+      "status": "Kayıt Yüklendi"
     }
   ],
   "meetingsSummary": {
     "upcoming": [],
     "registered": [],
     "publicMeetings": [],
-    "recordedStreams": []
+    "recordedStreams": [
+      {
+        "courseCode": "OTPZ010-04",
+        "courseName": "BİLGİ ve İLETİŞİM TEKNOLOJİSİ",
+        "instructor": "Öğr. Gör. MURAT ÇALIŞ (Dersin Yürütücüsü)",
+        "week": 0,
+        "title": "Resmi Word Eğitim Dokümanı",
+        "url": "https://support.microsoft.com/tr-tr/word/"
+      }
+    ]
   },
   "erasmusMenu": [
     {
@@ -1760,6 +1778,19 @@
           "sizeBytes": 456307,
           "contentType": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
           "externalUrl": ""
+        },
+        {
+          "title": "Resmi Word Eğitim Dokümanı",
+          "category": "Diğer",
+          "week": 0,
+          "homework": "",
+          "type": "Metin",
+          "hasFile": false,
+          "localPath": "",
+          "origName": "",
+          "sizeBytes": 0,
+          "contentType": "",
+          "externalUrl": "https://support.microsoft.com/tr-tr/word/"
         }
       ],
       "forumCategories": [
@@ -1960,5 +1991,5 @@
     "i": "S/d/32GLvWQhn9xh",
     "c": "rfov+UN6Gp7RJmW2RMhJQM58Vogx6gGYLHmDa/QWe1sYaPFCsU/+LQBb0PddHS3Wxtg6J5qZLA/mZysz5j52P082RVNV3rpJTOZs6cGtkEyQl0/GA5u8qw0gO7bszI9vEgbUSSTT/7WXmm8oJtnZK1qvtXI="
   },
-  "lastDataChangeAt": "2026-10-23T21:34:27.798Z"
+  "lastDataChangeAt": "2026-10-24T16:42:50.060Z"
 }
