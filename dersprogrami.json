@@ -18,42 +18,6 @@
     "instructor": "Öğr. Gör. BASRİ KUL"
   },
   {
-    "id": 201,
-    "day": 2,
-    "start": "08:50",
-    "end": "09:35",
-    "course": "22YAD105 - Yabancı Dil I (T)",
-    "room": "UKEY 23",
-    "instructor": "Öğr. Gör. SİNEM ÜRKMEZ"
-  },
-  {
-    "id": 202,
-    "day": 2,
-    "start": "09:40",
-    "end": "10:25",
-    "course": "22YAD105 - Yabancı Dil I (T)",
-    "room": "UKEY 23",
-    "instructor": "Öğr. Gör. SİNEM ÜRKMEZ"
-  },
-  {
-    "id": 203,
-    "day": 2,
-    "start": "10:30",
-    "end": "11:15",
-    "course": "22YAD105 - Yabancı Dil I (T)",
-    "room": "UKEY 23",
-    "instructor": "Öğr. Gör. SİNEM ÜRKMEZ"
-  },
-  {
-    "id": 204,
-    "day": 2,
-    "start": "11:15",
-    "end": "12:00",
-    "course": "22YAD105 - Yabancı Dil I (T)",
-    "room": "UKEY 23",
-    "instructor": "Öğr. Gör. SİNEM ÜRKMEZ"
-  },
-  {
     "id": 205,
     "day": 2,
     "start": "13:00",
