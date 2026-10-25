@@ -3625,26 +3625,6 @@
             <!-- 1. DASHBOARD VIEW -->
             <div id="view-dashboard" class="view-section active">
 
-                <!-- İSTATİSTİK ŞERİDİ (MİNİMALİST 4'LÜ PASTEL KART) -->
-                <div class="stats-strip">
-                    <div class="stat-card" onclick="switchView('schedule')">
-                        <span class="icon-chip"><span class="material-symbols-rounded">calendar_view_week</span></span>
-                        <div><div class="stat-num" id="stat-sched">29</div><div class="stat-name">Ders Saati</div></div>
-                    </div>
-                    <div class="stat-card" onclick="switchView('calendar')">
-                        <span class="icon-chip warn"><span class="material-symbols-rounded">event</span></span>
-                        <div><div class="stat-num" id="stat-cal">31</div><div class="stat-name">Takvim Faaliyeti</div></div>
-                    </div>
-                    <div class="stat-card" onclick="switchView('ukey')">
-                        <span class="icon-chip accent"><span class="material-symbols-rounded">school</span></span>
-                        <div><div class="stat-num" id="stat-ukey">8</div><div class="stat-name">UKEY Derslerim</div></div>
-                    </div>
-                    <div class="stat-card" onclick="switchView('ukey'); switchUkeyMainTab('materials');">
-                        <span class="icon-chip"><span class="material-symbols-rounded">folder_special</span></span>
-                        <div><div class="stat-num" id="stat-ukey-mat">38</div><div class="stat-name">Materyal &amp; Ödev</div></div>
-                    </div>
-                </div>
-
                 <!-- SAYAÇ KARTI -->
                 <div class="card timer-card">
                     <div class="timer-info">
@@ -3732,15 +3712,6 @@
             <!-- 3. SCHEDULE VIEW (SADELEŞTİRİLMİŞ, MASAÜSTÜ VE MOBİL TAM UYUMLU DERS PROGRAMI) -->
             <div id="view-schedule" class="view-section">
                 
-                <!-- CANLI DURUM & SIRADAKİ DERS BİLGİ KARTI -->
-                <div id="sched-live-banner" class="sched-live-card">
-                    <div class="live-pulse-dot"></div>
-                    <div style="min-width:0; flex:1;">
-                        <div class="sched-live-title" id="sched-live-title">Ders durumu yükleniyor...</div>
-                        <div class="sched-live-meta" id="sched-live-meta">Lütfen bekleyiniz...</div>
-                    </div>
-                </div>
-
                 <div class="card">
                     <div class="sched-top-bar">
                         <div id="sched-day-tabs" class="day-tabs-bar"></div>
@@ -4688,7 +4659,7 @@
         }
 
         function renderSchedule() {
-            document.getElementById('stat-sched').innerText = scheduleData.length;
+            if (document.getElementById('stat-sched')) document.getElementById('stat-sched').innerText = scheduleData.length;
 
             if (!scheduleData.length) {
                 document.getElementById('sched-cards-container').innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--text-muted);padding:30px;">Ders programı yükleniyor...</p>';
