@@ -138,13 +138,20 @@
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body, button, input, select, textarea {
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-weight: 400;
+            font-weight: 500;
             font-style: normal;
-            letter-spacing: -0.01em;
+            letter-spacing: -0.012em;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
         }
         h1, h2, h3, h4, h5, h6, strong, b {
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-weight: 600;
+            font-weight: 700;
+            letter-spacing: -0.018em;
+        }
+        p, span, li, label, td, th {
+            letter-spacing: -0.01em;
         }
         body {
             background-color: var(--bg-body);
@@ -156,6 +163,7 @@
             min-height: 100vh;
             -webkit-font-smoothing: antialiased;
             line-height: 1.5;
+            font-weight: 500;
         }
         html.light-mode body {
             background-image:
@@ -435,13 +443,13 @@
         }
         .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; padding: 0 6px; }
         .brand-logo { width: 44px; height: 44px; border-radius: 14px; object-fit: contain; background: #fff; border: 1px solid var(--border); padding: 4px; box-shadow: var(--shadow-sm); }
-        .brand-text h1 { font-size: 1rem; font-weight: 700; line-height: 1.25; letter-spacing: -0.02em; color: var(--text-main); }
-        .brand-text p { font-size: 0.73rem; color: var(--text-muted); font-weight: 500; margin-top: 1px; }
+        .brand-text h1 { font-size: 1rem; font-weight: 800; line-height: 1.25; letter-spacing: -0.02em; color: var(--text-main); }
+        .brand-text p { font-size: 0.74rem; color: var(--text-muted); font-weight: 650; margin-top: 1px; }
 
         .nav-links { display: flex; flex-direction: column; gap: 8px; flex: 1; }
         .nav-item {
             display: flex; align-items: center; gap: 12px; padding: 12px 16px; min-height: 46px;
-            border-radius: 14px; color: var(--text-muted); font-weight: 500; font-size: 0.9rem;
+            border-radius: 14px; color: var(--text-muted); font-weight: 650; font-size: 0.9rem;
             border: 1px solid transparent;
             transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -481,8 +489,8 @@
         .top-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 26px; }
         .header-left { display: flex; align-items: center; gap: 14px; min-width: 0; }
         .menu-btn { display: none; }
-        .page-title { font-size: clamp(1.35rem, 1rem + 1.5vw, 1.8rem); font-weight: 700; letter-spacing: -0.025em; color: var(--text-main); }
-        .header-date { color: var(--text-muted); font-size: 0.84rem; font-weight: 500; margin-top: 2px; }
+        .page-title { font-size: clamp(1.35rem, 1rem + 1.5vw, 1.8rem); font-weight: 800; letter-spacing: -0.025em; color: var(--text-main); }
+        .header-date { color: var(--text-muted); font-size: 0.84rem; font-weight: 600; margin-top: 2px; }
         .header-actions { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
 
         .view-section { display: none; }
@@ -500,8 +508,8 @@
             transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.22s ease;
         }
         .card-header { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 18px; flex-wrap: wrap; }
-        .card-title { font-size: 1.08rem; font-weight: 700; display: flex; align-items: center; gap: 10px; letter-spacing: -0.015em; }
-        .card-subtitle { font-size: 0.78rem; color: var(--text-muted); font-weight: 500; margin-top: 2px; }
+        .card-title { font-size: 1.08rem; font-weight: 800; display: flex; align-items: center; gap: 10px; letter-spacing: -0.015em; }
+        .card-subtitle { font-size: 0.78rem; color: var(--text-muted); font-weight: 600; margin-top: 2px; }
         .icon-chip {
             width: 38px; height: 38px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center;
             background: var(--primary-soft); color: var(--primary); flex-shrink: 0;
@@ -522,8 +530,8 @@
             background: var(--timer-chip); color: var(--timer-chip-color);
             display: flex; align-items: center; justify-content: center; flex-shrink: 0;
         }
-        .timer-title { font-size: 1.08rem; font-weight: 700; line-height: 1.35; color: var(--timer-text); letter-spacing: -0.01em; }
-        .timer-sub { font-size: 0.82rem; color: var(--timer-sub); font-weight: 500; margin-top: 2px; }
+        .timer-title { font-size: 1.08rem; font-weight: 800; line-height: 1.35; color: var(--timer-text); letter-spacing: -0.01em; }
+        .timer-sub { font-size: 0.82rem; color: var(--timer-sub); font-weight: 600; margin-top: 2px; }
         .timer-boxes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; flex: 1; min-width: 280px; max-width: 460px; }
         .t-box {
             background: var(--timer-box-bg); border: 1px solid var(--timer-box-border); border-radius: 14px;
@@ -532,8 +540,8 @@
             transition: transform 0.2s ease;
         }
         .t-box:hover { transform: translateY(-2px); }
-        .t-val { font-size: clamp(1.3rem, 1rem + 1.3vw, 1.75rem); font-weight: 700; font-variant-numeric: tabular-nums; color: var(--timer-text); line-height: 1.15; }
-        .t-lbl { font-size: 0.66rem; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; color: var(--timer-sub); margin-top: 3px; }
+        .t-val { font-size: clamp(1.3rem, 1rem + 1.3vw, 1.75rem); font-weight: 800; font-variant-numeric: tabular-nums; color: var(--timer-text); line-height: 1.15; }
+        .t-lbl { font-size: 0.66rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; color: var(--timer-sub); margin-top: 3px; }
         .timer-bar-wrap { flex-basis: 100%; margin-top: 4px; }
         .timer-bar-head { display: flex; justify-content: space-between; font-size: 0.76rem; font-weight: 600; color: var(--timer-sub); margin-bottom: 6px; }
         .timer-bar { height: 7px; border-radius: 999px; background: var(--timer-bar-track); overflow: hidden; }
@@ -549,8 +557,8 @@
         }
         .stat-card:hover { transform: translateY(-2px); border-color: var(--primary-border); box-shadow: var(--shadow); }
         .stat-card:active { transform: translateY(0) scale(0.99); }
-        .stat-num { font-size: 1.35rem; font-weight: 700; line-height: 1.15; font-variant-numeric: tabular-nums; color: var(--text-main); }
-        .stat-name { font-size: 0.72rem; text-transform: uppercase; color: var(--text-muted); font-weight: 600; letter-spacing: 0.4px; margin-top: 2px; }
+        .stat-num { font-size: 1.35rem; font-weight: 800; line-height: 1.15; font-variant-numeric: tabular-nums; color: var(--text-main); }
+        .stat-name { font-size: 0.74rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 0.4px; margin-top: 2px; }
 
         /* ALT TABLO DÜZENİ (SOLDA UKEY ÖZETİ, SAĞDA YAKLAŞAN TARİHLER) */
         .lower-grid { display: grid; grid-template-columns: 1.32fr 1fr; gap: 22px; align-items: start; }
@@ -659,11 +667,11 @@
         }
         .up-date-day {
             font-size: 1.15rem;
-            font-weight: 600;
+            font-weight: 800;
         }
         .up-date-month {
             font-size: 0.62rem;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-top: 2px;
@@ -673,8 +681,8 @@
             min-width: 0;
         }
         .up-name {
-            font-size: 0.88rem;
-            font-weight: 700;
+            font-size: 0.92rem;
+            font-weight: 750;
             color: var(--text-main);
             margin-bottom: 3px;
             line-height: 1.3;
@@ -683,7 +691,8 @@
             white-space: nowrap;
         }
         .up-sub {
-            font-size: 0.74rem;
+            font-size: 0.78rem;
+            font-weight: 600;
             color: var(--text-muted);
             display: flex;
             align-items: center;
@@ -694,8 +703,8 @@
             display: inline-flex;
             align-items: center;
             gap: 4px;
-            font-size: 0.70rem;
-            font-weight: 600;
+            font-size: 0.72rem;
+            font-weight: 700;
             padding: 3px 8px;
             border-radius: 50px;
             white-space: nowrap;
@@ -2244,90 +2253,254 @@
             box-shadow: none;
         }
 
-        /* SADELEŞTİRİLMİŞ DERS PROGRAMI TASARIMI (MASAÜSTÜ & TELEFON UYUMLU) */
+        /* SADELEŞTİRİLMİŞ DERS PROGRAMI TASARIMI (MASAÜSTÜ & TELEFON UYUMLU, SÜPER SADE & KALIN FONT) */
+        .sched-live-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 14px 18px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.22s ease;
+        }
+        .sched-live-card.is-active {
+            border-color: var(--accent);
+            background: linear-gradient(135deg, var(--accent-soft) 0%, var(--bg-surface) 100%);
+            box-shadow: 0 4px 16px -4px rgba(46, 168, 133, 0.25);
+        }
+        .sched-live-card.is-upcoming {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, var(--primary-soft) 0%, var(--bg-surface) 100%);
+        }
+        .live-pulse-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 12px var(--accent);
+            animation: livePulse 1.8s infinite;
+            flex-shrink: 0;
+        }
+        .sched-live-card.is-upcoming .live-pulse-dot {
+            background: var(--primary);
+            box-shadow: 0 0 12px var(--primary);
+        }
+        .sched-live-title {
+            font-size: 0.96rem;
+            font-weight: 750;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            line-height: 1.35;
+        }
+        .sched-live-meta {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            font-weight: 600;
+        }
+        .sched-live-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-size: 0.74rem;
+            font-weight: 750;
+            background: var(--accent);
+            color: #fff !important;
+        }
+        .sched-live-badge.wait {
+            background: var(--primary);
+            color: #fff !important;
+        }
+
+        /* GÜN SEÇİCİ & ÜST BAR (SÜPER SADE) */
         .sched-top-bar {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            flex-wrap: wrap;
             gap: 12px;
             padding-bottom: 14px;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
             border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
         }
-        .sched-top-bar .day-tabs-bar {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding: 0;
+        .day-tabs-bar {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
             flex: 1;
-            min-width: 260px;
+            min-width: 0;
         }
+        .day-tabs-bar::-webkit-scrollbar {
+            display: none;
+        }
+        .day-tab-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 8px 14px;
+            min-height: 38px;
+            border-radius: 11px;
+            font-size: 0.84rem;
+            font-weight: 700;
+            background: var(--bg-surface-elevated);
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            white-space: nowrap;
+            flex-shrink: 0;
+            transition: all 0.18s ease;
+        }
+        .day-tab-btn:hover {
+            color: var(--text-main);
+            border-color: var(--primary-border);
+            background: var(--bg-surface-hover);
+        }
+        .day-tab-btn.active {
+            background: var(--primary);
+            color: #ffffff !important;
+            border-color: var(--primary);
+            font-weight: 800;
+            box-shadow: 0 4px 14px -3px rgba(91, 106, 240, 0.45);
+        }
+        .day-tab-btn.active span {
+            color: #ffffff !important;
+        }
+        .day-tab-today {
+            background: var(--accent);
+            color: #ffffff !important;
+            padding: 2px 7px;
+            border-radius: 999px;
+            font-size: 0.68rem;
+            font-weight: 800;
+            letter-spacing: 0.2px;
+        }
+        .day-tab-btn.active .day-tab-today {
+            background: rgba(255, 255, 255, 0.25);
+            color: #ffffff !important;
+        }
+        .sched-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        /* DERS KARTLARI (SADELEŞTİRİLMİŞ AKIŞ) */
         .schedule-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 16px;
         }
         .schedule-grid.single-day-mode {
             grid-template-columns: 1fr;
-            max-width: 760px;
+            max-width: 820px;
+            margin: 0 auto;
         }
         .day-card {
-            padding: 18px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 16px 18px;
             display: flex;
             flex-direction: column;
             gap: 10px;
+            box-shadow: var(--shadow-sm);
+        }
+        .day-card.today {
+            border-color: var(--primary-border);
+            box-shadow: 0 0 20px -4px var(--primary-soft);
         }
         .day-title {
-            margin-bottom: 4px;
+            margin-bottom: 6px;
             padding-bottom: 10px;
             border-bottom: 1px solid var(--border);
-            font-size: 1rem;
+            font-size: 1.05rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--text-main);
+        }
+        .day-title-sub {
+            font-size: 0.78rem;
+            font-weight: 650;
+            color: var(--text-muted);
+            margin-left: 6px;
         }
         .lesson-card-simple {
             display: flex;
             align-items: center;
             gap: 14px;
-            padding: 12px 14px;
+            padding: 12px 16px;
             border-radius: 14px;
             background: var(--bg-surface-elevated);
             border: 1px solid var(--border);
-            transition: border-color 0.2s ease, transform 0.2s ease;
+            transition: all 0.2s ease;
         }
         .lesson-card-simple:hover {
             border-color: var(--primary-border);
-            transform: translateY(-1px);
+            transform: translateX(2px);
         }
         .lesson-card-simple.live-now {
             border-color: var(--accent);
-            background: var(--accent-soft);
+            background: linear-gradient(135deg, var(--accent-soft) 0%, var(--bg-surface-elevated) 100%);
+            box-shadow: 0 4px 14px -3px rgba(46, 168, 133, 0.3);
         }
         .lesson-time-pill {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-width: 68px;
+            min-width: 72px;
             padding: 8px 10px;
             border-radius: 12px;
             background: var(--primary-soft);
             color: var(--primary);
             border: 1px solid var(--primary-border);
-            font-weight: 600;
-            font-size: 0.8rem;
+            font-weight: 750;
+            font-size: 0.84rem;
             line-height: 1.25;
             flex-shrink: 0;
             text-align: center;
         }
         .lesson-card-simple.live-now .lesson-time-pill {
             background: var(--accent);
-            color: #fff;
+            color: #ffffff !important;
             border-color: transparent;
         }
-        .lesson-hours-tag {
-            font-size: 0.66rem;
-            opacity: 0.85;
-            margin-top: 3px;
+        .lesson-time-start {
+            font-size: 0.95rem;
+            font-weight: 800;
+        }
+        .lesson-time-end {
+            font-size: 0.72rem;
             font-weight: 700;
+            opacity: 0.82;
+            margin-top: 1px;
+        }
+        .lesson-hours-tag {
+            font-size: 0.68rem;
+            font-weight: 750;
+            margin-top: 3px;
+            padding: 1px 6px;
+            border-radius: 6px;
+            background: rgba(0, 0, 0, 0.08);
         }
         .lesson-body-simple {
             flex: 1;
@@ -2341,16 +2514,18 @@
             margin-bottom: 4px;
         }
         .lesson-code-badge {
-            font-size: 0.72rem;
-            font-weight: 600;
+            font-size: 0.74rem;
+            font-weight: 800;
             padding: 2px 8px;
             border-radius: 6px;
             background: var(--primary-soft);
             color: var(--primary);
+            border: 1px solid var(--primary-border);
+            letter-spacing: 0.2px;
         }
         .lesson-type-badge {
-            font-size: 0.68rem;
-            font-weight: 700;
+            font-size: 0.7rem;
+            font-weight: 750;
             padding: 2px 8px;
             border-radius: 6px;
             background: var(--bg-surface);
@@ -2360,18 +2535,27 @@
         .lesson-type-badge.is-lab {
             color: var(--warning);
             background: var(--warning-soft);
-            border-color: rgba(245, 158, 11, 0.3);
+            border-color: rgba(245, 158, 11, 0.35);
         }
         .lesson-type-badge.is-online {
             color: var(--accent);
             background: var(--accent-soft);
-            border-color: rgba(16, 185, 129, 0.3);
+            border-color: rgba(16, 185, 129, 0.35);
+        }
+        .lesson-live-pill {
+            font-size: 0.68rem;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #ffffff !important;
+            letter-spacing: 0.2px;
         }
         .lesson-title-simple {
-            font-size: 0.94rem;
-            font-weight: 600;
+            font-size: 1rem;
+            font-weight: 750;
             color: var(--text-main);
-            line-height: 1.3;
+            line-height: 1.35;
             margin-bottom: 4px;
             word-break: break-word;
         }
@@ -2379,8 +2563,9 @@
             display: flex;
             align-items: center;
             flex-wrap: wrap;
-            gap: 10px;
-            font-size: 0.76rem;
+            gap: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
             color: var(--text-muted);
         }
         .lesson-meta-simple span {
@@ -2389,6 +2574,60 @@
             gap: 4px;
         }
 
+        /* MOBİL DERS PROGRAMI */
+        @media (max-width: 768px) {
+            .sched-top-bar {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+                padding-bottom: 10px;
+                margin-bottom: 12px;
+            }
+            .day-tabs-bar {
+                width: 100%;
+                gap: 5px;
+                padding-bottom: 4px;
+            }
+            .day-tab-btn {
+                padding: 7px 11px;
+                font-size: 0.78rem;
+                min-height: 36px;
+            }
+            .sched-actions {
+                width: 100%;
+                display: flex;
+                gap: 8px;
+            }
+            .sched-actions .btn {
+                flex: 1;
+                justify-content: center;
+                min-height: 36px;
+                font-size: 0.82rem;
+                font-weight: 700;
+            }
+            .lesson-card-simple {
+                padding: 10px 12px;
+                gap: 10px;
+            }
+            .lesson-time-pill {
+                min-width: 62px;
+                padding: 6px 8px;
+            }
+            .lesson-time-start {
+                font-size: 0.88rem;
+            }
+            .lesson-time-end {
+                font-size: 0.68rem;
+            }
+            .lesson-title-simple {
+                font-size: 0.92rem;
+            }
+            .lesson-meta-simple {
+                font-size: 0.75rem;
+                gap: 8px;
+            }
+        }
+        
         /* UKEY VE DERS PROGRAMI TAM MOBİL (TELEFON) UYUMLULUK KURALLARI */
         .ukey-nav-tabs::-webkit-scrollbar,
         .ukey-subtabs::-webkit-scrollbar {
@@ -2736,8 +2975,8 @@
             line-height: 1.1;
         }
         .dash-ukey-pill span {
-            font-size: 0.7rem;
-            font-weight: 500;
+            font-size: 0.72rem;
+            font-weight: 650;
             color: var(--text-muted);
         }
         .dash-ukey-course-list {
@@ -2786,8 +3025,8 @@
             flex: 1;
         }
         .dash-ukey-course-name {
-            font-size: 0.88rem;
-            font-weight: 600;
+            font-size: 0.92rem;
+            font-weight: 750;
             color: var(--text-main);
             line-height: 1.3;
             overflow: hidden;
@@ -2795,7 +3034,8 @@
             white-space: nowrap;
         }
         .dash-ukey-course-inst {
-            font-size: 0.74rem;
+            font-size: 0.76rem;
+            font-weight: 600;
             color: var(--text-muted);
             margin-top: 2px;
             overflow: hidden;
@@ -2859,14 +3099,15 @@
             color: var(--primary);
         }
         .cal-simple-next-title {
-            font-size: 1rem;
-            font-weight: 700;
+            font-size: 1.05rem;
+            font-weight: 800;
             color: var(--text-main);
             line-height: 1.3;
             margin-top: 2px;
         }
         .cal-simple-next-date {
-            font-size: 0.78rem;
+            font-size: 0.8rem;
+            font-weight: 600;
             color: var(--text-muted);
             margin-top: 2px;
         }
@@ -2876,7 +3117,7 @@
             background: var(--primary);
             color: #ffffff;
             font-size: 0.76rem;
-            font-weight: 600;
+            font-weight: 700;
             white-space: nowrap;
         }
         .cal-simple-list {
@@ -2934,8 +3175,8 @@
             flex: 1;
         }
         .cal-simple-title {
-            font-size: 0.92rem;
-            font-weight: 600;
+            font-size: 0.96rem;
+            font-weight: 750;
             color: var(--text-main);
             line-height: 1.35;
         }
@@ -2945,7 +3186,8 @@
             flex-wrap: wrap;
             gap: 6px;
             margin-top: 4px;
-            font-size: 0.76rem;
+            font-size: 0.78rem;
+            font-weight: 600;
             color: var(--text-muted);
         }
         .cal-simple-right {
@@ -2957,8 +3199,8 @@
         .cal-simple-status {
             padding: 4px 10px;
             border-radius: 999px;
-            font-size: 0.72rem;
-            font-weight: 600;
+            font-size: 0.74rem;
+            font-weight: 700;
             background: var(--primary-soft);
             color: var(--primary);
             white-space: nowrap;
@@ -3004,7 +3246,7 @@
                 background: transparent;
                 color: var(--text-muted);
                 font-size: 0.68rem;
-                font-weight: 500;
+                font-weight: 650;
                 cursor: pointer;
                 transition: all 0.15s ease;
             }
@@ -3014,7 +3256,7 @@
             .mob-nav-btn.active {
                 color: var(--primary);
                 background: var(--primary-soft);
-                font-weight: 600;
+                font-weight: 750;
             }
             .main-content {
                 padding: 14px 12px calc(84px + env(safe-area-inset-bottom)) !important;
@@ -3503,19 +3745,13 @@
                     <div class="sched-top-bar">
                         <div id="sched-day-tabs" class="day-tabs-bar"></div>
                         <div class="sched-actions">
-                            <div class="sched-view-pills">
-                                <button class="sched-mode-btn active" id="btn-sched-cards" onclick="setScheduleViewMode('cards')">
-                                    <span class="material-symbols-rounded" style="font-size:16px;">view_agenda</span>
-                                    <span>Günlük Kartlar</span>
-                                </button>
-                                <button class="sched-mode-btn" id="btn-sched-matrix" onclick="setScheduleViewMode('matrix')">
-                                    <span class="material-symbols-rounded" style="font-size:16px;">table_chart</span>
-                                    <span>Tablo</span>
-                                </button>
-                            </div>
+                            <button class="btn btn-tonal btn-mini" id="btn-sched-mode-toggle" onclick="toggleScheduleMode()" title="Görünüm değiştir (Kartlar / Tablo)">
+                                <span class="material-symbols-rounded" id="sched-mode-icon" style="font-size:16px;">table_chart</span>
+                                <span id="sched-mode-text">Tablo</span>
+                            </button>
                             <button class="btn btn-tonal btn-mini" onclick="printSchedule()" title="Programı yazdır veya PDF olarak kaydet">
                                 <span class="material-symbols-rounded" style="font-size:16px;">print</span>
-                                <span>PDF / Yazdır</span>
+                                <span>PDF</span>
                             </button>
                             <button class="btn btn-tonal btn-mini" onclick="downloadAllScheduleICS()" title="Tüm haftalık dersleri telefon/bilgisayar takvimine aktar">
                                 <span class="material-symbols-rounded" style="font-size:16px;">event</span>
@@ -4392,7 +4628,9 @@
         }
 
         /* DERS PROGRAMI (SADE, GRUPLANDIRILMIŞ VE TÜM CİHAZLARLA TAM UYUMLU) */
-        let activeScheduleDay = 0; // 0 = Tüm Hafta, 1..5 = Pzt..Cum
+        // Varsayılan olarak hafta içiyse BUGÜNÜ, hafta sonu ise Pazartesi'yi aç (Süper sade ve anında odaklanan akış!)
+        const initialSchedDay = new Date().getDay();
+        let activeScheduleDay = (initialSchedDay >= 1 && initialSchedDay <= 5) ? initialSchedDay : 1;
         let scheduleViewMode = localStorage.getItem('schedule_view_mode') || 'cards';
 
         const COURSE_META_MAP = {
@@ -4464,6 +4702,11 @@
             setScheduleViewMode(scheduleViewMode, false);
         }
 
+        function toggleScheduleMode() {
+            const nextMode = (scheduleViewMode === 'cards') ? 'matrix' : 'cards';
+            setScheduleViewMode(nextMode);
+        }
+
         function setScheduleViewMode(mode, save = true) {
             scheduleViewMode = mode;
             if (save) localStorage.setItem('schedule_view_mode', mode);
@@ -4473,6 +4716,20 @@
             const cardsWrap = document.getElementById('sched-cards-container');
             const matrixWrap = document.getElementById('sched-matrix-container');
             const dayTabs = document.getElementById('sched-day-tabs');
+
+            const toggleBtn = document.getElementById('btn-sched-mode-toggle');
+            const toggleIcon = document.getElementById('sched-mode-icon');
+            const toggleTxt = document.getElementById('sched-mode-text');
+
+            if (mode === 'matrix') {
+                if (toggleIcon) toggleIcon.innerText = 'view_agenda';
+                if (toggleTxt) toggleTxt.innerText = 'Kartlar';
+                if (toggleBtn) toggleBtn.classList.add('active');
+            } else {
+                if (toggleIcon) toggleIcon.innerText = 'table_chart';
+                if (toggleTxt) toggleTxt.innerText = 'Tablo';
+                if (toggleBtn) toggleBtn.classList.remove('active');
+            }
 
             if (mode === 'matrix') {
                 if (btnCards) btnCards.classList.remove('active');
@@ -4543,26 +4800,42 @@
             if (!tabsWrap) return;
 
             const todayDay = new Date().getDay();
+            const dayShorts = ['Pzt', 'Sal', 'Çar', 'Per', 'Cum'];
 
-            let html = `
-                <button class="day-tab-btn${activeScheduleDay === 0 ? ' active' : ''}" onclick="selectScheduleDayTab(0, this)">
-                    <span class="material-symbols-rounded" style="font-size:16px;">calendar_view_week</span>
-                    <span>Tüm Hafta</span>
-                </button>
-            `;
+            let html = '';
 
+            // 1. Hızlı "Bugün" butonu (Eğer hafta içi ise)
+            if (todayDay >= 1 && todayDay <= 5) {
+                const isTodayActive = (activeScheduleDay === todayDay);
+                html += `
+                    <button class="day-tab-btn${isTodayActive ? ' active' : ''}" onclick="selectScheduleDayTab(${todayDay}, this)">
+                        <span class="material-symbols-rounded" style="font-size:16px;">today</span>
+                        <span>Bugün</span>
+                    </button>
+                `;
+            }
+
+            // 2. Hafta içi günleri (Pzt, Sal, Çar, Per, Cum)
             DAYS.forEach((dName, idx) => {
                 const dNum = idx + 1;
                 const isToday = (dNum === todayDay);
                 const isActive = (activeScheduleDay === dNum);
+                const shortName = dayShorts[idx];
 
                 html += `
-                    <button class="day-tab-btn${isActive ? ' active' : ''}" onclick="selectScheduleDayTab(${dNum}, this)">
-                        <span>${dName}</span>
+                    <button class="day-tab-btn${isActive ? ' active' : ''}" onclick="selectScheduleDayTab(${dNum}, this)" title="${dName}">
+                        <span>${shortName}</span>
                         ${isToday ? '<span class="day-tab-today">Bugün</span>' : ''}
                     </button>
                 `;
             });
+
+            // 3. "Tüm Hafta" butonu
+            html += `
+                <button class="day-tab-btn${activeScheduleDay === 0 ? ' active' : ''}" onclick="selectScheduleDayTab(0, this)">
+                    <span>Tüm Hafta</span>
+                </button>
+            `;
 
             tabsWrap.innerHTML = html;
         }
@@ -4580,7 +4853,10 @@
 
             container.classList.toggle('single-day-mode', activeScheduleDay !== 0);
 
-            const todayDay = new Date().getDay();
+            const now = new Date();
+            const todayDay = now.getDay();
+            const currentHM = String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0');
+
             const daysToRender = activeScheduleDay === 0 ? [1, 2, 3, 4, 5] : [activeScheduleDay];
 
             let html = '';
@@ -4591,34 +4867,51 @@
                 const groupedLessons = getGroupedDayLessons(dayNum);
                 const totalHours = groupedLessons.reduce((sum, g) => sum + g.hoursCount, 0);
 
-                if (!groupedLessons.length) return;
+                if (!groupedLessons.length) {
+                    if (activeScheduleDay !== 0) {
+                        html += `
+                            <div class="card day-card" style="text-align:center; padding:36px 20px;">
+                                <span class="material-symbols-rounded" style="font-size:38px; color:var(--text-muted); margin-bottom:8px;">free_cancellation</span>
+                                <div style="font-size:1.05rem; font-weight:750; color:var(--text-main); margin-bottom:4px;">${dayName} Günü Ders Yok</div>
+                                <div style="font-size:0.84rem; font-weight:550; color:var(--text-muted);">Bu günde ders programınızda kayıtlı ders bulunmamaktadır.</div>
+                            </div>
+                        `;
+                    }
+                    return;
+                }
 
                 html += `
-                    <div class="card day-card${isToday ? ' today' : ''}" style="margin-bottom:0;">
+                    <div class="card day-card${isToday ? ' today' : ''}">
                         <div class="day-title">
-                            <span>${dayName} <span style="font-size:0.78rem; font-weight:600; color:var(--text-muted);">(${groupedLessons.length} Ders • ${totalHours} Saat)</span></span>
-                            ${isToday ? '<span class="cat-tag cat-etkinlik">Bugün</span>' : ''}
+                            <div>
+                                <span>${dayName}</span>
+                                <span class="day-title-sub">(${groupedLessons.length} Ders • ${totalHours} Saat)</span>
+                            </div>
+                            ${isToday ? '<span class="day-tab-today" style="font-size:0.72rem; padding:2px 8px;">Bugün</span>' : ''}
                         </div>
-                        ${groupedLessons.map(l => `
-                            <div class="lesson-card-simple lesson-card" data-day="${l.day}" data-start="${l.start}" data-end="${l.end}">
+                        ${groupedLessons.map(l => {
+                            const isLiveNow = (isToday && currentHM >= l.start && currentHM < l.end);
+                            return `
+                            <div class="lesson-card-simple lesson-card${isLiveNow ? ' live-now' : ''}" data-day="${l.day}" data-start="${l.start}" data-end="${l.end}">
                                 <div class="lesson-time-pill">
-                                    <span>${l.start}</span>
-                                    <span style="opacity:0.65; font-size:0.68rem;">${l.end}</span>
+                                    <span class="lesson-time-start">${l.start}</span>
+                                    <span class="lesson-time-end">${l.end}</span>
                                     <span class="lesson-hours-tag">${l.hoursCount} Saat</span>
                                 </div>
                                 <div class="lesson-body-simple">
                                     <div class="lesson-top-badges">
                                         <span class="lesson-code-badge">${sanitizeHTML(l.parsed.code)}</span>
                                         <span class="lesson-type-badge ${l.parsed.typeClass}">${sanitizeHTML(l.parsed.typeLabel)}</span>
+                                        ${isLiveNow ? '<span class="lesson-live-pill">🟢 Şu An Bu Derstesiniz</span>' : ''}
                                     </div>
                                     <div class="lesson-title-simple">${sanitizeHTML(l.parsed.title)}</div>
                                     <div class="lesson-meta-simple">
-                                        <span><span class="material-symbols-rounded" style="font-size:14px;">meeting_room</span> ${sanitizeHTML(l.parsed.room)}</span>
-                                        <span><span class="material-symbols-rounded" style="font-size:14px;">person</span> ${sanitizeHTML(l.parsed.instructor)}</span>
+                                        <span><span class="material-symbols-rounded" style="font-size:15px; color:var(--primary);">meeting_room</span> ${sanitizeHTML(l.parsed.room)}</span>
+                                        <span><span class="material-symbols-rounded" style="font-size:15px; color:var(--primary);">person</span> ${sanitizeHTML(l.parsed.instructor)}</span>
                                     </div>
                                 </div>
                             </div>
-                        `).join('')}
+                        `;}).join('')}
                     </div>
                 `;
             });
