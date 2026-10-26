@@ -1,5 +1,5 @@
 {
-  "lastSyncedAt": "2026-10-26T04:59:25.266Z",
+  "lastSyncedAt": "2026-10-26T10:45:31.686Z",
   "portalUrl": "https://ukey.uludag.edu.tr/Home",
   "urgentNotifications": [
     {
@@ -615,6 +615,32 @@
           "origName": "elektronik_meslek_bilgisi_ve_güvenliği.rar",
           "sizeBytes": 1653819,
           "contentType": "application/rar",
+          "externalUrl": ""
+        },
+        {
+          "title": "arıza bulma yöntemleri",
+          "category": "Referans",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/ELNZ101_2.pdf",
+          "origName": "KET ARIZA BULMA YÖNTEMLERİ r4 .pdf",
+          "sizeBytes": 6881600,
+          "contentType": "application/pdf",
+          "externalUrl": ""
+        },
+        {
+          "title": "CAN BUS nedir?. Nasıl Çalışır?",
+          "category": "Referans",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/ELNZ101_3.pdf",
+          "origName": "KET CANBUS r5.pdf",
+          "sizeBytes": 3966674,
+          "contentType": "application/pdf",
           "externalUrl": ""
         }
       ],
@@ -1991,5 +2017,5 @@
     "i": "S/d/32GLvWQhn9xh",
     "c": "rfov+UN6Gp7RJmW2RMhJQM58Vogx6gGYLHmDa/QWe1sYaPFCsU/+LQBb0PddHS3Wxtg6J5qZLA/mZysz5j52P082RVNV3rpJTOZs6cGtkEyQl0/GA5u8qw0gO7bszI9vEgbUSSTT/7WXmm8oJtnZK1qvtXI="
   },
-  "lastDataChangeAt": "2026-10-25T21:55:48.431Z"
+  "lastDataChangeAt": "2026-10-26T10:45:31.694Z"
 }
