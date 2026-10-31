@@ -1821,6 +1821,265 @@
             }
         }
 
+    
+        /* ==========================================================================
+           YENİLENMİŞ MODERN "VERİLERİ YENİLE" BUTONU & MOBİL ÇAKIŞMA ÖNLEYİCİ
+           ========================================================================== */
+        .ukey-refresh-btn, #btn-dash-ukey-refresh {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            padding: 7px 16px;
+            border-radius: 999px;
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            font-family: 'PT Serif', Georgia, serif;
+            font-size: 0.82rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            white-space: nowrap;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+        .ukey-refresh-btn:hover, #btn-dash-ukey-refresh:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--primary-soft);
+        }
+        .ukey-refresh-btn:active, #btn-dash-ukey-refresh:active {
+            transform: scale(0.97);
+        }
+        .ukey-refresh-btn.is-syncing .material-symbols-rounded,
+        #btn-dash-ukey-refresh.is-syncing .material-symbols-rounded,
+        .is-syncing .material-symbols-rounded {
+            animation: ukeyModernSpin 0.75s linear infinite;
+        }
+        @keyframes ukeyModernSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* EVRENSEL METİN VE SATIR YÜKSEKLİĞİ İYİLEŞTİRMESİ (PT SERIF ÇAKIŞMA ENGELLEYİCİ) */
+        h1, h2, h3, h4, h5, h6 {
+            line-height: 1.35 !important;
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
+        p, span, div {
+            overflow-wrap: break-word;
+        }
+        .header-date, .card-subtitle, .lesson-meta-simple, .cal-simple-meta, .ukey-sync-sub, .up-sub {
+            line-height: 1.4 !important;
+        }
+
+        /* MOBİLDE YAZILARIN ÜST ÜSTE GİRMESİNİ ENGELLEYEN KESİN ÇÖZÜM */
+        @media (max-width: 768px) {
+            /* Üst Başlık */
+            .top-header {
+                height: auto !important;
+                min-height: 48px;
+                padding-bottom: 10px !important;
+                margin-bottom: 14px !important;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            .header-left {
+                flex: 1;
+                min-width: 0;
+            }
+            .page-title {
+                font-size: 1.2rem !important;
+                line-height: 1.3 !important;
+                margin-bottom: 2px;
+            }
+            .header-date {
+                font-size: 0.78rem !important;
+                line-height: 1.35 !important;
+            }
+
+            /* Sayaç Kartı Rakam & Etiket */
+            .timer-boxes {
+                gap: 6px !important;
+            }
+            .t-box {
+                padding: 10px 4px !important;
+            }
+            .t-val {
+                font-size: 1.35rem !important;
+                line-height: 1.25 !important;
+                margin-bottom: 4px !important;
+                display: block;
+            }
+            .t-lbl {
+                font-size: 0.65rem !important;
+                line-height: 1.2 !important;
+                margin-top: 0 !important;
+                display: block;
+            }
+
+            /* Ana Sayfa UKEY Ders Satırları */
+            .dash-ukey-course-row {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                padding: 12px 14px !important;
+                gap: 10px !important;
+            }
+            .dash-ukey-course-left {
+                width: 100% !important;
+                gap: 10px !important;
+            }
+            .dash-ukey-course-name {
+                white-space: normal !important;
+                word-break: break-word !important;
+                line-height: 1.4 !important;
+                font-size: 0.92rem !important;
+            }
+            .dash-ukey-course-inst {
+                line-height: 1.35 !important;
+                margin-top: 3px !important;
+                font-size: 0.78rem !important;
+            }
+            .dash-ukey-course-chips {
+                width: 100% !important;
+                justify-content: flex-start !important;
+                flex-wrap: wrap !important;
+                gap: 6px !important;
+                padding-top: 8px !important;
+                border-top: 1px dashed var(--border) !important;
+            }
+
+            /* Yaklaşan Tarihler Kartları */
+            .up-card-item {
+                flex-direction: row !important;
+                align-items: flex-start !important;
+                gap: 12px !important;
+                padding: 12px !important;
+            }
+            .up-date-day {
+                line-height: 1.2 !important;
+                margin-bottom: 2px !important;
+            }
+            .up-name {
+                white-space: normal !important;
+                word-break: break-word !important;
+                line-height: 1.4 !important;
+                font-size: 0.88rem !important;
+            }
+            .up-sub {
+                line-height: 1.35 !important;
+                margin-top: 4px !important;
+                font-size: 0.78rem !important;
+            }
+
+            /* Ders Programı Kartları */
+            .lesson-card-simple {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                padding: 12px 14px !important;
+                gap: 10px !important;
+            }
+            .lesson-time-pill {
+                flex-direction: row !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                width: 100% !important;
+                padding: 6px 12px !important;
+                margin-bottom: 2px !important;
+            }
+            .lesson-time-start {
+                line-height: 1.2 !important;
+                font-size: 0.95rem !important;
+            }
+            .lesson-title-simple {
+                font-size: 1rem !important;
+                line-height: 1.45 !important;
+                word-break: break-word !important;
+                margin-bottom: 6px !important;
+            }
+            .lesson-meta-simple {
+                margin-top: 6px !important;
+                gap: 12px !important;
+                line-height: 1.4 !important;
+            }
+
+            /* Akademik Takvim Kartları */
+            .cal-simple-item {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                padding: 12px 14px !important;
+                gap: 10px !important;
+            }
+            .cal-simple-date-day {
+                line-height: 1.2 !important;
+                margin-bottom: 2px !important;
+            }
+            .cal-simple-title {
+                line-height: 1.45 !important;
+                word-break: break-word !important;
+                font-size: 0.94rem !important;
+            }
+            .cal-simple-meta {
+                margin-top: 4px !important;
+                line-height: 1.4 !important;
+            }
+            .cal-simple-right {
+                width: 100% !important;
+                justify-content: space-between !important;
+                padding-top: 8px !important;
+                border-top: 1px dashed var(--border) !important;
+            }
+
+            /* UKEY Portalı */
+            .ukey-sync-banner {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 12px !important;
+                padding: 12px 14px !important;
+            }
+            .ukey-sync-texts {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 3px !important;
+                line-height: 1.4 !important;
+            }
+            .ukey-sync-title {
+                line-height: 1.35 !important;
+                font-size: 0.92rem !important;
+            }
+            .ukey-sync-sub {
+                line-height: 1.35 !important;
+                font-size: 0.78rem !important;
+            }
+            .ukey-sync-actions {
+                width: 100% !important;
+            }
+            .ukey-refresh-btn {
+                width: 100% !important;
+                justify-content: center !important;
+                padding: 9px 16px !important;
+                font-size: 0.86rem !important;
+            }
+            .ukey-course-card {
+                padding: 14px !important;
+            }
+            .ukey-course-title {
+                font-size: 1.05rem !important;
+                line-height: 1.45 !important;
+                word-break: break-word !important;
+                margin-bottom: 6px !important;
+            }
+            .ukey-course-inst {
+                font-size: 0.84rem !important;
+                line-height: 1.4 !important;
+                margin-bottom: 12px !important;
+            }
+        }
+
     </style>
 
     <script>
@@ -2014,7 +2273,7 @@
                                 <p class="card-subtitle" id="dash-ukey-sync-sub">Canlı senkronize ders materyalleri ve aktif ödevler</p>
                             </div>
                             <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
-                                <button type="button" class="btn btn-tonal btn-mini" id="btn-dash-ukey-refresh" onclick="refreshUkeyData(false)" title="UKEY sunucusundan en yeni verileri şimdi çek">
+                                <button type="button" class="ukey-refresh-btn" id="btn-dash-ukey-refresh" onclick="refreshUkeyData(false)" title="UKEY sunucusundan en yeni verileri şimdi çek">
                                     <span class="material-symbols-rounded" id="dash-ukey-refresh-icon" style="font-size:15px;">sync</span>
                                     <span id="dash-ukey-refresh-text">Verileri Yenile</span>
                                 </button>
@@ -3812,8 +4071,8 @@
             const setUIState = (syncing, labelText) => {
                 if (btn) btn.classList.toggle('is-syncing', syncing);
                 if (dashBtn) {
+                    dashBtn.classList.toggle('is-syncing', syncing);
                     dashBtn.disabled = syncing;
-                    dashBtn.style.opacity = syncing ? '0.75' : '1';
                 }
                 if (txt && labelText) txt.innerText = labelText;
                 if (dashTxt && labelText) dashTxt.innerText = labelText;
