@@ -1,8 +1,7 @@
-const CACHE = 'etp-cache-v35';
+const CACHE = 'etp-cache-v36';
 const ASSETS = [
   './',
   './index.html',
-  './admin.html',
   './ogrenci.html',
   './logo.png',
   './icons-subset.woff2',

@@ -1640,6 +1640,187 @@
             .card { border: 1px solid #ccc !important; box-shadow: none !important; }
         }
 
+    
+
+        /* ==========================================================================
+           BİLGİSAYAR VE TELEFONA ÖZEL AYRIŞTIRILMIŞ DÜZEN KURALLARI
+           ========================================================================== */
+
+        /* BİLGİSAYAR / MASAÜSTÜ ÖZEL DÜZEN (> 768px) */
+        @media (min-width: 769px) {
+            .sidebar {
+                display: flex !important;
+                width: 240px;
+                position: fixed;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                height: 100vh;
+                z-index: 100;
+            }
+            .app-container {
+                margin-left: 240px;
+                width: calc(100% - 240px);
+            }
+            .main-content {
+                padding: 28px 40px 60px !important;
+                max-width: 1240px;
+                margin: 0 auto;
+            }
+            .top-header {
+                height: 60px;
+                padding-bottom: 14px;
+                margin-bottom: 24px;
+            }
+            .menu-btn {
+                display: none !important;
+            }
+            .drawer, .drawer-overlay {
+                display: none !important;
+            }
+            .mobile-bottom-nav {
+                display: none !important;
+            }
+            .lower-grid {
+                display: grid;
+                grid-template-columns: 1.15fr 0.85fr;
+                gap: 22px;
+            }
+            .ukey-courses-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+            .sched-cards-container {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+        }
+
+        /* TELEFON / MOBİL ÖZEL DÜZEN (<= 768px) */
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none !important;
+            }
+            .drawer, .drawer-overlay {
+                display: none !important;
+            }
+            .app-container {
+                margin-left: 0 !important;
+                width: 100% !important;
+            }
+            .main-content {
+                padding: 12px 12px calc(76px + env(safe-area-inset-bottom)) !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            .top-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding-bottom: 10px;
+                margin-bottom: 14px;
+            }
+            .menu-btn {
+                display: none !important; /* Tüm yönlendirme alttaki 4 sekmeli barda */
+            }
+            .page-title {
+                font-size: 1.15rem !important;
+            }
+            .header-date {
+                font-size: 0.76rem !important;
+            }
+
+            /* TELEFON SABİT ALT GEZİNME BARI */
+            .mobile-bottom-nav {
+                display: grid !important;
+                position: fixed;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 1200;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 2px;
+                padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
+                background: var(--bg-surface);
+                border-top: 1px solid var(--border);
+                box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
+            }
+            .mob-nav-btn {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2px;
+                padding: 6px 2px;
+                border-radius: var(--radius-sm);
+                border: none;
+                background: transparent;
+                color: var(--text-muted);
+                font-size: 0.72rem;
+                font-weight: 700;
+                cursor: pointer;
+            }
+            .mob-nav-btn .material-symbols-rounded {
+                font-size: 22px;
+            }
+            .mob-nav-btn.active {
+                color: var(--primary);
+                background: var(--primary-soft);
+            }
+
+            /* TELEFONDA KARTLAR VE TAŞMA ENGELLEME */
+            .card {
+                padding: 14px !important;
+                margin-bottom: 14px !important;
+            }
+            .lower-grid {
+                display: flex;
+                flex-direction: column;
+                gap: 14px;
+            }
+            .ukey-courses-grid {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+            }
+            .timer-card {
+                padding: 14px !important;
+            }
+            .timer-boxes {
+                gap: 6px !important;
+            }
+            .t-val {
+                font-size: 1.3rem !important;
+            }
+            .t-lbl {
+                font-size: 0.65rem !important;
+            }
+            .lesson-card-simple {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 12px;
+                gap: 8px;
+            }
+            .lesson-time-pill {
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+                min-width: 0;
+                padding: 5px 8px;
+            }
+            .sched-top-bar {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+            .sched-actions {
+                justify-content: space-between;
+                width: 100%;
+            }
+        }
+
     </style>
 
     <script>
@@ -1659,12 +1840,7 @@
                     if (m) m.setAttribute('content', '#111625');
                 }
 
-                // Bakım modu anlık kontrolü (Sıfır gecikmeyle tak diye gelmesi için)
-                var isMaint = localStorage.getItem('cached_maint_mode') === 'true';
-                var hasToken = !!localStorage.getItem('gh_admin_token');
-                if (isMaint && !hasToken) {
-                    document.documentElement.classList.add('in-maintenance-mode');
-                }
+
             } catch (e) {}
         })();
     </script>
@@ -1672,135 +1848,6 @@
 <body>
     <!-- SAYFA YÜKLEME VE GEÇİŞ İLERLEME ÇUBUĞU -->
     <div id="page-loader" class="page-loader-bar" aria-hidden="true"></div>
-
-    <!-- YÖNETİCİ BAKIM MODU UYARI BARI (YALNIZCA YÖNETİCİYE GÖZÜKÜR) -->
-    <div id="admin-maintenance-bar" class="admin-maintenance-bar" style="display:none;">
-        <div class="admin-bar-content">
-            <span class="material-symbols-rounded" style="color:#fef08a;">engineering</span>
-            <span><strong>Site Bakım Modunda!</strong> Normal ziyaretçilere tam ekran bakım sayfası gösterilmektedir.</span>
-        </div>
-        <div class="admin-bar-actions">
-            <button class="btn-admin-bar-off" onclick="turnOffMaintenanceFromBar()">
-                <span class="material-symbols-rounded" style="font-size:16px;">power_settings_new</span>
-                <span>Bakımı Kapat</span>
-            </button>
-            <a href="admin.html" class="btn-admin-bar-link">
-                <span class="material-symbols-rounded" style="font-size:16px;">tune</span>
-                <span>Yönetici Paneli</span>
-            </a>
-        </div>
-    </div>
-
-    <!-- TAM EKRAN BAKIM ÇALIŞMASI EKRANI -->
-    <div id="maintenance-screen" class="maintenance-fullscreen-overlay" style="display:none;" role="dialog" aria-modal="true" aria-label="Bakım Çalışması">
-        <div class="maint-topbar">
-            <div class="maint-brand">
-                <img src="logo.png" alt="BUÜ Logo" class="maint-logo" onerror='this.style.display="none"'>
-                <div class="maint-brand-text">
-                    <strong>Bursa Uludağ Üniversitesi</strong>
-                    <span>Elektronik Teknolojisi Programı</span>
-                </div>
-            </div>
-            <div style="display:flex; align-items:center; gap:8px;">
-                <button class="btn btn-tonal btn-icon" onclick="toggleTheme()" aria-label="Tema Değiştir" title="Açık / Koyu Tema">
-                    <span class="material-symbols-rounded" id="maint-theme-icon">light_mode</span>
-                </button>
-                <button class="btn maint-admin-btn" onclick="openMaintLoginModal()">
-                    <span class="material-symbols-rounded" style="font-size:18px;">admin_panel_settings</span>
-                    <span>Yönetici Girişi</span>
-                </button>
-            </div>
-        </div>
-
-        <div class="maint-body">
-            <div class="maint-card">
-                <div class="maint-icon-wrap">
-                    <span class="material-symbols-rounded maint-gear-spin">construction</span>
-                    <span class="maint-pulse-ring"></span>
-                </div>
-
-                <div class="maint-badge">
-                    <span class="maint-dot"></span>
-                    <span>Sistem Bakım Çalışması</span>
-                </div>
-
-                <h1 id="maint-title" class="maint-title">Bakım Yapılmaktadır</h1>
-                <p id="maint-desc" class="maint-desc">Bakım yapılmaktadır daha sonra tekrar deneyiniz.</p>
-
-                <div class="maint-info-box">
-                    <div class="maint-info-item">
-                        <span class="material-symbols-rounded" style="color:var(--primary); font-size:18px;">published_with_changes</span>
-                        <span>Veri tabanı ve sistem içerikleri güncellenmektedir.</span>
-                    </div>
-                    <div class="maint-info-item">
-                        <span class="material-symbols-rounded" style="color:var(--accent); font-size:18px;">verified</span>
-                        <span>Çalışma bittiğinde site otomatik olarak erişime açılacaktır.</span>
-                    </div>
-                </div>
-
-                <div class="maint-actions">
-                    <button class="btn btn-primary" onclick="window.location.reload()">
-                        <span class="material-symbols-rounded">refresh</span>
-                        <span>Sayfayı Yenile</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- BAKIM EKRANINDAKİ YÖNETİCİ GİRİŞ MODALİ (TAM EKRAN VE EN ÜSTTE) -->
-    <div id="maint-login-modal" class="maint-login-overlay" style="display:none;" onclick="if(event.target===this)closeMaintLoginModal()">
-        <div class="maint-login-modal" style="max-width:440px; text-align:left;">
-            <button class="ann-modal-close" onclick="closeMaintLoginModal()" aria-label="Kapat">
-                <span class="material-symbols-rounded">close</span>
-            </button>
-            <div style="display:flex; align-items:center; gap:14px; margin-bottom:18px;">
-                <div style="width:48px; height:48px; border-radius:14px; background:var(--primary-soft); color:var(--primary); display:flex; align-items:center; justify-content:center;">
-                    <span class="material-symbols-rounded" style="font-size:28px;">shield_person</span>
-                </div>
-                <div>
-                    <h3 style="font-size:1.15rem; font-weight: 600; margin:0;">Yönetici Girişi</h3>
-                </div>
-            </div>
-
-            <div style="margin-bottom:16px;">
-                <label style="font-size:0.84rem; font-weight:700; color:var(--text-muted); margin-bottom:6px; display:block;">Yönetici Güvenlik Şifresi</label>
-                <div style="position:relative; display:flex; align-items:center;">
-                    <span class="material-symbols-rounded" style="position:absolute; left:12px; color:var(--text-muted); font-size:20px; pointer-events:none;">lock</span>
-                    <input type="password" id="maint-token-input" class="form-control" placeholder="••••••••••••••••••••" style="width:100%; padding:10px 42px 10px 40px; background:var(--bg-surface-elevated); border:1px solid var(--border); border-radius:10px; color:var(--text-main); font-size:0.92rem;" onkeydown="if(event.key==='Enter')loginFromMaintModal()">
-                    <button type="button" onclick="toggleMaintPassVisibility()" style="position:absolute; right:10px; background:none; border:none; color:var(--text-muted); cursor:pointer; display:flex; padding:4px;" aria-label="Şifre göster">
-                        <span class="material-symbols-rounded" id="maint-pass-eye" style="font-size:20px;">visibility</span>
-                    </button>
-                </div>
-            </div>
-
-            <div id="maint-login-error" style="display:none; color:var(--danger); font-size:0.82rem; margin-bottom:14px; font-weight:700;"></div>
-
-            <div style="display:flex; flex-direction:column; gap:10px;">
-                <button class="btn btn-primary" id="maint-login-btn" style="width:100%;" onclick="loginFromMaintModal()">
-                    <span class="material-symbols-rounded">login</span>
-                    <span>Siteye Giriş Yap</span>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- BASİT İLK GİRİŞ DUYURUSU (UKEY SİSTEMİ ENTEGRE EDİLDİ) -->
-    <div id="ann-popup" class="ukey-simple-popup-overlay" role="dialog" aria-modal="true" aria-label="UKEY Sistemi Entegre Edildi" onclick="if(event.target===this)closeAnnPopup()">
-        <div class="ukey-simple-popup-box">
-            <button class="ukey-simple-popup-close" onclick="closeAnnPopup()" aria-label="Kapat">
-                <span class="material-symbols-rounded" style="font-size:18px;">close</span>
-            </button>
-            <div class="ukey-simple-popup-icon">
-                <span class="material-symbols-rounded" style="font-size:30px;">school</span>
-            </div>
-            <h2 class="ukey-simple-popup-title" id="popup-title">UKEY Sistemi Entegre Edildi</h2>
-            <button class="ukey-simple-popup-btn" onclick="goToUkeyFromPopup()">
-                <span id="popup-btn-text">Görüntülemek İçin Tıklayınız</span>
-                <span class="material-symbols-rounded" style="font-size:18px;">arrow_forward</span>
-            </button>
-        </div>
-    </div>
 
     <!-- İOS & GENEL PWA YÜKLEME REHBERİ MODALİ -->
     <div id="ios-install-modal" class="ann-overlay" style="display:none;" onclick="if(event.target===this)closeIosInstallModal()">
@@ -1870,12 +1917,7 @@
                 <span class="nav-badge ukey-nav-pill" id="ukey-nav-badge-m">8 Ders</span>
             </div>
         </div>
-        <div class="drawer-footer">
-            <a href="admin.html" class="nav-item" style="color:var(--primary);">
-                <span class="material-symbols-rounded">shield_person</span><span class="nav-label">Yönetici Girişi</span>
-            </a>
-        </div>
-    </aside>
+        </aside>
 
     <div class="app-container">
 
@@ -1905,12 +1947,7 @@
                     <span class="nav-badge ukey-nav-pill" id="ukey-nav-badge-d">8 Ders</span>
                 </div>
             </div>
-            <div class="sidebar-footer">
-                <a href="admin.html" class="nav-item" style="color:var(--primary);">
-                    <span class="material-symbols-rounded">shield_person</span><span class="nav-label">Yönetici Girişi</span>
-                </a>
-            </div>
-        </nav>
+            </nav>
 
         <!-- MAIN CONTENT AREA -->
         <main class="main-content">
@@ -2362,41 +2399,6 @@
             }
         }
 
-        /* BASİT İLK GİRİŞ DUYURUSU YÖNETİMİ (UKEY SİSTEMİ ENTEGRE EDİLDİ) */
-        function checkAnnPopup() {
-            if (siteSettings.popupEnabled === false) return;
-            const dismissed = sessionStorage.getItem('ukey_popup_closed');
-            if (!dismissed) {
-                if (siteSettings.popupTitle && document.getElementById('popup-title')) {
-                    document.getElementById('popup-title').innerText = siteSettings.popupTitle;
-                }
-                if (siteSettings.popupButtonText && document.getElementById('popup-btn-text')) {
-                    document.getElementById('popup-btn-text').innerText = siteSettings.popupButtonText;
-                }
-
-                const popup = document.getElementById('ann-popup');
-                if (popup) {
-                    popup.style.display = 'flex';
-                    document.body.classList.add('modal-open');
-                }
-            }
-        }
-
-        function closeAnnPopup() {
-            const popup = document.getElementById('ann-popup');
-            if (popup) popup.style.display = 'none';
-            document.body.classList.remove('modal-open');
-            sessionStorage.setItem('ukey_popup_closed', '1');
-        }
-
-        function goToUkeyFromPopup() {
-            closeAnnPopup();
-            switchView('ukey');
-        }
-        function goToScheduleFromPopup() {
-            goToUkeyFromPopup();
-        }
-
         /* TEMA YÖNETİMİ (Otomatik Algılama + Manuel Açık/Koyu Değiştirme) */
         function syncThemeUI() {
             const isLight = document.documentElement.classList.contains('light-mode');
@@ -2586,7 +2588,6 @@
                     if (settings.maintenanceTitle) localStorage.setItem('cached_maint_title', settings.maintenanceTitle);
                     if (settings.maintenanceMessage) localStorage.setItem('cached_maint_msg', settings.maintenanceMessage);
                 } catch(e) {}
-                applySiteSettings();
             }
 
             announcementsData = anns || [];
@@ -2609,7 +2610,6 @@
             ensureViewRendered(activeViewName);
 
             updateAnnBadge();
-            checkAnnPopup();
             setPageProgress(100);
 
             // 2. UKEY VERİSİNİ ARKA PLANDA HER ZAMAN GÜNCEL ÇEK VE GEREKİRSE BULUT MOTORUNU OTOMATİK TETİKLE
@@ -2629,173 +2629,6 @@
                     }
                 }
             });
-        }
-
-        function checkMaintenanceMode() {
-            const maintScreen = document.getElementById('maintenance-screen');
-            const adminBar = document.getElementById('admin-maintenance-bar');
-            if (!maintScreen) return;
-
-            let isMaint = (siteSettings.maintenanceMode === true);
-            if (siteSettings.maintenanceMode === undefined) {
-                isMaint = (localStorage.getItem('cached_maint_mode') === 'true');
-            }
-
-            const userToken = localStorage.getItem('gh_admin_token') || '';
-
-            if (isMaint) {
-                if (userToken) {
-                    // Yönetici oturumu açık: Bakım ekranını kapat, siteyi göster ve üst barı aç
-                    document.documentElement.classList.remove('in-maintenance-mode');
-                    maintScreen.style.display = 'none';
-                    document.body.classList.remove('modal-open');
-                    if (adminBar) adminBar.style.display = 'flex';
-                } else {
-                    // Normal ziyaretçi: Tam ekran bakım modunu aç!
-                    document.documentElement.classList.add('in-maintenance-mode');
-                    maintScreen.style.display = 'flex';
-                    document.body.classList.add('modal-open');
-                    if (adminBar) adminBar.style.display = 'none';
-
-                    const titleEl = document.getElementById('maint-title');
-                    const descEl = document.getElementById('maint-desc');
-                    const titleText = siteSettings.maintenanceTitle || localStorage.getItem('cached_maint_title');
-                    const descText = siteSettings.maintenanceMessage || localStorage.getItem('cached_maint_msg');
-                    if (titleEl && titleText) titleEl.innerText = titleText;
-                    if (descEl && descText) descEl.innerText = descText;
-                }
-            } else {
-                document.documentElement.classList.remove('in-maintenance-mode');
-                maintScreen.style.display = 'none';
-                document.body.classList.remove('modal-open');
-                if (adminBar) adminBar.style.display = 'none';
-            }
-        }
-
-        function applySiteSettings() {
-            checkMaintenanceMode();
-        }
-
-        function openMaintLoginModal() {
-            const m = document.getElementById('maint-login-modal');
-            const err = document.getElementById('maint-login-error');
-            const inp = document.getElementById('maint-token-input');
-            if (err) err.style.display = 'none';
-            if (inp) { inp.value = ''; inp.type = 'password'; }
-            const eye = document.getElementById('maint-pass-eye');
-            if (eye) eye.innerText = 'visibility';
-            if (m) {
-                m.style.zIndex = '1000005';
-                m.style.display = 'flex';
-            }
-            setTimeout(() => { if (inp) inp.focus(); }, 120);
-        }
-
-        function closeMaintLoginModal() {
-            const m = document.getElementById('maint-login-modal');
-            if (m) m.style.display = 'none';
-        }
-
-        function toggleMaintPassVisibility() {
-            const inp = document.getElementById('maint-token-input');
-            const eye = document.getElementById('maint-pass-eye');
-            if (!inp || !eye) return;
-            if (inp.type === 'password') {
-                inp.type = 'text';
-                eye.innerText = 'visibility_off';
-            } else {
-                inp.type = 'password';
-                eye.innerText = 'visibility';
-            }
-        }
-
-        async function loginFromMaintModal() {
-            const inp = document.getElementById('maint-token-input');
-            const err = document.getElementById('maint-login-error');
-            const btn = document.getElementById('maint-login-btn');
-            const token = (inp.value || '').trim();
-
-            if (!token) {
-                if (err) { err.innerText = 'Lütfen yönetici güvenlik şifrenizi giriniz.'; err.style.display = 'block'; }
-                return;
-            }
-
-            btn.disabled = true;
-            btn.innerHTML = '<span class="material-symbols-rounded">sync</span> Kimlik Doğrulanıyor...';
-
-            let valid = false;
-            try {
-                const res = await fetch("https://api.github.com/user", {
-                    headers: { "Authorization": "token " + token }
-                });
-                valid = res.ok;
-            } catch (e) {
-                valid = (token.length >= 8);
-            }
-
-            if (valid) {
-                localStorage.setItem('gh_admin_token', token);
-                document.documentElement.classList.remove('in-maintenance-mode');
-                closeMaintLoginModal();
-                showToast('Yönetici girişi başarılı! Site erişiminize açıldı.');
-                checkMaintenanceMode();
-            } else {
-                if (err) {
-                    err.innerText = 'Hatalı şifre veya yetkisiz erişim. Lütfen tekrar deneyiniz.';
-                    err.style.display = 'block';
-                }
-            }
-            btn.disabled = false;
-            btn.innerHTML = '<span class="material-symbols-rounded">login</span> Siteye Giriş Yap';
-        }
-
-        async function turnOffMaintenanceFromBar() {
-            if (!confirm('Bakım modunu kapatmak ve siteyi tüm ziyaretçilere açmak istediğinize emin misiniz?')) return;
-            const token = localStorage.getItem('gh_admin_token');
-            if (!token) {
-                showToast('Yönetici oturumunuz bulunamadı. Lütfen giriş yapınız.');
-                return;
-            }
-
-            siteSettings.maintenanceMode = false;
-            try { localStorage.setItem('cached_maint_mode', 'false'); } catch(e) {}
-            document.documentElement.classList.remove('in-maintenance-mode');
-            showToast('Bakım modu kapatılıyor...');
-
-            try {
-                const getRes = await fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/ayarlar.json?t=${Date.now()}`, {
-                    headers: { 'Authorization': 'token ' + token }
-                });
-                let sha;
-                if (getRes.ok) {
-                    const data = await getRes.json();
-                    sha = data.sha;
-                }
-                const body = {
-                    message: 'Bakım Modu Kapatıldı (Yönetici Hızlı Buton)',
-                    content: utf8_to_b64(JSON.stringify(siteSettings, null, 2))
-                };
-                if (sha) body.sha = sha;
-
-                const putRes = await fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/ayarlar.json`, {
-                    method: 'PUT',
-                    headers: {
-                        'Authorization': 'token ' + token,
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(body)
-                });
-
-                if (putRes.ok) {
-                    showToast('Bakım modu kapatıldı! Site herkese açıldı.');
-                } else {
-                    showToast('GitHub güncellenemedi, yerel oturumda bakım kapatıldı.');
-                }
-            } catch (e) {
-                showToast('Ağ hatası: yerel oturumda bakım kapatıldı.');
-            }
-
-            checkMaintenanceMode();
         }
 
         function sanitizeHTML(str) {
@@ -4225,184 +4058,71 @@
 
         /* 1. DERSLERİM & İÇERİKLER MODÜLÜ (LİSTE VEYA DETAY GÖRÜNÜMÜ) */
         function renderUkeyCourses(container, courses, totalMaterials, totalHomeworks) {
-            const urgentList = ukeyPortalData.urgentNotifications || [];
             const totalAkts = courses.reduce((acc, c) => acc + (c.akts || 0), 0);
-            const totalStreams = (ukeyPortalData.meetingsSummary && ukeyPortalData.meetingsSummary.recordedStreams) ? ukeyPortalData.meetingsSummary.recordedStreams.length : 0;
 
-            // ACİL GÖREV BİLDİRİMİ (VARSA EN ÜSTTE)
-            let urgentHtml = '';
-            if (urgentList.length > 0) {
-                const u = urgentList[0];
-                urgentHtml = `
-                    <div class="ukey-urgent-banner">
-                        <div style="display:flex; align-items:flex-start; gap:14px; flex:1; min-width:0;">
-                            <div style="width:44px; height:44px; border-radius:12px; background:rgba(239,68,68,0.18); color:var(--danger); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-                                <span class="material-symbols-rounded" style="font-size:24px;">assignment_late</span>
-                            </div>
-                            <div>
-                                <div style="display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:4px;">
-                                    <span style="padding:3px 10px; border-radius:999px; font-size:0.75rem; font-weight: 700; background:rgba(239,68,68,0.22); color:var(--danger);">${sanitizeHTML(u.badgeText || 'Aktif Ödev Teslimi')}</span>
-                                    <span style="font-size:0.8rem; font-weight: 700; color:var(--warning);">Son Teslim: ${sanitizeHTML(u.end)}</span>
-                                </div>
-                                <h4 class="ukey-urgent-title">${sanitizeHTML(u.courseCode)} • ${sanitizeHTML(u.title)}</h4>
-                                <p class="ukey-urgent-desc">${sanitizeHTML(u.description)} (${sanitizeHTML(u.instructor)})</p>
-                            </div>
-                        </div>
-                        <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
-                            <button class="btn btn-primary btn-mini" style="font-weight:700;" onclick="openUkeyHomeworkModal('${u.courseCode || 'ELNZ101'}', 0)">
-                                <span class="material-symbols-rounded" style="font-size:16px;">visibility</span>
-                                <span>Ödev Detayı</span>
-                            </button>
-                            <button class="btn btn-tonal btn-mini" style="font-weight:700;" onclick="openUkeyCourse('${u.courseCode || 'ELNZ101'}', 'odevler')">
-                                <span>Derse Git</span>
-                            </button>
-                        </div>
-                    </div>
-                `;
-            }
-
-            // EĞER DETAY GÖRÜNÜMÜNDEYSE (BİR DERS AÇIKSA)
+            // DETAY GÖRÜNÜMÜ: SEÇİLEN DERSİN PLANI VE DOSYALARI
             if (ukeyCourseViewMode === 'detail') {
                 const course = courses.find(c => c.code === ukeySelectedCourseCode) || courses[0];
                 ukeySelectedCourseCode = course.code;
 
-                const coursePills = courses.map(c => `
-                    <button class="filter-chip ${c.code === course.code ? 'active' : ''}" style="font-weight:700;" onclick="openUkeyCourse('${c.code}', '${ukeySelectedCourseSubTab}')">
-                        ${sanitizeHTML(c.code)}
-                    </button>
-                `).join('');
-
                 const subTabs = [
                     { id: 'icerik', label: '14 Haftalık Plan', icon: 'view_timeline', count: (course.weeks || []).length || 14 },
-                    { id: 'materyaller', label: 'Ders Dosyaları', icon: 'folder_open', count: (course.materials || []).length },
-                    { id: 'odevler', label: 'Ödevler & Sınavlar', icon: 'assignment', count: (course.homeworks || []).length + (course.exams || []).length }
+                    { id: 'materyaller', label: 'Ders Dosyaları', icon: 'folder_open', count: (course.materials || []).length }
                 ];
 
                 let subBodyHtml = '';
 
                 if (ukeySelectedCourseSubTab === 'icerik') {
                     subBodyHtml = `
-                        <div class="ukey-info-grid">
-                            <div class="ukey-info-box"><span>Dersi Veren Hoca</span><strong>${sanitizeHTML(course.instructor || '-')}</strong></div>
-                            <div class="ukey-info-box"><span>AKTS / Ulusal Kredi</span><strong>${course.akts} AKTS • ${course.kredi} Kredi</strong></div>
-                            <div class="ukey-info-box"><span>Ders Saati Dağılımı</span><strong>${course.teori}T + ${course.uygulama}U + ${course.lab}L Saat</strong></div>
-                            <div class="ukey-info-box"><span>Dönem / Seviye</span><strong>1. Yarıyıl (Güz)</strong></div>
+                        <div class="ukey-info-grid" style="margin-bottom:14px;">
+                            <div class="ukey-info-box"><span>Öğretim Elemanı</span><strong>${sanitizeHTML(course.instructor || '-')}</strong></div>
+                            <div class="ukey-info-box"><span>AKTS / Kredi</span><strong>${course.akts} AKTS • ${course.kredi} Kredi</strong></div>
+                            <div class="ukey-info-box"><span>Haftalık Ders Saati</span><strong>${course.teori}T + ${course.uygulama}U + ${course.lab}L</strong></div>
+                            <div class="ukey-info-box"><span>Dönem</span><strong>1. Yarıyıl (Güz)</strong></div>
                         </div>
-                        ${course.purpose ? `
-                            <div class="ukey-info-box" style="margin-bottom:12px;">
-                                <span>Dersin Amacı</span>
-                                <div style="font-size:0.88rem; font-weight:550; color:var(--text-main); line-height:1.55;">${sanitizeHTML(course.purpose)}</div>
-                            </div>
-                        ` : ''}
-                        ${course.references ? `
-                            <div class="ukey-info-box" style="margin-bottom:16px;">
-                                <span>Ders Kaynakları &amp; Materyalleri</span>
-                                <div style="font-size:0.84rem; font-weight:500; color:var(--text-muted); white-space:pre-line;">${sanitizeHTML(course.references)}</div>
-                            </div>
-                        ` : ''}
-                        <h4 style="font-size:1rem; font-weight: 700; margin:16px 0 10px 0; display:flex; align-items:center; gap:8px;">
-                            <span class="material-symbols-rounded" style="color:var(--primary); font-size:20px;">event_note</span>
-                            <span>14 Haftalık Müfredat Konu Dağılımı</span>
+                        <h4 style="font-size:0.95rem; font-weight:700; margin:16px 0 10px 0; color:var(--text-main);">
+                            14 Haftalık Müfredat Konuları
                         </h4>
                         <div>
                             ${(course.weeks || []).map(w => `
-                                <div class="ukey-week-row">
-                                    <div>
-                                        <span class="ukey-week-row-num">${w.week}. Hafta</span>
-                                    </div>
-                                    <div>
-                                        <div style="font-size:0.74rem; color:var(--text-muted); font-weight:700; margin-bottom:2px;">Teorik Konu</div>
-                                        <div class="ukey-week-theory">${sanitizeHTML(w.teorik || 'Ders materyalleri üzerinden takip edilir')}</div>
-                                    </div>
-                                    <div>
-                                        <div style="font-size:0.74rem; color:var(--text-muted); font-weight:700; margin-bottom:2px;">Uygulama / Lab</div>
-                                        <div class="ukey-week-lab">${sanitizeHTML(w.uygulama || '-')}</div>
-                                    </div>
+                                <div class="ukey-week-row" style="display:flex; flex-direction:column; gap:4px; margin-bottom:8px;">
+                                    <div style="font-weight:700; color:var(--primary); font-size:0.86rem;">${w.week}. Hafta</div>
+                                    <div style="font-size:0.86rem; color:var(--text-main);">${sanitizeHTML(w.teorik || 'Ders materyalleri üzerinden takip edilir')}</div>
+                                    ${w.uygulama && w.uygulama !== '-' ? `<div style="font-size:0.78rem; color:var(--text-muted); font-style:italic;">Lab/Uygulama: ${sanitizeHTML(w.uygulama)}</div>` : ''}
                                 </div>
                             `).join('')}
                         </div>
                     `;
-                } else if (ukeySelectedCourseSubTab === 'materyaller') {
+                } else {
                     const mats = course.materials || [];
                     if (mats.length === 0) {
-                        subBodyHtml = '<p style="color:var(--text-muted); font-weight:600; padding:20px 0; text-align:center;">Bu ders için UKEY\'e henüz doküman yüklenmemiştir.</p>';
+                        subBodyHtml = '<p style="color:var(--text-muted); padding:24px 0; text-align:center; font-style:italic;">Bu ders için sisteme yüklenmiş doküman bulunmamaktadır.</p>';
                     } else {
                         subBodyHtml = mats.map(m => renderSingleUkeyMaterialRow(course, m)).join('');
-                    }
-                } else if (ukeySelectedCourseSubTab === 'odevler') {
-                    const hws = course.homeworks || [];
-                    const exs = course.exams || [];
-                    if (hws.length === 0 && exs.length === 0) {
-                        subBodyHtml = '<p style="color:var(--text-muted); font-weight:600; padding:20px 0; text-align:center;">Bu derse ait ödev veya sınav kaydı bulunmamaktadır.</p>';
-                    } else {
-                        subBodyHtml = `
-                            ${hws.map((hw, idx) => {
-                                const isEnded = (hw.submissionStatus || '').includes('Sona Ermiştir');
-                                return `
-                                <div class="ukey-mat-item">
-                                    <div style="flex:1; min-width:0;">
-                                        <div style="display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:6px;">
-                                            <span class="ukey-course-code">${sanitizeHTML(hw.type || 'Ödev')}${hw.week ? ' • ' + sanitizeHTML(hw.week) : ''}</span>
-                                            <span class="ukey-mini-chip ${isEnded ? '' : 'has-hw'}">${isEnded ? 'Teslim Süresi Doldu' : 'Aktif Ödev'}</span>
-                                            <span style="font-size:0.8rem; color:var(--warning); font-weight:700;">${sanitizeHTML(hw.start)} – ${sanitizeHTML(hw.end)}</span>
-                                        </div>
-                                        <div class="ukey-mat-title">${sanitizeHTML(hw.title)}</div>
-                                        <div class="ukey-mat-desc" style="white-space:pre-line;">${sanitizeHTML(hw.description)}</div>
-                                    </div>
-                                    <div>
-                                        <button class="btn btn-primary btn-mini" style="font-weight:700;" onclick="openUkeyHomeworkModal('${course.code}', ${idx})">
-                                            <span class="material-symbols-rounded" style="font-size:16px;">visibility</span>
-                                            <span>Ödev Detayı</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            `;}).join('')}
-                            ${exs.map((ex, eIdx) => `
-                                <div class="ukey-mat-item">
-                                    <div>
-                                        <div class="ukey-mat-title">${sanitizeHTML(ex.name)}</div>
-                                        <div class="ukey-mat-desc">Başlama: ${sanitizeHTML(ex.start)} • Son Giriş: ${sanitizeHTML(ex.lastLogin)} • Süre: ${sanitizeHTML(ex.durationMin)} dk</div>
-                                    </div>
-                                    <button class="btn btn-tonal btn-mini" style="font-weight:700;" onclick="openUkeyExamDetailModal('${course.code}', ${eIdx})">
-                                        <span class="material-symbols-rounded" style="font-size:16px;">info</span>
-                                        <span>Sınav Detayı</span>
-                                    </button>
-                                </div>
-                            `).join('')}
-                        `;
                     }
                 }
 
                 container.innerHTML = `
-                    <button type="button" class="ukey-back-btn" onclick="backToUkeyCourseList()">
-                        <span class="material-symbols-rounded" style="font-size:20px;">arrow_back</span>
-                        <span>Tüm Derslere Dön (8 Ders)</span>
+                    <button type="button" class="btn btn-tonal btn-mini" style="margin-bottom:14px;" onclick="backToUkeyCourseList()">
+                        <span class="material-symbols-rounded" style="font-size:18px;">arrow_back</span>
+                        <span>← Tüm Derslere Dön</span>
                     </button>
 
-                    <div class="card" style="margin-bottom:16px;">
-                        <div style="font-size:0.75rem; font-weight:700; color:var(--text-muted); margin-bottom:8px;">HIZLI DERS SEÇİMİ</div>
-                        <div class="filter-chips-scroll" style="padding-bottom:6px;">
-                            ${coursePills}
+                    <div class="card">
+                        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-bottom:6px;">
+                            <span class="ukey-course-code">${sanitizeHTML(course.code)}</span>
+                            <span style="font-size:0.8rem; color:var(--text-muted); font-style:italic;">${course.akts} AKTS • ${course.kredi} Kredi</span>
+                        </div>
+                        <h3 style="font-size:1.2rem; font-weight:700; color:var(--text-main); margin-bottom:4px;">${sanitizeHTML(course.name)}</h3>
+                        <div style="font-size:0.84rem; color:var(--text-muted); font-style:italic; margin-bottom:16px;">
+                            ${sanitizeHTML(course.instructor || 'Öğretim Elemanı')}
                         </div>
 
-                        <div style="margin-top:14px;">
-                            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
-                                <span class="ukey-course-code">${sanitizeHTML(course.code)}</span>
-                                <span class="ukey-mini-chip has-data">${course.akts} AKTS • ${course.kredi} Kredi</span>
-                            </div>
-                            <h3 class="ukey-course-banner-title">${sanitizeHTML(course.name)}</h3>
-                            <div class="ukey-course-banner-inst">
-                                <span class="material-symbols-rounded" style="font-size:18px; color:var(--primary);">person</span>
-                                <span>${sanitizeHTML(course.instructor || 'Öğretim Elemanı')}</span>
-                            </div>
-                        </div>
-
-                        <div class="ukey-subtabs">
+                        <div class="ukey-nav-tabs" style="margin-bottom:16px;">
                             ${subTabs.map(st => `
-                                <button class="ukey-subtab-btn ${ukeySelectedCourseSubTab === st.id ? 'active' : ''}" onclick="switchUkeyCourseSubTab('${st.id}')">
-                                    <span class="material-symbols-rounded" style="font-size:18px;">${st.icon}</span>
-                                    <span>${st.label}</span>
-                                    <span style="opacity:0.8; font-size:0.75rem;">(${st.count})</span>
+                                <button class="ukey-nav-tab ${ukeySelectedCourseSubTab === st.id ? 'active' : ''}" onclick="switchUkeyCourseSubTab('${st.id}')">
+                                    <span class="material-symbols-rounded">${st.icon}</span>
+                                    <span>${st.label} (${st.count})</span>
                                 </button>
                             `).join('')}
                         </div>
@@ -4413,36 +4133,30 @@
                 return;
             }
 
-            // EĞER LİSTE GÖRÜNÜMÜNDEYSE (TÜM 8 DERS VE GENEL ÖZET)
+            // LİSTE GÖRÜNÜMÜ: SADE, ANLAŞILIR VE NET 8 DERS KARTI
             const coursesCardsHtml = courses.map(c => {
                 const matCount = c.materials ? c.materials.length : 0;
                 const hwCount = c.homeworks ? c.homeworks.length : 0;
-                const examCount = c.exams ? c.exams.length : 0;
                 return `
-                    <div class="ukey-course-card" onclick="openUkeyCourse('${c.code}', 'icerik')">
+                    <div class="ukey-course-card">
                         <div>
                             <div class="ukey-course-head">
                                 <span class="ukey-course-code">${sanitizeHTML(c.code)}</span>
                                 <span class="ukey-course-credits">${c.akts} AKTS • ${c.kredi} Kredi</span>
                             </div>
                             <h4 class="ukey-course-title">${sanitizeHTML(c.name)}</h4>
-                            <div class="ukey-course-inst">
-                                <span class="material-symbols-rounded" style="font-size:16px; color:var(--primary);">person</span>
-                                <span>${sanitizeHTML(c.instructor || 'Öğretim Elemanı')}</span>
-                            </div>
+                            <div class="ukey-course-inst">${sanitizeHTML(c.instructor || 'Öğretim Elemanı')}</div>
                         </div>
-                        <div>
-                            <div class="ukey-course-meta-strip" style="margin-bottom:12px;">
-                                <span class="ukey-mini-chip">14 Hafta Plan</span>
-                                <span class="ukey-mini-chip ${matCount > 0 ? 'has-data' : ''}">${matCount} Materyal</span>
-                                ${hwCount > 0 ? `<span class="ukey-mini-chip has-hw">${hwCount} Ödev</span>` : ''}
-                                ${examCount > 0 ? `<span class="ukey-mini-chip has-data">${examCount} Sınav</span>` : ''}
+                        <div style="margin-top:14px; padding-top:12px; border-top:1px solid var(--border);">
+                            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; font-size:0.78rem; color:var(--text-muted); font-style:italic;">
+                                <span>${matCount} Materyal</span>
+                                ${hwCount > 0 ? `<span style="color:var(--warning); font-weight:700;">${hwCount} Aktif Ödev</span>` : '<span>Ödev Yok</span>'}
                             </div>
-                            <div style="display:flex; gap:8px;" onclick="event.stopPropagation()">
-                                <button class="btn btn-primary btn-mini" style="flex:1; justify-content:center; font-weight:700;" onclick="openUkeyCourse('${c.code}', 'icerik')">
-                                    <span>Konuları İncele</span>
+                            <div style="display:flex; gap:8px;">
+                                <button class="btn btn-tonal btn-mini" style="flex:1; justify-content:center;" onclick="openUkeyCourse('${c.code}', 'icerik')">
+                                    <span>14 Haftalık Plan</span>
                                 </button>
-                                <button class="btn btn-tonal btn-mini" style="flex:1; justify-content:center; font-weight:700;" onclick="openUkeyCourse('${c.code}', 'materyaller')">
+                                <button class="btn btn-primary btn-mini" style="flex:1; justify-content:center;" onclick="openUkeyCourse('${c.code}', 'materyaller')">
                                     <span>Dosyalar (${matCount})</span>
                                 </button>
                             </div>
@@ -4452,38 +4166,17 @@
             }).join('');
 
             container.innerHTML = `
-                ${urgentHtml}
-
-                <div class="ukey-quick-stats">
-                    <div class="ukey-stat-box" onclick="ukeyCourseViewMode='list'; renderUkeyPortal();">
-                        <span class="icon-chip"><span class="material-symbols-rounded">school</span></span>
-                        <div><div class="ukey-stat-num">${courses.length}</div><div class="ukey-stat-name">Kayıtlı Ders (${totalAkts} AKTS)</div></div>
-                    </div>
-                    <div class="ukey-stat-box" onclick="switchUkeyMainTab('homeworks')">
-                        <span class="icon-chip warn"><span class="material-symbols-rounded">assignment</span></span>
-                        <div><div class="ukey-stat-num" style="color:var(--warning);">${totalHomeworks}</div><div class="ukey-stat-name">Ödev &amp; Proje</div></div>
-                    </div>
-                    <div class="ukey-stat-box" onclick="switchUkeyMainTab('materials')">
-                        <span class="icon-chip accent"><span class="material-symbols-rounded">folder_zip</span></span>
-                        <div><div class="ukey-stat-num">${totalMaterials}</div><div class="ukey-stat-name">Ders Dosyası</div></div>
-                    </div>
-                    <div class="ukey-stat-box" onclick="switchUkeyMainTab('materials')">
-                        <span class="icon-chip"><span class="material-symbols-rounded">video_library</span></span>
-                        <div><div class="ukey-stat-num">${totalStreams}</div><div class="ukey-stat-name">Canlı Ders Kaydı</div></div>
-                    </div>
-                </div>
-
                 <div class="card" style="margin-bottom:16px;">
-                    <div class="card-header" style="flex-wrap:wrap; gap:10px;">
-                        <h3 class="card-title" style="font-weight:800;">
-                            <span class="icon-chip accent"><span class="material-symbols-rounded">menu_book</span></span>
-                            <span>UKEY Derslerim (2026-2027 Güz Dönemi)</span>
-                        </h3>
-                        <div style="font-size:0.8rem; font-weight:700; color:var(--text-muted);">
-                            Toplam ${courses.length} Ders • ${totalAkts} AKTS
+                    <div class="card-header" style="flex-wrap:wrap; gap:8px; margin-bottom:14px;">
+                        <div>
+                            <h3 class="card-title">
+                                <span class="icon-chip accent"><span class="material-symbols-rounded">school</span></span>
+                                <span>Derslerim (Güz Dönemi)</span>
+                            </h3>
+                            <p class="card-subtitle">Toplam ${courses.length} Ders • ${totalAkts} AKTS</p>
                         </div>
                     </div>
-                    <div class="ukey-courses-grid" style="margin-top:14px;">
+                    <div class="ukey-courses-grid">
                         ${coursesCardsHtml}
                     </div>
                 </div>

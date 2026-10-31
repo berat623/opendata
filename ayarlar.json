@@ -1,8 +1,4 @@
 {
   "maintenanceMode": false,
-  "maintenanceTitle": "Bakım Yapılmaktadır",
-  "maintenanceMessage": "Bakım yapılmaktadır daha sonra tekrar deneyiniz.",
-  "popupEnabled": true,
-  "popupTitle": "UKEY Sistemi Entegre Edildi",
-  "popupButtonText": "Görüntülemek İçin Tıklayınız"
+  "popupEnabled": false
 }
