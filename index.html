@@ -19,13 +19,20 @@
     <title>ETP Bilgi Sistemi | Bursa Uludağ Üniversitesi</title>
     <link rel="icon" type="image/png" href="logo.png">
 
-    <!-- Fonts & Icons (Poppins Tam Uyarlama) -->
+    <!-- Fonts & Icons (PT Serif Tam Uyarlama) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
     <style>
-        /* İKONLARIN YAZI OLARAK GÖRÜNMESİNİ ENGELLEYEN ANINDA YÜKLEME (0ms YEREL WOFF2) */
+        /* ==========================================================================
+           BURSA ULUDAĞ ÜNİVERSİTESİ - ELEKTRONİK TEKNOLOJİSİ PROGRAMI
+           MİNİMALİST, GÜNDELİK VE YÜKSEK PERFORMANSLI TASARIM SİSTEMİ
+           Yazı Tipi: PT Serif (Universal Editorial & Minimalist Typography)
+           Donma / Kasma / Takılma Önleme: Sıfır backdrop-filter, sıfır ağır gölge
+           ========================================================================== */
+
+        /* 1. ANINDA YEREL İKON MOTORU (0ms Gecikme) */
         @font-face {
             font-family: 'Material Symbols Rounded';
             font-style: normal;
@@ -33,11 +40,12 @@
             font-display: block;
             src: url('data:font/woff2;base64,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') format('woff2');
         }
+
         .material-symbols-rounded {
             font-family: 'Material Symbols Rounded' !important;
             font-weight: normal;
             font-style: normal;
-            font-size: 24px;
+            font-size: 22px;
             line-height: 1;
             letter-spacing: normal;
             text-transform: none;
@@ -58,2927 +66,655 @@
             user-select: none;
         }
 
+        /* 2. TEMA DEĞİŞKENLERİ (MINIMALIST & SADE GÜNDELİK PALET) */
         :root {
-            --bg-body: #111625;
-            --bg-surface: #181f32;
-            --bg-surface-elevated: #202940;
-            --bg-surface-hover: #28334f;
-            --text-main: #f1f5f9;
-            --text-muted: #94a3b8;
-            --primary: #7c8bf8;
-            --primary-soft: rgba(124, 139, 248, 0.15);
-            --primary-border: rgba(124, 139, 248, 0.30);
-            --accent: #4ec9a6;
-            --accent-soft: rgba(78, 201, 166, 0.15);
-            --warning: #f2a65a;
-            --warning-soft: rgba(242, 166, 90, 0.15);
-            --danger: #f0788c;
-            --danger-soft: rgba(240, 120, 140, 0.15);
-            --border: rgba(255, 255, 255, 0.08);
-            --border-hover: rgba(255, 255, 255, 0.17);
-            --nav-width: 264px;
-            --banner-h: 0px;
-            --radius-lg: 22px;
-            --radius-md: 16px;
-            --radius-sm: 11px;
-            --shadow: 0 12px 32px -10px rgba(0, 0, 0, 0.38);
-            --shadow-sm: 0 4px 14px -4px rgba(0, 0, 0, 0.24);
+            /* KOYU TEMA (VARSAYILAN: SAKİN MÜREKKEP & CHARCOAL) */
+            --bg-body: #101216;
+            --bg-surface: #171920;
+            --bg-surface-elevated: #1e212b;
+            --bg-surface-hover: #262a36;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --primary: #7ea5f0;
+            --primary-soft: rgba(126, 165, 240, 0.12);
+            --primary-border: rgba(126, 165, 240, 0.28);
+            --accent: #34d399;
+            --accent-soft: rgba(52, 211, 153, 0.12);
+            --warning: #fbbf24;
+            --warning-soft: rgba(251, 191, 36, 0.12);
+            --danger: #f87171;
+            --danger-soft: rgba(248, 113, 113, 0.12);
+            --border: #262934;
+            --border-hover: #383c4c;
+            --nav-width: 250px;
+            --radius-lg: 12px;
+            --radius-md: 8px;
+            --radius-sm: 6px;
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
             --glass-blur: none;
-            --glass-reflection: inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
-            
-            /* TEMA KARTLARI - PASTEL DARK */
-            --timer-bg: linear-gradient(135deg, #1b243b 0%, #162a2d 100%);
-            --timer-border: rgba(124, 139, 248, 0.25);
-            --timer-text: #f8fafc;
-            --timer-sub: rgba(241, 245, 249, 0.78);
-            --timer-chip: rgba(124, 139, 248, 0.18);
-            --timer-chip-color: #9ba7fb;
-            --timer-box-bg: rgba(255, 255, 255, 0.05);
-            --timer-box-border: rgba(255, 255, 255, 0.10);
-            --timer-bar-track: rgba(255, 255, 255, 0.10);
-            --timer-bar-fill: linear-gradient(90deg, #7c8bf8 0%, #4ec9a6 100%);
+
+            /* SAYAÇ BİLEŞENİ - KOYU */
+            --timer-bg: #171920;
+            --timer-border: #262934;
+            --timer-text: #f3f4f6;
+            --timer-sub: #9ca3af;
+            --timer-chip: rgba(126, 165, 240, 0.12);
+            --timer-chip-color: #7ea5f0;
+            --timer-box-bg: #1e212b;
+            --timer-box-border: #262934;
+            --timer-bar-track: #262934;
+            --timer-bar-fill: #7ea5f0;
         }
 
         html.light-mode {
-            --bg-body: #f5f7fb;
+            /* AÇIK TEMA (MİNİMALİST TEMİZ KAĞIT / İSKANDİNAV SADE) */
+            --bg-body: #f7f8fa;
             --bg-surface: #ffffff;
-            --bg-surface-elevated: #f8faff;
-            --bg-surface-hover: #eff3fb;
-            --text-main: #1e293b;
+            --bg-surface-elevated: #f1f3f6;
+            --bg-surface-hover: #eaedf2;
+            --text-main: #18191c;
             --text-muted: #64748b;
-            --primary: #5b6af0;
-            --primary-soft: #eef0ff;
-            --primary-border: #d5dcfe;
-            --accent: #2ea885;
-            --accent-soft: #eaf8f3;
-            --warning: #e08b3e;
-            --warning-soft: #fef4ea;
-            --danger: #e25c6d;
-            --danger-soft: #fdeef0;
-            --border: #e7edf6;
-            --border-hover: #cbd6e8;
-            --shadow: 0 10px 30px -10px rgba(30, 41, 59, 0.05), 0 2px 8px -2px rgba(30, 41, 59, 0.03);
-            --shadow-sm: 0 4px 14px -4px rgba(30, 41, 59, 0.04);
-            --glass-blur: none;
-            --glass-reflection: inset 0 1px 0 0 rgba(255, 255, 255, 0.95);
+            --primary: #1e3a5f;
+            --primary-soft: #edf3fa;
+            --primary-border: #cbd7e6;
+            --accent: #15803d;
+            --accent-soft: #ecfdf5;
+            --warning: #b45309;
+            --warning-soft: #fffbeb;
+            --danger: #b91c1c;
+            --danger-soft: #fef2f2;
+            --border: #e2e5eb;
+            --border-hover: #cbd2dc;
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.03);
 
-            /* TEMA KARTLARI - PASTEL LIGHT */
-            --timer-bg: linear-gradient(135deg, #f1f4ff 0%, #edfaf6 58%, #ffffff 100%);
-            --timer-border: #d9e3f8;
-            --timer-text: #1e293b;
-            --timer-sub: #526077;
-            --timer-chip: #e2e7ff;
-            --timer-chip-color: #5b6af0;
-            --timer-box-bg: #ffffff;
-            --timer-box-border: #e1e8f5;
-            --timer-bar-track: #dfe7f5;
-            --timer-bar-fill: linear-gradient(90deg, #5b6af0 0%, #34b38f 100%);
+            /* SAYAÇ BİLEŞENİ - AÇIK */
+            --timer-bg: #ffffff;
+            --timer-border: #e2e5eb;
+            --timer-text: #18191c;
+            --timer-sub: #64748b;
+            --timer-chip: #edf3fa;
+            --timer-chip-color: #1e3a5f;
+            --timer-box-bg: #f7f8fa;
+            --timer-box-border: #e2e5eb;
+            --timer-bar-track: #e2e5eb;
+            --timer-bar-fill: #1e3a5f;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        /* 3. EVRENSEL TİPOGRAFİ VE TEMEL SIFIRLAMA (PT SERIF) */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
         body, button, input, select, textarea {
-            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-weight: 500;
+            font-family: 'PT Serif', Georgia, 'Times New Roman', serif;
+            font-weight: 400;
             font-style: normal;
-            letter-spacing: -0.012em;
+            letter-spacing: -0.01em;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             text-rendering: optimizeLegibility;
         }
+
         h1, h2, h3, h4, h5, h6, strong, b {
-            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'PT Serif', Georgia, 'Times New Roman', serif;
             font-weight: 700;
-            letter-spacing: -0.018em;
+            letter-spacing: -0.015em;
         }
-        p, span, li, label, td, th {
-            letter-spacing: -0.01em;
-        }
+
         body {
             background-color: var(--bg-body);
-            background-image:
-                radial-gradient(at 8% 8%, rgba(124, 139, 248, 0.12) 0px, transparent 48%),
-                radial-gradient(at 92% 12%, rgba(78, 201, 166, 0.10) 0px, transparent 48%);
             color: var(--text-main);
-            overflow-x: hidden;
             min-height: 100vh;
-            -webkit-font-smoothing: antialiased;
-            line-height: 1.5;
-            font-weight: 500;
+            overflow-x: hidden;
+            line-height: 1.55;
         }
-        html.light-mode body {
-            background-image:
-                radial-gradient(at 8% 8%, rgba(91, 106, 240, 0.07) 0px, transparent 48%),
-                radial-gradient(at 92% 12%, rgba(46, 168, 133, 0.06) 0px, transparent 48%),
-                radial-gradient(at 50% 95%, rgba(224, 139, 62, 0.04) 0px, transparent 50%);
-        }
-        body.modal-open, body.drawer-open { overflow: hidden; }
 
-        /* SAYFA YÜKLEME VE GEÇİŞ İLERLEME ÇUBUĞU (YAĞ GİBİ AKAN PROGRESS BAR) */
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button, input, select {
+            touch-action: manipulation;
+        }
+
+        /* 4. SAYFA İLERLEME ÇUBUĞU (HAFİF & ETKİN) */
         .page-loader-bar {
-            position: fixed; top: 0; left: 0; height: 3.5px; width: 0%;
-            background: linear-gradient(90deg, #3b82f6 0%, #10b981 50%, #6366f1 100%);
-            background-size: 200% 100%;
-            animation: loaderGlow 1.8s ease infinite;
-            z-index: 10001; pointer-events: none;
-            box-shadow: 0 0 12px rgba(59, 130, 246, 0.8), 0 0 4px rgba(16, 185, 129, 0.6);
-            transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 2.5px;
+            background: var(--primary);
+            z-index: 9999;
+            transition: width 0.25s ease, opacity 0.25s ease;
+            pointer-events: none;
         }
-        @keyframes loaderGlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        .page-loader-bar.finish {
-            width: 100% !important;
-            opacity: 0;
-            animation: none !important;
-            transition: width 0.25s ease, opacity 0.3s 0.15s ease;
-        }
+        .page-loader-bar.active { width: 70%; opacity: 1; }
+        .page-loader-bar.finish { width: 100%; opacity: 0; }
 
-        ::selection { background: var(--primary); color: #fff; }
-        button, .nav-item, a { touch-action: manipulation; cursor: pointer; text-decoration: none; }
-        :focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 8px; }
-
-        .material-symbols-rounded { font-variation-settings: 'FILL' 1; user-select: none; }
-
-        /* YÖNETİCİ BAKIM MODU UYARI BARI */
-        .admin-maintenance-bar {
-            position: sticky; top: 0; z-index: 10000;
-            min-height: 44px; display: flex; align-items: center; justify-content: space-between; gap: 14px;
-            padding: 8px 20px; background: linear-gradient(90deg, #b91c1c 0%, #dc2626 50%, #991b1b 100%); color: #fff;
-            box-shadow: 0 4px 18px rgba(185, 28, 28, 0.45); font-size: 0.86rem; font-weight: 700;
-            flex-wrap: wrap; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-        }
-        .admin-bar-content { display: flex; align-items: center; gap: 10px; }
-        .admin-bar-content strong { color: #fef08a; }
-        .admin-bar-actions { display: flex; align-items: center; gap: 8px; }
-        .btn-admin-bar-off {
-            background: #fff; color: #991b1b; border: none; padding: 6px 14px; border-radius: 50px;
-            font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
-            display: inline-flex; align-items: center; gap: 5px;
-        }
-        .btn-admin-bar-off:hover { transform: scale(1.04); background: #fef2f2; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
-        .btn-admin-bar-link {
-            background: rgba(255, 255, 255, 0.2); color: #fff; text-decoration: none; padding: 6px 14px;
-            border-radius: 50px; font-size: 0.8rem; font-weight: 600; transition: all 0.2s;
-            border: 1px solid rgba(255, 255, 255, 0.35); display: inline-flex; align-items: center; gap: 5px;
-        }
-        .btn-admin-bar-link:hover { background: rgba(255, 255, 255, 0.35); }
-
-        /* TAM EKRAN BAKIM ÇALIŞMASI EKRANI */
-        .maintenance-fullscreen-overlay {
-            position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 999999;
-            background-color: var(--bg-body);
-            background-image: 
-                radial-gradient(at 10% 15%, rgba(239, 68, 68, 0.20) 0px, transparent 50%),
-                radial-gradient(at 90% 15%, rgba(59, 130, 246, 0.18) 0px, transparent 50%),
-                radial-gradient(at 50% 85%, rgba(245, 158, 11, 0.14) 0px, transparent 55%);
-            background-attachment: fixed;
-            display: flex; flex-direction: column; justify-content: space-between;
-            padding: 24px 20px; box-sizing: border-box; overflow-y: auto;
-            backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%);
-            opacity: 1; transform: none;
-            animation: maintOverlayFade 0.35s ease;
-        }
-        @keyframes maintOverlayFade {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-        .maint-topbar {
-            display: flex; align-items: center; justify-content: space-between; gap: 16px;
-            max-width: 1200px; width: 100%; margin: 0 auto;
-        }
-        .maint-brand { display: flex; align-items: center; gap: 14px; }
-        .maint-logo {
-            width: 48px; height: 48px; border-radius: 14px; object-fit: contain; background: #fff;
-            padding: 3px; border: 1px solid var(--border); box-shadow: var(--shadow-sm);
-        }
-        .maint-brand-text strong { display: block; font-size: 1.05rem; font-weight: 600; color: var(--text-main); }
-        .maint-brand-text span { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; }
-        .maint-admin-btn {
-            background: var(--bg-surface-elevated); border: 1px solid var(--border); color: var(--text-main);
-            box-shadow: var(--glass-reflection); position: relative; z-index: 10; cursor: pointer;
-        }
-        .maint-admin-btn:hover { border-color: var(--primary); color: var(--primary); }
-
-        .maint-body {
-            flex: 1; display: flex; align-items: center; justify-content: center;
-            max-width: 640px; width: 100%; margin: 30px auto; text-align: center;
-        }
-        .maint-card {
-            background: var(--bg-surface); border: 1px solid var(--border);
-            border-radius: var(--radius-lg); padding: 48px 36px;
-            box-shadow: var(--shadow), var(--glass-reflection);
-            backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
-            width: 100%; position: relative; overflow: hidden;
-            opacity: 1; transform: none;
-            animation: maintPop 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        @keyframes maintPop {
-            0% { opacity: 0; transform: scale(0.96) translateY(14px); }
-            100% { opacity: 1; transform: scale(1) translateY(0); }
-        }
-        .maint-icon-wrap {
-            position: relative; width: 100px; height: 100px; margin: 0 auto 24px;
-            display: flex; align-items: center; justify-content: center;
-        }
-        .maint-gear-spin {
-            font-size: 56px; color: var(--warning); z-index: 2;
-            animation: gearRock 4s ease-in-out infinite;
-        }
-        @keyframes gearRock {
-            0% { transform: rotate(0deg); }
-            50% { transform: rotate(45deg); }
-            100% { transform: rotate(0deg); }
-        }
-        .maint-pulse-ring {
-            position: absolute; inset: 0; border-radius: 32px;
-            background: radial-gradient(circle, rgba(245, 158, 11, 0.28) 0%, rgba(245, 158, 11, 0.05) 70%, transparent 100%);
-            animation: ringPulse 2.5s infinite; border: 2px solid rgba(245, 158, 11, 0.4);
-        }
-        @keyframes ringPulse {
-            0% { transform: scale(0.9); opacity: 0.8; }
-            50% { transform: scale(1.15); opacity: 0.25; }
-            100% { transform: scale(0.9); opacity: 0.8; }
-        }
-        .maint-badge {
-            display: inline-flex; align-items: center; gap: 8px;
-            background: rgba(239, 68, 68, 0.16); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.32);
-            border-radius: 50px; padding: 6px 16px; font-size: 0.82rem; font-weight: 600; margin-bottom: 20px;
-        }
-        .maint-dot {
-            width: 8px; height: 8px; border-radius: 50%; background: #ef4444;
-            box-shadow: 0 0 8px #ef4444; animation: dotBlink 1.4s infinite;
-        }
-        @keyframes dotBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-        .maint-title {
-            font-size: 2.1rem; font-weight: 600; letter-spacing: -0.5px; margin-bottom: 12px;
-            color: var(--text-main); line-height: 1.25;
-        }
-        .maint-desc {
-            font-size: 1.1rem; color: var(--text-muted); font-weight: 600; line-height: 1.6; margin-bottom: 28px;
-        }
-        .maint-info-box {
-            background: var(--bg-surface-elevated); border: 1px solid var(--border);
-            border-radius: var(--radius-md); padding: 16px 20px; margin-bottom: 28px;
-            display: flex; flex-direction: column; gap: 10px; text-align: left;
-            box-shadow: var(--glass-reflection);
-        }
-        .maint-info-item {
-            display: flex; align-items: center; gap: 10px; font-size: 0.86rem; color: var(--text-muted); font-weight: 600;
-        }
-        .maint-actions { display: flex; justify-content: center; gap: 12px; }
-        .maint-footer {
-            text-align: center; font-size: 0.78rem; color: var(--text-muted); font-weight: 600;
-            padding-top: 16px;
-        }
-
-        /* BAKIM EKRANI YÖNETİCİ GİRİŞ MODALİ (HER ZAMAN EN ÜSTTE) */
-        .maint-login-overlay {
-            position: fixed; inset: 0; z-index: 1000005;
-            background: rgba(4, 7, 16, 0.88); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-            display: none; align-items: center; justify-content: center; padding: 20px;
-            opacity: 1;
-            animation: maintOverlayFade 0.22s ease-out;
-        }
-        .maint-login-modal {
-            background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
-            max-width: 440px; width: 100%; padding: 32px 28px; position: relative;
-            box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.85); text-align: left;
-            opacity: 1; transform: none;
-            animation: maintPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        /* AÇIK TEMA BAKIM EKRANI */
-        html.light-mode .maintenance-fullscreen-overlay {
-            background-color: var(--bg-body);
-            background-image: 
-                radial-gradient(at 10% 15%, rgba(239, 68, 68, 0.10) 0px, transparent 50%),
-                radial-gradient(at 90% 15%, rgba(59, 130, 246, 0.12) 0px, transparent 50%),
-                radial-gradient(at 50% 85%, rgba(245, 158, 11, 0.08) 0px, transparent 55%);
-        }
-        html.light-mode .maint-card {
-            background: rgba(255, 255, 255, 0.88);
-            border-color: rgba(0, 0, 0, 0.10);
-            box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.9);
-        }
-        html.light-mode .maint-login-overlay {
-            background: rgba(15, 23, 42, 0.55);
-        }
-        html.light-mode .maint-login-modal {
-            background: rgba(255, 255, 255, 0.96);
-            border-color: rgba(0, 0, 0, 0.12);
-            box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.25);
-        }
-
-        /* CİHAZ ANİMASYONLARI KAPATTIĞINDA / REDUCED MOTION DESTEĞİ */
-        @media (prefers-reduced-motion: reduce) {
-            .maintenance-fullscreen-overlay,
-            .maint-card,
-            .maint-gear-spin,
-            .maint-pulse-ring,
-            .maint-dot,
-            .maint-login-overlay,
-            .maint-login-modal {
-                animation: none !important;
-                opacity: 1 !important;
-                transform: none !important;
-                transition: none !important;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .maintenance-fullscreen-overlay { padding: 18px 14px; }
-            .maint-card { padding: 32px 18px; }
-            .maint-title { font-size: 1.55rem; }
-            .maint-desc { font-size: 0.96rem; }
-            .maint-brand-text span { display: none; }
-        }
-
-        /* BUTONLAR */
+        /* 5. GENEL BUTONLAR & BİLEŞENLER */
         .btn {
-            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-            min-height: 42px; padding: 9px 18px; border-radius: 50px; font-weight: 700; font-size: 0.88rem;
-            border: 1px solid transparent; transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12); }
-        .btn:active { transform: translateY(1px) scale(0.97); }
-        .btn-icon { width: 42px; height: 42px; padding: 0; border-radius: 50%; }
-        .btn-mini { min-height: 34px; padding: 5px 14px; font-size: 0.78rem; border-radius: 8px; }
-        .btn-tonal {
-            background: var(--bg-surface-elevated); color: var(--text-main); border-color: var(--border);
-            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: var(--glass-reflection);
-        }
-        .btn-tonal:hover { background: var(--bg-surface-hover); border-color: var(--border-hover); }
-        .btn-primary { background: var(--primary); color: #ffffff !important; box-shadow: 0 4px 14px -3px var(--primary); }
-        .btn-primary span { color: #ffffff !important; }
-        .btn-primary:hover { box-shadow: 0 6px 20px -3px var(--primary); }
-        .btn-accent { background: var(--accent); color: #ffffff !important; }
-        .btn-accent span { color: #ffffff !important; }
-
-        /* TOAST */
-        .toast {
-            position: fixed; left: 50%; bottom: 32px; transform: translateX(-50%);
-            background: var(--bg-surface); color: var(--text-main); border: 1px solid var(--border);
-            border-radius: 50px; padding: 12px 24px; display: none; gap: 10px; align-items: center;
-            font-weight: 700; font-size: 0.88rem; box-shadow: var(--shadow), var(--glass-reflection);
-            backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
-            z-index: 1500; max-width: calc(100vw - 32px);
-        }
-        .toast.show { display: flex; animation: toastIn 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
-        @keyframes toastIn {
-            from { opacity: 0; transform: translate(-50%, 12px) scale(0.95); }
-            to { opacity: 1; transform: translate(-50%, 0) scale(1); }
-        }
-
-        /* ANA YERLEŞİM */
-        .app-container { display: flex; align-items: stretch; min-height: calc(100vh - var(--banner-h)); }
-
-        /* YAN MENÜ (SIDEBAR - MİNİMALİST & PASTEL) */
-        .sidebar {
-            width: var(--nav-width); flex-shrink: 0; background: var(--bg-surface);
-            border-right: 1px solid var(--border); padding: 28px 18px; display: flex; flex-direction: column;
-            position: sticky; top: var(--banner-h); height: calc(100vh - var(--banner-h)); overflow-y: auto; z-index: 50;
-            box-shadow: 2px 0 24px -12px rgba(15, 23, 42, 0.04);
-        }
-        .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; padding: 0 6px; }
-        .brand-logo { width: 44px; height: 44px; border-radius: 14px; object-fit: contain; background: #fff; border: 1px solid var(--border); padding: 4px; box-shadow: var(--shadow-sm); }
-        .brand-text h1 { font-size: 1rem; font-weight: 800; line-height: 1.25; letter-spacing: -0.02em; color: var(--text-main); }
-        .brand-text p { font-size: 0.74rem; color: var(--text-muted); font-weight: 650; margin-top: 1px; }
-
-        .nav-links { display: flex; flex-direction: column; gap: 8px; flex: 1; }
-        .nav-item {
-            display: flex; align-items: center; gap: 12px; padding: 12px 16px; min-height: 46px;
-            border-radius: 14px; color: var(--text-muted); font-weight: 650; font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: var(--radius-md);
             border: 1px solid transparent;
-            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            font-family: 'PT Serif', serif;
+            font-size: 0.92rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+            white-space: nowrap;
         }
-        .nav-item:hover { background: var(--bg-surface-hover); color: var(--text-main); transform: translateX(2px); }
-        .nav-item.active {
+        .btn-primary {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+        }
+        html.light-mode .btn-primary {
+            background: var(--primary);
+            color: #ffffff;
+        }
+        .btn-tonal {
+            background: var(--bg-surface-elevated);
+            color: var(--text-main);
+            border-color: var(--border);
+        }
+        .btn-mini {
+            padding: 5px 11px;
+            font-size: 0.82rem;
+            border-radius: var(--radius-sm);
+        }
+        .btn-icon {
+            width: 38px;
+            height: 38px;
+            padding: 0;
+            border-radius: var(--radius-md);
+            flex-shrink: 0;
+        }
+
+        .icon-chip {
+            width: 32px;
+            height: 32px;
+            border-radius: var(--radius-sm);
             background: var(--primary-soft);
             color: var(--primary);
-            border-color: var(--primary-border);
-            font-weight: 600;
-            box-shadow: 0 4px 14px -6px rgba(91, 106, 240, 0.18);
-            transform: none;
-        }
-        .nav-badge {
-            margin-left: auto; background: var(--danger); color: #fff; border-radius: 20px;
-            font-size: 0.68rem; font-weight: 600; padding: 2px 8px; min-width: 20px; display: none; align-items: center; justify-content: center;
-        }
-        .sidebar-footer { padding-top: 16px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 6px; }
-
-        /* MOBİL MENÜ ÇEKMECESİ */
-        .drawer {
-            position: fixed; top: 0; left: 0; bottom: 0; width: min(290px, 84vw);
-            background: var(--bg-surface); z-index: 1300; transform: translateX(-105%);
-            display: flex; flex-direction: column; padding: 22px 16px; overflow-y: auto;
-            box-shadow: var(--shadow); border-right: 1px solid var(--border);
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .drawer.open { transform: none; }
-        .drawer-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.45); z-index: 1250; display: none; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
-        .drawer-overlay.show { display: block; }
-        .drawer-head { display: flex; align-items: center; gap: 10px; margin-bottom: 24px; }
-        .drawer-footer { border-top: 1px solid var(--border); padding-top: 14px; display: flex; flex-direction: column; gap: 6px; }
-
-        /* ANA İÇERİK (MASAÜSTÜ GENİŞ EKRAN OPTİMİZASYONU) */
-        .main-content { flex: 1; min-width: 0; max-width: 1320px; width: 100%; margin: 0 auto; padding: 30px 40px 48px; }
-
-        /* ÜST BAŞLIK */
-        .top-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 26px; }
-        .header-left { display: flex; align-items: center; gap: 14px; min-width: 0; }
-        .menu-btn { display: none; }
-        .page-title { font-size: clamp(1.35rem, 1rem + 1.5vw, 1.8rem); font-weight: 800; letter-spacing: -0.025em; color: var(--text-main); }
-        .header-date { color: var(--text-muted); font-size: 0.84rem; font-weight: 600; margin-top: 2px; }
-        .header-actions { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
-
-        .view-section { display: none; }
-        .view-section.active { display: block; animation: viewSmoothEnter 0.22s ease-out; }
-        @keyframes viewSmoothEnter {
-            0% { opacity: 0; transform: translateY(4px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        /* KARTLAR */
-        .card {
-            background: var(--bg-surface); border: 1px solid var(--border);
-            border-radius: var(--radius-lg); padding: 24px 26px; box-shadow: var(--shadow), var(--glass-reflection);
-            margin-bottom: 22px;
-            transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.22s ease;
-        }
-        .card-header { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 18px; flex-wrap: wrap; }
-        .card-title { font-size: 1.08rem; font-weight: 800; display: flex; align-items: center; gap: 10px; letter-spacing: -0.015em; }
-        .card-subtitle { font-size: 0.78rem; color: var(--text-muted); font-weight: 600; margin-top: 2px; }
-        .icon-chip {
-            width: 38px; height: 38px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center;
-            background: var(--primary-soft); color: var(--primary); flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
         }
         .icon-chip.accent { background: var(--accent-soft); color: var(--accent); }
         .icon-chip.warn { background: var(--warning-soft); color: var(--warning); }
-
-        /* SAYAÇ KARTI */
-        .timer-card {
-            background: var(--timer-bg); border: 1px solid var(--timer-border); color: var(--timer-text);
-            display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-bottom: 22px;
-            box-shadow: var(--shadow), var(--glass-reflection); border-radius: var(--radius-lg);
-            padding: 22px 26px;
-        }
-        .timer-info { display: flex; align-items: center; gap: 16px; min-width: 0; }
-        .timer-chip-btn {
-            width: 48px; height: 48px; border-radius: 14px;
-            background: var(--timer-chip); color: var(--timer-chip-color);
-            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-        }
-        .timer-title { font-size: 1.08rem; font-weight: 800; line-height: 1.35; color: var(--timer-text); letter-spacing: -0.01em; }
-        .timer-sub { font-size: 0.82rem; color: var(--timer-sub); font-weight: 600; margin-top: 2px; }
-        .timer-boxes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; flex: 1; min-width: 280px; max-width: 460px; }
-        .t-box {
-            background: var(--timer-box-bg); border: 1px solid var(--timer-box-border); border-radius: 14px;
-            padding: 10px 6px; text-align: center;
-            box-shadow: var(--shadow-sm);
-            transition: transform 0.2s ease;
-        }
-        .t-box:hover { transform: translateY(-2px); }
-        .t-val { font-size: clamp(1.3rem, 1rem + 1.3vw, 1.75rem); font-weight: 800; font-variant-numeric: tabular-nums; color: var(--timer-text); line-height: 1.15; }
-        .t-lbl { font-size: 0.66rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; color: var(--timer-sub); margin-top: 3px; }
-        .timer-bar-wrap { flex-basis: 100%; margin-top: 4px; }
-        .timer-bar-head { display: flex; justify-content: space-between; font-size: 0.76rem; font-weight: 600; color: var(--timer-sub); margin-bottom: 6px; }
-        .timer-bar { height: 7px; border-radius: 999px; background: var(--timer-bar-track); overflow: hidden; }
-        .timer-fill { height: 100%; width: 0; border-radius: inherit; background: var(--timer-bar-fill); transition: width 0.4s; }
-
-        /* İSTATİSTİK ŞERİDİ (4 KART DENGELİ PASTEL DÜZEN) */
-        .stats-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-bottom: 22px; }
-        .stat-card {
-            background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md);
-            padding: 16px 18px; display: flex; align-items: center; gap: 14px; box-shadow: var(--shadow-sm), var(--glass-reflection);
-            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
-            cursor: pointer;
-        }
-        .stat-card:hover { transform: translateY(-2px); border-color: var(--primary-border); box-shadow: var(--shadow); }
-        .stat-card:active { transform: translateY(0) scale(0.99); }
-        .stat-num { font-size: 1.35rem; font-weight: 800; line-height: 1.15; font-variant-numeric: tabular-nums; color: var(--text-main); }
-        .stat-name { font-size: 0.74rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 0.4px; margin-top: 2px; }
-
-        /* ALT TABLO DÜZENİ (SOLDA UKEY ÖZETİ, SAĞDA YAKLAŞAN TARİHLER) */
-        .lower-grid { display: grid; grid-template-columns: 1.32fr 1fr; gap: 22px; align-items: start; }
-
-        /* DUYURU LİSTESİ VE GELİŞMİŞ KARTLAR */
-        .data-list { display: flex; flex-direction: column; gap: 14px; }
-        .ann-card {
-            background: var(--bg-surface); border: 1px solid var(--border);
-            border-radius: var(--radius-md); padding: 20px 22px;
-            display: flex; flex-direction: column; gap: 12px;
-            box-shadow: var(--shadow-sm), var(--glass-reflection);
-            backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
-            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
-            position: relative; overflow: hidden;
-        }
-        .ann-card:hover { border-color: var(--border-hover); box-shadow: var(--shadow), var(--glass-reflection); transform: translateY(-2px); }
-        .ann-card.pinned {
-            border: 2px solid var(--warning); background: rgba(245, 158, 11, 0.05);
-        }
-        .ann-pinned-ribbon {
-            display: inline-flex; align-items: center; gap: 6px;
-            background: var(--warning-soft); color: var(--warning); border: 1px solid rgba(245, 158, 11, 0.3);
-            border-radius: 50px; padding: 3px 12px; font-size: 0.72rem; font-weight: 600; width: fit-content;
-        }
-        .ann-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; }
-        .ann-title-text { font-size: 1.15rem; font-weight: 600; color: var(--primary); line-height: 1.35; }
-        .ann-meta-row { display: flex; align-items: center; gap: 10px; font-size: 0.78rem; color: var(--text-muted); font-weight: 600; flex-wrap: wrap; }
-        .ann-body { font-size: 0.94rem; line-height: 1.7; color: var(--text-main); white-space: pre-wrap; word-break: break-word; }
-        .ann-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 12px; margin-top: 4px; }
-
-        .cat-tag {
-            display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px;
-            border-radius: 20px; font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px;
-        }
-        .cat-tag .material-symbols-rounded { font-size: 14px; }
-        .cat-duyuru { background: var(--primary-soft); color: var(--primary); }
-        .cat-sinav { background: var(--danger-soft); color: var(--danger); }
-        .cat-staj { background: var(--warning-soft); color: var(--warning); }
-        .cat-etkinlik { background: var(--accent-soft); color: var(--accent); }
-
-        .filter-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
-        .filter-chip {
-            display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; min-height: 38px;
-            border-radius: 50px; border: 1px solid var(--border); background: var(--bg-surface-elevated);
-            color: var(--text-muted); font-weight: 700; font-size: 0.8rem; transition: all 0.2s;
-        }
-        .filter-chip:hover { border-color: var(--border-hover); color: var(--text-main); }
-        .filter-chip.active { background: var(--primary); color: #fff; border-color: var(--primary); }
-        .filter-chip .cnt { background: rgba(255,255,255,0.15); border-radius: 20px; padding: 1px 8px; font-size: 0.7rem; }
+        .icon-chip.danger { background: var(--danger-soft); color: var(--danger); }
 
         .search-wrap {
-            display: flex; align-items: center; gap: 8px; background: var(--bg-body);
-            border: 1px solid var(--border); border-radius: 50px; padding: 9px 16px;
-            flex: 1; max-width: 320px; min-width: 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            flex: 1;
+            min-width: 180px;
         }
-        .search-wrap:focus-within { border-color: var(--primary); }
-        .search-wrap input { border: none; background: transparent; color: var(--text-main); outline: none; width: 100%; font-size: 0.9rem; }
+        .search-wrap .material-symbols-rounded {
+            position: absolute;
+            left: 12px;
+            color: var(--text-muted);
+            font-size: 19px;
+            pointer-events: none;
+        }
+        .search-wrap input {
+            width: 100%;
+            padding: 8px 14px 8px 38px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            background: var(--bg-surface-elevated);
+            color: var(--text-main);
+            font-size: 0.88rem;
+            outline: none;
+            transition: border-color 0.15s ease;
+        }
+        .search-wrap input:focus {
+            border-color: var(--primary);
+        }
 
-        /* YAKLAŞAN TARİHLER (MODERN VE ESTETİK KART LİSTESİ - EK-1 REVİZYONU) */
-        #upcoming-list {
+        /* 6. TOAST BİLDİRİMİ */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 3000;
+            background: var(--bg-surface-elevated);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            transform: translateY(16px);
+            pointer-events: none;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .to-top {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 1050;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--bg-surface-elevated);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease, visibility 0.2s ease;
+            box-shadow: var(--shadow-sm);
+        }
+        .to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* 7. ANA YERLEŞİM (SIDEBAR & MAIN CONTENT) */
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        /* MASAÜSTÜ YAN MENÜ (SIDEBAR) */
+        .sidebar {
+            width: var(--nav-width);
+            background: var(--bg-surface);
+            border-right: 1px solid var(--border);
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            padding: 24px 14px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 0;
+            height: 100vh;
         }
-        .up-card-item {
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 4px 8px 24px 8px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 18px;
+        }
+        .brand-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-sm);
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+        .brand-text h1 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            line-height: 1.25;
+            color: var(--text-main);
+        }
+        .brand-text p {
+            font-size: 0.76rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            flex: 1;
+        }
+        .nav-item {
             display: flex;
             align-items: center;
             gap: 12px;
             padding: 10px 14px;
             border-radius: var(--radius-md);
-            background: var(--bg-surface-elevated);
-            border: 1px solid var(--border);
-            text-decoration: none;
-            color: inherit;
-            cursor: pointer;
-            transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-        }
-        .up-card-item:hover {
-            border-color: var(--primary-border);
-            background: var(--bg-surface-hover);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-sm);
-        }
-        .up-card-item.is-ongoing {
-            border-left: 4px solid var(--accent);
-        }
-        .up-date-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: var(--primary-soft);
-            color: var(--primary);
-            border: 1px solid var(--primary-border);
-            flex-shrink: 0;
-            line-height: 1;
-        }
-        .up-date-box.ongoing {
-            background: var(--accent-soft);
-            color: var(--accent);
-            border-color: rgba(16, 185, 129, 0.3);
-        }
-        .up-date-day {
-            font-size: 1.15rem;
-            font-weight: 800;
-        }
-        .up-date-month {
-            font-size: 0.62rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-top: 2px;
-        }
-        .up-info {
-            flex: 1;
-            min-width: 0;
-        }
-        .up-name {
+            color: var(--text-muted);
             font-size: 0.92rem;
-            font-weight: 750;
-            color: var(--text-main);
-            margin-bottom: 3px;
-            line-height: 1.3;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-        .up-sub {
-            font-size: 0.78rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-        .up-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            font-size: 0.72rem;
             font-weight: 700;
-            padding: 3px 8px;
-            border-radius: 50px;
-            white-space: nowrap;
-        }
-        .up-badge.ongoing {
-            background: rgba(16, 185, 129, 0.15);
-            color: #10b981;
-            border: 1px solid rgba(16, 185, 129, 0.3);
-        }
-        .up-badge.upcoming {
-            background: rgba(59, 130, 246, 0.15);
-            color: #3b82f6;
-            border: 1px solid rgba(59, 130, 246, 0.3);
-        }
-        .up-chevron {
-            color: var(--text-muted);
-            font-size: 18px;
-            transition: transform 0.2s;
-            flex-shrink: 0;
-        }
-        .up-card-item:hover .up-chevron {
-            transform: translateX(3px);
-            color: var(--primary);
-        }
-
-        /* DERS PROGRAMI CANLI BİLGİ KARTI */
-        .sched-live-card {
-            background: var(--bg-surface); border: 1px solid var(--border);
-            border-radius: var(--radius-md); padding: 14px 18px; margin-bottom: 18px;
-            display: flex; align-items: center; gap: 14px;
-            box-shadow: var(--shadow-sm), var(--glass-reflection);
-            backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
-            transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, box-shadow 0.22s;
-        }
-        .sched-live-card.is-active {
-            border-color: var(--accent); background: var(--accent-soft);
-        }
-        .sched-live-card.is-upcoming {
-            border-color: var(--primary); background: var(--primary-soft);
-        }
-        .live-pulse-dot {
-            width: 12px; height: 12px; border-radius: 50%; background: var(--accent);
-            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); animation: livePulse 1.8s infinite; flex-shrink: 0;
-        }
-        @keyframes livePulse {
-            0%, 100% { transform: scale(0.92); opacity: 0.75; }
-            50% { transform: scale(1.12); opacity: 1; }
-        }
-        .sched-live-title { font-size: 0.95rem; font-weight: 600; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-        .sched-live-meta { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; font-weight: 600; }
-        .sched-live-badge {
-            display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 20px;
-            font-size: 0.72rem; font-weight: 600; background: var(--accent); color: #fff;
-        }
-        .sched-live-badge.wait { background: var(--primary); color: #fff; }
-
-        /* DERS PROGRAMI KONTROLLERİ VE FİLTRELER */
-        .sched-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-        .sched-view-pills {
-            display: flex; gap: 4px; background: var(--bg-surface-elevated); padding: 3px; border-radius: 50px; border: 1px solid var(--border);
-        }
-        .sched-mode-btn {
-            padding: 5px 12px; border-radius: 50px; font-size: 0.78rem; font-weight: 700;
-            border: none; background: transparent; color: var(--text-muted); cursor: pointer; display: inline-flex; align-items: center; gap: 5px;
-        }
-        .sched-mode-btn.active { background: var(--primary); color: #fff; }
-
-        .sched-filter-bar {
-            display: flex; align-items: center; gap: 12px; margin: 16px 0; flex-wrap: wrap;
-        }
-        .filter-chips-scroll {
-            display: flex; align-items: center; gap: 8px; overflow-x: auto; padding-bottom: 2px;
-            -webkit-overflow-scrolling: touch; scrollbar-width: none;
-        }
-        .filter-chips-scroll::-webkit-scrollbar { display: none; }
-        .filter-chip {
-            padding: 6px 14px; border-radius: 50px; font-size: 0.78rem; font-weight: 700;
-            border: 1px solid var(--border); background: var(--bg-surface-elevated); color: var(--text-muted);
-            cursor: pointer; white-space: nowrap; transition: all 0.15s; flex-shrink: 0;
-        }
-        .filter-chip:hover { color: var(--text-main); border-color: var(--primary); }
-        .filter-chip.active { background: var(--primary); color: #fff; border-color: var(--primary); }
-
-        /* GÜN SEKMELERİ (MOBİL & TABLET KAYDIRILABİLİR) */
-        .day-tabs-bar {
-            display: flex; gap: 8px; overflow-x: auto; padding: 4px 0 16px; -webkit-overflow-scrolling: touch;
-            scrollbar-width: none; border-bottom: 1px solid var(--border); margin-bottom: 18px;
-        }
-        .day-tabs-bar::-webkit-scrollbar { display: none; }
-        .day-tab-btn {
-            display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 12px;
-            background: var(--bg-surface-elevated); border: 1px solid var(--border); color: var(--text-muted);
-            font-size: 0.84rem; font-weight: 700; cursor: pointer; white-space: nowrap; flex-shrink: 0; transition: all 0.15s;
-        }
-        .day-tab-btn:hover { border-color: var(--primary); color: var(--text-main); }
-        .day-tab-btn.active {
-            background: var(--primary); color: #fff; border-color: var(--primary); box-shadow: 0 4px 12px var(--primary-soft);
-        }
-        .day-tab-badge {
-            background: rgba(0,0,0,0.12); padding: 2px 7px; border-radius: 20px; font-size: 0.72rem;
-        }
-        .day-tab-btn.active .day-tab-badge { background: rgba(255,255,255,0.25); color: #fff; }
-        .day-tab-today {
-            background: var(--accent); color: #fff; padding: 1px 6px; border-radius: 10px; font-size: 0.65rem; font-weight: 600;
-        }
-
-        /* DERS KARTLARI (GÜNLÜK AKIŞ) */
-        .schedule-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 18px; }
-        .day-card {
-            background: var(--bg-surface); border: 1px solid var(--border);
-            border-radius: var(--radius-lg); padding: 20px;
-            backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
-            box-shadow: var(--shadow-sm), var(--glass-reflection);
-            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .day-card.today { border-color: var(--primary); box-shadow: 0 0 24px -4px var(--primary-soft), var(--glass-reflection); }
-        .day-title {
-            font-weight: 600; font-size: 1.05rem; margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between;
-        }
-        .lesson-card {
-            background: var(--bg-surface-elevated); border: 1px solid var(--border); border-radius: var(--radius-md);
-            padding: 13px 15px; margin-bottom: 10px; display: flex; gap: 12px; align-items: flex-start;
-            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-            box-shadow: var(--glass-reflection);
-            transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s, box-shadow 0.22s;
-            position: relative;
-        }
-        .lesson-card:hover { transform: translateY(-2px); border-color: var(--border-hover); box-shadow: var(--shadow-sm), var(--glass-reflection); }
-        .lesson-card:last-child { margin-bottom: 0; }
-        .lesson-card.live-now {
-            border-color: var(--accent); background: var(--accent-soft); box-shadow: 0 0 16px var(--accent-soft), var(--glass-reflection);
-        }
-        .lesson-time {
-            background: var(--primary-soft); color: var(--primary); border-radius: 10px;
-            padding: 6px 10px; font-weight: 600; font-size: 0.76rem; text-align: center; line-height: 1.4; flex-shrink: 0; min-width: 58px;
-        }
-        .lesson-card.live-now .lesson-time { background: var(--accent); color: #fff; }
-        .lesson-content { flex: 1; min-width: 0; }
-        .lesson-name { font-weight: 600; font-size: 0.92rem; line-height: 1.35; }
-        .lesson-details { font-size: 0.76rem; color: var(--text-muted); margin-top: 5px; display: flex; flex-wrap: wrap; gap: 8px; font-weight: 600; }
-        .lesson-actions-bar {
-            display: flex; gap: 6px; margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--border);
-        }
-        .btn-mini-action {
-            display: inline-flex; align-items: center; gap: 4px; padding: 3px 8px; border-radius: 6px;
-            font-size: 0.7rem; font-weight: 700; border: 1px solid var(--border); background: var(--bg-surface);
-            color: var(--text-muted); cursor: pointer; transition: all 0.15s;
-        }
-        .btn-mini-action:hover { color: var(--primary); border-color: var(--primary); }
-
-        /* TABLO KAPSAYICI (GENEL VE AKADEMİK TAKVİM LİSTE TABLOSU) */
-        .table-wrapper {
-            background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md);
-            overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%;
-            backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
-            box-shadow: var(--shadow-sm), var(--glass-reflection);
-        }
-        .table-wrapper table {
-            width: 100%; border-collapse: collapse; min-width: 680px; text-align: left; font-size: 0.84rem;
-        }
-        .table-wrapper th, .table-wrapper td {
-            border-bottom: 1px solid var(--border); padding: 12px 14px; vertical-align: middle;
-        }
-        .table-wrapper th {
-            background: var(--bg-surface-elevated); font-weight: 600; color: var(--text-main); white-space: nowrap;
-        }
-        .table-wrapper tr:last-child td { border-bottom: none; }
-        .table-wrapper tr:hover td { background: var(--bg-surface-hover); }
-
-        /* HAFTALIK MATRİS TABLOSU (TABLET & LAPTOP) */
-        .matrix-wrapper {
-            background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md);
-            overflow-x: auto; -webkit-overflow-scrolling: touch;
-            backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
-            box-shadow: var(--shadow-sm), var(--glass-reflection);
-        }
-        .sched-matrix-table {
-            width: 100%; border-collapse: collapse; min-width: 780px; text-align: left; font-size: 0.82rem;
-        }
-        .sched-matrix-table th, .sched-matrix-table td {
-            border: 1px solid var(--border); padding: 10px 12px; vertical-align: top;
-        }
-        .sched-matrix-table th {
-            background: var(--bg-surface-elevated); font-weight: 600; color: var(--text-main); text-align: center;
-        }
-        .matrix-time-col {
-            width: 110px; font-weight: 600; color: var(--primary); text-align: center; white-space: nowrap; background: var(--bg-surface-elevated);
-        }
-        .matrix-break-row {
-            background: rgba(245, 158, 11, 0.08); text-align: center; font-weight: 600; color: var(--warning);
-            padding: 8px !important; letter-spacing: 0.5px;
-        }
-        .matrix-lesson-pill {
-            background: var(--bg-surface-elevated); border: 1px solid var(--border); border-left: 3px solid var(--primary);
-            border-radius: 8px; padding: 6px 9px; margin-bottom: 4px;
-        }
-        .matrix-lesson-pill:last-child { margin-bottom: 0; }
-        .matrix-lesson-pill.live { border-left-color: var(--accent); background: var(--accent-soft); }
-        .matrix-lesson-title { font-weight: 600; font-size: 0.82rem; line-height: 1.3; }
-        .matrix-lesson-sub { font-size: 0.72rem; color: var(--text-muted); margin-top: 3px; }
-
-        /* AKADEMİK TAKVİM DÖNÜM NOKTALARI (MILESTONES) */
-        .cal-milestones-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-bottom: 20px;
-        }
-        .milestone-card {
-            background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md);
-            padding: 14px 16px; display: flex; align-items: center; gap: 12px; cursor: pointer;
-            backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
-            box-shadow: var(--shadow-sm), var(--glass-reflection);
-            transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s, box-shadow 0.22s;
-        }
-        .milestone-card:hover { transform: translateY(-3px) scale(1.01); border-color: var(--primary); box-shadow: var(--shadow), var(--glass-reflection); }
-        .milestone-icon {
-            width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center;
-            font-size: 22px; flex-shrink: 0;
-        }
-        .milestone-title { font-size: 0.85rem; font-weight: 600; line-height: 1.25; }
-        .milestone-sub { font-size: 0.72rem; color: var(--text-muted); margin-top: 2px; }
-        .milestone-badge {
-            margin-left: auto; font-size: 0.74rem; font-weight: 600; padding: 3px 8px; border-radius: 20px;
-            white-space: nowrap;
-        }
-
-        /* GERÇEK VE ÇOK DETAYLI AKADEMİK TAKVİM BİLEŞENİ */
-        .calendar-controls {
-            display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap;
-            margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--border);
-        }
-        .month-selector { display: flex; align-items: center; gap: 10px; }
-        .month-name { font-size: 1.25rem; font-weight: 600; min-width: 170px; text-align: center; }
-        .cal-header-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-        .cal-mode-pills { display: flex; gap: 4px; background: var(--bg-surface-elevated); padding: 4px; border-radius: 50px; border: 1px solid var(--border); }
-        .cal-mode-btn { padding: 6px 14px; border-radius: 50px; font-size: 0.8rem; font-weight: 700; border: none; background: transparent; color: var(--text-muted); cursor: pointer; }
-        .cal-mode-btn.active { background: var(--primary); color: #fff; }
-
-        .cal-filter-bar {
-            display: flex; align-items: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap;
-        }
-        .cal-grid-wrapper {
-            background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden;
-            backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
-            box-shadow: var(--shadow-sm), var(--glass-reflection);
-        }
-        .cal-weekdays {
-            display: grid; grid-template-columns: repeat(7, 1fr); background: var(--bg-surface-elevated);
-            border-bottom: 1px solid var(--border); text-align: center; font-size: 0.78rem; font-weight: 600; color: var(--primary);
-        }
-        .cal-weekday { padding: 12px 6px; }
-        .cal-days-grid {
-            display: grid; grid-template-columns: repeat(7, 1fr); min-height: 480px;
-        }
-        .cal-cell {
-            border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);
-            padding: 8px; min-height: 85px; display: flex; flex-direction: column; gap: 4px;
-            cursor: pointer; transition: background 0.15s; position: relative;
-        }
-        .cal-cell:nth-child(7n) { border-right: none; }
-        .cal-cell:hover { background: var(--bg-surface-hover); }
-        .cal-cell.other-month { opacity: 0.35; background: rgba(0,0,0,0.02); }
-        .cal-cell.today-cell { background: var(--primary-soft); }
-        .cal-cell.today-cell .day-number { color: var(--primary); font-weight: 600; }
-        .cal-cell.selected-cell { outline: 2px solid var(--primary); outline-offset: -2px; }
-
-        .day-number-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px; }
-        .day-number { font-size: 0.86rem; font-weight: 700; }
-        .cal-cell-badge {
-            display: none; background: var(--primary); color: #fff; font-size: 0.65rem; font-weight: 600;
-            padding: 1px 5px; border-radius: 10px;
-        }
-        .cal-dots-wrap { display: none; gap: 3px; align-items: center; justify-content: center; margin-top: 4px; }
-        .cal-dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
-
-        .cal-event-pill {
-            font-size: 0.68rem; font-weight: 700; padding: 2px 6px; border-radius: 6px;
-            overflow: hidden; text-overflow: ellipsis; white-space: nowrap; line-height: 1.3;
-        }
-        .pill-guz { background: var(--primary-soft); color: var(--primary); border-left: 2px solid var(--primary); }
-        .pill-bahar { background: var(--accent-soft); color: var(--accent); border-left: 2px solid var(--accent); }
-        .pill-tatil { background: var(--warning-soft); color: var(--warning); border-left: 2px solid var(--warning); }
-        .pill-sinav { background: var(--danger-soft); color: var(--danger); border-left: 2px solid var(--danger); }
-
-        /* SEÇİLİ GÜN VE AYRINTILAR PANELİ (YENİLENMİŞ MODERN TASARIM) */
-        .cal-detail-card {
-            background: var(--bg-surface-elevated); border: 1px solid var(--border);
-            border-radius: var(--radius-lg); padding: 22px 24px; margin-top: 22px;
-            backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
-            box-shadow: var(--shadow), var(--glass-reflection);
-            transition: all 0.25s ease;
-        }
-        .cal-detail-head {
-            display: flex; align-items: center; justify-content: space-between; gap: 14px;
-            margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border);
-            flex-wrap: wrap;
-        }
-        .cal-detail-head-left {
-            display: flex; align-items: center; gap: 12px;
-        }
-        .cal-detail-head-icon {
-            width: 44px; height: 44px; border-radius: 12px;
-            background: var(--primary-soft); color: var(--primary);
-            display: flex; align-items: center; justify-content: center;
-            border: 1px solid var(--primary-border); box-shadow: var(--glass-reflection);
-            flex-shrink: 0;
-        }
-        .cal-detail-head-title h3 {
-            font-size: 1.15rem; font-weight: 600; color: var(--text-main); line-height: 1.25; margin: 0;
-        }
-        .cal-detail-head-title span {
-            font-size: 0.78rem; color: var(--text-muted); font-weight: 600; display: block; margin-top: 2px;
-        }
-        .cal-detail-count-badge {
-            background: var(--primary-soft); color: var(--primary); border: 1px solid var(--primary-border);
-            border-radius: 50px; padding: 5px 14px; font-size: 0.78rem; font-weight: 600;
-            display: inline-flex; align-items: center; gap: 6px;
-        }
-
-        .cal-day-event-card {
-            background: var(--bg-surface); border: 1px solid var(--border);
-            border-radius: 16px; padding: 18px 20px; display: flex;
-            align-items: center; justify-content: space-between; gap: 16px;
-            transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative; overflow: hidden;
-            box-shadow: var(--shadow-sm), var(--glass-reflection);
-        }
-        .cal-day-event-card:hover {
-            transform: translateY(-2px);
-            border-color: var(--primary-border);
-            box-shadow: 0 10px 28px -4px rgba(59, 130, 246, 0.18);
-        }
-        .cal-day-event-card::before {
-            content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
-            background: var(--ev-bar-color, var(--primary));
-        }
-        .cal-day-event-main {
-            display: flex; align-items: flex-start; gap: 14px; flex: 1; min-width: 220px;
-        }
-        .cal-day-event-icon-box {
-            width: 42px; height: 42px; border-radius: 12px;
-            background: var(--ev-icon-bg, var(--primary-soft));
-            color: var(--ev-icon-color, var(--primary));
-            display: flex; align-items: center; justify-content: center;
-            flex-shrink: 0; margin-top: 2px;
-            border: 1px solid var(--ev-icon-border, var(--primary-border));
-        }
-        .cal-day-event-content { flex: 1; }
-        .cal-day-event-name {
-            font-size: 1.02rem; font-weight: 600; color: var(--text-main); margin-bottom: 6px; line-height: 1.35;
-        }
-        .cal-day-event-meta {
-            display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 0.8rem; color: var(--text-muted); font-weight: 600;
-        }
-        .cal-day-event-chip {
-            display: inline-flex; align-items: center; gap: 5px;
-            padding: 4px 10px; border-radius: 8px; background: var(--bg-surface-elevated);
-            border: 1px solid var(--border); font-size: 0.76rem; font-weight: 700;
-            color: var(--text-muted);
-        }
-        .cal-day-event-actions {
-            display: flex; align-items: center; gap: 10px; flex-shrink: 0; flex-wrap: wrap;
-        }
-        .btn-cal-add {
-            background: var(--bg-surface-elevated); color: var(--text-main);
-            border: 1px solid var(--border); padding: 8px 16px; border-radius: 50px;
-            font-size: 0.82rem; font-weight: 700; display: inline-flex; align-items: center; gap: 6px;
-            cursor: pointer; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: var(--glass-reflection);
-        }
-        .btn-cal-add:hover {
-            background: var(--primary); color: #fff; border-color: var(--primary);
-            box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4); transform: translateY(-1px);
-        }
-        html.light-mode .cal-detail-card {
-            background: #ffffff;
-            border-color: rgba(0, 0, 0, 0.08);
-            box-shadow: 0 6px 24px -6px rgba(0, 0, 0, 0.06);
-        }
-        html.light-mode .cal-day-event-card {
-            background: #ffffff;
-            border-color: rgba(0, 0, 0, 0.08);
-            box-shadow: 0 4px 16px -3px rgba(0, 0, 0, 0.05);
-        }
-        html.light-mode .cal-day-event-card:hover {
-            border-color: rgba(59, 130, 246, 0.4);
-            box-shadow: 0 10px 26px -4px rgba(59, 130, 246, 0.15);
-        }
-
-        /* MOBİL LİSTE KARTLARI */
-        .cal-mobile-cards { display: none; flex-direction: column; gap: 10px; }
-        .cal-mob-item {
-            background: var(--bg-surface-elevated); border: 1px solid var(--border); border-radius: 12px;
-            padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;
-            backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
-            box-shadow: var(--glass-reflection);
-            transition: transform 0.2s, border-color 0.2s;
-        }
-        .cal-mob-item:hover { transform: translateY(-2px); border-color: var(--border-hover); }
-
-        /* MODAL VE REHBER PENCERELERİ */
-        .ann-overlay {
-            position: fixed; inset: 0; z-index: 2500;
-            background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-            display: none; align-items: center; justify-content: center; padding: 20px;
-            animation: fadeIn 0.25s ease-out;
-        }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .ann-modal {
-            background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
-            max-width: 520px; width: 100%; padding: 32px 28px; position: relative;
-            box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7); text-align: center;
-            animation: scaleUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        @keyframes scaleUp { from { transform: scale(0.92); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-        .ann-modal-close {
-            position: absolute; top: 16px; right: 16px; width: 38px; height: 38px;
-            border-radius: 50%; background: var(--bg-surface-elevated); border: 1px solid var(--border);
-            color: var(--text-muted); display: flex; align-items: center; justify-content: center;
-            cursor: pointer; transition: all 0.2s;
-        }
-        .ann-modal-close:hover { color: var(--text-main); background: var(--bg-surface-hover); }
-
-        /* TAM EKRAN AÇILIŞ DUYURUSU (EKRANIN TAMAMINI KAPLAYAN FULLSCREEN ANNOUNCEMENT) */
-        .ann-fs-overlay {
-            position: fixed; inset: 0; z-index: 9999;
-            width: 100vw; height: 100vh; height: 100dvh;
-            background: radial-gradient(circle at 50% 12%, rgba(37, 99, 235, 0.22) 0%, rgba(8, 13, 26, 0.98) 75%), var(--bg-body);
-            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-            display: none; flex-direction: column; justify-content: space-between;
-            overflow-y: auto; overflow-x: hidden;
-            -webkit-overflow-scrolling: touch;
-            padding: max(16px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
-            animation: annFsFade 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        html.light-mode .ann-fs-overlay {
-            background: radial-gradient(circle at 50% 12%, rgba(37, 99, 235, 0.12) 0%, rgba(237, 242, 247, 0.98) 75%), var(--bg-body);
-        }
-        @keyframes annFsFade {
-            from { opacity: 0; transform: scale(0.97); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        .ann-fs-topbar {
-            display: flex; align-items: center; justify-content: space-between;
-            width: 100%; max-width: 960px; margin: 0 auto; padding: 6px 0;
-            flex-shrink: 0;
-        }
-        .ann-fs-brand {
-            display: flex; align-items: center; gap: 12px;
-        }
-        .ann-fs-brand img {
-            width: 38px; height: 38px; object-fit: contain; border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-        }
-        .ann-fs-brand-text {
-            display: flex; flex-direction: column; text-align: left;
-        }
-        .ann-fs-brand-text strong {
-            font-size: 0.88rem; font-weight: 600; color: var(--text-main); line-height: 1.2;
-        }
-        .ann-fs-brand-text span {
-            font-size: 0.74rem; font-weight: 600; color: var(--text-muted);
-        }
-        .ann-fs-close-btn {
-            display: inline-flex; align-items: center; gap: 6px;
-            padding: 8px 18px; border-radius: 50px;
-            background: var(--bg-surface-elevated); border: 1px solid var(--border);
-            color: var(--text-muted); font-size: 0.84rem; font-weight: 700;
-            cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .ann-fs-close-btn:hover {
-            color: var(--text-main); background: var(--bg-surface-hover); border-color: var(--border-hover);
-            transform: translateY(-1px);
-        }
-        .ann-fs-content {
-            width: 100%; max-width: 780px; margin: auto;
-            text-align: center; display: flex; flex-direction: column; align-items: center;
-            padding: 24px 0; flex-grow: 1; justify-content: center;
-        }
-        .ann-fs-crest {
-            width: 92px; height: 92px; border-radius: 26px;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.22), rgba(16, 185, 129, 0.16));
-            border: 2px solid rgba(59, 130, 246, 0.4);
-            display: flex; align-items: center; justify-content: center;
-            margin-bottom: 20px;
-            box-shadow: 0 16px 36px -8px rgba(37, 99, 235, 0.35);
-            animation: crestFloat 4s ease-in-out infinite;
-        }
-        @keyframes crestFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-4px); }
-        }
-        .ann-fs-crest img {
-            width: 64px; height: 64px; object-fit: contain;
-        }
-        .ann-fs-badge {
-            display: inline-flex; align-items: center; gap: 8px;
-            background: var(--accent-soft); color: var(--accent);
-            border: 1px solid rgba(16, 185, 129, 0.35);
-            padding: 6px 18px; border-radius: 50px;
-            font-size: 0.82rem; font-weight: 600; letter-spacing: 0.3px;
-            margin-bottom: 16px;
-        }
-        .ann-fs-title {
-            font-size: clamp(1.85rem, 5vw, 2.75rem);
-            font-weight: 600; letter-spacing: -0.8px;
-            line-height: 1.15; margin-bottom: 12px;
-            color: var(--text-main);
-        }
-        .ann-fs-desc {
-            font-size: clamp(0.92rem, 2vw, 1.08rem);
-            color: var(--text-muted); line-height: 1.65;
-            max-width: 620px; margin: 0 auto 28px;
-        }
-        .ann-fs-cards {
-            display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 14px; width: 100%; margin-bottom: 30px;
-            text-align: left;
-        }
-        .ann-fs-card {
-            background: var(--bg-surface); border: 1px solid var(--border);
-            border-radius: 16px; padding: 18px 16px;
-            display: flex; flex-direction: column; gap: 10px;
-            backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
-            box-shadow: var(--shadow-sm), var(--glass-reflection);
-            transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s, box-shadow 0.22s;
-        }
-        .ann-fs-card:hover {
-            transform: translateY(-3px); border-color: var(--border-hover);
-            box-shadow: var(--shadow), var(--glass-reflection);
-        }
-        .ann-fs-card-icon {
-            width: 42px; height: 42px; border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-        }
-        .ann-fs-card-icon .material-symbols-rounded { font-size: 22px; }
-        .ann-fs-card h4 {
-            font-size: 0.94rem; font-weight: 600; color: var(--text-main); margin-bottom: 4px;
-        }
-        .ann-fs-card p {
-            font-size: 0.80rem; color: var(--text-muted); line-height: 1.45;
-        }
-        .ann-fs-actions {
-            width: 100%; max-width: 460px; margin: 0 auto;
-            display: flex; flex-direction: column; gap: 10px;
-            align-items: center;
-        }
-        .ann-fs-btn-main {
-            width: 100%; min-height: 52px; font-size: 1.02rem; font-weight: 600;
-            border-radius: 50px; background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-            color: #fff; border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 10px 28px -6px rgba(37, 99, 235, 0.55);
-            cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .ann-fs-btn-main:hover {
-            transform: translateY(-2px); box-shadow: 0 14px 34px -4px rgba(37, 99, 235, 0.7);
-        }
-        .ann-fs-btn-main:active { transform: translateY(1px); }
-        .ann-fs-btn-sub {
-            background: transparent; border: none; color: var(--text-muted);
-            font-size: 0.88rem; font-weight: 700; cursor: pointer; padding: 8px 16px;
-            border-radius: 50px; transition: color 0.2s;
-        }
-        .ann-fs-btn-sub:hover { color: var(--text-main); }
-        .ann-fs-bottom-hint {
-            width: 100%; text-align: center; padding-top: 12px;
-            font-size: 0.74rem; color: var(--text-muted); opacity: 0.8;
-            flex-shrink: 0;
-        }
-
-        .to-top {
-            position: fixed; right: 20px; bottom: 24px; z-index: 900; width: 46px; height: 46px;
-            border-radius: 50%; border: none; background: var(--primary); color: #fff;
-            display: none; align-items: center; justify-content: center; box-shadow: var(--shadow);
-        }
-        .to-top.show { display: flex; }
-
-        /* RESPONSIVE & DEVICE OPTIMIZATIONS (TABLET, TELEFON, LAPTOP) */
-        @media (max-width: 1024px) {
-            .sidebar { width: 84px; padding: 20px 10px; }
-            .brand { justify-content: center; padding: 0; }
-            .brand-text, .nav-label, .nav-badge { display: none; }
-            .nav-item { justify-content: center; padding: 13px 0; }
-            .main-content { padding: 20px 18px; max-width: 100%; width: 100%; overflow-x: hidden; }
-            .lower-grid { grid-template-columns: 1fr; gap: 16px; }
-            .cal-milestones-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-            .schedule-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-            .sched-matrix-table th, .sched-matrix-table td { padding: 6px 4px; font-size: 0.8rem; }
-            .card { max-width: 100%; overflow: hidden; }
-            .cal-days-grid { grid-template-columns: repeat(7, minmax(0, 1fr)); }
-            .cal-weekdays { grid-template-columns: repeat(7, minmax(0, 1fr)); }
-        }
-
-        @media (max-width: 767px) {
-            .sidebar { display: none; }
-            .menu-btn { display: inline-flex; }
-            .main-content { padding: 14px 10px 32px; width: 100%; max-width: 100vw; overflow-x: hidden; box-sizing: border-box; }
-            .top-header { margin-bottom: 16px; gap: 10px; }
-            .header-actions .btn-icon { width: 38px; height: 38px; }
-            .page-title { font-size: 1.35rem; }
-            .header-date { font-size: 0.78rem; }
-            
-            /* KARTLAR VE TAŞMA ENGELLEME */
-            .card { padding: 14px 12px; border-radius: 16px; margin-bottom: 16px; max-width: 100%; overflow: hidden; box-sizing: border-box; }
-            .card-header { margin-bottom: 14px; gap: 8px; flex-direction: column; align-items: flex-start; }
-            .card-title { font-size: 1.05rem; }
-            
-            /* SAYAÇ KARTI MOBİL */
-            .timer-card { padding: 14px 12px; border-radius: 16px; margin-bottom: 16px; gap: 12px; max-width: 100%; flex-direction: column; align-items: stretch; }
-            .timer-info { gap: 12px; }
-            .timer-title { font-size: 0.98rem; }
-            .timer-sub { font-size: 0.75rem; }
-            .timer-boxes { width: 100%; min-width: 0; max-width: none; gap: 5px; }
-            .t-box { padding: 8px 2px; }
-            .t-val { font-size: 1.25rem; }
-            .t-lbl { font-size: 0.60rem; }
-            
-            /* İSTATİSTİK ŞERİDİ */
-            .stats-strip { grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
-            .stat-card { padding: 12px 10px; gap: 10px; min-width: 0; }
-            .stat-num { font-size: 1.2rem; }
-            .stat-name { font-size: 0.65rem; }
-            
-            /* DUYURULAR */
-            .ann-card { padding: 14px 12px; border-radius: 14px; gap: 10px; }
-            .ann-header { flex-direction: column; align-items: flex-start; gap: 8px; }
-            .ann-title-text { font-size: 1.02rem; word-break: break-word; overflow-wrap: anywhere; }
-            .ann-body { font-size: 0.88rem; line-height: 1.6; word-break: break-word; overflow-wrap: anywhere; }
-            
-            /* YAKLAŞAN TARİHLER */
-            .up-card-item { padding: 8px 10px; gap: 10px; }
-            .up-date-box { width: 40px; height: 40px; border-radius: 10px; }
-            .up-date-day { font-size: 1.05rem; }
-            .up-date-month { font-size: 0.58rem; }
-            .up-name { font-size: 0.84rem; white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-            .up-sub { font-size: 0.70rem; gap: 4px; }
-
-            /* CANLI DERS BİLGİSİ */
-            .sched-live-card { padding: 12px 14px; gap: 10px; }
-            .sched-live-title { font-size: 0.88rem; word-break: break-word; }
-            .sched-live-meta { font-size: 0.75rem; flex-wrap: wrap; }
-            
-            /* DERS PROGRAMI KARTLARI */
-            .schedule-grid { grid-template-columns: 1fr; gap: 12px; }
-            .day-card { padding: 14px 12px; border-radius: 14px; }
-            .lesson-card { padding: 10px 12px; gap: 10px; }
-            .lesson-time { min-width: 50px; padding: 5px 6px; font-size: 0.72rem; }
-            .lesson-name { font-size: 0.88rem; word-break: break-word; overflow-wrap: anywhere; }
-            .lesson-details { font-size: 0.72rem; gap: 6px; }
-            .lesson-actions-bar { flex-wrap: wrap; }
-            .btn-mini-action { font-size: 0.68rem; padding: 4px 8px; }
-
-            /* DERS PROGRAMI TABLOSU MOBİL TAŞMA KORUMASI */
-            .matrix-wrapper { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 10px; }
-            .sched-matrix-table { min-width: 600px; font-size: 0.76rem; }
-            
-            /* ARAMA VE BUTONLAR */
-            .search-wrap { max-width: none; width: 100%; }
-            .sched-actions { width: 100%; flex-direction: column; align-items: stretch; gap: 8px; }
-            .sched-actions .btn { width: 100%; justify-content: center; }
-            .sched-view-pills { width: 100%; }
-            .sched-mode-btn { flex: 1; text-align: center; justify-content: center; }
-            .day-tabs-bar { padding-bottom: 6px; }
-            
-            /* MOBİL AKADEMİK TAKVİM */
-            .cal-milestones-grid { grid-template-columns: 1fr; gap: 8px; }
-            .milestone-card { padding: 10px 12px; gap: 10px; }
-            .milestone-icon { width: 38px; height: 38px; font-size: 20px; }
-            .milestone-title { font-size: 0.82rem; word-break: break-word; }
-            .milestone-sub { font-size: 0.70rem; }
-            .cal-days-grid { grid-template-columns: repeat(7, minmax(0, 1fr)); min-height: auto; }
-            .cal-weekdays { grid-template-columns: repeat(7, minmax(0, 1fr)); }
-            .cal-weekday { padding: 8px 2px; font-size: 0.72rem; }
-            .cal-cell { min-width: 0; overflow: hidden; min-height: 52px; padding: 4px 2px; }
-            .day-number { font-size: 0.8rem; }
-            .cal-event-pill { display: none; }
-            .cal-dots-wrap { display: flex; }
-            .cal-cell-badge { display: inline-flex; }
-            .calendar-controls { flex-direction: column; align-items: stretch; gap: 10px; }
-            .month-selector { justify-content: center; }
-            .month-name { min-width: 140px; font-size: 1.05rem; }
-            .cal-header-actions { flex-direction: column; width: 100%; gap: 8px; }
-            .cal-header-actions .btn { width: 100%; justify-content: center; }
-            .cal-mode-pills { width: 100%; }
-            .cal-mode-btn { flex: 1; text-align: center; }
-            .cal-filter-bar { width: 100%; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; }
-            .cal-desktop-table { display: none; }
-            .cal-mobile-cards { display: flex; flex-direction: column; gap: 10px; }
-            .cal-mob-item { padding: 14px 12px; }
-            .cal-mob-item button { width: 100%; justify-content: center; }
-
-            /* GÜNÜN FAALİYETLERİ MOBİL KARTLARI (SIFIR TAŞMA) */
-            .cal-detail-card { padding: 16px 12px; margin-top: 16px; border-radius: 16px; }
-            .cal-detail-head { flex-direction: column; align-items: flex-start; gap: 10px; }
-            .cal-detail-head-left { gap: 10px; width: 100%; }
-            .cal-detail-head-title h3 { font-size: 1.05rem; word-break: break-word; }
-            .cal-day-event-card { flex-direction: column; align-items: stretch; padding: 14px 12px; gap: 12px; }
-            .cal-day-event-main { min-width: 0; width: 100%; gap: 10px; }
-            .cal-day-event-name { font-size: 0.95rem; word-break: break-word; overflow-wrap: anywhere; }
-            .cal-day-event-meta { font-size: 0.74rem; gap: 6px; }
-            .cal-day-event-chip { padding: 3px 8px; font-size: 0.72rem; word-break: break-word; }
-            .cal-day-event-actions {
-                width: 100%; justify-content: space-between; align-items: center;
-                border-top: 1px solid var(--border); padding-top: 10px; gap: 8px;
-            }
-            .btn-cal-add { flex: 1; justify-content: center; }
-
-            /* AÇILIŞ DUYURUSU VE POPUP KARTLARI MOBİL */
-            .ann-fs-cards { grid-template-columns: 1fr; gap: 10px; margin-bottom: 22px; }
-            .ann-fs-card { flex-direction: row; align-items: center; gap: 12px; padding: 12px 14px; text-align: left; }
-            .ann-fs-card-icon { flex-shrink: 0; }
-
-            /* DOSYA LİSTESİ MOBİL */
-            #file-list .ann-card {
-                padding: 14px 12px !important; flex-direction: column !important;
-                align-items: stretch !important; gap: 12px !important;
-            }
-            #file-list .ann-card a.btn { width: 100%; justify-content: center; }
-        }
-
-        @media (max-width: 480px) {
-            .top-header { flex-wrap: wrap; }
-            .header-left { width: 100%; }
-            .page-title { font-size: 1.15rem; }
-            .header-actions { margin-left: auto; gap: 6px; }
-            #btn-pwa-install .pwa-btn-text { display: none; }
-            #btn-pwa-install { width: 38px; height: 38px; padding: 0; border-radius: 50%; }
-            .timer-card { padding: 12px 10px; gap: 10px; }
-            .timer-boxes { gap: 4px; }
-            .t-box { padding: 6px 1px; }
-            .t-val { font-size: 1.12rem; }
-            .t-lbl { font-size: 0.56rem; }
-            .stat-card { padding: 10px 8px; gap: 8px; }
-            .stat-num { font-size: 1.1rem; }
-            .stat-name { font-size: 0.62rem; }
-            .ann-card { padding: 12px 10px; }
-            .ann-title-text { font-size: 0.95rem; }
-            .cal-detail-card { padding: 14px 10px; }
-            .cal-day-event-card { padding: 12px 10px; }
-            .ann-fs-overlay { padding: max(12px, env(safe-area-inset-top)) 12px max(16px, env(safe-area-inset-bottom)) 12px; }
-            .ann-fs-crest { width: 64px; height: 64px; border-radius: 18px; margin-bottom: 12px; }
-            .ann-fs-crest img { width: 44px; height: 44px; }
-            .ann-fs-title { font-size: 1.35rem; }
-            .ann-fs-desc { font-size: 0.82rem; margin-bottom: 16px; }
-            .ann-fs-card { padding: 10px 12px; }
-            .ann-fs-card h4 { font-size: 0.88rem; }
-            .ann-fs-card p { font-size: 0.76rem; }
-        }
-
-        /* YAZDIRMA VE PDF ÇIKTISI (PRINT CSS) - KESİNLİKLE TEK SAYFAYA (A4 LANDSCAPE) TAM SIĞDIRMA */
-        #sched-printable-full {
-            display: none;
-        }
-
-        @media print {
-            @page {
-                size: A4 landscape;
-                margin: 4mm 6mm !important;
-            }
-            html, body {
-                width: 100% !important;
-                height: 100% !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                background: #fff !important;
-                color: #000 !important;
-                overflow: hidden !important;
-            }
-            body.printing-schedule > *:not(#sched-printable-full) {
-                display: none !important;
-            }
-            body.printing-schedule #sched-printable-full {
-                display: flex !important;
-                flex-direction: column !important;
-                justify-content: space-between !important;
-                width: 100% !important;
-                height: 100vh !important;
-                max-height: 100vh !important;
-                overflow: hidden !important;
-                background: #fff !important;
-                color: #000 !important;
-                box-sizing: border-box !important;
-                padding: 0 !important;
-                margin: 0 !important;
-                page-break-inside: avoid !important;
-                page-break-after: avoid !important;
-                page-break-before: avoid !important;
-                font-family: 'Poppins', sans-serif !important;
-            }
-            .print-full-sched-header {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                border-bottom: 2px solid #0f172a;
-                padding-bottom: 3px;
-                margin-bottom: 3px;
-                flex-shrink: 0;
-            }
-            .print-full-sched-title h2 {
-                margin: 0;
-                font-size: 11pt;
-                font-weight: 600;
-                color: #0f172a;
-                letter-spacing: 0.3px;
-                line-height: 1.15;
-            }
-            .print-full-sched-title p {
-                margin: 1px 0 0 0;
-                font-size: 7.2pt;
-                color: #475569;
-                font-weight: 600;
-            }
-            .print-full-sched-meta {
-                text-align: right;
-                font-size: 7.2pt;
-                color: #475569;
-                line-height: 1.2;
-            }
-            .print-matrix-table {
-                width: 100% !important;
-                height: auto !important;
-                border-collapse: collapse !important;
-                table-layout: fixed;
-                margin-bottom: 2px;
-                flex: 1;
-            }
-            .print-matrix-table th, .print-matrix-table td {
-                border: 1px solid #cbd5e1 !important;
-                padding: 1.5px 3px !important;
-                font-size: 6.8pt !important;
-                vertical-align: top;
-                line-height: 1.15 !important;
-            }
-            .print-matrix-table th {
-                background: #f1f5f9 !important;
-                color: #0f172a !important;
-                font-weight: 600 !important;
-                text-align: center;
-                padding: 2.5px !important;
-            }
-            .print-matrix-table th.time-th {
-                width: 72px;
-            }
-            .print-matrix-table td.time-td {
-                background: #f8fafc !important;
-                font-weight: 700;
-                text-align: center;
-                white-space: nowrap;
-                color: #334155;
-            }
-            .print-matrix-table .break-row-td {
-                background: #f8fafc !important;
-                text-align: center;
-                font-weight: 700;
-                color: #64748b;
-                padding: 1px !important;
-                font-style: italic;
-                font-size: 6.5pt !important;
-            }
-            .print-lesson-box {
-                background: #f8fafc;
-                border: 1px solid #94a3b8;
-                border-left: 3px solid #0284c7;
-                border-radius: 2px;
-                padding: 1px 3px;
-                margin-bottom: 1px;
-            }
-            .print-lesson-title {
-                font-weight: 600;
-                color: #0f172a;
-                font-size: 7.2pt;
-                line-height: 1.1;
-            }
-            .print-lesson-meta {
-                font-size: 6.2pt;
-                color: #475569;
-                margin-top: 1px;
-                display: flex;
-                justify-content: space-between;
-                gap: 2px;
-            }
-            .print-single-page-footer {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                font-size: 6.8pt;
-                color: #64748b;
-                border-top: 1px solid #cbd5e1;
-                padding-top: 3px;
-                margin-top: 2px;
-                flex-shrink: 0;
-            }
-
-            /* Genel sayfa yazdırma (Takvim vb.) */
-            body:not(.printing-schedule) .sidebar, 
-            body:not(.printing-schedule) .top-header, 
-            body:not(.printing-schedule) .admin-maintenance-bar, 
-            body:not(.printing-schedule) .maintenance-fullscreen-overlay, 
-            body:not(.printing-schedule) .ann-overlay, 
-            body:not(.printing-schedule) .to-top,
-            body:not(.printing-schedule) .sched-actions, 
-            body:not(.printing-schedule) .sched-filter-bar, 
-            body:not(.printing-schedule) .day-tabs-bar, 
-            body:not(.printing-schedule) .calendar-controls,
-            body:not(.printing-schedule) .cal-filter-bar, 
-            body:not(.printing-schedule) .btn, 
-            body:not(.printing-schedule) .search-wrap, 
-            body:not(.printing-schedule) .cal-mode-pills, 
-            body:not(.printing-schedule) .stat-card,
-            body:not(.printing-schedule) .lesson-actions-bar {
-                display: none !important;
-            }
-            body:not(.printing-schedule) .main-content {
-                margin: 0 !important; padding: 0 !important; width: 100% !important;
-            }
-            body:not(.printing-schedule) .card {
-                border: 1px solid #ccc !important; box-shadow: none !important; margin-bottom: 12px !important;
-                page-break-inside: avoid;
-            }
-            body:not(.printing-schedule) .view-section { display: none !important; }
-            body:not(.printing-schedule) #view-calendar.active { display: block !important; }
-        }
-
-        html.in-maintenance-mode #maintenance-screen { display: flex !important; }
-        html.in-maintenance-mode body { overflow: hidden !important; }
-        /* =========================================================
-           UKEY PORTAL ENTEGRASYON STİLLERİ (GLASSMORPHIC NATIVE UI)
-           ========================================================= */
-        /* UKEY CANLI SENKRONİZASYON DURUM BARI (SADE & KALIN FONT) */
-        #view-ukey {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 500;
-        }
-        .ukey-sync-banner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            padding: 12px 16px;
-            margin-bottom: 14px;
-            border-radius: 16px;
-            background: linear-gradient(135deg, rgba(46, 168, 133, 0.1) 0%, rgba(91, 106, 240, 0.08) 100%);
-            border: 1px solid rgba(46, 168, 133, 0.28);
-            box-shadow: var(--shadow-sm);
-        }
-        .ukey-sync-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            min-width: 0;
-            flex: 1;
-        }
-        .ukey-sync-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #10b981;
-            box-shadow: 0 0 12px #10b981;
-            animation: ukeyPulse 2s infinite ease-in-out;
-            flex-shrink: 0;
-        }
-        .ukey-sync-dot.warn {
-            background: #f59e0b;
-            box-shadow: 0 0 12px #f59e0b;
-        }
-        @keyframes ukeyPulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.3); opacity: 0.6; }
-        }
-        .ukey-sync-texts {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-            min-width: 0;
-        }
-        .ukey-sync-title {
-            font-size: 0.94rem;
-            font-weight: 700;
-            color: var(--text-main);
-            letter-spacing: -0.01em;
-        }
-        .ukey-sync-sub {
-            font-size: 0.78rem;
-            font-weight: 600;
-            color: var(--text-muted);
-        }
-        .ukey-sync-actions {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-shrink: 0;
-        }
-        .ukey-refresh-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 9px 16px;
-            min-height: 40px;
-            border-radius: 12px;
-            font-size: 0.86rem;
-            font-weight: 700;
-            color: #ffffff !important;
-            background: var(--accent);
-            border: 1px solid transparent;
-            box-shadow: 0 4px 14px -3px rgba(46, 168, 133, 0.4);
             cursor: pointer;
-            white-space: nowrap;
-            flex-shrink: 0;
-            transition: transform 0.18s ease, box-shadow 0.18s ease;
+            transition: background 0.15s ease, color 0.15s ease;
+            user-select: none;
         }
-        .ukey-refresh-btn span {
-            color: #ffffff !important;
-            font-weight: 700;
-        }
-        .ukey-refresh-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 7px 18px -3px rgba(46, 168, 133, 0.55);
-        }
-        .ukey-refresh-btn:active {
-            transform: scale(0.97);
-        }
-        .ukey-refresh-btn.is-syncing {
-            opacity: 0.85;
-            pointer-events: none;
-        }
-        @keyframes ukeySpin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        .ukey-refresh-btn.is-syncing .ukey-refresh-icon {
-            animation: ukeySpin 0.8s linear infinite;
-        }
-
-        /* 3'LÜ SADE VE ERGONOMİK MODÜL GEZİNME BARI */
-        .ukey-toolbar {
-            padding: 6px;
-            margin-bottom: 16px;
-            border-radius: 16px;
-            background: var(--bg-surface);
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow-sm);
-        }
-        .ukey-nav-tabs {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 6px;
-            width: 100%;
-        }
-        .ukey-nav-tab {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 10px 14px;
-            min-height: 44px;
-            border-radius: 12px;
-            font-size: 0.88rem;
-            font-weight: 700;
-            color: var(--text-muted);
-            background: transparent;
-            border: 1px solid transparent;
-            cursor: pointer;
-            white-space: nowrap;
-            transition: all 0.2s ease;
-            text-align: center;
-        }
-        .ukey-nav-tab:hover {
-            color: var(--text-main);
-            background: var(--bg-surface-hover);
-        }
-        .ukey-nav-tab.active {
-            color: var(--primary) !important;
-            background: var(--primary-soft);
-            border-color: var(--primary-border);
-            font-weight: 800;
-            box-shadow: var(--shadow-sm);
-        }
-        .ukey-nav-tab.active span {
-            color: var(--primary) !important;
-        }
-        .ukey-tab-badge {
-            padding: 2px 8px;
-            border-radius: 999px;
-            font-size: 0.72rem;
-            font-weight: 700;
-            background: rgba(148, 163, 184, 0.2);
+        .nav-item .material-symbols-rounded {
+            font-size: 21px;
             color: inherit;
         }
-        .ukey-tab-badge.warn {
-            background: var(--warning-soft);
-            color: var(--warning);
+        .nav-item:hover {
+            background: var(--bg-surface-elevated);
+            color: var(--text-main);
         }
-        .ukey-nav-tab.active .ukey-tab-badge {
-            background: var(--primary);
-            color: #ffffff !important;
-        }
-        .ukey-nav-tab.active .ukey-tab-badge.warn {
-            background: var(--warning);
-            color: #ffffff !important;
-        }
-
-        /* UKEY HIZLI İSTATİSTİK ŞERİDİ */
-        .ukey-quick-stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-        .ukey-stat-box {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 14px;
-            border-radius: 14px;
-            background: var(--bg-surface);
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow-sm);
-            cursor: pointer;
-            transition: transform 0.18s ease, border-color 0.18s ease;
-        }
-        .ukey-stat-box:hover {
-            transform: translateY(-2px);
-            border-color: var(--primary-border);
-        }
-        .ukey-stat-num {
-            font-size: 1.25rem;
-            font-weight: 800;
-            color: var(--primary);
-            line-height: 1.1;
-        }
-        .ukey-stat-name {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            margin-top: 2px;
-        }
-
-        /* DERS KARTLARI IZGARASI (MASAÜSTÜ & MOBİL) */
-        .ukey-courses-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 16px;
-        }
-        .ukey-course-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 18px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            gap: 14px;
-            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: var(--shadow-sm);
-            cursor: pointer;
-        }
-        .ukey-course-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--primary-border);
-            box-shadow: var(--shadow);
-        }
-        .ukey-course-head {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-        }
-        .ukey-course-code {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            padding: 4px 10px;
-            border-radius: 9px;
-            font-size: 0.78rem;
-            font-weight: 800;
+        .nav-item.active {
             background: var(--primary-soft);
             color: var(--primary);
-            border: 1px solid var(--primary-border);
-            letter-spacing: 0.2px;
         }
-        .ukey-course-credits {
-            font-size: 0.78rem;
-            font-weight: 700;
-            color: var(--text-muted);
-        }
-        .ukey-course-title {
-            font-size: 1.05rem;
-            font-weight: 700;
-            margin: 10px 0 6px 0;
-            line-height: 1.35;
-            color: var(--text-main);
-            letter-spacing: -0.01em;
-        }
-        .ukey-course-inst {
-            font-size: 0.84rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .ukey-course-meta-strip {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-        .ukey-mini-chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            padding: 4px 10px;
-            border-radius: 8px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            background: var(--bg-surface-elevated);
-            color: var(--text-muted);
-            border: 1px solid var(--border);
-        }
-        .ukey-mini-chip.has-data {
-            color: var(--accent);
-            border-color: rgba(46, 168, 133, 0.35);
-            background: var(--accent-soft);
-        }
-        .ukey-mini-chip.has-hw {
-            color: var(--warning);
-            border-color: rgba(224, 139, 62, 0.4);
-            background: var(--warning-soft);
-        }
-
-        /* SEÇİLİ DERS DETAY EKRANI */
-        .ukey-back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 9px 16px;
-            border-radius: 12px;
-            font-size: 0.86rem;
-            font-weight: 700;
-            color: var(--primary);
-            background: var(--primary-soft);
-            border: 1px solid var(--primary-border);
-            cursor: pointer;
-            transition: all 0.18s ease;
-            margin-bottom: 14px;
-        }
-        .ukey-back-btn:hover {
-            background: var(--primary);
-            color: #ffffff !important;
-        }
-        .ukey-back-btn:hover span {
-            color: #ffffff !important;
-        }
-        .ukey-course-banner {
-            padding: 18px 20px;
-            border-radius: 16px;
-            background: var(--bg-surface);
-            border: 1px solid var(--border);
-            margin-bottom: 16px;
-        }
-        .ukey-course-banner-title {
-            font-size: 1.25rem;
-            font-weight: 800;
-            color: var(--text-main);
-            margin: 8px 0 4px 0;
-            line-height: 1.3;
-        }
-        .ukey-course-banner-inst {
-            font-size: 0.88rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .ukey-subtabs {
-            display: flex;
-            gap: 8px;
-            margin: 14px 0 16px 0;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--border);
-            overflow-x: auto;
-            scrollbar-width: none;
-        }
-        .ukey-subtabs::-webkit-scrollbar {
-            display: none;
-        }
-        .ukey-subtab-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            padding: 9px 16px;
-            min-height: 40px;
-            border-radius: 11px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            background: var(--bg-surface-elevated);
-            color: var(--text-muted);
-            border: 1px solid var(--border);
-            cursor: pointer;
-            white-space: nowrap;
-            transition: all 0.18s ease;
-        }
-        .ukey-subtab-btn:hover {
-            color: var(--text-main);
-            border-color: var(--border-hover);
-        }
-        .ukey-subtab-btn.active {
-            background: var(--primary-soft);
-            color: var(--primary);
-            border-color: var(--primary-border);
-            font-weight: 800;
-        }
-
-        .ukey-info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-        .ukey-info-box {
-            padding: 12px 14px;
-            border-radius: 12px;
-            background: var(--bg-surface-elevated);
-            border: 1px solid var(--border);
-        }
-        .ukey-info-box > span {
-            display: block;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            margin-bottom: 4px;
-        }
-        .ukey-info-box > strong {
-            font-size: 0.95rem;
-            color: var(--text-main);
-            font-weight: 700;
-        }
-
-        /* 14 HAFTALIK MÜFREDAT SATIRLARI */
-        .ukey-week-row {
-            display: grid;
-            grid-template-columns: 100px 1fr 1fr;
-            gap: 14px;
-            padding: 12px 16px;
-            border-radius: 12px;
-            background: var(--bg-surface-elevated);
-            border: 1px solid var(--border);
-            margin-bottom: 8px;
-            align-items: center;
-        }
-        .ukey-week-row-num {
-            font-size: 0.8rem;
-            font-weight: 800;
-            color: var(--primary);
-            background: var(--primary-soft);
-            padding: 4px 10px;
-            border-radius: 8px;
-            display: inline-block;
-            text-align: center;
-            border: 1px solid var(--primary-border);
-        }
-        .ukey-week-theory {
-            font-size: 0.9rem;
-            font-weight: 650;
-            color: var(--text-main);
-            line-height: 1.4;
-        }
-        .ukey-week-lab {
-            font-size: 0.84rem;
-            font-weight: 550;
-            color: var(--text-muted);
-            line-height: 1.4;
-        }
-
-        /* MATERYAL VE DOSYA ELEMANI */
-        .ukey-mat-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 14px;
-            padding: 14px 16px;
-            border-radius: 14px;
-            background: var(--bg-surface-elevated);
-            border: 1px solid var(--border);
-            margin-bottom: 10px;
-            transition: border-color 0.2s ease, transform 0.18s ease;
-        }
-        .ukey-mat-item:hover {
-            border-color: var(--primary-border);
-            transform: translateX(2px);
-        }
-        .ukey-mat-title {
-            font-size: 0.96rem;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 4px;
-            line-height: 1.35;
-        }
-        .ukey-mat-desc {
-            font-size: 0.82rem;
-            font-weight: 550;
-            color: var(--text-muted);
-        }
-
-        /* ACİL GÖREV & ÖDEV BANNERI */
-        .ukey-urgent-banner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 16px;
-            padding: 18px 20px;
-            border-radius: 16px;
-            background: linear-gradient(135deg, rgba(239, 68, 68, 0.12) 0%, rgba(245, 158, 11, 0.08) 100%);
-            border: 1px solid rgba(239, 68, 68, 0.35);
-            margin-bottom: 16px;
-        }
-        .ukey-urgent-title {
-            font-size: 1.05rem;
-            font-weight: 800;
-            color: var(--text-main);
-            margin: 4px 0;
-            line-height: 1.35;
-        }
-        .ukey-urgent-desc {
-            font-size: 0.86rem;
-            font-weight: 550;
-            color: var(--text-muted);
-            margin: 0;
-        }
-
-        /* MOBİL UYARLAMALAR (<= 768px) */
-        @media (max-width: 768px) {
-            .ukey-sync-banner {
-                flex-direction: column;
-                align-items: stretch;
-                padding: 12px 14px;
-                gap: 10px;
-            }
-            .ukey-refresh-btn {
-                width: 100%;
-                min-height: 42px;
-                font-size: 0.9rem;
-            }
-            .ukey-quick-stats {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 8px;
-            }
-            .ukey-stat-box {
-                padding: 10px 12px;
-                gap: 10px;
-            }
-            .ukey-stat-num {
-                font-size: 1.15rem;
-            }
-            .ukey-stat-name {
-                font-size: 0.72rem;
-            }
-            .ukey-nav-tab {
-                flex-direction: column;
-                gap: 4px;
-                padding: 8px 6px;
-                min-height: 52px;
-                font-size: 0.78rem;
-            }
-            .ukey-nav-tab .material-symbols-rounded {
-                font-size: 20px !important;
-            }
-            .ukey-courses-grid {
-                grid-template-columns: 1fr !important;
-                gap: 12px;
-            }
-            .ukey-course-card {
-                padding: 14px;
-            }
-            .ukey-week-row {
-                grid-template-columns: 1fr;
-                gap: 6px;
-                padding: 12px;
-            }
-            .ukey-mat-item {
-                flex-direction: column;
-                align-items: stretch;
-                padding: 14px 12px;
-                gap: 12px;
-            }
-            .ukey-mat-item .btn,
-            .ukey-mat-item a.btn {
-                width: 100%;
-                justify-content: center;
-                min-height: 40px;
-                font-size: 0.88rem;
-            }
-            .ukey-subtabs {
-                gap: 6px;
-            }
-            .ukey-subtab-btn {
-                padding: 8px 12px;
-                font-size: 0.8rem;
-                min-height: 38px;
-            }
-        }
-        
-        /* PASTEL & MODERN UKEY YAN MENÜ BUTONU */
-        .nav-item-ukey {
-            margin-top: 6px;
-            background: linear-gradient(135deg, var(--accent-soft) 0%, var(--primary-soft) 100%);
-            border: 1px solid rgba(46, 168, 133, 0.32);
-            color: var(--text-main) !important;
-            font-weight: 600;
-            box-shadow: var(--shadow-sm);
-        }
-        .nav-item-ukey .ukey-nav-icon {
-            color: var(--accent);
-            font-size: 22px;
-        }
-        .nav-item-ukey .ukey-nav-pill {
-            display: inline-flex !important;
-            background: var(--accent);
-            color: #ffffff !important;
-            font-weight: 600;
-            font-size: 0.7rem;
-            padding: 2px 9px;
-            border-radius: 999px;
-            letter-spacing: 0.1px;
-        }
-        .nav-item-ukey:hover {
-            border-color: var(--accent);
-            transform: translateX(3px);
-        }
-        .nav-item-ukey.active {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%) !important;
-            border-color: transparent !important;
-            color: #ffffff !important;
-            box-shadow: 0 8px 20px -6px rgba(91, 106, 240, 0.45) !important;
-            transform: none;
-        }
-        .nav-item-ukey.active .ukey-nav-icon,
-        .nav-item-ukey.active .nav-label {
-            color: #ffffff !important;
-        }
-        .nav-item-ukey.active .ukey-nav-pill {
-            background: rgba(255, 255, 255, 0.22) !important;
-            color: #ffffff !important;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            box-shadow: none;
-        }
-
-        /* SADELEŞTİRİLMİŞ DERS PROGRAMI TASARIMI (MASAÜSTÜ & TELEFON UYUMLU, SÜPER SADE & KALIN FONT) */
-        .sched-live-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 14px 18px;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            box-shadow: var(--shadow-sm);
-            transition: all 0.22s ease;
-        }
-        .sched-live-card.is-active {
-            border-color: var(--accent);
-            background: linear-gradient(135deg, var(--accent-soft) 0%, var(--bg-surface) 100%);
-            box-shadow: 0 4px 16px -4px rgba(46, 168, 133, 0.25);
-        }
-        .sched-live-card.is-upcoming {
-            border-color: var(--primary);
-            background: linear-gradient(135deg, var(--primary-soft) 0%, var(--bg-surface) 100%);
-        }
-        .live-pulse-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--accent);
-            box-shadow: 0 0 12px var(--accent);
-            animation: livePulse 1.8s infinite;
-            flex-shrink: 0;
-        }
-        .sched-live-card.is-upcoming .live-pulse-dot {
-            background: var(--primary);
-            box-shadow: 0 0 12px var(--primary);
-        }
-        .sched-live-title {
-            font-size: 0.96rem;
-            font-weight: 750;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
-            line-height: 1.35;
-        }
-        .sched-live-meta {
-            font-size: 0.82rem;
-            color: var(--text-muted);
-            margin-top: 4px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            font-weight: 600;
-        }
-        .sched-live-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            padding: 3px 10px;
-            border-radius: 999px;
-            font-size: 0.74rem;
-            font-weight: 750;
-            background: var(--accent);
-            color: #fff !important;
-        }
-        .sched-live-badge.wait {
-            background: var(--primary);
-            color: #fff !important;
-        }
-
-        /* GÜN SEÇİCİ & ÜST BAR (SÜPER SADE) */
-        .sched-top-bar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            padding-bottom: 14px;
-            margin-bottom: 16px;
-            border-bottom: 1px solid var(--border);
-            flex-wrap: wrap;
-        }
-        .day-tabs-bar {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            overflow-x: auto;
-            scrollbar-width: none;
-            -webkit-overflow-scrolling: touch;
-            flex: 1;
-            min-width: 0;
-        }
-        .day-tabs-bar::-webkit-scrollbar {
-            display: none;
-        }
-        .day-tab-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            padding: 8px 14px;
-            min-height: 38px;
-            border-radius: 11px;
-            font-size: 0.84rem;
-            font-weight: 700;
-            background: var(--bg-surface-elevated);
-            color: var(--text-muted);
-            border: 1px solid var(--border);
-            cursor: pointer;
-            white-space: nowrap;
-            flex-shrink: 0;
-            transition: all 0.18s ease;
-        }
-        .day-tab-btn:hover {
-            color: var(--text-main);
-            border-color: var(--primary-border);
-            background: var(--bg-surface-hover);
-        }
-        .day-tab-btn.active {
-            background: var(--primary);
-            color: #ffffff !important;
-            border-color: var(--primary);
-            font-weight: 800;
-            box-shadow: 0 4px 14px -3px rgba(91, 106, 240, 0.45);
-        }
-        .day-tab-btn.active span {
-            color: #ffffff !important;
-        }
-        .day-tab-today {
-            background: var(--accent);
-            color: #ffffff !important;
-            padding: 2px 7px;
-            border-radius: 999px;
-            font-size: 0.68rem;
-            font-weight: 800;
-            letter-spacing: 0.2px;
-        }
-        .day-tab-btn.active .day-tab-today {
-            background: rgba(255, 255, 255, 0.25);
-            color: #ffffff !important;
-        }
-        .sched-actions {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-shrink: 0;
-        }
-
-        /* DERS KARTLARI (SADELEŞTİRİLMİŞ AKIŞ) */
-        .schedule-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 16px;
-        }
-        .schedule-grid.single-day-mode {
-            grid-template-columns: 1fr;
-            max-width: 820px;
-            margin: 0 auto;
-        }
-        .day-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 16px 18px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            box-shadow: var(--shadow-sm);
-        }
-        .day-card.today {
-            border-color: var(--primary-border);
-            box-shadow: 0 0 20px -4px var(--primary-soft);
-        }
-        .day-title {
-            margin-bottom: 6px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--border);
-            font-size: 1.05rem;
-            font-weight: 800;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            color: var(--text-main);
-        }
-        .day-title-sub {
-            font-size: 0.78rem;
-            font-weight: 650;
-            color: var(--text-muted);
-            margin-left: 6px;
-        }
-        .lesson-card-simple {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 12px 16px;
-            border-radius: 14px;
-            background: var(--bg-surface-elevated);
-            border: 1px solid var(--border);
-            transition: all 0.2s ease;
-        }
-        .lesson-card-simple:hover {
-            border-color: var(--primary-border);
-            transform: translateX(2px);
-        }
-        .lesson-card-simple.live-now {
-            border-color: var(--accent);
-            background: linear-gradient(135deg, var(--accent-soft) 0%, var(--bg-surface-elevated) 100%);
-            box-shadow: 0 4px 14px -3px rgba(46, 168, 133, 0.3);
-        }
-        .lesson-time-pill {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-width: 72px;
-            padding: 8px 10px;
-            border-radius: 12px;
-            background: var(--primary-soft);
-            color: var(--primary);
-            border: 1px solid var(--primary-border);
-            font-weight: 750;
-            font-size: 0.84rem;
-            line-height: 1.25;
-            flex-shrink: 0;
-            text-align: center;
-        }
-        .lesson-card-simple.live-now .lesson-time-pill {
-            background: var(--accent);
-            color: #ffffff !important;
-            border-color: transparent;
-        }
-        .lesson-time-start {
-            font-size: 0.95rem;
-            font-weight: 800;
-        }
-        .lesson-time-end {
+        .nav-badge {
+            margin-left: auto;
             font-size: 0.72rem;
+            padding: 2px 7px;
+            border-radius: 10px;
+            background: var(--bg-surface-elevated);
+            color: var(--text-muted);
             font-weight: 700;
-            opacity: 0.82;
-            margin-top: 1px;
         }
-        .lesson-hours-tag {
-            font-size: 0.68rem;
-            font-weight: 750;
-            margin-top: 3px;
-            padding: 1px 6px;
-            border-radius: 6px;
-            background: rgba(0, 0, 0, 0.08);
+        .nav-item.active .nav-badge {
+            background: var(--primary);
+            color: #ffffff;
         }
-        .lesson-body-simple {
-            flex: 1;
-            min-width: 0;
-        }
-        .lesson-top-badges {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 4px;
-        }
-        .lesson-code-badge {
-            font-size: 0.74rem;
-            font-weight: 800;
-            padding: 2px 8px;
-            border-radius: 6px;
-            background: var(--primary-soft);
-            color: var(--primary);
-            border: 1px solid var(--primary-border);
-            letter-spacing: 0.2px;
-        }
-        .lesson-type-badge {
-            font-size: 0.7rem;
-            font-weight: 750;
-            padding: 2px 8px;
-            border-radius: 6px;
-            background: var(--bg-surface);
-            color: var(--text-muted);
-            border: 1px solid var(--border);
-        }
-        .lesson-type-badge.is-lab {
-            color: var(--warning);
-            background: var(--warning-soft);
-            border-color: rgba(245, 158, 11, 0.35);
-        }
-        .lesson-type-badge.is-online {
-            color: var(--accent);
-            background: var(--accent-soft);
-            border-color: rgba(16, 185, 129, 0.35);
-        }
-        .lesson-live-pill {
-            font-size: 0.68rem;
-            font-weight: 800;
-            padding: 2px 8px;
-            border-radius: 999px;
-            background: var(--accent);
-            color: #ffffff !important;
-            letter-spacing: 0.2px;
-        }
-        .lesson-title-simple {
-            font-size: 1rem;
-            font-weight: 750;
-            color: var(--text-main);
-            line-height: 1.35;
-            margin-bottom: 4px;
-            word-break: break-word;
-        }
-        .lesson-meta-simple {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--text-muted);
-        }
-        .lesson-meta-simple span {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
+        .sidebar-footer {
+            padding-top: 14px;
+            border-top: 1px solid var(--border);
         }
 
-        /* MOBİL DERS PROGRAMI */
-        @media (max-width: 768px) {
-            .sched-top-bar {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 8px;
-                padding-bottom: 10px;
-                margin-bottom: 12px;
-            }
-            .day-tabs-bar {
-                width: 100%;
-                gap: 5px;
-                padding-bottom: 4px;
-            }
-            .day-tab-btn {
-                padding: 7px 11px;
-                font-size: 0.78rem;
-                min-height: 36px;
-            }
-            .sched-actions {
-                width: 100%;
-                display: flex;
-                gap: 8px;
-            }
-            .sched-actions .btn {
-                flex: 1;
-                justify-content: center;
-                min-height: 36px;
-                font-size: 0.82rem;
-                font-weight: 700;
-            }
-            .lesson-card-simple {
-                padding: 10px 12px;
-                gap: 10px;
-            }
-            .lesson-time-pill {
-                min-width: 62px;
-                padding: 6px 8px;
-            }
-            .lesson-time-start {
-                font-size: 0.88rem;
-            }
-            .lesson-time-end {
-                font-size: 0.68rem;
-            }
-            .lesson-title-simple {
-                font-size: 0.92rem;
-            }
-            .lesson-meta-simple {
-                font-size: 0.75rem;
-                gap: 8px;
-            }
-        }
-        
-        /* UKEY VE DERS PROGRAMI TAM MOBİL (TELEFON) UYUMLULUK KURALLARI */
-        .ukey-nav-tabs::-webkit-scrollbar,
-        .ukey-subtabs::-webkit-scrollbar {
-            display: none;
-        }
-        @media (max-width: 768px) {
-            .sched-top-bar {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 10px;
-            }
-            .sched-top-bar .day-tabs-bar {
-                min-width: 0;
-                width: 100%;
-                padding-bottom: 4px;
-            }
-            .sched-actions {
-                width: 100%;
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 8px;
-            }
-            .sched-view-pills {
-                grid-column: 1 / -1;
-                width: 100%;
-            }
-            .lesson-card-simple {
-                padding: 10px 12px;
-                gap: 10px;
-            }
-            .lesson-time-pill {
-                min-width: 58px;
-                padding: 6px 8px;
-                font-size: 0.74rem;
-            }
-            .lesson-title-simple {
-                font-size: 0.88rem;
-            }
-            .lesson-meta-simple {
-                font-size: 0.72rem;
-                gap: 8px;
-            }
-
-            /* UKEY MOBİL OPTİMİZASYONU */
-            .ukey-toolbar {
-                padding: 4px;
-                margin-bottom: 12px;
-                border-radius: 14px;
-            }
-            .ukey-nav-tabs {
-                grid-template-columns: repeat(3, 1fr) !important;
-                gap: 4px;
-            }
-            .ukey-nav-tab {
-                padding: 8px 4px;
-                font-size: 0.76rem;
-                font-weight: 700;
-                min-height: 48px;
-                flex-direction: column;
-                gap: 3px;
-                border-radius: 10px;
-            }
-            .ukey-nav-tab .material-symbols-rounded {
-                font-size: 20px !important;
-            }
-            .ukey-refresh-btn {
-                width: 100%;
-                justify-content: center;
-                padding: 10px 14px;
-                min-height: 42px;
-                font-size: 0.88rem;
-                font-weight: 700;
-                border-radius: 12px;
-            }
-            .ukey-urgent-banner {
-                flex-direction: column;
-                align-items: stretch;
-                padding: 14px;
-                gap: 12px;
-            }
-            .ukey-courses-grid {
-                grid-template-columns: 1fr !important;
-                gap: 12px;
-            }
-            .ukey-course-card {
-                padding: 14px;
-                gap: 12px;
-            }
-            .ukey-subtabs {
-                gap: 6px;
-                margin: 10px 0 14px 0;
-                padding-bottom: 6px;
-            }
-            .ukey-subtab-btn {
-                padding: 8px 12px;
-                font-size: 0.8rem;
-                font-weight: 700;
-            }
-            .ukey-info-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 8px;
-            }
-            .ukey-info-box {
-                padding: 10px 12px;
-            }
-            .ukey-info-box strong {
-                font-size: 0.88rem;
-                font-weight: 700;
-                word-break: break-word;
-            }
-            .ukey-mat-item {
-                flex-direction: column;
-                align-items: stretch;
-                padding: 12px;
-                gap: 10px;
-            }
-            .ukey-mat-item > div {
-                min-width: 0 !important;
-                width: 100%;
-            }
-            .ukey-mat-item .btn,
-            .ukey-mat-item a.btn {
-                width: 100%;
-                justify-content: center;
-                min-height: 40px;
-                font-size: 0.88rem;
-                font-weight: 700;
-            }
-            #ukey-hw-modal {
-                padding: 8px;
-                align-items: flex-end;
-            }
-            #ukey-hw-modal .ann-modal {
-                padding: 18px 14px !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                max-height: 90dvh !important;
-                border-radius: 18px;
-            }
-        }
-        @media (max-width: 400px) {
-            .ukey-info-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* =========================================================
-           MASAÜSTÜ VE MOBİL 120 FPS PERFORMANS OPTİMİZASYONU
-           ========================================================= */
-        .sidebar,
-        .card,
-        .stat-card,
-        .ann-card,
-        .timer-card,
-        .sched-live-card,
-        .day-card,
-        .milestone-card,
-        .cal-detail-card,
-        .ukey-toolbar,
-        .ukey-course-card,
-        .btn-tonal,
-        .t-box,
-        .lesson-card,
-        .lesson-card-simple,
-        .cal-mob-item,
-        .table-wrapper,
-        .toast,
-        .admin-maintenance-bar {
-            backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
-        }
-        .card,
-        .stat-card,
-        .ukey-course-card,
-        .lesson-card-simple,
-        .cal-simple-item {
-            contain: layout style;
-        }
-
-        /* =========================================================
-           SADE UKEY AÇILIŞ BİLDİRİM PENCERESİ (İLK GİRİŞ POPUP)
-           ========================================================= */
-        .ukey-simple-popup-overlay {
+        /* MOBİL MENÜ ÇEKMECESİ (DRAWER) */
+        .drawer-overlay {
             position: fixed;
             inset: 0;
-            z-index: 9500;
-            background: rgba(8, 13, 26, 0.72);
+            background: rgba(0, 0, 0, 0.55);
+            z-index: 1250;
             display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 18px;
         }
-        html.light-mode .ukey-simple-popup-overlay {
-            background: rgba(15, 23, 42, 0.48);
-        }
-        .ukey-simple-popup-box {
-            position: relative;
-            width: 100%;
-            max-width: 400px;
+        .drawer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 280px;
             background: var(--bg-surface);
-            border: 1px solid var(--border);
-            border-radius: 22px;
-            padding: 32px 24px 26px 24px;
-            text-align: center;
-            box-shadow: 0 24px 54px -12px rgba(0, 0, 0, 0.55);
-        }
-        .ukey-simple-popup-close {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            border: 1px solid var(--border);
-            background: var(--bg-surface-elevated);
-            color: var(--text-muted);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-        .ukey-simple-popup-close:hover {
-            color: var(--text-main);
-            background: var(--bg-surface-hover);
-        }
-        .ukey-simple-popup-icon {
-            width: 58px;
-            height: 58px;
-            border-radius: 18px;
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(59, 130, 246, 0.2));
-            color: var(--accent);
-            border: 1px solid rgba(16, 185, 129, 0.35);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 16px;
-        }
-        .ukey-simple-popup-title {
-            font-size: 1.32rem;
-            font-weight: 600;
-            color: var(--text-main);
-            margin-bottom: 20px;
-            line-height: 1.3;
-        }
-        .ukey-simple-popup-btn {
-            width: 100%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 13px 20px;
-            border-radius: 14px;
-            font-size: 0.94rem;
-            font-weight: 600;
-            color: #ffffff !important;
-            background: linear-gradient(135deg, #2563eb 0%, #10b981 100%);
-            border: none;
-            box-shadow: 0 8px 22px -4px rgba(37, 99, 235, 0.48);
-            cursor: pointer;
-            transition: transform 0.16s ease, box-shadow 0.16s ease;
-        }
-        .ukey-simple-popup-btn span {
-            color: #ffffff !important;
-        }
-        .ukey-simple-popup-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 10px 26px -4px rgba(37, 99, 235, 0.6);
-        }
-
-        /* =========================================================
-           ANA SAYFA UKEY ÖZET KARTI (SON DUYURULAR YERİNE TAM ENTEGRE)
-           ========================================================= */
-        .dash-ukey-body {
+            border-right: 1px solid var(--border);
+            z-index: 1300;
+            transform: translateX(-100%);
+            transition: transform 0.25s ease;
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            padding: 20px 14px;
         }
+        .drawer.open {
+            transform: translateX(0);
+        }
+        .drawer-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 16px;
+        }
+        .drawer-footer {
+            padding-top: 14px;
+            border-top: 1px solid var(--border);
+        }
+
+        /* ANA İÇERİK ALANI (MAIN CONTENT) */
+        .main-content {
+            flex: 1;
+            min-width: 0;
+            padding: 22px 28px 48px;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* ÜST BAŞLIK (TOP HEADER) */
+        .top-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 18px;
+            margin-bottom: 22px;
+            border-bottom: 1px solid var(--border);
+            gap: 16px;
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            min-width: 0;
+        }
+        .menu-btn {
+            display: none;
+        }
+        .page-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-main);
+            line-height: 1.25;
+        }
+        .header-date {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-top: 2px;
+        }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        /* GÖRÜNÜM BÖLÜMLERİ */
+        .view-section {
+            display: none;
+        }
+        .view-section.active {
+            display: block;
+        }
+
+        /* 8. KARTLAR VE GENEL BİLEŞENLER */
+        .card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            gap: 12px;
+        }
+        .card-title {
+            font-size: 1.12rem;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-subtitle {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-top: 2px;
+        }
+
+        /* 9. SAYAÇ KARTI (TIMER CARD - MİNİMALİST) */
+        .timer-card {
+            background: var(--timer-bg);
+            border: 1px solid var(--timer-border);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            margin-bottom: 22px;
+        }
+        .timer-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+        .timer-chip-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-md);
+            background: var(--timer-chip);
+            color: var(--timer-chip-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .timer-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--timer-text);
+        }
+        .timer-sub {
+            font-size: 0.84rem;
+            color: var(--timer-sub);
+            font-style: italic;
+        }
+        .timer-boxes {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+        .t-box {
+            background: var(--timer-box-bg);
+            border: 1px solid var(--timer-box-border);
+            border-radius: var(--radius-md);
+            padding: 12px 8px;
+            text-align: center;
+        }
+        .t-val {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--text-main);
+            line-height: 1.1;
+        }
+        .t-lbl {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-top: 4px;
+        }
+        .timer-bar-wrap {
+            margin-top: 14px;
+        }
+        .timer-bar-head {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            font-style: italic;
+        }
+        .timer-bar {
+            height: 6px;
+            background: var(--timer-bar-track);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .timer-fill {
+            height: 100%;
+            background: var(--timer-bar-fill);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* 10. ALT TABLO DÜZENİ (LOWER GRID) */
+        .lower-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 20px;
+        }
+
+        /* UKEY ÖZETİ (DASHBOARD) */
         .dash-ukey-alert {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 12px;
             padding: 12px 14px;
-            border-radius: 14px;
             background: var(--warning-soft);
-            border: 1px solid rgba(224, 139, 62, 0.28);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            border-radius: var(--radius-md);
+            margin-bottom: 14px;
+            gap: 12px;
         }
         .dash-ukey-alert-left {
             display: flex;
             align-items: center;
             gap: 10px;
             min-width: 0;
-            flex: 1;
         }
         .dash-ukey-alert-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
-            background: rgba(224, 139, 62, 0.16);
             color: var(--warning);
-            display: flex;
-            align-items: center;
-            justify-content: center;
             flex-shrink: 0;
         }
         .dash-ukey-alert-title {
-            font-size: 0.84rem;
-            font-weight: 600;
+            font-size: 0.88rem;
+            font-weight: 700;
             color: var(--text-main);
-            line-height: 1.3;
         }
         .dash-ukey-alert-sub {
-            font-size: 0.74rem;
-            color: var(--text-muted);
+            font-size: 0.78rem;
+            color: var(--warning);
             margin-top: 2px;
         }
+
         .dash-ukey-quick-pills {
             display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 8px;
+            margin-bottom: 14px;
         }
         .dash-ukey-pill {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 3px;
-            padding: 10px 8px;
-            border-radius: 12px;
             background: var(--bg-surface-elevated);
             border: 1px solid var(--border);
-            cursor: pointer;
-            transition: all 0.18s ease;
+            border-radius: var(--radius-sm);
+            padding: 9px 8px;
             text-align: center;
-        }
-        .dash-ukey-pill:hover {
-            border-color: var(--primary-border);
-            background: var(--primary-soft);
-            transform: translateY(-1px);
+            cursor: pointer;
+            transition: background 0.15s ease;
         }
         .dash-ukey-pill strong {
-            font-size: 0.96rem;
-            font-weight: 700;
-            color: var(--primary);
-            line-height: 1.1;
+            display: block;
+            font-size: 1.15rem;
+            color: var(--text-main);
         }
         .dash-ukey-pill span {
-            font-size: 0.72rem;
-            font-weight: 650;
+            font-size: 0.74rem;
             color: var(--text-muted);
         }
+
         .dash-ukey-course-list {
             display: flex;
             flex-direction: column;
@@ -2988,59 +724,44 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 12px;
-            padding: 11px 14px;
-            border-radius: 14px;
+            padding: 10px 12px;
             background: var(--bg-surface-elevated);
             border: 1px solid var(--border);
+            border-radius: var(--radius-md);
             cursor: pointer;
-            transition: all 0.18s ease;
+            transition: background 0.15s ease, border-color 0.15s ease;
+            gap: 12px;
         }
         .dash-ukey-course-row:hover {
-            border-color: var(--primary-border);
-            background: var(--bg-surface-hover);
-            transform: translateX(2px);
+            border-color: var(--primary);
         }
         .dash-ukey-course-left {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             min-width: 0;
-            flex: 1;
         }
         .dash-ukey-code-badge {
-            min-width: 74px;
-            padding: 6px 8px;
-            border-radius: 10px;
+            font-size: 0.76rem;
+            font-weight: 700;
+            padding: 3px 7px;
+            border-radius: var(--radius-sm);
             background: var(--primary-soft);
             color: var(--primary);
-            border: 1px solid var(--primary-border);
-            font-size: 0.73rem;
-            font-weight: 700;
-            text-align: center;
             flex-shrink: 0;
         }
-        .dash-ukey-course-info {
-            min-width: 0;
-            flex: 1;
-        }
         .dash-ukey-course-name {
-            font-size: 0.92rem;
-            font-weight: 750;
+            font-size: 0.9rem;
+            font-weight: 700;
             color: var(--text-main);
-            line-height: 1.3;
+            white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            white-space: nowrap;
         }
         .dash-ukey-course-inst {
             font-size: 0.76rem;
-            font-weight: 600;
             color: var(--text-muted);
-            margin-top: 2px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+            font-style: italic;
         }
         .dash-ukey-course-chips {
             display: flex;
@@ -3048,147 +769,456 @@
             gap: 6px;
             flex-shrink: 0;
         }
+        .ukey-mini-chip {
+            font-size: 0.72rem;
+            padding: 2px 7px;
+            border-radius: 10px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            font-weight: 700;
+        }
+        .ukey-mini-chip.has-data {
+            color: var(--accent);
+            border-color: rgba(52, 211, 153, 0.3);
+        }
+        .ukey-mini-chip.has-hw {
+            color: var(--warning);
+            border-color: rgba(251, 191, 36, 0.3);
+        }
 
-        /* =========================================================
-           SADE VE KULLANIŞLI AKADEMİK TAKVİM TASARIMI
-           ========================================================= */
-        .cal-simple-header {
+        /* YAKLAŞAN TARİHLER (DASHBOARD) */
+        .data-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .up-card-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 12px;
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            gap: 12px;
+        }
+        .up-date-badge {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-sm);
+            background: var(--primary-soft);
+            color: var(--primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .up-date-day {
+            font-size: 1.05rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+        .up-date-month {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            font-style: italic;
+        }
+        .up-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .up-name {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--text-main);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .up-sub {
+            font-size: 0.76rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+        .up-badge {
+            font-size: 0.72rem;
+            padding: 2px 7px;
+            border-radius: 10px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .up-badge.ongoing {
+            background: var(--accent-soft);
+            color: var(--accent);
+            border-color: rgba(52, 211, 153, 0.3);
+        }
+
+        /* 11. DERS PROGRAMI (SCHEDULE VIEW - SÜPER SADE & GÜNDELİK) */
+        .sched-top-bar {
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 12px;
+            margin-bottom: 18px;
             flex-wrap: wrap;
-            margin-bottom: 16px;
         }
+        .day-tabs-bar {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 2px;
+        }
+        .day-tabs-bar::-webkit-scrollbar { display: none; }
+        .day-tab-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            border-radius: var(--radius-sm);
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.86rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            white-space: nowrap;
+        }
+        .day-tab-btn:hover {
+            color: var(--text-main);
+            border-color: var(--border-hover);
+        }
+        .day-tab-btn.active {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+        }
+        .sched-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sched-cards-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+        .day-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 18px;
+        }
+        .day-card.today {
+            border-color: var(--primary);
+        }
+        .day-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-main);
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 14px;
+        }
+        .day-title-sub {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            font-style: italic;
+            margin-left: 6px;
+        }
+        .day-tab-today {
+            background: var(--primary-soft);
+            color: var(--primary);
+            border-radius: var(--radius-sm);
+            font-size: 0.74rem;
+            font-weight: 700;
+            padding: 2px 8px;
+        }
+
+        .lesson-card-simple {
+            display: flex;
+            align-items: center;
+            padding: 12px 14px;
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            margin-bottom: 10px;
+            gap: 14px;
+            transition: border-color 0.15s ease;
+        }
+        .lesson-card-simple:last-child {
+            margin-bottom: 0;
+        }
+        .lesson-card-simple.live-now {
+            border-color: var(--accent);
+            background: var(--accent-soft);
+        }
+        .lesson-time-pill {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 12px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            flex-shrink: 0;
+            min-width: 90px;
+            text-align: center;
+        }
+        .lesson-time-start {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-main);
+            line-height: 1.1;
+        }
+        .lesson-time-end {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+        .lesson-hours-tag {
+            font-size: 0.68rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-top: 3px;
+        }
+        .lesson-body-simple {
+            flex: 1;
+            min-width: 0;
+        }
+        .lesson-top-badges {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 4px;
+            flex-wrap: wrap;
+        }
+        .lesson-code-badge {
+            font-size: 0.74rem;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: var(--radius-sm);
+            background: var(--primary-soft);
+            color: var(--primary);
+        }
+        .lesson-type-badge {
+            font-size: 0.72rem;
+            padding: 2px 6px;
+            border-radius: var(--radius-sm);
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            font-weight: 700;
+        }
+        .lesson-live-pill {
+            font-size: 0.72rem;
+            color: var(--accent);
+            font-weight: 700;
+        }
+        .lesson-title-simple {
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: var(--text-main);
+            line-height: 1.3;
+        }
+        .lesson-meta-simple {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-top: 4px;
+            flex-wrap: wrap;
+        }
+        .lesson-meta-simple span {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* MATRİS TABLOSU (SCHEDULE MATRIX) */
+        .matrix-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            background: var(--bg-surface);
+        }
+        .sched-matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.84rem;
+        }
+        .sched-matrix-table th, .sched-matrix-table td {
+            border: 1px solid var(--border);
+            padding: 10px 8px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .sched-matrix-table th {
+            background: var(--bg-surface-elevated);
+            font-weight: 700;
+            color: var(--text-main);
+        }
+        .matrix-time-col {
+            font-weight: 700;
+            white-space: nowrap;
+            background: var(--bg-surface-elevated);
+        }
+        .matrix-break-row {
+            background: var(--bg-surface-elevated);
+            font-weight: 700;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* 12. AKADEMİK TAKVİM (CALENDAR VIEW) */
         .cal-simple-next-banner {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 14px;
-            flex-wrap: wrap;
-            padding: 18px 22px;
-            border-radius: var(--radius-md);
-            background: linear-gradient(135deg, var(--primary-soft) 0%, var(--accent-soft) 100%);
+            padding: 14px 16px;
+            background: var(--primary-soft);
             border: 1px solid var(--primary-border);
+            border-radius: var(--radius-lg);
             margin-bottom: 18px;
+            gap: 14px;
         }
         .cal-simple-next-left {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
             min-width: 0;
-            flex: 1;
         }
         .cal-simple-next-icon {
-            width: 46px;
-            height: 46px;
-            border-radius: 14px;
-            background: var(--bg-surface);
-            color: var(--primary);
-            border: 1px solid var(--primary-border);
+            width: 42px;
+            height: 42px;
+            border-radius: var(--radius-md);
+            background: var(--primary);
+            color: #ffffff;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
         }
         .cal-simple-next-label {
-            font-size: 0.72rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.4px;
+            font-size: 0.74rem;
             color: var(--primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
         }
         .cal-simple-next-title {
             font-size: 1.05rem;
-            font-weight: 800;
+            font-weight: 700;
             color: var(--text-main);
-            line-height: 1.3;
-            margin-top: 2px;
         }
         .cal-simple-next-date {
             font-size: 0.8rem;
-            font-weight: 600;
             color: var(--text-muted);
-            margin-top: 2px;
+            font-style: italic;
         }
         .cal-simple-next-badge {
-            padding: 6px 14px;
-            border-radius: 999px;
+            font-size: 0.8rem;
+            padding: 4px 10px;
+            border-radius: var(--radius-sm);
             background: var(--primary);
             color: #ffffff;
-            font-size: 0.76rem;
             font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .cal-filter-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 2px;
+        }
+        .cal-filter-bar::-webkit-scrollbar { display: none; }
+        .filter-chip {
+            padding: 6px 14px;
+            border-radius: var(--radius-sm);
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            font-weight: 700;
+            cursor: pointer;
             white-space: nowrap;
         }
+        .filter-chip.active {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+        }
+
         .cal-simple-list {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
         .cal-simple-item {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 14px;
-            padding: 13px 16px;
-            border-radius: 14px;
+            padding: 12px 14px;
             background: var(--bg-surface-elevated);
             border: 1px solid var(--border);
-            border-left: 4px solid var(--primary);
-            transition: border-color 0.18s ease, background 0.18s ease;
+            border-radius: var(--radius-md);
+            gap: 14px;
         }
-        .cal-simple-item:hover {
-            border-color: var(--primary-border);
-            background: var(--bg-surface-hover);
-        }
-        .cal-simple-item.is-bahar, .cal-simple-item.sem-bahar { border-left-color: var(--accent); }
-        .cal-simple-item.is-tatil, .cal-simple-item.sem-tatil { border-left-color: var(--warning); }
-        .cal-simple-item.is-sinav, .cal-simple-item.sem-sinav { border-left-color: var(--danger); }
-        .cal-simple-item.is-past { opacity: 0.58; }
         .cal-simple-date-box {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-sm);
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            background: var(--bg-surface);
-            border: 1px solid var(--border);
             flex-shrink: 0;
-            line-height: 1.1;
         }
         .cal-simple-date-day {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: 700;
-            color: var(--primary);
+            color: var(--text-main);
+            line-height: 1;
         }
         .cal-simple-date-month {
-            font-size: 0.65rem;
-            font-weight: 600;
-            text-transform: uppercase;
+            font-size: 0.68rem;
             color: var(--text-muted);
-            margin-top: 2px;
+            text-transform: uppercase;
+            font-style: italic;
         }
-        .cal-simple-body {
-            min-width: 0;
+        .cal-simple-info {
             flex: 1;
+            min-width: 0;
         }
         .cal-simple-title {
-            font-size: 0.96rem;
-            font-weight: 750;
+            font-size: 0.94rem;
+            font-weight: 700;
             color: var(--text-main);
-            line-height: 1.35;
         }
         .cal-simple-meta {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 4px;
             font-size: 0.78rem;
-            font-weight: 600;
             color: var(--text-muted);
+            font-style: italic;
+            margin-top: 2px;
         }
         .cal-simple-right {
             display: flex;
@@ -3197,42 +1227,356 @@
             flex-shrink: 0;
         }
         .cal-simple-status {
-            padding: 4px 10px;
-            border-radius: 999px;
             font-size: 0.74rem;
+            padding: 3px 8px;
+            border-radius: var(--radius-sm);
             font-weight: 700;
-            background: var(--primary-soft);
-            color: var(--primary);
-            white-space: nowrap;
         }
         .cal-simple-status.active {
             background: var(--accent-soft);
             color: var(--accent);
         }
+        .cal-simple-status.upcoming {
+            background: var(--primary-soft);
+            color: var(--primary);
+        }
         .cal-simple-status.past {
-            background: rgba(148, 163, 184, 0.14);
+            background: var(--bg-surface);
             color: var(--text-muted);
         }
 
-        /* MOBİL ALT GEZİNME ÇUBUĞU (TELEFONLAR İÇİN UYGULAMA DENEYİMİ) */
+        /* 13. UKEY PORTALI (UKEY VIEW) */
+        .ukey-sync-banner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            margin-bottom: 18px;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .ukey-sync-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 0;
+        }
+        .ukey-sync-title {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+        .ukey-sync-sub {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .ukey-nav-tabs {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 18px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 8px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .ukey-nav-tab {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            border-radius: var(--radius-sm);
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            white-space: nowrap;
+        }
+        .ukey-nav-tab:hover {
+            color: var(--text-main);
+        }
+        .ukey-nav-tab.active {
+            background: var(--primary-soft);
+            color: var(--primary);
+            border-color: var(--primary-border);
+        }
+
+        .ukey-courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 16px;
+        }
+        .ukey-course-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 16px;
+            cursor: pointer;
+            transition: border-color 0.15s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .ukey-course-card:hover {
+            border-color: var(--primary);
+        }
+        .ukey-course-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        .ukey-course-code {
+            font-size: 0.76rem;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: var(--radius-sm);
+            background: var(--primary-soft);
+            color: var(--primary);
+        }
+        .ukey-course-credits {
+            font-size: 0.76rem;
+            color: var(--text-muted);
+            font-weight: 700;
+        }
+        .ukey-course-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+        .ukey-course-inst {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 14px;
+        }
+        .ukey-course-meta-strip {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 10px;
+            border-top: 1px solid var(--border);
+            gap: 8px;
+        }
+
+        /* MATERYAL VE ÖDEV LİSTELERİ */
+        .ukey-mat-item, .ann-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 14px;
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            margin-bottom: 8px;
+            gap: 12px;
+        }
+        .ukey-mat-title, .ann-title-text {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+        .ukey-mat-desc, .ann-meta-row {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-top: 2px;
+        }
+
+        /* 14. MODALLER VE BASİT DİYALOGLAR */
+        .ann-overlay, .ukey-simple-popup-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.65);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+        .ann-modal, .ukey-simple-popup-box {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            max-width: 520px;
+            width: 100%;
+            position: relative;
+            box-shadow: var(--shadow);
+            max-height: 90vh;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .ann-modal-close, .ukey-simple-popup-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 4px;
+        }
+        .ukey-simple-popup-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--primary-soft);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+        .ukey-simple-popup-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-align: center;
+            color: var(--text-main);
+            margin-bottom: 20px;
+        }
+        .ukey-simple-popup-btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px;
+            border-radius: var(--radius-md);
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
+            font-family: 'PT Serif', serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .ukey-info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin: 14px 0;
+        }
+        .ukey-info-box {
+            padding: 9px 12px;
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+        }
+        .ukey-info-box span {
+            display: block;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            margin-bottom: 2px;
+        }
+        .ukey-info-box strong {
+            font-size: 0.88rem;
+            color: var(--text-main);
+        }
+
+        .ukey-week-row {
+            padding: 10px 12px;
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            margin-bottom: 6px;
+            font-size: 0.84rem;
+        }
+
+        /* 15. MOBİL ALT MENÜ (MOBILE BOTTOM NAV - TELEFONLAR İÇİN HIZLI GEZİNME) */
         .mobile-bottom-nav {
             display: none;
         }
 
-        @media (max-width: 767px) {
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            .menu-btn {
+                display: inline-flex;
+            }
+            .main-content {
+                padding: 14px 12px calc(76px + env(safe-area-inset-bottom)) !important;
+            }
+            .lower-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .top-header {
+                padding-bottom: 12px;
+                margin-bottom: 16px;
+            }
+            .page-title {
+                font-size: 1.15rem;
+            }
+
+            /* SAYAÇ KARTI TELEFON */
+            .timer-card {
+                padding: 14px;
+            }
+            .t-val {
+                font-size: 1.35rem;
+            }
+            .t-lbl {
+                font-size: 0.68rem;
+            }
+
+            /* DERS PROGRAMI TELEFON */
+            .lesson-card-simple {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+                padding: 12px;
+            }
+            .lesson-time-pill {
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+                min-width: 0;
+                padding: 6px 10px;
+            }
+            .lesson-time-start {
+                font-size: 0.95rem;
+            }
+
+            /* UKEY TELEFON */
+            .ukey-courses-grid {
+                grid-template-columns: 1fr;
+            }
+            .ukey-sync-banner {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .ukey-sync-banner .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            /* SABİT MOBİL ALT GEZİNME ÇUBUĞU */
             .mobile-bottom-nav {
                 position: fixed;
                 left: 0;
                 right: 0;
                 bottom: 0;
-                z-index: 1100;
+                z-index: 1200;
                 display: grid;
                 grid-template-columns: repeat(4, 1fr);
                 gap: 4px;
-                padding: 6px 10px calc(6px + env(safe-area-inset-bottom));
+                padding: 6px 8px calc(6px + env(safe-area-inset-bottom));
                 background: var(--bg-surface);
                 border-top: 1px solid var(--border);
-                box-shadow: 0 -6px 24px -8px rgba(15, 23, 42, 0.10);
+                box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
             }
             .mob-nav-btn {
                 display: flex;
@@ -3240,90 +1584,60 @@
                 align-items: center;
                 justify-content: center;
                 gap: 2px;
-                padding: 6px 4px;
-                border-radius: 12px;
+                padding: 6px 2px;
+                border-radius: var(--radius-sm);
                 border: none;
                 background: transparent;
                 color: var(--text-muted);
-                font-size: 0.68rem;
-                font-weight: 650;
+                font-size: 0.72rem;
+                font-weight: 700;
                 cursor: pointer;
-                transition: all 0.15s ease;
+                transition: color 0.15s ease, background 0.15s ease;
             }
             .mob-nav-btn .material-symbols-rounded {
-                font-size: 21px;
+                font-size: 22px;
             }
             .mob-nav-btn.active {
                 color: var(--primary);
                 background: var(--primary-soft);
-                font-weight: 750;
             }
-            .main-content {
-                padding: 14px 12px calc(84px + env(safe-area-inset-bottom)) !important;
-            }
+
             .to-top {
-                bottom: calc(76px + env(safe-area-inset-bottom));
+                bottom: calc(72px + env(safe-area-inset-bottom));
                 right: 14px;
-                width: 40px;
-                height: 40px;
-            }
-            .dash-ukey-quick-pills {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-            .dash-ukey-course-row {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 8px;
-                padding: 11px 12px;
-            }
-            .dash-ukey-course-name,
-            .dash-ukey-course-inst {
-                white-space: normal;
-            }
-            .dash-ukey-course-chips {
-                justify-content: flex-end;
-            }
-            .dash-ukey-alert {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .dash-ukey-alert .btn {
-                width: 100%;
-                justify-content: center;
             }
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 480px) {
+            .ukey-info-grid {
+                grid-template-columns: 1fr;
+            }
             .cal-simple-item {
                 flex-direction: column;
                 align-items: stretch;
-                gap: 10px;
-                padding: 12px 14px;
             }
             .cal-simple-right {
-                width: 100%;
                 justify-content: space-between;
-                padding-top: 8px;
+                padding-top: 6px;
                 border-top: 1px dashed var(--border);
             }
         }
-        @media (max-width: 992px), (hover: none) and (pointer: coarse) {
-            .card,
-            .stat-card,
-            .ann-card,
-            .ukey-course-card,
-            .lesson-card-simple,
-            .up-card-item {
+
+        /* 16. YÜKSEK PERFORMANS KORUMASI (DOKUNMATİK EKRANLARDA SIFIR LAG) */
+        @media (hover: none) and (pointer: coarse) {
+            .card, .nav-item, .btn, .lesson-card-simple, .ukey-course-card, .up-card-item {
                 transition: none !important;
-            }
-            .card:hover,
-            .stat-card:hover,
-            .ann-card:hover,
-            .ukey-course-card:hover,
-            .lesson-card-simple:hover,
-            .up-card-item:hover {
                 transform: none !important;
             }
+        }
+
+        /* 17. YAZDIRMA (A4 TEK SAYFA ÇIKTI) */
+        @media print {
+            @page { size: A4 landscape; margin: 6mm; }
+            body { background: #ffffff !important; color: #000000 !important; }
+            .sidebar, .mobile-bottom-nav, .top-header, .to-top, .drawer, .drawer-overlay { display: none !important; }
+            .main-content { padding: 0 !important; max-width: 100% !important; }
+            .card { border: 1px solid #ccc !important; box-shadow: none !important; }
         }
 
     </style>
