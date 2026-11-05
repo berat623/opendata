@@ -1,5 +1,5 @@
 {
-  "lastSyncedAt": "2026-11-05T03:42:35.994Z",
+  "lastSyncedAt": "2026-11-05T10:54:53.678Z",
   "portalUrl": "https://ukey.uludag.edu.tr/Home",
   "urgentNotifications": [
     {
@@ -1948,16 +1948,16 @@
       "exams": [],
       "materials": [
         {
-          "title": "Ders İzlencesi",
+          "title": "MATEMATİK 1",
           "category": "Haftalık Ders Notu",
-          "week": 0,
+          "week": 5,
           "homework": "",
           "type": "Dosya",
           "hasFile": true,
-          "localPath": "ukey_dosyalar/OTPZ101-04_1.docx",
-          "origName": "KAVRAM YANILGILARI_DERS İZLENCESİ.docx",
-          "sizeBytes": 49679,
-          "contentType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "localPath": "ukey_dosyalar/OTPZ101-04_1.PDF",
+          "origName": "Oran Orantı-Özel Öğrenci.PDF",
+          "sizeBytes": 2518757,
+          "contentType": "application/pdf",
           "externalUrl": ""
         }
       ],
@@ -2017,5 +2017,5 @@
     "i": "S/d/32GLvWQhn9xh",
     "c": "rfov+UN6Gp7RJmW2RMhJQM58Vogx6gGYLHmDa/QWe1sYaPFCsU/+LQBb0PddHS3Wxtg6J5qZLA/mZysz5j52P082RVNV3rpJTOZs6cGtkEyQl0/GA5u8qw0gO7bszI9vEgbUSSTT/7WXmm8oJtnZK1qvtXI="
   },
-  "lastDataChangeAt": "2026-11-04T22:53:44.818Z"
+  "lastDataChangeAt": "2026-11-05T10:54:53.681Z"
 }
