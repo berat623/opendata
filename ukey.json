@@ -1,5 +1,5 @@
 {
-  "lastSyncedAt": "2026-11-05T12:28:47.402Z",
+  "lastSyncedAt": "2026-11-05T18:30:25.486Z",
   "portalUrl": "https://ukey.uludag.edu.tr/Home",
   "urgentNotifications": [
     {
@@ -1102,6 +1102,32 @@
           "sizeBytes": 1331344,
           "contentType": "application/pdf",
           "externalUrl": ""
+        },
+        {
+          "title": "Ders notu 5",
+          "category": "Diğer",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/ELNZ105-04_5.pdf",
+          "origName": "H5-Çevre akımları yöntemi.pdf",
+          "sizeBytes": 1413462,
+          "contentType": "application/pdf",
+          "externalUrl": ""
+        },
+        {
+          "title": "Örnek çalışma soruları 1",
+          "category": "Diğer",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/ELNZ105-04_6.pdf",
+          "origName": "Örnek Çalışma soruları 1.pdf",
+          "sizeBytes": 8745867,
+          "contentType": "application/pdf",
+          "externalUrl": ""
         }
       ],
       "forumCategories": [
@@ -2017,5 +2043,5 @@
     "i": "S/d/32GLvWQhn9xh",
     "c": "rfov+UN6Gp7RJmW2RMhJQM58Vogx6gGYLHmDa/QWe1sYaPFCsU/+LQBb0PddHS3Wxtg6J5qZLA/mZysz5j52P082RVNV3rpJTOZs6cGtkEyQl0/GA5u8qw0gO7bszI9vEgbUSSTT/7WXmm8oJtnZK1qvtXI="
   },
-  "lastDataChangeAt": "2026-11-05T10:54:53.681Z"
+  "lastDataChangeAt": "2026-11-05T18:30:25.713Z"
 }
