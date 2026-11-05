@@ -153,6 +153,10 @@
         html {
             font-size: 16px;
             scroll-behavior: smooth;
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+            -webkit-text-size-adjust: 100%;
         }
 
         body, button, input, select, textarea {
@@ -175,8 +179,18 @@
             background-color: var(--bg-body);
             color: var(--text-main);
             min-height: 100vh;
+            min-height: 100dvh;
             overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+            position: relative;
             line-height: 1.55;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: inline-block;
         }
 
         a {
@@ -347,7 +361,10 @@
         .app-container {
             display: flex;
             min-height: 100vh;
+            min-height: 100dvh;
             width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
         }
 
         /* MASAÜSTÜ YAN MENÜ (SIDEBAR) */
@@ -486,6 +503,9 @@
             max-width: 1400px;
             margin: 0 auto;
             width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+            box-sizing: border-box;
         }
 
         /* ÜST BAŞLIK (TOP HEADER) */
@@ -542,6 +562,10 @@
             padding: 20px;
             margin-bottom: 20px;
             box-shadow: var(--shadow-sm);
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
         }
         .card-header {
             display: flex;
@@ -1494,159 +1518,164 @@
             font-size: 0.84rem;
         }
 
-        /* 15. MOBİL ALT MENÜ (MOBILE BOTTOM NAV - TELEFONLAR İÇİN HIZLI GEZİNME) */
+        /* 15. EKSİK BİLEŞEN VE DÜZEN MOTORLARI */
+        .filter-chips-scroll {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            padding: 2px 2px 6px 2px;
+        }
+        .filter-chips-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .cal-simple-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .cal-simple-body, .cal-simple-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .up-date-box {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-sm);
+            background: var(--primary-soft);
+            color: var(--primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            text-align: center;
+        }
+        .up-date-box.ongoing {
+            background: var(--accent-soft);
+            color: var(--accent);
+        }
+
+        .up-right-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .ukey-subtabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 14px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            width: 100%;
+        }
+        .ukey-subtab-btn {
+            flex: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 12px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            background: var(--bg-surface-elevated);
+            color: var(--text-muted);
+            font-family: inherit;
+            font-size: 0.82rem;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.15s ease;
+        }
+        .ukey-subtab-btn.active {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+        }
+
+        .matrix-mobile-hint {
+            display: none;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.76rem;
+            color: var(--primary);
+            font-style: italic;
+            margin-bottom: 8px;
+            padding: 6px 10px;
+            background: var(--primary-soft);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--primary-border);
+        }
+
+        /* 16. YENİLENMİŞ MODERN "VERİLERİ YENİLE" BUTONU */
+        .ukey-refresh-btn, #btn-dash-ukey-refresh {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            padding: 7px 16px;
+            border-radius: 999px;
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            font-family: 'PT Serif', Georgia, serif;
+            font-size: 0.82rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            white-space: nowrap;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+        .ukey-refresh-btn:hover, #btn-dash-ukey-refresh:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--primary-soft);
+        }
+        .ukey-refresh-btn:active, #btn-dash-ukey-refresh:active {
+            transform: scale(0.97);
+        }
+        .ukey-refresh-btn.is-syncing .material-symbols-rounded,
+        #btn-dash-ukey-refresh.is-syncing .material-symbols-rounded,
+        .is-syncing .material-symbols-rounded {
+            animation: ukeyModernSpin 0.75s linear infinite;
+        }
+        @keyframes ukeyModernSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* EVRENSEL METİN VE SATIR YÜKSEKLİĞİ İYİLEŞTİRMESİ */
+        h1, h2, h3, h4, h5, h6 {
+            line-height: 1.35 !important;
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
+        p, span, div {
+            overflow-wrap: break-word;
+        }
+        .header-date, .card-subtitle, .lesson-meta-simple, .cal-simple-meta, .ukey-sync-sub, .up-sub {
+            line-height: 1.4 !important;
+        }
+
         .mobile-bottom-nav {
             display: none;
         }
 
-        @media (max-width: 768px) {
-            .sidebar {
-                display: none;
-            }
-            .menu-btn {
-                display: inline-flex;
-            }
-            .main-content {
-                padding: 14px 12px calc(76px + env(safe-area-inset-bottom)) !important;
-            }
-            .lower-grid {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
-            .top-header {
-                padding-bottom: 12px;
-                margin-bottom: 16px;
-            }
-            .page-title {
-                font-size: 1.15rem;
-            }
-
-            /* SAYAÇ KARTI TELEFON */
-            .timer-card {
-                padding: 14px;
-            }
-            .t-val {
-                font-size: 1.35rem;
-            }
-            .t-lbl {
-                font-size: 0.68rem;
-            }
-
-            /* DERS PROGRAMI TELEFON */
-            .lesson-card-simple {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 10px;
-                padding: 12px;
-            }
-            .lesson-time-pill {
-                flex-direction: row;
-                justify-content: space-between;
-                width: 100%;
-                min-width: 0;
-                padding: 6px 10px;
-            }
-            .lesson-time-start {
-                font-size: 0.95rem;
-            }
-
-            /* UKEY TELEFON */
-            .ukey-courses-grid {
-                grid-template-columns: 1fr;
-            }
-            .ukey-sync-banner {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .ukey-sync-banner .btn {
-                width: 100%;
-                justify-content: center;
-            }
-
-            /* SABİT MOBİL ALT GEZİNME ÇUBUĞU */
-            .mobile-bottom-nav {
-                position: fixed;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                z-index: 1200;
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 4px;
-                padding: 6px 8px calc(6px + env(safe-area-inset-bottom));
-                background: var(--bg-surface);
-                border-top: 1px solid var(--border);
-                box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
-            }
-            .mob-nav-btn {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 2px;
-                padding: 6px 2px;
-                border-radius: var(--radius-sm);
-                border: none;
-                background: transparent;
-                color: var(--text-muted);
-                font-size: 0.72rem;
-                font-weight: 700;
-                cursor: pointer;
-                transition: color 0.15s ease, background 0.15s ease;
-            }
-            .mob-nav-btn .material-symbols-rounded {
-                font-size: 22px;
-            }
-            .mob-nav-btn.active {
-                color: var(--primary);
-                background: var(--primary-soft);
-            }
-
-            .to-top {
-                bottom: calc(72px + env(safe-area-inset-bottom));
-                right: 14px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .ukey-info-grid {
-                grid-template-columns: 1fr;
-            }
-            .cal-simple-item {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .cal-simple-right {
-                justify-content: space-between;
-                padding-top: 6px;
-                border-top: 1px dashed var(--border);
-            }
-        }
-
-        /* 16. YÜKSEK PERFORMANS KORUMASI (DOKUNMATİK EKRANLARDA SIFIR LAG) */
-        @media (hover: none) and (pointer: coarse) {
-            .card, .nav-item, .btn, .lesson-card-simple, .ukey-course-card, .up-card-item {
-                transition: none !important;
-                transform: none !important;
-            }
-        }
-
-        /* 17. YAZDIRMA (A4 TEK SAYFA ÇIKTI) */
-        @media print {
-            @page { size: A4 landscape; margin: 6mm; }
-            body { background: #ffffff !important; color: #000000 !important; }
-            .sidebar, .mobile-bottom-nav, .top-header, .to-top, .drawer, .drawer-overlay { display: none !important; }
-            .main-content { padding: 0 !important; max-width: 100% !important; }
-            .card { border: 1px solid #ccc !important; box-shadow: none !important; }
-        }
-
-    
-
         /* ==========================================================================
-           BİLGİSAYAR VE TELEFONA ÖZEL AYRIŞTIRILMIŞ DÜZEN KURALLARI
+           17. BİLGİSAYAR / MASAÜSTÜ ÖZEL DÜZEN (> 768px)
            ========================================================================== */
-
-        /* BİLGİSAYAR / MASAÜSTÜ ÖZEL DÜZEN (> 768px) */
         @media (min-width: 769px) {
             .sidebar {
                 display: flex !important;
@@ -1698,251 +1727,253 @@
             }
         }
 
-        /* TELEFON / MOBİL ÖZEL DÜZEN (<= 768px) */
-        @media (max-width: 768px) {
+        /* ==========================================================================
+           18. TELEFON / MOBİL TAM UYUMLULUK VE SIFIR TAŞMA SİSTEMİ (<= 768px)
+           ========================================================================== */
+        @media (max-width: 768px), html.is-mobile-screen {
+            /* 1. SIFIR TAŞMA VE GÜVENLİ KAPSAYICI */
+            html, body {
+                width: 100% !important;
+                max-width: 100% !important;
+                overflow-x: hidden !important;
+                position: relative;
+            }
+            .app-container {
+                margin-left: 0 !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                overflow-x: hidden !important;
+            }
+            .main-content {
+                padding: 12px 12px calc(76px + env(safe-area-inset-bottom, 0px)) !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                overflow-x: hidden !important;
+                box-sizing: border-box !important;
+            }
+
+            /* 2. IOS SAFARI OTOMATİK YAKINLAŞMA (AUTO-ZOOM) VE SAYFA KAYMASI ENGELLEME */
+            input, select, textarea {
+                font-size: 16px !important; /* iOS Safari 16px altında sayfayı sağa-sola kaydırarak zoom yapar, bunu kesin önler */
+            }
+
+            /* 3. MASAÜSTÜ MENÜ ELEMANLARI GİZLEME */
             .sidebar {
                 display: none !important;
             }
             .drawer, .drawer-overlay {
                 display: none !important;
             }
-            .app-container {
-                margin-left: 0 !important;
-                width: 100% !important;
+            .menu-btn {
+                display: none !important;
             }
-            .main-content {
-                padding: 12px 12px calc(76px + env(safe-area-inset-bottom)) !important;
+
+            /* 4. MOBİL SABİT DOKUNMATİK ALT GEZİNME BARI */
+            .mobile-bottom-nav {
+                display: grid !important;
+                position: fixed !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 0 !important;
+                z-index: 1200 !important;
+                grid-template-columns: repeat(4, 1fr) !important;
+                gap: 2px !important;
+                padding: 6px 4px calc(6px + env(safe-area-inset-bottom, 0px)) !important;
+                background: var(--bg-surface) !important;
+                border-top: 1px solid var(--border) !important;
+                box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08) !important;
+                backdrop-filter: blur(10px) !important;
+                -webkit-backdrop-filter: blur(10px) !important;
+            }
+            .mob-nav-btn {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: center !important;
+                gap: 2px !important;
+                padding: 6px 2px !important;
+                border-radius: var(--radius-sm) !important;
+                border: none !important;
+                background: transparent !important;
+                color: var(--text-muted) !important;
+                font-size: 0.72rem !important;
+                font-weight: 700 !important;
+                cursor: pointer !important;
+                min-height: 48px !important;
+                touch-action: manipulation !important;
+                user-select: none !important;
+                -webkit-user-select: none !important;
+            }
+            .mob-nav-btn .material-symbols-rounded {
+                font-size: 22px !important;
+            }
+            .mob-nav-btn.active {
+                color: var(--primary) !important;
+                background: var(--primary-soft) !important;
+            }
+
+            /* 5. ÜST BAŞLIK VE AKSİYONLAR */
+            .top-header {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+                padding-bottom: 8px !important;
+                margin-bottom: 12px !important;
+                height: auto !important;
+                min-height: 46px !important;
                 width: 100% !important;
                 max-width: 100% !important;
+                gap: 8px !important;
             }
-            .top-header {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding-bottom: 10px;
-                margin-bottom: 14px;
-            }
-            .menu-btn {
-                display: none !important; /* Tüm yönlendirme alttaki 4 sekmeli barda */
+            .header-left {
+                flex: 1 !important;
+                min-width: 0 !important;
             }
             .page-title {
                 font-size: 1.15rem !important;
+                line-height: 1.25 !important;
+                margin-bottom: 2px !important;
+                white-space: nowrap !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
             }
             .header-date {
-                font-size: 0.76rem !important;
+                font-size: 0.74rem !important;
+                line-height: 1.25 !important;
+                white-space: nowrap !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+            }
+            .header-actions {
+                display: flex !important;
+                align-items: center !important;
+                gap: 6px !important;
+                flex-shrink: 0 !important;
             }
 
-            /* TELEFON SABİT ALT GEZİNME BARI */
-            .mobile-bottom-nav {
-                display: grid !important;
-                position: fixed;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                z-index: 1200;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 2px;
-                padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
-                background: var(--bg-surface);
-                border-top: 1px solid var(--border);
-                box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
-            }
-            .mob-nav-btn {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 2px;
-                padding: 6px 2px;
-                border-radius: var(--radius-sm);
-                border: none;
-                background: transparent;
-                color: var(--text-muted);
-                font-size: 0.72rem;
-                font-weight: 700;
-                cursor: pointer;
-            }
-            .mob-nav-btn .material-symbols-rounded {
-                font-size: 22px;
-            }
-            .mob-nav-btn.active {
-                color: var(--primary);
-                background: var(--primary-soft);
-            }
-
-            /* TELEFONDA KARTLAR VE TAŞMA ENGELLEME */
+            /* 6. KARTLAR VE KART BAŞLIKLARI */
             .card {
-                padding: 14px !important;
-                margin-bottom: 14px !important;
+                padding: 12px 14px !important;
+                margin-bottom: 12px !important;
+                border-radius: var(--radius-md) !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+            }
+            .card-header {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 10px !important;
+                margin-bottom: 12px !important;
+                width: 100% !important;
+            }
+            .card-header > div:last-child {
+                width: 100% !important;
+                display: flex !important;
+                align-items: center !important;
+                gap: 8px !important;
+                flex-wrap: wrap !important;
             }
             .lower-grid {
-                display: flex;
-                flex-direction: column;
-                gap: 14px;
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 12px !important;
+                width: 100% !important;
             }
-            .ukey-courses-grid {
-                display: flex;
-                flex-direction: column;
-                gap: 12px;
+            .search-wrap {
+                width: 100% !important;
+                min-width: 0 !important;
+                max-width: 100% !important;
+                flex: 1 1 100% !important;
             }
+
+            /* 7. GERİ SAYIM SAYAÇ KARTI */
             .timer-card {
-                padding: 14px !important;
+                padding: 12px 14px !important;
+                margin-bottom: 12px !important;
+            }
+            .timer-info {
+                gap: 10px !important;
+                margin-bottom: 12px !important;
+            }
+            .timer-chip-btn {
+                width: 38px !important;
+                height: 38px !important;
+            }
+            .timer-title {
+                font-size: 1rem !important;
+                line-height: 1.25 !important;
+            }
+            .timer-sub {
+                font-size: 0.76rem !important;
             }
             .timer-boxes {
                 gap: 6px !important;
-            }
-            .t-val {
-                font-size: 1.3rem !important;
-            }
-            .t-lbl {
-                font-size: 0.65rem !important;
-            }
-            .lesson-card-simple {
-                flex-direction: column;
-                align-items: stretch;
-                padding: 12px;
-                gap: 8px;
-            }
-            .lesson-time-pill {
-                flex-direction: row;
-                justify-content: space-between;
-                width: 100%;
-                min-width: 0;
-                padding: 5px 8px;
-            }
-            .sched-top-bar {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 10px;
-            }
-            .sched-actions {
-                justify-content: space-between;
-                width: 100%;
-            }
-        }
-
-    
-        /* ==========================================================================
-           YENİLENMİŞ MODERN "VERİLERİ YENİLE" BUTONU & MOBİL ÇAKIŞMA ÖNLEYİCİ
-           ========================================================================== */
-        .ukey-refresh-btn, #btn-dash-ukey-refresh {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 7px;
-            padding: 7px 16px;
-            border-radius: 999px;
-            background: var(--bg-surface-elevated);
-            border: 1px solid var(--border);
-            color: var(--text-main);
-            font-family: 'PT Serif', Georgia, serif;
-            font-size: 0.82rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-            white-space: nowrap;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
-            user-select: none;
-            -webkit-user-select: none;
-            touch-action: manipulation;
-        }
-        .ukey-refresh-btn:hover, #btn-dash-ukey-refresh:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-            background: var(--primary-soft);
-        }
-        .ukey-refresh-btn:active, #btn-dash-ukey-refresh:active {
-            transform: scale(0.97);
-        }
-        .ukey-refresh-btn.is-syncing .material-symbols-rounded,
-        #btn-dash-ukey-refresh.is-syncing .material-symbols-rounded,
-        .is-syncing .material-symbols-rounded {
-            animation: ukeyModernSpin 0.75s linear infinite;
-        }
-        @keyframes ukeyModernSpin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        /* EVRENSEL METİN VE SATIR YÜKSEKLİĞİ İYİLEŞTİRMESİ (PT SERIF ÇAKIŞMA ENGELLEYİCİ) */
-        h1, h2, h3, h4, h5, h6 {
-            line-height: 1.35 !important;
-            word-break: break-word;
-            overflow-wrap: break-word;
-        }
-        p, span, div {
-            overflow-wrap: break-word;
-        }
-        .header-date, .card-subtitle, .lesson-meta-simple, .cal-simple-meta, .ukey-sync-sub, .up-sub {
-            line-height: 1.4 !important;
-        }
-
-        /* MOBİLDE YAZILARIN ÜST ÜSTE GİRMESİNİ ENGELLEYEN KESİN ÇÖZÜM */
-        @media (max-width: 768px) {
-            /* Üst Başlık */
-            .top-header {
-                height: auto !important;
-                min-height: 48px;
-                padding-bottom: 10px !important;
-                margin-bottom: 14px !important;
-                flex-wrap: wrap;
-                gap: 8px;
-            }
-            .header-left {
-                flex: 1;
-                min-width: 0;
-            }
-            .page-title {
-                font-size: 1.2rem !important;
-                line-height: 1.3 !important;
-                margin-bottom: 2px;
-            }
-            .header-date {
-                font-size: 0.78rem !important;
-                line-height: 1.35 !important;
-            }
-
-            /* Sayaç Kartı Rakam & Etiket */
-            .timer-boxes {
-                gap: 6px !important;
+                margin-bottom: 12px !important;
             }
             .t-box {
-                padding: 10px 4px !important;
+                padding: 8px 4px !important;
             }
             .t-val {
-                font-size: 1.35rem !important;
-                line-height: 1.25 !important;
-                margin-bottom: 4px !important;
-                display: block;
+                font-size: 1.25rem !important;
+                line-height: 1.2 !important;
+                margin-bottom: 2px !important;
+                display: block !important;
             }
             .t-lbl {
-                font-size: 0.65rem !important;
-                line-height: 1.2 !important;
+                font-size: 0.62rem !important;
+                line-height: 1.1 !important;
                 margin-top: 0 !important;
-                display: block;
+                display: block !important;
             }
 
-            /* Ana Sayfa UKEY Ders Satırları */
+            /* 8. ANA SAYFA UKEY ÖZETİ */
+            .dash-ukey-alert {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 10px !important;
+                padding: 10px 12px !important;
+            }
+            .dash-ukey-alert-left {
+                width: 100% !important;
+            }
+            .dash-ukey-alert .btn {
+                width: 100% !important;
+                justify-content: center !important;
+            }
+            .dash-ukey-quick-pills {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 8px !important;
+                margin-bottom: 12px !important;
+            }
+            .dash-ukey-pill {
+                padding: 8px 6px !important;
+            }
+            .dash-ukey-pill strong {
+                font-size: 1.1rem !important;
+            }
+            .dash-ukey-pill span {
+                font-size: 0.72rem !important;
+            }
             .dash-ukey-course-row {
                 flex-direction: column !important;
                 align-items: stretch !important;
-                padding: 12px 14px !important;
-                gap: 10px !important;
+                padding: 10px 12px !important;
+                gap: 8px !important;
             }
             .dash-ukey-course-left {
                 width: 100% !important;
-                gap: 10px !important;
+                gap: 8px !important;
             }
             .dash-ukey-course-name {
                 white-space: normal !important;
                 word-break: break-word !important;
-                line-height: 1.4 !important;
-                font-size: 0.92rem !important;
+                line-height: 1.35 !important;
+                font-size: 0.9rem !important;
             }
             .dash-ukey-course-inst {
-                line-height: 1.35 !important;
-                margin-top: 3px !important;
-                font-size: 0.78rem !important;
+                font-size: 0.76rem !important;
+                margin-top: 2px !important;
             }
             .dash-ukey-course-chips {
                 width: 100% !important;
@@ -1952,108 +1983,275 @@
                 padding-top: 8px !important;
                 border-top: 1px dashed var(--border) !important;
             }
-
-            /* Yaklaşan Tarihler Kartları */
-            .up-card-item {
-                flex-direction: row !important;
-                align-items: flex-start !important;
-                gap: 12px !important;
-                padding: 12px !important;
+            .dash-ukey-course-chips .up-chevron {
+                margin-left: auto !important;
             }
-            .up-date-day {
-                line-height: 1.2 !important;
-                margin-bottom: 2px !important;
+
+            /* 9. YAKLAŞAN TARİHLER KARTLARI */
+            .up-card-item {
+                display: grid !important;
+                grid-template-columns: 44px 1fr !important;
+                gap: 6px 10px !important;
+                padding: 10px 12px !important;
+                align-items: center !important;
+            }
+            .up-date-box {
+                grid-row: 1;
+                grid-column: 1;
+                width: 44px !important;
+                height: 44px !important;
+            }
+            .up-info {
+                grid-row: 1;
+                grid-column: 2;
+                min-width: 0 !important;
             }
             .up-name {
                 white-space: normal !important;
                 word-break: break-word !important;
-                line-height: 1.4 !important;
+                line-height: 1.35 !important;
                 font-size: 0.88rem !important;
             }
             .up-sub {
-                line-height: 1.35 !important;
-                margin-top: 4px !important;
-                font-size: 0.78rem !important;
+                line-height: 1.3 !important;
+                font-size: 0.75rem !important;
+                margin-top: 2px !important;
             }
-
-            /* Ders Programı Kartları */
-            .lesson-card-simple {
-                flex-direction: column !important;
-                align-items: stretch !important;
-                padding: 12px 14px !important;
-                gap: 10px !important;
-            }
-            .lesson-time-pill {
-                flex-direction: row !important;
-                justify-content: space-between !important;
+            .up-right-actions {
+                grid-row: 2;
+                grid-column: 1 / -1;
+                width: 100% !important;
+                display: flex !important;
                 align-items: center !important;
-                width: 100% !important;
-                padding: 6px 12px !important;
-                margin-bottom: 2px !important;
-            }
-            .lesson-time-start {
-                line-height: 1.2 !important;
-                font-size: 0.95rem !important;
-            }
-            .lesson-title-simple {
-                font-size: 1rem !important;
-                line-height: 1.45 !important;
-                word-break: break-word !important;
-                margin-bottom: 6px !important;
-            }
-            .lesson-meta-simple {
-                margin-top: 6px !important;
-                gap: 12px !important;
-                line-height: 1.4 !important;
-            }
-
-            /* Akademik Takvim Kartları */
-            .cal-simple-item {
-                flex-direction: column !important;
-                align-items: stretch !important;
-                padding: 12px 14px !important;
-                gap: 10px !important;
-            }
-            .cal-simple-date-day {
-                line-height: 1.2 !important;
-                margin-bottom: 2px !important;
-            }
-            .cal-simple-title {
-                line-height: 1.45 !important;
-                word-break: break-word !important;
-                font-size: 0.94rem !important;
-            }
-            .cal-simple-meta {
-                margin-top: 4px !important;
-                line-height: 1.4 !important;
-            }
-            .cal-simple-right {
-                width: 100% !important;
                 justify-content: space-between !important;
-                padding-top: 8px !important;
+                padding-top: 6px !important;
                 border-top: 1px dashed var(--border) !important;
             }
 
-            /* UKEY Portalı */
+            /* 10. DERS PROGRAMI */
+            .sched-top-bar {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 10px !important;
+                margin-bottom: 12px !important;
+            }
+            .day-tabs-bar {
+                width: 100% !important;
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch !important;
+                padding-bottom: 4px !important;
+                scrollbar-width: none !important;
+            }
+            .day-tabs-bar::-webkit-scrollbar {
+                display: none !important;
+            }
+            .day-tab-btn {
+                padding: 7px 11px !important;
+                font-size: 0.8rem !important;
+                flex-shrink: 0 !important;
+            }
+            .sched-actions {
+                display: grid !important;
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 6px !important;
+                width: 100% !important;
+            }
+            .sched-actions .btn {
+                width: 100% !important;
+                padding: 7px 4px !important;
+                font-size: 0.76rem !important;
+                justify-content: center !important;
+            }
+            .sched-cards-container {
+                display: grid !important;
+                grid-template-columns: 1fr !important;
+                gap: 12px !important;
+            }
+            .lesson-card-simple {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                padding: 10px 12px !important;
+                gap: 8px !important;
+            }
+            .lesson-time-pill {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+                gap: 8px !important;
+                padding: 6px 10px !important;
+                width: 100% !important;
+                background: var(--bg-surface) !important;
+                border-radius: var(--radius-sm) !important;
+            }
+            .lesson-time-start {
+                font-size: 0.95rem !important;
+                line-height: 1.2 !important;
+            }
+            .lesson-time-start::after {
+                content: " – ";
+                color: var(--text-muted);
+                font-weight: 400;
+                margin: 0 2px;
+            }
+            .lesson-time-end {
+                font-size: 0.95rem !important;
+                color: var(--text-main) !important;
+                font-weight: 700;
+                margin-right: auto;
+            }
+            .lesson-hours-tag {
+                margin-top: 0 !important;
+                padding: 2px 7px;
+                background: var(--primary-soft);
+                border-radius: 999px;
+                font-size: 0.7rem;
+            }
+            .lesson-title-simple {
+                font-size: 0.96rem !important;
+                line-height: 1.35 !important;
+                word-break: break-word !important;
+                margin-bottom: 4px !important;
+            }
+            .lesson-meta-simple {
+                margin-top: 4px !important;
+                gap: 8px 12px !important;
+                line-height: 1.35 !important;
+                font-size: 0.78rem !important;
+            }
+            .matrix-wrapper {
+                width: 100% !important;
+                max-width: 100% !important;
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch !important;
+                overscroll-behavior-x: contain !important;
+                box-sizing: border-box !important;
+            }
+            .sched-matrix-table {
+                min-width: 580px !important;
+                font-size: 0.78rem !important;
+            }
+            .sched-matrix-table th, .sched-matrix-table td {
+                padding: 6px 4px !important;
+            }
+            .matrix-mobile-hint {
+                display: flex !important;
+            }
+
+            /* 11. AKADEMİK TAKVİM */
+            .cal-simple-next-banner {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 10px !important;
+                padding: 12px 14px !important;
+            }
+            .cal-simple-next-badge {
+                align-self: flex-start !important;
+                font-size: 0.76rem !important;
+            }
+            .cal-simple-header {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 10px !important;
+            }
+            .cal-simple-header .btn {
+                width: 100% !important;
+                justify-content: center !important;
+            }
+            .cal-filter-bar {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 8px !important;
+                width: 100% !important;
+                overflow: visible !important;
+            }
+            .cal-filter-bar .search-wrap {
+                width: 100% !important;
+                min-width: 0 !important;
+                flex: none !important;
+            }
+            .filter-chips-scroll {
+                display: flex !important;
+                align-items: center !important;
+                gap: 6px !important;
+                width: 100% !important;
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch !important;
+                padding: 2px 2px 6px 2px !important;
+                scrollbar-width: none !important;
+            }
+            .filter-chip {
+                padding: 6px 11px !important;
+                font-size: 0.78rem !important;
+                flex-shrink: 0 !important;
+            }
+            .cal-simple-item {
+                display: grid !important;
+                grid-template-columns: 46px 1fr !important;
+                gap: 8px 10px !important;
+                padding: 10px 12px !important;
+                align-items: center !important;
+            }
+            .cal-simple-date-box {
+                grid-row: 1;
+                grid-column: 1;
+                width: 46px !important;
+                height: 46px !important;
+            }
+            .cal-simple-date-day {
+                font-size: 1.1rem !important;
+                line-height: 1 !important;
+            }
+            .cal-simple-body, .cal-simple-info {
+                grid-row: 1;
+                grid-column: 2;
+                min-width: 0 !important;
+            }
+            .cal-simple-title {
+                font-size: 0.92rem !important;
+                line-height: 1.35 !important;
+                word-break: break-word !important;
+            }
+            .cal-simple-meta {
+                font-size: 0.75rem !important;
+                line-height: 1.35 !important;
+                margin-top: 3px !important;
+            }
+            .cal-simple-right {
+                grid-row: 2;
+                grid-column: 1 / -1;
+                width: 100% !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+                padding-top: 8px !important;
+                border-top: 1px dashed var(--border) !important;
+                gap: 8px !important;
+            }
+            .cal-simple-right .btn {
+                padding: 6px 10px !important;
+                font-size: 0.78rem !important;
+            }
+
+            /* 12. UKEY PORTALI */
             .ukey-sync-banner {
                 flex-direction: column !important;
                 align-items: stretch !important;
-                gap: 12px !important;
-                padding: 12px 14px !important;
+                gap: 10px !important;
+                padding: 10px 12px !important;
             }
             .ukey-sync-texts {
                 display: flex !important;
                 flex-direction: column !important;
-                gap: 3px !important;
-                line-height: 1.4 !important;
+                gap: 2px !important;
             }
             .ukey-sync-title {
-                line-height: 1.35 !important;
-                font-size: 0.92rem !important;
+                font-size: 0.88rem !important;
+                line-height: 1.3 !important;
             }
             .ukey-sync-sub {
-                line-height: 1.35 !important;
-                font-size: 0.78rem !important;
+                font-size: 0.75rem !important;
+                line-height: 1.3 !important;
             }
             .ukey-sync-actions {
                 width: 100% !important;
@@ -2061,23 +2259,178 @@
             .ukey-refresh-btn {
                 width: 100% !important;
                 justify-content: center !important;
-                padding: 9px 16px !important;
-                font-size: 0.86rem !important;
+                padding: 8px 14px !important;
+                font-size: 0.82rem !important;
+            }
+            .ukey-nav-tabs {
+                width: 100% !important;
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch !important;
+                gap: 6px !important;
+                padding-bottom: 6px !important;
+                scrollbar-width: none !important;
+            }
+            .ukey-nav-tabs::-webkit-scrollbar {
+                display: none !important;
+            }
+            .ukey-nav-tab {
+                padding: 7px 11px !important;
+                font-size: 0.8rem !important;
+                flex-shrink: 0 !important;
+            }
+            .ukey-courses-grid {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 12px !important;
+                width: 100% !important;
             }
             .ukey-course-card {
-                padding: 14px !important;
+                padding: 12px 14px !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
             }
             .ukey-course-title {
-                font-size: 1.05rem !important;
-                line-height: 1.45 !important;
+                font-size: 1rem !important;
+                line-height: 1.35 !important;
                 word-break: break-word !important;
-                margin-bottom: 6px !important;
+                margin-bottom: 4px !important;
             }
             .ukey-course-inst {
-                font-size: 0.84rem !important;
-                line-height: 1.4 !important;
-                margin-bottom: 12px !important;
+                font-size: 0.8rem !important;
+                line-height: 1.35 !important;
+                margin-bottom: 10px !important;
             }
+            .ukey-course-card .btn {
+                font-size: 0.78rem !important;
+                padding: 7px 6px !important;
+                white-space: normal !important;
+                text-align: center !important;
+                line-height: 1.25 !important;
+            }
+            .ukey-mat-item, .ann-card {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 10px !important;
+                padding: 10px 12px !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+            .ukey-mat-item > div:first-child {
+                width: 100% !important;
+                min-width: 0 !important;
+            }
+            .ukey-mat-item > div:last-child {
+                width: 100% !important;
+                display: flex !important;
+                justify-content: stretch !important;
+            }
+            .ukey-mat-item > div:last-child .btn,
+            .ukey-mat-item > div:last-child a.btn {
+                width: 100% !important;
+                justify-content: center !important;
+                padding: 8px 12px !important;
+                min-height: 40px !important;
+                font-size: 0.84rem !important;
+            }
+            .ukey-info-grid {
+                grid-template-columns: 1fr !important;
+                gap: 6px !important;
+            }
+            .ukey-info-box {
+                padding: 8px 10px !important;
+                word-break: break-word !important;
+            }
+            .ukey-subtabs {
+                flex-direction: column !important;
+                gap: 6px !important;
+            }
+            .ukey-subtab-btn {
+                width: 100% !important;
+                padding: 8px 10px !important;
+            }
+
+            /* 13. MODALLER VE TOAST BİLDİRİMİ */
+            .ann-overlay {
+                padding: 10px !important;
+                align-items: center !important;
+            }
+            .ann-modal {
+                width: 100% !important;
+                max-width: 100% !important;
+                max-height: 85vh !important;
+                max-height: 85dvh !important;
+                padding: 16px 14px !important;
+                border-radius: var(--radius-lg) !important;
+                box-sizing: border-box !important;
+                margin: 0 !important;
+            }
+            .ann-modal-close {
+                top: 10px !important;
+                right: 10px !important;
+            }
+            .toast {
+                left: 12px !important;
+                right: 12px !important;
+                bottom: calc(74px + env(safe-area-inset-bottom, 0px)) !important;
+                width: calc(100% - 24px) !important;
+                max-width: none !important;
+                justify-content: center !important;
+                padding: 10px 14px !important;
+                font-size: 0.84rem !important;
+            }
+            .to-top {
+                bottom: calc(76px + env(safe-area-inset-bottom, 0px)) !important;
+                right: 12px !important;
+                width: 38px !important;
+                height: 38px !important;
+            }
+        }
+
+        /* 19. ÇOK KÜÇÜK EKRANLAR (<= 380px, ÖRN. IPHONE SE / COMPACT ANDROID) */
+        @media (max-width: 380px) {
+            .pwa-btn-text {
+                display: none !important;
+            }
+            #btn-pwa-install {
+                padding: 6px !important;
+                min-width: 36px !important;
+                height: 36px !important;
+            }
+            .timer-boxes {
+                gap: 4px !important;
+            }
+            .t-val {
+                font-size: 1.15rem !important;
+            }
+            .t-lbl {
+                font-size: 0.58rem !important;
+            }
+            .sched-actions .btn {
+                font-size: 0.72rem !important;
+                padding: 6px 2px !important;
+            }
+            .ukey-refresh-btn {
+                font-size: 0.78rem !important;
+                padding: 7px 12px !important;
+            }
+        }
+
+        /* 20. DOKUNMATİK EKRAN PERFORMANS KORUMASI */
+        @media (hover: none) and (pointer: coarse) {
+            .card, .nav-item, .btn, .lesson-card-simple, .ukey-course-card, .up-card-item {
+                transition: none !important;
+                transform: none !important;
+            }
+        }
+
+        /* 21. YAZDIRMA (A4 TEK SAYFA ÇIKTI) */
+        @media print {
+            @page { size: A4 landscape; margin: 6mm; }
+            body { background: #ffffff !important; color: #000000 !important; }
+            .sidebar, .mobile-bottom-nav, .top-header, .to-top, .drawer, .drawer-overlay { display: none !important; }
+            .main-content { padding: 0 !important; max-width: 100% !important; }
+            .card { border: 1px solid #ccc !important; box-shadow: none !important; }
         }
 
     </style>
@@ -2096,10 +2449,24 @@
                 } else {
                     document.documentElement.classList.remove('light-mode');
                     var m = document.querySelector('meta[name="theme-color"]');
-                    if (m) m.setAttribute('content', '#111625');
+                    if (m) m.setAttribute('content', '#101216');
                 }
 
+                // ANINDA OTOMATİK MOBİL ALGILAMA (0ms Gecikme - Arayüz direkt telefona göre uyar)
+                var w = window.innerWidth || (document.documentElement && document.documentElement.clientWidth) || screen.width;
+                var isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
+                var isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                var isMobile = (w <= 768) || isMobileUA || (isTouch && w <= 1024);
 
+                if (isMobile) {
+                    document.documentElement.classList.add('is-mobile-device');
+                }
+                if (w <= 768) {
+                    document.documentElement.classList.add('is-mobile-screen');
+                }
+                if (isTouch) {
+                    document.documentElement.classList.add('is-touch-device');
+                }
             } catch (e) {}
         })();
     </script>
@@ -2346,6 +2713,10 @@
 
                     <!-- GÖRÜNÜM B: HAFTALIK MATRİS TABLOSU -->
                     <div id="sched-matrix-container" style="display:none;">
+                        <div class="matrix-mobile-hint">
+                            <span class="material-symbols-rounded" style="font-size:16px;">swipe</span>
+                            <span>Haftalık tüm dersleri görmek için tabloyu sağa ve sola kaydırabilirsiniz</span>
+                        </div>
                         <div class="matrix-wrapper">
                             <table class="sched-matrix-table" id="sched-matrix-table"></table>
                         </div>
@@ -2504,6 +2875,15 @@
 
         let currentCat = 'all';
         let toastTimer = null;
+        let activeViewName = 'dashboard';
+        const renderedViews = {
+            dashboard: false,
+            announcements: false,
+            schedule: false,
+            calendar: false,
+            files: false,
+            ukey: false
+        };
 
         // Takvim görünüm değişkenleri
         let calCurrentYear = 2026;
@@ -2545,9 +2925,53 @@
             setTimeout(() => setPageProgress(100), 240);
         }
 
+        function syncMobileUIState() {
+            const w = window.innerWidth || document.documentElement.clientWidth;
+            const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
+            const isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            const isMobile = (w <= 768) || isMobileUA || (isTouch && w <= 1024);
+            const isMobileScreen = (w <= 768);
+
+            document.documentElement.classList.toggle('is-mobile-device', isMobile);
+            document.documentElement.classList.toggle('is-mobile-screen', isMobileScreen);
+            document.documentElement.classList.toggle('is-touch-device', isTouch);
+
+            const titleEl = document.getElementById('page-title-text');
+            if (titleEl && activeViewName) {
+                const titles = {
+                    dashboard: 'Ana Sayfa',
+                    schedule: 'Ders Programı',
+                    calendar: 'Akademik Takvim',
+                    ukey: isMobileScreen ? 'UKEY Portalı' : 'UKEY Öğrenci Portalı'
+                };
+                titleEl.innerText = titles[activeViewName] || 'Bilgi Portalı';
+            }
+
+            if (isMobileScreen && !localStorage.getItem('schedule_view_mode_user_forced')) {
+                scheduleViewMode = 'cards';
+                const tc = document.getElementById('sched-matrix-container');
+                const cc = document.getElementById('sched-cards-container');
+                const mi = document.getElementById('sched-mode-icon');
+                const mt = document.getElementById('sched-mode-text');
+                const tb = document.getElementById('btn-sched-mode-toggle');
+                const tabs = document.getElementById('sched-day-tabs');
+                if (tc && cc) {
+                    tc.style.display = 'none';
+                    cc.style.display = 'grid';
+                    if (tabs) tabs.style.display = 'flex';
+                    if (mi) mi.innerText = 'table_chart';
+                    if (mt) mt.innerText = 'Tablo';
+                    if (tb) tb.classList.remove('active');
+                }
+            }
+        }
+        window.addEventListener('resize', syncMobileUIState, { passive: true });
+        window.addEventListener('orientationchange', () => setTimeout(syncMobileUIState, 150), { passive: true });
+
         document.addEventListener('DOMContentLoaded', function () {
             setPageProgress(25);
             syncThemeUI();
+            syncMobileUIState();
             document.getElementById('current-date').innerText = new Date().toLocaleDateString('tr-TR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 
             renderPhase();
@@ -2700,16 +3124,6 @@
         function openDrawer() { document.getElementById('drawer').classList.add('open'); document.getElementById('drawer-overlay').classList.add('show'); document.body.classList.add('drawer-open'); }
         function closeDrawer() { document.getElementById('drawer').classList.remove('open'); document.getElementById('drawer-overlay').classList.remove('show'); document.body.classList.remove('drawer-open'); }
 
-        let activeViewName = 'dashboard';
-        const renderedViews = {
-            dashboard: false,
-            announcements: false,
-            schedule: false,
-            calendar: false,
-            files: false,
-            ukey: false
-        };
-
         function ensureViewRendered(viewName) {
             if (viewName === 'dashboard') {
                 if (!renderedViews.dashboard) {
@@ -2747,7 +3161,13 @@
             document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
             const targetEl = document.getElementById('view-' + viewName);
             if (targetEl) targetEl.classList.add('active');
-            const titles = { dashboard: 'Ana Sayfa', schedule: 'Ders Programı', calendar: 'Akademik Takvim', ukey: 'UKEY Öğrenci Portalı' };
+            const isMob = (window.innerWidth <= 768);
+            const titles = {
+                dashboard: 'Ana Sayfa',
+                schedule: 'Ders Programı',
+                calendar: 'Akademik Takvim',
+                ukey: isMob ? 'UKEY Portalı' : 'UKEY Öğrenci Portalı'
+            };
             if (document.getElementById('page-title-text')) {
                 document.getElementById('page-title-text').innerText = titles[viewName] || 'Bilgi Portalı';
             }
@@ -3008,7 +3428,9 @@
         // Varsayılan olarak hafta içiyse BUGÜNÜ, hafta sonu ise Pazartesi'yi aç (Süper sade ve anında odaklanan akış!)
         const initialSchedDay = new Date().getDay();
         let activeScheduleDay = (initialSchedDay >= 1 && initialSchedDay <= 5) ? initialSchedDay : 1;
-        let scheduleViewMode = localStorage.getItem('schedule_view_mode') || 'cards';
+        let scheduleViewMode = (window.innerWidth <= 768)
+            ? (localStorage.getItem('schedule_view_mode_mobile') || 'cards')
+            : (localStorage.getItem('schedule_view_mode') || 'cards');
 
         const COURSE_META_MAP = {
             'ELNZ101': { name: 'Elektronik Meslek Bilgisi ve Güvenliği', instructor: 'Öğr. Gör. BASRİ KUL' },
@@ -3086,7 +3508,14 @@
 
         function setScheduleViewMode(mode, save = true) {
             scheduleViewMode = mode;
-            if (save) localStorage.setItem('schedule_view_mode', mode);
+            if (save) {
+                if (window.innerWidth <= 768) {
+                    localStorage.setItem('schedule_view_mode_mobile', mode);
+                    localStorage.setItem('schedule_view_mode_user_forced', '1');
+                } else {
+                    localStorage.setItem('schedule_view_mode', mode);
+                }
+            }
 
             const btnCards = document.getElementById('btn-sched-cards');
             const btnMatrix = document.getElementById('btn-sched-matrix');
@@ -3899,7 +4328,7 @@
                                 ${item.note ? `<span style="opacity:0.6;">• ${sanitizeHTML(item.note)}</span>` : ''}
                             </div>
                         </div>
-                        <div style="display:flex; align-items:center; gap:8px;">
+                        <div class="up-right-actions">
                             ${badgeHTML}
                             <span class="material-symbols-rounded up-chevron">chevron_right</span>
                         </div>
