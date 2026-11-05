@@ -2484,26 +2484,26 @@
             <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
                 <img src="logo.png" alt="BUÜ Logo" style="width:48px; height:48px; border-radius:12px; object-fit:contain;">
                 <div>
-                    <h3 style="font-size:1.1rem; font-weight: 600; line-height:1.2;">ETP Bilgi Sistemi</h3>
-                    <p style="font-size:0.8rem; color:var(--text-muted);">Cihaza Kurulum Rehberi</p>
+                    <h3 style="font-size:1.1rem; font-weight: 700; line-height:1.2;">Telefona Uygulama Olarak Ekle</h3>
+                    <p style="font-size:0.8rem; color:var(--text-muted);">Hızlı Kurulum Rehberi</p>
                 </div>
             </div>
             <div style="display:flex; flex-direction:column; gap:14px; margin:20px 0; font-size:0.88rem; line-height:1.5;">
                 <div style="display:flex; align-items:flex-start; gap:12px;">
-                    <div style="width:28px; height:28px; border-radius:50%; background:var(--primary-soft); color:var(--primary); display:flex; align-items:center; justify-content:center; font-weight: 600; flex-shrink:0;">1</div>
-                    <div>Safari veya tarayıcınızın menüsündeki <strong style="color:var(--text-main);">Paylaş</strong> simgesine (<span class="material-symbols-rounded" style="font-size:16px; vertical-align:middle;">ios_share</span>) dokunun.</div>
+                    <div style="width:28px; height:28px; border-radius:50%; background:var(--primary-soft); color:var(--primary); display:flex; align-items:center; justify-content:center; font-weight: 700; flex-shrink:0;">1</div>
+                    <div>Safari veya Chrome tarayıcınızın menüsündeki <strong style="color:var(--text-main);">Paylaş</strong> simgesine (<span class="material-symbols-rounded" style="font-size:16px; vertical-align:middle;">ios_share</span>) dokunun.</div>
                 </div>
                 <div style="display:flex; align-items:flex-start; gap:12px;">
-                    <div style="width:28px; height:28px; border-radius:50%; background:var(--primary-soft); color:var(--primary); display:flex; align-items:center; justify-content:center; font-weight: 600; flex-shrink:0;">2</div>
+                    <div style="width:28px; height:28px; border-radius:50%; background:var(--primary-soft); color:var(--primary); display:flex; align-items:center; justify-content:center; font-weight: 700; flex-shrink:0;">2</div>
                     <div>Aşağı kaydırıp <strong style="color:var(--text-main);">"Ana Ekrana Ekle"</strong> seçeneğine tıklayın.</div>
                 </div>
                 <div style="display:flex; align-items:flex-start; gap:12px;">
-                    <div style="width:28px; height:28px; border-radius:50%; background:var(--primary-soft); color:var(--primary); display:flex; align-items:center; justify-content:center; font-weight: 600; flex-shrink:0;">3</div>
+                    <div style="width:28px; height:28px; border-radius:50%; background:var(--primary-soft); color:var(--primary); display:flex; align-items:center; justify-content:center; font-weight: 700; flex-shrink:0;">3</div>
                     <div>Sağ üstteki <strong style="color:var(--text-main);">"Ekle"</strong> butonuna basarak uygulamayı telefonunuza yükleyin.</div>
                 </div>
             </div>
-            <button class="btn btn-primary" style="width:100%; min-height:44px;" onclick="closeIosInstallModal()">
-                <span>Anladım</span>
+            <button class="btn btn-primary" style="width:100%; min-height:44px; font-weight:700;" onclick="closeIosInstallModal()">
+                <span>Anladım, Kapat</span>
             </button>
         </div>
     </div>
@@ -2693,15 +2693,15 @@
                     <div class="sched-top-bar">
                         <div id="sched-day-tabs" class="day-tabs-bar"></div>
                         <div class="sched-actions">
-                            <button class="btn btn-tonal btn-mini" id="btn-sched-mode-toggle" onclick="toggleScheduleMode()" title="Görünüm değiştir (Kartlar / Tablo)">
+                            <button class="btn btn-tonal btn-mini" id="btn-sched-mode-toggle" onclick="toggleScheduleMode()" title="Haftalık tablo ile günlük liste arasında geçiş yap">
                                 <span class="material-symbols-rounded" id="sched-mode-icon" style="font-size:16px;">table_chart</span>
-                                <span id="sched-mode-text">Tablo</span>
+                                <span id="sched-mode-text">Haftalık Tablo</span>
                             </button>
                             <button class="btn btn-tonal btn-mini" onclick="printSchedule()" title="Programı yazdır veya PDF olarak kaydet">
                                 <span class="material-symbols-rounded" style="font-size:16px;">print</span>
-                                <span>PDF</span>
+                                <span>PDF / Yazdır</span>
                             </button>
-                            <button class="btn btn-tonal btn-mini" onclick="downloadAllScheduleICS()" title="Tüm haftalık dersleri telefon/bilgisayar takvimine aktar">
+                            <button class="btn btn-tonal btn-mini" onclick="downloadAllScheduleICS()" title="Tüm haftalık dersleri telefon veya Google takviminize otomatik ekleyin">
                                 <span class="material-symbols-rounded" style="font-size:16px;">event</span>
                                 <span>Takvime Ekle</span>
                             </button>
@@ -2738,9 +2738,9 @@
                                 <span>2026-2027 Akademik Takvimi</span>
                             </h3>
                         </div>
-                        <button class="btn btn-primary btn-mini" onclick="downloadICS()">
-                            <span class="material-symbols-rounded" style="font-size:16px;">download</span>
-                            <span>Takvime Aktar (.ics)</span>
+                        <button class="btn btn-primary btn-mini" onclick="downloadICS()" title="Tüm dönem tarihlerini telefon veya Google Takvim'e otomatik ekleyin">
+                            <span class="material-symbols-rounded" style="font-size:16px;">calendar_add_on</span>
+                            <span>Takvimime Ekle</span>
                         </button>
                     </div>
 
@@ -2787,15 +2787,23 @@
                     <div class="ukey-sync-info">
                         <span class="ukey-sync-dot" id="ukey-sync-dot"></span>
                         <div class="ukey-sync-texts">
-                            <span class="ukey-sync-title" id="ukey-sync-title">Canlı UKEY Senkronizasyonu Aktif</span>
-                            <span class="ukey-sync-sub" id="ukey-sync-sub">Son senkronizasyon zamanı yükleniyor...</span>
+                            <span class="ukey-sync-title" id="ukey-sync-title">UKEY ile Otomatik Bağlantı Aktif</span>
+                            <span class="ukey-sync-sub" id="ukey-sync-sub">Son güncelleme saati kontrol ediliyor...</span>
                         </div>
                     </div>
                     <div class="ukey-sync-actions">
-                        <button id="btn-ukey-refresh" class="ukey-refresh-btn" onclick="refreshUkeyData()" title="UKEY verilerini ve dosyaları şimdi yenile">
+                        <button id="btn-ukey-refresh" class="ukey-refresh-btn" onclick="refreshUkeyData()" title="UKEY sunucusundan en yeni ders notlarını ve ödevleri şimdi çek">
                             <span class="material-symbols-rounded ukey-refresh-icon" id="ukey-refresh-icon" style="font-size:18px;">sync</span>
                             <span id="ukey-refresh-text">Verileri Yenile</span>
                         </button>
+                    </div>
+                </div>
+
+                <!-- UKEY SADE VE GÜVEN VERİCİ REHBER KUTUSU -->
+                <div class="ukey-friendly-notice" style="display:flex; align-items:flex-start; gap:10px; padding:11px 14px; background:var(--primary-soft); border:1px solid var(--primary-border); border-radius:var(--radius-md); margin-bottom:14px; font-size:0.84rem; line-height:1.45; color:var(--text-main);">
+                    <span class="material-symbols-rounded" style="color:var(--primary); font-size:20px; flex-shrink:0; margin-top:1px;">lightbulb</span>
+                    <div>
+                        <strong>UKEY Portalı Bilgilendirmesi:</strong> Ders notları, haftalık müfredat ve ödevler resmi UKEY sisteminden otomatik alınır. Buraya şifre girmenize gerek yoktur. Ödev teslimi veya canlı ders katılımı için ilgili dersin butonuna basarak doğrudan resmi UKEY sistemine ulaşabilirsiniz.
                     </div>
                 </div>
 
@@ -2960,7 +2968,7 @@
                     cc.style.display = 'grid';
                     if (tabs) tabs.style.display = 'flex';
                     if (mi) mi.innerText = 'table_chart';
-                    if (mt) mt.innerText = 'Tablo';
+                    if (mt) mt.innerText = 'Haftalık Tablo';
                     if (tb) tb.classList.remove('active');
                 }
             }
@@ -3529,12 +3537,18 @@
 
             if (mode === 'matrix') {
                 if (toggleIcon) toggleIcon.innerText = 'view_agenda';
-                if (toggleTxt) toggleTxt.innerText = 'Kartlar';
-                if (toggleBtn) toggleBtn.classList.add('active');
+                if (toggleTxt) toggleTxt.innerText = 'Günlük Liste';
+                if (toggleBtn) {
+                    toggleBtn.classList.add('active');
+                    toggleBtn.title = 'Günlük ders listesine dön';
+                }
             } else {
                 if (toggleIcon) toggleIcon.innerText = 'table_chart';
-                if (toggleTxt) toggleTxt.innerText = 'Tablo';
-                if (toggleBtn) toggleBtn.classList.remove('active');
+                if (toggleTxt) toggleTxt.innerText = 'Haftalık Tablo';
+                if (toggleBtn) {
+                    toggleBtn.classList.remove('active');
+                    toggleBtn.title = 'Tüm haftayı tek tabloda gör';
+                }
             }
 
             if (mode === 'matrix') {
@@ -3712,7 +3726,7 @@
                                     </div>
                                     <div class="lesson-title-simple">${sanitizeHTML(l.parsed.title)}</div>
                                     <div class="lesson-meta-simple">
-                                        <span><span class="material-symbols-rounded" style="font-size:15px; color:var(--primary);">meeting_room</span> ${sanitizeHTML(l.parsed.room)}</span>
+                                        <span><span class="material-symbols-rounded" style="font-size:15px; color:var(--primary);">meeting_room</span> Derslik: ${sanitizeHTML(l.parsed.room)}</span>
                                         <span><span class="material-symbols-rounded" style="font-size:15px; color:var(--primary);">person</span> ${sanitizeHTML(l.parsed.instructor)}</span>
                                     </div>
                                 </div>
@@ -3927,7 +3941,7 @@
             document.body.appendChild(a);
             a.click();
             a.remove();
-            showToast('Haftalık ders programı takviminize (.ics) aktarılmak üzere indirildi!');
+            showToast('Ders programı indirildi. Açarak telefon/Google takviminize tek tıkla kaydedebilirsiniz!');
         }
 
         /* TÜM DERS PROGRAMINI A4 YATAY EKSİKSİZ YAZDIRMA (HAFTALIK MATRİS VE DERS LİSTESİ) */
@@ -4251,7 +4265,7 @@
             document.body.appendChild(a);
             a.click();
             a.remove();
-            showToast(`"${name}" takvim dosyası (.ics) cihazınıza indirildi.`);
+            showToast(`"${name}" indirildi. Açarak telefon/Google takviminize ekleyebilirsiniz.`);
         }
 
         function downloadICS() {
@@ -4269,7 +4283,7 @@
             a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar;charset=utf-8' }));
             a.download = 'BUU-Akademik-Takvim-2026-2027.ics';
             document.body.appendChild(a); a.click(); a.remove();
-            showToast('Akademik takvim dosyası (.ics) cihazınıza indirildi.');
+            showToast('Akademik takvim indirildi. Açarak telefon/Google takviminize tek tıkla ekleyebilirsiniz!');
         }
 
         function renderUpcoming() {
@@ -4341,9 +4355,9 @@
             const today = new Date(); today.setHours(0, 0, 0, 0);
             const fs = pd('2026-09-28'), fe = pd('2027-01-08');
             let label = '', pct = 0;
-            if (today < fs) { label = `Güz yarıyılına ${dayDiff(fs, today)} gün var`; }
-            else if (today <= fe) { pct = Math.min(100, Math.max(0, Math.round(dayDiff(today, fs) / dayDiff(fe, fs) * 100))); label = 'Güz Yarıyılı devam ediyor'; }
-            else { label = 'Dönem tamamlandı'; pct = 100; }
+            if (today < fs) { label = `Güz yarıyılının başlamasına ${dayDiff(fs, today)} gün kaldı`; }
+            else if (today <= fe) { pct = Math.min(100, Math.max(0, Math.round(dayDiff(today, fs) / dayDiff(fe, fs) * 100))); label = `Güz Yarıyılı Devam Ediyor (%${pct} tamamlandı)`; }
+            else { label = 'Akademik dönem tamamlandı'; pct = 100; }
             document.getElementById('tp-label').innerText = label;
             document.getElementById('tp-pct').innerText = '%' + pct;
             document.getElementById('tp-fill').style.width = pct + '%';
@@ -4430,13 +4444,13 @@
 
             if (diffMin < 180) {
                 dot.className = 'ukey-sync-dot';
-                if (titleEl) titleEl.innerText = '🟢 Canlı UKEY Senkronizasyonu Aktif';
+                if (titleEl) titleEl.innerText = '🟢 UKEY Bağlantısı Aktif (Otomatik Güncel)';
             } else {
                 dot.className = 'ukey-sync-dot warn';
-                if (titleEl) titleEl.innerText = '🟡 UKEY Senkronizasyonu (Beklemede)';
+                if (titleEl) titleEl.innerText = '🟡 UKEY Bağlantısı (Beklemede)';
             }
 
-            subEl.innerText = `Son Başarılı Senkronizasyon: ${dateStr}, ${timeStr} • ${relText}`;
+            subEl.innerText = `Son Kontrol: ${dateStr}, ${timeStr} • ${relText}`;
         }
         setInterval(updateUkeySyncStatusBadge, 30000);
 
@@ -4530,7 +4544,7 @@
             if (!silent) {
                 setUIState(false, 'Güncellendi');
                 if (icon) icon.innerText = 'check_circle';
-                showToast('En yeni UKEY verileri anında güncellendi!');
+                showToast('Ders notları ve ödev bilgileri UKEY ile güncellendi!');
                 setTimeout(() => {
                     if (icon) icon.innerText = 'sync';
                     setUIState(false, 'Verileri Yenile');
@@ -4635,7 +4649,7 @@
                             </div>
                         </div>
                         <div class="dash-ukey-course-chips">
-                            <span class="ukey-mini-chip ${matCount > 0 ? 'has-data' : ''}">${matCount} Materyal</span>
+                            <span class="ukey-mini-chip ${matCount > 0 ? 'has-data' : ''}">${matCount} Dosya</span>
                             ${hwCount > 0 ? `<span class="ukey-mini-chip has-hw">${hwCount} Ödev</span>` : ''}
                             <span class="material-symbols-rounded up-chevron" style="font-size:20px;">chevron_right</span>
                         </div>
@@ -4652,7 +4666,7 @@
                     </div>
                     <div class="dash-ukey-pill" onclick="openUkeyFromDashboard('materials')">
                         <strong style="font-weight:800;">${totalMaterials}</strong>
-                        <span style="font-weight:600;">Materyal</span>
+                        <span style="font-weight:600;">Ders Notu</span>
                     </div>
                     <div class="dash-ukey-pill" onclick="openUkeyFromDashboard('homeworks')">
                         <strong style="font-weight:800; color:var(--warning);">${totalHomeworks}</strong>
@@ -4761,11 +4775,17 @@
                 let subBodyHtml = '';
 
                 if (ukeySelectedCourseSubTab === 'icerik') {
+                    const hParts = [];
+                    if (course.teori) hParts.push(`${course.teori} Saat Teori`);
+                    if (course.uygulama) hParts.push(`${course.uygulama} Saat Uygulama`);
+                    if (course.lab) hParts.push(`${course.lab} Saat Lab`);
+                    const weeklyHoursStr = hParts.length ? hParts.join(' + ') : `${course.teori || 0} Saat`;
+
                     subBodyHtml = `
                         <div class="ukey-info-grid" style="margin-bottom:14px;">
                             <div class="ukey-info-box"><span>Öğretim Elemanı</span><strong>${sanitizeHTML(course.instructor || '-')}</strong></div>
                             <div class="ukey-info-box"><span>AKTS / Kredi</span><strong>${course.akts} AKTS • ${course.kredi} Kredi</strong></div>
-                            <div class="ukey-info-box"><span>Haftalık Ders Saati</span><strong>${course.teori}T + ${course.uygulama}U + ${course.lab}L</strong></div>
+                            <div class="ukey-info-box"><span>Haftalık Ders Saati</span><strong>${weeklyHoursStr}</strong></div>
                             <div class="ukey-info-box"><span>Dönem</span><strong>1. Yarıyıl (Güz)</strong></div>
                         </div>
                         <h4 style="font-size:0.95rem; font-weight:700; margin:16px 0 10px 0; color:var(--text-main);">
@@ -4884,14 +4904,14 @@
                 actionBtn = `
                     <a href="${sanitizeHTML(fallbackFile.localPath)}" download="${sanitizeHTML(fallbackFile.origName || m.title)}" class="btn btn-primary btn-mini" style="text-decoration:none; font-weight:700;">
                         <span class="material-symbols-rounded" style="font-size:16px;">download</span>
-                        <span>İndir ${fSize ? '(' + fSize + ')' : ''}</span>
+                        <span>Dosyayı İndir ${fSize ? '(' + fSize + ')' : ''}</span>
                     </a>
                 `;
             } else if (m.externalUrl) {
                 actionBtn = `
                     <a href="${sanitizeHTML(m.externalUrl)}" target="_blank" rel="noopener" class="btn btn-primary btn-mini" style="text-decoration:none; font-weight:700;">
                         <span class="material-symbols-rounded" style="font-size:16px;">play_circle</span>
-                        <span>Teams / Kaydı Aç</span>
+                        <span>Ders Kaydını İzle (Teams)</span>
                     </a>
                 `;
             } else {
@@ -4945,11 +4965,11 @@
                     <div class="card-header" style="flex-wrap:wrap; gap:12px;">
                         <h3 class="card-title" style="font-weight:800;">
                             <span class="icon-chip accent"><span class="material-symbols-rounded">folder_zip</span></span>
-                            <span>Tüm UKEY Ders Materyalleri ve Kayıtlar (${filtered.length})</span>
+                            <span>Tüm Ders Notları ve Dosyalar (${filtered.length})</span>
                         </h3>
                         <div class="search-wrap" style="min-width:260px;">
                             <span class="material-symbols-rounded">search</span>
-                            <input type="search" placeholder="Dosya adı, ders kodu veya konu ara..." value="${sanitizeHTML(ukeyMatSearchQuery)}" oninput="ukeyMatSearchQuery=this.value; renderUkeyPortal();">
+                            <input type="search" placeholder="Ders kodu, konu veya dosya adı ara..." value="${sanitizeHTML(ukeyMatSearchQuery)}" oninput="ukeyMatSearchQuery=this.value; renderUkeyPortal();">
                         </div>
                     </div>
 
@@ -4991,7 +5011,7 @@
                     <div class="card-header">
                         <h3 class="card-title" style="font-weight:800;">
                             <span class="icon-chip warn"><span class="material-symbols-rounded">assignment</span></span>
-                            <span>UKEY Ödevler &amp; Projeler (${allHws.length})</span>
+                            <span>Ödevler ve Projeler (${allHws.length})</span>
                         </h3>
                     </div>
                     <div style="margin-top:14px;">
@@ -5023,7 +5043,7 @@
                     <div class="card-header">
                         <h3 class="card-title" style="font-weight:800;">
                             <span class="icon-chip"><span class="material-symbols-rounded">quiz</span></span>
-                            <span>UKEY E-Sınavlar (${allExams.length})</span>
+                            <span>Online Sınavlar ve Quizler (${allExams.length})</span>
                         </h3>
                     </div>
                     <div style="margin-top:14px;">
