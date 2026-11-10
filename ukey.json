@@ -1,5 +1,5 @@
 {
-  "lastSyncedAt": "2026-11-10T10:30:29.551Z",
+  "lastSyncedAt": "2026-11-10T18:05:43.315Z",
   "portalUrl": "https://ukey.uludag.edu.tr/Home",
   "urgentNotifications": [
     {
@@ -1599,19 +1599,6 @@
       "exams": [],
       "materials": [
         {
-          "title": "İş Sağlığı ve Güvenliği d.n. 1",
-          "category": "Ders Kitabı - Notu",
-          "week": 0,
-          "homework": "",
-          "type": "Dosya",
-          "hasFile": true,
-          "localPath": "ukey_dosyalar/OTPZ001-04_1.pdf",
-          "origName": "İŞ SAĞLIĞI VE GÜVENLİĞİ dn.1 - 2026.pdf",
-          "sizeBytes": 18263662,
-          "contentType": "application/pdf",
-          "externalUrl": ""
-        },
-        {
           "title": "İş Sağlığı ve Güvenliği d.n. 2",
           "category": "Ders Kitabı - Notu",
           "week": 0,
@@ -1621,6 +1608,19 @@
           "localPath": "ukey_dosyalar/OTPZ001-04_2.pdf",
           "origName": "İŞ SAĞLIĞI VE GÜVENLİĞİ dn.2 - 2026.pdf",
           "sizeBytes": 16708787,
+          "contentType": "application/pdf",
+          "externalUrl": ""
+        },
+        {
+          "title": "İş Sağlığı ve Güvenliği d.n. 1",
+          "category": "Ders Kitabı - Notu",
+          "week": 0,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/OTPZ001-04_1.pdf",
+          "origName": "İŞ SAĞLIĞI VE GÜVENLİĞİ dn.1 - 2026.pdf",
+          "sizeBytes": 18263662,
           "contentType": "application/pdf",
           "externalUrl": ""
         }
@@ -1843,6 +1843,19 @@
           "sizeBytes": 5786670,
           "contentType": "application/x-compressed",
           "externalUrl": ""
+        },
+        {
+          "title": "Vize Bilgilendirme",
+          "category": "Diğer",
+          "week": 0,
+          "homework": "",
+          "type": "Metin",
+          "hasFile": false,
+          "localPath": "",
+          "origName": "",
+          "sizeBytes": 0,
+          "contentType": "",
+          "externalUrl": ""
         }
       ],
       "forumCategories": [
@@ -2043,5 +2056,5 @@
     "i": "S/d/32GLvWQhn9xh",
     "c": "rfov+UN6Gp7RJmW2RMhJQM58Vogx6gGYLHmDa/QWe1sYaPFCsU/+LQBb0PddHS3Wxtg6J5qZLA/mZysz5j52P082RVNV3rpJTOZs6cGtkEyQl0/GA5u8qw0gO7bszI9vEgbUSSTT/7WXmm8oJtnZK1qvtXI="
   },
-  "lastDataChangeAt": "2026-11-09T19:48:22.588Z"
+  "lastDataChangeAt": "2026-11-10T18:05:43.320Z"
 }
