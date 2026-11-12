@@ -1,5 +1,5 @@
 {
-  "lastSyncedAt": "2026-11-12T16:22:41.233Z",
+  "lastSyncedAt": "2026-11-12T22:23:08.550Z",
   "portalUrl": "https://ukey.uludag.edu.tr/Home",
   "urgentNotifications": [
     {
@@ -12,7 +12,7 @@
       "description": "OSİLATÖR ÖDEVİ\r\n-üçgen,Sinüs ve Kare (veya 4. dalga olarak da testere dişi) dalga üreten bir osilatör devresi yapılacaktır\r\n*Devreyi board üzerine, delikli pertinax üzerine yada baskı devre bilenler baskı devre ile yapabilir\r\n- Hazır kit halinde satın alınan devreler geçerli değildir\r\n-Devreyi yaparken 555 TİMER veya 741 OPAMP entegresi kullanabilirsiniz\r\n-Tek BİR 555 ile üç dalgayı birlikte veren bir devre bulabilirsiniz. (tercih edilen budur) bulamazsanız 3 ayrı devre şeklinde yapabilirsiniz\r\n-Devre şemasını İNTERNETTEN yada herhangi bir kaynaktan bulabilirsiniz.\r\n-Devre teslimine DEVRE ŞEMASININ ÇIKTISIYLA GELİNİZ\r\n- Devreyi yaparken her türlü yardım alabilirsiniz. ancak teslimat sırasında gerekli bilgileri de edinmiş olmalısınız. \r\n(mesela; besleme neresidir, kaç voltla beslenir, çıkış uçları hangileridir, hangi çıkış hangi dalgayı verir gibi)\r\n-Derste 555 - 741 ve konuyla ilgili bilgilendirmeler yapılmıştır\r\nOSİLATÖR DEVRESİNİN 2.VİZEYE (uygulama vizesi) KATKISI %30 OLACAKTIR",
       "start": "7.10.2026 16:00:00",
       "end": "28.10.2026 13:00:00",
-      "badgeText": "Aktif Ödev Teslimi",
+      "badgeText": "7 Gün İçindeki Görev Bildirimi (5 gün kaldı)",
       "allowedFormat": "Belirtilmemiş",
       "maxSizeMB": 20
     },
@@ -25,7 +25,7 @@
       "title": "DİRENÇ SINAVI",
       "description": "DİRENÇ SINAVI   2 AŞAMALI OLACAKTIR.\r\n---------------------------------------------------------------------\r\n1.AŞAMA: DİRENÇ OKUMA\r\nBu aşamada size verilen dirençin değerini RENK KODLARINI 1 dak içinde okuyup  söyleyeceksiniz\r\n2. AŞAMA: \r\nBu aşamada verilen 5 direnç değerini, ortaya dökülen direnç öbeği içinden 2 dak içinde bulacaksınız\r\nNOT:  vize tarihlerine, akademik takvim durumuna veya diğer şartlara bağlı olarak Direnç sınavının TARİHİ DEĞİŞTİRİLEBİLECEKTİR\r\nDİRENÇ SINAVININ UYGULAMA SINAVINA KATKISI %20 OLACAKTIR",
       "start": "7.10.2026 16:00:00",
-      "end": "4.11.2026 13:00:00",
+      "end": "18.11.2026 13:00:00",
       "badgeText": "Aktif Ödev Teslimi",
       "allowedFormat": "Belirtilmemiş",
       "maxSizeMB": 20
@@ -87,7 +87,7 @@
       "title": "ELNZ103-04 - DİRENÇ SINAVI",
       "courseCode": "ELNZ103-04",
       "category": "Ödev Teslimi",
-      "displayRange": "7.10.2026 16:00:00 – 4.11.2026 13:00:00",
+      "displayRange": "7.10.2026 16:00:00 – 18.11.2026 13:00:00",
       "color": "#ef4444",
       "status": "Aktif Ödev"
     },
@@ -803,7 +803,7 @@
           "description": "DİRENÇ SINAVI   2 AŞAMALI OLACAKTIR.\r\n---------------------------------------------------------------------\r\n1.AŞAMA: DİRENÇ OKUMA\r\nBu aşamada size verilen dirençin değerini RENK KODLARINI 1 dak içinde okuyup  söyleyeceksiniz\r\n2. AŞAMA: \r\nBu aşamada verilen 5 direnç değerini, ortaya dökülen direnç öbeği içinden 2 dak içinde bulacaksınız\r\nNOT:  vize tarihlerine, akademik takvim durumuna veya diğer şartlara bağlı olarak Direnç sınavının TARİHİ DEĞİŞTİRİLEBİLECEKTİR\r\nDİRENÇ SINAVININ UYGULAMA SINAVINA KATKISI %20 OLACAKTIR",
           "type": "Diğer",
           "start": "7.10.2026 16:00:00",
-          "end": "4.11.2026 13:00:00",
+          "end": "18.11.2026 13:00:00",
           "week": "Dönemlik / Genel",
           "fileCountLimit": 1,
           "allowedFileTypes": "Belirtilmemiş",
@@ -2095,5 +2095,5 @@
     "i": "S/d/32GLvWQhn9xh",
     "c": "rfov+UN6Gp7RJmW2RMhJQM58Vogx6gGYLHmDa/QWe1sYaPFCsU/+LQBb0PddHS3Wxtg6J5qZLA/mZysz5j52P082RVNV3rpJTOZs6cGtkEyQl0/GA5u8qw0gO7bszI9vEgbUSSTT/7WXmm8oJtnZK1qvtXI="
   },
-  "lastDataChangeAt": "2026-11-11T17:58:47.532Z"
+  "lastDataChangeAt": "2026-11-12T22:23:08.553Z"
 }
