@@ -1,5 +1,5 @@
 {
-  "lastSyncedAt": "2026-11-19T04:21:56.076Z",
+  "lastSyncedAt": "2026-11-19T13:30:11.811Z",
   "portalUrl": "https://ukey.uludag.edu.tr/Home",
   "urgentNotifications": [
     {
@@ -2037,6 +2037,19 @@
           "sizeBytes": 2518757,
           "contentType": "application/pdf",
           "externalUrl": ""
+        },
+        {
+          "title": "MATEMATİK 1",
+          "category": "Haftalık Ders Notu",
+          "week": 8,
+          "homework": "",
+          "type": "Dosya",
+          "hasFile": true,
+          "localPath": "ukey_dosyalar/OTPZ101-04_1.PDF",
+          "origName": "Oran Orantı-Özel Öğrenci.PDF",
+          "sizeBytes": 2518757,
+          "contentType": "application/pdf",
+          "externalUrl": ""
         }
       ],
       "forumCategories": [
@@ -2095,5 +2108,5 @@
     "i": "S/d/32GLvWQhn9xh",
     "c": "rfov+UN6Gp7RJmW2RMhJQM58Vogx6gGYLHmDa/QWe1sYaPFCsU/+LQBb0PddHS3Wxtg6J5qZLA/mZysz5j52P082RVNV3rpJTOZs6cGtkEyQl0/GA5u8qw0gO7bszI9vEgbUSSTT/7WXmm8oJtnZK1qvtXI="
   },
-  "lastDataChangeAt": "2026-11-18T23:05:58.004Z"
+  "lastDataChangeAt": "2026-11-19T13:30:11.818Z"
 }
