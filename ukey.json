@@ -1,7 +1,21 @@
 {
-  "lastSyncedAt": "2026-11-19T13:42:29.890Z",
+  "lastSyncedAt": "2026-11-19T21:46:46.471Z",
   "portalUrl": "https://ukey.uludag.edu.tr/Home",
   "urgentNotifications": [
+    {
+      "id": "notif-65296",
+      "type": "odev",
+      "courseCode": "22HRTZ115-04",
+      "courseName": "KARİYER PLANLAMA",
+      "instructor": "Öğr. Gör. ÖZCAN TEMEL (Dersin Yürütücüsü)",
+      "title": "Kariyer Planlama Dersi Dönem Sonunda İstenecek Değerlendirme Formu",
+      "description": "DERSİ GEÇMEK İÇİN HAZIRLANMASI GEREKEN BELGELERİ HAZIRLAYARAK YARDIMCI DÖKÜMANLAR KISMINDA VERİLEN MS WORD DOSYASINA EKLEYİP BELİRTİLEN TARİHE KADAR SİSTEME YÜKLEYİNİZ. SÜRE UZATIMI SÖZ KONUSU OLMAYACAKTIR. BİLGİLERİNİZE SUNARIM. BAŞARILAR.",
+      "start": "19.11.2026 17:29:00",
+      "end": "8.01.2027 23:55:00",
+      "badgeText": "Aktif Ödev Teslimi",
+      "allowedFormat": "Microsoft Word",
+      "maxSizeMB": 20
+    },
     {
       "id": "notif-65388",
       "type": "odev",
@@ -51,9 +65,9 @@
       "title": "22HRTZ115-04 - Kariyer Planlama Dersi Dönem Sonunda İstenecek Değerlendirme Formu",
       "courseCode": "22HRTZ115-04",
       "category": "Ödev Teslimi",
-      "displayRange": "27.10.2025 09:50:00 – 18.01.2026 23:55:00",
-      "color": "#64748b",
-      "status": "Süresi Doldu"
+      "displayRange": "19.11.2026 17:29:00 – 8.01.2027 23:55:00",
+      "color": "#ef4444",
+      "status": "Aktif Ödev"
     },
     {
       "id": "ag-hw-22HRTZ115-04-1",
@@ -388,13 +402,13 @@
           "title": "Kariyer Planlama Dersi Dönem Sonunda İstenecek Değerlendirme Formu",
           "description": "DERSİ GEÇMEK İÇİN HAZIRLANMASI GEREKEN BELGELERİ HAZIRLAYARAK YARDIMCI DÖKÜMANLAR KISMINDA VERİLEN MS WORD DOSYASINA EKLEYİP BELİRTİLEN TARİHE KADAR SİSTEME YÜKLEYİNİZ. SÜRE UZATIMI SÖZ KONUSU OLMAYACAKTIR. BİLGİLERİNİZE SUNARIM. BAŞARILAR.",
           "type": "Diğer",
-          "start": "27.10.2025 09:50:00",
-          "end": "18.01.2026 23:55:00",
+          "start": "19.11.2026 17:29:00",
+          "end": "8.01.2027 23:55:00",
           "week": "Dönemlik / Genel",
           "fileCountLimit": 1,
           "allowedFileTypes": "Microsoft Word",
           "maxFileSizeMB": 20,
-          "submissionStatus": "Ödev Teslimi Sona Ermiştir",
+          "submissionStatus": "Aktif (UKEY Üzerinden Teslim Bekleniyor)",
           "attachedMaterials": [
             {
               "title": "Kariyer Planlama Dersi Dönem Sonunda İstenecek Değerlendirme Formu",
@@ -2108,5 +2122,5 @@
     "i": "S/d/32GLvWQhn9xh",
     "c": "rfov+UN6Gp7RJmW2RMhJQM58Vogx6gGYLHmDa/QWe1sYaPFCsU/+LQBb0PddHS3Wxtg6J5qZLA/mZysz5j52P082RVNV3rpJTOZs6cGtkEyQl0/GA5u8qw0gO7bszI9vEgbUSSTT/7WXmm8oJtnZK1qvtXI="
   },
-  "lastDataChangeAt": "2026-11-19T13:30:11.818Z"
+  "lastDataChangeAt": "2026-11-19T21:46:46.476Z"
 }
