@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Bursa Uludağ Üniversitesi UKEY Tam Otomatik Senkronizasyon Motoru
- * - AES-256-GCM kasasından kimlik bilgilerini bellekte çözer (düz metin şifre barındırmaz)
+ * - Giriş bilgilerini yalnızca ortam değişkenlerinden okur (GitHub Secrets: UKEY_USER, UKEY_PASS)
  * - https://ukey.uludag.edu.tr/Home adresine otomatik giriş yapar
  * - Tüm 9 dersi, 14 haftalık içerikleri, ödevleri (ve ödev detay sayfalarını), e-sınavları,
  *   forumları, 7 günlük acil görev bildirimlerini, Microsoft Teams canlı ders linklerini,
@@ -11,7 +11,6 @@
 
 const fs = require('fs');
 const path = require('path');
-const crypto = require('crypto');
 
 const ROOT_DIR = path.resolve(__dirname, '..');
 const UKEY_JSON_PATH = path.join(ROOT_DIR, 'ukey.json');
@@ -39,33 +38,38 @@ function stripTags(str) {
   return decodeHtml(str.replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '').trim());
 }
 
-function getCredentials(existingData) {
-  if (process.env.UKEY_USER && process.env.UKEY_PASS) {
-    return {
-      KullaniciKodu: process.env.UKEY_USER,
-      sifre: process.env.UKEY_PASS,
-      kullaniciTipi: 'Student'
-    };
-  }
-  const vault = existingData.syncVault;
-  const passphrase = 'BUU-ETP-UKEY-AUTO-SYNC-ENGINE-2026-V2';
-  const salt = Buffer.from(vault.s, 'base64');
-  const iv = Buffer.from(vault.i, 'base64');
-  const cipherWithTag = Buffer.from(vault.c, 'base64');
-  const authTag = cipherWithTag.subarray(cipherWithTag.length - 16);
-  const encrypted = cipherWithTag.subarray(0, cipherWithTag.length - 16);
-
-  const key = crypto.pbkdf2Sync(passphrase, salt, vault.iter || 100000, 32, 'sha256');
-  const decipher = crypto.createDecipheriv('aes-256-gcm', key, iv);
-  decipher.setAuthTag(authTag);
-  const decrypted = Buffer.concat([decipher.update(encrypted), decipher.final()]).toString('utf8');
-  return JSON.parse(decrypted);
+// UKEY giriş bilgileri YALNIZCA ortam değişkenlerinden okunur.
+// GitHub Actions'ta bunlar depo gizli değerlerinden (Settings > Secrets and variables > Actions)
+// gelir: UKEY_USER = öğrenci numarası, UKEY_PASS = UKEY şifresi. Depoda hiçbir şifre tutulmaz.
+function getCredentials() {
+  const user = (process.env.UKEY_USER || '').trim();
+  const pass = process.env.UKEY_PASS || '';
+  if (!user || !pass) return null;
+  return { KullaniciKodu: user, sifre: pass, kullaniciTipi: 'Student' };
 }
 
 async function syncUkey() {
   console.log('[UKEY-SYNC] Otomatik senkronizasyon başlatılıyor...');
   const existingData = JSON.parse(fs.readFileSync(UKEY_JSON_PATH, 'utf8'));
-  const creds = getCredentials(existingData);
+
+  // Eski şifreli giriş kasası artık kullanılmıyor; dosyada kalmışsa (veya geri gelmişse) temizle
+  if (Object.prototype.hasOwnProperty.call(existingData, 'syncVault')) {
+    delete existingData.syncVault;
+    fs.writeFileSync(UKEY_JSON_PATH, JSON.stringify(existingData, null, 2), 'utf8');
+    console.log('[UKEY-SYNC] Eski giriş kasası (syncVault) ukey.json dosyasından kaldırıldı.');
+  }
+
+  const creds = getCredentials();
+  if (!creds) {
+    const msg = 'UKEY_USER ve UKEY_PASS tanımlı değil; UKEY verisi bu çalışmada güncellenmedi. '
+      + 'GitHub deposunda Settings > Secrets and variables > Actions bölümünden bu iki gizli değeri ekleyin.';
+    if (process.env.GITHUB_ACTIONS === 'true') {
+      console.log('::warning title=UKEY giriş bilgisi eksik::' + msg);
+    } else {
+      console.log('[UKEY-SYNC] ' + msg + ' (Yerelde çalıştırmak için bu iki ortam değişkenini kendi bilgisayarınızda tanımlayın.)');
+    }
+    return;
+  }
 
   const ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36';
   const cookieJar = new Map();

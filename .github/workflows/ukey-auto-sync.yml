@@ -34,6 +34,11 @@ jobs:
       - name: UKEY Hızlı Delta Senkronizasyon Motorunu Çalıştır
         run: node scripts/ukey-auto-sync.js
         continue-on-error: false
+        env:
+          # Giriş bilgileri depoda değil, GitHub gizli değerlerinde durur:
+          # Settings > Secrets and variables > Actions > UKEY_USER ve UKEY_PASS
+          UKEY_USER: ${{ secrets.UKEY_USER }}
+          UKEY_PASS: ${{ secrets.UKEY_PASS }}
 
       - name: Güncellenen UKEY Verilerini Kaydet ve Yayınla (Commit & Push)
         run: |

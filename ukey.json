@@ -2114,13 +2114,5 @@
     "program": "Elektronik Teknolojisi Programı",
     "semester": "2026-2027 Güz Dönemi"
   },
-  "syncVault": {
-    "alg": "AES-256-GCM",
-    "kdf": "PBKDF2-SHA256",
-    "iter": 100000,
-    "s": "XpoKuNgwjNjwEZmuRWpdbw==",
-    "i": "S/d/32GLvWQhn9xh",
-    "c": "rfov+UN6Gp7RJmW2RMhJQM58Vogx6gGYLHmDa/QWe1sYaPFCsU/+LQBb0PddHS3Wxtg6J5qZLA/mZysz5j52P082RVNV3rpJTOZs6cGtkEyQl0/GA5u8qw0gO7bszI9vEgbUSSTT/7WXmm8oJtnZK1qvtXI="
-  },
   "lastDataChangeAt": "2026-11-19T21:46:46.476Z"
 }
