@@ -1,4 +1,4 @@
-const CACHE = 'etp-cache-v39';
+const CACHE = 'etp-cache-v40';
 const ASSETS = [
   './',
   './index.html',

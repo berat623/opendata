@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https://cdn.jsdelivr.net https://avatars.githubusercontent.com; connect-src 'self' https://api.github.com https://raw.githubusercontent.com; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://ukey.uludag.edu.tr">
     <meta name="referrer" content="no-referrer">
-    <meta name="theme-color" content="#f5f7fb">
+    <meta name="theme-color" content="#0c0e1a">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -19,16 +19,16 @@
     <title>ETP Bilgi Sistemi | Bursa Uludağ Üniversitesi</title>
     <link rel="icon" type="image/png" href="logo.png">
 
-    <!-- Fonts & Icons (PT Serif Tam Uyarlama) -->
+    <!-- Yazı tipi: Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         /* ==========================================================================
            BURSA ULUDAĞ ÜNİVERSİTESİ - ELEKTRONİK TEKNOLOJİSİ PROGRAMI
            MİNİMALİST, GÜNDELİK VE YÜKSEK PERFORMANSLI TASARIM SİSTEMİ
-           Yazı Tipi: PT Serif (Universal Editorial & Minimalist Typography)
+           Yazı Tipi: Plus Jakarta Sans
            Donma / Kasma / Takılma Önleme: Sıfır backdrop-filter, sıfır ağır gölge
            ========================================================================== */
 
@@ -68,78 +68,88 @@
 
         /* 2. TEMA DEĞİŞKENLERİ (MINIMALIST & SADE GÜNDELİK PALET) */
         :root {
-            /* KOYU TEMA (VARSAYILAN: SAKİN MÜREKKEP & CHARCOAL) */
-            --bg-body: #101216;
-            --bg-surface: #171920;
-            --bg-surface-elevated: #1e212b;
-            --bg-surface-hover: #262a36;
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
-            --primary: #7ea5f0;
-            --primary-soft: rgba(126, 165, 240, 0.12);
-            --primary-border: rgba(126, 165, 240, 0.28);
-            --accent: #34d399;
-            --accent-soft: rgba(52, 211, 153, 0.12);
-            --warning: #fbbf24;
-            --warning-soft: rgba(251, 191, 36, 0.12);
-            --danger: #f87171;
-            --danger-soft: rgba(248, 113, 113, 0.12);
-            --border: #262934;
-            --border-hover: #383c4c;
+            /* KOYU TEMA (VARSAYILAN: GECE MAVİSİ) */
+            --bg-body: #0c0e1a;
+            --bg-surface: #141729;
+            --bg-surface-elevated: #1b1f35;
+            --bg-surface-hover: #242943;
+            --text-main: #eef0fb;
+            --text-muted: #9499b8;
+            --primary: #8c8cff;
+            --primary-soft: rgba(140, 140, 255, 0.14);
+            --primary-border: rgba(140, 140, 255, 0.32);
+            --primary-fill: #5856d6;
+            --accent: #3ddc97;
+            --accent-soft: rgba(61, 220, 151, 0.13);
+            --warning: #ffb547;
+            --warning-soft: rgba(255, 181, 71, 0.13);
+            --danger: #ff6b81;
+            --danger-soft: rgba(255, 107, 129, 0.13);
+            --border: #232842;
+            --border-hover: #343a5c;
             --nav-width: 250px;
-            --radius-lg: 12px;
-            --radius-md: 8px;
-            --radius-sm: 6px;
-            --shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
-            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+            --radius-lg: 20px;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+            --radius-pill: 999px;
+            --shadow: 0 14px 34px -16px rgba(0, 0, 0, 0.7);
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
             --glass-blur: none;
+            --topbar-h: 68px;
+            --topbar-bg: rgba(12, 14, 26, 0.86);
+            --hero-grad: linear-gradient(135deg, #3b36c4 0%, #6d28d9 52%, #b4236f 100%);
+            --glow: rgba(109, 40, 217, 0.22);
 
             /* SAYAÇ BİLEŞENİ - KOYU */
-            --timer-bg: #171920;
-            --timer-border: #262934;
-            --timer-text: #f3f4f6;
-            --timer-sub: #9ca3af;
-            --timer-chip: rgba(126, 165, 240, 0.12);
-            --timer-chip-color: #7ea5f0;
-            --timer-box-bg: #1e212b;
-            --timer-box-border: #262934;
-            --timer-bar-track: #262934;
-            --timer-bar-fill: #7ea5f0;
+            --timer-bg: #141729;
+            --timer-border: #232842;
+            --timer-text: #ffffff;
+            --timer-sub: rgba(255, 255, 255, 0.78);
+            --timer-chip: rgba(255, 255, 255, 0.16);
+            --timer-chip-color: #ffffff;
+            --timer-box-bg: rgba(255, 255, 255, 0.12);
+            --timer-box-border: rgba(255, 255, 255, 0.18);
+            --timer-bar-track: rgba(255, 255, 255, 0.22);
+            --timer-bar-fill: #ffffff;
         }
 
         html.light-mode {
-            /* AÇIK TEMA (MİNİMALİST TEMİZ KAĞIT / İSKANDİNAV SADE) */
-            --bg-body: #f7f8fa;
+            /* AÇIK TEMA (SICAK KAĞIT & İNDİGO) */
+            --bg-body: #f4f3ef;
             --bg-surface: #ffffff;
-            --bg-surface-elevated: #f1f3f6;
-            --bg-surface-hover: #eaedf2;
-            --text-main: #18191c;
-            --text-muted: #64748b;
-            --primary: #1e3a5f;
-            --primary-soft: #edf3fa;
-            --primary-border: #cbd7e6;
-            --accent: #15803d;
-            --accent-soft: #ecfdf5;
-            --warning: #b45309;
-            --warning-soft: #fffbeb;
-            --danger: #b91c1c;
-            --danger-soft: #fef2f2;
-            --border: #e2e5eb;
-            --border-hover: #cbd2dc;
-            --shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.03);
+            --bg-surface-elevated: #f7f6f2;
+            --bg-surface-hover: #efede7;
+            --text-main: #16162a;
+            --text-muted: #6b6b80;
+            --primary: #4f46e5;
+            --primary-soft: #eef0ff;
+            --primary-border: #c9ccff;
+            --primary-fill: #4f46e5;
+            --accent: #0f9d63;
+            --accent-soft: #e7f8f0;
+            --warning: #c2410c;
+            --warning-soft: #fff4e8;
+            --danger: #d92d4a;
+            --danger-soft: #fdecef;
+            --border: #e8e6df;
+            --border-hover: #d6d3ca;
+            --shadow: 0 14px 34px -18px rgba(22, 22, 42, 0.22);
+            --shadow-sm: 0 1px 2px rgba(22, 22, 42, 0.05);
+            --topbar-bg: rgba(244, 243, 239, 0.88);
+            --hero-grad: linear-gradient(135deg, #4f46e5 0%, #7c3aed 55%, #db2777 100%);
+            --glow: rgba(124, 58, 237, 0.12);
 
             /* SAYAÇ BİLEŞENİ - AÇIK */
             --timer-bg: #ffffff;
-            --timer-border: #e2e5eb;
-            --timer-text: #18191c;
-            --timer-sub: #64748b;
-            --timer-chip: #edf3fa;
-            --timer-chip-color: #1e3a5f;
-            --timer-box-bg: #f7f8fa;
-            --timer-box-border: #e2e5eb;
-            --timer-bar-track: #e2e5eb;
-            --timer-bar-fill: #1e3a5f;
+            --timer-border: #e8e6df;
+            --timer-text: #ffffff;
+            --timer-sub: rgba(255, 255, 255, 0.82);
+            --timer-chip: rgba(255, 255, 255, 0.18);
+            --timer-chip-color: #ffffff;
+            --timer-box-bg: rgba(255, 255, 255, 0.14);
+            --timer-box-border: rgba(255, 255, 255, 0.22);
+            --timer-bar-track: rgba(255, 255, 255, 0.28);
+            --timer-bar-fill: #ffffff;
         }
 
         /* 3. EVRENSEL TİPOGRAFİ VE TEMEL SIFIRLAMA (PT SERIF) */
@@ -160,7 +170,7 @@
         }
 
         body, button, input, select, textarea {
-            font-family: 'PT Serif', Georgia, 'Times New Roman', serif;
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
             font-weight: 400;
             font-style: normal;
             letter-spacing: -0.01em;
@@ -170,7 +180,7 @@
         }
 
         h1, h2, h3, h4, h5, h6, strong, b {
-            font-family: 'PT Serif', Georgia, 'Times New Roman', serif;
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
             font-weight: 700;
             letter-spacing: -0.015em;
         }
@@ -209,7 +219,7 @@
             left: 0;
             width: 0%;
             height: 2.5px;
-            background: var(--primary);
+            background: var(--primary-fill);
             z-index: 9999;
             transition: width 0.25s ease, opacity 0.25s ease;
             pointer-events: none;
@@ -226,7 +236,7 @@
             padding: 8px 16px;
             border-radius: var(--radius-md);
             border: 1px solid transparent;
-            font-family: 'PT Serif', serif;
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
             font-size: 0.92rem;
             font-weight: 700;
             cursor: pointer;
@@ -234,12 +244,12 @@
             white-space: nowrap;
         }
         .btn-primary {
-            background: var(--primary);
+            background: var(--primary-fill);
             color: #ffffff;
-            border-color: var(--primary);
+            border-color: var(--primary-fill);
         }
         html.light-mode .btn-primary {
-            background: var(--primary);
+            background: var(--primary-fill);
             color: #ffffff;
         }
         .btn-tonal {
@@ -404,7 +414,7 @@
         .brand-text p {
             font-size: 0.76rem;
             color: var(--text-muted);
-            font-style: italic;
+            font-style: normal;
         }
 
         .nav-links {
@@ -448,7 +458,7 @@
             font-weight: 700;
         }
         .nav-item.active .nav-badge {
-            background: var(--primary);
+            background: var(--primary-fill);
             color: #ffffff;
         }
         .sidebar-footer {
@@ -536,7 +546,7 @@
         .header-date {
             font-size: 0.82rem;
             color: var(--text-muted);
-            font-style: italic;
+            font-style: normal;
             margin-top: 2px;
         }
         .header-actions {
@@ -585,7 +595,7 @@
         .card-subtitle {
             font-size: 0.82rem;
             color: var(--text-muted);
-            font-style: italic;
+            font-style: normal;
             margin-top: 2px;
         }
 
@@ -622,7 +632,7 @@
         .timer-sub {
             font-size: 0.84rem;
             color: var(--timer-sub);
-            font-style: italic;
+            font-style: normal;
         }
         .timer-boxes {
             display: grid;
@@ -659,7 +669,7 @@
             font-size: 0.78rem;
             color: var(--text-muted);
             margin-bottom: 6px;
-            font-style: italic;
+            font-style: normal;
         }
         .timer-bar {
             height: 6px;
@@ -785,7 +795,7 @@
         .dash-ukey-course-inst {
             font-size: 0.76rem;
             color: var(--text-muted);
-            font-style: italic;
+            font-style: normal;
         }
         .dash-ukey-course-chips {
             display: flex;
@@ -846,7 +856,7 @@
         .up-date-month {
             font-size: 0.68rem;
             text-transform: uppercase;
-            font-style: italic;
+            font-style: normal;
         }
         .up-info {
             flex: 1;
@@ -863,7 +873,7 @@
         .up-sub {
             font-size: 0.76rem;
             color: var(--text-muted);
-            font-style: italic;
+            font-style: normal;
         }
         .up-badge {
             font-size: 0.72rem;
@@ -919,9 +929,9 @@
             border-color: var(--border-hover);
         }
         .day-tab-btn.active {
-            background: var(--primary);
+            background: var(--primary-fill);
             color: #ffffff;
-            border-color: var(--primary);
+            border-color: var(--primary-fill);
         }
         .sched-actions {
             display: flex;
@@ -958,7 +968,7 @@
             font-size: 0.82rem;
             color: var(--text-muted);
             font-weight: 400;
-            font-style: italic;
+            font-style: normal;
             margin-left: 6px;
         }
         .day-tab-today {
@@ -1062,7 +1072,7 @@
             gap: 14px;
             font-size: 0.8rem;
             color: var(--text-muted);
-            font-style: italic;
+            font-style: normal;
             margin-top: 4px;
             flex-wrap: wrap;
         }
@@ -1105,7 +1115,7 @@
             background: var(--bg-surface-elevated);
             font-weight: 700;
             color: var(--text-muted);
-            font-style: italic;
+            font-style: normal;
         }
 
         /* 12. AKADEMİK TAKVİM (CALENDAR VIEW) */
@@ -1130,7 +1140,7 @@
             width: 42px;
             height: 42px;
             border-radius: var(--radius-md);
-            background: var(--primary);
+            background: var(--primary-fill);
             color: #ffffff;
             display: flex;
             align-items: center;
@@ -1152,13 +1162,13 @@
         .cal-simple-next-date {
             font-size: 0.8rem;
             color: var(--text-muted);
-            font-style: italic;
+            font-style: normal;
         }
         .cal-simple-next-badge {
             font-size: 0.8rem;
             padding: 4px 10px;
             border-radius: var(--radius-sm);
-            background: var(--primary);
+            background: var(--primary-fill);
             color: #ffffff;
             font-weight: 700;
             flex-shrink: 0;
@@ -1186,9 +1196,9 @@
             white-space: nowrap;
         }
         .filter-chip.active {
-            background: var(--primary);
+            background: var(--primary-fill);
             color: #ffffff;
-            border-color: var(--primary);
+            border-color: var(--primary-fill);
         }
 
         .cal-simple-list {
@@ -1227,7 +1237,7 @@
             font-size: 0.68rem;
             color: var(--text-muted);
             text-transform: uppercase;
-            font-style: italic;
+            font-style: normal;
         }
         .cal-simple-info {
             flex: 1;
@@ -1241,7 +1251,7 @@
         .cal-simple-meta {
             font-size: 0.78rem;
             color: var(--text-muted);
-            font-style: italic;
+            font-style: normal;
             margin-top: 2px;
         }
         .cal-simple-right {
@@ -1296,7 +1306,7 @@
         .ukey-sync-sub {
             font-size: 0.78rem;
             color: var(--text-muted);
-            font-style: italic;
+            font-style: normal;
         }
 
         .ukey-nav-tabs {
@@ -1381,7 +1391,7 @@
         .ukey-course-inst {
             font-size: 0.82rem;
             color: var(--text-muted);
-            font-style: italic;
+            font-style: normal;
             margin-bottom: 14px;
         }
         .ukey-course-meta-strip {
@@ -1413,7 +1423,7 @@
         .ukey-mat-desc, .ann-meta-row {
             font-size: 0.78rem;
             color: var(--text-muted);
-            font-style: italic;
+            font-style: normal;
             margin-top: 2px;
         }
 
@@ -1477,10 +1487,10 @@
             gap: 8px;
             padding: 12px;
             border-radius: var(--radius-md);
-            background: var(--primary);
+            background: var(--primary-fill);
             color: #ffffff;
             border: none;
-            font-family: 'PT Serif', serif;
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
             font-size: 0.95rem;
             font-weight: 700;
             cursor: pointer;
@@ -1597,9 +1607,9 @@
             transition: all 0.15s ease;
         }
         .ukey-subtab-btn.active {
-            background: var(--primary);
+            background: var(--primary-fill);
             color: #ffffff;
-            border-color: var(--primary);
+            border-color: var(--primary-fill);
         }
 
         .matrix-mobile-hint {
@@ -1608,7 +1618,7 @@
             gap: 6px;
             font-size: 0.76rem;
             color: var(--primary);
-            font-style: italic;
+            font-style: normal;
             margin-bottom: 8px;
             padding: 6px 10px;
             background: var(--primary-soft);
@@ -1627,7 +1637,7 @@
             background: var(--bg-surface-elevated);
             border: 1px solid var(--border);
             color: var(--text-main);
-            font-family: 'PT Serif', Georgia, serif;
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
             font-size: 0.82rem;
             font-weight: 700;
             cursor: pointer;
@@ -2433,6 +2443,272 @@
             .card { border: 1px solid #ccc !important; box-shadow: none !important; }
         }
 
+        /* ==========================================================================
+           22. YENİ TASARIM KATMANI — "İNDİGO KAMPÜS"
+           Üst menü çubuğu, degrade sayaç kartı, hap biçimli butonlar,
+           yüzen mobil alt menü. Önceki bileşen kuralları korunur, burada
+           yalnızca görünüm yeniden tanımlanır.
+           ========================================================================== */
+        body {
+            background-color: var(--bg-body);
+            background-image: radial-gradient(1100px 420px at 50% -160px, var(--glow), transparent 70%);
+            background-repeat: no-repeat;
+            line-height: 1.55;
+            letter-spacing: -0.005em;
+        }
+        h1, h2, h3, h4, h5, h6, strong, b { letter-spacing: -0.02em; }
+        ::selection { background: var(--primary-fill); color: #fff; }
+        :focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+        /* Butonlar: hap biçimi */
+        .btn { border-radius: var(--radius-pill); font-weight: 600; padding: 9px 18px; }
+        .btn-mini { padding: 6px 13px; font-size: 0.8rem; border-radius: var(--radius-pill); }
+        .btn-icon { border-radius: 50%; width: 40px; height: 40px; padding: 0; }
+        .btn-primary { box-shadow: 0 6px 16px -8px var(--primary-fill); }
+        .btn-primary:hover { filter: brightness(1.08); }
+        .btn-tonal { background: var(--bg-surface); border-color: var(--border); }
+        .btn-tonal:hover { background: var(--bg-surface-hover); border-color: var(--border-hover); }
+        .icon-chip { border-radius: 10px; width: 34px; height: 34px; }
+
+        .search-wrap input {
+            border-radius: var(--radius-pill);
+            background: var(--bg-surface);
+            padding-top: 9px;
+            padding-bottom: 9px;
+        }
+        .search-wrap input:focus { box-shadow: 0 0 0 4px var(--primary-soft); }
+
+        /* Kartlar */
+        .card {
+            border-radius: var(--radius-lg);
+            padding: 22px;
+            box-shadow: var(--shadow-sm), var(--shadow);
+        }
+        .card-title { font-size: 1.05rem; font-weight: 700; gap: 12px; }
+        .card-subtitle { font-size: 0.8rem; margin-top: 4px; }
+
+        .up-card-item, .dash-ukey-course-row, .dash-ukey-pill, .cal-simple-item {
+            border-radius: 14px;
+            transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+        }
+        .up-card-item:hover, .dash-ukey-course-row:hover, .cal-simple-item:hover {
+            border-color: var(--primary-border);
+            background: var(--bg-surface-hover);
+        }
+        .up-date-badge { border-radius: 12px; }
+        .up-date-day { font-weight: 800; }
+        .up-badge, .ukey-mini-chip, .nav-badge { border-radius: var(--radius-pill); }
+        .dash-ukey-pill strong { font-size: 1.35rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+
+        /* Sekmeler ve filtre çipleri */
+        .filter-chip, .day-tab-btn, .ukey-nav-tab { border-radius: var(--radius-pill); font-weight: 600; }
+        .ukey-nav-tabs {
+            border-bottom: none;
+            padding: 5px;
+            gap: 4px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-pill);
+            width: fit-content;
+            max-width: 100%;
+        }
+        .ukey-nav-tab.active {
+            background: var(--primary-fill);
+            color: #ffffff;
+            border-color: var(--primary-fill);
+        }
+        .ukey-nav-tab.active .ukey-tab-badge { background: rgba(255, 255, 255, 0.22); color: #ffffff; }
+        .ukey-sync-banner, .cal-simple-next-banner { border-radius: var(--radius-lg); }
+        .ukey-course-card { border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
+        .ukey-course-card:hover { border-color: var(--primary-border); box-shadow: var(--shadow); }
+        .ann-modal, .ukey-simple-popup-box { border-radius: 24px !important; }
+        .toast { border-radius: var(--radius-pill); padding: 12px 20px; box-shadow: var(--shadow); }
+        .to-top { box-shadow: var(--shadow); }
+        .page-loader-bar { height: 3px; background: var(--hero-grad); }
+
+        /* Sayaç kartı: degrade kahraman alanı */
+        .timer-card {
+            position: relative;
+            isolation: isolate;
+            background: var(--hero-grad) !important;
+            border: none !important;
+            color: #ffffff;
+            padding: 28px !important;
+            border-radius: 24px !important;
+            box-shadow: 0 24px 48px -24px rgba(79, 70, 229, 0.65) !important;
+        }
+        .timer-card::before, .timer-card::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .timer-card::before {
+            width: 360px; height: 360px;
+            right: -120px; top: -180px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.22), transparent 65%);
+        }
+        .timer-card::after {
+            width: 260px; height: 260px;
+            left: -90px; bottom: -150px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.12), transparent 65%);
+        }
+        .timer-chip-btn { border-radius: 14px; }
+        .timer-title { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.02em; }
+        .timer-boxes { gap: 12px; }
+        .t-box { border-radius: 16px; padding: 16px 8px; }
+        .t-val {
+            color: #ffffff !important;
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            font-variant-numeric: tabular-nums;
+        }
+        .t-lbl, .timer-bar-head { color: rgba(255, 255, 255, 0.78) !important; }
+        .t-lbl { font-weight: 600; letter-spacing: 0.08em; }
+        .timer-bar { height: 8px; border-radius: var(--radius-pill); }
+        .timer-fill { border-radius: var(--radius-pill); }
+
+        /* MASAÜSTÜ: yan menü yerine yapışkan üst menü çubuğu */
+        @media (min-width: 769px) {
+            .sidebar {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: auto !important;
+                width: 100% !important;
+                height: var(--topbar-h) !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                gap: 24px;
+                padding: 0 max(28px, calc((100% - 1200px) / 2)) !important;
+                background: var(--topbar-bg) !important;
+                border-right: none !important;
+                border-bottom: 1px solid var(--border);
+                z-index: 1000 !important;
+            }
+            .brand {
+                padding: 0 !important;
+                margin: 0 !important;
+                border-bottom: none !important;
+                flex-shrink: 0;
+            }
+            .brand-logo { width: 38px; height: 38px; border-radius: 10px; }
+            .brand-text h1 { font-size: 0.98rem; font-weight: 800; }
+            .brand-text p { font-size: 0.74rem; }
+            .sidebar .nav-links {
+                flex-direction: row !important;
+                flex: 0 1 auto !important;
+                margin-left: auto;
+                gap: 4px !important;
+                padding: 5px;
+                background: var(--bg-surface);
+                border: 1px solid var(--border);
+                border-radius: var(--radius-pill);
+            }
+            .sidebar .nav-item {
+                padding: 8px 16px !important;
+                border-radius: var(--radius-pill) !important;
+                gap: 8px !important;
+                font-size: 0.88rem !important;
+                font-weight: 600 !important;
+                white-space: nowrap;
+            }
+            .sidebar .nav-item .material-symbols-rounded { font-size: 19px !important; }
+            .sidebar .nav-item.active {
+                background: var(--primary-fill) !important;
+                color: #ffffff !important;
+            }
+            .sidebar .nav-item.active .nav-badge { background: rgba(255, 255, 255, 0.22) !important; color: #ffffff !important; }
+            .sidebar .nav-badge { margin-left: 2px; }
+
+            .app-container {
+                margin-left: 0 !important;
+                width: 100% !important;
+                padding-top: var(--topbar-h);
+            }
+            .main-content {
+                max-width: 1200px !important;
+                padding: 36px 28px 72px !important;
+            }
+            .top-header {
+                height: auto !important;
+                border-bottom: none !important;
+                padding-bottom: 0 !important;
+                margin-bottom: 28px !important;
+                align-items: flex-end !important;
+            }
+            .page-title { font-size: 2.1rem; font-weight: 800; letter-spacing: -0.035em; line-height: 1.1; }
+            .header-date {
+                order: -1;
+                font-size: 0.78rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                color: var(--primary);
+                margin: 0 0 6px;
+            }
+            .header-left > div { display: flex; flex-direction: column; }
+            .lower-grid { gap: 24px !important; }
+        }
+        @media (min-width: 769px) and (max-width: 1080px) {
+            .brand-text { display: none; }
+            .sidebar .nav-item { padding: 8px 12px !important; }
+        }
+
+        /* TELEFON: yüzen alt menü ve kompakt başlık */
+        @media (max-width: 768px) {
+            .main-content { padding: 16px 14px calc(104px + env(safe-area-inset-bottom, 0px)) !important; }
+            .mobile-bottom-nav {
+                left: 12px !important;
+                right: 12px !important;
+                bottom: calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+                padding: 6px !important;
+                gap: 4px !important;
+                border: 1px solid var(--border) !important;
+                border-radius: 24px !important;
+                box-shadow: 0 18px 40px -16px rgba(0, 0, 0, 0.45) !important;
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+            }
+            .mob-nav-btn {
+                border-radius: 18px !important;
+                font-weight: 600 !important;
+                font-size: 0.7rem !important;
+                min-height: 52px !important;
+            }
+            .mob-nav-btn.active {
+                background: var(--primary-fill) !important;
+                color: #ffffff !important;
+            }
+            .page-title { font-size: 1.45rem !important; font-weight: 800 !important; letter-spacing: -0.03em; }
+            .header-date {
+                font-size: 0.7rem !important;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+                color: var(--primary) !important;
+            }
+            .card { padding: 16px !important; border-radius: 18px !important; }
+            .timer-card { padding: 20px 16px !important; border-radius: 22px !important; }
+            .t-val { font-size: 1.7rem !important; }
+            .t-box { padding: 12px 4px !important; border-radius: 14px !important; }
+            .ukey-nav-tabs { width: 100%; }
+            .to-top { bottom: calc(92px + env(safe-area-inset-bottom, 0px)) !important; }
+            .toast { bottom: calc(92px + env(safe-area-inset-bottom, 0px)) !important; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+        }
+        @media print {
+            .timer-card { background: #ffffff !important; color: #000 !important; box-shadow: none !important; }
+            .timer-card::before, .timer-card::after { display: none; }
+            .t-val, .t-lbl, .timer-bar-head { color: #000 !important; }
+        }
+
     </style>
 
     <script>
@@ -2445,11 +2721,11 @@
                 if (isLight) {
                     document.documentElement.classList.add('light-mode');
                     var m = document.querySelector('meta[name="theme-color"]');
-                    if (m) m.setAttribute('content', '#f5f7fb');
+                    if (m) m.setAttribute('content', '#f4f3ef');
                 } else {
                     document.documentElement.classList.remove('light-mode');
                     var m = document.querySelector('meta[name="theme-color"]');
-                    if (m) m.setAttribute('content', '#101216');
+                    if (m) m.setAttribute('content', '#0c0e1a');
                 }
 
                 // ANINDA OTOMATİK MOBİL ALGILAMA (0ms Gecikme - Arayüz direkt telefona göre uyar)
@@ -3099,7 +3375,7 @@
                 if (icon) icon.innerText = isLight ? 'dark_mode' : 'light_mode';
             });
             const meta = document.querySelector('meta[name="theme-color"]');
-            if (meta) meta.setAttribute('content', isLight ? '#edf2f7' : '#111625');
+            if (meta) meta.setAttribute('content', isLight ? '#f4f3ef' : '#0c0e1a');
         }
 
         function toggleTheme() {
