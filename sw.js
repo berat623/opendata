@@ -1,9 +1,10 @@
-const CACHE = 'etp-cache-v40';
+const CACHE = 'etp-cache-v41';
 const ASSETS = [
   './',
   './index.html',
   './ogrenci.html',
-  './logo.png',
+  './logo-192.png',
+  './logo-512.png',
   './icons-subset.woff2',
   './manifest.webmanifest',
   './duyurular.json',

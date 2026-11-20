@@ -6,33 +6,40 @@
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "display_override": ["standalone", "minimal-ui", "window-controls-overlay"],
+  "display_override": [
+    "standalone",
+    "minimal-ui",
+    "window-controls-overlay"
+  ],
   "orientation": "any",
-  "background_color": "#f5f7fb",
-  "theme_color": "#f5f7fb",
+  "background_color": "#f4f5fb",
+  "theme_color": "#f4f5fb",
   "lang": "tr",
-  "categories": ["education", "productivity"],
+  "categories": [
+    "education",
+    "productivity"
+  ],
   "icons": [
     {
-      "src": "logo.png",
+      "src": "logo-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "logo.png",
+      "src": "logo-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "logo.png",
+      "src": "logo-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "logo.png",
+      "src": "logo-512.png",
       "sizes": "any",
       "type": "image/png",
       "purpose": "any"
@@ -44,21 +51,36 @@
       "short_name": "UKEY",
       "description": "UKEY derslerim, materyaller, ödevler ve canlı dersler",
       "url": "./#ukey",
-      "icons": [{ "src": "logo.png", "sizes": "192x192" }]
+      "icons": [
+        {
+          "src": "logo-192.png",
+          "sizes": "192x192"
+        }
+      ]
     },
     {
       "name": "Ders Programı",
       "short_name": "Program",
       "description": "Haftalık ders programı ve derslikler",
       "url": "./#schedule",
-      "icons": [{ "src": "logo.png", "sizes": "192x192" }]
+      "icons": [
+        {
+          "src": "logo-192.png",
+          "sizes": "192x192"
+        }
+      ]
     },
     {
       "name": "Akademik Takvim",
       "short_name": "Takvim",
       "description": "Önemli akademik tarihler ve sınav haftaları",
       "url": "./#calendar",
-      "icons": [{ "src": "logo.png", "sizes": "192x192" }]
+      "icons": [
+        {
+          "src": "logo-192.png",
+          "sizes": "192x192"
+        }
+      ]
     }
   ]
 }
