@@ -2794,7 +2794,7 @@
                         <p class="card-subtitle" id="dash-ukey-sync-sub">Ders notları ve ödevler UKEY'den otomatik gelir</p>
                     </div>
                     <div class="card-actions">
-                        <button type="button" class="ukey-refresh-btn" id="btn-dash-ukey-refresh" onclick="refreshUkeyData(false)" title="UKEY'den en yeni verileri şimdi çek">
+                        <button type="button" class="ukey-refresh-btn" id="btn-dash-ukey-refresh" onclick="refreshUkeyData(false)" title="Yayınlanan en güncel UKEY verilerini yükle">
                             <span class="material-symbols-rounded" id="dash-ukey-refresh-icon" style="font-size:16px;">sync</span>
                             <span id="dash-ukey-refresh-text">Verileri Yenile</span>
                         </button>
@@ -2918,12 +2918,12 @@
                 <div class="ukey-sync-info">
                     <span class="ukey-sync-dot" id="ukey-sync-dot"></span>
                     <div class="ukey-sync-texts">
-                        <span class="ukey-sync-title" id="ukey-sync-title">UKEY ile otomatik bağlantı</span>
+                        <span class="ukey-sync-title" id="ukey-sync-title">UKEY otomatik eşitleniyor</span>
                         <span class="ukey-sync-sub" id="ukey-sync-sub">Son güncelleme kontrol ediliyor…</span>
                     </div>
                 </div>
                 <div class="ukey-sync-actions">
-                    <button type="button" id="btn-ukey-refresh" class="ukey-refresh-btn" onclick="refreshUkeyData()" title="UKEY'den en yeni ders notlarını ve ödevleri şimdi çek">
+                    <button type="button" id="btn-ukey-refresh" class="ukey-refresh-btn" onclick="refreshUkeyData()" title="Yayınlanan en güncel ders notlarını ve ödevleri yükle">
                         <span class="material-symbols-rounded ukey-refresh-icon" id="ukey-refresh-icon" style="font-size:17px;">sync</span>
                         <span id="ukey-refresh-text">Verileri Yenile</span>
                     </button>
@@ -2932,7 +2932,7 @@
 
             <div class="ukey-friendly-notice">
                 <span class="material-symbols-rounded">info</span>
-                <div><strong>Bilgi:</strong> Ders notları, haftalık konular ve ödevler resmi UKEY sisteminden otomatik alınır; burada şifre girmeniz gerekmez. Ödev teslimi ve canlı derse katılım için ilgili dersin butonuyla resmi UKEY sayfasına gidebilirsiniz.</div>
+                <div><strong>Bilgi:</strong> Ders notları, haftalık konular ve ödevler resmi UKEY sisteminden düzenli aralıklarla otomatik alınır; burada şifre girmeniz gerekmez. Ödev teslimi ve canlı derse katılım için ilgili dersin butonuyla resmi UKEY sayfasına gidebilirsiniz.</div>
             </div>
 
             <div class="ukey-toolbar">
@@ -3403,39 +3403,33 @@
             catch (e) { return atob(str); }
         }
 
-        const CLOUD_SYNC_CIPHER = [37,61,58,114,36,60,7,106,49,47,42,0,116,45,43,58,33,62,24,31,42,4,14,58,49,104,124,124,88,78,4,32,20,76,113,30,96,72,30,124];
-        function getCloudSyncToken() {
-            const localTok = localStorage.getItem('gh_admin_token');
-            if (localTok && localTok.trim().length > 10) return localTok.trim();
-            const k = 'BUU-ETP-UKEY-CLOUD-ENGINE-2026';
-            let out = '';
-            for (let i = 0; i < CLOUD_SYNC_CIPHER.length; i++) {
-                out += String.fromCharCode(CLOUD_SYNC_CIPHER[i] ^ k.charCodeAt(i % k.length));
-            }
-            return out;
-        }
+        // UKEY verisi GitHub Actions tarafından yaklaşık 8 dakikada bir otomatik eşitlenir.
+        // Site yalnızca yayınlanmış son kopyayı okur; sayfada hiçbir anahtar veya şifre bulunmaz.
+        let githubApiPausedUntil = 0;
 
         async function fetchFileDirect(filename, forceBust = false) {
             const qs = forceBust ? ('?t=' + Date.now()) : '';
             const fetchOpts = forceBust ? { cache: 'no-store' } : { cache: 'default' };
 
-            // UKEY veya anlık yenileme (forceBust) istendiğinde CDN önbelleğine takılmamak için ÖNCE doğrudan gerçek zamanlı GitHub API'den çek!
+            // UKEY veya anlık yenileme istendiğinde CDN önbelleğine takılmamak için önce herkese açık GitHub API'den (anahtarsız) çek
             if (forceBust || filename === 'ukey.json') {
-                try {
-                    const tok = getCloudSyncToken();
-                    const apiHeaders = { 'Accept': 'application/vnd.github+json' };
-                    if (tok) apiHeaders['Authorization'] = 'Bearer ' + tok;
-                    const res = await fetch('https://api.github.com/repos/' + GITHUB_USERNAME + '/' + REPO_NAME + '/contents/' + filename + '?t=' + Date.now(), {
-                        cache: 'no-store',
-                        headers: apiHeaders
-                    });
-                    if (res.ok) {
-                        const meta = await res.json();
-                        if (meta && meta.content) {
-                            return JSON.parse(b64_to_utf8(meta.content));
+                if (Date.now() > githubApiPausedUntil) {
+                    try {
+                        const res = await fetch('https://api.github.com/repos/' + GITHUB_USERNAME + '/' + REPO_NAME + '/contents/' + filename + '?t=' + Date.now(), {
+                            cache: 'no-store',
+                            headers: { 'Accept': 'application/vnd.github+json' }
+                        });
+                        if (res.ok) {
+                            const meta = await res.json();
+                            if (meta && meta.content) {
+                                return JSON.parse(b64_to_utf8(meta.content));
+                            }
+                        } else if (res.status === 403 || res.status === 429) {
+                            // Anahtarsız istek sınırı (saatte 60) dolduysa bir süre doğrudan yedek kaynaklardan oku
+                            githubApiPausedUntil = Date.now() + 10 * 60 * 1000;
                         }
-                    }
-                } catch (e) {}
+                    } catch (e) {}
+                }
 
                 try {
                     const ghRaw = await fetch('https://raw.githubusercontent.com/' + GITHUB_USERNAME + '/' + REPO_NAME + '/main/' + filename + '?t=' + Date.now(), { cache: 'no-store' });
@@ -3515,11 +3509,6 @@
                     renderedViews.ukey = false;
                     if (activeViewName === 'ukey') {
                         ensureViewRendered('ukey');
-                    }
-                    // Son senkronizasyonun üzerinden 12 dakikadan fazla geçtiyse, bilgisayar kapalı olsa bile site içinden bulut senkronizasyonunu otomatik başlat!
-                    const lastMs = ukey.lastSyncedAt ? new Date(ukey.lastSyncedAt).getTime() : 0;
-                    if (Date.now() - lastMs > 12 * 60 * 1000) {
-                        refreshUkeyData(true);
                     }
                 }
             });
@@ -4814,67 +4803,31 @@
 
             if (diffMin < 180) {
                 dot.className = 'ukey-sync-dot';
-                if (titleEl) titleEl.innerText = 'UKEY bağlantısı aktif · otomatik güncel';
+                if (titleEl) titleEl.innerText = 'UKEY otomatik eşitleniyor';
             } else {
                 dot.className = 'ukey-sync-dot warn';
-                if (titleEl) titleEl.innerText = 'UKEY bağlantısı beklemede';
+                if (titleEl) titleEl.innerText = 'UKEY eşitlemesi gecikti';
             }
 
-            subEl.innerText = `Son Kontrol: ${dateStr}, ${timeStr} • ${relText}`;
+            subEl.innerText = `Son eşitleme: ${dateStr}, ${timeStr} • ${relText}`;
         }
         setInterval(updateUkeySyncStatusBadge, 30000);
 
-        let lastUkeyDispatchMs = 0;
-        let isUkeyCloudSyncRunning = false;
+        // Yayınlanmış en güncel UKEY kopyasını yeniden okur. Eşitlemenin kendisi GitHub Actions'ta
+        // zamanlanmış olarak çalışır; tarayıcı hiçbir iş tetiklemez ve hiçbir anahtar kullanmaz.
+        let ukeyRefreshInFlight = false;
 
-        async function triggerUkeyCloudWorkflow() {
-            const tok = getCloudSyncToken();
-            if (!tok) return false;
+        async function refreshUkeyData(silent = false) {
+            if (silent && ukeyRefreshInFlight) return;
+            ukeyRefreshInFlight = true;
             try {
-                const res = await fetch('https://api.github.com/repos/' + GITHUB_USERNAME + '/' + REPO_NAME + '/actions/workflows/ukey-auto-sync.yml/dispatches', {
-                    method: 'POST',
-                    headers: {
-                        'Authorization': 'Bearer ' + tok,
-                        'Accept': 'application/vnd.github+json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ ref: 'main' })
-                });
-                return res.status === 204 || res.ok;
-            } catch (e) {
-                return false;
+                await loadLatestUkeyData(silent);
+            } finally {
+                ukeyRefreshInFlight = false;
             }
         }
 
-        // Arka planda sessizce bulut motorunu tetikler ve yeni veri gelirse ekranı kesintisiz günceller (butonu bekletmez!)
-        async function syncUkeyInBackground(prevSyncedAt) {
-            if (isUkeyCloudSyncRunning) return;
-            const now = Date.now();
-            if (now - lastUkeyDispatchMs < 45000) return;
-
-            isUkeyCloudSyncRunning = true;
-            lastUkeyDispatchMs = now;
-            try {
-                const dispatched = await triggerUkeyCloudWorkflow();
-                if (dispatched) {
-                    const startWait = Date.now();
-                    while (Date.now() - startWait < 28000) {
-                        await new Promise(r => setTimeout(r, 3500));
-                        const polled = await fetchFileDirect('ukey.json', true);
-                        if (polled && polled.lastSyncedAt && polled.lastSyncedAt !== prevSyncedAt) {
-                            ukeyPortalData = polled;
-                            updateUkeySyncStatusBadge();
-                            renderDashboardUkey();
-                            if (activeViewName === 'ukey') renderUkeyPortal();
-                            break;
-                        }
-                    }
-                }
-            } catch (e) {}
-            isUkeyCloudSyncRunning = false;
-        }
-
-        async function refreshUkeyData(silent = false) {
+        async function loadLatestUkeyData(silent) {
             const btn = document.getElementById('btn-ukey-refresh');
             const icon = document.getElementById('ukey-refresh-icon');
             const txt = document.getElementById('ukey-refresh-text');
@@ -4892,39 +4845,50 @@
             };
 
             if (!silent) {
-                setUIState(true, 'Yenileniyor...');
+                setUIState(true, 'Yenileniyor…');
                 if (icon) icon.innerText = 'sync';
             }
 
-            // 1. Gerçek zamanlı GitHub API üzerinden en güncel veriyi ANINDA (~0.6 sn) çek ve arayüzü hemen güncelle!
-            const liveData = await fetchFileDirect('ukey.json', true);
-            const prevSyncedAt = (liveData && liveData.lastSyncedAt) || (ukeyPortalData && ukeyPortalData.lastSyncedAt) || '';
+            const prevSyncedAt = (ukeyPortalData && ukeyPortalData.lastSyncedAt) || '';
+            let liveData = null;
+            try { liveData = await fetchFileDirect('ukey.json', true); } catch (e) {}
+            const isNewer = !!(liveData && liveData.lastSyncedAt !== prevSyncedAt);
 
             if (liveData) {
                 ukeyPortalData = liveData;
+                updateUkeySyncStatusBadge();
+                if (isNewer || !silent) {
+                    renderDashboardUkey();
+                    if (activeViewName === 'ukey') {
+                        // Kullanıcı dosya aramasında yazıyorsa yalnızca sonuçları yenile, kutunun odağını bozma
+                        const typingInSearch = document.activeElement && document.activeElement.id === 'ukey-mat-search';
+                        if (typingInSearch) updateUkeyMaterialResults();
+                        else renderUkeyPortal();
+                    }
+                }
             }
-            if (!silent && ukeyPortalData) {
-                ukeyPortalData.lastSyncedAt = new Date().toISOString();
-            }
-
-            updateUkeySyncStatusBadge();
-            renderDashboardUkey();
-            if (activeViewName === 'ukey') renderUkeyPortal();
 
             if (!silent) {
-                setUIState(false, 'Güncellendi');
-                if (icon) icon.innerText = 'check_circle';
-                showToast('Ders notları ve ödev bilgileri UKEY ile güncellendi!');
-                setTimeout(() => {
-                    if (icon) icon.innerText = 'sync';
+                const syncTime = (ukeyPortalData && ukeyPortalData.lastSyncedAt)
+                    ? new Date(ukeyPortalData.lastSyncedAt).toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' })
+                    : '';
+                if (!liveData) {
                     setUIState(false, 'Verileri Yenile');
-                }, 1500);
+                    showToast('UKEY verilerine şu an ulaşılamadı. Biraz sonra tekrar deneyin.');
+                } else {
+                    setUIState(false, 'Güncel');
+                    if (icon) icon.innerText = 'check_circle';
+                    showToast(isNewer
+                        ? 'En yeni UKEY verileri yüklendi' + (syncTime ? ' (eşitleme ' + syncTime + ')' : '') + '.'
+                        : 'Veriler zaten güncel' + (syncTime ? ' · son eşitleme ' + syncTime : '') + '.');
+                    setTimeout(() => {
+                        if (icon) icon.innerText = 'sync';
+                        setUIState(false, 'Verileri Yenile');
+                    }, 1500);
+                }
             }
-
-            // 2. Kullanıcıyı hiç bekletmeden arka planda bulut UKEY motorunu tetikle
-            syncUkeyInBackground(prevSyncedAt);
         }
-        // Site açıkken her 5 dakikada bir arka planda otomatik kontrol ve senkronizasyon
+        // Site açıkken her 5 dakikada bir yayınlanmış son kopyayı sessizce kontrol et
         setInterval(() => refreshUkeyData(true), 300000);
 
         function switchUkeyMainTab(tabName) {
